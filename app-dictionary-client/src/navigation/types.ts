@@ -1,0 +1,17 @@
+export type AuthStackParamList = {
+  Login: undefined;
+  Register: undefined;
+};
+
+export type MainTabParamList = {
+  Baholash: undefined;
+  Sozlar: undefined;
+  Profil: undefined;
+};
+
+export type ProfileStackParamList = {
+  ProfileHome: undefined;
+  EditProfile: undefined;
+  ChangePassword: undefined;
+  Stats: undefined;
+};
