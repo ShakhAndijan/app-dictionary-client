@@ -1,0 +1,51 @@
+# Runs the whole stack: PostgreSQL + the Spring Boot backend.
+#
+#   docker compose up --build        # build & start (foreground)
+#   docker compose up -d --build     # build & start (detached)
+#   docker compose logs -f backend   # follow backend logs
+#   docker compose down              # stop (add -v to also wipe the DB volume)
+#
+# Defaults below work out of the box; override any value via the shell or a .env file.
+name: schoolproject
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: schoolproject-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-schoolproject}
+      POSTGRES_USER: ${POSTGRES_USER:-schooluser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-schoolpass}
+    ports:
+      # Host 5433 -> container 5432 (host 5432 may already be taken by a local Postgres).
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-schooluser} -d ${POSTGRES_DB:-schoolproject}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  backend:
+    build: .
+    image: schoolproject-backend:latest
+    container_name: schoolproject-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # The app reads these via ${...} placeholders in application.properties.
+      DB_URL: jdbc:postgresql://db:5432/${POSTGRES_DB:-schoolproject}
+      DB_USERNAME: ${POSTGRES_USER:-schooluser}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-schoolpass}
+      # CHANGE in production. Base64, decodes to >= 256 bits.
+      JWT_SECRET: ${JWT_SECRET:-XOx00perpblMuNIUPDWvu4ZC3wuCmnCuB7rnYqalsLroCVYFsNS0CEfGot3Wlx8U}
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS:-86400000}
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+volumes:
+  pgdata:

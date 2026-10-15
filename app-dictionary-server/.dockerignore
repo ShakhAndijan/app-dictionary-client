@@ -1,0 +1,19 @@
+# Build output (the image rebuilds the jar itself)
+target/
+
+# Version control & IDE
+.git/
+.gitignore
+.gitattributes
+.idea/
+*.iml
+
+# Maven wrapper (the build image brings its own Maven)
+.mvn/
+mvnw
+mvnw.cmd
+
+# Local run artifacts & docs
+*.log
+app-run*
+HELP.md
