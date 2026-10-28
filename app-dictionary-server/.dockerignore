@@ -17,3 +17,8 @@ mvnw.cmd
 *.log
 app-run*
 HELP.md
+
+# Secrets
+.env
+.env.*
+!.env.example

@@ -21,6 +21,7 @@ export interface QuizQuestion {
 
 export interface QuizAnswerResult {
   correct: boolean;
+  closeMatch: boolean;
   correctAnswer: string;
   answeredPromptType: QuizPromptType;
   progress: QuizProgress;

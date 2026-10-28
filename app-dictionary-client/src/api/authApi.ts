@@ -2,6 +2,7 @@ import apiClient from './client';
 import { User } from '../types';
 
 export interface AuthResponse {
+  refreshToken: string;
   token: string;
   tokenType: string;
   username: string;
@@ -24,6 +25,13 @@ export function register(
     .then((r) => r.data);
 }
 
+export function logout(refreshToken: string | null) {
+  // Short timeout so a bad connection never blocks signing out locally.
+  return apiClient
+    .post('/auth/logout', refreshToken ? { refreshToken } : undefined, { timeout: 5000 })
+    .then((r) => r.data);
+}
+
 export function fetchMe() {
   return apiClient.get<User>('/me').then((r) => r.data);
 }
@@ -33,5 +41,6 @@ export function updateProfile(data: Partial<Pick<User, 'firstName' | 'lastName' 
 }
 
 export function changePassword(oldPassword: string, newPassword: string) {
-  return apiClient.put('/profile/password', { oldPassword, newPassword }).then((r) => r.data);
+  // The server signs out every other session and returns fresh tokens for this one.
+  return apiClient.put<AuthResponse>('/profile/password', { oldPassword, newPassword }).then((r) => r.data);
 }

@@ -1,17 +1,30 @@
-import axios from 'axios';
-import * as SecureStore from 'expo-secure-store';
+import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { API_BASE_URL } from '../config/env';
+import { clearTokens, getAccessToken, getRefreshToken, saveTokens, TokenPair } from './tokenStorage';
 
-export const TOKEN_KEY = 'auth_token';
+const REQUEST_TIMEOUT_MS = 15000;
+
+// These endpoints answer 401 for reasons unrelated to an expired session (e.g. wrong password),
+// so a 401 from them must never trigger a token refresh.
+const AUTH_ENDPOINTS = ['/auth/login', '/auth/register', '/auth/refresh', '/auth/logout'];
+
+type RetriableConfig = InternalAxiosRequestConfig & { _retried?: boolean };
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 15000,
+  timeout: REQUEST_TIMEOUT_MS,
+  headers: { 'Content-Type': 'application/json' },
+});
+
+// Separate instance without interceptors so a failing refresh can never recurse into itself.
+const refreshClient = axios.create({
+  baseURL: API_BASE_URL,
+  timeout: REQUEST_TIMEOUT_MS,
   headers: { 'Content-Type': 'application/json' },
 });
 
 apiClient.interceptors.request.use(async (config) => {
-  const token = await SecureStore.getItemAsync(TOKEN_KEY);
+  const token = await getAccessToken();
   if (token) {
     config.headers = config.headers ?? {};
     config.headers.Authorization = `Bearer ${token}`;
@@ -25,13 +38,51 @@ export function setOnUnauthorized(handler: () => void) {
   onUnauthorized = handler;
 }
 
+// Refresh tokens are single-use, so concurrent 401s must share one refresh request.
+let refreshInFlight: Promise<string> | null = null;
+
+function refreshAccessToken(): Promise<string> {
+  if (!refreshInFlight) {
+    refreshInFlight = (async () => {
+      const refreshToken = await getRefreshToken();
+      if (!refreshToken) throw new Error('No refresh token');
+      const { data } = await refreshClient.post<TokenPair>('/auth/refresh', { refreshToken });
+      await saveTokens(data);
+      return data.token;
+    })().finally(() => {
+      refreshInFlight = null;
+    });
+  }
+  return refreshInFlight;
+}
+
+function isAuthEndpoint(url?: string) {
+  return !!url && AUTH_ENDPOINTS.some((path) => url.includes(path));
+}
+
 apiClient.interceptors.response.use(
   (response) => response,
-  (error) => {
-    if (error?.response?.status === 401 && onUnauthorized) {
-      onUnauthorized();
+  async (error: AxiosError) => {
+    const config = error.config as RetriableConfig | undefined;
+
+    if (error.response?.status !== 401 || !config || config._retried || isAuthEndpoint(config.url)) {
+      return Promise.reject(error);
     }
-    return Promise.reject(error);
+
+    config._retried = true;
+    try {
+      const token = await refreshAccessToken();
+      config.headers.Authorization = `Bearer ${token}`;
+      return apiClient(config);
+    } catch (refreshError) {
+      // Only a rejected refresh token ends the session; a network blip must not log the user out.
+      if (axios.isAxiosError(refreshError) && !refreshError.response) {
+        return Promise.reject(error);
+      }
+      await clearTokens();
+      onUnauthorized?.();
+      return Promise.reject(error);
+    }
   }
 );
 

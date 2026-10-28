@@ -22,7 +22,7 @@ WORKDIR /app
 RUN useradd -r -u 1001 appuser
 
 # The Spring Boot executable (fat) jar built in stage 1.
-COPY --from=build /app/target/schoolproject-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/dictionary-0.0.1-SNAPSHOT.jar app.jar
 
 USER appuser
 EXPOSE 8080

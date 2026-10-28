@@ -1,8 +1,9 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import * as SecureStore from 'expo-secure-store';
+import axios from 'axios';
 import { User } from '../types';
 import * as authApi from '../api/authApi';
-import { setOnUnauthorized, TOKEN_KEY } from '../api/client';
+import { setOnUnauthorized } from '../api/client';
+import { clearTokens, getAccessToken, getRefreshToken, saveTokens } from '../api/tokenStorage';
 
 interface AuthContextValue {
   user: User | null;
@@ -27,27 +28,42 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const logout = useCallback(async () => {
-    await SecureStore.deleteItemAsync(TOKEN_KEY);
+  const clearSession = useCallback(async () => {
+    await clearTokens();
     setUser(null);
   }, []);
 
+  // Revokes the refresh token on the server first (best effort), then always clears the session locally.
+  const logout = useCallback(async () => {
+    try {
+      await authApi.logout(await getRefreshToken());
+    } catch {
+      // Offline or already-expired session: still sign the user out locally.
+    } finally {
+      await clearSession();
+    }
+  }, [clearSession]);
+
   useEffect(() => {
+    // The refresh token was rejected, so the session is already dead server-side:
+    // skip the server call (avoids a 401 loop) and just sign out locally.
     setOnUnauthorized(() => {
-      logout();
+      clearSession();
     });
-  }, [logout]);
+  }, [clearSession]);
 
   useEffect(() => {
     (async () => {
       try {
-        const token = await SecureStore.getItemAsync(TOKEN_KEY);
-        if (token) {
-          const me = await authApi.fetchMe();
-          setUser(me);
+        if (await getAccessToken()) {
+          // An expired access token is renewed transparently by the API client.
+          setUser(await authApi.fetchMe());
         }
-      } catch {
-        await SecureStore.deleteItemAsync(TOKEN_KEY);
+      } catch (e) {
+        // Keep the tokens when we were merely offline so the next launch can still resume the session.
+        if (!axios.isAxiosError(e) || e.response) {
+          await clearTokens();
+        }
       } finally {
         setIsLoading(false);
       }
@@ -56,7 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (username: string, password: string) => {
     const res = await authApi.login(username, password);
-    await SecureStore.setItemAsync(TOKEN_KEY, res.token);
+    await saveTokens(res);
     const me = await authApi.fetchMe();
     setUser(me);
   };
@@ -69,10 +85,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     password: string
   ) => {
     const res = await authApi.register(firstName, lastName, email, username, password);
-    console.log("Ro'yxatdan o'tish javobi:", res);
-    await SecureStore.setItemAsync(TOKEN_KEY, res.token);
+    await saveTokens(res);
     const me = await authApi.fetchMe();
-    console.log('Foydalanuvchi (/me):', me);
     setUser(me);
   };
 
@@ -82,7 +96,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const changePassword = async (oldPassword: string, newPassword: string) => {
-    await authApi.changePassword(oldPassword, newPassword);
+    // All other sessions are signed out by the server; keep this one with the fresh tokens.
+    await saveTokens(await authApi.changePassword(oldPassword, newPassword));
   };
 
   return (

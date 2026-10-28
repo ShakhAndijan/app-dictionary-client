@@ -6,23 +6,23 @@
 #   docker compose down              # stop (add -v to also wipe the DB volume)
 #
 # Defaults below work out of the box; override any value via the shell or a .env file.
-name: schoolproject
+name: dictionary
 
 services:
   db:
     image: postgres:16-alpine
-    container_name: schoolproject-db
+    container_name: dictionary-db
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-schoolproject}
-      POSTGRES_USER: ${POSTGRES_USER:-schooluser}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-schoolpass}
+      POSTGRES_DB: ${POSTGRES_DB:-dictionary}
+      POSTGRES_USER: ${POSTGRES_USER:-dictionary}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dictionary}
     ports:
       # Host 5433 -> container 5432 (host 5432 may already be taken by a local Postgres).
       - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-schooluser} -d ${POSTGRES_DB:-schoolproject}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-dictionary} -d ${POSTGRES_DB:-dictionary}"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -30,19 +30,20 @@ services:
 
   backend:
     build: .
-    image: schoolproject-backend:latest
-    container_name: schoolproject-backend
+    image: dictionary-backend:latest
+    container_name: dictionary-backend
     depends_on:
       db:
         condition: service_healthy
     environment:
       # The app reads these via ${...} placeholders in application.properties.
-      DB_URL: jdbc:postgresql://db:5432/${POSTGRES_DB:-schoolproject}
-      DB_USERNAME: ${POSTGRES_USER:-schooluser}
-      DB_PASSWORD: ${POSTGRES_PASSWORD:-schoolpass}
+      DB_URL: jdbc:postgresql://db:5432/${POSTGRES_DB:-dictionary}
+      DB_USERNAME: ${POSTGRES_USER:-dictionary}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-dictionary}
       # CHANGE in production. Base64, decodes to >= 256 bits.
       JWT_SECRET: ${JWT_SECRET:-XOx00perpblMuNIUPDWvu4ZC3wuCmnCuB7rnYqalsLroCVYFsNS0CEfGot3Wlx8U}
-      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS:-86400000}
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS:-900000}
+      JWT_REFRESH_EXPIRATION_MS: ${JWT_REFRESH_EXPIRATION_MS:-2592000000}
     ports:
       - "8080:8080"
     restart: unless-stopped

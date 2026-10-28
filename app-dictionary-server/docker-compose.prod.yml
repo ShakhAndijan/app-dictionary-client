@@ -1,0 +1,75 @@
+# Production stack for an Ubuntu server: Caddy (HTTPS) -> Spring Boot backend -> PostgreSQL.
+# Only Caddy publishes ports (80/443). The database and backend are reachable only inside
+# the private Docker network.
+#
+#   cp .env.example .env     # then edit the values
+#   docker compose -f docker-compose.prod.yml up -d --build
+#
+# Full instructions: DEPLOY.md
+name: dictionary
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: dictionary-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: [internal]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  backend:
+    build: .
+    image: dictionary-backend:latest
+    container_name: dictionary-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      DB_USERNAME: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS:-900000}
+      JWT_REFRESH_EXPIRATION_MS: ${JWT_REFRESH_EXPIRATION_MS:-2592000000}
+      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS:--XX:MaxRAMPercentage=70}
+      TZ: ${TZ:-UTC}
+    expose:
+      - "8080"
+    networks: [internal]
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: dictionary-caddy
+    depends_on:
+      - backend
+    environment:
+      DOMAIN: ${DOMAIN}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks: [internal]
+    restart: unless-stopped
+
+networks:
+  internal:
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:

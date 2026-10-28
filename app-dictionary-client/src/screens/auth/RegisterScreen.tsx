@@ -46,14 +46,16 @@ export default function RegisterScreen({ navigation }: Props) {
     try {
       await register(firstName.trim(), lastName.trim(), email.trim(), username.trim(), password);
     } catch (e: any) {
-      console.log("Ro'yxatdan o'tish xatoligi:", {
-        message: e?.message,
-        code: e?.code,
-        baseURL: e?.config?.baseURL,
-        url: e?.config?.url,
-        status: e?.response?.status,
-        data: e?.response?.data,
-      });
+      if (__DEV__) {
+        // Debug only: request body (password) and tokens are deliberately not logged.
+        console.log('[register] xato:', {
+          message: e?.message,
+          code: e?.code,
+          status: e?.response?.status,
+          data: e?.response?.data,
+          url: `${e?.config?.baseURL ?? ''}${e?.config?.url ?? ''}`,
+        });
+      }
       Alert.alert('Xatolik', e?.response?.data?.message ?? "Ro'yxatdan o'tishda xatolik yuz berdi");
     } finally {
       setLoading(false);

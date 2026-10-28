@@ -101,7 +101,7 @@ export default function QuizScreen({ navigation }: Props) {
 
   const [answer, setAnswer] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const [result, setResult] = useState<{ correct: boolean; correctAnswer: string } | null>(null);
+  const [result, setResult] = useState<{ correct: boolean; closeMatch: boolean; correctAnswer: string } | null>(null);
   const [pendingNext, setPendingNext] = useState<{ promptType: QuizPromptType; promptText: string } | null>(null);
 
   const [summary, setSummary] = useState<QuizSummary | null>(null);
@@ -155,7 +155,7 @@ export default function QuizScreen({ navigation }: Props) {
     try {
       const res = await quizApi.submitQuizAnswer(sessionId, answer.trim());
       setProgress(res.progress);
-      setResult({ correct: res.correct, correctAnswer: res.correctAnswer });
+      setResult({ correct: res.correct, closeMatch: res.closeMatch, correctAnswer: res.correctAnswer });
       setPendingNext(
         res.progress.finished || !res.nextPromptType || !res.nextPromptText
           ? null
@@ -431,7 +431,11 @@ export default function QuizScreen({ navigation }: Props) {
                 color={result.correct ? colors.secondary : colors.danger}
               />
               <Text style={[styles.resultText, result.correct ? styles.correct : styles.incorrect]}>
-                {result.correct ? "To'g'ri javob!" : `Noto'g'ri. To'g'ri javob: ${result.correctAnswer}`}
+                {result.closeMatch
+                  ? `To'g'ri! Imloga e'tibor bering: ${result.correctAnswer}`
+                  : result.correct
+                  ? "To'g'ri javob!"
+                  : `Noto'g'ri. To'g'ri javob: ${result.correctAnswer}`}
               </Text>
             </View>
           )}
