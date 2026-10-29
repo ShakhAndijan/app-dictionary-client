@@ -281,18 +281,14 @@ export default function WordsScreen() {
 
       {words.length > 0 && (
         <>
-          <Card style={styles.statsCard}>
-            <View style={styles.statsRow}>
-              <StatBlock icon="book" color={colors.primary} value={words.length} label="Jami so'z" />
-              <View style={styles.statDivider} />
-              <StatBlock icon="add-circle" color={colors.secondary} value={wordsAddedToday} label="Bugun" />
-              <View style={styles.statDivider} />
-              <StatBlock icon="calendar" color="#F59E0B" value={wordsAddedThisMonth} label="Shu oy" />
-            </View>
-          </Card>
+          <View style={styles.statsRow}>
+            <StatBlock icon="book" color={colors.primary} value={words.length} label="Jami so'z" />
+            <StatBlock icon="add-circle" color={colors.secondary} value={wordsAddedToday} label="Bugun" />
+            <StatBlock icon="calendar" color="#F59E0B" value={wordsAddedThisMonth} label="Shu oy" />
+          </View>
 
           <View style={styles.searchBar}>
-            <Ionicons name="search-outline" size={16} color={colors.textMuted} />
+            <Ionicons name="search-outline" size={19} color={colors.textMuted} />
             <TextInput
               placeholder="Qidirish..."
               placeholderTextColor={colors.textMuted}
@@ -303,7 +299,7 @@ export default function WordsScreen() {
             />
             {!!query && (
               <Pressable hitSlop={8} onPress={() => setQuery('')}>
-                <Ionicons name="close-circle" size={16} color={colors.textMuted} />
+                <Ionicons name="close-circle" size={19} color={colors.textMuted} />
               </Pressable>
             )}
           </View>
@@ -318,9 +314,10 @@ export default function WordsScreen() {
               const count = words.filter((w) => matchesFilter(w, f.key)).length;
               return (
                 <Pressable key={f.key} onPress={() => setFilter(f.key)} style={[styles.chip, active && styles.chipActive]}>
-                  <Text style={[styles.chipText, active && styles.chipTextActive]}>
-                    {f.label} {count}
-                  </Text>
+                  <Text style={[styles.chipText, active && styles.chipTextActive]}>{f.label}</Text>
+                  <View style={[styles.chipCount, active && styles.chipCountActive]}>
+                    <Text style={[styles.chipCountText, active && styles.chipCountTextActive]}>{count}</Text>
+                  </View>
                 </Pressable>
               );
             })}
@@ -603,7 +600,9 @@ function StatBlock({
 }) {
   return (
     <View style={styles.statBlock}>
-      <Ionicons name={icon} size={16} color={color} />
+      <View style={[styles.statIconWrap, { backgroundColor: `${color}1A` }]}>
+        <Ionicons name={icon} size={17} color={color} />
+      </View>
       <Text style={styles.statValue}>{value}</Text>
       <Text style={styles.statLabel}>{label}</Text>
     </View>
@@ -640,27 +639,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  statsCard: { marginHorizontal: 20, marginTop: 14, marginBottom: 0 },
-  statsRow: { flexDirection: 'row', alignItems: 'center' },
-  statDivider: { width: 1, height: 32, backgroundColor: colors.border },
-  statBlock: { flex: 1, alignItems: 'center', gap: 2 },
-  statValue: { fontSize: 17, fontWeight: '700', color: colors.text, marginTop: 2 },
-  statLabel: { fontSize: 11, color: colors.textMuted },
+  statsRow: { flexDirection: 'row', gap: 10, marginHorizontal: 20, marginTop: 16 },
+  statBlock: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: colors.surface,
+    borderRadius: 16,
+    paddingVertical: 12,
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
+  statIconWrap: { width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', marginBottom: 6 },
+  statValue: { fontSize: 20, fontWeight: '800', color: colors.text },
+  statLabel: { fontSize: 11.5, color: colors.textMuted, marginTop: 1 },
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    backgroundColor: colors.background,
+    gap: 10,
+    backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
-    borderRadius: 18,
+    borderRadius: 14,
     marginHorizontal: 20,
-    marginTop: 12,
-    paddingHorizontal: 12,
-    height: 36,
+    marginTop: 14,
+    paddingHorizontal: 14,
+    height: 46,
   },
-  searchInput: { flex: 1, padding: 0, fontSize: 14, color: colors.text },
-  listWrap: { flex: 1, marginTop: 8 },
+  searchInput: { flex: 1, padding: 0, fontSize: 15, color: colors.text },
+  listWrap: { flex: 1 },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   listContent: { paddingBottom: 40, paddingRight: 26 },
   sectionHeader: {
@@ -770,12 +779,27 @@ const styles = StyleSheet.create({
   detailTextWrap: { flex: 1 },
   detailLabel: { fontSize: 12, color: colors.textMuted, marginBottom: 2 },
   detailValue: { fontSize: 15, color: colors.text, fontWeight: '600', lineHeight: 21 },
-  filterRow: { flexGrow: 0, marginBottom: 10 },
-  filterContent: { gap: 8, paddingRight: 8 },
-  chip: { paddingVertical: 7, paddingHorizontal: 14, borderRadius: 16, backgroundColor: colors.border },
-  chipActive: { backgroundColor: colors.primary },
-  chipText: { fontSize: 13, fontWeight: '600', color: colors.textMuted },
+  filterRow: { flexGrow: 0, marginTop: 14, marginBottom: 12 },
+  filterContent: { gap: 8, paddingHorizontal: 20 },
+  chip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 7,
+    paddingVertical: 8,
+    paddingLeft: 14,
+    paddingRight: 8,
+    borderRadius: 20,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  chipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
+  chipText: { fontSize: 13.5, fontWeight: '600', color: colors.text },
   chipTextActive: { color: '#fff' },
+  chipCount: { minWidth: 22, height: 22, borderRadius: 11, paddingHorizontal: 6, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.background },
+  chipCountActive: { backgroundColor: 'rgba(255,255,255,0.25)' },
+  chipCountText: { fontSize: 12, fontWeight: '700', color: colors.textMuted },
+  chipCountTextActive: { color: '#fff' },
   detailFooterRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 20 },
   detailFooterText: { fontSize: 12, color: colors.textMuted },
   detailCloseBtn: { marginTop: 0 },
