@@ -5,6 +5,7 @@ import ProfileScreen from '../screens/profile/ProfileScreen';
 import EditProfileScreen from '../screens/profile/EditProfileScreen';
 import ChangePasswordScreen from '../screens/profile/ChangePasswordScreen';
 import StatsScreen from '../screens/profile/StatsScreen';
+import ReminderSettingsScreen from '../screens/profile/ReminderSettingsScreen';
 import { colors } from '../theme/colors';
 
 const Stack = createNativeStackNavigator<ProfileStackParamList>();
@@ -30,6 +31,11 @@ export default function ProfileNavigator() {
         options={{ title: 'Parolni almashtirish' }}
       />
       <Stack.Screen name="Stats" component={StatsScreen} options={{ title: 'Statistika' }} />
+      <Stack.Screen
+        name="Reminders"
+        component={ReminderSettingsScreen}
+        options={{ title: 'Eslatmalar va maqsad' }}
+      />
     </Stack.Navigator>
   );
 }

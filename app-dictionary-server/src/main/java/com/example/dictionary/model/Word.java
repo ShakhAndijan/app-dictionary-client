@@ -33,6 +33,10 @@ public class Word {
     @Column(columnDefinition = "TEXT")
     private String definition;
 
+    /** Bumped whenever the picture changes (null = no picture); lets clients cache images safely. */
+    @Column(name = "image_version")
+    private Long imageVersion;
+
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
 
@@ -78,6 +82,14 @@ public class Word {
 
     public void setDefinition(String definition) {
         this.definition = definition;
+    }
+
+    public Long getImageVersion() {
+        return imageVersion;
+    }
+
+    public void setImageVersion(Long imageVersion) {
+        this.imageVersion = imageVersion;
     }
 
     public Instant getCreatedAt() {

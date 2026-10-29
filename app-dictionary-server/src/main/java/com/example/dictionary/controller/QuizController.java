@@ -39,7 +39,7 @@ public class QuizController {
     @PostMapping("/start")
     public ResponseEntity<QuizQuestionResponse> start(@AuthenticationPrincipal UserDetails principal,
                                                         @Valid @RequestBody StartQuizRequest request) {
-        QuizQuestionResponse response = quizService.startQuiz(principal.getUsername(), request.mode());
+        QuizQuestionResponse response = quizService.startQuiz(principal.getUsername(), request.mode(), request.format());
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

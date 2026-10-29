@@ -2,9 +2,11 @@ import React, { useCallback, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  Image,
   Modal,
   Pressable,
   RefreshControl,
+  ScrollView,
   SectionList,
   StyleSheet,
   Text,
@@ -19,10 +21,37 @@ import Button from '../../components/Button';
 import Card from '../../components/Card';
 import ScreenContainer from '../../components/ScreenContainer';
 import { colors } from '../../theme/colors';
-import { Word } from '../../types';
+import { Word, WordState } from '../../types';
 import * as wordsApi from '../../api/wordsApi';
 import { dayKey, monthKey } from '../../utils/date';
 import { extractErrorMessage } from '../../utils/errors';
+import WordImage from '../../components/WordImage';
+import { ImageSource, PreparedImage, pickWordImage, primeWordImage } from '../../services/wordImages';
+
+type WordFilter = 'ALL' | 'WEAK' | WordState;
+
+const FILTERS: { key: WordFilter; label: string }[] = [
+  { key: 'ALL', label: 'Hammasi' },
+  { key: 'WEAK', label: 'Zaif' },
+  { key: 'NEW', label: 'Yangi' },
+  { key: 'LEARNING', label: "O'rganilmoqda" },
+  { key: 'MASTERED', label: "O'zlashtirilgan" },
+];
+
+const STATE_LABELS: Record<WordState, string> = {
+  NEW: 'Yangi',
+  LEARNING: "O'rganilmoqda",
+  MASTERED: "O'zlashtirilgan",
+};
+
+function matchesFilter(word: Word, filter: WordFilter): boolean {
+  if (filter === 'ALL') return true;
+  if (filter === 'WEAK') return word.weak;
+  return word.state === filter;
+}
+
+// Dot next to each word: grey = not answered yet, amber = learning, green = mastered.
+const STATE_COLORS: Record<WordState, string> = { NEW: colors.border, LEARNING: '#F59E0B', MASTERED: colors.secondary };
 
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -42,6 +71,7 @@ export default function WordsScreen() {
   const [words, setWords] = useState<Word[]>([]);
   const [loadingWords, setLoadingWords] = useState(false);
   const [query, setQuery] = useState('');
+  const [filter, setFilter] = useState<WordFilter>('ALL');
   const [detailWord, setDetailWord] = useState<Word | null>(null);
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -50,6 +80,10 @@ export default function WordsScreen() {
   const [uzbek, setUzbek] = useState('');
   const [definition, setDefinition] = useState('');
   const [saving, setSaving] = useState(false);
+  // Picture chosen in the form but not uploaded yet; `removeImage` marks an existing picture for deletion.
+  const [newImage, setNewImage] = useState<PreparedImage | null>(null);
+  const [removeImage, setRemoveImage] = useState(false);
+  const [editingImageVersion, setEditingImageVersion] = useState<number | null>(null);
 
   const [deleteTarget, setDeleteTarget] = useState<Word | null>(null);
   const [deleting, setDeleting] = useState(false);
@@ -76,11 +110,12 @@ export default function WordsScreen() {
 
   const sections = useMemo<Section[]>(() => {
     const needle = query.trim().toLowerCase();
+    const byFilter = words.filter((w) => matchesFilter(w, filter));
     const filtered = needle
-      ? words.filter(
+      ? byFilter.filter(
           (w) => w.english.toLowerCase().includes(needle) || w.uzbek.toLowerCase().includes(needle)
         )
-      : words;
+      : byFilter;
 
     const groups = new Map<string, Word[]>();
     for (const word of filtered) {
@@ -100,7 +135,7 @@ export default function WordsScreen() {
         letter,
         data: data.sort((a, b) => a.english.localeCompare(b.english, undefined, { sensitivity: 'base' })),
       }));
-  }, [words, query]);
+  }, [words, query, filter]);
 
   const availableLetters = useMemo(() => new Set(sections.map((s) => s.letter)), [sections]);
 
@@ -114,6 +149,9 @@ export default function WordsScreen() {
     setEnglish('');
     setUzbek('');
     setDefinition('');
+    setNewImage(null);
+    setRemoveImage(false);
+    setEditingImageVersion(null);
   };
 
   const openAddModal = () => {
@@ -127,6 +165,9 @@ export default function WordsScreen() {
     setEnglish(word.english);
     setUzbek(word.uzbek);
     setDefinition(word.definition ?? '');
+    setNewImage(null);
+    setRemoveImage(false);
+    setEditingImageVersion(word.imageVersion ?? null);
     setModalVisible(true);
   };
 
@@ -150,18 +191,51 @@ export default function WordsScreen() {
         uzbek: uzbek.trim(),
         definition: definition.trim(),
       };
+      let saved: Word;
       if (editingId != null) {
-        const updated = await wordsApi.updateWord(editingId, payload);
-        setWords((prev) => prev.map((w) => (w.id === editingId ? updated : w)));
+        saved = await wordsApi.updateWord(editingId, payload);
       } else {
-        const created = await wordsApi.addWord(payload);
-        setWords((prev) => [created, ...prev]);
+        saved = await wordsApi.addWord(payload);
+      }
+      // The word itself is saved; a failing picture upload must not lose it.
+      let imageError: string | null = null;
+      try {
+        if (newImage) {
+          saved = await wordsApi.setWordImage(saved.id, newImage.payload);
+          if (saved.imageVersion) primeWordImage(saved.id, saved.imageVersion, newImage.payload);
+        } else if (removeImage && editingId != null) {
+          saved = await wordsApi.deleteWordImage(saved.id);
+        }
+      } catch (e: any) {
+        imageError = extractErrorMessage(e, "Rasmni saqlab bo'lmadi");
+      }
+      const result = saved;
+      if (editingId != null) {
+        setWords((prev) => prev.map((w) => (w.id === result.id ? result : w)));
+      } else {
+        setWords((prev) => [result, ...prev]);
       }
       closeModal();
+      if (imageError) Alert.alert("So'z saqlandi", `Lekin rasm saqlanmadi: ${imageError}`);
     } catch (e: any) {
       Alert.alert('Xatolik', extractErrorMessage(e, "So'zni saqlab bo'lmadi"));
     } finally {
       setSaving(false);
+    }
+  };
+
+  const choosePicture = async (source: ImageSource) => {
+    try {
+      const picked = await pickWordImage(source);
+      if (picked) {
+        setNewImage(picked);
+        setRemoveImage(false);
+      }
+    } catch (e: any) {
+      Alert.alert(
+        'Xatolik',
+        e?.message === 'PERMISSION_DENIED' ? 'Ruxsat berilmadi. Telefon sozlamalarida ruxsat bering.' : "Rasmni tanlab bo'lmadi"
+      );
     }
   };
 
@@ -233,6 +307,24 @@ export default function WordsScreen() {
               </Pressable>
             )}
           </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.filterRow}
+            contentContainerStyle={styles.filterContent}
+          >
+            {FILTERS.map((f) => {
+              const active = filter === f.key;
+              const count = words.filter((w) => matchesFilter(w, f.key)).length;
+              return (
+                <Pressable key={f.key} onPress={() => setFilter(f.key)} style={[styles.chip, active && styles.chipActive]}>
+                  <Text style={[styles.chipText, active && styles.chipTextActive]}>
+                    {f.label} {count}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
         </>
       )}
 
@@ -279,6 +371,7 @@ export default function WordsScreen() {
                     <Text style={styles.wordEnglish} numberOfLines={1}>
                       {item.english}
                     </Text>
+                    <View style={[styles.stateDot, { backgroundColor: STATE_COLORS[item.state ?? 'NEW'] }]} />
                   </Pressable>
                   <Pressable hitSlop={8} onPress={() => openEditModal(item)} style={styles.rowIconBtn}>
                     <Ionicons name="create-outline" size={18} color={colors.textMuted} />
@@ -347,6 +440,42 @@ export default function WordsScreen() {
                 style={styles.multiline}
               />
 
+              <Text style={styles.pictureLabel}>Rasm (ixtiyoriy)</Text>
+              <View style={styles.pictureRow}>
+                {newImage ? (
+                  <Image source={{ uri: newImage.uri }} style={styles.picturePreview} />
+                ) : editingId != null && editingImageVersion && !removeImage ? (
+                  <WordImage wordId={editingId} version={editingImageVersion} style={styles.picturePreview} />
+                ) : (
+                  <View style={[styles.picturePreview, styles.pictureEmpty]}>
+                    <Ionicons name="image-outline" size={26} color={colors.textMuted} />
+                  </View>
+                )}
+                <View style={styles.pictureButtons}>
+                  <Pressable style={styles.pictureBtn} onPress={() => choosePicture('library')} hitSlop={6}>
+                    <Ionicons name="images-outline" size={16} color={colors.primary} />
+                    <Text style={styles.pictureBtnText}>Galereya</Text>
+                  </Pressable>
+                  <Pressable style={styles.pictureBtn} onPress={() => choosePicture('camera')} hitSlop={6}>
+                    <Ionicons name="camera-outline" size={16} color={colors.primary} />
+                    <Text style={styles.pictureBtnText}>Kamera</Text>
+                  </Pressable>
+                  {(newImage || (editingImageVersion && !removeImage)) && (
+                    <Pressable
+                      style={styles.pictureBtn}
+                      onPress={() => {
+                        setNewImage(null);
+                        if (editingImageVersion) setRemoveImage(true);
+                      }}
+                      hitSlop={6}
+                    >
+                      <Ionicons name="trash-outline" size={16} color={colors.danger} />
+                      <Text style={[styles.pictureBtnText, { color: colors.danger }]}>O'chirish</Text>
+                    </Pressable>
+                  )}
+                </View>
+              </View>
+
               <View style={styles.modalActions}>
                 <Button
                   title="Bekor qilish"
@@ -374,6 +503,10 @@ export default function WordsScreen() {
               <Text style={styles.detailEnglish}>{detailWord?.english}</Text>
             </View>
 
+            {detailWord?.imageVersion ? (
+              <WordImage wordId={detailWord.id} version={detailWord.imageVersion} style={styles.detailImage} />
+            ) : null}
+
             <View style={styles.detailRow}>
               <View style={[styles.detailIconWrap, { backgroundColor: `${colors.secondary}1A` }]}>
                 <Ionicons name="globe-outline" size={16} color={colors.secondary} />
@@ -393,6 +526,17 @@ export default function WordsScreen() {
                 <Text style={styles.detailValue}>{detailWord?.definition || 'Kiritilmagan'}</Text>
               </View>
             </View>
+
+            {detailWord && (
+              <View style={styles.detailFooterRow}>
+                <View style={[styles.stateDot, { backgroundColor: STATE_COLORS[detailWord.state ?? 'NEW'] }]} />
+                <Text style={styles.detailFooterText}>
+                  {STATE_LABELS[detailWord.state ?? 'NEW']}
+                  {detailWord.lapses > 0 ? ` · ${detailWord.lapses} marta xato` : ''}
+                  {detailWord.weak ? ' · zaif' : ''}
+                </Text>
+              </View>
+            )}
 
             <View style={styles.detailFooterRow}>
               <Ionicons name="time-outline" size={13} color={colors.textMuted} />
@@ -467,6 +611,14 @@ function StatBlock({
 }
 
 const styles = StyleSheet.create({
+  pictureLabel: { fontSize: 14, fontWeight: '600', color: colors.text, marginBottom: 8 },
+  pictureRow: { flexDirection: 'row', alignItems: 'center', gap: 14, marginBottom: 18 },
+  picturePreview: { width: 96, height: 96, borderRadius: 14 },
+  pictureEmpty: { backgroundColor: colors.border, alignItems: 'center', justifyContent: 'center' },
+  pictureButtons: { flex: 1, gap: 8 },
+  pictureBtn: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 4 },
+  pictureBtnText: { fontSize: 14, fontWeight: '600', color: colors.primary },
+  detailImage: { width: '100%', height: 170, borderRadius: 14, marginBottom: 14 },
   flex: { flex: 1 },
   header: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 20, paddingTop: 16 },
   headerIconWrap: {
@@ -535,6 +687,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   wordAvatarText: { fontSize: 15, fontWeight: '700', color: colors.primary },
+  stateDot: { width: 8, height: 8, borderRadius: 4, marginRight: 4 },
   wordEnglish: { flex: 1, fontSize: 16, fontWeight: '700', color: colors.text },
   rowIconBtn: { padding: 6, marginLeft: 4 },
   separator: { height: StyleSheet.hairlineWidth, backgroundColor: colors.border, marginLeft: 68 },
@@ -617,6 +770,12 @@ const styles = StyleSheet.create({
   detailTextWrap: { flex: 1 },
   detailLabel: { fontSize: 12, color: colors.textMuted, marginBottom: 2 },
   detailValue: { fontSize: 15, color: colors.text, fontWeight: '600', lineHeight: 21 },
+  filterRow: { flexGrow: 0, marginBottom: 10 },
+  filterContent: { gap: 8, paddingRight: 8 },
+  chip: { paddingVertical: 7, paddingHorizontal: 14, borderRadius: 16, backgroundColor: colors.border },
+  chipActive: { backgroundColor: colors.primary },
+  chipText: { fontSize: 13, fontWeight: '600', color: colors.textMuted },
+  chipTextActive: { color: '#fff' },
   detailFooterRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 20 },
   detailFooterText: { fontSize: 12, color: colors.textMuted },
   detailCloseBtn: { marginTop: 0 },

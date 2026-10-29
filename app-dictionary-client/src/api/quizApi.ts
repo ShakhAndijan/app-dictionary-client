@@ -1,7 +1,7 @@
 import apiClient from './client';
-import { QuizPromptType } from '../types';
+import { AnswerFormat, QuizPromptType } from '../types';
 
-export type QuizMode = 'ALL' | 'TODAY';
+export type QuizMode = 'ALL' | 'TODAY' | 'DUE' | 'WEAK';
 
 export interface QuizProgress {
   answered: number;
@@ -17,6 +17,7 @@ export interface QuizQuestion {
   promptType: QuizPromptType;
   promptText: string;
   progress: QuizProgress;
+  options: string[] | null;
 }
 
 export interface QuizAnswerResult {
@@ -27,6 +28,7 @@ export interface QuizAnswerResult {
   progress: QuizProgress;
   nextPromptType: QuizPromptType | null;
   nextPromptText: string | null;
+  nextOptions: string[] | null;
 }
 
 export interface QuizSummary {
@@ -39,8 +41,8 @@ export interface QuizSummary {
   finishedAt: string | null;
 }
 
-export function startQuiz(mode: QuizMode) {
-  return apiClient.post<QuizQuestion>('/quiz/start', { mode }).then((r) => r.data);
+export function startQuiz(mode: QuizMode, format: AnswerFormat = 'TYPED') {
+  return apiClient.post<QuizQuestion>('/quiz/start', { mode, format }).then((r) => r.data);
 }
 
 export function submitQuizAnswer(sessionId: number, answer: string) {

@@ -36,7 +36,7 @@ export function fetchMe() {
   return apiClient.get<User>('/me').then((r) => r.data);
 }
 
-export function updateProfile(data: Partial<Pick<User, 'firstName' | 'lastName' | 'email'>>) {
+export function updateProfile(data: Partial<Pick<User, 'firstName' | 'lastName' | 'email' | 'dailyGoal'>>) {
   return apiClient.put<User>('/profile', data).then((r) => r.data);
 }
 

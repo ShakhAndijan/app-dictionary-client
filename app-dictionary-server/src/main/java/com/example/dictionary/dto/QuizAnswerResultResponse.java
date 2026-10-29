@@ -1,5 +1,7 @@
 package com.example.dictionary.dto;
 
+import java.util.List;
+
 /**
  * Result of submitting an answer. {@code closeMatch} is true when the answer was accepted despite
  * a small typo (it still counts as {@code correct}). {@code nextPromptType}/{@code nextPromptText} are
@@ -12,6 +14,7 @@ public record QuizAnswerResultResponse(
         String answeredPromptType,
         QuizProgressResponse progress,
         String nextPromptType,
-        String nextPromptText
+        String nextPromptText,
+        List<String> nextOptions
 ) {
 }

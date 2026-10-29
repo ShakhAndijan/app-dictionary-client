@@ -2,6 +2,7 @@ package com.example.dictionary.controller;
 
 import com.example.dictionary.dto.AddWordRequest;
 import com.example.dictionary.dto.UpdateWordRequest;
+import com.example.dictionary.dto.WordImagePayload;
 import com.example.dictionary.dto.WordResponse;
 import com.example.dictionary.service.WordService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -57,6 +58,28 @@ public class WordController {
                                                      @PathVariable Long id,
                                                      @RequestBody UpdateWordRequest request) {
         return ResponseEntity.ok(wordService.updateWord(principal.getUsername(), id, request));
+    }
+
+    @Operation(summary = "Set a word's picture", description = "Attaches or replaces the picture (base64, max 1 MB).")
+    @PutMapping("/{id}/image")
+    public ResponseEntity<WordResponse> setImage(@AuthenticationPrincipal UserDetails principal,
+                                                  @PathVariable Long id,
+                                                  @Valid @RequestBody WordImagePayload payload) {
+        return ResponseEntity.ok(wordService.setImage(principal.getUsername(), id, payload));
+    }
+
+    @Operation(summary = "Get a word's picture")
+    @GetMapping("/{id}/image")
+    public ResponseEntity<WordImagePayload> getImage(@AuthenticationPrincipal UserDetails principal,
+                                                      @PathVariable Long id) {
+        return ResponseEntity.ok(wordService.getImage(principal.getUsername(), id));
+    }
+
+    @Operation(summary = "Remove a word's picture")
+    @DeleteMapping("/{id}/image")
+    public ResponseEntity<WordResponse> deleteImage(@AuthenticationPrincipal UserDetails principal,
+                                                     @PathVariable Long id) {
+        return ResponseEntity.ok(wordService.deleteImage(principal.getUsername(), id));
     }
 
     @Operation(summary = "Delete a word", description = "Deletes a word owned by the signed-in user.")

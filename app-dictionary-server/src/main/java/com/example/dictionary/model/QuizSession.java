@@ -17,6 +17,8 @@ import jakarta.persistence.Table;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
 
 /**
@@ -45,6 +47,10 @@ public class QuizSession {
     @Column(nullable = false, length = 20)
     private QuizMode mode;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "answer_format", nullable = false, length = 20, columnDefinition = "varchar(20) default 'TYPED'")
+    private AnswerFormat answerFormat = AnswerFormat.TYPED;
+
     @Column(nullable = false)
     private boolean unlimited;
 
@@ -56,6 +62,12 @@ public class QuizSession {
     @OrderColumn(name = "queue_index")
     @Column(name = "word_id", nullable = false)
     private List<Long> remainingQueue = new ArrayList<>();
+
+    /** Words already given a second chance this session after a wrong answer. */
+    @ElementCollection
+    @CollectionTable(name = "quiz_session_retried", joinColumns = @JoinColumn(name = "session_id"))
+    @Column(name = "word_id", nullable = false)
+    private Set<Long> retriedWordIds = new HashSet<>();
 
     @Column(name = "answered_count", nullable = false)
     private int answeredCount;
@@ -91,8 +103,9 @@ public class QuizSession {
         // Required by JPA.
     }
 
-    public QuizSession(AppUser owner, QuizMode mode, boolean unlimited, int totalWords) {
+    public QuizSession(AppUser owner, QuizMode mode, AnswerFormat answerFormat, boolean unlimited, int totalWords) {
         this.owner = owner;
+        this.answerFormat = answerFormat;
         this.mode = mode;
         this.unlimited = unlimited;
         this.totalWords = totalWords;
@@ -112,12 +125,29 @@ public class QuizSession {
         return mode;
     }
 
+    public AnswerFormat getAnswerFormat() {
+        return answerFormat;
+    }
+
     public boolean isUnlimited() {
         return unlimited;
     }
 
     public int getTotalWords() {
         return totalWords;
+    }
+
+    /**
+     * Queues a word once more at the end of the session after a wrong answer. Each word gets at most one
+     * retry per session; returns false when it already had one.
+     */
+    public boolean queueRetry(Long wordId) {
+        if (!retriedWordIds.add(wordId)) {
+            return false;
+        }
+        remainingQueue.add(wordId);
+        totalWords++;
+        return true;
     }
 
     public List<Long> getRemainingQueue() {

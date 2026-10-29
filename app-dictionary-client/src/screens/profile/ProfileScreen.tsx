@@ -11,12 +11,13 @@ import { useAuth } from '../../context/AuthContext';
 import { colors } from '../../theme/colors';
 import { DailyStats, MonthlyStats } from '../../types';
 import * as statsApi from '../../api/statsApi';
+import * as reviewApi from '../../api/reviewApi';
 import { dayKey, monthKey } from '../../utils/date';
 
 type Props = NativeStackScreenProps<ProfileStackParamList, 'ProfileHome'>;
 
 const MENU_ITEMS: {
-  key: 'EditProfile' | 'ChangePassword' | 'Stats';
+  key: 'EditProfile' | 'ChangePassword' | 'Stats' | 'Reminders';
   label: string;
   icon: keyof typeof Ionicons.glyphMap;
   color: string;
@@ -24,6 +25,7 @@ const MENU_ITEMS: {
   { key: 'EditProfile', label: 'Profilni tahrirlash', icon: 'person-outline', color: colors.primary },
   { key: 'ChangePassword', label: 'Parolni almashtirish', icon: 'lock-closed-outline', color: '#F59E0B' },
   { key: 'Stats', label: 'Statistika', icon: 'stats-chart-outline', color: colors.secondary },
+  { key: 'Reminders', label: 'Eslatmalar va maqsad', icon: 'notifications-outline', color: '#EC4899' },
 ];
 
 function accuracyOf(row: { correctAnswers: number; incorrectAnswers: number } | null): number {
@@ -37,17 +39,20 @@ export default function ProfileScreen({ navigation }: Props) {
 
   const [daily, setDaily] = useState<DailyStats[]>([]);
   const [monthly, setMonthly] = useState<MonthlyStats[]>([]);
+  const [goalInfo, setGoalInfo] = useState<{ done: number; goal: number } | null>(null);
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const [d, m] = await Promise.all([
+      const [d, m, review] = await Promise.all([
         statsApi.getDailyStats().catch(() => []),
         statsApi.getMonthlyStats().catch(() => []),
+        reviewApi.getReviewSummary().catch(() => null),
       ]);
       setDaily(d);
       setMonthly(m);
+      if (review) setGoalInfo({ done: review.todayDone, goal: review.dailyGoal });
     } catch {
       // Keep previously loaded values on failure
     } finally {
@@ -86,6 +91,44 @@ export default function ProfileScreen({ navigation }: Props) {
         {!!user?.username && <Text style={styles.username}>@{user.username}</Text>}
         <Text style={styles.email}>{user?.email}</Text>
       </View>
+
+      {goalInfo && (
+        <Pressable onPress={() => navigation.navigate('Reminders')}>
+          <Card style={styles.activityCard}>
+            <View style={styles.activityTopRow}>
+              <View style={styles.activityTitleWrap}>
+                <View style={[styles.activityIconWrap, goalInfo.done >= goalInfo.goal && styles.activityIconSuccess]}>
+                  <Ionicons
+                    name={goalInfo.done >= goalInfo.goal ? 'trophy' : 'flag-outline'}
+                    size={18}
+                    color={goalInfo.done >= goalInfo.goal ? colors.secondary : colors.textMuted}
+                  />
+                </View>
+                <View>
+                  <Text style={styles.activityTitle}>Bugungi maqsad</Text>
+                  <Text style={styles.activitySubtitle}>
+                    {goalInfo.done >= goalInfo.goal ? 'Maqsad bajarildi!' : "Kunlik so'zlar soni"}
+                  </Text>
+                </View>
+              </View>
+              <Text style={[styles.activityPercent, { color: goalInfo.done >= goalInfo.goal ? colors.secondary : colors.primary }]}>
+                {goalInfo.done} / {goalInfo.goal}
+              </Text>
+            </View>
+            <View style={styles.progressTrack}>
+              <View
+                style={[
+                  styles.progressFill,
+                  {
+                    width: `${Math.min(100, Math.round((goalInfo.done / Math.max(1, goalInfo.goal)) * 100))}%`,
+                    backgroundColor: goalInfo.done >= goalInfo.goal ? colors.secondary : colors.primary,
+                  },
+                ]}
+              />
+            </View>
+          </Card>
+        </Pressable>
+      )}
 
       <Text style={styles.sectionTitle}>Baholash statistikasi</Text>
 

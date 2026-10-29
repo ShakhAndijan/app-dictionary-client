@@ -3,6 +3,7 @@ import axios from 'axios';
 import { User } from '../types';
 import * as authApi from '../api/authApi';
 import { setOnUnauthorized } from '../api/client';
+import { cancelReminders } from '../services/reminders';
 import { clearTokens, getAccessToken, getRefreshToken, saveTokens } from '../api/tokenStorage';
 
 interface AuthContextValue {
@@ -18,7 +19,7 @@ interface AuthContextValue {
     password: string
   ) => Promise<void>;
   logout: () => Promise<void>;
-  updateProfile: (data: Partial<Pick<User, 'firstName' | 'lastName' | 'email'>>) => Promise<void>;
+  updateProfile: (data: Partial<Pick<User, 'firstName' | 'lastName' | 'email' | 'dailyGoal'>>) => Promise<void>;
   changePassword: (oldPassword: string, newPassword: string) => Promise<void>;
 }
 
@@ -30,6 +31,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const clearSession = useCallback(async () => {
     await clearTokens();
+    await cancelReminders();
     setUser(null);
   }, []);
 
@@ -90,7 +92,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(me);
   };
 
-  const updateProfile = async (data: Partial<Pick<User, 'firstName' | 'lastName' | 'email'>>) => {
+  const updateProfile = async (data: Partial<Pick<User, 'firstName' | 'lastName' | 'email' | 'dailyGoal'>>) => {
     const updated = await authApi.updateProfile(data);
     setUser(updated);
   };

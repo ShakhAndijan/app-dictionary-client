@@ -2,6 +2,7 @@ package com.example.dictionary.controller;
 
 import com.example.dictionary.dto.DailyStatsResponse;
 import com.example.dictionary.dto.MonthlyStatsResponse;
+import com.example.dictionary.dto.StatsSummaryResponse;
 import com.example.dictionary.service.StatsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -29,20 +30,27 @@ public class StatsController {
     }
 
     @Operation(summary = "Daily stats",
-            description = "One entry per day (oldest first) for the last `days` days, including today. "
+            description = "One entry per day the user was active (oldest first) within the last `days` days. Unused days are omitted. "
                     + "`accuracyPercent` is correct answers out of all answers given that day.")
     @GetMapping("/daily")
     public ResponseEntity<List<DailyStatsResponse>> daily(@AuthenticationPrincipal UserDetails principal,
-                                                            @RequestParam(defaultValue = "30") int days) {
+                                                            @RequestParam(defaultValue = "90") int days) {
         return ResponseEntity.ok(statsService.dailyStats(principal.getUsername(), days));
     }
 
     @Operation(summary = "Monthly stats",
-            description = "One entry per month (oldest first) for the last `months` months, including this one. "
+            description = "One entry per active month (oldest first) within the last `months` months. Unused months are omitted. "
                     + "`accuracyPercent` is correct answers out of all answers given that month.")
     @GetMapping("/monthly")
     public ResponseEntity<List<MonthlyStatsResponse>> monthly(@AuthenticationPrincipal UserDetails principal,
                                                                 @RequestParam(defaultValue = "12") int months) {
         return ResponseEntity.ok(statsService.monthlyStats(principal.getUsername(), months));
+    }
+
+    @Operation(summary = "Stats summary",
+            description = "All-time totals, accuracy, number of active days, and current/best streak of consecutive active days.")
+    @GetMapping("/summary")
+    public ResponseEntity<StatsSummaryResponse> summary(@AuthenticationPrincipal UserDetails principal) {
+        return ResponseEntity.ok(statsService.summary(principal.getUsername()));
     }
 }

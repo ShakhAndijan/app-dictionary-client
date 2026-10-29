@@ -5,5 +5,9 @@ public enum QuizMode {
     /** All of the user's words. */
     ALL,
     /** Only words the user added today. */
-    TODAY
+    TODAY,
+    /** Spaced repetition: words due for review today plus a limited number of new ones. */
+    DUE,
+    /** Practice on the words the user keeps getting wrong. */
+    WEAK
 }

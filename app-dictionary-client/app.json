@@ -25,7 +25,15 @@
     "plugins": [
       "expo-secure-store",
       "expo-font",
-      "expo-status-bar"
+      "expo-status-bar",
+      "expo-notifications",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Lug'at so'zlariga rasm tanlash uchun galereyaga ruxsat kerak.",
+          "cameraPermission": "So'zga rasm olish uchun kameraga ruxsat kerak."
+        }
+      ]
     ],
     "extra": {
       "eas": {

@@ -19,3 +19,20 @@ export function updateWord(
 export function deleteWord(id: number) {
   return apiClient.delete(`/words/${id}`).then((r) => r.data);
 }
+
+export interface WordImagePayload {
+  contentType: string;
+  data: string;
+}
+
+export function setWordImage(id: number, image: WordImagePayload) {
+  return apiClient.put<Word>(`/words/${id}/image`, image).then((r) => r.data);
+}
+
+export function getWordImage(id: number) {
+  return apiClient.get<WordImagePayload>(`/words/${id}/image`).then((r) => r.data);
+}
+
+export function deleteWordImage(id: number) {
+  return apiClient.delete<Word>(`/words/${id}/image`).then((r) => r.data);
+}

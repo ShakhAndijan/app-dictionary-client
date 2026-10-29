@@ -26,6 +26,7 @@ export default function Button({
     <Pressable
       onPress={onPress}
       disabled={disabled || loading}
+      hitSlop={8}
       style={({ pressed }) => [
         styles.base,
         isOutline ? styles.outline : { backgroundColor: bgColor },

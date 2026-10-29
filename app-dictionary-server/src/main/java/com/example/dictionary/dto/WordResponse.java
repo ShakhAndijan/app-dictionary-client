@@ -1,6 +1,8 @@
 package com.example.dictionary.dto;
 
 import com.example.dictionary.model.Word;
+import com.example.dictionary.model.WordState;
+import com.example.dictionary.service.WordInsight;
 
 import java.time.Instant;
 
@@ -10,14 +12,22 @@ public record WordResponse(
         String english,
         String uzbek,
         String definition,
-        Instant createdAt
+        Instant createdAt,
+        WordState state,
+        int lapses,
+        boolean weak,
+        Long imageVersion
 ) {
-    public static WordResponse from(Word word) {
+    public static WordResponse from(Word word, WordInsight insight) {
         return new WordResponse(
                 word.getId(),
                 word.getEnglish(),
                 word.getUzbek(),
                 word.getDefinition(),
-                word.getCreatedAt());
+                word.getCreatedAt(),
+                insight.state(),
+                insight.lapses(),
+                insight.weak(),
+                word.getImageVersion());
     }
 }

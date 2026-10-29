@@ -5,6 +5,7 @@ import com.example.dictionary.dto.QuizProgressResponse;
 import com.example.dictionary.dto.QuizQuestionResponse;
 import com.example.dictionary.dto.QuizSummaryResponse;
 import com.example.dictionary.model.AnswerField;
+import com.example.dictionary.model.AnswerFormat;
 import com.example.dictionary.model.AppUser;
 import com.example.dictionary.model.PromptType;
 import com.example.dictionary.model.QuizMode;
@@ -43,38 +44,56 @@ import java.util.concurrent.ThreadLocalRandom;
 public class QuizService {
 
     private static final int UNLIMITED_THRESHOLD = 20;
+    private static final int CHOICE_OPTIONS = 4;
+    private static final int MIN_WORDS_FOR_CHOICE = 4;
 
     private final QuizSessionRepository quizSessionRepository;
     private final WordRepository wordRepository;
     private final UserRepository userRepository;
+    private final ReviewService reviewService;
 
     public QuizService(QuizSessionRepository quizSessionRepository,
                         WordRepository wordRepository,
-                        UserRepository userRepository) {
+                        UserRepository userRepository,
+                        ReviewService reviewService) {
         this.quizSessionRepository = quizSessionRepository;
         this.wordRepository = wordRepository;
         this.userRepository = userRepository;
+        this.reviewService = reviewService;
     }
 
     @Transactional
-    public QuizQuestionResponse startQuiz(String username, QuizMode mode) {
+    public QuizQuestionResponse startQuiz(String username, QuizMode mode, AnswerFormat requestedFormat) {
+        AnswerFormat format = requestedFormat == null || requestedFormat == AnswerFormat.FLASHCARD
+                ? AnswerFormat.TYPED
+                : requestedFormat;
         AppUser owner = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
         List<Word> eligible = eligibleWords(username, mode);
         if (eligible.isEmpty()) {
-            String message = mode == QuizMode.TODAY
-                    ? "Bugun hech qanday so'z qo'shilmagan"
-                    : "Baholash uchun so'zlar mavjud emas";
+            String message = switch (mode) {
+                case TODAY -> "Bugun hech qanday so'z qo'shilmagan";
+                case DUE -> "Bugun takrorlash uchun so'z yo'q";
+                case WEAK -> "Zaif so'zlar yo'q";
+                case ALL -> "Baholash uchun so'zlar mavjud emas";
+            };
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, message);
         }
 
-        boolean unlimited = eligible.size() > UNLIMITED_THRESHOLD;
-        QuizSession session = new QuizSession(owner, mode, unlimited, eligible.size());
+        if (format == AnswerFormat.CHOICE
+                && wordRepository.findByOwnerUsernameOrderByCreatedAtDesc(username).size() < MIN_WORDS_FOR_CHOICE) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Variantli test uchun kamida " + MIN_WORDS_FOR_CHOICE + " ta so'z kerak");
+        }
+
+        // A review session is a fixed queue that ends by itself; only free practice can run forever.
+        boolean unlimited = (mode == QuizMode.ALL || mode == QuizMode.TODAY) && eligible.size() > UNLIMITED_THRESHOLD;
+        QuizSession session = new QuizSession(owner, mode, format, unlimited, eligible.size());
 
         Word firstWord;
         if (unlimited) {
-            firstWord = eligible.get(ThreadLocalRandom.current().nextInt(eligible.size()));
+            firstWord = reviewService.pickWeighted(username, eligible);
         } else {
             List<Word> shuffled = new ArrayList<>(eligible);
             Collections.shuffle(shuffled);
@@ -91,7 +110,7 @@ public class QuizService {
         quizSessionRepository.save(session);
 
         return new QuizQuestionResponse(session.getId(), promptTypeName(promptType),
-                textFor(firstWord, promptType), progressOf(session));
+                textFor(firstWord, promptType), progressOf(session), optionsFor(session, firstWord, answerField));
     }
 
     @Transactional
@@ -106,13 +125,28 @@ public class QuizService {
 
         String expectedAnswer = textFor(currentWord, session.getCurrentAnswerField());
         AnswerMatcher.Result match = AnswerMatcher.match(answer, expectedAnswer);
+        // A near-miss is a different option in a multiple-choice question, never a typo of the right one.
+        if (session.getAnswerFormat() == AnswerFormat.CHOICE && match == AnswerMatcher.Result.TYPO) {
+            match = AnswerMatcher.Result.WRONG;
+        }
         boolean correct = match.isCorrect();
+        ReviewScheduler.Outcome outcome = switch (match) {
+            case EXACT -> ReviewScheduler.Outcome.CORRECT;
+            case TYPO -> ReviewScheduler.Outcome.TYPO;
+            case WRONG -> ReviewScheduler.Outcome.WRONG;
+        };
         String answeredPromptType = promptTypeName(session.getCurrentPromptType());
         session.recordAnswer(correct);
+        reviewService.recordAnswer(session.getOwner(), currentWord, outcome, session.getCurrentPromptType(),
+                session.getAnswerFormat());
+        if (!correct && session.getMode() == QuizMode.DUE) {
+            session.queueRetry(currentWord.getId());
+        }
 
         Word nextWord = pickNextWord(session);
         String nextPromptType = null;
         String nextPromptText = null;
+        List<String> nextOptions = null;
 
         if (nextWord == null) {
             session.finish();
@@ -122,10 +156,11 @@ public class QuizService {
             session.setCurrentQuestion(nextWord.getId(), promptType, answerField);
             nextPromptType = promptTypeName(promptType);
             nextPromptText = textFor(nextWord, promptType);
+            nextOptions = optionsFor(session, nextWord, answerField);
         }
 
         return new QuizAnswerResultResponse(correct, match == AnswerMatcher.Result.TYPO, expectedAnswer, answeredPromptType,
-                progressOf(session), nextPromptType, nextPromptText);
+                progressOf(session), nextPromptType, nextPromptText, nextOptions);
     }
 
     @Transactional
@@ -161,13 +196,19 @@ public class QuizService {
         if (pool.isEmpty()) {
             return null;
         }
-        return pool.get(ThreadLocalRandom.current().nextInt(pool.size()));
+        return reviewService.pickWeighted(session.getOwner().getUsername(), pool);
     }
 
     private List<Word> eligibleWords(String username, QuizMode mode) {
         if (mode == QuizMode.TODAY) {
             Instant startOfToday = LocalDate.now(ZoneId.systemDefault()).atStartOfDay(ZoneId.systemDefault()).toInstant();
             return wordRepository.findByOwnerUsernameAndCreatedAtGreaterThanEqual(username, startOfToday);
+        }
+        if (mode == QuizMode.DUE) {
+            return reviewService.reviewQueue(username);
+        }
+        if (mode == QuizMode.WEAK) {
+            return reviewService.weakWords(username);
         }
         return wordRepository.findByOwnerUsernameOrderByCreatedAtDesc(username);
     }
@@ -194,6 +235,24 @@ public class QuizService {
             case UZBEK -> AnswerField.ENGLISH;
             case DEFINITION -> ThreadLocalRandom.current().nextBoolean() ? AnswerField.ENGLISH : AnswerField.UZBEK;
         };
+    }
+
+    /** The shuffled choices (right answer plus look-alike wrong ones) for a multiple-choice session, else null. */
+    private List<String> optionsFor(QuizSession session, Word word, AnswerField field) {
+        if (session.getAnswerFormat() != AnswerFormat.CHOICE) {
+            return null;
+        }
+        String correct = textFor(word, field);
+        List<String> pool = wordRepository.findByOwnerUsernameOrderByCreatedAtDesc(session.getOwner().getUsername())
+                .stream()
+                .filter(w -> !w.getId().equals(word.getId()))
+                .map(w -> textFor(w, field))
+                .toList();
+        List<String> options = new ArrayList<>(
+                DistractorPicker.pick(correct, pool, CHOICE_OPTIONS - 1, ThreadLocalRandom.current()));
+        options.add(correct);
+        Collections.shuffle(options);
+        return options;
     }
 
     private String textFor(Word word, PromptType type) {

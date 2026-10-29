@@ -14,6 +14,8 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class AppUser {
 
+    public static final int DEFAULT_DAILY_GOAL = 10;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,6 +38,10 @@ public class AppUser {
     /** Embedded in every access token; bumping it invalidates all tokens issued before. */
     @Column(name = "token_version", nullable = false, columnDefinition = "integer default 0")
     private int tokenVersion;
+
+    /** How many different words the user wants to practise per day. */
+    @Column(name = "daily_goal", nullable = false, columnDefinition = "integer default 10")
+    private int dailyGoal = DEFAULT_DAILY_GOAL;
 
     protected AppUser() {
         // Required by JPA.
@@ -83,6 +89,14 @@ public class AppUser {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public int getDailyGoal() {
+        return dailyGoal;
+    }
+
+    public void setDailyGoal(int dailyGoal) {
+        this.dailyGoal = dailyGoal;
     }
 
     public int getTokenVersion() {

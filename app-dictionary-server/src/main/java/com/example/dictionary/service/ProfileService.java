@@ -47,6 +47,9 @@ public class ProfileService {
         if (request.lastName() != null) {
             user.setLastName(request.lastName());
         }
+        if (request.dailyGoal() != null) {
+            user.setDailyGoal(request.dailyGoal());
+        }
 
         return UserResponse.from(user);
     }

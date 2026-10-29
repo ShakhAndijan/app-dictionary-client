@@ -14,4 +14,5 @@ export type ProfileStackParamList = {
   EditProfile: undefined;
   ChangePassword: undefined;
   Stats: undefined;
+  Reminders: undefined;
 };
