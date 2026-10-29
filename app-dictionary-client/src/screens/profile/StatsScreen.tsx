@@ -5,8 +5,10 @@ import { Ionicons } from '@expo/vector-icons';
 import ScreenContainer from '../../components/ScreenContainer';
 import Card from '../../components/Card';
 import { colors } from '../../theme/colors';
-import { DailyStats, MonthlyStats, StatsSummary } from '../../types';
+import { DailyStats, MonthlyStats, ReviewSummary, StatsSummary, Word } from '../../types';
 import * as statsApi from '../../api/statsApi';
+import * as reviewApi from '../../api/reviewApi';
+import * as wordsApi from '../../api/wordsApi';
 
 type Mode = 'daily' | 'monthly';
 
@@ -36,6 +38,33 @@ function formatMonth(iso: string) {
   return { label: `${MONTH_NAMES[m - 1]} ${y}`, shortLabel: MONTH_NAMES[m - 1] };
 }
 
+function isoDay(d: Date) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+// The last `count` calendar days, oldest first, with zeros for days the user was not active, so the weekly
+// chart always shows a full week instead of only the active days.
+function lastDaysRows(daily: DailyStats[], count: number): Row[] {
+  const byDate = new Map(daily.map((d) => [d.date, d]));
+  const rows: Row[] = [];
+  for (let i = count - 1; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const iso = isoDay(d);
+    const r = byDate.get(iso);
+    rows.push({
+      key: iso,
+      ...formatDay(iso),
+      wordsAdded: r?.wordsAdded ?? 0,
+      quizzesTaken: r?.quizzesTaken ?? 0,
+      correctAnswers: r?.correctAnswers ?? 0,
+      incorrectAnswers: r?.incorrectAnswers ?? 0,
+      accuracyPercent: r?.accuracyPercent ?? 0,
+    });
+  }
+  return rows;
+}
+
 function toRows(mode: Mode, daily: DailyStats[], monthly: MonthlyStats[]): Row[] {
   const source = mode === 'daily' ? daily : monthly;
   return source.map((r) => {
@@ -50,6 +79,8 @@ export default function StatsScreen() {
   const [daily, setDaily] = useState<DailyStats[]>([]);
   const [monthly, setMonthly] = useState<MonthlyStats[]>([]);
   const [summary, setSummary] = useState<StatsSummary | null>(null);
+  const [review, setReview] = useState<ReviewSummary | null>(null);
+  const [words, setWords] = useState<Word[]>([]);
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
 
@@ -57,14 +88,19 @@ export default function StatsScreen() {
     setLoading(true);
     setFailed(false);
     try {
-      const [d, m, s] = await Promise.all([
+      // The extra cards are optional: if they fail to load, the rest of the screen still works.
+      const [d, m, s, r, w] = await Promise.all([
         statsApi.getDailyStats(),
         statsApi.getMonthlyStats(),
         statsApi.getStatsSummary(),
+        reviewApi.getReviewSummary().catch(() => null),
+        wordsApi.getWords().catch(() => null),
       ]);
       setDaily(d);
       setMonthly(m);
       setSummary(s);
+      setReview(r);
+      setWords(w ?? []);
     } catch {
       setFailed(true);
     } finally {
@@ -79,11 +115,18 @@ export default function StatsScreen() {
   );
 
   const rows = toRows(mode, daily, monthly);
-  const chartRows = rows.slice(-CHART_POINTS);
+  const chartRows = mode === 'daily' ? lastDaysRows(daily, CHART_POINTS) : rows.slice(-CHART_POINTS);
   const listRows = [...rows].reverse();
 
   return (
     <ScreenContainer>
+      {!loading && !failed && summary && (
+        <>
+          {review && <TodayCard review={review} streak={summary.currentStreak} />}
+          {review && review.totalWords > 0 && <WordStateCard review={review} />}
+        </>
+      )}
+
       <View style={styles.toggleRow}>
         <ToggleButton label="Kunlik" active={mode === 'daily'} onPress={() => setMode('daily')} />
         <ToggleButton label="Oylik" active={mode === 'monthly'} onPress={() => setMode('monthly')} />
@@ -104,6 +147,7 @@ export default function StatsScreen() {
         <>
           <SummaryGrid summary={summary} />
           <FormatBreakdown formats={summary.formats ?? []} />
+          <HardWordsCard words={words} />
 
           {rows.length === 0 ? (
             <Text style={styles.emptyText}>
@@ -113,7 +157,7 @@ export default function StatsScreen() {
             <>
               <Card style={styles.chartCard}>
                 <Text style={styles.sectionTitle}>
-                  {mode === 'daily' ? "Oxirgi faol kunlar: javoblar" : "Oxirgi faol oylar: javoblar"}
+                  {mode === 'daily' ? 'Oxirgi 7 kun: javoblar' : 'Oxirgi faol oylar: javoblar'}
                 </Text>
                 <BarChart rows={chartRows} />
                 <View style={styles.legend}>
@@ -131,6 +175,126 @@ export default function StatsScreen() {
         </>
       )}
     </ScreenContainer>
+  );
+}
+
+function TodayCard({ review, streak }: { review: ReviewSummary; streak: number }) {
+  const goal = Math.max(1, review.dailyGoal);
+  const done = review.todayDone;
+  const reached = done >= goal;
+  const pct = Math.min(100, Math.round((done / goal) * 100));
+  const waiting = review.dueCount + review.newCount;
+  const accent = reached ? colors.secondary : colors.primary;
+  return (
+    <Card style={styles.todayCard}>
+      <View style={styles.todayTop}>
+        <View style={[styles.todayIcon, { backgroundColor: `${accent}1A` }]}>
+          <Ionicons name={reached ? 'trophy' : 'flag'} size={22} color={accent} />
+        </View>
+        <View style={styles.todayText}>
+          <Text style={styles.todayTitle}>{reached ? 'Bugungi maqsad bajarildi!' : 'Bugungi maqsad'}</Text>
+          <Text style={styles.todaySub}>
+            {reached
+              ? 'Ajoyib ish, shu tempni saqlang'
+              : waiting > 0
+              ? `${waiting} ta so'z takrorlashni kutyapti`
+              : "Yangi so'z qo'shib mashq qiling"}
+          </Text>
+        </View>
+        <View style={styles.streakBadge}>
+          <Ionicons name="flame" size={16} color="#F59E0B" />
+          <Text style={styles.streakText}>{streak}</Text>
+        </View>
+      </View>
+      <View style={styles.todayNumbers}>
+        <Text style={[styles.todayDone, { color: accent }]}>{done}</Text>
+        <Text style={styles.todayGoal}> / {review.dailyGoal} so'z</Text>
+        <Text style={[styles.todayPct, { color: accent }]}>{pct}%</Text>
+      </View>
+      <View style={styles.progressTrack}>
+        <View style={[styles.progressFill, { width: `${pct}%`, backgroundColor: accent }]} />
+      </View>
+    </Card>
+  );
+}
+
+const STATE_SEGMENTS = [
+  { key: 'masteredCount', label: "O'zlashtirilgan", color: colors.secondary },
+  { key: 'learningCount', label: "O'rganilmoqda", color: '#F59E0B' },
+  { key: 'unseenCount', label: 'Yangi', color: colors.border },
+] as const;
+
+function WordStateCard({ review }: { review: ReviewSummary }) {
+  // `newCount` in the summary is today's allowance of new words, not all unseen words, so derive the rest.
+  const unseen = Math.max(0, review.totalWords - review.learningCount - review.masteredCount);
+  const counts = { masteredCount: review.masteredCount, learningCount: review.learningCount, unseenCount: unseen };
+  const total = Math.max(1, review.totalWords);
+  const masteredPct = Math.round((review.masteredCount / total) * 100);
+  return (
+    <Card style={styles.stateCard}>
+      <View style={styles.stateHeader}>
+        <Text style={styles.sectionTitleInline}>So'zlar holati</Text>
+        <Text style={styles.stateTotal}>{review.totalWords} ta so'z</Text>
+      </View>
+      <View style={styles.stateBar}>
+        {STATE_SEGMENTS.map((seg) =>
+          counts[seg.key] > 0 ? (
+            <View key={seg.key} style={{ flex: counts[seg.key], backgroundColor: seg.color }} />
+          ) : null
+        )}
+      </View>
+      <View style={styles.stateLegend}>
+        {STATE_SEGMENTS.map((seg) => (
+          <View key={seg.key} style={styles.stateLegendItem}>
+            <View style={[styles.legendDot, { backgroundColor: seg.color }]} />
+            <Text style={styles.stateLegendValue}>{counts[seg.key]}</Text>
+            <Text style={styles.legendText}>{seg.label}</Text>
+          </View>
+        ))}
+      </View>
+      <View style={styles.chipRow}>
+        <Chip icon="repeat" color={colors.primary} text={`${review.dueCount} ta takrorlash kutyapti`} />
+        <Chip icon="flash" color={colors.danger} text={`${review.weakCount} ta zaif so'z`} />
+        <Chip icon="ribbon" color={colors.secondary} text={`${masteredPct}% o'zlashtirilgan`} />
+      </View>
+    </Card>
+  );
+}
+
+function Chip({ icon, color, text }: { icon: keyof typeof Ionicons.glyphMap; color: string; text: string }) {
+  return (
+    <View style={[styles.chip, { backgroundColor: `${color}14` }]}>
+      <Ionicons name={icon} size={13} color={color} />
+      <Text style={[styles.chipText, { color }]}>{text}</Text>
+    </View>
+  );
+}
+
+function HardWordsCard({ words }: { words: Word[] }) {
+  const hard = words
+    .filter((w) => w.lapses > 0)
+    .sort((a, b) => b.lapses - a.lapses)
+    .slice(0, 5);
+  if (hard.length === 0) return null;
+  return (
+    <Card style={styles.hardCard}>
+      <Text style={styles.sectionTitleInline}>Eng qiyin so'zlar</Text>
+      {hard.map((w, i) => (
+        <View key={w.id} style={[styles.hardRow, i === hard.length - 1 && styles.hardRowLast]}>
+          <View style={styles.hardRank}>
+            <Text style={styles.hardRankText}>{i + 1}</Text>
+          </View>
+          <View style={styles.hardWords}>
+            <Text style={styles.hardEnglish} numberOfLines={1}>{w.english}</Text>
+            <Text style={styles.hardUzbek} numberOfLines={1}>{w.uzbek}</Text>
+          </View>
+          <View style={styles.hardMistakes}>
+            <Ionicons name="close-circle" size={14} color={colors.danger} />
+            <Text style={styles.hardMistakesText}>{w.lapses} marta xato</Text>
+          </View>
+        </View>
+      ))}
+    </Card>
   );
 }
 
@@ -281,6 +445,42 @@ function StatBlock({ label, value, color = colors.primary }: { label: string; va
 }
 
 const styles = StyleSheet.create({
+  todayCard: { marginBottom: 12 },
+  todayTop: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 14 },
+  todayIcon: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
+  todayText: { flex: 1 },
+  todayTitle: { fontSize: 15, fontWeight: '700', color: colors.text },
+  todaySub: { fontSize: 12.5, color: colors.textMuted, marginTop: 2 },
+  streakBadge: { flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: '#F59E0B1A', borderRadius: 14, paddingHorizontal: 10, paddingVertical: 6 },
+  streakText: { fontSize: 14, fontWeight: '700', color: '#B45309' },
+  todayNumbers: { flexDirection: 'row', alignItems: 'baseline', marginBottom: 8 },
+  todayDone: { fontSize: 28, fontWeight: '800' },
+  todayGoal: { fontSize: 14, color: colors.textMuted, flex: 1 },
+  todayPct: { fontSize: 15, fontWeight: '700' },
+
+  stateCard: { marginBottom: 16 },
+  stateHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
+  sectionTitleInline: { fontSize: 14, fontWeight: '700', color: colors.text },
+  stateTotal: { fontSize: 12, color: colors.textMuted },
+  stateBar: { flexDirection: 'row', height: 12, borderRadius: 6, overflow: 'hidden', backgroundColor: colors.border, marginBottom: 12 },
+  stateLegend: { flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginBottom: 12 },
+  stateLegendItem: { flexDirection: 'row', alignItems: 'center', gap: 5 },
+  stateLegendValue: { fontSize: 13, fontWeight: '700', color: colors.text },
+  chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  chip: { flexDirection: 'row', alignItems: 'center', gap: 5, borderRadius: 12, paddingHorizontal: 10, paddingVertical: 6 },
+  chipText: { fontSize: 12, fontWeight: '600' },
+
+  hardCard: { marginBottom: 16 },
+  hardRow: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10, borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: colors.border },
+  hardRowLast: { borderBottomWidth: 0, paddingBottom: 0 },
+  hardRank: { width: 26, height: 26, borderRadius: 13, backgroundColor: `${colors.danger}14`, alignItems: 'center', justifyContent: 'center' },
+  hardRankText: { fontSize: 12, fontWeight: '700', color: colors.danger },
+  hardWords: { flex: 1 },
+  hardEnglish: { fontSize: 14.5, fontWeight: '600', color: colors.text },
+  hardUzbek: { fontSize: 12.5, color: colors.textMuted, marginTop: 1 },
+  hardMistakes: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+  hardMistakesText: { fontSize: 12, color: colors.textMuted },
+
   formatCard: { marginTop: 8, marginBottom: 12 },
   formatTitle: { fontSize: 14, fontWeight: '700', color: colors.text, marginBottom: 12 },
   formatRow: { marginBottom: 12 },
