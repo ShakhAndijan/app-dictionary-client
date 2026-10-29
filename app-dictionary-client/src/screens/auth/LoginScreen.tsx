@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -9,6 +9,8 @@ import { AuthStackParamList } from '../../navigation/types';
 import { useAuth } from '../../context/AuthContext';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import AlertModal, { AlertContent } from '../../components/AlertModal';
+import { isNetworkError } from '../../utils/errors';
 import { colors } from '../../theme/colors';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'Login'>;
@@ -19,26 +21,64 @@ const FEATURES: { icon: keyof typeof Ionicons.glyphMap; label: string }[] = [
   { icon: 'stats-chart-outline', label: 'Statistika' },
 ];
 
+function loginErrorAlert(e: any, retry: () => void): AlertContent {
+  if (isNetworkError(e)) {
+    return {
+      variant: 'network',
+      title: "Server bilan aloqa yo'q",
+      message: "Internetga ulanganingizni tekshiring yoki birozdan so'ng qayta urinib ko'ring.",
+      confirmText: "Qayta urinish",
+      cancelText: 'Yopish',
+      onConfirm: retry,
+    };
+  }
+  const status = e?.response?.status;
+  if (status === 401 || status === 400 || status === 404) {
+    return {
+      variant: 'error',
+      title: "Kirib bo'lmadi",
+      message: "Foydalanuvchi nomi yoki parol noto'g'ri. Iltimos, tekshirib qayta urinib ko'ring.",
+    };
+  }
+  if (status === 429) {
+    return {
+      variant: 'warning',
+      title: "Juda ko'p urinish",
+      message: "Birozdan so'ng qayta urinib ko'ring.",
+    };
+  }
+  return {
+    variant: 'error',
+    title: 'Xatolik yuz berdi',
+    message: "Serverda muammo bor. Birozdan so'ng qayta urinib ko'ring.",
+    confirmText: 'Qayta urinish',
+    cancelText: 'Yopish',
+    onConfirm: retry,
+  };
+}
+
 export default function LoginScreen({ navigation }: Props) {
   const { login } = useAuth();
   const insets = useSafeAreaInsets();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState<AlertContent | null>(null);
 
   const handleLogin = async () => {
     if (!username.trim() || !password) {
-      Alert.alert('Xatolik', 'Foydalanuvchi nomi va parolni kiriting');
+      setAlert({
+        variant: 'warning',
+        title: "Ma'lumotlar yetarli emas",
+        message: 'Davom etish uchun foydalanuvchi nomi va parolni kiriting.',
+      });
       return;
     }
     setLoading(true);
     try {
       await login(username.trim(), password);
     } catch (e: any) {
-      Alert.alert(
-        'Kirish muvaffaqiyatsiz',
-        e?.response?.data?.message ?? "Foydalanuvchi nomi yoki parol noto'g'ri"
-      );
+      setAlert(loginErrorAlert(e, handleLogin));
     } finally {
       setLoading(false);
     }
@@ -114,6 +154,7 @@ export default function LoginScreen({ navigation }: Props) {
           </View>
         </View>
       </KeyboardAwareScrollView>
+      <AlertModal alert={alert} onClose={() => setAlert(null)} />
     </View>
   );
 }
