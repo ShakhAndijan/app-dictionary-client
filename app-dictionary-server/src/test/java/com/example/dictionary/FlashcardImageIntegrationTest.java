@@ -166,4 +166,24 @@ class FlashcardImageIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(2));
     }
+
+    @Test
+    void matchingAnswersAreCountedSeparatelyAndNeverMasterAWord() throws Exception {
+        String auth = register();
+        int apple = addWord(auth, "apple", "olma");
+
+        for (int i = 0; i < 8; i++) {
+            mockMvc.perform(post("/api/flashcards/answer").header("Authorization", auth)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content("{\"wordId\":" + apple + ",\"known\":true,\"format\":\"MATCHING\"}"))
+                    .andExpect(status().isNoContent());
+        }
+
+        mockMvc.perform(get("/api/stats/summary").header("Authorization", auth))
+                .andExpect(jsonPath("$.formats[?(@.format=='MATCHING')].total").value(8))
+                .andExpect(jsonPath("$.formats[?(@.format=='MATCHING')].correct").value(8))
+                .andExpect(jsonPath("$.formats[?(@.format=='FLASHCARD')].total").value(0));
+        mockMvc.perform(get("/api/review/summary").header("Authorization", auth))
+                .andExpect(jsonPath("$.masteredCount").value(0));
+    }
 }

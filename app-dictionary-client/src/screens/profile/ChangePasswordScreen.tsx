@@ -4,7 +4,7 @@ import ScreenContainer from '../../components/ScreenContainer';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useAuth } from '../../context/AuthContext';
-import { colors } from '../../theme/colors';
+import { colors, themed } from '../../theme/colors';
 
 export default function ChangePasswordScreen() {
   const { changePassword } = useAuth();
@@ -56,6 +56,6 @@ export default function ChangePasswordScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   title: { fontSize: 20, fontWeight: '700', color: colors.text, marginBottom: 20 },
-});
+}));

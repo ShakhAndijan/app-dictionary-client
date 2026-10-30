@@ -76,19 +76,22 @@ public class QuizService {
                 case TODAY -> "Bugun hech qanday so'z qo'shilmagan";
                 case DUE -> "Bugun takrorlash uchun so'z yo'q";
                 case WEAK -> "Zaif so'zlar yo'q";
+                case FAVORITES -> "Sevimli so'zlar yo'q. Avval so'zga yulduzcha qo'ying";
                 case ALL -> "Baholash uchun so'zlar mavjud emas";
             };
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, message);
         }
 
-        if (format == AnswerFormat.CHOICE
+        if (format.hasOptions()
                 && wordRepository.findByOwnerUsernameOrderByCreatedAtDesc(username).size() < MIN_WORDS_FOR_CHOICE) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    "Variantli test uchun kamida " + MIN_WORDS_FOR_CHOICE + " ta so'z kerak");
+                    "Variantli va tezkor test uchun kamida " + MIN_WORDS_FOR_CHOICE + " ta so'z kerak");
         }
 
         // A review session is a fixed queue that ends by itself; only free practice can run forever.
-        boolean unlimited = (mode == QuizMode.ALL || mode == QuizMode.TODAY) && eligible.size() > UNLIMITED_THRESHOLD;
+        // A speed round runs against the clock, so it must never run out of questions.
+        boolean unlimited = format == AnswerFormat.SPEED
+                || (mode == QuizMode.ALL || mode == QuizMode.TODAY) && eligible.size() > UNLIMITED_THRESHOLD;
         QuizSession session = new QuizSession(owner, mode, format, unlimited, eligible.size());
 
         Word firstWord;
@@ -103,8 +106,8 @@ public class QuizService {
             }
         }
 
-        PromptType promptType = pickPromptType(firstWord);
-        AnswerField answerField = pickAnswerField(promptType);
+        PromptType promptType = pickPromptType(format, firstWord);
+        AnswerField answerField = pickAnswerField(format, promptType);
         session.setCurrentQuestion(firstWord.getId(), promptType, answerField);
 
         quizSessionRepository.save(session);
@@ -126,7 +129,7 @@ public class QuizService {
         String expectedAnswer = textFor(currentWord, session.getCurrentAnswerField());
         AnswerMatcher.Result match = AnswerMatcher.match(answer, expectedAnswer);
         // A near-miss is a different option in a multiple-choice question, never a typo of the right one.
-        if (session.getAnswerFormat() == AnswerFormat.CHOICE && match == AnswerMatcher.Result.TYPO) {
+        if (session.getAnswerFormat().hasOptions() && match == AnswerMatcher.Result.TYPO) {
             match = AnswerMatcher.Result.WRONG;
         }
         boolean correct = match.isCorrect();
@@ -137,7 +140,7 @@ public class QuizService {
         };
         String answeredPromptType = promptTypeName(session.getCurrentPromptType());
         session.recordAnswer(correct);
-        reviewService.recordAnswer(session.getOwner(), currentWord, outcome, session.getCurrentPromptType(),
+        int xpGained = reviewService.recordAnswer(session.getOwner(), currentWord, outcome, session.getCurrentPromptType(),
                 session.getAnswerFormat());
         if (!correct && session.getMode() == QuizMode.DUE) {
             session.queueRetry(currentWord.getId());
@@ -151,8 +154,8 @@ public class QuizService {
         if (nextWord == null) {
             session.finish();
         } else {
-            PromptType promptType = pickPromptType(nextWord);
-            AnswerField answerField = pickAnswerField(promptType);
+            PromptType promptType = pickPromptType(session.getAnswerFormat(), nextWord);
+            AnswerField answerField = pickAnswerField(session.getAnswerFormat(), promptType);
             session.setCurrentQuestion(nextWord.getId(), promptType, answerField);
             nextPromptType = promptTypeName(promptType);
             nextPromptText = textFor(nextWord, promptType);
@@ -160,7 +163,7 @@ public class QuizService {
         }
 
         return new QuizAnswerResultResponse(correct, match == AnswerMatcher.Result.TYPO, expectedAnswer, answeredPromptType,
-                progressOf(session), nextPromptType, nextPromptText, nextOptions);
+                progressOf(session), nextPromptType, nextPromptText, nextOptions, xpGained);
     }
 
     @Transactional
@@ -210,7 +213,19 @@ public class QuizService {
         if (mode == QuizMode.WEAK) {
             return reviewService.weakWords(username);
         }
+        if (mode == QuizMode.FAVORITES) {
+            return wordRepository.findByOwnerUsernameAndFavoriteTrueOrderByCreatedAtDesc(username);
+        }
         return wordRepository.findByOwnerUsernameOrderByCreatedAtDesc(username);
+    }
+
+    /** Dictation always speaks the English word; the client hides its text and reads it aloud. */
+    private PromptType pickPromptType(AnswerFormat format, Word word) {
+        return format == AnswerFormat.LISTENING ? PromptType.ENGLISH : pickPromptType(word);
+    }
+
+    private AnswerField pickAnswerField(AnswerFormat format, PromptType promptType) {
+        return format == AnswerFormat.LISTENING ? AnswerField.ENGLISH : pickAnswerField(promptType);
     }
 
     /** Randomly picks what to show as the question; DEFINITION is only eligible when the word has one. */
@@ -239,7 +254,7 @@ public class QuizService {
 
     /** The shuffled choices (right answer plus look-alike wrong ones) for a multiple-choice session, else null. */
     private List<String> optionsFor(QuizSession session, Word word, AnswerField field) {
-        if (session.getAnswerFormat() != AnswerFormat.CHOICE) {
+        if (!session.getAnswerFormat().hasOptions()) {
             return null;
         }
         String correct = textFor(word, field);

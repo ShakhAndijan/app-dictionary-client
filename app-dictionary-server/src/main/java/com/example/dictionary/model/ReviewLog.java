@@ -56,12 +56,21 @@ public class ReviewLog {
     @Column(name = "answer_format", nullable = false, length = 20, columnDefinition = "varchar(20) default 'TYPED'")
     private AnswerFormat answerFormat = AnswerFormat.TYPED;
 
+    /** Set for answers uploaded from the offline queue; makes the upload safe to repeat. */
+    @Column(name = "client_id", length = 40)
+    private String clientId;
+
     protected ReviewLog() {
         // Required by JPA.
     }
 
     public ReviewLog(AppUser owner, Word word, boolean correct, int boxBefore, int boxAfter, PromptType promptType,
                      AnswerFormat answerFormat) {
+        this(owner, word, correct, boxBefore, boxAfter, promptType, answerFormat, Instant.now(), null);
+    }
+
+    public ReviewLog(AppUser owner, Word word, boolean correct, int boxBefore, int boxAfter, PromptType promptType,
+                     AnswerFormat answerFormat, Instant answeredAt, String clientId) {
         this.owner = owner;
         this.word = word;
         this.correct = correct;
@@ -69,6 +78,7 @@ public class ReviewLog {
         this.endBox = boxAfter;
         this.promptType = promptType;
         this.answerFormat = answerFormat;
-        this.answeredAt = Instant.now();
+        this.answeredAt = answeredAt;
+        this.clientId = clientId;
     }
 }

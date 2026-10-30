@@ -7,26 +7,33 @@ import { ProfileStackParamList } from '../../navigation/types';
 import ScreenContainer from '../../components/ScreenContainer';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
+import ThemePicker from '../../components/ThemePicker';
 import { useAuth } from '../../context/AuthContext';
-import { colors } from '../../theme/colors';
+import { colors, themed } from '../../theme/colors';
 import { DailyStats, MonthlyStats } from '../../types';
 import * as statsApi from '../../api/statsApi';
+import * as progressApi from '../../api/progressApi';
 import * as reviewApi from '../../api/reviewApi';
 import { dayKey, monthKey } from '../../utils/date';
 
 type Props = NativeStackScreenProps<ProfileStackParamList, 'ProfileHome'>;
 
-const MENU_ITEMS: {
-  key: 'EditProfile' | 'ChangePassword' | 'Stats' | 'Reminders';
+type MenuItem = {
+  key: 'EditProfile' | 'ChangePassword' | 'Stats' | 'Reminders' | 'Achievements' | 'WeeklyReport' | 'Groups';
   label: string;
   icon: keyof typeof Ionicons.glyphMap;
   color: string;
-}[] = [
+};
+
+const MENU_ITEMS = themed((): MenuItem[] => [
   { key: 'EditProfile', label: 'Profilni tahrirlash', icon: 'person-outline', color: colors.primary },
   { key: 'ChangePassword', label: 'Parolni almashtirish', icon: 'lock-closed-outline', color: '#F59E0B' },
+  { key: 'Achievements', label: 'Yutuqlar', icon: 'trophy-outline', color: '#E5A100' },
+  { key: 'Groups', label: "Do'stlar bilan reyting", icon: 'people-outline', color: '#8B5CF6' },
+  { key: 'WeeklyReport', label: 'Haftalik hisobot', icon: 'calendar-outline', color: '#0EA5E9' },
   { key: 'Stats', label: 'Statistika', icon: 'stats-chart-outline', color: colors.secondary },
   { key: 'Reminders', label: 'Eslatmalar va maqsad', icon: 'notifications-outline', color: '#EC4899' },
-];
+]);
 
 function accuracyOf(row: { correctAnswers: number; incorrectAnswers: number } | null): number {
   if (!row) return 0;
@@ -40,11 +47,13 @@ export default function ProfileScreen({ navigation }: Props) {
   const [daily, setDaily] = useState<DailyStats[]>([]);
   const [monthly, setMonthly] = useState<MonthlyStats[]>([]);
   const [goalInfo, setGoalInfo] = useState<{ done: number; goal: number } | null>(null);
+  const [progress, setProgress] = useState<progressApi.Progress | null>(null);
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
+      progressApi.getProgress().then(setProgress).catch(() => undefined);
       const [d, m, review] = await Promise.all([
         statsApi.getDailyStats().catch(() => []),
         statsApi.getMonthlyStats().catch(() => []),
@@ -91,6 +100,46 @@ export default function ProfileScreen({ navigation }: Props) {
         {!!user?.username && <Text style={styles.username}>@{user.username}</Text>}
         <Text style={styles.email}>{user?.email}</Text>
       </View>
+
+      {progress && (
+        <Pressable onPress={() => navigation.navigate('Achievements')}>
+          <Card style={styles.activityCard}>
+            <View style={styles.activityTopRow}>
+              <View style={styles.activityTitleWrap}>
+                <View style={styles.levelBadge}>
+                  <Text style={styles.levelBadgeText}>{progress.level}</Text>
+                </View>
+                <View>
+                  <Text style={styles.activityTitle}>{progress.levelTitle}</Text>
+                  <Text style={styles.activitySubtitle}>
+                    {progress.totalXp} XP · bugun +{progress.todayXp}
+                  </Text>
+                </View>
+              </View>
+              <View style={styles.trophyWrap}>
+                <Ionicons name="trophy-outline" size={16} color="#E5A100" />
+                <Text style={styles.trophyText}>
+                  {progress.unlockedCount}/{progress.totalAchievements}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.progressTrack}>
+              <View
+                style={[
+                  styles.progressFill,
+                  {
+                    width: `${Math.min(100, Math.round((progress.xpIntoLevel / Math.max(1, progress.xpForLevel)) * 100))}%`,
+                    backgroundColor: colors.primary,
+                  },
+                ]}
+              />
+            </View>
+            <Text style={styles.nextLevel}>
+              {progress.level + 1}-darajagacha {Math.max(0, progress.xpForLevel - progress.xpIntoLevel)} XP
+            </Text>
+          </Card>
+        </Pressable>
+      )}
 
       {goalInfo && (
         <Pressable onPress={() => navigation.navigate('Reminders')}>
@@ -205,6 +254,8 @@ export default function ProfileScreen({ navigation }: Props) {
         </View>
       </Card>
 
+      <ThemePicker />
+
       <Card style={styles.menuCard}>
         {MENU_ITEMS.map((item, idx) => (
           <React.Fragment key={item.key}>
@@ -225,7 +276,7 @@ export default function ProfileScreen({ navigation }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   header: { alignItems: 'center', marginBottom: 20 },
   avatar: {
     width: 72,
@@ -258,6 +309,18 @@ const styles = StyleSheet.create({
   activityPercent: { fontSize: 22, fontWeight: '800' },
   progressTrack: { height: 6, borderRadius: 3, backgroundColor: colors.border, marginTop: 12, overflow: 'hidden' },
   progressFill: { height: '100%', borderRadius: 3 },
+  levelBadge: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  levelBadgeText: { color: '#fff', fontSize: 18, fontWeight: '800' },
+  trophyWrap: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+  trophyText: { fontSize: 13, fontWeight: '800', color: '#E5A100' },
+  nextLevel: { fontSize: 11, color: colors.textMuted, marginTop: 6 },
   activityBtn: { marginTop: 14 },
   menuCard: { padding: 0, overflow: 'hidden', marginTop: 8 },
   menuRow: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 14, paddingHorizontal: 16 },
@@ -265,4 +328,4 @@ const styles = StyleSheet.create({
   menuLabel: { flex: 1, fontSize: 15, color: colors.text, fontWeight: '500' },
   divider: { height: 1, backgroundColor: colors.border, marginLeft: 16 },
   logoutBtn: { marginTop: 24, marginBottom: 8 },
-});
+}));

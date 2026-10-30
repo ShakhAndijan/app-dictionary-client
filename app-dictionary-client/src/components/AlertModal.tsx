@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '../theme/colors';
+import { colors, themed } from '../theme/colors';
 
 export type AlertVariant = 'error' | 'warning' | 'network' | 'success' | 'info';
 
@@ -17,13 +17,13 @@ export interface AlertContent {
   cancelText?: string;
 }
 
-const VARIANTS: Record<AlertVariant, { icon: keyof typeof Ionicons.glyphMap; color: string }> = {
+const VARIANTS = themed((): Record<AlertVariant, { icon: keyof typeof Ionicons.glyphMap; color: string }> => ({
   error: { icon: 'close-circle', color: colors.danger },
   warning: { icon: 'alert-circle', color: '#F59E0B' },
   network: { icon: 'cloud-offline', color: '#F59E0B' },
   success: { icon: 'checkmark-circle', color: colors.secondary },
   info: { icon: 'information-circle', color: colors.primary },
-};
+}));
 
 interface Props {
   alert: AlertContent | null;
@@ -94,7 +94,7 @@ export default function AlertModal({ alert, onClose }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   backdrop: {
     flex: 1,
     backgroundColor: 'rgba(17,24,39,0.55)',
@@ -127,4 +127,4 @@ const styles = StyleSheet.create({
   btnQuiet: { backgroundColor: colors.background, borderWidth: 1, borderColor: colors.border },
   btnQuietText: { color: colors.text, fontSize: 15.5, fontWeight: '600' },
   pressed: { opacity: 0.85 },
-});
+}));

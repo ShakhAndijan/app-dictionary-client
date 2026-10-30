@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
-import { colors } from '../theme/colors';
+import { colors, themed } from '../theme/colors';
 
 export default function Card({
   children,
@@ -12,7 +12,7 @@ export default function Card({
   return <View style={[styles.card, style]}>{children}</View>;
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   card: {
     backgroundColor: colors.surface,
     borderRadius: 16,
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     elevation: 2,
   },
-});
+}));

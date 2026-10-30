@@ -9,7 +9,7 @@ import { AuthStackParamList } from '../../navigation/types';
 import { useAuth } from '../../context/AuthContext';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import { colors } from '../../theme/colors';
+import { colors, themed } from '../../theme/colors';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'Register'>;
 
@@ -158,7 +158,7 @@ export default function RegisterScreen({ navigation }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   flex: { flex: 1, backgroundColor: colors.background },
   scrollContent: { flexGrow: 1 },
   hero: {
@@ -215,4 +215,4 @@ const styles = StyleSheet.create({
   footer: { flexDirection: 'row', justifyContent: 'center', marginTop: 20 },
   footerText: { color: colors.textMuted },
   link: { color: colors.primary, fontWeight: '600' },
-});
+}));

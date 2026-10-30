@@ -73,6 +73,9 @@ public class WordService {
         if (request.definition() != null) {
             word.setDefinition(blankToNull(request.definition()));
         }
+        if (request.favorite() != null) {
+            word.setFavorite(request.favorite());
+        }
 
         WordInsight insight = reviewService.insightsByWordId(username).getOrDefault(word.getId(), WordInsight.UNSEEN);
         return WordResponse.from(word, insight);

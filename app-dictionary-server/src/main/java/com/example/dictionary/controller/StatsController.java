@@ -3,7 +3,9 @@ package com.example.dictionary.controller;
 import com.example.dictionary.dto.DailyStatsResponse;
 import com.example.dictionary.dto.MonthlyStatsResponse;
 import com.example.dictionary.dto.StatsSummaryResponse;
+import com.example.dictionary.dto.WeeklyReportResponse;
 import com.example.dictionary.service.StatsService;
+import com.example.dictionary.service.WeeklyReportService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,9 +26,11 @@ import java.util.List;
 public class StatsController {
 
     private final StatsService statsService;
+    private final WeeklyReportService weeklyReportService;
 
-    public StatsController(StatsService statsService) {
+    public StatsController(StatsService statsService, WeeklyReportService weeklyReportService) {
         this.statsService = statsService;
+        this.weeklyReportService = weeklyReportService;
     }
 
     @Operation(summary = "Daily stats",
@@ -45,6 +49,15 @@ public class StatsController {
     public ResponseEntity<List<MonthlyStatsResponse>> monthly(@AuthenticationPrincipal UserDetails principal,
                                                                 @RequestParam(defaultValue = "12") int months) {
         return ResponseEntity.ok(statsService.monthlyStats(principal.getUsername(), months));
+    }
+
+    @Operation(summary = "Weekly report",
+            description = "A Monday-to-Sunday week with per-day answers, XP and new words, totals, and the previous week for comparison. "
+                    + "`weeksBack` 0 is the current week, 1 is last week.")
+    @GetMapping("/weekly")
+    public ResponseEntity<WeeklyReportResponse> weekly(@AuthenticationPrincipal UserDetails principal,
+                                                       @RequestParam(defaultValue = "0") int weeksBack) {
+        return ResponseEntity.ok(weeklyReportService.report(principal.getUsername(), weeksBack));
     }
 
     @Operation(summary = "Stats summary",

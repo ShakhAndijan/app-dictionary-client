@@ -12,7 +12,7 @@ public record StartQuizRequest(
         @Schema(example = "ALL", description = "ALL = every word the user has added; TODAY = only words added today")
         QuizMode mode,
 
-        @Schema(example = "TYPED", description = "TYPED (default) = type the answer; CHOICE = pick one of four options")
+        @Schema(example = "TYPED", description = "TYPED (default) = type the answer; CHOICE = pick one of four options; LISTENING = hear the English word and type it; SPEED = timed multiple choice, never runs out of questions")
         AnswerFormat format
 ) {
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, ViewStyle } from 'react-native';
-import { colors } from '../theme/colors';
+import { colors, themed } from '../theme/colors';
 
 interface Props {
   title: string;
@@ -44,7 +44,7 @@ export default function Button({
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   base: {
     borderRadius: 12,
     paddingVertical: 14,
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
   disabled: { opacity: 0.5 },
   pressed: { opacity: 0.85 },
   text: { color: '#fff', fontSize: 16, fontWeight: '600' },
-});
+}));

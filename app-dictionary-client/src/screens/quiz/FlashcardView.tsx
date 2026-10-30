@@ -5,33 +5,28 @@ import ScreenContainer from '../../components/ScreenContainer';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import WordImage from '../../components/WordImage';
-import { colors } from '../../theme/colors';
+import SpeakButton from '../../components/SpeakButton';
+import { colors, themed } from '../../theme/colors';
 import { ReviewSummary, Word } from '../../types';
 import { QuizMode } from '../../api/quizApi';
 import * as flashcardApi from '../../api/flashcardApi';
 import { extractErrorMessage } from '../../utils/errors';
 import { syncReminders } from '../../services/reminders';
+import { requestProgressCheck } from '../../services/progressEvents';
+import { buildDeckOptions } from './deckOptions';
 
 interface Props {
   review: ReviewSummary | null;
   totalWords: number;
+  favoriteCount?: number;
   onExit: () => void;
 }
 
 type Stage = 'choose' | 'play' | 'done';
 
-interface DeckOption {
-  mode: QuizMode;
-  title: string;
-  subtitle: string;
-  icon: keyof typeof Ionicons.glyphMap;
-  color: string;
-  enabled: boolean;
-}
-
 const FLIP_MS = 350;
 
-export default function FlashcardView({ review, totalWords, onExit }: Props) {
+export default function FlashcardView({ review, totalWords, favoriteCount = 0, onExit }: Props) {
   const [stage, setStage] = useState<Stage>('choose');
   const [mode, setMode] = useState<QuizMode>('DUE');
   const [loading, setLoading] = useState(false);
@@ -65,35 +60,7 @@ export default function FlashcardView({ review, totalWords, onExit }: Props) {
     }).start();
   }, [flip, flipped]);
 
-  const options: DeckOption[] = [
-    {
-      mode: 'DUE',
-      title: 'Takrorlash',
-      subtitle:
-        (review?.dueCount ?? 0) + (review?.newCount ?? 0) > 0
-          ? `${review?.dueCount ?? 0} ta takrorlash · ${review?.newCount ?? 0} ta yangi so'z`
-          : "Bugun takrorlash uchun so'z yo'q",
-      icon: 'repeat',
-      color: colors.primary,
-      enabled: (review?.dueCount ?? 0) + (review?.newCount ?? 0) > 0,
-    },
-    {
-      mode: 'WEAK',
-      title: "Zaif so'zlar",
-      subtitle: (review?.weakCount ?? 0) > 0 ? `${review?.weakCount} ta so'z ko'p xato qilingan` : "Hozircha zaif so'z yo'q",
-      icon: 'flash-outline',
-      color: colors.danger,
-      enabled: (review?.weakCount ?? 0) > 0,
-    },
-    {
-      mode: 'ALL',
-      title: "Tasodifiy so'zlar",
-      subtitle: `Lug'atingizdan 20 tagacha so'z (${totalWords} ta ichidan)`,
-      icon: 'shuffle-outline',
-      color: colors.secondary,
-      enabled: totalWords > 0,
-    },
-  ];
+  const options = buildDeckOptions(review, totalWords, favoriteCount);
 
   const begin = async (selected: QuizMode) => {
     setLoading(true);
@@ -139,7 +106,10 @@ export default function FlashcardView({ review, totalWords, onExit }: Props) {
 
     if (index + 1 >= deck.length) {
       setStage('done');
-      if (recording) syncReminders();
+      if (recording) {
+        syncReminders();
+        requestProgressCheck();
+      }
     } else {
       setFlipped(false);
       setEnglishFirst(Math.random() < 0.5);
@@ -249,7 +219,7 @@ export default function FlashcardView({ review, totalWords, onExit }: Props) {
           style={[styles.face, { transform: [{ perspective: 1000 }, { rotateY: spin(['0deg', '180deg']) }] }]}
         >
           <View style={[styles.badge, englishFirst ? styles.badgeEn : styles.badgeUz]}>
-            <Text style={[styles.badgeText, { color: englishFirst ? '#3730A3' : '#065F46' }]}>{frontBadge}</Text>
+            <Text style={[styles.badgeText, { color: englishFirst ? colors.indigoText : colors.greenText }]}>{frontBadge}</Text>
           </View>
           <Text style={styles.word}>{frontText}</Text>
           <WordImage wordId={card.id} version={card.imageVersion} style={styles.image} resizeMode="cover" />
@@ -273,7 +243,7 @@ export default function FlashcardView({ review, totalWords, onExit }: Props) {
             scrollEnabled={false}
           >
             <View style={[styles.badge, englishFirst ? styles.badgeUz : styles.badgeEn]}>
-              <Text style={[styles.badgeText, { color: englishFirst ? '#065F46' : '#3730A3' }]}>{backBadge}</Text>
+              <Text style={[styles.badgeText, { color: englishFirst ? colors.greenText : colors.indigoText }]}>{backBadge}</Text>
             </View>
             <Text style={styles.word}>{backText}</Text>
             {!!card.definition && (
@@ -286,6 +256,12 @@ export default function FlashcardView({ review, totalWords, onExit }: Props) {
           </ScrollView>
         </Animated.View>
       </Pressable>
+
+      {(englishFirst || flipped) && (
+        <View style={styles.speakRow}>
+          <SpeakButton text={card.english} />
+        </View>
+      )}
 
       <View style={styles.actions}>
         {flipped ? (
@@ -322,7 +298,7 @@ export default function FlashcardView({ review, totalWords, onExit }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   flex: { flex: 1 },
   topRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 },
   iconBtn: { width: 36, height: 36, borderRadius: 18, backgroundColor: colors.border, alignItems: 'center', justifyContent: 'center' },
@@ -349,6 +325,7 @@ const styles = StyleSheet.create({
   barTrack: { height: 6, borderRadius: 3, backgroundColor: colors.border, overflow: 'hidden', marginBottom: 16 },
   barFill: { height: 6, borderRadius: 3, backgroundColor: colors.primary },
   cardArea: { height: 340 },
+  speakRow: { alignItems: 'center', marginTop: 14 },
   face: {
     position: 'absolute',
     top: 0,
@@ -367,14 +344,14 @@ const styles = StyleSheet.create({
   faceBack: { padding: 0 },
   backContent: { flexGrow: 1, alignItems: 'center', justifyContent: 'center', padding: 20 },
   badge: { paddingHorizontal: 12, paddingVertical: 5, borderRadius: 12, marginBottom: 16 },
-  badgeEn: { backgroundColor: '#EEF2FF' },
-  badgeUz: { backgroundColor: '#D1FAE5' },
+  badgeEn: { backgroundColor: colors.indigoBg },
+  badgeUz: { backgroundColor: colors.greenBg },
   badgeText: { fontSize: 12, fontWeight: '600' },
   word: { fontSize: 32, fontWeight: '700', color: colors.text, textAlign: 'center' },
   image: { width: 170, height: 120, borderRadius: 14, marginTop: 16 },
   imageSmall: { width: 140, height: 96, borderRadius: 12, marginTop: 14 },
   definitionBox: { marginTop: 14, alignSelf: 'stretch', backgroundColor: '#F59E0B14', borderRadius: 12, padding: 10 },
-  definitionLabel: { fontSize: 11, fontWeight: '700', color: '#B45309', marginBottom: 2 },
+  definitionLabel: { fontSize: 11, fontWeight: '700', color: colors.amberText, marginBottom: 2 },
   definitionText: { fontSize: 13.5, color: colors.text, lineHeight: 19 },
   tapHint: { position: 'absolute', bottom: 12, flexDirection: 'row', alignItems: 'center', gap: 6 },
   tapHintText: { fontSize: 12, color: colors.textMuted },
@@ -395,4 +372,4 @@ const styles = StyleSheet.create({
   statNum: { fontSize: 24, fontWeight: '800' },
   statLabel: { fontSize: 12, color: colors.textMuted, marginTop: 2 },
   gap: { marginTop: 10 },
-});
+}));

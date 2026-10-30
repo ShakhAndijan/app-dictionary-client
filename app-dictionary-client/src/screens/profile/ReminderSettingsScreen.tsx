@@ -6,7 +6,7 @@ import ScreenContainer from '../../components/ScreenContainer';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import { useAuth } from '../../context/AuthContext';
-import { colors } from '../../theme/colors';
+import { colors, themed } from '../../theme/colors';
 import { extractErrorMessage } from '../../utils/errors';
 import {
   DEFAULT_REMINDER_SETTINGS,
@@ -131,6 +131,8 @@ export default function ReminderSettingsScreen() {
             value={settings.enabled && permissionGranted}
             onValueChange={toggleReminders}
             trackColor={{ true: colors.primary, false: colors.border }}
+            thumbColor="#FFFFFF"
+            ios_backgroundColor={colors.border}
           />
         </View>
 
@@ -194,7 +196,7 @@ function Stepper({
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   sectionTitle: { fontSize: 14, fontWeight: '700', color: colors.text, marginBottom: 10, marginTop: 4 },
   card: { marginBottom: 16 },
   cardTitle: { fontSize: 15, fontWeight: '700', color: colors.text },
@@ -225,4 +227,4 @@ const styles = StyleSheet.create({
   warning: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12 },
   warningText: { flex: 1, fontSize: 13, color: colors.danger },
   note: { fontSize: 12, color: colors.textMuted, lineHeight: 18, marginBottom: 20 },
-});
+}));

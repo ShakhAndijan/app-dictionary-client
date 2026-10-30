@@ -125,7 +125,7 @@ class ChoiceQuizIntegrationTest {
 
         mockMvc.perform(get("/api/stats/summary").header("Authorization", auth))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.formats.length()").value(3))
+                .andExpect(jsonPath("$.formats.length()").value(6))
                 .andExpect(jsonPath("$.formats[?(@.format=='CHOICE')].total").value(1))
                 .andExpect(jsonPath("$.formats[?(@.format=='CHOICE')].correct").value(1))
                 .andExpect(jsonPath("$.formats[?(@.format=='TYPED')].total").value(0))

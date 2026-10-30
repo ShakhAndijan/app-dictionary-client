@@ -37,6 +37,10 @@ public class Word {
     @Column(name = "image_version")
     private Long imageVersion;
 
+    /** Starred by the user. */
+    @Column(nullable = false, columnDefinition = "boolean default false")
+    private boolean favorite;
+
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
 
@@ -90,6 +94,14 @@ public class Word {
 
     public void setImageVersion(Long imageVersion) {
         this.imageVersion = imageVersion;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public Instant getCreatedAt() {

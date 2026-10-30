@@ -1,7 +1,7 @@
 import apiClient from './client';
 import { AnswerFormat, QuizPromptType } from '../types';
 
-export type QuizMode = 'ALL' | 'TODAY' | 'DUE' | 'WEAK';
+export type QuizMode = 'ALL' | 'TODAY' | 'DUE' | 'WEAK' | 'FAVORITES';
 
 export interface QuizProgress {
   answered: number;
@@ -29,6 +29,7 @@ export interface QuizAnswerResult {
   nextPromptType: QuizPromptType | null;
   nextPromptText: string | null;
   nextOptions: string[] | null;
+  xpGained: number;
 }
 
 export interface QuizSummary {

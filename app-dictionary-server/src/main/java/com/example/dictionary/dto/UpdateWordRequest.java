@@ -12,6 +12,9 @@ public record UpdateWordRequest(
         String uzbek,
 
         @Schema(example = "A round fruit with red or green skin.")
-        String definition
+        String definition,
+
+        @Schema(description = "true = add to favourites, false = remove; omit to leave unchanged")
+        Boolean favorite
 ) {
 }

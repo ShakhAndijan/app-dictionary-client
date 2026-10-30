@@ -4,6 +4,7 @@ import { User } from '../types';
 import * as authApi from '../api/authApi';
 import { setOnUnauthorized } from '../api/client';
 import { cancelReminders } from '../services/reminders';
+import { loadLastUser, saveLastUser, setOfflineUser } from '../services/offlineStore';
 import { clearTokens, getAccessToken, getRefreshToken, saveTokens } from '../api/tokenStorage';
 
 interface AuthContextValue {
@@ -29,11 +30,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  // The offline store is keyed by user, so it must learn about a change before anything reads it.
+  const applyUser = useCallback((u: User | null) => {
+    setOfflineUser(u?.id ?? null);
+    setUser(u);
+    if (u) saveLastUser(u);
+  }, []);
+
   const clearSession = useCallback(async () => {
     await clearTokens();
     await cancelReminders();
-    setUser(null);
-  }, []);
+    applyUser(null);
+  }, [applyUser]);
 
   // Revokes the refresh token on the server first (best effort), then always clears the session locally.
   const logout = useCallback(async () => {
@@ -59,12 +67,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       try {
         if (await getAccessToken()) {
           // An expired access token is renewed transparently by the API client.
-          setUser(await authApi.fetchMe());
+          applyUser(await authApi.fetchMe());
         }
       } catch (e) {
         // Keep the tokens when we were merely offline so the next launch can still resume the session.
         if (!axios.isAxiosError(e) || e.response) {
           await clearTokens();
+        } else {
+          // Offline: open with the profile saved last time instead of showing the login screen.
+          const saved = await loadLastUser();
+          if (saved) applyUser(saved);
         }
       } finally {
         setIsLoading(false);
@@ -76,7 +88,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const res = await authApi.login(username, password);
     await saveTokens(res);
     const me = await authApi.fetchMe();
-    setUser(me);
+    applyUser(me);
   };
 
   const register = async (
@@ -89,12 +101,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const res = await authApi.register(firstName, lastName, email, username, password);
     await saveTokens(res);
     const me = await authApi.fetchMe();
-    setUser(me);
+    applyUser(me);
   };
 
   const updateProfile = async (data: Partial<Pick<User, 'firstName' | 'lastName' | 'email' | 'dailyGoal'>>) => {
     const updated = await authApi.updateProfile(data);
-    setUser(updated);
+    applyUser(updated);
   };
 
   const changePassword = async (oldPassword: string, newPassword: string) => {

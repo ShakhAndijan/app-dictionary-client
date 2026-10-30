@@ -9,5 +9,7 @@ public enum QuizMode {
     /** Spaced repetition: words due for review today plus a limited number of new ones. */
     DUE,
     /** Practice on the words the user keeps getting wrong. */
-    WEAK
+    WEAK,
+    /** Only the words the user starred. */
+    FAVORITES
 }

@@ -1,6 +1,8 @@
 package com.example.dictionary.controller;
 
 import com.example.dictionary.dto.FlashcardAnswerRequest;
+import com.example.dictionary.dto.OfflineAnswerDtos.OfflineAnswersRequest;
+import com.example.dictionary.dto.OfflineAnswerDtos.OfflineAnswersResponse;
 import com.example.dictionary.dto.WordResponse;
 import com.example.dictionary.model.QuizMode;
 import com.example.dictionary.service.FlashcardService;
@@ -41,11 +43,20 @@ public class FlashcardController {
         return ResponseEntity.ok(flashcardService.deck(principal.getUsername(), mode));
     }
 
-    @Operation(summary = "Answer a flashcard", description = "known=true counts as correct, false as wrong.")
+    @Operation(summary = "Answer a flashcard", description = "known=true counts as correct, false as wrong. format=MATCHING files the result under the matching game in the statistics.")
     @PostMapping("/answer")
     public ResponseEntity<Void> answer(@AuthenticationPrincipal UserDetails principal,
                                        @Valid @RequestBody FlashcardAnswerRequest request) {
         flashcardService.answer(principal.getUsername(), request);
         return ResponseEntity.noContent().build();
+    }
+
+    @Operation(summary = "Upload answers given offline",
+            description = "Up to 500 answers with the time they were given and a client-made id. Repeating an upload is safe: "
+                    + "answers whose id is already stored are skipped. format is FLASHCARD (default), MATCHING or SPEED.")
+    @PostMapping("/answers/batch")
+    public ResponseEntity<OfflineAnswersResponse> answerBatch(@AuthenticationPrincipal UserDetails principal,
+                                                              @Valid @RequestBody OfflineAnswersRequest request) {
+        return ResponseEntity.ok(flashcardService.answerOffline(principal.getUsername(), request.answers()));
     }
 }

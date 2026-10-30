@@ -1,5 +1,11 @@
 package com.example.dictionary.service;
 
+import com.example.dictionary.dto.OfflineAnswerDtos.OfflineAnswer;
+import com.example.dictionary.dto.OfflineAnswerDtos.OfflineAnswersResponse;
+import com.example.dictionary.repository.ReviewLogRepository;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
 import com.example.dictionary.dto.FlashcardAnswerRequest;
 import com.example.dictionary.dto.WordResponse;
 import com.example.dictionary.model.AnswerFormat;
@@ -27,14 +33,18 @@ import java.util.List;
 public class FlashcardService {
 
     private static final int FREE_DECK_SIZE = 20;
+    private static final int MAX_OFFLINE_AGE_DAYS = 30;
 
     private final WordRepository wordRepository;
     private final UserRepository userRepository;
     private final ReviewService reviewService;
     private final WordService wordService;
+    private final ReviewLogRepository logRepository;
 
     public FlashcardService(WordRepository wordRepository, UserRepository userRepository,
-                            ReviewService reviewService, WordService wordService) {
+                            ReviewService reviewService, WordService wordService,
+                            ReviewLogRepository logRepository) {
+        this.logRepository = logRepository;
         this.wordRepository = wordRepository;
         this.userRepository = userRepository;
         this.reviewService = reviewService;
@@ -47,7 +57,7 @@ public class FlashcardService {
         List<Word> words = switch (mode) {
             case DUE -> reviewService.reviewQueue(username);
             case WEAK -> reviewService.weakWords(username);
-            case ALL, TODAY -> sample(username, mode);
+            case ALL, TODAY, FAVORITES -> sample(username, mode);
         };
         if (words.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No words to practise");
@@ -63,7 +73,37 @@ public class FlashcardService {
         AppUser owner = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
         Outcome outcome = request.known() ? Outcome.CORRECT : Outcome.WRONG;
-        reviewService.recordAnswer(owner, word, outcome, PromptType.ENGLISH, AnswerFormat.FLASHCARD);
+        AnswerFormat format = request.format() == AnswerFormat.MATCHING ? AnswerFormat.MATCHING : AnswerFormat.FLASHCARD;
+        reviewService.recordAnswer(owner, word, outcome, PromptType.ENGLISH, format);
+    }
+
+    /**
+     * Stores answers that were given offline. Safe to repeat: an answer whose client id is already stored is
+     * skipped, as is an answer for a word that has been deleted since. Answers are applied oldest first.
+     */
+    @Transactional
+    public OfflineAnswersResponse answerOffline(String username, List<OfflineAnswer> answers) {
+        AppUser owner = userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+        Instant now = Instant.now();
+        Instant oldest = now.minus(MAX_OFFLINE_AGE_DAYS, ChronoUnit.DAYS);
+
+        int applied = 0;
+        int skipped = 0;
+        for (OfflineAnswer a : answers.stream().sorted(Comparator.comparing(OfflineAnswer::answeredAt)).toList()) {
+            Word word = wordRepository.findByIdAndOwnerUsername(a.wordId(), username).orElse(null);
+            if (word == null || logRepository.existsByOwnerUsernameAndClientId(username, a.clientId())) {
+                skipped++;
+                continue;
+            }
+            Instant at = a.answeredAt().isAfter(now) ? now : a.answeredAt().isBefore(oldest) ? oldest : a.answeredAt();
+            Outcome outcome = a.known() ? Outcome.CORRECT : Outcome.WRONG;
+            AnswerFormat format = a.format() == AnswerFormat.MATCHING || a.format() == AnswerFormat.SPEED
+                    ? a.format() : AnswerFormat.FLASHCARD;
+            reviewService.recordAnswer(owner, word, outcome, PromptType.ENGLISH, format, at, a.clientId());
+            applied++;
+        }
+        return new OfflineAnswersResponse(applied, skipped);
     }
 
     private List<Word> sample(String username, QuizMode mode) {
@@ -71,6 +111,9 @@ public class FlashcardService {
         if (mode == QuizMode.TODAY) {
             java.time.Instant start = java.time.LocalDate.now().atStartOfDay(java.time.ZoneId.systemDefault()).toInstant();
             pool = new ArrayList<>(wordRepository.findByOwnerUsernameAndCreatedAtGreaterThanEqual(username, start));
+        }
+        if (mode == QuizMode.FAVORITES) {
+            pool = new ArrayList<>(wordRepository.findByOwnerUsernameAndFavoriteTrueOrderByCreatedAtDesc(username));
         }
         Collections.shuffle(pool);
         return pool.size() > FREE_DECK_SIZE ? new ArrayList<>(pool.subList(0, FREE_DECK_SIZE)) : pool;

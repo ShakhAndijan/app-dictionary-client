@@ -20,18 +20,21 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import ScreenContainer from '../../components/ScreenContainer';
-import { colors } from '../../theme/colors';
+import { colors, currentTheme, themed } from '../../theme/colors';
 import { Word, WordState } from '../../types';
 import * as wordsApi from '../../api/wordsApi';
 import { dayKey, monthKey } from '../../utils/date';
 import { extractErrorMessage } from '../../utils/errors';
+import { requestProgressCheck } from '../../services/progressEvents';
 import WordImage from '../../components/WordImage';
-import { ImageSource, PreparedImage, pickWordImage, primeWordImage } from '../../services/wordImages';
+import SpeakButton from '../../components/SpeakButton';
+import { ImageSource, PreparedImage, pickWordImage, prefetchWordImages, primeWordImage } from '../../services/wordImages';
 
-type WordFilter = 'ALL' | 'WEAK' | WordState;
+type WordFilter = 'ALL' | 'FAVORITE' | 'WEAK' | WordState;
 
 const FILTERS: { key: WordFilter; label: string }[] = [
   { key: 'ALL', label: 'Hammasi' },
+  { key: 'FAVORITE', label: 'Sevimli' },
   { key: 'WEAK', label: 'Zaif' },
   { key: 'NEW', label: 'Yangi' },
   { key: 'LEARNING', label: "O'rganilmoqda" },
@@ -46,12 +49,13 @@ const STATE_LABELS: Record<WordState, string> = {
 
 function matchesFilter(word: Word, filter: WordFilter): boolean {
   if (filter === 'ALL') return true;
+  if (filter === 'FAVORITE') return word.favorite;
   if (filter === 'WEAK') return word.weak;
   return word.state === filter;
 }
 
 // Dot next to each word: grey = not answered yet, amber = learning, green = mastered.
-const STATE_COLORS: Record<WordState, string> = { NEW: colors.border, LEARNING: '#F59E0B', MASTERED: colors.secondary };
+const STATE_COLORS = themed((): Record<WordState, string> => ({ NEW: colors.border, LEARNING: '#F59E0B', MASTERED: colors.secondary }));
 
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -80,6 +84,7 @@ export default function WordsScreen() {
   const [uzbek, setUzbek] = useState('');
   const [definition, setDefinition] = useState('');
   const [saving, setSaving] = useState(false);
+  const [suggesting, setSuggesting] = useState(false);
   // Picture chosen in the form but not uploaded yet; `removeImage` marks an existing picture for deletion.
   const [newImage, setNewImage] = useState<PreparedImage | null>(null);
   const [removeImage, setRemoveImage] = useState(false);
@@ -95,6 +100,7 @@ export default function WordsScreen() {
     try {
       const data = await wordsApi.getWords();
       setWords(data);
+      prefetchWordImages(data);
     } catch {
       // List load failure is silent; user can pull to refresh
     } finally {
@@ -177,6 +183,53 @@ export default function WordsScreen() {
     resetForm();
   };
 
+  // Fills the empty translation / definition fields; whatever the user already typed is kept.
+  // Stars or un-stars a word right away and rolls back if the server refuses.
+  const toggleFavorite = async (word: Word) => {
+    const next = !word.favorite;
+    const apply = (value: boolean) => {
+      setWords((prev) => prev.map((w) => (w.id === word.id ? { ...w, favorite: value } : w)));
+      setDetailWord((d) => (d && d.id === word.id ? { ...d, favorite: value } : d));
+    };
+    apply(next);
+    try {
+      await wordsApi.updateWord(word.id, { favorite: next });
+    } catch (e: any) {
+      apply(!next);
+      Alert.alert('Xatolik', extractErrorMessage(e, "Yulduzchani o'zgartirib bo'lmadi"));
+    }
+  };
+
+  const handleSuggest = async () => {
+    const word = english.trim();
+    if (!word || suggesting) {
+      if (!word) Alert.alert('Avval inglizcha so\'zni yozing');
+      return;
+    }
+    setSuggesting(true);
+    try {
+      const found = await wordsApi.suggestWord(word);
+      let filled = false;
+      if (found.uzbek && !uzbek.trim()) {
+        setUzbek(found.uzbek);
+        filled = true;
+      }
+      if (found.definition && !definition.trim()) {
+        setDefinition(found.definition);
+        filled = true;
+      }
+      if (!found.uzbek && !found.definition) {
+        Alert.alert('Topilmadi', "Bu so'z uchun tarjima topilmadi. Qo'lda kiriting.");
+      } else if (!filled) {
+        Alert.alert("Maydonlar to'la", "Tarjima va definition allaqachon kiritilgan, ustidan yozmadim.");
+      }
+    } catch (e: any) {
+      Alert.alert('Xatolik', extractErrorMessage(e, "Avtomatik to'ldirib bo'lmadi. Internetni tekshiring."));
+    } finally {
+      setSuggesting(false);
+    }
+  };
+
   const handleSave = async () => {
     if (!english.trim() || !uzbek.trim()) {
       Alert.alert('Xatolik', "Inglizcha va o'zbekcha so'zni kiriting");
@@ -196,6 +249,7 @@ export default function WordsScreen() {
         saved = await wordsApi.updateWord(editingId, payload);
       } else {
         saved = await wordsApi.addWord(payload);
+        requestProgressCheck();
       }
       // The word itself is saved; a failing picture upload must not lose it.
       let imageError: string | null = null;
@@ -295,6 +349,7 @@ export default function WordsScreen() {
               value={query}
               onChangeText={setQuery}
               autoCapitalize="none"
+              keyboardAppearance={currentTheme()}
               style={styles.searchInput}
             />
             {!!query && (
@@ -370,6 +425,13 @@ export default function WordsScreen() {
                     </Text>
                     <View style={[styles.stateDot, { backgroundColor: STATE_COLORS[item.state ?? 'NEW'] }]} />
                   </Pressable>
+                  <Pressable hitSlop={8} onPress={() => toggleFavorite(item)} style={styles.rowIconBtn}>
+                    <Ionicons
+                      name={item.favorite ? 'star' : 'star-outline'}
+                      size={18}
+                      color={item.favorite ? '#F59E0B' : colors.textMuted}
+                    />
+                  </Pressable>
                   <Pressable hitSlop={8} onPress={() => openEditModal(item)} style={styles.rowIconBtn}>
                     <Ionicons name="create-outline" size={18} color={colors.textMuted} />
                   </Pressable>
@@ -421,6 +483,19 @@ export default function WordsScreen() {
                 placeholder="e.g. abundant"
                 autoCapitalize="none"
               />
+              <Pressable
+                onPress={handleSuggest}
+                disabled={suggesting}
+                hitSlop={6}
+                style={({ pressed }) => [styles.suggestBtn, (pressed || suggesting) && styles.suggestBtnPressed]}
+              >
+                {suggesting ? (
+                  <ActivityIndicator size="small" color={colors.primary} />
+                ) : (
+                  <Ionicons name="sparkles-outline" size={16} color={colors.primary} />
+                )}
+                <Text style={styles.suggestBtnText}>Avtomatik to'ldirish</Text>
+              </Pressable>
               <Input
                 label="O'zbekcha tarjimasi"
                 value={uzbek}
@@ -498,6 +573,24 @@ export default function WordsScreen() {
                 <Text style={styles.detailAvatarText}>{detailWord?.english.charAt(0).toUpperCase()}</Text>
               </View>
               <Text style={styles.detailEnglish}>{detailWord?.english}</Text>
+              {detailWord && (
+                <View style={styles.detailActions}>
+                  <SpeakButton text={detailWord.english} />
+                  <Pressable
+                    onPress={() => toggleFavorite(detailWord)}
+                    hitSlop={10}
+                    style={[styles.starBtn, detailWord.favorite && styles.starBtnOn]}
+                    accessibilityRole="button"
+                    accessibilityLabel={detailWord.favorite ? "Sevimlilardan olib tashlash" : "Sevimlilarga qo'shish"}
+                  >
+                    <Ionicons
+                      name={detailWord.favorite ? 'star' : 'star-outline'}
+                      size={22}
+                      color={detailWord.favorite ? '#F59E0B' : colors.textMuted}
+                    />
+                  </Pressable>
+                </View>
+              )}
             </View>
 
             {detailWord?.imageVersion ? (
@@ -609,7 +702,20 @@ function StatBlock({
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
+  suggestBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    gap: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 12,
+    backgroundColor: `${colors.primary}14`,
+    marginBottom: 12,
+  },
+  suggestBtnPressed: { opacity: 0.6 },
+  suggestBtnText: { fontSize: 13, fontWeight: '700', color: colors.primary },
   pictureLabel: { fontSize: 14, fontWeight: '600', color: colors.text, marginBottom: 8 },
   pictureRow: { flexDirection: 'row', alignItems: 'center', gap: 14, marginBottom: 18 },
   picturePreview: { width: 96, height: 96, borderRadius: 14 },
@@ -767,6 +873,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   detailAvatarText: { fontSize: 22, fontWeight: '700', color: colors.primary },
+  detailActions: { flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 10 },
+  starBtn: { width: 38, height: 38, borderRadius: 19, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.border },
+  starBtnOn: { backgroundColor: colors.amberBg },
   detailEnglish: { fontSize: 20, fontWeight: '700', color: colors.text },
   detailRow: { flexDirection: 'row', gap: 12, marginBottom: 16 },
   detailIconWrap: {
@@ -839,4 +948,4 @@ const styles = StyleSheet.create({
   },
   confirmActions: { flexDirection: 'row', gap: 10, width: '100%' },
   confirmActionBtn: { flex: 1 },
-});
+}));

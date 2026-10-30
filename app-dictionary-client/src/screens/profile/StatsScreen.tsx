@@ -4,7 +4,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import ScreenContainer from '../../components/ScreenContainer';
 import Card from '../../components/Card';
-import { colors } from '../../theme/colors';
+import { colors, themed } from '../../theme/colors';
 import { DailyStats, MonthlyStats, ReviewSummary, StatsSummary, Word } from '../../types';
 import * as statsApi from '../../api/statsApi';
 import * as reviewApi from '../../api/reviewApi';
@@ -218,11 +218,11 @@ function TodayCard({ review, streak }: { review: ReviewSummary; streak: number }
   );
 }
 
-const STATE_SEGMENTS = [
+const STATE_SEGMENTS = themed(() => [
   { key: 'masteredCount', label: "O'zlashtirilgan", color: colors.secondary },
   { key: 'learningCount', label: "O'rganilmoqda", color: '#F59E0B' },
   { key: 'unseenCount', label: 'Yangi', color: colors.border },
-] as const;
+] as const);
 
 function WordStateCard({ review }: { review: ReviewSummary }) {
   // `newCount` in the summary is today's allowance of new words, not all unseen words, so derive the rest.
@@ -317,11 +317,14 @@ function SummaryGrid({ summary }: { summary: StatsSummary }) {
   );
 }
 
-const FORMAT_META: Record<string, { label: string; icon: keyof typeof Ionicons.glyphMap; color: string }> = {
+const FORMAT_META = themed((): Record<string, { label: string; icon: keyof typeof Ionicons.glyphMap; color: string }> => ({
   TYPED: { label: 'Yozma test', icon: 'create-outline', color: colors.primary },
   CHOICE: { label: 'Variantli test', icon: 'list-outline', color: '#EC4899' },
   FLASHCARD: { label: 'Fleshkart', icon: 'layers-outline', color: '#F59E0B' },
-};
+  LISTENING: { label: 'Eshitib yozish', icon: 'headset-outline', color: '#14B8A6' },
+  MATCHING: { label: 'Juftlarni moslash', icon: 'git-compare-outline', color: '#8B5CF6' },
+  SPEED: { label: 'Tez raund', icon: 'timer-outline', color: '#EF4444' },
+}));
 
 function FormatBreakdown({ formats }: { formats: StatsSummary['formats'] }) {
   if (formats.every((f) => f.total === 0)) return null;
@@ -444,7 +447,7 @@ function StatBlock({ label, value, color = colors.primary }: { label: string; va
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   todayCard: { marginBottom: 12 },
   todayTop: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 14 },
   todayIcon: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
@@ -452,7 +455,7 @@ const styles = StyleSheet.create({
   todayTitle: { fontSize: 15, fontWeight: '700', color: colors.text },
   todaySub: { fontSize: 12.5, color: colors.textMuted, marginTop: 2 },
   streakBadge: { flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: '#F59E0B1A', borderRadius: 14, paddingHorizontal: 10, paddingVertical: 6 },
-  streakText: { fontSize: 14, fontWeight: '700', color: '#B45309' },
+  streakText: { fontSize: 14, fontWeight: '700', color: colors.amberText },
   todayNumbers: { flexDirection: 'row', alignItems: 'baseline', marginBottom: 8 },
   todayDone: { fontSize: 28, fontWeight: '800' },
   todayGoal: { fontSize: 14, color: colors.textMuted, flex: 1 },
@@ -529,4 +532,4 @@ const styles = StyleSheet.create({
   statBlock: { alignItems: 'center', flex: 1 },
   statValue: { fontSize: 18, fontWeight: '700' },
   statLabel: { fontSize: 11, color: colors.textMuted, marginTop: 2 },
-});
+}));

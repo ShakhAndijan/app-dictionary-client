@@ -40,6 +40,7 @@ public class ReviewService {
     private final UserRepository userRepository;
     private final WordProgressRepository progressRepository;
     private final ReviewLogRepository logRepository;
+    private final ProgressService progressService;
     private final ZoneId zone = ZoneId.systemDefault();
     private final int newPerDay;
     private final int reviewsPerDay;
@@ -48,21 +49,34 @@ public class ReviewService {
                          UserRepository userRepository,
                          WordProgressRepository progressRepository,
                          ReviewLogRepository logRepository,
+                         ProgressService progressService,
                          @Value("${app.review.new-per-day:10}") int newPerDay,
                          @Value("${app.review.reviews-per-day:40}") int reviewsPerDay) {
         this.wordRepository = wordRepository;
         this.userRepository = userRepository;
         this.progressRepository = progressRepository;
         this.logRepository = logRepository;
+        this.progressService = progressService;
         this.newPerDay = newPerDay;
         this.reviewsPerDay = reviewsPerDay;
     }
 
-    /** Updates the word's schedule for an answer and appends it to the review log. */
+    /**
+     * Updates the word's schedule for an answer, appends it to the review log and grants the XP it earned.
+     *
+     * @return the XP this answer was worth
+     */
     @Transactional
-    public void recordAnswer(AppUser owner, Word word, Outcome outcome, PromptType promptType,
+    public int recordAnswer(AppUser owner, Word word, Outcome outcome, PromptType promptType,
                              AnswerFormat format) {
-        LocalDate today = LocalDate.now(zone);
+        return recordAnswer(owner, word, outcome, promptType, format, Instant.now(), null);
+    }
+
+    /** Same, for an answer given earlier (offline): the schedule is computed as of the day it was given. */
+    @Transactional
+    public int recordAnswer(AppUser owner, Word word, Outcome outcome, PromptType promptType,
+                             AnswerFormat format, Instant answeredAt, String clientId) {
+        LocalDate today = answeredAt.atZone(zone).toLocalDate();
         WordProgress progress = progressRepository.findByWordId(word.getId()).orElse(null);
 
         int boxBefore = progress == null ? ReviewScheduler.NEW_BOX : progress.getBox();
@@ -89,7 +103,8 @@ public class ReviewService {
         progressRepository.save(progress);
 
         logRepository.save(new ReviewLog(owner, word, outcome != Outcome.WRONG, boxBefore, schedule.box(), promptType,
-                format));
+                format, answeredAt, clientId));
+        return progressService.awardForAnswer(owner, word, outcome, format, boxBefore, schedule.box());
     }
 
     /**
@@ -135,7 +150,8 @@ public class ReviewService {
     public Map<Long, WordInsight> insightsByWordId(String username) {
         Map<Long, WordInsight> insights = new HashMap<>();
         progressByWordId(username).forEach((id, p) ->
-                insights.put(id, new WordInsight(ReviewScheduler.stateOf(p.getBox()), p.getLapses(), p.isWeak())));
+                insights.put(id, new WordInsight(ReviewScheduler.stateOf(p.getBox()), p.getLapses(), p.isWeak(),
+                        p.getNextReviewDate())));
         return insights;
     }
 

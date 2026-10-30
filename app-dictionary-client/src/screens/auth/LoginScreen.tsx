@@ -11,7 +11,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import AlertModal, { AlertContent } from '../../components/AlertModal';
 import { isNetworkError } from '../../utils/errors';
-import { colors } from '../../theme/colors';
+import { colors, themed } from '../../theme/colors';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'Login'>;
 
@@ -159,7 +159,7 @@ export default function LoginScreen({ navigation }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   flex: { flex: 1, backgroundColor: colors.background },
   scrollContent: { flexGrow: 1 },
   hero: {
@@ -209,4 +209,4 @@ const styles = StyleSheet.create({
   footer: { flexDirection: 'row', justifyContent: 'center', marginTop: 20 },
   footerText: { color: colors.textMuted },
   link: { color: colors.primary, fontWeight: '600' },
-});
+}));

@@ -5,6 +5,7 @@ import com.example.dictionary.model.WordState;
 import com.example.dictionary.service.WordInsight;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 /** API view of a {@link Word}. */
 public record WordResponse(
@@ -16,7 +17,9 @@ public record WordResponse(
         WordState state,
         int lapses,
         boolean weak,
-        Long imageVersion
+        Long imageVersion,
+        boolean favorite,
+        LocalDate nextReviewDate
 ) {
     public static WordResponse from(Word word, WordInsight insight) {
         return new WordResponse(
@@ -28,6 +31,8 @@ public record WordResponse(
                 insight.state(),
                 insight.lapses(),
                 insight.weak(),
-                word.getImageVersion());
+                word.getImageVersion(),
+                word.isFavorite(),
+                insight.nextReviewDate());
     }
 }

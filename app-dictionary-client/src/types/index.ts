@@ -17,6 +17,9 @@ export interface Word {
   lapses: number;
   weak: boolean;
   imageVersion: number | null;
+  favorite: boolean;
+  /** ISO date of the next scheduled review; null/absent for a word never answered. */
+  nextReviewDate?: string | null;
 }
 
 export type WordState = 'NEW' | 'LEARNING' | 'MASTERED';
@@ -64,7 +67,7 @@ export interface StatsSummary {
   formats: FormatStats[];
 }
 
-export type AnswerFormat = 'TYPED' | 'CHOICE' | 'FLASHCARD';
+export type AnswerFormat = 'TYPED' | 'CHOICE' | 'FLASHCARD' | 'LISTENING' | 'MATCHING' | 'SPEED';
 
 export interface FormatStats {
   format: AnswerFormat;

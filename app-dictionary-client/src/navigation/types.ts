@@ -15,4 +15,8 @@ export type ProfileStackParamList = {
   ChangePassword: undefined;
   Stats: undefined;
   Reminders: undefined;
+  Achievements: undefined;
+  WeeklyReport: undefined;
+  Groups: undefined;
+  GroupDetail: { id: number; name: string };
 };

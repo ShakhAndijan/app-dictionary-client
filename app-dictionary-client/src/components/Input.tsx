@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, TextInputProps, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '../theme/colors';
+import { useTheme } from '../theme/ThemeContext';
+import { colors, themed } from '../theme/colors';
 
 interface Props extends TextInputProps {
   label?: string;
@@ -11,6 +12,7 @@ interface Props extends TextInputProps {
 
 export default function Input({ label, error, icon, secureTextEntry, style, ...rest }: Props) {
   const [hidden, setHidden] = useState(!!secureTextEntry);
+  const { scheme } = useTheme();
   const isPasswordField = !!secureTextEntry;
 
   return (
@@ -20,6 +22,8 @@ export default function Input({ label, error, icon, secureTextEntry, style, ...r
         {icon && <Ionicons name={icon} size={18} color={colors.textMuted} style={styles.icon} />}
         <TextInput
           placeholderTextColor={colors.textMuted}
+          keyboardAppearance={scheme}
+          selectionColor={colors.primary}
           secureTextEntry={isPasswordField ? hidden : false}
           style={[styles.input, icon && styles.inputWithIcon, style]}
           {...rest}
@@ -35,7 +39,7 @@ export default function Input({ label, error, icon, secureTextEntry, style, ...r
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   container: { marginBottom: 16 },
   label: { fontSize: 14, fontWeight: '600', color: colors.text, marginBottom: 6 },
   inputWrapper: {
@@ -57,4 +61,4 @@ const styles = StyleSheet.create({
   },
   inputWithIcon: { paddingLeft: 0 },
   errorText: { color: colors.danger, fontSize: 12, marginTop: 4 },
-});
+}));

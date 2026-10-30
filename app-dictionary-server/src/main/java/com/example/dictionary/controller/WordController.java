@@ -4,7 +4,9 @@ import com.example.dictionary.dto.AddWordRequest;
 import com.example.dictionary.dto.UpdateWordRequest;
 import com.example.dictionary.dto.WordImagePayload;
 import com.example.dictionary.dto.WordResponse;
+import com.example.dictionary.dto.WordSuggestionResponse;
 import com.example.dictionary.service.WordService;
+import com.example.dictionary.service.WordSuggestService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -31,9 +34,18 @@ import java.util.List;
 public class WordController {
 
     private final WordService wordService;
+    private final WordSuggestService wordSuggestService;
 
-    public WordController(WordService wordService) {
+    public WordController(WordService wordService, WordSuggestService wordSuggestService) {
         this.wordService = wordService;
+        this.wordSuggestService = wordSuggestService;
+    }
+
+    @Operation(summary = "Suggest translation and definition",
+            description = "Looks up the Uzbek translation and the English definition of a word so the add-word form can be filled in automatically. Fields that were not found are null; nothing is saved.")
+    @GetMapping("/suggest")
+    public ResponseEntity<WordSuggestionResponse> suggest(@RequestParam String english) {
+        return ResponseEntity.ok(wordSuggestService.suggest(english));
     }
 
     @Operation(summary = "Add a word",

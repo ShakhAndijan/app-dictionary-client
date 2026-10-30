@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Image, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
-import { colors } from '../theme/colors';
+import { colors, themed } from '../theme/colors';
 import { cachedImageUri, loadWordImageUri } from '../services/wordImages';
 
 interface Props {
@@ -49,7 +49,7 @@ export default function WordImage({ wordId, version, style, resizeMode = 'cover'
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
   box: { backgroundColor: colors.border, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
   image: { width: '100%', height: '100%' },
-});
+}));

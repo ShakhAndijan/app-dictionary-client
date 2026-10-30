@@ -8,6 +8,12 @@ import QuizScreen from '../screens/quiz/QuizScreen';
 import WordsScreen from '../screens/words/WordsScreen';
 import ProfileNavigator from './ProfileNavigator';
 import { colors } from '../theme/colors';
+import OfflineBanner from '../components/OfflineBanner';
+import { initOfflineSync, onQueueSynced } from '../services/offlineSync';
+import { requestProgressCheck } from '../services/progressEvents';
+import * as wordsApi from '../api/wordsApi';
+import * as reviewApi from '../api/reviewApi';
+import AchievementCelebration from '../components/AchievementCelebration';
 import { syncReminders } from '../services/reminders';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -22,6 +28,18 @@ export default function MainTabs() {
   // Fixed height would hide the system navigation buttons area, so add the bottom inset to it.
   const { bottom } = useSafeAreaInsets();
 
+  // Offline support: track the connection and upload answers given without it. When they are through,
+  // pull the server's fresh numbers back into the phone's copy.
+  useEffect(() => {
+    initOfflineSync();
+    return onQueueSynced(() => {
+      wordsApi.getWords().catch(() => undefined);
+      reviewApi.getReviewSummary().catch(() => undefined);
+      syncReminders();
+      requestProgressCheck();
+    });
+  }, []);
+
   // Rebuild the upcoming reminders on start and whenever the app returns to the foreground.
   useEffect(() => {
     syncReminders();
@@ -31,6 +49,7 @@ export default function MainTabs() {
     return () => sub.remove();
   }, []);
   return (
+    <>
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
@@ -52,5 +71,8 @@ export default function MainTabs() {
       <Tab.Screen name="Sozlar" component={WordsScreen} options={{ title: "So'zlar" }} />
       <Tab.Screen name="Profil" component={ProfileNavigator} options={{ title: 'Profil' }} />
     </Tab.Navigator>
+    <AchievementCelebration />
+    <OfflineBanner />
+    </>
   );
 }

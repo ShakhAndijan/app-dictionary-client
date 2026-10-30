@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Alert, Keyboard, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
@@ -7,7 +7,8 @@ import ScreenContainer from '../../components/ScreenContainer';
 import Card from '../../components/Card';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import { colors } from '../../theme/colors';
+import SpeakButton from '../../components/SpeakButton';
+import { colors, themed } from '../../theme/colors';
 import { MainTabParamList } from '../../navigation/types';
 import { QuizPromptType, ReviewSummary, Word } from '../../types';
 import * as wordsApi from '../../api/wordsApi';
@@ -17,16 +18,33 @@ import { QuizMode, QuizProgress, QuizSummary } from '../../api/quizApi';
 import { dayKey } from '../../utils/date';
 import { extractErrorMessage } from '../../utils/errors';
 import { syncReminders } from '../../services/reminders';
+import { isOnline } from '../../services/connectivity';
+import { prefetchWordImages } from '../../services/wordImages';
+import { requestProgressCheck } from '../../services/progressEvents';
+import { speakEnglish, stopSpeaking } from '../../services/speech';
 import FlashcardView from './FlashcardView';
+import MatchingView from './MatchingView';
+import SpeedRoundView from './SpeedRoundView';
 
 type Props = BottomTabScreenProps<MainTabParamList, 'Baholash'>;
 type Phase = 'idle' | 'active' | 'results';
 
-const PROMPT_META: Record<QuizPromptType, { label: string; icon: keyof typeof Ionicons.glyphMap; color: string }> = {
+const FORMAT_ICON: Record<'TYPED' | 'CHOICE' | 'LISTENING', keyof typeof Ionicons.glyphMap> = {
+  TYPED: 'create-outline',
+  CHOICE: 'list-outline',
+  LISTENING: 'headset-outline',
+};
+const FORMAT_LABEL: Record<'TYPED' | 'CHOICE' | 'LISTENING', string> = {
+  TYPED: 'Yozma',
+  CHOICE: 'Variantli',
+  LISTENING: 'Eshitib',
+};
+
+const PROMPT_META = themed((): Record<QuizPromptType, { label: string; icon: keyof typeof Ionicons.glyphMap; color: string }> => ({
   english: { label: "Inglizcha so'z", icon: 'language-outline', color: colors.primary },
   uzbek: { label: "O'zbekcha tarjima", icon: 'globe-outline', color: colors.secondary },
   definition: { label: 'Definition', icon: 'book-outline', color: '#F59E0B' },
-};
+}));
 
 // The server never reveals which language it expects for a "definition" prompt until
 // after scoring (it's chosen at random server-side), so the label can't be more specific.
@@ -79,6 +97,7 @@ function resultTierFor(accuracy: number, totalAnswered: number): ResultTier {
 function modeLabel(m: QuizMode | null): string {
   if (m === 'DUE') return 'Takrorlash';
   if (m === 'WEAK') return "Zaif so'zlar";
+  if (m === 'FAVORITES') return "Sevimli so'zlar";
   return m === 'TODAY' ? "Bugungi so'zlar" : "Barcha so'zlar";
 }
 
@@ -101,7 +120,10 @@ export default function QuizScreen({ navigation }: Props) {
   const [mode, setMode] = useState<QuizMode | null>(null);
   const [starting, setStarting] = useState(false);
   const [flashcards, setFlashcards] = useState(false);
-  const [format, setFormat] = useState<'TYPED' | 'CHOICE'>('TYPED');
+  const favoriteCount = words.filter((w) => w.favorite).length;
+  const [matching, setMatching] = useState(false);
+  const [speed, setSpeed] = useState(false);
+  const [format, setFormat] = useState<'TYPED' | 'CHOICE' | 'LISTENING'>('TYPED');
   const [options, setOptions] = useState<string[] | null>(null);
   const [pendingOptions, setPendingOptions] = useState<string[] | null>(null);
   const [chosen, setChosen] = useState<string | null>(null);
@@ -112,8 +134,14 @@ export default function QuizScreen({ navigation }: Props) {
 
   const [answer, setAnswer] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const [result, setResult] = useState<{ correct: boolean; closeMatch: boolean; correctAnswer: string } | null>(null);
+  const [result, setResult] = useState<{ correct: boolean; closeMatch: boolean; correctAnswer: string; xpGained: number } | null>(null);
   const [pendingNext, setPendingNext] = useState<{ promptType: QuizPromptType; promptText: string } | null>(null);
+
+  // Dictation: read every new word aloud automatically; stop talking when the quiz is left.
+  useEffect(() => {
+    if (format === 'LISTENING' && question) speakEnglish(question.promptText);
+  }, [question, format]);
+  useEffect(() => stopSpeaking, []);
 
   const [summary, setSummary] = useState<QuizSummary | null>(null);
   const [loadingSummary, setLoadingSummary] = useState(false);
@@ -124,6 +152,7 @@ export default function QuizScreen({ navigation }: Props) {
       const [data, reviewSummary] = await Promise.all([wordsApi.getWords(), reviewApi.getReviewSummary()]);
       setWords(data);
       setReview(reviewSummary);
+      prefetchWordImages(data);
     } catch {
       // Keep previously loaded words on failure
     } finally {
@@ -143,6 +172,13 @@ export default function QuizScreen({ navigation }: Props) {
   const todayWords = words.filter((w) => dayKey(new Date(w.createdAt)) === todayKey);
 
   const startSession = async (selectedMode: QuizMode) => {
+    if (!isOnline()) {
+      Alert.alert(
+        'Internet kerak',
+        "Yozma, variantli va eshitib yozish rejimlari internet bilan ishlaydi. Offlaynda Fleshkart, Juftlarni moslash va Tez raundni ishlating."
+      );
+      return;
+    }
     setStarting(true);
     try {
       const q = await quizApi.startQuiz(selectedMode, format);
@@ -173,7 +209,7 @@ export default function QuizScreen({ navigation }: Props) {
       const res = await quizApi.submitQuizAnswer(sessionId, given);
       setProgress(res.progress);
       setPendingOptions(res.nextOptions ?? null);
-      setResult({ correct: res.correct, closeMatch: res.closeMatch, correctAnswer: res.correctAnswer });
+      setResult({ correct: res.correct, closeMatch: res.closeMatch, correctAnswer: res.correctAnswer, xpGained: res.xpGained ?? 0 });
       setPendingNext(
         res.progress.finished || !res.nextPromptType || !res.nextPromptText
           ? null
@@ -198,6 +234,7 @@ export default function QuizScreen({ navigation }: Props) {
       setLoadingSummary(false);
       setPhase('results');
       syncReminders();
+      requestProgressCheck();
     }
   };
 
@@ -252,11 +289,39 @@ export default function QuizScreen({ navigation }: Props) {
     );
   }
 
+  if (speed) {
+    return (
+      <SpeedRoundView
+        review={review}
+        totalWords={words.length}
+        onExit={() => {
+          setSpeed(false);
+          loadWords();
+        }}
+      />
+    );
+  }
+
+  if (matching) {
+    return (
+      <MatchingView
+        review={review}
+        totalWords={words.length}
+        favoriteCount={favoriteCount}
+        onExit={() => {
+          setMatching(false);
+          loadWords();
+        }}
+      />
+    );
+  }
+
   if (flashcards) {
     return (
       <FlashcardView
         review={review}
         totalWords={words.length}
+        favoriteCount={favoriteCount}
         onExit={() => {
           setFlashcards(false);
           loadWords();
@@ -300,7 +365,7 @@ export default function QuizScreen({ navigation }: Props) {
             </Text>
 
             <View style={styles.formatSwitch}>
-              {(['TYPED', 'CHOICE'] as const).map((f) => (
+              {(['TYPED', 'CHOICE', 'LISTENING'] as const).map((f) => (
                 <Pressable
                   key={f}
                   style={[styles.formatOption, format === f && styles.formatOptionActive]}
@@ -308,16 +373,19 @@ export default function QuizScreen({ navigation }: Props) {
                   hitSlop={4}
                 >
                   <Ionicons
-                    name={f === 'TYPED' ? 'create-outline' : 'list-outline'}
+                    name={FORMAT_ICON[f]}
                     size={16}
                     color={format === f ? '#fff' : colors.textMuted}
                   />
                   <Text style={[styles.formatOptionText, format === f && styles.formatOptionTextActive]}>
-                    {f === 'TYPED' ? 'Yozma' : 'Variantli'}
+                    {FORMAT_LABEL[f]}
                   </Text>
                 </Pressable>
               ))}
             </View>
+            {format === 'LISTENING' && (
+              <Text style={styles.formatHint}>So'z o'qiladi, siz eshitib inglizcha yozasiz. Tugmani bossangiz qayta, uzoq bossangiz sekin o'qiydi.</Text>
+            )}
             {format === 'CHOICE' && (
               <Text style={styles.formatHint}>4 ta variantdan birini tanlaysiz. Variantli javob so'zni faqat o'rta darajagacha ko'taradi.</Text>
             )}
@@ -395,6 +463,29 @@ export default function QuizScreen({ navigation }: Props) {
             <Pressable
               style={({ pressed }) => [
                 styles.modeCard,
+                (starting || favoriteCount === 0) && styles.modeCardDisabled,
+                pressed && !starting && favoriteCount > 0 && styles.modeCardPressed,
+              ]}
+              onPress={() => startSession('FAVORITES')}
+              disabled={starting || favoriteCount === 0}
+            >
+              <View style={[styles.modeIconWrap, { backgroundColor: '#F59E0B1A' }]}>
+                <Ionicons name="star" size={22} color="#F59E0B" />
+              </View>
+              <View style={styles.modeTextWrap}>
+                <Text style={styles.modeTitle}>Sevimli so'zlar bilan</Text>
+                <Text style={styles.modeSubtitle}>
+                  {favoriteCount > 0 ? `Yulduzcha qo'yilgan ${favoriteCount} ta so'z` : "Avval so'zga yulduzcha qo'ying"}
+                </Text>
+              </View>
+              <View style={[styles.modeArrowWrap, { backgroundColor: '#F59E0B1A' }]}>
+                <Ionicons name="arrow-forward" size={16} color="#F59E0B" />
+              </View>
+            </Pressable>
+
+            <Pressable
+              style={({ pressed }) => [
+                styles.modeCard,
                 (starting || todayWords.length === 0) && styles.modeCardDisabled,
                 pressed && !starting && todayWords.length > 0 && styles.modeCardPressed,
               ]}
@@ -429,6 +520,40 @@ export default function QuizScreen({ navigation }: Props) {
               </View>
               <View style={[styles.modeArrowWrap, { backgroundColor: '#F59E0B1A' }]}>
                 <Ionicons name="arrow-forward" size={16} color="#F59E0B" />
+              </View>
+            </Pressable>
+
+            <Pressable
+              style={({ pressed }) => [styles.modeCard, pressed && styles.modeCardPressed]}
+              onPress={() => setMatching(true)}
+              disabled={starting}
+            >
+              <View style={[styles.modeIconWrap, { backgroundColor: '#8B5CF61A' }]}>
+                <Ionicons name="git-compare-outline" size={22} color="#8B5CF6" />
+              </View>
+              <View style={styles.modeTextWrap}>
+                <Text style={styles.modeTitle}>Juftlarni moslash</Text>
+                <Text style={styles.modeSubtitle}>So'zlarni tarjimalari bilan juftlang</Text>
+              </View>
+              <View style={[styles.modeArrowWrap, { backgroundColor: '#8B5CF61A' }]}>
+                <Ionicons name="arrow-forward" size={16} color="#8B5CF6" />
+              </View>
+            </Pressable>
+
+            <Pressable
+              style={({ pressed }) => [styles.modeCard, pressed && styles.modeCardPressed]}
+              onPress={() => setSpeed(true)}
+              disabled={starting}
+            >
+              <View style={[styles.modeIconWrap, { backgroundColor: '#EF44441A' }]}>
+                <Ionicons name="timer-outline" size={22} color="#EF4444" />
+              </View>
+              <View style={styles.modeTextWrap}>
+                <Text style={styles.modeTitle}>Tez raund</Text>
+                <Text style={styles.modeSubtitle}>60 soniyada ko'proq javob bering, rekord o'rnating</Text>
+              </View>
+              <View style={[styles.modeArrowWrap, { backgroundColor: '#EF44441A' }]}>
+                <Ionicons name="arrow-forward" size={16} color="#EF4444" />
               </View>
             </Pressable>
 
@@ -535,7 +660,17 @@ export default function QuizScreen({ navigation }: Props) {
             <Ionicons name={meta.icon} size={14} color={meta.color} />
             <Text style={[styles.promptBadgeText, { color: meta.color }]}>{meta.label}</Text>
           </View>
-          <Text style={styles.promptText}>{question.promptText}</Text>
+          {format === 'LISTENING' ? (
+            <View style={styles.listenBox}>
+              <SpeakButton text={question.promptText} size={40} />
+              <Text style={styles.listenHint}>Eshiting va inglizcha yozing</Text>
+            </View>
+          ) : (
+            <>
+              <Text style={styles.promptText}>{question.promptText}</Text>
+              {question.promptType === 'english' && <SpeakButton text={question.promptText} style={styles.speak} />}
+            </>
+          )}
 
           {options ? (
             <View style={styles.optionsWrap}>
@@ -568,7 +703,7 @@ export default function QuizScreen({ navigation }: Props) {
             </View>
           ) : (
             <Input
-              label={answerLabelFor(question.promptType)}
+              label={format === 'LISTENING' ? "Eshitgan so'zingiz" : answerLabelFor(question.promptType)}
               value={answer}
               onChangeText={setAnswer}
               editable={!result}
@@ -591,7 +726,11 @@ export default function QuizScreen({ navigation }: Props) {
                   ? "To'g'ri javob!"
                   : `Noto'g'ri. To'g'ri javob: ${result.correctAnswer}`}
               </Text>
+              {result.xpGained > 0 && <Text style={styles.xpChip}>+{result.xpGained} XP</Text>}
             </View>
+          )}
+          {result && format !== 'LISTENING' && question.promptType === 'uzbek' && (
+            <SpeakButton text={result.correctAnswer} style={styles.speak} />
           )}
 
           {!result ? (
@@ -640,7 +779,10 @@ function StatBlock({
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => StyleSheet.create({
+  listenBox: { alignItems: 'center', marginBottom: 20, gap: 10 },
+  listenHint: { fontSize: 14, color: colors.textMuted },
+  speak: { alignSelf: 'center', marginBottom: 12 },
   formatSwitch: { flexDirection: 'row', backgroundColor: colors.border, borderRadius: 14, padding: 4, marginBottom: 12 },
   formatOption: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingVertical: 10, borderRadius: 11 },
   formatOptionActive: { backgroundColor: colors.primary },
@@ -749,6 +891,7 @@ const styles = StyleSheet.create({
   },
   resultCorrect: { backgroundColor: `${colors.secondary}1A` },
   resultIncorrect: { backgroundColor: `${colors.danger}1A` },
+  xpChip: { fontSize: 12, fontWeight: '800', color: colors.primary },
   resultText: { fontSize: 13, fontWeight: '600', flex: 1 },
   correct: { color: colors.secondary },
   incorrect: { color: colors.danger },
@@ -795,4 +938,4 @@ const styles = StyleSheet.create({
   },
   resultsMetaItem: { flexDirection: 'row', alignItems: 'center', gap: 5 },
   resultsMetaText: { fontSize: 12, color: colors.textMuted, fontWeight: '500' },
-});
+}));

@@ -1,5 +1,6 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { API_BASE_URL } from '../config/env';
+import { reportServerReachable } from '../services/connectivity';
 import { clearTokens, getAccessToken, getRefreshToken, saveTokens, TokenPair } from './tokenStorage';
 
 const REQUEST_TIMEOUT_MS = 15000;
@@ -61,8 +62,14 @@ function isAuthEndpoint(url?: string) {
 }
 
 apiClient.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    reportServerReachable(true);
+    return response;
+  },
   async (error: AxiosError) => {
+    // Any HTTP answer proves the server is reachable; only a missing answer means we are cut off.
+    if (error.response) reportServerReachable(true);
+    else if (error.code === 'ERR_NETWORK' || error.code === 'ECONNABORTED') reportServerReachable(false);
     const config = error.config as RetriableConfig | undefined;
 
     if (error.response?.status !== 401 || !config || config._retried || isAuthEndpoint(config.url)) {
