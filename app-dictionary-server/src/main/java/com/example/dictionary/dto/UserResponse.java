@@ -9,7 +9,8 @@ public record UserResponse(
         String firstName,
         String lastName,
         String email,
-        int dailyGoal
+        int dailyGoal,
+        String role
 ) {
     public static UserResponse from(AppUser user) {
         return new UserResponse(
@@ -18,6 +19,7 @@ public record UserResponse(
                 user.getFirstName(),
                 user.getLastName(),
                 user.getEmail(),
-                user.getDailyGoal());
+                user.getDailyGoal(),
+                user.getRole().name());
     }
 }

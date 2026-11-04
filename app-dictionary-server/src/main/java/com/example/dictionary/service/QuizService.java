@@ -113,7 +113,8 @@ public class QuizService {
         quizSessionRepository.save(session);
 
         return new QuizQuestionResponse(session.getId(), promptTypeName(promptType),
-                textFor(firstWord, promptType), progressOf(session), optionsFor(session, firstWord, answerField));
+                textFor(firstWord, promptType), progressOf(session), optionsFor(session, firstWord, answerField),
+                languageName(answerField));
     }
 
     @Transactional
@@ -150,6 +151,7 @@ public class QuizService {
         String nextPromptType = null;
         String nextPromptText = null;
         List<String> nextOptions = null;
+        String nextAnswerLanguage = null;
 
         if (nextWord == null) {
             session.finish();
@@ -160,10 +162,12 @@ public class QuizService {
             nextPromptType = promptTypeName(promptType);
             nextPromptText = textFor(nextWord, promptType);
             nextOptions = optionsFor(session, nextWord, answerField);
+            nextAnswerLanguage = languageName(answerField);
         }
 
         return new QuizAnswerResultResponse(correct, match == AnswerMatcher.Result.TYPO, expectedAnswer, answeredPromptType,
-                progressOf(session), nextPromptType, nextPromptText, nextOptions, xpGained);
+                progressOf(session), nextPromptType, nextPromptText, nextOptions, xpGained,
+                nextAnswerLanguage);
     }
 
     @Transactional
@@ -276,6 +280,10 @@ public class QuizService {
             case UZBEK -> word.getUzbek();
             case DEFINITION -> word.getDefinition();
         };
+    }
+
+    private static String languageName(AnswerField field) {
+        return field == AnswerField.ENGLISH ? "english" : "uzbek";
     }
 
     private String textFor(Word word, AnswerField field) {

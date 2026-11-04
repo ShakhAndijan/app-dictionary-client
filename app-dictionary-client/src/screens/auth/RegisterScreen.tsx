@@ -1,23 +1,14 @@
 import React, { useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AuthStackParamList } from '../../navigation/types';
 import { useAuth } from '../../context/AuthContext';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
-import { colors, themed } from '../../theme/colors';
+import { AU, AuthBackground, AuthButton, AuthInput, BrandPill, GlassCard, Reveal } from '../../components/AuthKit';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'Register'>;
-
-const BENEFITS: { icon: keyof typeof Ionicons.glyphMap; text: string }[] = [
-  { icon: 'add-circle-outline', text: 'Har kuni yangi so\'z qo\'shing' },
-  { icon: 'checkmark-done-circle-outline', text: 'Bilimingizni testda sinab ko\'ring' },
-  { icon: 'trending-up-outline', text: 'Rivojlanishingizni kuzatib boring' },
-];
 
 export default function RegisterScreen({ navigation }: Props) {
   const { register } = useAuth();
@@ -64,155 +55,76 @@ export default function RegisterScreen({ navigation }: Props) {
 
   return (
     <View style={styles.flex}>
+      <StatusBar style="light" />
+      <AuthBackground />
       <KeyboardAwareScrollView
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={[styles.scrollContent, { paddingTop: insets.top + 24, paddingBottom: insets.bottom + 28 }]}
         keyboardShouldPersistTaps="handled"
         bounces={false}
         bottomOffset={40}
         mode="layout"
       >
-        <LinearGradient
-          colors={[colors.primary, colors.primaryDark]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={[styles.hero, { paddingTop: insets.top + 24 }]}
-        >
-          <View style={styles.logoBadge}>
-            <Ionicons name="person-add-outline" size={32} color="#fff" />
-          </View>
-          <Text style={styles.appName}>Hisob yarating</Text>
-          <Text style={styles.tagline}>Bugundan boshlab so'z boyligingizni oshiring</Text>
+        <Reveal index={0}>
+          <BrandPill />
+        </Reveal>
+        <Reveal index={1} style={styles.headWrap}>
+          <Text style={styles.headline}>
+            Bugun{'\n'}
+            <Text style={styles.headlineAccent}>boshlaymiz.</Text>
+          </Text>
+          <Text style={styles.lede}>Har kuni bir oz, lekin abadiy.</Text>
+        </Reveal>
 
-          <View style={styles.benefitsCard}>
-            {BENEFITS.map((b, idx) => (
-              <View key={b.text} style={[styles.benefitRow, idx > 0 && styles.benefitRowSpacing]}>
-                <View style={styles.benefitIconWrap}>
-                  <Ionicons name={b.icon} size={16} color="#fff" />
-                </View>
-                <Text style={styles.benefitText}>{b.text}</Text>
-              </View>
-            ))}
-          </View>
-        </LinearGradient>
+        <GlassCard>
+          <Text style={styles.eyebrow}>YANGI HISOB</Text>
+          <Text style={styles.title}>Hisob yarating</Text>
+          <Text style={styles.subtitle}>Bir daqiqada tayyor bo'ladi.</Text>
 
-        <View style={styles.card}>
-          <Text style={styles.title}>Ro'yxatdan o'tish</Text>
-          <Text style={styles.subtitle}>Ma'lumotlaringizni kiriting va boshlang</Text>
-
-          <Input label="Ism" icon="person-outline" value={firstName} onChangeText={setFirstName} placeholder="Ismingiz" />
-          <Input
-            label="Familiya"
-            icon="person-outline"
-            value={lastName}
-            onChangeText={setLastName}
-            placeholder="Familiyangiz"
-          />
-          <Input
+          <AuthInput label="Ism" icon="person-outline" value={firstName} onChangeText={setFirstName} />
+          <AuthInput label="Familiya" icon="person-outline" value={lastName} onChangeText={setLastName} />
+          <AuthInput
             label="Foydalanuvchi nomi"
             icon="at-outline"
             value={username}
             onChangeText={setUsername}
             autoCapitalize="none"
-            placeholder="username"
+            autoCorrect={false}
           />
-          <Input
+          <AuthInput
             label="Email"
             icon="mail-outline"
             value={email}
             onChangeText={setEmail}
             autoCapitalize="none"
             keyboardType="email-address"
-            placeholder="email@example.com"
           />
-          <Input
-            label="Parol"
-            icon="lock-closed-outline"
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-            placeholder="••••••••"
-          />
-          <Text style={styles.helperText}>Kamida 6 ta belgidan iborat bo'lishi kerak</Text>
+          <AuthInput label="Parol" icon="lock-closed-outline" value={password} onChangeText={setPassword} secureTextEntry />
+          <Text style={styles.helper}>Kamida 6 ta belgi</Text>
+          <AuthButton title="Ro'yxatdan o'tish" onPress={handleRegister} loading={loading} />
 
-          <Button
-            title="Ro'yxatdan o'tish"
-            onPress={handleRegister}
-            loading={loading}
-            style={styles.submitBtn}
-          />
-
-          <Text style={styles.termsText}>
-            Ro'yxatdan o'tish orqali siz foydalanish shartlariga rozilik bildirasiz
-          </Text>
-
-          <View style={styles.footer}>
-            <Text style={styles.footerText}>Hisobingiz bormi?</Text>
+          <Text style={styles.footer}>
+            Hisobingiz bormi?{' '}
             <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
-              {' '}
               Kirish
             </Text>
-          </View>
-        </View>
+          </Text>
+        </GlassCard>
       </KeyboardAwareScrollView>
     </View>
   );
 }
 
-const styles = themed(() => StyleSheet.create({
-  flex: { flex: 1, backgroundColor: colors.background },
-  scrollContent: { flexGrow: 1 },
-  hero: {
-    paddingBottom: 32,
-    paddingHorizontal: 24,
-    alignItems: 'center',
-    borderBottomLeftRadius: 32,
-    borderBottomRightRadius: 32,
-  },
-  logoBadge: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: 'rgba(255,255,255,0.18)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 12,
-  },
-  appName: { fontSize: 22, fontWeight: '700', color: '#fff', marginBottom: 4 },
-  tagline: { fontSize: 13, color: 'rgba(255,255,255,0.85)', marginBottom: 20, textAlign: 'center' },
-  benefitsCard: {
-    width: '100%',
-    backgroundColor: 'rgba(255,255,255,0.12)',
-    borderRadius: 16,
-    padding: 16,
-  },
-  benefitRow: { flexDirection: 'row', alignItems: 'center' },
-  benefitRowSpacing: { marginTop: 12 },
-  benefitIconWrap: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    backgroundColor: 'rgba(255,255,255,0.18)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 10,
-  },
-  benefitText: { flex: 1, fontSize: 13, color: '#fff', fontWeight: '500' },
-  card: {
-    flexGrow: 1,
-    backgroundColor: colors.background,
-    marginTop: -20,
-    borderTopLeftRadius: 28,
-    borderTopRightRadius: 28,
-    paddingHorizontal: 24,
-    paddingTop: 32,
-    paddingBottom: 24,
-  },
-  title: { fontSize: 22, fontWeight: '700', color: colors.text, marginBottom: 4 },
-  subtitle: { fontSize: 14, color: colors.textMuted, marginBottom: 24 },
-  helperText: { fontSize: 12, color: colors.textMuted, marginTop: -10, marginBottom: 16 },
-  submitBtn: { marginTop: 8 },
-  termsText: { fontSize: 11, color: colors.textMuted, textAlign: 'center', marginTop: 16, lineHeight: 16 },
-  footer: { flexDirection: 'row', justifyContent: 'center', marginTop: 20 },
-  footerText: { color: colors.textMuted },
-  link: { color: colors.primary, fontWeight: '600' },
-}));
+const styles = StyleSheet.create({
+  flex: { flex: 1, backgroundColor: AU.bg },
+  scrollContent: { flexGrow: 1, paddingHorizontal: 22 },
+  headWrap: { marginTop: 22, marginBottom: 24 },
+  headline: { fontSize: 42, lineHeight: 46, fontWeight: '800', letterSpacing: -1.4, color: '#fff' },
+  headlineAccent: { color: '#A5B4FC' },
+  lede: { fontSize: 15, color: AU.muted, marginTop: 10 },
+  eyebrow: { fontSize: 11, fontWeight: '800', letterSpacing: 2, color: AU.cyan, marginBottom: 8 },
+  title: { fontSize: 26, fontWeight: '800', letterSpacing: -0.6, color: '#fff' },
+  subtitle: { fontSize: 14, color: AU.muted, marginTop: 6, marginBottom: 22 },
+  helper: { fontSize: 12, color: AU.faint, marginTop: -4, marginBottom: 10, marginLeft: 4 },
+  footer: { textAlign: 'center', marginTop: 20, fontSize: 14, color: AU.muted },
+  link: { color: '#C7D2FE', fontWeight: '700' },
+});

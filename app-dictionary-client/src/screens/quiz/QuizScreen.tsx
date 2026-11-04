@@ -46,12 +46,9 @@ const PROMPT_META = themed((): Record<QuizPromptType, { label: string; icon: key
   definition: { label: 'Definition', icon: 'book-outline', color: '#F59E0B' },
 }));
 
-// The server never reveals which language it expects for a "definition" prompt until
-// after scoring (it's chosen at random server-side), so the label can't be more specific.
-function answerLabelFor(promptType: QuizPromptType): string {
-  if (promptType === 'english') return "O'zbekcha tarjima";
-  if (promptType === 'uzbek') return "Inglizcha so'z";
-  return 'Inglizcha yoki o\'zbekcha javob';
+// The server says which language the answer must be in (for a definition prompt it picks one at random).
+function answerLabelFor(language: 'english' | 'uzbek'): string {
+  return language === 'uzbek' ? "O'zbekcha tarjima" : "Inglizcha so'z";
 }
 
 interface ResultTier {
@@ -129,13 +126,13 @@ export default function QuizScreen({ navigation }: Props) {
   const [chosen, setChosen] = useState<string | null>(null);
 
   const [sessionId, setSessionId] = useState<number | null>(null);
-  const [question, setQuestion] = useState<{ promptType: QuizPromptType; promptText: string } | null>(null);
+  const [question, setQuestion] = useState<{ promptType: QuizPromptType; promptText: string; answerLanguage: 'english' | 'uzbek' } | null>(null);
   const [progress, setProgress] = useState<QuizProgress | null>(null);
 
   const [answer, setAnswer] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<{ correct: boolean; closeMatch: boolean; correctAnswer: string; xpGained: number } | null>(null);
-  const [pendingNext, setPendingNext] = useState<{ promptType: QuizPromptType; promptText: string } | null>(null);
+  const [pendingNext, setPendingNext] = useState<{ promptType: QuizPromptType; promptText: string; answerLanguage: 'english' | 'uzbek' } | null>(null);
 
   // Dictation: read every new word aloud automatically; stop talking when the quiz is left.
   useEffect(() => {
@@ -184,7 +181,7 @@ export default function QuizScreen({ navigation }: Props) {
       const q = await quizApi.startQuiz(selectedMode, format);
       setMode(selectedMode);
       setSessionId(q.sessionId);
-      setQuestion({ promptType: q.promptType, promptText: q.promptText });
+      setQuestion({ promptType: q.promptType, promptText: q.promptText, answerLanguage: q.answerLanguage });
       setProgress(q.progress);
       setOptions(q.options ?? null);
       setPendingOptions(null);
@@ -213,7 +210,7 @@ export default function QuizScreen({ navigation }: Props) {
       setPendingNext(
         res.progress.finished || !res.nextPromptType || !res.nextPromptText
           ? null
-          : { promptType: res.nextPromptType, promptText: res.nextPromptText }
+          : { promptType: res.nextPromptType, promptText: res.nextPromptText, answerLanguage: res.nextAnswerLanguage ?? 'english' }
       );
     } catch (e: any) {
       Alert.alert('Xatolik', extractErrorMessage(e, "Javobni yuborib bo'lmadi"));
@@ -674,7 +671,7 @@ export default function QuizScreen({ navigation }: Props) {
 
           {options ? (
             <View style={styles.optionsWrap}>
-              <Text style={styles.optionsLabel}>{answerLabelFor(question.promptType)}</Text>
+              <Text style={styles.optionsLabel}>{answerLabelFor(question.answerLanguage)}</Text>
               {options.map((opt) => {
                 const isRight = !!result && opt === result.correctAnswer;
                 const isWrongPick = !!result && !result.correct && opt === chosen;
@@ -703,7 +700,7 @@ export default function QuizScreen({ navigation }: Props) {
             </View>
           ) : (
             <Input
-              label={format === 'LISTENING' ? "Eshitgan so'zingiz" : answerLabelFor(question.promptType)}
+              label={format === 'LISTENING' ? "Eshitgan so'zingiz" : answerLabelFor(question.answerLanguage)}
               value={answer}
               onChangeText={setAnswer}
               editable={!result}

@@ -91,6 +91,45 @@ class WordSuggestIntegrationTest {
     }
 
     @Test
+    void fillsEnglishAndDefinitionFromAnUzbekWord() throws Exception {
+        String auth = register();
+        when(lookup.englishFor("Olma")).thenReturn(Optional.of("apple"));
+        when(lookup.definition("apple")).thenReturn(Optional.of(new WordLookupClient.Entry("A round fruit.", null, null)));
+        when(lookup.translation("apple")).thenReturn(Optional.of("olma, olma daraxti"));
+
+        mockMvc.perform(get("/api/words/suggest").param("uzbek", " Olma ").header("Authorization", auth))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.english").value("apple"))
+                .andExpect(jsonPath("$.uzbek").value("Olma"))
+                .andExpect(jsonPath("$.definition").value("A round fruit."));
+    }
+
+    @Test
+    void unknownUzbekWordGivesNoEnglish() throws Exception {
+        String auth = register();
+        when(lookup.englishFor(anyString())).thenReturn(Optional.empty());
+
+        mockMvc.perform(get("/api/words/suggest").param("uzbek", "zzzxq").header("Authorization", auth))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.english").doesNotExist());
+    }
+
+    @Test
+    void findsTheWordFromItsDefinition() throws Exception {
+        String auth = register();
+        when(lookup.wordsForDefinition("a round red fruit")).thenReturn(java.util.List.of("pear", "quince", "custard apple"));
+        when(lookup.definition("pear")).thenReturn(Optional.of(new WordLookupClient.Entry("A round fruit.", null, null)));
+        when(lookup.translation("pear")).thenReturn(Optional.of("nok"));
+
+        mockMvc.perform(get("/api/words/suggest").param("definition", " a round red fruit ").header("Authorization", auth))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.english").value("pear"))
+                .andExpect(jsonPath("$.uzbek").value("nok"))
+                .andExpect(jsonPath("$.definition").value("a round red fruit"))
+                .andExpect(jsonPath("$.alternatives[0]").value("quince"));
+    }
+
+    @Test
     void rejectsInvalidInputWithoutCallingOutside() throws Exception {
         String auth = register();
         mockMvc.perform(get("/api/words/suggest").param("english", "   ").header("Authorization", auth))

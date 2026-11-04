@@ -47,10 +47,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     && SecurityContextHolder.getContext().getAuthentication() == null) {
 
                 AppUser user = userRepository.findByUsername(jwtService.extractUsername(token)).orElse(null);
-                if (user != null && user.getTokenVersion() == jwtService.extractTokenVersion(token)) {
+                if (user != null && !user.isBlocked() && user.getTokenVersion() == jwtService.extractTokenVersion(token)) {
                     UserDetails userDetails = User.withUsername(user.getUsername())
                             .password(user.getPassword())
-                            .authorities("ROLE_USER")
+                            .authorities("ROLE_" + user.getRole().name())
                             .build();
 
                     UsernamePasswordAuthenticationToken authentication =

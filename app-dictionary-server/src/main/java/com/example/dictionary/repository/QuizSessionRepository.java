@@ -12,4 +12,7 @@ public interface QuizSessionRepository extends JpaRepository<QuizSession, Long> 
     Optional<QuizSession> findByIdAndOwnerUsername(Long id, String username);
 
     List<QuizSession> findByOwnerUsernameAndStartedAtGreaterThanEqual(String username, Instant from);
+
+    List<QuizSession> findByOwnerId(Long ownerId);
+
 }

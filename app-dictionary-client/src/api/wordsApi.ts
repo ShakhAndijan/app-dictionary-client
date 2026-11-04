@@ -50,16 +50,18 @@ export interface WordImagePayload {
 }
 
 export interface WordSuggestion {
-  english: string;
+  english: string | null;
   uzbek: string | null;
   definition: string | null;
   example: string | null;
   phonetic: string | null;
+  /** Other words that fit, when the lookup started from a typed definition. */
+  alternatives?: string[];
 }
 
 /** Looks up a translation and definition for the add-word form; nothing is saved. */
-export function suggestWord(english: string) {
-  return apiClient.get<WordSuggestion>('/words/suggest', { params: { english } }).then((r) => r.data);
+export function suggestWord(from: { english: string } | { uzbek: string } | { definition: string }) {
+  return apiClient.get<WordSuggestion>('/words/suggest', { params: from }).then((r) => r.data);
 }
 
 export function setWordImage(id: number, image: WordImagePayload) {

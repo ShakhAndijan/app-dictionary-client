@@ -18,6 +18,8 @@ export interface QuizQuestion {
   promptText: string;
   progress: QuizProgress;
   options: string[] | null;
+  /** The language the answer must be written in. */
+  answerLanguage: "english" | "uzbek";
 }
 
 export interface QuizAnswerResult {
@@ -30,6 +32,7 @@ export interface QuizAnswerResult {
   nextPromptText: string | null;
   nextOptions: string[] | null;
   xpGained: number;
+  nextAnswerLanguage: "english" | "uzbek" | null;
 }
 
 export interface QuizSummary {

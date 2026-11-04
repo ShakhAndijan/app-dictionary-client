@@ -10,4 +10,7 @@ public interface StudyGroupRepository extends JpaRepository<StudyGroup, Long> {
     Optional<StudyGroup> findByInviteCode(String inviteCode);
 
     boolean existsByInviteCode(String inviteCode);
+
+    java.util.List<StudyGroup> findByOwnerId(Long ownerId);
+
 }

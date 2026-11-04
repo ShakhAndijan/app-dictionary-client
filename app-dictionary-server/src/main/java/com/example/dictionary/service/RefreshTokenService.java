@@ -67,6 +67,10 @@ public class RefreshTokenService {
             throw unauthorized("Refresh token has expired");
         }
 
+        if (token.getOwner().isBlocked()) {
+            throw unauthorized("Account is blocked");
+        }
+
         token.revoke();
         return new Rotation(token.getOwner(), create(token.getOwner(), token.getFamilyId()));
     }

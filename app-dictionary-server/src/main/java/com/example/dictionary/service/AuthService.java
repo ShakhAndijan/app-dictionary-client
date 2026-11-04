@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.Instant;
+
 @Service
 public class AuthService {
 
@@ -67,6 +69,9 @@ public class AuthService {
         AppUser user = userRepository.findByUsername(request.username())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials"));
 
+        if (user.isBlocked()) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Account is blocked");
+        }
         return issueTokens(user);
     }
 
@@ -92,6 +97,7 @@ public class AuthService {
     /** Starts a new login session for the user: an access token plus a new refresh token family. */
     @Transactional
     public AuthResponse issueTokens(AppUser user) {
+        user.setLastLoginAt(Instant.now());
         return buildAuthResponse(user, refreshTokenService.issue(user));
     }
 

@@ -5,6 +5,7 @@ export interface User {
   lastName: string;
   email: string;
   dailyGoal: number;
+  role?: 'USER' | 'ADMIN';
 }
 
 export interface Word {

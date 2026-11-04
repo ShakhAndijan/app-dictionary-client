@@ -7,6 +7,15 @@ export type MainTabParamList = {
   Baholash: undefined;
   Sozlar: undefined;
   Profil: undefined;
+  Admin: undefined;
+};
+
+export type AdminStackParamList = {
+  AdminHome: undefined;
+  AdminUsers: undefined;
+  AdminUser: { id: number; name: string };
+  AdminAnnouncements: undefined;
+  AdminAudit: undefined;
 };
 
 export type ProfileStackParamList = {

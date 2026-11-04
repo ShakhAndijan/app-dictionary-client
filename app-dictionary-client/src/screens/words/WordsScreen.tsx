@@ -202,14 +202,23 @@ export default function WordsScreen() {
 
   const handleSuggest = async () => {
     const word = english.trim();
-    if (!word || suggesting) {
-      if (!word) Alert.alert('Avval inglizcha so\'zni yozing');
+    const translated = uzbek.trim();
+    const described = definition.trim();
+    if ((!word && !translated && !described) || suggesting) {
+      if (!word && !translated && !described) Alert.alert("Inglizcha so'z, o'zbekcha so'z yoki definition yozing");
       return;
     }
     setSuggesting(true);
     try {
-      const found = await wordsApi.suggestWord(word);
+      // Any one field is enough: the English word is looked up from the Uzbek word or from a description.
+      const found = await wordsApi.suggestWord(
+        word ? { english: word } : translated ? { uzbek: translated } : { definition: described }
+      );
       let filled = false;
+      if (!word && found.english) {
+        setEnglish(found.english);
+        filled = true;
+      }
       if (found.uzbek && !uzbek.trim()) {
         setUzbek(found.uzbek);
         filled = true;
@@ -218,8 +227,10 @@ export default function WordsScreen() {
         setDefinition(found.definition);
         filled = true;
       }
-      if (!found.uzbek && !found.definition) {
+      if (!found.english && !found.uzbek && !(found.definition && word)) {
         Alert.alert('Topilmadi', "Bu so'z uchun tarjima topilmadi. Qo'lda kiriting.");
+      } else if (found.alternatives && found.alternatives.length > 0 && !word && !translated) {
+        Alert.alert("Eng mos so'z: " + found.english, 'Boshqa variantlar: ' + found.alternatives.join(', '));
       } else if (!filled) {
         Alert.alert("Maydonlar to'la", "Tarjima va definition allaqachon kiritilgan, ustidan yozmadim.");
       }

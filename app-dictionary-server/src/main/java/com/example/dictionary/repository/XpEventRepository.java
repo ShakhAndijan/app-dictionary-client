@@ -1,5 +1,7 @@
 package com.example.dictionary.repository;
 
+import org.springframework.data.jpa.repository.Modifying;
+
 import com.example.dictionary.model.XpEvent;
 import com.example.dictionary.model.XpSource;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -34,5 +36,14 @@ public interface XpEventRepository extends JpaRepository<XpEvent, Long> {
             + "where e.owner.id in :ids and e.createdAt >= :from group by e.owner.id")
     List<Object[]> xpByOwnerSince(@Param("ids") Collection<Long> ids, @Param("from") Instant from);
 
+    /** Per owner: {owner id, total xp}. */
+    @Query("select e.owner.id, coalesce(sum(e.amount), 0) from XpEvent e group by e.owner.id")
+    List<Object[]> totalXpByOwner();
+
     long countByOwnerUsernameAndSource(String username, XpSource source);
+
+    @Modifying
+    @Query("delete from XpEvent e where e.owner.id = :ownerId")
+    int deleteByOwnerId(@Param("ownerId") Long ownerId);
+
 }

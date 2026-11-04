@@ -4,8 +4,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import java.time.Instant;
 
 /**
  * A registered account. The {@link #password} column stores only the BCrypt hash.
@@ -43,6 +47,21 @@ public class AppUser {
     @Column(name = "daily_goal", nullable = false, columnDefinition = "integer default 10")
     private int dailyGoal = DEFAULT_DAILY_GOAL;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20, columnDefinition = "varchar(20) default 'USER'")
+    private Role role = Role.USER;
+
+    /** Null for accounts that existed before this column was added. */
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @Column(name = "last_login_at")
+    private Instant lastLoginAt;
+
+    /** A blocked account cannot log in, refresh or use its existing tokens. */
+    @Column(nullable = false, columnDefinition = "boolean default false")
+    private boolean blocked;
+
     protected AppUser() {
         // Required by JPA.
     }
@@ -53,6 +72,7 @@ public class AppUser {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.createdAt = Instant.now();
     }
 
     public Long getId() {
@@ -113,5 +133,33 @@ public class AppUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Instant getLastLoginAt() {
+        return lastLoginAt;
+    }
+
+    public void setLastLoginAt(Instant lastLoginAt) {
+        this.lastLoginAt = lastLoginAt;
     }
 }

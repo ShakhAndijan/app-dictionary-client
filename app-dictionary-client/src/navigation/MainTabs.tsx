@@ -7,8 +7,11 @@ import { MainTabParamList } from './types';
 import QuizScreen from '../screens/quiz/QuizScreen';
 import WordsScreen from '../screens/words/WordsScreen';
 import ProfileNavigator from './ProfileNavigator';
+import AdminNavigator from './AdminNavigator';
+import { useAuth } from '../context/AuthContext';
 import { colors } from '../theme/colors';
 import OfflineBanner from '../components/OfflineBanner';
+import AnnouncementBanner from '../components/AnnouncementBanner';
 import { initOfflineSync, onQueueSynced } from '../services/offlineSync';
 import { requestProgressCheck } from '../services/progressEvents';
 import * as wordsApi from '../api/wordsApi';
@@ -22,11 +25,13 @@ const TAB_ICONS: Record<keyof MainTabParamList, [keyof typeof Ionicons.glyphMap,
   Baholash: ['checkmark-done-circle', 'checkmark-done-circle-outline'],
   Sozlar: ['book', 'book-outline'],
   Profil: ['person-circle', 'person-circle-outline'],
+  Admin: ['shield-checkmark', 'shield-checkmark-outline'],
 };
 
 export default function MainTabs() {
   // Fixed height would hide the system navigation buttons area, so add the bottom inset to it.
   const { bottom } = useSafeAreaInsets();
+  const { user } = useAuth();
 
   // Offline support: track the connection and upload answers given without it. When they are through,
   // pull the server's fresh numbers back into the phone's copy.
@@ -70,8 +75,10 @@ export default function MainTabs() {
       <Tab.Screen name="Baholash" component={QuizScreen} options={{ title: 'Baholash' }} />
       <Tab.Screen name="Sozlar" component={WordsScreen} options={{ title: "So'zlar" }} />
       <Tab.Screen name="Profil" component={ProfileNavigator} options={{ title: 'Profil' }} />
+      {user?.role === 'ADMIN' && <Tab.Screen name="Admin" component={AdminNavigator} options={{ title: 'Admin' }} />}
     </Tab.Navigator>
     <AchievementCelebration />
+    <AnnouncementBanner />
     <OfflineBanner />
     </>
   );

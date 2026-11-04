@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -44,8 +45,19 @@ public class WordController {
     @Operation(summary = "Suggest translation and definition",
             description = "Looks up the Uzbek translation and the English definition of a word so the add-word form can be filled in automatically. Fields that were not found are null; nothing is saved.")
     @GetMapping("/suggest")
-    public ResponseEntity<WordSuggestionResponse> suggest(@RequestParam String english) {
-        return ResponseEntity.ok(wordSuggestService.suggest(english));
+    public ResponseEntity<WordSuggestionResponse> suggest(@RequestParam(required = false) String english,
+                                                          @RequestParam(required = false) String uzbek,
+                                                          @RequestParam(required = false) String definition) {
+        if (english != null && !english.isBlank()) {
+            return ResponseEntity.ok(wordSuggestService.suggest(english));
+        }
+        if (uzbek != null && !uzbek.isBlank()) {
+            return ResponseEntity.ok(wordSuggestService.suggestFromUzbek(uzbek));
+        }
+        if (definition != null && !definition.isBlank()) {
+            return ResponseEntity.ok(wordSuggestService.suggestFromDefinition(definition));
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "english, uzbek or definition is required");
     }
 
     @Operation(summary = "Add a word",
