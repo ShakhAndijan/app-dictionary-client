@@ -1,0 +1,85 @@
+# Production stack for one server: website + API on a single domain.
+#
+#   Internet --HTTPS--> web (Caddy: static site, /api proxied) --> backend (Spring Boot) --> db (PostgreSQL)
+#
+# Only the web container publishes ports (80/443). Database and backend stay in the private network.
+# The mobile app keeps using  https://<DOMAIN>/api.
+#
+#   cp .env.example .env     # then edit the values
+#   docker compose -f docker-compose.prod.yml up -d --build
+#
+# Full instructions: DEPLOY.md
+name: dictionary
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: dictionary-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-dictionary}
+      POSTGRES_USER: ${POSTGRES_USER:-dictionary}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: [internal]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  backend:
+    build: ./app-dictionary-server
+    image: dictionary-backend:latest
+    container_name: dictionary-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_URL: jdbc:postgresql://db:5432/${POSTGRES_DB:-dictionary}
+      DB_USERNAME: ${POSTGRES_USER:-dictionary}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS:-900000}
+      JWT_REFRESH_EXPIRATION_MS: ${JWT_REFRESH_EXPIRATION_MS:-2592000000}
+      # The admin account is created on the first start only (an existing user is never changed).
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-superadmin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?set ADMIN_PASSWORD in .env}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-superadmin@dictionary.local}
+      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS:--XX:MaxRAMPercentage=70}
+      TZ: ${TZ:-UTC}
+    expose:
+      - "8080"
+    networks: [internal]
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./app-dictionary-web
+      args:
+        VITE_API_URL: /api
+    image: dictionary-web:latest
+    container_name: dictionary-web
+    depends_on:
+      - backend
+    environment:
+      DOMAIN: ${DOMAIN:?set DOMAIN in .env}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    networks: [internal]
+    restart: unless-stopped
+
+networks:
+  internal:
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:

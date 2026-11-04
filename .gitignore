@@ -1,1 +1,4 @@
 report/
+
+# Server secrets (see .env.example)
+/.env

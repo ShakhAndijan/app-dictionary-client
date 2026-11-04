@@ -1,0 +1,21 @@
+# One domain for everything: the website (static files) and the API (/api -> Spring Boot backend).
+# Caddy gets and renews the Let's Encrypt certificate for {$DOMAIN} by itself.
+# Needs: the domain's DNS A record points to this server, ports 80/443 are open.
+{$DOMAIN} {
+	encode gzip zstd
+
+	handle /api/* {
+		reverse_proxy backend:8080
+	}
+
+	handle {
+		root * /srv
+		# Hashed build files never change, so they can be cached for a year.
+		@assets path /assets/*
+		header @assets Cache-Control "public, max-age=31536000, immutable"
+		# Single-page app: unknown paths (/admin/users/3 ...) fall back to index.html.
+		try_files {path} /index.html
+		header /index.html Cache-Control "no-cache"
+		file_server
+	}
+}
