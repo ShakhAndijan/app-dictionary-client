@@ -162,10 +162,13 @@ export function SettingsPage() {
   );
 }
 
+type AchFilter = 'all' | 'done' | 'todo';
+
 export function AchievementsPage() {
   const nav = useNavigate();
   const [progress, setProgress] = useState<Progress | null>(null);
   const [error, setError] = useState(false);
+  const [filter, setFilter] = useState<AchFilter>('all');
 
   useEffect(() => {
     progressApi
@@ -183,55 +186,122 @@ export function AchievementsPage() {
     );
   }
 
+  const all = progress.achievements;
+  const done = all.filter((a) => a.unlocked);
+  const total = Math.max(1, progress.totalAchievements);
+  const pct = Math.round((progress.unlockedCount / total) * 100);
+  const earnedXp = done.reduce((sum, a) => sum + a.xpReward, 0);
+  const next = all.filter((a) => !a.unlocked).sort((a, b) => b.current / b.target - a.current / a.target)[0];
+
   // Unlocked first, then the closest to unlocking.
-  const sorted = [...progress.achievements].sort((a, b) => {
+  const sorted = [...all].sort((a, b) => {
     if (a.unlocked !== b.unlocked) return a.unlocked ? -1 : 1;
     return b.current / b.target - a.current / a.target;
   });
+  const shown = sorted.filter((a) => (filter === 'all' ? true : filter === 'done' ? a.unlocked : !a.unlocked));
+  const tabs: { key: AchFilter; label: string; n: number }[] = [
+    { key: 'all', label: 'Hammasi', n: all.length },
+    { key: 'done', label: 'Ochilgan', n: done.length },
+    { key: 'todo', label: 'Jarayonda', n: all.length - done.length },
+  ];
+  const R = 46;
+  const C = 2 * Math.PI * R;
 
   return (
     <>
-      <PageHeader title="Yutuqlar" back={() => nav('/profile')} />
-      <p style={{ fontWeight: 700 }}>
-        {progress.unlockedCount} / {progress.totalAchievements} yutuq ochilgan
-      </p>
-      {sorted.map((a) => {
-        const tier = TIER_META[a.tier];
-        const pct = Math.min(100, Math.round((a.current / Math.max(1, a.target)) * 100));
-        return (
-          <Card key={a.code} className="mb">
-            <div className="ach-row" style={{ marginBottom: 0 }}>
-              <div
-                className="ach-badge"
-                style={a.unlocked ? { background: `${tier.color}22`, borderColor: tier.color } : { background: 'var(--bg)' }}
-              >
-                {a.unlocked ? '🏅' : '🔒'}
-              </div>
-              <div className="grow">
-                <div className="row">
-                  <b className="grow">{a.title}</b>
-                  <span style={{ fontSize: 11, fontWeight: 800, color: tier.color }}>{tier.label}</span>
-                </div>
-                <div className="muted" style={{ fontSize: 13 }}>{a.description}</div>
-                {a.unlocked ? (
-                  <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--secondary)', marginTop: 6 }}>
-                    Ochilgan · +{a.xpReward} XP
-                  </div>
-                ) : (
-                  <>
-                    <div style={{ marginTop: 8 }}>
-                      <ProgressBar pct={pct} color={tier.color} />
-                    </div>
-                    <div className="muted" style={{ fontSize: 12, marginTop: 4 }}>
-                      {a.current} / {a.target} · +{a.xpReward} XP
-                    </div>
-                  </>
-                )}
-              </div>
+      <header className="ac-head rise">
+        <button className="gp-back" onClick={() => nav('/profile')} aria-label="Orqaga">←</button>
+        <div>
+          <div className="eyebrow">Sizning nishonlaringiz</div>
+          <h1 className="dx-title">Yutuqlar</h1>
+        </div>
+      </header>
+
+      <section className="ac-hero rise" style={{ ['--d' as string]: '0.04s' }}>
+        <div className="ac-ring">
+          <svg viewBox="0 0 108 108" aria-hidden="true">
+            <circle cx="54" cy="54" r={R} className="ac-ring-bg" />
+            <circle cx="54" cy="54" r={R} className="ac-ring-fg" strokeDasharray={C} strokeDashoffset={C * (1 - pct / 100)} />
+          </svg>
+          <div className="ac-ring-txt">
+            <b>{pct}%</b>
+            <small>ochilgan</small>
+          </div>
+        </div>
+        <div className="ac-hero-info">
+          <h2>
+            {progress.unlockedCount} <small>/ {progress.totalAchievements} yutuq</small>
+          </h2>
+          <p>Mashq qiling, so'z qo'shing va seriyani saqlang. Har bir yutuq sizga XP beradi.</p>
+          <div className="ac-chips">
+            <span>✦ {earnedXp} XP yutuqlardan</span>
+            {(['GOLD', 'SILVER', 'BRONZE'] as const).map((t) => (
+              <span key={t} style={{ ['--tone' as string]: TIER_META[t].color }} className="tier">
+                <i /> {done.filter((a) => a.tier === t).length} {TIER_META[t].label.toLowerCase()}
+              </span>
+            ))}
+          </div>
+        </div>
+        {next && (
+          <div className="ac-next">
+            <small>Keyingi nishon</small>
+            <div className="ac-next-row">
+              <span className="ac-next-ico">{next.icon}</span>
+              <b>{next.title}</b>
             </div>
-          </Card>
-        );
-      })}
+            <ProgressBar pct={Math.min(100, (next.current / Math.max(1, next.target)) * 100)} color={TIER_META[next.tier].color} />
+            <small>
+              {next.current} / {next.target} · +{next.xpReward} XP
+            </small>
+          </div>
+        )}
+      </section>
+
+      <div className="dx-filters ac-tabs" role="tablist">
+        {tabs.map((t) => (
+          <button key={t.key} role="tab" aria-selected={filter === t.key} className={`dx-seg ${filter === t.key ? 'on' : ''}`} onClick={() => setFilter(t.key)}>
+            {t.label} <em>{t.n}</em>
+          </button>
+        ))}
+      </div>
+
+      {shown.length === 0 ? (
+        <p className="muted center" style={{ padding: 30 }}>Bu bo'limda hozircha yutuq yo'q.</p>
+      ) : (
+        <div className="ac-grid">
+          {shown.map((a, i) => {
+            const tier = TIER_META[a.tier];
+            const p = Math.min(100, Math.round((a.current / Math.max(1, a.target)) * 100));
+            return (
+              <article key={a.code} className={`ac-card rise ${a.unlocked ? 'on' : ''}`} style={{ ['--tone' as string]: tier.color, ['--d' as string]: `${Math.min(i, 12) * 0.03}s` }}>
+                <div className="ac-ico">{a.unlocked ? a.icon : '🔒'}</div>
+                <div className="ac-body">
+                  <div className="ac-top">
+                    <b>{a.title}</b>
+                    <span className="ac-tier">{tier.label}</span>
+                  </div>
+                  <p>{a.description}</p>
+                  {a.unlocked ? (
+                    <div className="ac-done">
+                      ✓ Ochilgan <em>+{a.xpReward} XP</em>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="ac-bar"><i style={{ width: `${p}%` }} /></div>
+                      <div className="ac-meta">
+                        <span>
+                          {a.current} / {a.target}
+                        </span>
+                        <em>+{a.xpReward} XP</em>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 }

@@ -45,7 +45,7 @@ cp .env.example .env
 nano .env
 ```
 To'ldiring:
-- `DOMAIN` — domeningiz.
+- `DOMAIN` — domeningiz (standart: `shakhdict.duckdns.org`, shu bo'lsa o'zgartirmang).
 - `POSTGRES_PASSWORD` — **eski stekdagi parol bilan bir xil bo'lsin** (baza eski bo'lsa). Yangi baza bo'lsa: `openssl rand -base64 24 | tr -d '/+='`
 - `JWT_SECRET` — eski qiymat (foydalanuvchilar chiqib ketmasligi uchun) yoki yangi: `openssl rand -base64 48`
 - `ADMIN_PASSWORD` — admin paroli (kuchli qiling). `ADMIN_USERNAME` va `ADMIN_EMAIL` ham shu yerda.
@@ -103,7 +103,7 @@ docker compose -f docker-compose.prod.yml down -v     # DIQQAT: bazani ham o'chi
 ## Muammolar
 | Belgi | Sabab / yechim |
 |---|---|
-| `set ADMIN_PASSWORD in .env` va shunga o'xshash xato | `.env` da shu qiymat yo'q |
+| `set ADMIN_PASSWORD in .env` va shunga o'xshash xato | `.env` da shu qiymat yo'q (majburiy: `POSTGRES_PASSWORD`, `JWT_SECRET`, `ADMIN_PASSWORD`) |
 | Sertifikat olinmayapti | DNS A yozuvi noto'g'ri yoki 80/443 yopiq: `docker logs dictionary-web` |
 | 80/443 band | Eski `dictionary-caddy` konteyneri ishlayapti: 1-bosqichdagi `down` ni bajaring |
 | `password authentication failed` | `POSTGRES_PASSWORD` baza yaratilgandagi parol bilan bir xil emas |

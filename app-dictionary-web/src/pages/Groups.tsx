@@ -50,35 +50,45 @@ export function GroupsPage() {
 
   return (
     <>
-      <PageHeader title="Do'stlar bilan reyting" back={() => nav('/profile')} />
-      <div className="row gap mb wrap">
-        <Button onClick={() => open('create')}>＋ Guruh ochish</Button>
-        <Button variant="outline" onClick={() => open('join')}>Kod bilan qo'shilish</Button>
-      </div>
+      <header className="gp-head rise">
+        <button className="gp-back" onClick={() => nav('/profile')} aria-label="Orqaga">←</button>
+        <div className="grow">
+          <div className="eyebrow">Birga o'rganing</div>
+          <h1 className="dx-title">Do'stlar bilan reyting</h1>
+        </div>
+        <div className="gp-actions">
+          <Button variant="outline" onClick={() => open('join')}>Kod bilan qo'shilish</Button>
+          <Button onClick={() => open('create')}>＋ Guruh ochish</Button>
+        </div>
+      </header>
 
       {groups == null ? (
         loadError ? <p className="muted center">Guruhlarni yuklab bo'lmadi</p> : <Spinner />
       ) : groups.length === 0 ? (
-        <Card className="empty">
-          <div className="empty-emoji">👥</div>
+        <section className="gp-empty rise">
+          <div className="gp-empty-ico">👥</div>
           <h3>Hali guruhingiz yo'q</h3>
-          <p className="muted">Guruh oching va kodni do'stlaringizga yuboring. Hammangizning haftalik XP reytingingiz shu yerda ko'rinadi.</p>
-        </Card>
+          <p>Guruh oching va kodni do'stlaringizga yuboring. Hammangizning haftalik XP reytingingiz shu yerda ko'rinadi.</p>
+          <div className="gp-actions center-row">
+            <Button onClick={() => open('create')}>＋ Guruh ochish</Button>
+            <Button variant="outline" onClick={() => open('join')}>Kod bilan qo'shilish</Button>
+          </div>
+        </section>
       ) : (
-        groups.map((g) => (
-          <Card key={g.id} className="mb" onClick={() => nav(`/profile/groups/${g.id}`)}>
-            <div className="row gap">
-              <span style={{ fontSize: 30 }}>{g.emoji}</span>
-              <div className="grow">
+        <div className="gp-grid">
+          {groups.map((g, i) => (
+            <button key={g.id} className="gp-card rise" style={{ ['--d' as string]: `${i * 0.05}s` }} onClick={() => nav(`/profile/groups/${g.id}`)}>
+              <span className="gp-emoji">{g.emoji}</span>
+              <span className="gp-card-txt">
                 <b>{g.name}</b>
-                <div className="muted" style={{ fontSize: 13 }}>
+                <small>
                   {g.memberCount} a'zo{g.ownedByMe ? ' · siz egasisiz' : ''}
-                </div>
-              </div>
-              <span className="muted">›</span>
-            </div>
-          </Card>
-        ))
+                </small>
+              </span>
+              <span className="gp-go" aria-hidden="true">→</span>
+            </button>
+          ))}
+        </div>
       )}
 
       {sheet && (
@@ -89,7 +99,7 @@ export function GroupsPage() {
               <Field label="Guruh nomi" value={name} onChange={(e) => setName(e.target.value)} placeholder="Masalan: Sinfdoshlar" maxLength={40} autoFocus />
               <div className="emoji-pick">
                 {EMOJIS.map((e) => (
-                  <button key={e} className={`emoji-btn ${e === emoji ? 'on' : ''}`} onClick={() => setEmoji(e)}>
+                  <button key={e} type="button" className={`emoji-btn ${e === emoji ? 'on' : ''}`} onClick={() => setEmoji(e)}>
                     {e}
                   </button>
                 ))}
@@ -175,57 +185,92 @@ export function GroupDetailPage() {
 
   return (
     <>
-      <PageHeader title="Guruh" back={() => nav('/profile/groups')} />
-      <div className="center mb">
-        <div style={{ fontSize: 46 }}>{group.emoji}</div>
-        <h2>{group.name}</h2>
-        <div className="muted">{group.members.length} a'zo</div>
-      </div>
-
-      <Card className="mb">
-        <div className="row gap">
-          <div className="grow">
-            <div className="muted" style={{ fontSize: 12, fontWeight: 700 }}>Taklif kodi</div>
-            <div style={{ fontSize: 26, fontWeight: 800, letterSpacing: 4 }}>{group.inviteCode}</div>
+      <section className="gp-hero rise">
+        <button className="gp-back" onClick={() => nav('/profile/groups')} aria-label="Orqaga">←</button>
+        <div className="gp-hero-emoji">{group.emoji}</div>
+        <div className="grow">
+          <div className="eyebrow">Guruh</div>
+          <h1 className="dx-title gp-hero-name">{group.name}</h1>
+          <div className="gp-hero-sub">
+            {group.members.length} a'zo · jami {group.members.reduce((s, m) => s + xpOf(m, period), 0)} XP
           </div>
-          <Button onClick={copyInvite}>{copied ? '✓ Nusxalandi' : '📋 Nusxalash'}</Button>
         </div>
-      </Card>
+        <div className="gp-invite">
+          <small>Taklif kodi</small>
+          <b>{group.inviteCode}</b>
+          <button onClick={copyInvite}>{copied ? '✓ Nusxalandi' : '📋 Nusxalash'}</button>
+        </div>
+      </section>
 
-      <div className="tabs">
+      <div className="dx-filters gp-period" role="tablist">
         {(['week', 'all'] as Period[]).map((p) => (
-          <button key={p} className={`tab ${period === p ? 'on' : ''}`} onClick={() => setPeriod(p)}>
+          <button key={p} role="tab" aria-selected={period === p} className={`dx-seg ${period === p ? 'on' : ''}`} onClick={() => setPeriod(p)}>
             {p === 'week' ? 'Shu hafta' : 'Hammasi'}
           </button>
         ))}
       </div>
 
-      {ranked.map((m, i) => {
-        const xp = xpOf(m, period);
-        return (
-          <Card key={m.userId} className="mb" >
-            <div className="row gap" style={m.me ? { outline: '0' } : undefined}>
-              <div className="rank">{i < 3 && xp > 0 ? MEDALS[i] : i + 1}</div>
-              <div className="grow">
-                <div className="row gap">
-                  <b>{m.name}</b>
-                  {m.me && <span className="chip chip-new">Siz</span>}
-                  {m.owner && <span className="chip chip-learning">Egasi</span>}
-                </div>
-                <div className="muted" style={{ fontSize: 12 }}>
-                  @{m.username} · {m.level}-daraja · {m.levelTitle}
-                </div>
-                <div style={{ marginTop: 6 }}>
-                  <ProgressBar pct={(xp / top) * 100} color={m.me ? 'var(--primary)' : 'var(--secondary)'} />
-                </div>
+      {ranked.length >= 3 && (
+        <section className="gp-podium rise" style={{ ['--d' as string]: '0.05s' }}>
+          {[1, 0, 2].map((idx) => {
+            const m = ranked[idx];
+            const xp = xpOf(m, period);
+            return (
+              <div key={m.userId} className={`gp-pod p${idx + 1} ${m.me ? 'me' : ''}`}>
+                <div className="gp-pod-medal">{MEDALS[idx]}</div>
+                <div className="gp-pod-av">{m.name[0]?.toUpperCase()}</div>
+                <b className="gp-pod-name">{m.name}</b>
+                <small>{m.me ? 'Siz' : `@${m.username}`}</small>
+                <div className="gp-pod-xp">{xp} <em>XP</em></div>
+                {group.ownedByMe && !m.me && (
+                  <button
+                    className="gp-kick gp-pod-kick"
+                    title="Guruhdan chiqarish"
+                    onClick={() =>
+                      setAction({
+                        title: "A'zoni chiqarish",
+                        text: `${m.name} guruhdan chiqarilsinmi?`,
+                        label: 'Chiqarish',
+                        run: () => groupsApi.removeMember(id, m.userId).then(load),
+                      })
+                    }
+                  >
+                    ✕
+                  </button>
+                )}
+                <div className="gp-pod-step" />
               </div>
-              <div className="center">
-                <div style={{ fontWeight: 800, fontSize: 18 }}>{xp}</div>
-                <div className="muted" style={{ fontSize: 11 }}>XP</div>
+            );
+          })}
+        </section>
+      )}
+
+      <section className="gp-list rise" style={{ ['--d' as string]: '0.1s' }}>
+        {ranked.map((m, i) => {
+          if (ranked.length >= 3 && i < 3) return null;
+          const xp = xpOf(m, period);
+          return (
+            <div key={m.userId} className={`gp-row ${m.me ? 'me' : ''}`}>
+              <div className="gp-rank">{i + 1}</div>
+              <div className="gp-av">{m.name[0]?.toUpperCase()}</div>
+              <div className="gp-info">
+                <div className="gp-name">
+                  <b>{m.name}</b>
+                  {m.me && <span className="gp-tag you">Siz</span>}
+                  {m.owner && <span className="gp-tag">Egasi</span>}
+                </div>
+                <small>
+                  @{m.username} · {m.level}-daraja · {m.levelTitle}
+                </small>
+                <div className="gp-bar"><i style={{ width: `${(xp / top) * 100}%` }} /></div>
+              </div>
+              <div className="gp-xp">
+                <b>{xp}</b>
+                <small>XP</small>
               </div>
               {group.ownedByMe && !m.me && (
-                <Button
-                  variant="ghost"
+                <button
+                  className="gp-kick"
                   title="Guruhdan chiqarish"
                   onClick={() =>
                     setAction({
@@ -237,12 +282,12 @@ export function GroupDetailPage() {
                   }
                 >
                   ✕
-                </Button>
+                </button>
               )}
             </div>
-          </Card>
-        );
-      })}
+          );
+        })}
+      </section>
 
       <div className="row gap mt">
         <Button

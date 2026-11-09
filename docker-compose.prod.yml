@@ -65,7 +65,7 @@ services:
     depends_on:
       - backend
     environment:
-      DOMAIN: ${DOMAIN:?set DOMAIN in .env}
+      DOMAIN: ${DOMAIN:-shakhdict.duckdns.org}
     ports:
       - "80:80"
       - "443:443"

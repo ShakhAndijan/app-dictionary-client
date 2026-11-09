@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { wordsApi } from './api';
 import { speakEnglish } from './util';
 
@@ -46,19 +47,32 @@ export function Field({ label, error, ...rest }: InputHTMLAttributes<HTMLInputEl
   );
 }
 
-export function Modal({ title, onClose, children, wide }: { title?: string; onClose: () => void; children: ReactNode; wide?: boolean }) {
+export function Modal({ title, onClose, children, wide, className = '' }: { title?: string; onClose: () => void; children: ReactNode; wide?: boolean; className?: string }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose]);
-  return (
+
+  // The page behind must not scroll while the dialog is open.
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+
+  // Rendered straight into <body>: a transformed/animated ancestor would otherwise become the
+  // containing block of the fixed backdrop and push the dialog to the middle of a long page.
+  return createPortal(
     <div className="backdrop" onMouseDown={onClose}>
-      <div className={`modal ${wide ? 'wide' : ''}`} role="dialog" aria-modal="true" onMouseDown={(e) => e.stopPropagation()}>
+      <div className={`modal ${wide ? 'wide' : ''} ${className}`} role="dialog" aria-modal="true" onMouseDown={(e) => e.stopPropagation()}>
         {title && <h2 className="modal-title">{title}</h2>}
         {children}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

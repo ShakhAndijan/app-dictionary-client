@@ -26,20 +26,51 @@ const FORMAT_LABEL: Record<AnswerFormat, string> = {
   SPEED: '⏱️ Tez raund',
 };
 
-function Tile({ label, value, hint }: { label: string; value: ReactNode; hint?: string }) {
-  return (
-    <div className="tile">
-      <div className="tile-value">{value}</div>
-      <div className="tile-label">{label}</div>
-      {hint && <div className="muted" style={{ fontSize: 12 }}>{hint}</div>}
-    </div>
-  );
-}
-
 function monthLabel(key: string): string {
   const [y, m] = key.split('-').map(Number);
   const names = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'];
   return `${names[m - 1]} ${y}`;
+}
+
+/** Accuracy gauge; the arc eases in on first paint. */
+function AccuracyRing({ pct, size = 150, stroke = 13 }: { pct: number; size?: number; stroke?: number }) {
+  const r = (size - stroke) / 2;
+  const c = 2 * Math.PI * r;
+  const [shown, setShown] = useState(0);
+  useEffect(() => {
+    const t = requestAnimationFrame(() => setShown(Math.max(0, Math.min(1, pct / 100))));
+    return () => cancelAnimationFrame(t);
+  }, [pct]);
+  return (
+    <div className="st-ring" style={{ width: size, height: size }}>
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+        <defs>
+          <linearGradient id="st-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#34d399" />
+            <stop offset="100%" stopColor="#22d3ee" />
+          </linearGradient>
+        </defs>
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="var(--track)" strokeWidth={stroke} />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={r}
+          fill="none"
+          stroke="url(#st-grad)"
+          strokeWidth={stroke}
+          strokeLinecap="round"
+          strokeDasharray={c}
+          strokeDashoffset={c * (1 - shown)}
+          transform={`rotate(-90 ${size / 2} ${size / 2})`}
+          style={{ transition: 'stroke-dashoffset 1.3s cubic-bezier(0.22, 1, 0.36, 1)' }}
+        />
+      </svg>
+      <div className="st-ring-in">
+        <b>{pct}%</b>
+        <small>aniqlik</small>
+      </div>
+    </div>
+  );
 }
 
 export function StatsPage() {
@@ -70,10 +101,20 @@ export function StatsPage() {
 
   const back = () => nav('/profile');
 
+  const head = (
+    <header className="st-head rise">
+      <button className="st-back" onClick={back} aria-label="Orqaga">←</button>
+      <div>
+        <div className="eyebrow">Natijalaringiz</div>
+        <h1 className="dx-title">Statistika</h1>
+      </div>
+    </header>
+  );
+
   if (state === 'loading') {
     return (
       <>
-        <PageHeader title="Statistika" back={back} />
+        {head}
         <Spinner />
       </>
     );
@@ -81,7 +122,7 @@ export function StatsPage() {
   if (state === 'error' || !summary || !review) {
     return (
       <>
-        <PageHeader title="Statistika" back={back} />
+        {head}
         <Card className="empty">
           <p className="muted">Statistikani yuklab bo'lmadi</p>
           <Button variant="outline" onClick={load}>Qayta urinish</Button>
@@ -92,157 +133,197 @@ export function StatsPage() {
 
   const goalPct = Math.min(100, Math.round((review.todayDone / Math.max(1, review.dailyGoal)) * 100));
   const reached = review.todayDone >= review.dailyGoal;
-  const hardest = [...words].filter((w) => w.lapses > 0).sort((a, b) => b.lapses - a.lapses).slice(0, 5);
+  const hardest = [...words].filter((w) => w.lapses > 0).sort((x, y) => y.lapses - x.lapses).slice(0, 5);
+  const maxLapses = Math.max(1, ...hardest.map((w) => w.lapses));
   const states = [
-    { label: 'Yangi', n: review.newCount, color: 'var(--indigo-text)' },
-    { label: "O'rganilmoqda", n: review.learningCount, color: 'var(--amber-text)' },
-    { label: "O'zlashtirilgan", n: review.masteredCount, color: 'var(--green-text)' },
+    { label: 'Yangi', n: review.newCount, color: '#818cf8' },
+    { label: "O'rganilmoqda", n: review.learningCount, color: '#fbbf24' },
+    { label: "O'zlashtirilgan", n: review.masteredCount, color: '#34d399' },
   ];
   const totalWords = Math.max(1, review.totalWords);
   const last7 = daily.slice(-7);
   const maxDay = Math.max(1, ...last7.map((d) => d.correctAnswers + d.incorrectAnswers));
+  const kpis = [
+    { icon: '📚', value: summary.totalWords, label: "Jami so'z" },
+    { icon: '📝', value: summary.totalQuizzes, label: 'Baholashlar' },
+    { icon: '📆', value: summary.activeDays, label: 'Faol kunlar' },
+    { icon: '🏅', value: `${summary.bestStreak}`, unit: 'kun', label: 'Eng uzun seriya' },
+  ];
 
   return (
-    <>
-      <PageHeader title="Statistika" back={back} />
+    <div className="st">
+      {head}
 
-      <Card className="mb">
-        <div className="row">
-          <div>
-            <b>{reached ? '🎉 Bugungi maqsad bajarildi!' : 'Bugungi maqsad'}</b>
-            <div className="muted" style={{ fontSize: 13 }}>
-              {reached ? "Ajoyib! Yana mashq qilishingiz mumkin." : `Yana ${review.dailyGoal - review.todayDone} ta so'z qoldi`}
+      <section className="st-top rise" style={{ ['--d' as string]: '0.04s' }}>
+        <div className="st-card st-acc">
+          <AccuracyRing pct={summary.accuracyPercent} />
+          <div className="st-acc-side">
+            <div className="eyebrow">Umumiy natija</div>
+            <div className="st-acc-row ok"><i />{summary.totalCorrect} <span>to'g'ri</span></div>
+            <div className="st-acc-row bad"><i />{summary.totalIncorrect} <span>xato</span></div>
+          </div>
+        </div>
+
+        <div className="st-card st-goal">
+          <div className="st-goal-top">
+            <div>
+              <div className="eyebrow">Bugungi maqsad</div>
+              <div className="st-goal-num">
+                {review.todayDone}
+                <small> / {review.dailyGoal} so'z</small>
+              </div>
+            </div>
+            <div className="st-streak">
+              <span className="st-flame" aria-hidden="true">🔥</span>
+              <b>{summary.currentStreak}</b>
+              <small>kun ketma-ket</small>
             </div>
           </div>
-          <div className="grow" />
-          <div className="center">
-            <div style={{ fontSize: 22, fontWeight: 800 }}>🔥 {summary.currentStreak}</div>
-            <div className="muted" style={{ fontSize: 12 }}>kun ketma-ket</div>
-          </div>
-        </div>
-        <div style={{ margin: '12px 0 6px' }}>
           <ProgressBar pct={goalPct} color={reached ? 'var(--secondary)' : undefined} />
+          <div className="st-goal-msg">{reached ? '🎉 Bugungi maqsad bajarildi! Yana mashq qilishingiz mumkin.' : `Yana ${review.dailyGoal - review.todayDone} ta so'z qoldi`}</div>
         </div>
-        <div className="muted" style={{ fontSize: 13 }}>
-          {review.todayDone} / {review.dailyGoal} so'z
-        </div>
-      </Card>
+      </section>
 
-      <div className="grid mb">
-        <Tile label="Jami so'z" value={summary.totalWords} />
-        <Tile label="Baholashlar" value={summary.totalQuizzes} />
-        <Tile label="Aniqlik" value={`${summary.accuracyPercent}%`} hint={`${summary.totalCorrect} to'g'ri · ${summary.totalIncorrect} xato`} />
-        <Tile label="Faol kunlar" value={summary.activeDays} />
-        <Tile label="Eng uzun seriya" value={`${summary.bestStreak} kun`} />
-      </div>
+      <section className="st-kpis rise" style={{ ['--d' as string]: '0.08s' }}>
+        {kpis.map((k) => (
+          <div key={k.label} className="st-kpi">
+            <span className="st-kpi-ico">{k.icon}</span>
+            <b>
+              {k.value}
+              {k.unit && <em> {k.unit}</em>}
+            </b>
+            <small>{k.label}</small>
+          </div>
+        ))}
+      </section>
 
-      <Card className="mb">
-        <div className="row">
-          <b className="grow">So'zlar holati</b>
-          <span className="muted">{review.totalWords} ta so'z</span>
+      <section className="st-card rise" style={{ ['--d' as string]: '0.12s' }}>
+        <div className="st-card-head">
+          <h2>So'zlar holati</h2>
+          <span>{review.totalWords} ta so'z</span>
         </div>
-        <div className="row" style={{ height: 12, borderRadius: 6, overflow: 'hidden', margin: '12px 0', background: 'var(--border)' }}>
-          {states.map((s) => (
-            <div key={s.label} style={{ width: `${(s.n / totalWords) * 100}%`, background: s.color, height: '100%' }} />
+        <div className="st-stack" aria-hidden="true">
+          {states.map((x) => (
+            <i key={x.label} style={{ flex: x.n, background: x.color }} />
           ))}
+          {review.totalWords === 0 && <i style={{ flex: 1, background: 'var(--track)' }} />}
         </div>
-        <div className="row gap wrap">
-          {states.map((s) => (
-            <span key={s.label} className="row gap" style={{ gap: 6 }}>
-              <span style={{ width: 10, height: 10, borderRadius: 5, background: s.color }} />
-              <b>{s.n}</b> <span className="muted">{s.label}</span>
+        <div className="st-legend">
+          {states.map((x) => (
+            <span key={x.label}>
+              <i style={{ background: x.color }} />
+              <b>{x.n}</b> {x.label}
+              <em>{Math.round((x.n / totalWords) * 100)}%</em>
             </span>
           ))}
         </div>
-      </Card>
+      </section>
 
-      <Card className="mb">
-        <b>Oxirgi kunlar</b>
+      <section className="st-card rise" style={{ ['--d' as string]: '0.16s' }}>
+        <div className="st-card-head">
+          <h2>Oxirgi kunlar</h2>
+          <div className="st-key">
+            <span><i className="ok" /> To'g'ri</span>
+            <span><i className="bad" /> Xato</span>
+          </div>
+        </div>
         {last7.length === 0 ? (
           <p className="muted">Hali ma'lumot yo'q</p>
         ) : (
-          <div className="chart">
+          <div className="st-chart">
             {last7.map((d) => {
-              const right = d.correctAnswers;
-              const wrong = d.incorrectAnswers;
-              const total = right + wrong;
-              const h = total === 0 ? 0 : Math.max(8, Math.round((total / maxDay) * 100));
+              const total = d.correctAnswers + d.incorrectAnswers;
+              const h = total === 0 ? 0 : Math.max(6, Math.round((total / maxDay) * 100));
               return (
-                <div key={d.date} className="chart-col">
-                  <div className="chart-val">{total > 0 ? total : ''}</div>
-                  <div style={{ width: '100%', maxWidth: 34, height: `${h}%`, display: 'flex', flexDirection: 'column-reverse', minHeight: 3, background: 'var(--border)', borderRadius: 6, overflow: 'hidden' }}>
-                    <div style={{ height: `${total ? (right / total) * 100 : 0}%`, background: 'var(--secondary)' }} />
-                    <div style={{ height: `${total ? (wrong / total) * 100 : 0}%`, background: 'var(--danger)' }} />
+                <div key={d.date} className="st-col" title={`${shortDate(d.date)}: ${d.correctAnswers} to'g'ri, ${d.incorrectAnswers} xato`}>
+                  <div className="st-col-val">{total > 0 ? total : ''}</div>
+                  <div className="st-col-track">
+                    <div className="st-bar" style={{ height: `${h}%` }}>
+                      <i className="bad" style={{ flex: d.incorrectAnswers }} />
+                      <i className="ok" style={{ flex: d.correctAnswers }} />
+                    </div>
                   </div>
-                  <div className="chart-lbl">{shortDate(d.date)}</div>
+                  <div className="st-col-lbl">{shortDate(d.date)}</div>
                 </div>
               );
             })}
           </div>
         )}
-        <div className="row gap muted" style={{ fontSize: 12, marginTop: 8 }}>
-          <span>🟩 To'g'ri</span>
-          <span>🟥 Xato</span>
-        </div>
-      </Card>
+      </section>
 
-      {hardest.length > 0 && (
-        <Card className="mb">
-          <b>Eng qiyin so'zlar</b>
-          {hardest.map((w, i) => (
-            <div key={w.id} className="row gap" style={{ padding: '10px 0', borderBottom: i < hardest.length - 1 ? '1px solid var(--border)' : 0 }}>
-              <div className="rank">{i + 1}</div>
-              <div className="grow">
-                <b>{w.english}</b>
-                <div className="muted" style={{ fontSize: 13 }}>{w.uzbek}</div>
+      {(hardest.length > 0 || summary.formats.length > 0) && (
+        <div className="st-two rise" style={{ ['--d' as string]: '0.2s' }}>
+          {hardest.length > 0 && (
+            <section className="st-card">
+              <div className="st-card-head">
+                <h2>Eng qiyin so'zlar</h2>
               </div>
-              <span className="chip chip-weak">{w.lapses} marta xato</span>
-            </div>
-          ))}
-        </Card>
-      )}
-
-      {summary.formats.length > 0 && (
-        <Card className="mb">
-          <b>Javob turlari bo'yicha</b>
-          {summary.formats.map((f) => (
-            <div key={f.format} style={{ marginTop: 12 }}>
-              <div className="row">
-                <span className="grow">{FORMAT_LABEL[f.format] ?? f.format}</span>
-                <span className="muted">
-                  {f.correct}/{f.total} · {f.accuracyPercent}%
-                </span>
-              </div>
-              <ProgressBar pct={f.accuracyPercent} />
-            </div>
-          ))}
-        </Card>
-      )}
-
-      <div className="tabs">
-        <button className={`tab ${mode === 'daily' ? 'on' : ''}`} onClick={() => setMode('daily')}>Kunlar bo'yicha</button>
-        <button className={`tab ${mode === 'monthly' ? 'on' : ''}`} onClick={() => setMode('monthly')}>Oylar bo'yicha</button>
-      </div>
-      {(mode === 'daily' ? daily.length : monthly.length) === 0 ? (
-        <p className="muted center">Hali ma'lumot yo'q</p>
-      ) : (
-        [...(mode === 'daily' ? daily : monthly)].reverse().map((r) => {
-          const key = 'date' in r ? r.date : r.month;
-          const answered = r.correctAnswers + r.incorrectAnswers;
-          return (
-            <div key={key} className="word-row" style={{ cursor: 'default' }}>
-              <div className="word-main">
-                <b>{'date' in r ? shortDate(r.date) : monthLabel(r.month)}</b>
-                <div className="muted" style={{ fontSize: 13 }}>
-                  +{r.wordsAdded} so'z · {r.quizzesTaken} baholash · {answered} javob
+              {hardest.map((w, i) => (
+                <div key={w.id} className="st-hard">
+                  <span className="st-rank">{i + 1}</span>
+                  <div className="st-hard-main">
+                    <div className="st-hard-top">
+                      <b>{w.english}</b>
+                      <span>{w.uzbek}</span>
+                    </div>
+                    <div className="st-hard-bar"><i style={{ width: `${(w.lapses / maxLapses) * 100}%` }} /></div>
+                  </div>
+                  <em>{w.lapses}×</em>
                 </div>
+              ))}
+            </section>
+          )}
+          {summary.formats.length > 0 && (
+            <section className="st-card">
+              <div className="st-card-head">
+                <h2>Javob turlari</h2>
               </div>
-              {answered > 0 && <span className="chip chip-mastered">{r.accuracyPercent}%</span>}
-            </div>
-          );
-        })
+              {summary.formats.map((f) => (
+                <div key={f.format} className="st-fmt">
+                  <div className="st-fmt-top">
+                    <span>{FORMAT_LABEL[f.format] ?? f.format}</span>
+                    <b>{f.accuracyPercent}%</b>
+                  </div>
+                  <ProgressBar pct={f.accuracyPercent} />
+                  <small>{f.correct} / {f.total} to'g'ri</small>
+                </div>
+              ))}
+            </section>
+          )}
+        </div>
       )}
-    </>
+
+      <section className="st-card rise" style={{ ['--d' as string]: '0.24s' }}>
+        <div className="st-card-head">
+          <h2>Tarix</h2>
+          <div className="dx-filters" role="tablist">
+            <button role="tab" aria-selected={mode === 'daily'} className={`dx-seg ${mode === 'daily' ? 'on' : ''}`} onClick={() => setMode('daily')}>Kunlar</button>
+            <button role="tab" aria-selected={mode === 'monthly'} className={`dx-seg ${mode === 'monthly' ? 'on' : ''}`} onClick={() => setMode('monthly')}>Oylar</button>
+          </div>
+        </div>
+        {(mode === 'daily' ? daily.length : monthly.length) === 0 ? (
+          <p className="muted center">Hali ma'lumot yo'q</p>
+        ) : (
+          <div className="st-hist">
+            {[...(mode === 'daily' ? daily : monthly)].reverse().map((r) => {
+              const key = 'date' in r ? r.date : r.month;
+              const answered = r.correctAnswers + r.incorrectAnswers;
+              return (
+                <div key={key} className="st-hist-row">
+                  <div className="st-hist-date">{'date' in r ? shortDate(r.date) : monthLabel(r.month)}</div>
+                  <div className="st-hist-info">
+                    <span>+{r.wordsAdded} so'z</span>
+                    <span>{r.quizzesTaken} baholash</span>
+                    <span>{answered} javob</span>
+                  </div>
+                  {answered > 0 ? <span className="st-pct">{r.accuracyPercent}%</span> : <span className="st-pct none">—</span>}
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </section>
+    </div>
   );
 }
 

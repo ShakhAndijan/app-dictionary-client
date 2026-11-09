@@ -148,24 +148,33 @@ export default function StudyPage() {
 
   const goal = review ? Math.min(100, Math.round((review.todayDone / Math.max(1, review.dailyGoal)) * 100)) : 0;
 
+  const done = review?.todayDone ?? 0;
+  const target = review?.dailyGoal ?? 0;
+  const games: { key: View; icon: string; title: string; sub: string; tone: string; min: number }[] = [
+    { key: 'flash', icon: '🃏', title: 'Fleshkart', sub: "Kartani aylantiring va bilganingizni belgilang", tone: '#6366f1', min: 1 },
+    { key: 'match', icon: '🧩', title: 'Juftlarni moslash', sub: "Inglizcha so'zlarni tarjimasi bilan juftlang", tone: '#a855f7', min: 3 },
+    { key: 'speed', icon: '⏱️', title: 'Tez raund', sub: "60 soniyada iloji boricha ko'p savolga javob bering", tone: '#f59e0b', min: 4 },
+  ];
+
   return (
     <>
-      <PageHeader title="Mashq" />
-
-      {review && (
-        <Card className="mb">
-          <div className="row">
-            <b>Bugungi maqsad</b>
-            <div className="grow" />
-            <span className="muted">
-              {review.todayDone} / {review.dailyGoal} so'z
-            </span>
-          </div>
-          <div style={{ marginTop: 10 }}>
+      <header className="sx-head rise">
+        <div>
+          <div className="eyebrow">Bilimni mustahkamlang</div>
+          <h1 className="dx-title">Mashq</h1>
+        </div>
+        {review && (
+          <div className="sx-goal">
+            <div className="sx-goal-row">
+              <span>Bugungi maqsad</span>
+              <b>
+                {done} <small>/ {target} so'z</small>
+              </b>
+            </div>
             <ProgressBar pct={goal} color={goal >= 100 ? 'var(--secondary)' : undefined} />
           </div>
-        </Card>
-      )}
+        )}
+      </header>
 
       {words.length === 0 ? (
         <Card className="empty">
@@ -174,50 +183,49 @@ export default function StudyPage() {
         </Card>
       ) : (
         <>
-          <div className="section-title">Baholash</div>
-          <div className="tabs">
-            {FORMATS.map((f) => (
-              <button key={f.key} className={`tab ${format === f.key ? 'on' : ''}`} onClick={() => setFormat(f.key)}>
-                {f.label}
-              </button>
-            ))}
-          </div>
-          <p className="muted" style={{ marginTop: -6 }}>
-            {FORMATS.find((f) => f.key === format)?.hint}
-          </p>
-          <ModeCards
-            options={buildDeckOptions(review, words.length, favoriteCount, todayCount)}
-            onPick={(m) => {
-              setQuizMode(m);
-              setView('quiz');
-            }}
-          />
+          <section className="sx-sec rise" style={{ ['--d' as string]: '0.05s' }}>
+            <div className="sx-sec-head">
+              <div>
+                <h2>Baholash</h2>
+                <p>{FORMATS.find((f) => f.key === format)?.hint}</p>
+              </div>
+              <div className="dx-filters" role="tablist">
+                {FORMATS.map((f) => (
+                  <button key={f.key} role="tab" aria-selected={format === f.key} className={`dx-seg ${format === f.key ? 'on' : ''}`} onClick={() => setFormat(f.key)}>
+                    {f.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="sx-grid">
+              <ModeCards
+                options={buildDeckOptions(review, words.length, favoriteCount, todayCount)}
+                onPick={(m) => {
+                  setQuizMode(m);
+                  setView('quiz');
+                }}
+              />
+            </div>
+          </section>
 
-          <div className="section-title">O'yinlar</div>
-          <button className="mode-card" onClick={() => setView('flash')}>
-            <div className="mode-icon" style={{ background: '#4f46e51f' }}>🃏</div>
-            <div className="grow">
-              <div className="mode-title">Fleshkart</div>
-              <div className="mode-sub">Kartani aylantiring va bilganingizni belgilang</div>
+          <section className="sx-sec rise" style={{ ['--d' as string]: '0.12s' }}>
+            <div className="sx-sec-head">
+              <div>
+                <h2>O'yinlar</h2>
+                <p>Mashqni qiziqarli qiling.</p>
+              </div>
             </div>
-            <span className="muted">›</span>
-          </button>
-          <button className="mode-card" onClick={() => setView('match')} disabled={words.length < 3}>
-            <div className="mode-icon" style={{ background: '#8b5cf61f' }}>🧩</div>
-            <div className="grow">
-              <div className="mode-title">Juftlarni moslash</div>
-              <div className="mode-sub">Inglizcha so'zlarni tarjimasi bilan juftlang</div>
+            <div className="sx-games">
+              {games.map((g) => (
+                <button key={g.key} className="sx-game" style={{ ['--tone' as string]: g.tone }} disabled={words.length < g.min} onClick={() => setView(g.key)}>
+                  <span className="sx-game-ico">{g.icon}</span>
+                  <b>{g.title}</b>
+                  <small>{g.sub}</small>
+                  <span className="sx-game-go" aria-hidden="true">Boshlash →</span>
+                </button>
+              ))}
             </div>
-            <span className="muted">›</span>
-          </button>
-          <button className="mode-card" onClick={() => setView('speed')} disabled={words.length < 4}>
-            <div className="mode-icon" style={{ background: '#f59e0b1f' }}>⏱️</div>
-            <div className="grow">
-              <div className="mode-title">Tez raund</div>
-              <div className="mode-sub">60 soniyada iloji boricha ko'p savolga javob bering</div>
-            </div>
-            <span className="muted">›</span>
-          </button>
+          </section>
         </>
       )}
     </>
