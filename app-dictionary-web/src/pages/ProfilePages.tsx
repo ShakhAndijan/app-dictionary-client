@@ -36,20 +36,77 @@ export function EditProfilePage() {
     }
   };
 
+  const initials = `${form.firstName[0] ?? ''}${form.lastName[0] ?? ''}`.toUpperCase() || (user?.username[0] ?? '?').toUpperCase();
+  const fullName = `${form.firstName} ${form.lastName}`.trim() || user?.username || '';
+  const dirty = form.firstName !== (user?.firstName ?? '') || form.lastName !== (user?.lastName ?? '') || form.email !== (user?.email ?? '');
+  const emailBad = form.email.trim() !== '' && !/^\S+@\S+\.\S+$/.test(form.email.trim());
+
   return (
     <>
-      <PageHeader title="Profilni tahrirlash" back={() => nav('/profile')} />
-      <Card>
-        <form onSubmit={submit}>
+      <header className="ac-head rise">
+        <button className="gp-back" onClick={() => nav('/profile')} aria-label="Orqaga">←</button>
+        <div>
+          <div className="eyebrow">Hisob</div>
+          <h1 className="dx-title">Profilni tahrirlash</h1>
+        </div>
+      </header>
+
+      <div className="pe-wrap">
+        <aside className="pe-card rise" style={{ ['--d' as string]: '0.04s' }}>
+          <div className="pe-cover" aria-hidden="true" />
+          <div className="pe-avatar">{initials}</div>
+          <h2>{fullName}</h2>
+          <div className="pe-user">@{user?.username}</div>
+          <div className="pe-mail">{form.email || 'Email kiritilmagan'}</div>
+          <p className="pe-hint">Bu ma'lumotlar guruhlar reytingida va profilingizda ko'rinadi.</p>
+        </aside>
+
+        <form className="pe-form rise" style={{ ['--d' as string]: '0.1s' }} onSubmit={submit}>
+          <h3>Shaxsiy ma'lumotlar</h3>
           {error && <Notice>{error}</Notice>}
-          <Field label="Ism" value={form.firstName} onChange={set('firstName')} />
-          <Field label="Familiya" value={form.lastName} onChange={set('lastName')} />
-          <Field label="Email" type="email" value={form.email} onChange={set('email')} />
-          <Button type="submit" block loading={busy}>
-            Saqlash
-          </Button>
+          <div className="pe-row">
+            <label className="pe-field">
+              <span>Ism</span>
+              <div className="pe-input">
+                <i aria-hidden="true">👤</i>
+                <input value={form.firstName} onChange={set('firstName')} placeholder="Ismingiz" autoComplete="given-name" />
+              </div>
+            </label>
+            <label className="pe-field">
+              <span>Familiya</span>
+              <div className="pe-input">
+                <i aria-hidden="true">👤</i>
+                <input value={form.lastName} onChange={set('lastName')} placeholder="Familiyangiz" autoComplete="family-name" />
+              </div>
+            </label>
+          </div>
+          <label className="pe-field">
+            <span>Email</span>
+            <div className={`pe-input ${emailBad ? 'bad' : ''}`}>
+              <i aria-hidden="true">✉️</i>
+              <input type="email" value={form.email} onChange={set('email')} placeholder="nom@example.com" autoComplete="email" />
+            </div>
+            {emailBad && <em className="pe-err">Email manzilni to'g'ri kiriting</em>}
+          </label>
+          <label className="pe-field">
+            <span>Foydalanuvchi nomi</span>
+            <div className="pe-input locked">
+              <i aria-hidden="true">@</i>
+              <input value={user?.username ?? ''} disabled />
+              <b aria-hidden="true">🔒</b>
+            </div>
+            <em className="pe-note">Foydalanuvchi nomini o'zgartirib bo'lmaydi.</em>
+          </label>
+          <div className="pe-actions">
+            <Button type="button" variant="outline" onClick={() => nav('/profile')}>
+              Bekor qilish
+            </Button>
+            <Button type="submit" loading={busy} disabled={!dirty || emailBad}>
+              Saqlash
+            </Button>
+          </div>
         </form>
-      </Card>
+      </div>
     </>
   );
 }
@@ -85,26 +142,97 @@ export function ChangePasswordPage() {
     }
   };
 
+  const [show, setShow] = useState(false);
+  const rules = [
+    { ok: newPassword.length >= 6, text: 'Kamida 6 ta belgi' },
+    { ok: /[A-Za-z]/.test(newPassword) && /\d/.test(newPassword), text: 'Harf va raqam aralash' },
+    { ok: newPassword.length >= 10, text: '10 va undan ko\'p belgi (kuchliroq)' },
+    { ok: confirm.length > 0 && confirm === newPassword, text: 'Parollar mos keladi' },
+  ];
+  const score = rules.slice(0, 3).filter((r) => r.ok).length;
+  const level = ['', 'Zaif', "O'rtacha", 'Kuchli'][newPassword ? Math.max(1, score) : 0];
+  const type = show ? 'text' : 'password';
+
   return (
     <>
-      <PageHeader title="Parolni almashtirish" back={() => nav('/profile')} />
-      <Card>
-        <form onSubmit={submit}>
+      <header className="ac-head rise">
+        <button className="gp-back" onClick={() => nav('/profile')} aria-label="Orqaga">←</button>
+        <div>
+          <div className="eyebrow">Xavfsizlik</div>
+          <h1 className="dx-title">Parolni almashtirish</h1>
+        </div>
+      </header>
+
+      <div className="pe-wrap">
+        <aside className="pe-card rise" style={{ ['--d' as string]: '0.04s' }}>
+          <div className="pe-cover pw" aria-hidden="true" />
+          <div className="pe-avatar pw">🔒</div>
+          <h2>Hisobingizni himoya qiling</h2>
+          <ul className="pw-rules">
+            {rules.map((r) => (
+              <li key={r.text} className={r.ok ? 'ok' : ''}>
+                <span>{r.ok ? '✓' : ''}</span>
+                {r.text}
+              </li>
+            ))}
+          </ul>
+          <p className="pe-hint">Parol almashgach, boshqa qurilmalardagi seanslar yopiladi.</p>
+        </aside>
+
+        <form className="pe-form rise" style={{ ['--d' as string]: '0.1s' }} onSubmit={submit}>
+          <h3>Yangi parol o'rnating</h3>
           {error && <Notice>{error}</Notice>}
           {ok && <Notice kind="ok">Parol almashtirildi. Boshqa qurilmalardagi seanslar yopildi.</Notice>}
-          <Field label="Joriy parol" type="password" value={oldPassword} onChange={(e) => setOld(e.target.value)} autoComplete="current-password" />
-          <Field label="Yangi parol" type="password" value={newPassword} onChange={(e) => setNew(e.target.value)} autoComplete="new-password" />
-          <Field label="Yangi parolni tasdiqlang" type="password" value={confirm} onChange={(e) => setConfirm(e.target.value)} autoComplete="new-password" />
-          <Button type="submit" block loading={busy} disabled={!oldPassword || !newPassword}>
-            Almashtirish
-          </Button>
+          <label className="pe-field">
+            <span>Joriy parol</span>
+            <div className="pe-input">
+              <i aria-hidden="true">🔑</i>
+              <input type={type} value={oldPassword} onChange={(e) => setOld(e.target.value)} autoComplete="current-password" placeholder="Joriy parolingiz" />
+            </div>
+          </label>
+          <label className="pe-field">
+            <span>Yangi parol</span>
+            <div className="pe-input">
+              <i aria-hidden="true">🔒</i>
+              <input type={type} value={newPassword} onChange={(e) => setNew(e.target.value)} autoComplete="new-password" placeholder="Yangi parol" />
+              <button type="button" className="pe-eye" onClick={() => setShow(!show)} aria-label="Parolni ko'rsatish">
+                {show ? 'Yashirish' : "Ko'rsatish"}
+              </button>
+            </div>
+            <div className={`pw-meter s${newPassword ? Math.max(1, score) : 0}`}>
+              <i /><i /><i />
+              <b>{level}</b>
+            </div>
+          </label>
+          <label className="pe-field">
+            <span>Yangi parolni tasdiqlang</span>
+            <div className={`pe-input ${confirm && confirm !== newPassword ? 'bad' : ''}`}>
+              <i aria-hidden="true">🔒</i>
+              <input type={type} value={confirm} onChange={(e) => setConfirm(e.target.value)} autoComplete="new-password" placeholder="Parolni qayta kiriting" />
+            </div>
+            {confirm && confirm !== newPassword && <em className="pe-err">Parollar mos kelmadi</em>}
+          </label>
+          <div className="pe-actions">
+            <Button type="button" variant="outline" onClick={() => nav('/profile')}>
+              Bekor qilish
+            </Button>
+            <Button type="submit" loading={busy} disabled={!oldPassword || !newPassword}>
+              Almashtirish
+            </Button>
+          </div>
         </form>
-      </Card>
+      </div>
     </>
   );
 }
 
-const GOALS = [5, 10, 15, 20, 30];
+const GOALS = [
+  { n: 5, label: 'Yengil', icon: '🌱', min: 3 },
+  { n: 10, label: 'Optimal', icon: '⚡', min: 6 },
+  { n: 15, label: 'Faol', icon: '🔥', min: 9 },
+  { n: 20, label: 'Qat\'iy', icon: '🚀', min: 12 },
+  { n: 30, label: 'Jiddiy', icon: '🏆', min: 18 },
+];
 const MODES: { key: ThemeMode; label: string }[] = [
   { key: 'system', label: 'Tizim' },
   { key: 'light', label: 'Kunduzgi' },
@@ -134,30 +262,57 @@ export function SettingsPage() {
 
   return (
     <>
-      <PageHeader title="Maqsad va ko'rinish" back={() => nav('/profile')} />
+      <header className="ac-head rise">
+        <button className="gp-back" onClick={() => nav('/profile')} aria-label="Orqaga">←</button>
+        <div>
+          <div className="eyebrow">Moslashtiring</div>
+          <h1 className="dx-title">Maqsad va ko'rinish</h1>
+        </div>
+      </header>
       {error && <Notice>{error}</Notice>}
-      <Card className="mb">
-        <b>Kunlik maqsad</b>
-        <p className="muted">Kuniga nechta so'z mashq qilmoqchisiz?</p>
-        <div className="tabs" style={{ marginBottom: 0 }}>
+
+      <section className="st-set rise" style={{ ['--d' as string]: '0.04s' }}>
+        <div className="st-set-head">
+          <div>
+            <h2>Kunlik maqsad</h2>
+            <p>Kuniga nechta so'zni mashq qilmoqchisiz? Maqsadga yetsangiz seriya davom etadi.</p>
+          </div>
+          <div className="st-set-now">
+            <b>{goal}</b>
+            <small>so'z / kun</small>
+          </div>
+        </div>
+        <div className="gs-grid">
           {GOALS.map((g) => (
-            <button key={g} className={`tab ${g === goal ? 'on' : ''}`} disabled={saving} onClick={() => pickGoal(g)}>
-              {g} ta
+            <button key={g.n} className={`gs-tile ${g.n === goal ? 'on' : ''}`} disabled={saving} onClick={() => pickGoal(g.n)}>
+              <span className="gs-ico">{g.icon}</span>
+              <b>{g.n} ta</b>
+              <small>{g.label}</small>
+              <em>~{g.min} daqiqa</em>
             </button>
           ))}
         </div>
-      </Card>
-      <Card>
-        <b>Ko'rinish</b>
-        <p className="muted">Tizim rejimi qurilmangiz sozlamasiga ergashadi.</p>
-        <div className="segment">
+      </section>
+
+      <section className="st-set rise" style={{ ['--d' as string]: '0.1s' }}>
+        <div className="st-set-head">
+          <div>
+            <h2>Ko'rinish</h2>
+            <p>Tizim rejimi qurilmangiz sozlamasiga ergashadi.</p>
+          </div>
+        </div>
+        <div className="th-grid">
           {MODES.map((m) => (
-            <button key={m.key} className={mode === m.key ? 'on' : ''} onClick={() => setMode(m.key)}>
-              {m.label}
+            <button key={m.key} className={`th-tile ${mode === m.key ? 'on' : ''}`} onClick={() => setMode(m.key)}>
+              <span className={`th-prev ${m.key}`} aria-hidden="true">
+                <i /><i /><i />
+              </span>
+              <b>{m.label}</b>
+              {mode === m.key && <span className="th-check">✓</span>}
             </button>
           ))}
         </div>
-      </Card>
+      </section>
     </>
   );
 }
