@@ -1,0 +1,177 @@
+# 17 | Non-defining relative clauses (with commas) | Qo'shimcha ma'lumot beruvchi gap vergul bilan ajratiladi: who (odam), which (narsa), whose (egalik), where (joy). Bunda that ishlatilmaydi va which / who tushib qolmaydi. My brother, who lives in Paris, is a chef. | Vergul bor bo'lsa, that ishlatma: odam uchun who, narsa uchun which.
+My brother, [who] lives in Paris, is a chef. | that, which, whose
+London, [which] is very big, is expensive. | who, that, where
+Anna, [whose] car is red, lives next door. | who, which, that
+We visited Rome, [where] my sister lives. | which, who, whose
+My mother, [who] is a nurse, works nights. | which, that, whose
+The Nile, [which] is long, flows north. | who, that, where
+Mr Brown, [whose] son is my friend, called. | who, which, that
+I love Bukhara, [where] I was born. | which, who, that
+My phone, [which] I bought yesterday, broke. | who, that, whose
+Tom, [who] never studies, passed the exam. | which, whose, that
+Her dog, [which] is very old, sleeps. | that, whose, where
+Our teacher, [whose] English is perfect, helped us. | who, which, that
+The hotel, [where] we stayed, was cheap. | which, who, that
+Lisa, [who] speaks three languages, is my boss. | which, whose, that
+This book, [which] I like, is expensive. | who, that, whose
+My neighbours, [who] are very kind, helped me. | which, that, whose
+Samarkand, [which] is old, has many tourists. | who, that, where
+My uncle, [whose] house is huge, is rich. | who, which, that
+We went to Dubai, [where] it was hot. | which, who, that
+The film, [which] was long, bored me. | who, that, where
+Mike, [who] lives upstairs, plays the drums. | which, whose, that
+My laptop, [which] is new, works well. | who, that, whose
+Sara, [whose] brother is a pilot, is shy. | who, which, that
+The cafe, [where] we met, closed. | which, who, that
+Her husband, [who] is a doctor, travels often. | which, whose, that
+Our car, [which] we bought in May, broke. | who, that, whose
+Mr Karimov, [who] is sixty, still works. | which, whose, that
+Tashkent, [where] I grew up, is huge. | which, who, that
+My grandfather, [whose] memory is great, tells stories. | who, which, that
+The exam, [which] was hard, finished early. | who, that, where
+Jack, [who] is my cousin, is funny. | which, whose, that
+The park, [where] we run, is near. | which, who, that
+Mary, [whose] phone was stolen, called the police. | who, which, that
+This town, [which] is small, is quiet. | who, that, whose
+My sister, [who] studies law, is clever. | which, that, whose
+We stayed in Spain, [where] the food is great. | which, who, that
+The bus, [which] was late, was full. | who, that, whose
+Dr Lee, [whose] advice helped me, is kind. | who, which, that
+My boss, [who] is very strict, never smiles. | which, whose, that
+Their house, [which] has a garden, is cheap. | who, that, whose
+
+# 18 | Gerund or infinitive (enjoy doing, want to do, stop doing / to do) | Ba'zi fe'llardan keyin fe'l-ing keladi: enjoy, mind, finish, avoid, suggest, give up. Boshqalaridan keyin to + fe'l keladi: want, decide, hope, promise, refuse, manage. I enjoy swimming. She wants to buy a phone. | Fe'lni yodlab ol: enjoy / finish / mind + -ing; want / decide / hope + to.
+I enjoy [swimming] in the sea. | to swim, swim, swam ~ swim
+She wants [to buy] a new phone. | buying, buy, bought ~ buy
+He stopped [smoking] last year. | smoke, smoked, smokes ~ smoke
+We decided [to leave] early. | leaving, leave, left ~ leave
+They avoid [driving] at night. | to drive, drive, drove ~ drive
+I hope [to see] you soon. | seeing, see, saw ~ see
+Do you mind [opening] the window? | to open, open, opened ~ open
+She promised [to call] me. | calling, call, called ~ call
+He finished [writing] the report. | to write, write, wrote ~ write
+I can't afford [to buy] a car. | buying, buy, bought ~ buy
+He stopped [to drink] some water. | drink, drank, drinks ~ drink
+She suggested [going] to the cinema. | to go, go, went ~ go
+I'd like [to visit] Japan one day. | visiting, visit, visited ~ visit
+He keeps [forgetting] his keys. | to forget, forget, forgot ~ forget
+They refused [to help] us. | helping, help, helped ~ help
+I'm looking forward to [seeing] you. | see, saw, to see ~ see
+She is good at [cooking] fish. | cook, to cook, cooked ~ cook
+He learned [to swim] at six. | swimming, swim, swam ~ swim
+I don't mind [waiting] here. | to wait, wait, waited ~ wait
+We need [to hurry] now. | hurrying, hurry, hurried ~ hurry
+She admitted [stealing] the money. | to steal, steal, stole ~ steal
+He managed [to open] the door. | opening, open, opened ~ open
+I'm thinking of [changing] my job. | change, to change, changed ~ change
+They agreed [to meet] at six. | meeting, meet, met ~ meet
+She gave up [smoking] last year. | to smoke, smoke, smoked ~ smoke
+I'd love [to come] to your party. | coming, come, came ~ come
+He can't stand [waiting] in queues. | wait, waited, waits ~ wait
+We want [to learn] English quickly. | learning, learn, learned ~ learn
+She dislikes [getting] up early. | get, got, gets ~ get
+Would you like [to dance]? | dancing, dance, danced ~ dance
+He is afraid of [flying]. | fly, to fly, flew ~ fly
+I expect [to pass] the exam. | passing, pass, passed ~ pass
+They practise [speaking] every day. | to speak, speak, spoke ~ speak
+She seems [to know] everything. | knowing, know, knew ~ know
+I'm tired of [waiting] for him. | wait, to wait, waited ~ wait
+He pretended [to be] ill. | being, be, was ~ be
+Thank you for [helping] me. | help, to help, helped ~ help
+We miss [seeing] you every day. | to see, see, saw ~ see
+She's interested in [learning] Chinese. | learn, to learn, learned ~ learn
+They invited us [to join] them. | joining, join, joined ~ join
+He enjoys [playing] chess with me. | to play, play, played ~ play
+I can't help [laughing] at him. | to laugh, laugh, laughed ~ laugh
+She plans [to start] a business. | starting, start, started ~ start
+Please stop [making] so much noise. | make, made, makes ~ make
+He stopped [eating] meat last year. | eat, ate, eats ~ eat
+
+# 19 | used to / be used to / get used to | used to + fe'l: oldin odat bo'lgan, hozir yo'q (I used to play chess). be used to + ot yoki fe'l-ing: ko'nikkan (I am used to getting up early). get used to + fe'l-ing: ko'nikib borish (I got used to the noise). Savol va inkorda: did you use to, didn't use to. | used to + fe'l: oldin shunday edi; be / get used to + -ing: ko'nikkan / ko'nikmoqda.
+I [used to] play chess as a child. | am used to, use to, getting used to
+She [is used to] getting up early. | used to, uses to, use to
+He [didn't use to] like tea. | didn't used to, isn't used to, not used to
+We [are used to] the cold weather. | used to, use to, are use to
+I [got used to] the noise quickly. | used to, was used, get used to
+Did you [use to] live here? | used to, get used to, are used to
+He [is used to] driving on the left. | used to, uses to, use to
+I'm not [used to] spicy food. | use to, using to, used
+They [used to] be neighbours. | are used to, use to, were used to
+Last year she [wasn't used to] the heat. | isn't used to, didn't use to, wasn't use to
+You will [get used to] the new job. | used to, be use to, are used to
+My father [used to] smoke a pipe. | is used to, use to, uses to
+I [am used to] living alone. | used to, use to, am use to
+Did he [use to] have long hair? | used to, is used to, get used to
+We [didn't use to] have a car. | didn't used to, aren't used to, not used to
+She is [getting used to] her new school. | getting use to, getting used, get used to
+I can't [get used to] this noise. | used to, getting used, got use to
+Dad [used to] take us fishing. | is used to, use to, are used to
+They [aren't used to] early mornings. | didn't use to, don't used to, aren't use to
+When I was young, we [used to] visit her. | are used to, use to, were used to
+He [got used to] the food in Korea. | used to, gets use to, was use to
+Nobody [is used to] such cold. | used to, use to, uses to
+I [didn't use to] be shy. | didn't used to, am not used to, wasn't use to
+She [used to] have a red bike. | is used to, use to, uses to
+Are you [used to] this weather? | use to, used, using to
+It's hard to [get used to] new rules. | used to, getting used to, get use to
+We [used to] eat out every Friday. | are used to, use to, get used to
+He [isn't used to] speaking English. | doesn't use to, didn't used to, isn't use to
+Lisa [didn't use to] wear glasses. | didn't used to, isn't used to, doesn't used to
+My eyes [got used to] the dark. | used to, was used to, get used to
+Where [did] you use to live? | do, were, are
+She [used to] cry a lot. | is used to, use to, uses to
+They [are used to] hot summers. | used to, use to, is used to
+I [didn't use to] like jazz. | didn't used to, don't use to, am not used to
+He [used to] live in a village. | is used to, use to, uses to
+You [will get used to] the noise soon. | will used to, will getting used to, will got used to
+At first we [weren't used to] the food. | aren't used to, didn't use to, weren't use to
+My brother [used to] hate school. | is used to, use to, uses to
+She [is used to] working at night. | used to, use to, uses to
+We [used to] play outside all day. | are used to, use to, get used to
+Did they [use to] have a dog? | used to, are used to, get used to
+
+# 20 | Question tags (isn't it? don't you?) | Gap oxiridagi qisqa savol (tag) tasdiqlash yoki fikrni so'rash uchun ishlatiladi. Gap tasdiq bo'lsa, tag inkor bo'ladi, gap inkor bo'lsa, tag tasdiq bo'ladi: You like tea, don't you? She isn't here, is she? Let's ... dan keyin shall we, buyruqdan keyin will you keladi. | Tasdiq gap + inkor tag, inkor gap + tasdiq tag; yordamchi fe'lni takrorla.
+You like coffee, [don't you]? | do you, aren't you, didn't you
+She is a doctor, [isn't she]? | doesn't she, is she, isn't he
+They live here, [don't they]? | do they, aren't they, didn't they
+He can swim, [can't he]? | can he, doesn't he, isn't he
+We met before, [didn't we]? | did we, don't we, haven't we
+You aren't tired, [are you]? | aren't you, do you, is you
+It isn't far, [is it]? | isn't it, does it, is he
+She doesn't smoke, [does she]? | doesn't she, do she, is she
+They have left, [haven't they]? | don't they, have they, aren't they
+You've seen it, [haven't you]? | don't you, have you, hadn't you
+Let's go home, [shall we]? | will we, don't we, let we
+Open the door, [will you]? | do you, shall you, are you
+I'm late, [aren't I]? | amn't I, don't I, isn't I
+He wasn't there, [was he]? | wasn't he, did he, were he
+You will come, [won't you]? | will you, don't you, aren't you
+She works hard, [doesn't she]? | does she, don't she, isn't she
+We should go, [shouldn't we]? | should we, don't we, aren't we
+He didn't call, [did he]? | didn't he, does he, do he
+It was cold, [wasn't it]? | was it, didn't it, isn't it
+You can't drive, [can you]? | can't you, do you, are you
+They won't mind, [will they]? | won't they, don't they, are they
+He drives a car, [doesn't he]? | does he, don't he, isn't he
+There is milk, [isn't there]? | isn't it, is there, doesn't there
+You were late, [weren't you]? | were you, wasn't you, didn't you
+She's studying, [isn't she]? | is she, doesn't she, hasn't she
+Ali likes pizza, [doesn't he]? | does he, isn't he, don't he
+We can go, [can't we]? | can we, don't we, aren't we
+You enjoyed it, [didn't you]? | did you, don't you, weren't you
+It's raining, [isn't it]? | doesn't it, is it, hasn't it
+You haven't eaten, [have you]? | haven't you, do you, did you
+He is leaving, [isn't he]? | doesn't he, is he, isn't it
+They were friends, [weren't they]? | were they, didn't they, wasn't they
+She won't tell, [will she]? | won't she, does she, isn't she
+You're from Spain, [aren't you]? | are you, don't you, isn't you
+He had breakfast, [didn't he]? | hadn't he, did he, doesn't he
+They are waiting, [aren't they]? | are they, don't they, isn't they
+We need help, [don't we]? | do we, aren't we, didn't we
+You don't know him, [do you]? | don't you, are you, did you
+She can't cook, [can she]? | can't she, does she, is she
+Don't be late, [will you]? | won't you, do you, are you
+He looks tired, [doesn't he]? | does he, isn't he, don't he
+It doesn't work, [does it]? | doesn't it, do it, is it
+You told him, [didn't you]? | did you, don't you, haven't you
+Your sister is tall, [isn't she]? | is she, doesn't she, isn't he

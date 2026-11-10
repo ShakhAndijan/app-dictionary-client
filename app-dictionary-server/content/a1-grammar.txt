@@ -1,0 +1,425 @@
+# Format
+#   "# <Murphy topic no> | <title> | <short rule in Uzbek> | <tip shown with the answer>"
+#   then one line per sentence:  Sentence with [answer] | wrong1, wrong2 ~ hint
+# Every sentence becomes a TEST item (needs the wrong options), a FILL item (the hint is shown in brackets)
+# and, when it is short, an ORDER item. If a line holds a question and an answer ("Is it? Yes, it [is]."),
+# the ORDER item is built from the answer part.
+# Topic numbers follow the "Qizil Murphy" topic list (Essential Grammar in Use).
+
+# 1 | To be (am / is / are) | 'To be' fe'li: I am, he/she/it is, we/you/they are. Savolda fe'l oldinga chiqadi: Are you...? Is she...? Inkor: I am not, he is not. | I bilan am, he/she/it bilan is, we/you/they bilan are.
+I [am] a student. | is, are
+She [is] my sister. | am, are
+They [are] at home. | is, am
+We [are] friends. | is, am
+He [is] not tired. | are, am
+[Are] you from Uzbekistan? | Is, Am
+My name [is] Anna. | am, are
+It [is] a big city. | am, are
+[Is] your brother at school? | Are, Am
+You [are] very kind. | is, am
+The children [are] in the garden. | is, am
+I [am] not hungry. | is, are
+This [is] my phone. | are, am
+Where [are] my keys? | is, am
+Tom and Anna [are] teachers. | is, am
+
+# 2 | Present Simple: I work / he works | Odatiy va doimiy ishlar uchun Present Simple. He/she/it bilan fe'lga -s qo'shiladi: he works, she plays. -s, -sh, -ch, -o bilan tugasa -es: watches, goes. | Faqat he / she / it bilan fe'lga -s qo'shiladi.
+I [work] in a shop. | works, worked ~ work
+She [works] in a bank. | work, working ~ work
+They [live] in London. | lives, living ~ live
+He [plays] football every Sunday. | play, playing ~ play
+We [go] to school by bus. | goes, going ~ go
+My father [drives] a taxi. | drive, driving ~ drive
+The shop [opens] at nine. | open, opening ~ open
+I [get up] at seven. | gets up, getting up ~ get up
+Anna [studies] English. | study, studys ~ study
+Birds [fly] in the sky. | flies, flying ~ fly
+He [watches] TV in the evening. | watch, watchs ~ watch
+My mother [cooks] dinner. | cook, cooking ~ cook
+You [speak] English very well. | speaks, speaking ~ speak
+The bus [stops] here. | stop, stopping ~ stop
+She [has] a dog. | have, haves ~ have
+
+# 3 | Present Simple: savol va inkor | Inkor: don't / doesn't + asosiy fe'l (He doesn't like...). Savol: Do / Does + ega + asosiy fe'l (Does she work?). Does bilan fe'lga -s qo'shilmaydi. | Does / doesn't dan keyin fe'l o'zgarmaydi: Does he like...? He doesn't like...
+I [don't] like coffee. | doesn't, isn't
+She [doesn't] work on Sundays. | don't, isn't
+[Do] you speak English? | Does, Are
+[Does] he live here? | Do, Is
+We [don't] watch TV. | doesn't, aren't
+[Does] she like pizza? | Do, Is
+They [don't] have a car. | doesn't, haven't
+He doesn't [like] fish. | likes, liking ~ like
+Do you [want] some tea? | wants, wanting ~ want
+My brother [doesn't] play the guitar. | don't, isn't
+What time [does] the film start? | do, is
+Where [do] you live? | does, are
+I [don't] know his name. | doesn't, am not
+[Do] they work here? | Does, Are
+Does your sister [speak] French? | speaks, speaking ~ speak
+
+# 4 | Present Continuous: I am working | Hozir, shu paytda bo'layotgan ish: am / is / are + fe'l-ing. I am reading. She is cooking. They are playing. | am / is / are + fe'l-ing: hozir bo'layotgan ish.
+I [am reading] a book now. | reading, is reading, am read ~ read
+She [is cooking] dinner. | cooking, are cooking, cooks ~ cook
+They [are playing] football. | is playing, playing, play ~ play
+We [are watching] TV. | is watching, watching, watch ~ watch
+He [is sleeping] now. | are sleeping, sleeping, sleeps ~ sleep
+It [is raining] today. | rains, are raining, raining ~ rain
+Look! The baby [is crying]. | cries, are crying, crying ~ cry
+I [am not working] today. | not working, don't working, am not work ~ work
+What [are] you doing? | is, do, am
+[Is] she listening to music? | Are, Does, Do
+My parents [are visiting] London. | is visiting, visiting, visit ~ visit
+The children [are playing] in the park. | is playing, playing, play ~ play
+I [am waiting] for the bus. | wait, waiting, am wait ~ wait
+You [are standing] on my foot! | is standing, standing, stand ~ stand
+We [aren't going] out tonight. | don't going, isn't going, aren't go ~ go
+
+# 5 | Present Simple va Present Continuous | Odat, doimiy fakt: Present Simple (I drink tea every day). Hozir bo'layotgan ish: Present Continuous (I am drinking tea now). | every day, usually, often: Present Simple. now, at the moment, Look!: Present Continuous.
+Anna [works] in a shop every day. | is working, work ~ work
+Look! Anna [is working] in the garden. | works, work ~ work
+I [drink] tea every morning. | am drinking, drinks ~ drink
+Be quiet! The baby [is sleeping]. | sleeps, sleep ~ sleep
+He often [plays] tennis. | is playing, play ~ play
+They [are watching] TV at the moment. | watch, watches ~ watch
+Water [boils] at 100 degrees. | is boiling, boil ~ boil
+I [am wearing] a blue shirt today. | wear, wears ~ wear
+We usually [eat] lunch at one o'clock. | are eating, eats ~ eat
+It [is raining] now. Take an umbrella. | rains, rain ~ rain
+My sister [doesn't like] coffee. | isn't liking, don't like ~ like
+What [are] you doing right now? | do, does, is
+She [goes] to work by bus every day. | is going, go ~ go
+[Do] you play the piano? | Are, Does, Is
+The sun [rises] in the east. | is rising, rise ~ rise
+
+# 6 | have / have got | Egalik: I have got / I have; he has got / he has. Inkor: haven't got / hasn't got. Savol: Have you got...? Has she got...? | I/you/we/they: have got; he/she/it: has got.
+I [have got] a new phone. | has got, am got
+She [has got] two brothers. | have got, is got
+They [have got] a big house. | has got, are got
+He [hasn't got] a car. | haven't got, doesn't got
+We [haven't got] any money. | hasn't got, don't got
+[Have] you got a pen? | Has, Do, Are
+[Has] she got a sister? | Have, Does, Is
+I [have] breakfast at eight. | has, haves
+My dog [has] big ears. | have, haves
+Do you [have] a bike? | has, having ~ have
+The room [has got] two windows. | have got, is got
+I [haven't got] a pen. | hasn't got, don't have got
+Tom [has got] a new bike. | have got, haves got
+[Have] they got a dog? | Has, Does, Is
+She [doesn't have] any brothers. | don't have, doesn't has
+
+# 7 | was / were | 'To be' ning o'tgan zamoni: I/he/she/it was; we/you/they were. Inkor: wasn't / weren't. Savol: Was he...? Were you...? | I / he / she / it: was. we / you / they: were.
+I [was] at home yesterday. | were, am
+She [was] very tired last night. | were, is
+They [were] in Paris last week. | was, are
+We [were] late for school yesterday. | was, are
+It [was] cold yesterday. | were, is
+[Were] you at the party last night? | Was, Are
+[Was] he at work yesterday? | Were, Is
+The film [was] very good last night. | were, is
+My parents [were] in Spain last July. | was, are
+I [wasn't] hungry this morning. | weren't, am not, aren't
+The shops [weren't] open yesterday. | wasn't, isn't
+Where [were] you yesterday? | was, are
+Anna [was] born in 2005. | were, is
+[Was] the exam difficult yesterday? | Were, Is
+You [were] right yesterday. | was, are
+
+# 8 | Past Simple: to'g'ri fe'llar | O'tgan zamonda tugagan ish: fe'lga -ed qo'shiladi (worked, played). -e bilan tugasa faqat -d (lived). Undosh + y: -ied (studied). | To'g'ri fe'llar: fe'l + -ed. Hamma shaxslar uchun bir xil.
+I [worked] in a shop last year. | work, working ~ work
+She [watched] TV yesterday. | watch, watches ~ watch
+They [played] football on Sunday. | play, plays ~ play
+We [visited] our grandmother last week. | visit, visits ~ visit
+He [lived] in London in 2015. | live, lives ~ live
+I [studied] English last night. | study, studyed ~ study
+The bus [stopped] at the corner. | stop, stoped ~ stop
+My mother [cooked] dinner yesterday. | cook, cooks ~ cook
+She [started] a new job in May. | start, starts ~ start
+We [danced] all night. | dance, danceed ~ dance
+They [opened] the door. | open, opens ~ open
+I [cleaned] my room on Saturday. | clean, cleans ~ clean
+He [called] me two hours ago. | call, calls ~ call
+The film [finished] at ten. | finish, finishs ~ finish
+Tom [wanted] a new bike. | want, wants ~ want
+
+# 9 | Past Simple: noto'g'ri fe'llar | Ko'p fe'llar -ed olmaydi, ularning o'z shakli bor: go - went, see - saw, have - had, buy - bought, eat - ate. | Noto'g'ri fe'llarni yodlab oling: go-went, see-saw, buy-bought...
+I [went] to the cinema yesterday. | go, goed ~ go
+She [saw] a good film last night. | see, seed ~ see
+We [had] a great holiday. | have, haved ~ have
+He [bought] a new car. | buy, buyed ~ buy
+They [came] home late. | come, comed ~ come
+I [ate] an apple for breakfast. | eat, eated ~ eat
+She [wrote] me a letter. | write, writed ~ write
+We [took] a taxi to the airport. | take, taked ~ take
+He [drank] a cup of tea. | drink, drinked ~ drink
+I [met] my friend yesterday. | meet, meeted ~ meet
+They [made] a big cake. | make, maked ~ make
+She [got] up at six. | get, getted ~ get
+He [gave] me a present. | give, gived ~ give
+She [sat] on the sofa. | sit, sitted ~ sit
+The children [ran] home. | run, runned ~ run
+
+# 10 | Past Simple: savol va inkor (did) | Savol: Did + ega + asosiy fe'l (Did you see it?). Inkor: didn't + asosiy fe'l (I didn't go). Did dan keyin fe'l o'zgarmaydi. | Did / didn't dan keyin fe'l asl holida: Did you see...? I didn't go.
+I [didn't] go to school yesterday. | don't, wasn't
+She [didn't] like the film. | doesn't, wasn't
+[Did] you watch TV last night? | Do, Were
+[Did] he call you? | Does, Was
+We [didn't] see anyone. | don't, weren't
+They [didn't] play football. | doesn't, weren't
+What [did] you do yesterday? | do, were
+Where [did] she go? | does, was
+I didn't [buy] anything. | bought, buying ~ buy
+Did you [see] Tom? | saw, seeing ~ see
+He didn't [come] to the party. | came, comes ~ come
+When [did] they arrive? | do, were
+[Did] it rain yesterday? | Does, Was
+She didn't [have] breakfast. | had, has ~ have
+Why [did] you leave early? | do, are
+
+# 20 | be going to | Rejalashtirilgan yoki aniq bo'ladigan kelajak: am / is / are going to + fe'l. I am going to study tonight. It is going to rain. | am / is / are + going to + asosiy fe'l.
+I [am going to] visit my aunt. | is going to, going to, will going to
+She [is going to] buy a car. | are going to, am going to
+They [are going to] play tennis. | is going to, am going to
+We [are going to] have a party. | is going to, going to
+He [is going to] be a doctor. | are going to, am going to
+It [is going to] rain. Look at the sky! | are going to, am going to
+I [am not going to] watch TV tonight. | not going to, don't going to
+[Are] you going to eat now? | Do, Is
+[Is] she going to come? | Are, Do
+What [are] you going to do? | do, is
+We [aren't going to] stay long. | don't going to, isn't going to
+Where [is] he going to live? | are, does
+My sister [is going to] have a baby. | are going to, am going to
+I'm going to [call] him tomorrow. | calling, called ~ call
+They [are not going to] come today. | is not going to, do not going to
+
+# 25 | can / could | Qila olish: can (hozir), could (o'tgan zamon). can dan keyin fe'l o'zgarmaydi va 'to' kerak emas: I can swim. Inkor: can't / couldn't. | can / could dan keyin 'to' yo'q, fe'lga -s qo'shilmaydi.
+I [can] swim. | cans, can to
+She [can] speak three languages. | cans, can to
+He [can't] drive. | don't can, doesn't can
+[Can] you help me? | Do, Are
+They [can't] come tomorrow. | don't can, aren't can
+Can you [open] the window? | to open, opening ~ open
+I [could] swim when I was five. | can, am could
+She [couldn't] sleep last night. | can't, don't could
+[Could] you pass the salt, please? | Do, Are
+My brother [can] play the guitar very well. | cans, can to
+We [can't] hear you. | don't can, aren't can
+[Can] I use your phone? | Do, Am
+He couldn't [find] his keys. | to find, finding ~ find
+Birds [can] fly. | cans, can to
+I [couldn't] understand him yesterday. | can't, don't could
+
+# 30 | would like | Xushmuomala so'rov va istak: I would like... (xohlardim), Would you like...? Keyin ot yoki 'to' + fe'l. | would like + ot yoki to + fe'l. Savol: Would you like...?
+I [would like] a cup of tea. | am like, would to like
+[Would] you like some coffee? | Will, Are
+She [would like] to visit Paris. | would likes, is like
+What [would] you like to eat? | are, does
+I [would like] to speak to Mr Brown. | would liking, am like
+We [would like] a table for two. | will like, are like
+[Would] you like to dance? | Will, Are
+They [would like] some water, please. | would likes, are like
+I would [like] to go home. | liking, likes ~ like
+[Would] you like a sandwich? | Are, Will
+She would like [to] come with us. | at, in
+He [would like] a new bike for his birthday. | would likes, is like
+
+# 31 | Savol tuzish tartibi | Savol so'zi + yordamchi fe'l + ega + asosiy fe'l: Where do you live? What does she do? Where is the station? | Savol so'zi, keyin do / does / did / am / is / are, keyin ega.
+Where [do] you live? I live in Tashkent. | are, does
+What [does] she do? She is a nurse. | do, is
+When [did] they arrive? They arrived at six. | do, were
+[Where] is the station? It is near the park. | What, Who
+How [old] are you? I am twenty. | many, long
+[Who] is that man? He is my uncle. | What, Where
+[Why] are you crying? Because I am sad. | Who, How many
+What time [does] the shop open? At nine. | do, is
+[How many] brothers have you got? Two. | How much, How long
+Where [are] you from? I'm from Uzbekistan. | do, does
+[What] is your name? My name is Ali. | Who, How many
+How [much] is this bag? Ten dollars. | many, long
+[When] is your birthday? In May. | Who, How
+How [do] you spell your name? A-N-N-A. | does, are
+Where [does] your father work? In a bank. | do, is
+
+# 32 | Who / What savollari | Who - kim (odam), What - nima (narsa). Who is that? What is that? Who lives here? What happened? | Who - odam haqida, What - narsa haqida.
+[Who] is your teacher? Mr Brown. | What, Where
+[What] is your favourite colour? Blue. | Who, Where
+[Who] lives next door? Mrs Smith. | What, Where
+[What] do you want? A cup of tea. | Where, Why
+[What] happened? I fell down. | Who, Where
+[Who] broke the window? Tom did. | Where, When
+[What] time is it? It's six o'clock. | Who, Where
+[What] is in the box? A cat. | Who, Where
+[Who] is calling? It's my mother. | Where, When
+[What] are they doing? They are playing. | Who, Where
+[Who] are those girls? They are my cousins. | What, Where
+[What] does "cat" mean? It means a small animal. | Who, Where
+[Who] is she talking to? Her friend. | Where, When
+[What] did you eat? Rice and soup. | Who, Where
+[Who] is your best friend? Anna. | What, Where
+
+# 33 | Qisqa javoblar | Savolga qisqa javob savoldagi yordamchi fe'l bilan beriladi: Are you...? Yes, I am. Do you...? No, I don't. Can you...? Yes, I can. | Javobda ham savoldagi yordamchi fe'l (am / do / can / did...) takrorlanadi.
+Are you a student? Yes, I [am]. | do, are
+Do you like tea? No, I [don't]. | doesn't, am not
+Is she your sister? Yes, she [is]. | does, are
+Does he work here? Yes, he [does]. | do, is
+Can you swim? No, I [can't]. | don't, am not
+Did you see the film? Yes, I [did]. | do, was
+Are they at home? No, they [aren't]. | don't, isn't
+Do they speak English? Yes, they [do]. | does, are
+Is it cold? No, it [isn't]. | doesn't, aren't
+Does she like cats? No, she [doesn't]. | don't, isn't
+Have you got a car? Yes, I [have]. | do, am
+Was he late? No, he [wasn't]. | weren't, didn't
+Were you at home? Yes, I [was]. | were, did
+Did he call you? No, he [didn't]. | doesn't, wasn't
+Can she drive? Yes, she [can]. | does, is
+
+# 36 | Sanaladigan va sanalmaydigan otlar | Sanaladigan otlar (apple, book) birlik/ko'plik bo'ladi: a book, two books. Sanalmaydigan otlar (water, milk, money) birlikda: some water, much money. | Sanalmaydigan otdan oldin a / an va ko'plik -s ishlatilmaydi.
+I'd like [some] rice. | a, an
+She has [two] brothers. | much, a little
+There is [a] book on the table. | some, many
+We have [a lot of] milk. | many, a
+I don't have [much] money. | many, a
+How [many] apples do you want? | much, a
+How [much] sugar do you want? | many, a
+Bread [is] cheap here. | are, am
+The apples [are] on the table. | is, am
+We need [some] information. | an, a
+Milk [is] good for you. | are, am
+There [are] three chairs in the room. | is, am
+I have [an] orange. | a, two
+Do you want [some] tea? | an, many
+Money [is] not everything. | are, am
+
+# 37 | a / an | Birlikdagi sanaladigan otdan oldin a yoki an: undosh tovush bilan boshlansa a (a book), unli tovush bilan boshlansa an (an apple, an hour). | Yozilishi emas, aytilishi muhim: a university, an hour.
+I have [a] dog. | an, some
+She is [an] engineer. | a, some
+He eats [an] apple every day. | a, some
+It is [a] university. | an, some
+I need [an] umbrella. | a, some
+She has [a] new car. | an, some
+This is [an] easy question. | a, some
+He is [a] doctor. | an, some
+I saw [an] elephant at the zoo. | a, some
+It's [an] hour from here. | a, some
+What [a] beautiful day! | an, some
+My father is [a] teacher. | an, some
+Do you want [an] orange? | a, some
+He lives in [a] big house. | an, some
+I have [an] idea. | a, some
+
+# 38 | the | Aniq, ma'lum yoki yagona narsa oldidan the: the sun, the moon, the best. Avval a bilan tilga olingan narsa keyin the bilan: I saw a film. The film was great. | Ikkinchi marta tilga olinganda, yagona yoki eng...ligi aytilganda the.
+[The] sun is hot. | A, An
+[The] moon is very bright tonight. | A, An
+Paris is [the] capital of France. | a, an
+He is [the] best student in the class. | a, an
+I saw a film. [The] film was great. | A, An
+Tom is [the] tallest boy in our school. | a, an
+Look at [the] stars! | a, an
+[The] Earth goes round the sun. | A, An
+Please pass me [the] salt. | a, an
+This is [the] longest river in Africa. | a, an
+He is [the] only child in the family. | a, an
+The Nile is [the] longest river in the world. | a, an
+
+# 40 | some / any | Darak gapda some, inkor va savolda any: I have some friends. I don't have any money. Do you have any brothers? Taklifda some: Would you like some tea? | some - darak gap va taklif, any - inkor va savol.
+I have [some] friends in London. | any, a
+I don't have [any] money. | some, a
+Do you have [any] brothers? | an, a
+There is [some] milk in the fridge. | any, a
+There aren't [any] chairs. | some, a
+Would you like [some] tea? | any, a
+She didn't buy [any] bread. | some, a
+Is there [any] sugar? | some, a
+I need [some] help. | any, a
+We haven't got [any] eggs. | some, a
+He has [some] good ideas. | any, a
+Have you got [any] questions? | some, a
+I'd like [some] water, please. | any, a
+There isn't [any] water in the bottle. | some, a
+They bought [some] flowers. | any, a
+
+# 41 | much / many / a lot of | many - sanaladigan ko'plik ot bilan (many books), much - sanalmaydigan ot bilan (much water). Savol va inkorda much / many, darakda a lot of. | many + sanaladigan, much + sanalmaydigan. How many...? How much...?
+How [many] books do you have? | much, a
+How [much] time do we have? | many, a
+I don't have [much] money. | many, a
+She has [many] friends. | much, a
+There isn't [much] milk. | many, a
+We have [a lot of] homework. | many, a
+There aren't [many] cars here. | much, a
+I eat [a lot of] fruit. | many, a
+How [many] people are there? | much, a
+How [much] is this? | many, a
+He doesn't drink [much] coffee. | many, a
+There are [a lot of] tourists in summer. | much, a
+Do you have [many] brothers? | much, a
+She didn't eat [much] food. | many, a
+I have [a lot of] work today. | many, a
+
+# 43 | there is / there are | Biror joyda nima borligini aytish: there is + birlik / sanalmaydigan, there are + ko'plik. Savol: Is there...? Are there...? Inkor: there isn't / there aren't. | Birlik: there is. Ko'plik: there are.
+There [is] a book on the table. | are, am
+There [are] two cats in the garden. | is, am
+There [isn't] a bank near here. | aren't, not
+There [aren't] any shops. | isn't, not
+[Is] there a hotel here? | Are, Do
+[Are] there any students? | Is, Do
+There [is] some milk in the fridge. | are, am
+There [are] many people in the park. | is, am
+How many chairs [are] there? | is, do
+There [is] a bus at ten. | are, am
+There [are] five rooms in the house. | is, am
+There [isn't] any water. | aren't, not
+[Is] there a café near here? | Are, Do
+There [are] some apples on the tree. | is, am
+There [aren't] any eggs in the fridge. | isn't, no
+
+# 44 | my / mine, your / yours | Egalik: my, your, his, her, our, their ot oldidan keladi (my bag). mine, yours, his, hers, ours, theirs mustaqil keladi (The bag is mine). | my + ot, mine - otsiz.
+This is [my] bag. | mine, me
+This bag is [mine]. | my, me
+Is this [your] pen? | yours, you
+Is this pen [yours]? | your, you
+[Her] name is Anna. | She, Hers
+That car is [his]. | he, him
+These are [our] books. | ours, us
+The books are [ours]. | our, us
+[Their] house is big. | Theirs, They
+The house is [theirs]. | their, them
+This is [her] bike. | hers, she
+The bike is [hers]. | her, she
+Whose bag is this? It's [mine]. | my, me
+He loves [his] mother. | him, he
+
+# 65 | Vaqt predloglari: at / on / in | at - aniq vaqt (at seven), on - kun va sana (on Monday, on 5 May), in - oy, yil, fasl, kunning qismi (in May, in 2020, in summer, in the morning). | at + soat, on + kun / sana, in + oy / yil / fasl.
+I get up [at] seven o'clock. | on, in
+My birthday is [in] May. | on, at
+We have a party [on] Saturday. | in, at
+She was born [in] 2005. | on, at
+The film starts [at] eight. | on, in
+I see him [on] Monday morning. | in, at
+They go to school [in] the morning. | on, at
+I sleep [at] night. | in, on
+I was born [on] 5 May. | in, at
+It is cold [in] winter. | on, at
+See you [on] Friday! | in, at
+The shop closes [at] six. | on, in
+We go on holiday [in] summer. | on, at
+I read [in] the evening. | on, at
+My exam is [on] 10 June. | in, at
+
+# 66 | Joy predloglari: at / on / in | in - ichida (in the box, in London), on - ustida / sirtida (on the table, on the wall), at - nuqta, joy (at home, at school, at the bus stop). | in - ichida, on - ustida, at - joyda.
+The book is [on] the table. | in, at
+The cat is [in] the box. | on, at
+She is [at] school. | on, under
+He lives [in] London. | on, at
+The picture is [on] the wall. | in, at
+I'm [at] home. | in, on
+The keys are [in] my bag. | on, at
+The shop is [next to] the bank. | next, to
+The ball is [under] the bed, not on it. | at, to
+We met [at] the bus stop. | on, in
+The bank is [between] the shop and the school. | in, on
+She sits [behind] me, so I can't see her. | on, at
+He is [in] the kitchen. | on, at
+There is a lamp [above] the table. | in, at
+The bus stop is [opposite] the hospital. | in, on

@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   AnswerFormat,
   DailyStats,
@@ -16,6 +16,7 @@ import {
 } from '../api';
 import { Button, Card, PageHeader, ProgressBar, Spinner } from '../ui';
 import { shortDate } from '../util';
+import { EnglishStats } from './Learn';
 
 const FORMAT_LABEL: Record<AnswerFormat, string> = {
   TYPED: '⌨️ Yozma',
@@ -73,7 +74,7 @@ function AccuracyRing({ pct, size = 150, stroke = 13 }: { pct: number; size?: nu
   );
 }
 
-export function StatsPage() {
+function WordsStats({ tabs }: { tabs: ReactNode }) {
   const nav = useNavigate();
   const [summary, setSummary] = useState<StatsSummary | null>(null);
   const [review, setReview] = useState<ReviewSummary | null>(null);
@@ -110,11 +111,17 @@ export function StatsPage() {
       </div>
     </header>
   );
+  const headWithTabs = (
+    <>
+      {head}
+      {tabs}
+    </>
+  );
 
   if (state === 'loading') {
     return (
       <>
-        {head}
+        {headWithTabs}
         <Spinner />
       </>
     );
@@ -122,7 +129,7 @@ export function StatsPage() {
   if (state === 'error' || !summary || !review) {
     return (
       <>
-        {head}
+        {headWithTabs}
         <Card className="empty">
           <p className="muted">Statistikani yuklab bo'lmadi</p>
           <Button variant="outline" onClick={load}>Qayta urinish</Button>
@@ -152,7 +159,7 @@ export function StatsPage() {
 
   return (
     <div className="st">
-      {head}
+      {headWithTabs}
 
       <section className="st-top rise" style={{ ['--d' as string]: '0.04s' }}>
         <div className="st-card st-acc">
@@ -440,6 +447,32 @@ export function WeeklyPage() {
         </div>
         {report.bestDay && <p className="center muted" style={{ fontSize: 13 }}>Eng faol kun: {shortDate(report.bestDay)}</p>}
       </Card>
+    </>
+  );
+}
+
+export function StatsPage() {
+  const nav = useNavigate();
+  const [params, setParams] = useSearchParams();
+  const tab = params.get('tab') === 'english' ? 'english' : 'words';
+  const tabs = (
+    <div className="st-tabs rise">
+      <button className={`st-tab ${tab === 'words' ? 'on' : ''}`} onClick={() => setParams({})}>📖 So'zlar bo'yicha</button>
+      <button className={`st-tab ${tab === 'english' ? 'on' : ''}`} onClick={() => setParams({ tab: 'english' })}>🇬🇧 Ingliz tili bo'yicha</button>
+    </div>
+  );
+  if (tab === 'words') return <WordsStats tabs={tabs} />;
+  return (
+    <>
+      <header className="st-head rise">
+        <button className="st-back" onClick={() => nav('/profile')} aria-label="Orqaga">←</button>
+        <div>
+          <div className="eyebrow">Natijalaringiz</div>
+          <h1 className="dx-title">Statistika</h1>
+        </div>
+      </header>
+      {tabs}
+      <EnglishStats />
     </>
   );
 }

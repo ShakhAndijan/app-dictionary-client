@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode, useEffect, useState } from 'react';
+import { ButtonHTMLAttributes, CSSProperties, InputHTMLAttributes, ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { wordsApi } from './api';
 import { speakEnglish } from './util';
@@ -11,9 +11,9 @@ export function Spinner({ center = true }: { center?: boolean }) {
   );
 }
 
-export function Card({ children, className = '', onClick }: { children: ReactNode; className?: string; onClick?: () => void }) {
+export function Card({ children, className = '', onClick, style }: { children: ReactNode; className?: string; onClick?: () => void; style?: CSSProperties }) {
   return (
-    <div className={`card ${onClick ? 'clickable' : ''} ${className}`} onClick={onClick}>
+    <div className={`card ${onClick ? 'clickable' : ''} ${className}`} onClick={onClick} style={style}>
       {children}
     </div>
   );

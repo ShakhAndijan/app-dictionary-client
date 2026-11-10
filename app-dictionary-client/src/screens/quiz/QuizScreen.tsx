@@ -25,6 +25,9 @@ import { speakEnglish, stopSpeaking } from '../../services/speech';
 import FlashcardView from './FlashcardView';
 import MatchingView from './MatchingView';
 import SpeedRoundView from './SpeedRoundView';
+import SentenceView from './SentenceView';
+import * as sentencesApi from '../../api/sentencesApi';
+import { SentenceStatus } from '../../api/sentencesApi';
 
 type Props = BottomTabScreenProps<MainTabParamList, 'Baholash'>;
 type Phase = 'idle' | 'active' | 'results';
@@ -120,6 +123,8 @@ export default function QuizScreen({ navigation }: Props) {
   const favoriteCount = words.filter((w) => w.favorite).length;
   const [matching, setMatching] = useState(false);
   const [speed, setSpeed] = useState(false);
+  const [sentence, setSentence] = useState(false);
+  const [ai, setAi] = useState<SentenceStatus | null>(null);
   const [format, setFormat] = useState<'TYPED' | 'CHOICE' | 'LISTENING'>('TYPED');
   const [options, setOptions] = useState<string[] | null>(null);
   const [pendingOptions, setPendingOptions] = useState<string[] | null>(null);
@@ -149,6 +154,7 @@ export default function QuizScreen({ navigation }: Props) {
       const [data, reviewSummary] = await Promise.all([wordsApi.getWords(), reviewApi.getReviewSummary()]);
       setWords(data);
       setReview(reviewSummary);
+      sentencesApi.getSentenceStatus().then(setAi).catch(() => setAi(null));
       prefetchWordImages(data);
     } catch {
       // Keep previously loaded words on failure
@@ -283,6 +289,19 @@ export default function QuizScreen({ navigation }: Props) {
           <ActivityIndicator size="large" color={colors.primary} />
         </View>
       </ScreenContainer>
+    );
+  }
+
+  if (sentence && ai) {
+    return (
+      <SentenceView
+        words={words}
+        remaining={ai.remainingToday}
+        onExit={() => {
+          setSentence(false);
+          loadWords();
+        }}
+      />
     );
   }
 
@@ -553,6 +572,31 @@ export default function QuizScreen({ navigation }: Props) {
                 <Ionicons name="arrow-forward" size={16} color="#EF4444" />
               </View>
             </Pressable>
+
+            {ai?.enabled && words.length > 0 && (
+              <Pressable
+                style={({ pressed }) => [styles.modeCard, pressed && styles.modeCardPressed]}
+                onPress={() => {
+                  if (!isOnline()) {
+                    Alert.alert('Internet kerak', "Gap tuzishni tekshirish internet orqali ishlaydi.");
+                    return;
+                  }
+                  setSentence(true);
+                }}
+                disabled={starting}
+              >
+                <View style={[styles.modeIconWrap, { backgroundColor: '#10B9811A' }]}>
+                  <Ionicons name="create-outline" size={22} color="#10B981" />
+                </View>
+                <View style={styles.modeTextWrap}>
+                  <Text style={styles.modeTitle}>Gap tuzish</Text>
+                  <Text style={styles.modeSubtitle}>So'z bilan gap yozing, sun'iy intellekt baho beradi</Text>
+                </View>
+                <View style={[styles.modeArrowWrap, { backgroundColor: '#10B9811A' }]}>
+                  <Ionicons name="arrow-forward" size={16} color="#10B981" />
+                </View>
+              </Pressable>
+            )}
 
             {starting && <ActivityIndicator color={colors.primary} style={styles.startingIndicator} />}
           </>

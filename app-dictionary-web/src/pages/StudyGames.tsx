@@ -13,11 +13,14 @@ interface BaseProps {
 
 /* ---------------------------------------------------------- flashcards */
 
-function GameResult({ icon, title, value, unit, tone, celebrate, stats, onAgain, onExit }: {
+export function GameResult({ icon, title, value, unit, valueSuffix, againLabel, exitLabel, tone, celebrate, stats, onAgain, onExit }: {
   icon: string;
   title: string;
   value: number;
   unit: string;
+  valueSuffix?: string;
+  againLabel?: string;
+  exitLabel?: string;
   tone: string;
   celebrate?: boolean;
   stats: { label: string; value: string }[];
@@ -48,7 +51,7 @@ function GameResult({ icon, title, value, unit, tone, celebrate, stats, onAgain,
       )}
       <div className="gr-ico">{icon}</div>
       <h2>{title}</h2>
-      <div className="gr-score">{shown}</div>
+      <div className="gr-score">{shown}{valueSuffix ?? ''}</div>
       <p className="gr-unit">{unit}</p>
       <div className="gr-stats">
         {stats.map((st) => (
@@ -59,8 +62,8 @@ function GameResult({ icon, title, value, unit, tone, celebrate, stats, onAgain,
         ))}
       </div>
       <div className="gr-actions">
-        <Button onClick={onAgain}>↻ Yana o'ynash</Button>
-        <Button variant="outline" onClick={onExit}>Tugatish</Button>
+        <Button onClick={onAgain}>{againLabel ?? "↻ Yana o'ynash"}</Button>
+        <Button variant="outline" onClick={onExit}>{exitLabel ?? 'Tugatish'}</Button>
       </div>
     </section>
   );
@@ -618,38 +621,51 @@ export function SpeedGame({ review, totalWords, onExit }: Omit<BaseProps, 'favor
   }
 
   const secs = Math.ceil(msLeft / 1000);
+  const low = secs <= 10;
   return (
     <>
-      <PageHeader
-        title="Tez raund"
-        back={() => {
-          over.current = true;
-          if (sessionRef.current !== null) quizApi.finish(sessionRef.current).catch(() => undefined);
-          onExit();
-        }}
-        right={<span className={`timer ${secs <= 10 ? 'low' : ''}`}>⏱ {secs}s</span>}
-      />
-      <ProgressBar pct={(msLeft / (ROUND_SECONDS * 1000)) * 100} color={secs <= 10 ? 'var(--danger)' : undefined} />
-      <div className="row gap mt" style={{ justifyContent: 'center' }}>
-        <span className="chip chip-mastered">✅ {tally.correct}</span>
-        {tally.combo >= 2 && <span className="chip chip-learning">🔥 combo ×{tally.combo}</span>}
+      <header className="qx-top rise">
+        <button
+          className="gp-back"
+          aria-label="Orqaga"
+          onClick={() => {
+            over.current = true;
+            if (sessionRef.current !== null) quizApi.finish(sessionRef.current).catch(() => undefined);
+            onExit();
+          }}
+        >
+          ←
+        </button>
+        <div className="qx-title">
+          <small>O'yin</small>
+          <b>Tez raund</b>
+        </div>
+        <div className="qx-pills">
+          <span className="qx-pill ok">✓ {tally.correct}</span>
+          {tally.combo >= 2 && <span className="qx-pill combo">🔥 ×{tally.combo}</span>}
+          <span className={`qx-timer ${low ? 'low' : ''}`}>⏱ {secs}s</span>
+        </div>
+      </header>
+      <div className={`qx-time ${low ? 'low' : ''}`} aria-hidden="true">
+        <i style={{ width: `${(msLeft / (ROUND_SECONDS * 1000)) * 100}%` }} />
       </div>
       {error && <Notice>{error}</Notice>}
       {question && (
-        <Card className="q-card mt">
-          <p className="muted">{QUESTION_LABEL[question.promptType]}</p>
-          <div className={question.promptType === 'definition' ? 'q-def' : 'q-text'}>{question.promptText}</div>
-          <div className="options">
-            {question.options.map((o) => {
-              const cls = feedback ? (o === feedback.correctAnswer ? 'right' : o === feedback.chosen ? 'wrong' : '') : '';
+        <section className={`qx-card ${feedback ? (feedback.correct ? 'good' : 'bad') : ''}`} key={question.promptText}>
+          <span className="qx-badge" style={{ background: 'var(--indigo-bg)', color: 'var(--indigo-text)' }}>{QUESTION_LABEL[question.promptType]}</span>
+          <div className={question.promptType === 'definition' ? 'qx-def' : 'qx-word'}>{question.promptText}</div>
+          <div className="qx-options" style={{ marginTop: 22 }}>
+            {question.options.map((o, i) => {
+              const cls = feedback ? (o === feedback.correctAnswer ? 'right' : o === feedback.chosen ? 'wrong' : 'dim') : '';
               return (
-                <button key={o} className={`option ${cls}`} disabled={!!feedback} onClick={() => pick(o)}>
-                  {o}
+                <button key={o} className={`qx-opt ${cls}`} disabled={!!feedback} onClick={() => pick(o)}>
+                  <span className="qx-key">{cls === 'right' ? '✓' : cls === 'wrong' ? '✕' : String.fromCharCode(65 + i)}</span>
+                  <span className="qx-opt-text">{o}</span>
                 </button>
               );
             })}
           </div>
-        </Card>
+        </section>
       )}
     </>
   );

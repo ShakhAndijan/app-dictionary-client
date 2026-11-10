@@ -48,6 +48,10 @@ services:
       ADMIN_USERNAME: ${ADMIN_USERNAME:-superadmin}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:?set ADMIN_PASSWORD in .env}
       ADMIN_EMAIL: ${ADMIN_EMAIL:-superadmin@dictionary.local}
+      # "Write a sentence" practice graded by Google Gemini. Optional: without a key the feature is switched off.
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.5-flash}
+      GEMINI_DAILY_LIMIT: ${GEMINI_DAILY_LIMIT:-30}
       JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS:--XX:MaxRAMPercentage=70}
       TZ: ${TZ:-UTC}
     expose:

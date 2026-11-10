@@ -89,3 +89,37 @@ export function onProgressCheck(handler: () => void): () => void {
   window.addEventListener(PROGRESS_EVENT, handler);
   return () => window.removeEventListener(PROGRESS_EVENT, handler);
 }
+
+const ACHIEVEMENT_EMOJI: Record<string, string> = {
+  'footsteps-outline': '👣',
+  'library-outline': '📚',
+  'book-outline': '📖',
+  'checkmark-done-outline': '✅',
+  'checkmark-done-circle-outline': '💯',
+  'medal-outline': '🏅',
+  'ribbon-outline': '🎗️',
+  'school-outline': '🎓',
+  'diamond-outline': '💎',
+  'flame-outline': '🔥',
+  'bonfire-outline': '🔥',
+  'flag-outline': '🚩',
+  'trophy-outline': '🏆',
+  'headset-outline': '🎧',
+  'list-outline': '☑️',
+  'git-compare-outline': '🧩',
+  'timer-outline': '⏱️',
+  'layers-outline': '🃏',
+  'star-outline': '⭐',
+  'image-outline': '🖼️',
+  'arrow-up-circle-outline': '🆙',
+  'rocket-outline': '🚀',
+  'calendar-outline': '📅',
+  'flash-outline': '⚡',
+};
+
+/** The server sends Ionicons names (used by the mobile app); the web shows emoji. */
+export function achievementEmoji(icon: string | null | undefined): string {
+  if (!icon) return '🏅';
+  if (ACHIEVEMENT_EMOJI[icon]) return ACHIEVEMENT_EMOJI[icon];
+  return /^[a-z0-9-]+$/i.test(icon) ? '🏅' : icon;
+}

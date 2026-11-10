@@ -126,6 +126,7 @@ export function Failed({ message, retry }: { message: string; retry: () => void 
 export function AdminStatsPage() {
   const [o, setO] = useState<AdminOverview | null>(null);
   const [ins, setIns] = useState<AdminInsights | null>(null);
+  const [users, setUsers] = useState<AdminUser[] | null>(null);
   const [days, setDays] = useState(14);
   const [error, setError] = useState('');
 
@@ -133,6 +134,7 @@ export function AdminStatsPage() {
     setError('');
     adminApi.overview(days).then(setO).catch((e) => setError(errorMessage(e, "Ma'lumotlarni yuklab bo'lmadi")));
     adminApi.insights(days).then(setIns).catch(() => setIns(null));
+    adminApi.users().then(setUsers).catch(() => setUsers(null));
   };
   useEffect(load, [days]);
 
@@ -190,11 +192,11 @@ export function AdminStatsPage() {
       </div>
 
       <div className="ad-stats">
-        <Stat label="So'zlar" value={nf.format(o.totalWords)} hint="barcha lug'atlarda" delay={0.1} />
-        <Stat label="Javoblar" value={nf.format(o.totalReviews)} hint="jami mashq javoblari" delay={0.15} />
-        <Stat label="Aniqlik" value={`${o.accuracyPercent}%`} hint="to'g'ri javoblar ulushi" delay={0.2} accent />
-        <Stat label="Testlar" value={nf.format(o.totalQuizSessions)} hint="boshlangan sessiyalar" delay={0.25} />
-        <Stat label="Haftalik faollik" value={`${activePct}%`} hint="so'nggi 7 kunda mashq qilganlar" delay={0.3} />
+        <Stat label="Haftalik faollik" value={`${activePct}%`} hint="so'nggi 7 kunda faol bo'lganlar" delay={0.1} accent />
+        <Stat label="Oylik faollik" value={`${o.totalUsers ? Math.round((o.activeLast30Days / o.totalUsers) * 100) : 0}%`} hint="so'nggi 30 kunda faol bo'lganlar" delay={0.15} />
+        <Stat label="Bugun qo'shilgan" value={`+${o.newToday}`} hint="yangi ro'yxatdan o'tganlar" delay={0.2} />
+        <Stat label="Bloklangan" value={users ? String(users.filter((u) => u.blocked).length) : '—'} hint="kira olmaydigan hisoblar" delay={0.25} />
+        <Stat label="Adminlar" value={users ? String(users.filter((u) => u.role === 'ADMIN').length) : '—'} hint="administrator huquqi borlar" delay={0.3} />
       </div>
 
       <section className="b ad-card rise" style={{ ['--d' as string]: '0.35s' }}>
@@ -207,83 +209,100 @@ export function AdminStatsPage() {
         <Chart series={o.series} />
       </section>
 
-      {ins && <Insights ins={ins} />}
+      {(ins || users) && <Insights ins={ins} users={users} />}
     </>
   );
 }
 
-const FORMAT_LABEL: Record<string, string> = {
-  TYPED: 'Yozma',
-  CHOICE: 'Tanlov',
-  LISTENING: 'Eshitish',
-  FLASHCARD: 'Flesh-kartalar',
-  SPEED: 'Tezlik',
-};
+const BUCKETS: { label: string; test: (days: number | null) => boolean; tone: string }[] = [
+  { label: 'Bugun faol', test: (d) => d !== null && d < 1, tone: '#10b981' },
+  { label: '2–7 kun oldin', test: (d) => d !== null && d >= 1 && d < 7, tone: '#6366f1' },
+  { label: '8–30 kun oldin', test: (d) => d !== null && d >= 7 && d < 30, tone: '#f59e0b' },
+  { label: '30 kundan oldin', test: (d) => d !== null && d >= 30, tone: '#ef4444' },
+  { label: 'Mashq qilmagan', test: (d) => d === null, tone: '#94a3b8' },
+];
 
-function Insights({ ins }: { ins: AdminInsights }) {
-  const total = ins.formats.reduce((s, f) => s + f.answers, 0);
-  const top = Math.max(1, ...ins.formats.map((f) => f.answers));
-  const hardMax = Math.max(1, ...ins.hardestWords.map((w) => w.answers));
+function Insights({ ins, users }: { ins: AdminInsights | null; users: AdminUser[] | null }) {
+  const sinceDays = (iso: string | null) => (iso ? (Date.now() - new Date(iso).getTime()) / 86400000 : null);
+  const buckets = users
+    ? BUCKETS.map((b) => ({ ...b, n: users.filter((u) => b.test(sinceDays(u.lastActiveAt))).length }))
+    : [];
+  const bucketMax = Math.max(1, ...buckets.map((b) => b.n));
+  const top = users ? [...users].sort((a, b) => b.totalXp - a.totalXp).slice(0, 5) : [];
+  const newest = users ? [...users].sort((a, b) => (b.createdAt ?? '').localeCompare(a.createdAt ?? '')).slice(0, 5) : [];
+  const avgXp = users && users.length ? Math.round(users.reduce((sum, u) => sum + u.totalXp, 0) / users.length) : 0;
+
   return (
     <div className="ad-two">
-      <section className="b ad-card rise" style={{ ['--d' as string]: '0.4s' }}>
-        <div className="eyebrow">Mashq turlari · {ins.days} kun</div>
-        {ins.formats.length === 0 ? (
-          <div className="muted" style={{ padding: '16px 0' }}>Bu davrda javob yo'q.</div>
-        ) : (
+      {users && (
+        <section className="b ad-card rise" style={{ ['--d' as string]: '0.4s' }}>
+          <div className="eyebrow">Foydalanuvchilar faolligi bo'yicha</div>
           <div className="ad-bars-h">
-            {[...ins.formats].sort((a, b) => b.answers - a.answers).map((f) => (
-              <div key={f.format} className="ad-hrow">
-                <span className="ad-hlabel">{FORMAT_LABEL[f.format] ?? f.format}</span>
-                <div className="ad-htrack">
-                  <i style={{ width: `${(f.answers / top) * 100}%` }} />
+            {buckets.map((b) => (
+              <div key={b.label} className="ad-hrow">
+                <span className="ad-hlabel">{b.label}</span>
+                <div className="ad-htrack" style={{ ['--tone' as string]: b.tone }}>
+                  <i style={{ width: `${(b.n / bucketMax) * 100}%`, background: b.tone }} />
                 </div>
                 <span className="ad-hval">
-                  {nf.format(f.answers)} <small>({total ? Math.round((f.answers / total) * 100) : 0}% · {f.answers ? Math.round((f.correct / f.answers) * 100) : 0}% to'g'ri)</small>
+                  {b.n} <small>({users.length ? Math.round((b.n / users.length) * 100) : 0}%)</small>
                 </span>
               </div>
             ))}
           </div>
-        )}
-      </section>
+          <p className="muted ad-note">So'nggi mashq vaqti bo'yicha. O'rtacha XP: {nf.format(avgXp)}.</p>
+        </section>
+      )}
 
-      <section className="b ad-card rise" style={{ ['--d' as string]: '0.45s' }}>
-        <div className="eyebrow">Ushlab qolish (retention)</div>
-        <div className="ad-ret">
-          {ins.retention.map((r) => {
-            const pct = r.cohort ? Math.round((r.retained / r.cohort) * 100) : null;
-            return (
-              <div key={r.days} className="ad-ret-item">
-                <b>{pct === null ? '—' : `${pct}%`}</b>
-                <span>{r.days} kundan keyin</span>
-                <small>{r.retained} / {r.cohort} kishi</small>
-              </div>
-            );
-          })}
+      {ins && (
+        <section className="b ad-card rise" style={{ ['--d' as string]: '0.45s' }}>
+          <div className="eyebrow">Ushlab qolish (retention)</div>
+          <div className="ad-ret">
+            {ins.retention.map((r) => {
+              const pct = r.cohort ? Math.round((r.retained / r.cohort) * 100) : null;
+              return (
+                <div key={r.days} className="ad-ret-item">
+                  <b>{pct === null ? '—' : `${pct}%`}</b>
+                  <span>{r.days} kundan keyin</span>
+                  <small>{r.retained} / {r.cohort} kishi</small>
+                </div>
+              );
+            })}
+          </div>
+          <p className="muted ad-note">Ro'yxatdan o'tganiga kamida shuncha kun bo'lganlar ichida, o'sha kundan keyin ham qaytib kelganlar ulushi.</p>
+        </section>
+      )}
+
+      {users && (
+        <>
+          <section className="b ad-card rise" style={{ ['--d' as string]: '0.5s' }}>
+            <div className="eyebrow">Eng faol foydalanuvchilar (XP bo'yicha)</div>
+            <UserList items={top} right={(u) => `${nf.format(u.totalXp)} XP`} sub={(u) => `${u.reviewCount} javob · ${u.wordCount} so'z`} />
+          </section>
+          <section className="b ad-card rise" style={{ ['--d' as string]: '0.55s' }}>
+            <div className="eyebrow">So'nggi ro'yxatdan o'tganlar</div>
+            <UserList items={newest} right={(u) => day(u.createdAt)} sub={(u) => `oxirgi faollik: ${ago(u.lastActiveAt)}`} />
+          </section>
+        </>
+      )}
+    </div>
+  );
+}
+
+function UserList({ items, right, sub }: { items: AdminUser[]; right: (u: AdminUser) => string; sub: (u: AdminUser) => string }) {
+  if (items.length === 0) return <div className="muted" style={{ padding: '16px 0' }}>Hali foydalanuvchi yo'q.</div>;
+  return (
+    <div className="ad-ulist">
+      {items.map((u) => (
+        <div key={u.id} className="ad-urow">
+          <span className="ad-ava">{(u.fullName || u.username).slice(0, 1).toUpperCase()}</span>
+          <div className="ad-uinfo">
+            <b>{u.fullName || u.username}</b>
+            <small>@{u.username} · {sub(u)}</small>
+          </div>
+          <span className="ad-uval">{right(u)}</span>
         </div>
-        <p className="muted ad-note">Ro'yxatdan o'tganiga kamida shuncha kun bo'lganlar ichida, o'sha kundan keyin ham mashq qilganlar ulushi.</p>
-      </section>
-
-      <section className="b ad-card ad-wide rise" style={{ ['--d' as string]: '0.5s' }}>
-        <div className="eyebrow">Eng qiyin so'zlar (hamma foydalanuvchilar bo'yicha)</div>
-        {ins.hardestWords.length === 0 ? (
-          <div className="muted" style={{ padding: '16px 0' }}>Hali yetarli ma'lumot yo'q (kamida 3 ta javob kerak).</div>
-        ) : (
-          <div className="ad-bars-h">
-            {ins.hardestWords.map((w) => (
-              <div key={w.english} className="ad-hrow">
-                <span className="ad-hlabel">{w.english}</span>
-                <div className="ad-htrack danger">
-                  <i style={{ width: `${(w.answers / hardMax) * 100}%` }} />
-                </div>
-                <span className="ad-hval">
-                  {Math.round((w.wrong / w.answers) * 100)}% xato <small>({w.wrong}/{w.answers})</small>
-                </span>
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
+      ))}
     </div>
   );
 }

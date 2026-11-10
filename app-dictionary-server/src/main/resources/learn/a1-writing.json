@@ -1,0 +1,6229 @@
+[
+ {
+  "code": "a1-writing-1",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "About me",
+  "title": "O'zim haqimda",
+  "order": 1,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men talabaman.",
+    "answer": "I am a student",
+    "alsoAccept": [
+     "I'm a student",
+     "I am a university student"
+    ]
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening ismim Ali.",
+    "answer": "My name is Ali"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men O'zbekistondanman.",
+    "answer": "I am from Uzbekistan",
+    "alsoAccept": [
+     "I'm from Uzbekistan"
+    ]
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men yigirma yoshdaman.",
+    "answer": "I am twenty years old",
+    "alsoAccept": [
+     "I'm twenty years old"
+    ]
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men Toshkentda yashayman.",
+    "answer": "I live in Tashkent"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men ingliz tilini o'rganaman.",
+    "answer": "I study English"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men musiqani yaxshi ko'raman.",
+    "answer": "I like music",
+    "alsoAccept": [
+     "I love music"
+    ]
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men charchamadim.",
+    "answer": "I am not tired",
+    "alsoAccept": [
+     "I'm not tired"
+    ]
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening ismim Dilya.",
+    "answer": "My name is Dilya"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men o'qituvchiman.",
+    "answer": "I am a teacher",
+    "alsoAccept": [
+     "I'm a teacher"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men o'n besh yoshdaman.",
+    "answer": "I am fifteen years old",
+    "alsoAccept": [
+     "I'm fifteen years old"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men Samarqanddanman.",
+    "answer": "I am from Samarkand",
+    "alsoAccept": [
+     "I'm from Samarkand"
+    ]
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men maktabda o'qiyman.",
+    "answer": "I study at school"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men shifokor emasman.",
+    "answer": "I am not a doctor",
+    "alsoAccept": [
+     "I'm not a doctor"
+    ]
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men ingliz tilida gapiraman.",
+    "answer": "I speak English"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men Buxoroda yashayman.",
+    "answer": "I live in Bukhara"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening telefonim yangi.",
+    "answer": "My phone is new"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kitob o'qishni yaxshi ko'raman.",
+    "answer": "I like reading books"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men bugun xursandman.",
+    "answer": "I am happy today",
+    "alsoAccept": [
+     "I'm happy today"
+    ]
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men och emasman.",
+    "answer": "I am not hungry",
+    "alsoAccept": [
+     "I'm not hungry"
+    ]
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men juda charchadim.",
+    "answer": "I am very tired",
+    "alsoAccept": [
+     "I'm very tired"
+    ]
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening sevimli rangim ko'k.",
+    "answer": "My favourite colour is blue"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men futbol o'ynayman.",
+    "answer": "I play football"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men yolg'iz emasman.",
+    "answer": "I am not alone",
+    "alsoAccept": [
+     "I'm not alone"
+    ]
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men tushlikda sho'rva yeyman.",
+    "answer": "I eat soup for lunch"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men har kuni suv ichaman.",
+    "answer": "I drink water every day"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening ismim Ali emas.",
+    "answer": "My name is not Ali",
+    "alsoAccept": [
+     "My name isn't Ali"
+    ]
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men yangi do'stim bilan tanishdim.",
+    "answer": "I met my new friend"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men sizni tanimayman.",
+    "answer": "I don't know you",
+    "alsoAccept": [
+     "I do not know you"
+    ]
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men shaharda yashayman.",
+    "answer": "I live in the city"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-2",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "My family",
+  "title": "Oilam",
+  "order": 2,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening ikkita akam bor.",
+    "answer": "I have two brothers"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Otam shifokor.",
+    "answer": "My father is a doctor"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onam o'qituvchi.",
+    "answer": "My mother is a teacher"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Singlim o'n yoshda.",
+    "answer": "My sister is ten years old"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning oilamiz katta.",
+    "answer": "Our family is big"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Buvim juda yaxshi ovqat pishiradi.",
+    "answer": "My grandmother cooks very well"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening opam yo'q.",
+    "answer": "I don't have a sister",
+    "alsoAccept": [
+     "I do not have a sister",
+     "I haven't got a sister"
+    ]
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular uyda.",
+    "answer": "They are at home",
+    "alsoAccept": [
+     "they're at home"
+    ]
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening onam oshpaz.",
+    "answer": "My mother is a cook"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dadam haydovchi.",
+    "answer": "My father is a driver"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Akam talaba.",
+    "answer": "My brother is a student"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening ikkita singlim bor.",
+    "answer": "I have two sisters"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bobom yetmish yoshda.",
+    "answer": "My grandfather is seventy years old"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Buvim bog'da ishlaydi.",
+    "answer": "My grandmother works in the garden"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz ota-onam bilan yashaymiz.",
+    "answer": "We live with my parents"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Amakim Rossiyada yashaydi.",
+    "answer": "My uncle lives in Russia"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening oilamda besh kishi bor.",
+    "answer": "There are five people in my family"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Opam muzika yoqtiradi.",
+    "answer": "My sister likes music"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ukam futbol o'ynaydi.",
+    "answer": "My little brother plays football"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz kechqurun birga ovqatlanamiz.",
+    "answer": "We eat together in the evening"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ota-onam ishda.",
+    "answer": "My parents are at work"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening xolam hamshira.",
+    "answer": "My aunt is a nurse"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning oilangiz katta mi?",
+    "answer": "Is your family big"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning itimiz bor.",
+    "answer": "We have a dog"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Singlim to'qqiz yoshda.",
+    "answer": "My sister is nine years old"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Akam mashina haydamaydi.",
+    "answer": "My brother doesn't drive a car",
+    "alsoAccept": [
+     "My brother does not drive a car"
+    ]
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men oilamni yaxshi ko'raman.",
+    "answer": "I love my family"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular bizning qo'shnilarimiz.",
+    "answer": "They are our neighbours",
+    "alsoAccept": [
+     "they're our neighbours"
+    ]
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning mushugimiz oq.",
+    "answer": "Our cat is white"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dadam yakshanba kuni ishlamaydi.",
+    "answer": "My father doesn't work on Sunday",
+    "alsoAccept": [
+     "My father does not work on Sunday"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-3",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "My home",
+  "title": "Uyim",
+  "order": 3,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning uyimiz katta.",
+    "answer": "Our house is big",
+    "alsoAccept": [
+     "Our house is large",
+     "Our home is big"
+    ]
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Xonamda karavot bor.",
+    "answer": "There is a bed in my room",
+    "alsoAccept": [
+     "there's a bed in my room"
+    ]
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Stolda kitoblar bor.",
+    "answer": "There are some books on the table"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oshxona yashash xonasining yonida.",
+    "answer": "The kitchen is next to the living room"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Derazaning yonida stol bor.",
+    "answer": "There is a table next to the window",
+    "alsoAccept": [
+     "there's a table next to the window"
+    ]
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu mening xonam.",
+    "answer": "This is my room"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening xonam kichkina.",
+    "answer": "My room is small",
+    "alsoAccept": [
+     "My room is little"
+    ]
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bog'da gullar bor.",
+    "answer": "There are flowers in the garden"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning uyimiz yangi.",
+    "answer": "Our house is new"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening xonamda kompyuter bor.",
+    "answer": "There is a computer in my room",
+    "alsoAccept": [
+     "there's a computer in my room"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mehmonxonada divan bor.",
+    "answer": "There is a sofa in the living room",
+    "alsoAccept": [
+     "there's a sofa in the living room"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oshxonada stol va stullar bor.",
+    "answer": "There are a table and chairs in the kitchen"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Hammom kichkina.",
+    "answer": "The bathroom is small"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning bog'imiz katta.",
+    "answer": "Our garden is big"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Uyda uchta xona bor.",
+    "answer": "There are three rooms in the house"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men ikkinchi qavatda yashayman.",
+    "answer": "I live on the second floor"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Derazada gullar bor.",
+    "answer": "There are flowers on the windowsill"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Xonamda televizor yo'q.",
+    "answer": "There isn't a TV in my room",
+    "alsoAccept": [
+     "There is not a TV in my room"
+    ]
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Karavot derazaning yonida.",
+    "answer": "The bed is next to the window"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Lampa stolning ustida.",
+    "answer": "The lamp is on the table"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kitoblar javonda.",
+    "answer": "The books are on the shelf"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening xonam toza.",
+    "answer": "My room is clean"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning uyimizda bog' bor.",
+    "answer": "There is a garden at our house",
+    "alsoAccept": [
+     "there's a garden at our house"
+    ]
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kalitlar sumkada.",
+    "answer": "The keys are in the bag"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mushuk stulning tagida.",
+    "answer": "The cat is under the chair"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu bizning mehmonxonamiz.",
+    "answer": "This is our living room"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Uy shahar markazida.",
+    "answer": "The house is in the city centre"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oshxona katta emas.",
+    "answer": "The kitchen is not big",
+    "alsoAccept": [
+     "The kitchen isn't big"
+    ]
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Rasm devorda osilgan.",
+    "answer": "The picture is on the wall"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz kvartirada yashaymiz.",
+    "answer": "We live in a flat"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-4",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Food and drinks",
+  "title": "Ovqat va ichimlik",
+  "order": 3,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men choy ichaman.",
+    "answer": "I drink tea"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U kofe yoqtirmaydi.",
+    "answer": "She doesn't like coffee",
+    "alsoAccept": [
+     "She does not like coffee"
+    ]
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men bir stakan suv xohlayman.",
+    "answer": "I would like a glass of water"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz non xohlaysizmi?",
+    "answer": "Would you like some bread"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Muzlatgichda sut bor.",
+    "answer": "There is some milk in the fridge",
+    "alsoAccept": [
+     "there's some milk in the fridge"
+    ]
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men och emasman.",
+    "answer": "I am not hungry",
+    "alsoAccept": [
+     "I'm not hungry"
+    ]
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz tushlikda palov yeymiz.",
+    "answer": "We eat plov for lunch"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Meva sog'lom.",
+    "answer": "Fruit is healthy",
+    "alsoAccept": [
+     "Fruit is good for you"
+    ]
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men tushlikda go'sht yeyman.",
+    "answer": "I eat meat for lunch"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U sut ichmaydi.",
+    "answer": "He doesn't drink milk",
+    "alsoAccept": [
+     "He does not drink milk"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men olma yaxshi ko'raman.",
+    "answer": "I like apples"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizga choy kerakmi?",
+    "answer": "Do you want some tea"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Stolda non bor.",
+    "answer": "There is some bread on the table",
+    "alsoAccept": [
+     "there's some bread on the table"
+    ]
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz kechki ovqatga sho'rva pishiramiz.",
+    "answer": "We cook soup for dinner"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men tuxum yeyman.",
+    "answer": "I eat eggs"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U qahva ichadi.",
+    "answer": "She drinks coffee"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men bir bo'lak tort xohlayman.",
+    "answer": "I would like a piece of cake"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Muzqaymoq mazali.",
+    "answer": "The ice cream is delicious"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizda guruch yo'q.",
+    "answer": "We don't have any rice",
+    "alsoAccept": [
+     "We do not have any rice"
+    ]
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men baliq yoqtirmayman.",
+    "answer": "I don't like fish",
+    "alsoAccept": [
+     "I do not like fish"
+    ]
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz nima ichasiz?",
+    "answer": "What do you drink"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men shakarsiz choy ichaman.",
+    "answer": "I drink tea without sugar"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular kechki ovqatda salat yeyishadi.",
+    "answer": "They eat salad for dinner"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening onam mazali ovqat pishiradi.",
+    "answer": "My mother cooks delicious food"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning sevimli ovqatingiz nima?",
+    "answer": "What is your favourite food"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men bir shisha suv xohlayman.",
+    "answer": "I would like a bottle of water"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U sabzavot yeydi.",
+    "answer": "He eats vegetables"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Muzlatgichda mevalar bor.",
+    "answer": "There is some fruit in the fridge",
+    "alsoAccept": [
+     "there's some fruit in the fridge"
+    ]
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men ertalab nonushta qilaman.",
+    "answer": "I have breakfast in the morning"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu sho'rva issiq.",
+    "answer": "This soup is hot"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-5",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Daily routine",
+  "title": "Kundalik tartib",
+  "order": 4,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men soat yettida turaman.",
+    "answer": "I get up at seven"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U maktabga avtobusda boradi.",
+    "answer": "He goes to school by bus"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz soat sakkizda nonushta qilamiz.",
+    "answer": "We have breakfast at eight"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kechqurun televizor ko'raman.",
+    "answer": "I watch TV in the evening"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U soat o'nda uxlaydi.",
+    "answer": "She goes to bed at ten"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz qachon ishga borasiz?",
+    "answer": "When do you go to work"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men dushanba kuni ishlamayman.",
+    "answer": "I don't work on Monday",
+    "alsoAccept": [
+     "I do not work on Monday"
+    ]
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dars soat to'qqizda boshlanadi.",
+    "answer": "The lesson starts at nine"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men soat oltida turaman.",
+    "answer": "I get up at six"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U ertalab yuzini yuvadi.",
+    "answer": "He washes his face in the morning"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz soat yettida nonushta qilamiz.",
+    "answer": "We have breakfast at seven"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men ishga piyoda boraman.",
+    "answer": "I walk to work"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dars soat sakkizda boshlanadi.",
+    "answer": "The lesson starts at eight"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U soat bir da tushlik qiladi.",
+    "answer": "He has lunch at one"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men darsdan keyin uy vazifasini qilaman.",
+    "answer": "I do my homework after school"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular kechqurun televizor ko'rishadi.",
+    "answer": "They watch TV in the evening"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men soat o'n bir da uxlayman.",
+    "answer": "I go to bed at eleven"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz soat nechada turasiz?",
+    "answer": "What time do you get up"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men yakshanba kuni erta turmayman.",
+    "answer": "I don't get up early on Sunday",
+    "alsoAccept": [
+     "I do not get up early on Sunday"
+    ]
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U har kuni kitob o'qiydi.",
+    "answer": "She reads a book every day"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz maktabga avtobusda boramiz.",
+    "answer": "We go to school by bus"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kechki ovqatni onam bilan tayyorlayman.",
+    "answer": "I cook dinner with my mother"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ish soat beshda tugaydi.",
+    "answer": "Work finishes at five"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular shanba kuni ishlamaydi.",
+    "answer": "They don't work on Saturday",
+    "alsoAccept": [
+     "They do not work on Saturday"
+    ]
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U ertalab choy ichadi.",
+    "answer": "He drinks tea in the morning"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men har kuni musiqa tinglayman.",
+    "answer": "I listen to music every day"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz qachon uyga kelasiz?",
+    "answer": "When do you come home"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men ertalab dush qabul qilaman.",
+    "answer": "I take a shower in the morning"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz tushlikda dam olamiz.",
+    "answer": "We rest at lunchtime"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men odatda erta uxlayman.",
+    "answer": "I usually go to bed early"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-6",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Yesterday",
+  "title": "O'tgan kun",
+  "order": 5,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha men kinoga bordim.",
+    "answer": "I went to the cinema yesterday"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U kecha uyda edi.",
+    "answer": "He was at home yesterday"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz futbol o'ynadik.",
+    "answer": "We played football"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men dugonamni uchratdim.",
+    "answer": "I met my friend"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U yangi kitob sotib oldi.",
+    "answer": "She bought a new book"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kecha televizor ko'rmadim.",
+    "answer": "I didn't watch TV yesterday",
+    "alsoAccept": [
+     "I did not watch TV yesterday"
+    ]
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz nima qildingiz?",
+    "answer": "What did you do"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular kech kelishdi.",
+    "answer": "They came late"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha men maktabga bordim.",
+    "answer": "I went to school yesterday"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U kecha kitob o'qidi.",
+    "answer": "She read a book yesterday"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz kecha parkda yurdik.",
+    "answer": "We walked in the park yesterday"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular kecha uyda edilar.",
+    "answer": "They were at home yesterday"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kecha choy ichdim.",
+    "answer": "I drank tea yesterday"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U bugun ertalab maktabga kech keldi.",
+    "answer": "He came to school late this morning"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men dugonamga qo'ng'iroq qildim.",
+    "answer": "I called my friend"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz kecha film ko'rdik.",
+    "answer": "We watched a film yesterday"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U yangi ko'ylak sotib oldi.",
+    "answer": "She bought a new dress"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kecha uyga erta keldim.",
+    "answer": "I came home early yesterday"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz kecha nima yedingiz?",
+    "answer": "What did you eat yesterday"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U kecha ishlamadi.",
+    "answer": "He didn't work yesterday",
+    "alsoAccept": [
+     "He did not work yesterday"
+    ]
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kecha hech kimni ko'rmadim.",
+    "answer": "I didn't see anyone yesterday",
+    "alsoAccept": [
+     "I did not see anyone yesterday"
+    ]
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular futbol o'ynamadilar.",
+    "answer": "They didn't play football",
+    "alsoAccept": [
+     "They did not play football"
+    ]
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz kecha uyda edingizmi?",
+    "answer": "Were you at home yesterday"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha ob-havo sovuq edi.",
+    "answer": "The weather was cold yesterday"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kecha charchagan edim.",
+    "answer": "I was tired yesterday"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz kecha kinoga bordingizmi?",
+    "answer": "Did you go to the cinema yesterday"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U maktubni yozdi.",
+    "answer": "She wrote a letter"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz kecha mehmonga bordik.",
+    "answer": "We visited our friends yesterday"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kecha erta uxladim.",
+    "answer": "I went to bed early yesterday"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U kecha nonushta qilmadi.",
+    "answer": "He didn't have breakfast yesterday",
+    "alsoAccept": [
+     "He did not have breakfast yesterday"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-7",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Places",
+  "title": "Shahar va joylar",
+  "order": 6,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bank maktabning yonida.",
+    "answer": "The bank is next to the school"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda yaqin joyda kafe bormi?",
+    "answer": "Is there a café near here"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bekat kasalxonaning qarshisida.",
+    "answer": "The bus stop is opposite the hospital"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Parkda ko'p odam bor.",
+    "answer": "There are many people in the park"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'kon soat to'qqizda ochiladi.",
+    "answer": "The shop opens at nine"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Poyezd Toshkentga ketadi.",
+    "answer": "The train goes to Tashkent"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening shahrim kichkina.",
+    "answer": "My town is small",
+    "alsoAccept": [
+     "My town is little"
+    ]
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kutubxona yopiq.",
+    "answer": "The library is closed"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bank qayerda?",
+    "answer": "Where is the bank"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Maktab bekatning yonida.",
+    "answer": "The school is next to the bus stop"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kasalxona parkning orqasida.",
+    "answer": "The hospital is behind the park"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Muzey markazda.",
+    "answer": "The museum is in the centre"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening uyim bozorning yonida.",
+    "answer": "My house is near the market"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda dorixona bormi?",
+    "answer": "Is there a pharmacy here"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Shaharda ko'p parklar bor.",
+    "answer": "There are many parks in the city"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kafe yopiq.",
+    "answer": "The café is closed"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bekat uzoq emas.",
+    "answer": "The station is not far",
+    "alsoAccept": [
+     "The station isn't far"
+    ]
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kinoteatr soat o'nda ochiladi.",
+    "answer": "The cinema opens at ten"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'kon uyning qarshisida.",
+    "answer": "The shop is opposite the house"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Poyezd soat beshda keladi.",
+    "answer": "The train arrives at five"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda restoran yo'q.",
+    "answer": "There isn't a restaurant here",
+    "alsoAccept": [
+     "There is not a restaurant here"
+    ]
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Maktab bilan bank o'rtasida kafe bor.",
+    "answer": "There is a café between the school and the bank",
+    "alsoAccept": [
+     "there's a café between the school and the bank"
+    ]
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Avtobus bekati ko'chada.",
+    "answer": "The bus stop is in the street"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kutubxona ikkinchi qavatda.",
+    "answer": "The library is on the second floor"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz shaharga avtobusda boramiz.",
+    "answer": "We go to the city by bus"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Hozir men bozordaman.",
+    "answer": "I am at the market now",
+    "alsoAccept": [
+     "I'm at the market now"
+    ]
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U kasalxonada ishlaydi.",
+    "answer": "She works in a hospital"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Parkda daraxtlar ko'p.",
+    "answer": "There are many trees in the park"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Poyezd Buxoroga ketadi.",
+    "answer": "The train goes to Bukhara"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening shahrim chiroyli.",
+    "answer": "My city is beautiful"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-8",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Plans",
+  "title": "Rejalar",
+  "order": 7,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ertaga yomg'ir yog'adi.",
+    "answer": "It is going to rain tomorrow",
+    "alsoAccept": [
+     "it's going to rain tomorrow"
+    ]
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men dam olish kunida do'stimga boraman.",
+    "answer": "I am going to visit my friend at the weekend",
+    "alsoAccept": [
+     "I'm going to visit my friend at the weekend"
+    ]
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz kechqurun film ko'ramiz.",
+    "answer": "We are going to watch a film tonight",
+    "alsoAccept": [
+     "we're going to watch a film tonight"
+    ]
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U shifokor bo'ladi.",
+    "answer": "She is going to be a doctor",
+    "alsoAccept": [
+     "she's going to be a doctor"
+    ]
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men ertaga ishlamayman.",
+    "answer": "I am not going to work tomorrow",
+    "alsoAccept": [
+     "I'm not going to work tomorrow"
+    ]
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz nima qilmoqchisiz?",
+    "answer": "What are you going to do"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men suzishni bilaman.",
+    "answer": "I can swim"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U mashina haydashni bilmaydi.",
+    "answer": "He can't drive",
+    "alsoAccept": [
+     "He can not drive"
+    ]
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ertaga men do'konga boraman.",
+    "answer": "I am going to go to the shop tomorrow",
+    "alsoAccept": [
+     "I'm going to go to the shop tomorrow"
+    ]
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U bu yil ingliz tilini o'rganadi.",
+    "answer": "She is going to learn English this year",
+    "alsoAccept": [
+     "she's going to learn English this year"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz yozda dengizga boramiz.",
+    "answer": "We are going to go to the sea in summer",
+    "alsoAccept": [
+     "we're going to go to the sea in summer"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular yangi uy quradilar.",
+    "answer": "They are going to build a new house",
+    "alsoAccept": [
+     "they're going to build a new house"
+    ]
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men bugun kechqurun dars qilaman.",
+    "answer": "I am going to study tonight",
+    "alsoAccept": [
+     "I'm going to study tonight"
+    ]
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U ertaga kelmaydi.",
+    "answer": "He is not going to come tomorrow",
+    "alsoAccept": [
+     "he's not going to come tomorrow",
+     "He isn't going to come tomorrow"
+    ]
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz ertaga nima qilasiz?",
+    "answer": "What are you going to do tomorrow"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Hozir yomg'ir yog'adi.",
+    "answer": "It is going to rain soon",
+    "alsoAccept": [
+     "it's going to rain soon"
+    ]
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men rasmga tushaman.",
+    "answer": "I am going to take a photo",
+    "alsoAccept": [
+     "I'm going to take a photo"
+    ]
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz bizga qo'ng'iroq qilasizmi?",
+    "answer": "Are you going to call us"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U gitara chalishni biladi.",
+    "answer": "He can play the guitar"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men tez yugura olmayman.",
+    "answer": "I can't run fast",
+    "alsoAccept": [
+     "I can not run fast"
+    ]
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz menga yordam bera olasizmi?",
+    "answer": "Can you help me"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men bir stakan choy xohlayman.",
+    "answer": "I would like a glass of tea"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz kofe xohlaysizmi?",
+    "answer": "Would you like some coffee"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz yangi mashina sotib olmoqchimiz.",
+    "answer": "We are going to buy a new car",
+    "alsoAccept": [
+     "we're going to buy a new car"
+    ]
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men ingliz tilida gaplashishni bilaman.",
+    "answer": "I can speak English"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U ertaga erta turadi.",
+    "answer": "He is going to get up early tomorrow",
+    "alsoAccept": [
+     "he's going to get up early tomorrow"
+    ]
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular dam olish kunida futbol o'ynaydi.",
+    "answer": "They are going to play football at the weekend",
+    "alsoAccept": [
+     "they're going to play football at the weekend"
+    ]
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men yangi kitob o'qimoqchiman.",
+    "answer": "I am going to read a new book",
+    "alsoAccept": [
+     "I'm going to read a new book"
+    ]
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U ertaga bizni ziyorat qiladi.",
+    "answer": "She is going to visit us tomorrow",
+    "alsoAccept": [
+     "she's going to visit us tomorrow"
+    ]
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men hozir gapira olmayman.",
+    "answer": "I can't talk now",
+    "alsoAccept": [
+     "I can not talk now"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-9",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Questions",
+  "title": "Savollar",
+  "order": 8,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz qayerda yashaysiz?",
+    "answer": "Where do you live"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning ismingiz nima?",
+    "answer": "What is your name"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu kim?",
+    "answer": "Who is this"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U necha yoshda?",
+    "answer": "How old is he"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu qancha turadi?",
+    "answer": "How much is this"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning tug'ilgan kuningiz qachon?",
+    "answer": "When is your birthday"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizda ruchka bormi?",
+    "answer": "Have you got a pen",
+    "alsoAccept": [
+     "Do you have a pen"
+    ]
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz ingliz tilida gapirasizmi?",
+    "answer": "Do you speak English"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz kimsiz?",
+    "answer": "Who are you"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu nima?",
+    "answer": "What is this"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U qayerda ishlaydi?",
+    "answer": "Where does he work"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz nima yeysiz?",
+    "answer": "What do you eat"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning telefon raqamingiz nima?",
+    "answer": "What is your phone number"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dars soat nechada boshlanadi?",
+    "answer": "What time does the lesson start"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz qanday kelasiz?",
+    "answer": "How do you come"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U nega yig'layapti?",
+    "answer": "Why is she crying"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizda nechta aka-uka bor?",
+    "answer": "How many brothers have you got"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu qancha turadi?",
+    "answer": "How much does it cost"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz qachon uxlaysiz?",
+    "answer": "When do you go to bed"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning ismingiz kim?",
+    "answer": "What is your name"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U ingliz tilida gapiradimi?",
+    "answer": "Does he speak English"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz uydamisiz?",
+    "answer": "Are you at home"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu sizning kitobingizmi?",
+    "answer": "Is this your book"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz kecha qayerda edingiz?",
+    "answer": "Where were you yesterday"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz nima qilyapsiz?",
+    "answer": "What are you doing"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu kim?",
+    "answer": "Who is that"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz suzishni bilasizmi?",
+    "answer": "Can you swim"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizda mashina bormi?",
+    "answer": "Have you got a car"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening ruchkam qayerda?",
+    "answer": "Where is my pen"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz kofe xohlaysizmi?",
+    "answer": "Would you like some coffee"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-10",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "At the bank and post office",
+  "title": "Bank va pochtada",
+  "order": 8,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bank ko'chaning oxirida.",
+    "answer": "The bank is at the end of the street"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men bugun bankka boraman.",
+    "answer": "I go to the bank today"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Pochta bankning yonida.",
+    "answer": "The post office is next to the bank"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening bankda hisob raqamim bor.",
+    "answer": "I have an account at the bank"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bank soat to'qqizda ochiladi.",
+    "answer": "The bank opens at nine o'clock"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Pochta soat beshda yopiladi.",
+    "answer": "The post office closes at five o'clock"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga marka kerak.",
+    "answer": "I need a stamp"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz xatlar yuborasizmi?",
+    "answer": "Do you send letters"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U do'stiga xat yozadi.",
+    "answer": "He writes a letter to his friend"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu xat Londonga ketadi.",
+    "answer": "This letter goes to London"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Pochtada uzun navbat bor.",
+    "answer": "There is a long queue at the post office",
+    "alsoAccept": [
+     "there's a long queue at the post office"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bankda ikkita kassir bor.",
+    "answer": "There are two cashiers at the bank"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bankomat qayerda?",
+    "answer": "Where is the ATM"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bankomat bankning oldida.",
+    "answer": "The ATM is in front of the bank"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening opamning bank kartasi bor.",
+    "answer": "My sister has got a bank card"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men bankdan pul olaman.",
+    "answer": "I take money from the bank"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: O'g'il bola paketni pochtaga olib boradi.",
+    "answer": "The boy takes the parcel to the post office"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu paket og'ir.",
+    "answer": "This parcel is heavy"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Paket qancha turadi?",
+    "answer": "How much does the parcel cost"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga konvert kerakmi?",
+    "answer": "Do I need an envelope"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kassir juda xushmuomala.",
+    "answer": "The cashier is very polite"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening manzilim bu konvertda.",
+    "answer": "My address is on this envelope"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Pochtachi xatlarni olib keladi.",
+    "answer": "The postman brings the letters"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz bankda pul sanaymiz.",
+    "answer": "We count money at the bank"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz pochtaga borasizmi?",
+    "answer": "Do you go to the post office"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dadangiz har hafta bankka boradimi?",
+    "answer": "Does your father go to the bank every week"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening onam pochtada ishlaydi.",
+    "answer": "My mother works at the post office"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bankda ikkita stol bor.",
+    "answer": "There are two tables in the bank"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Pochta bu yerdan uzoq emas.",
+    "answer": "The post office is not far from here",
+    "alsoAccept": [
+     "The post office isn't far from here"
+    ]
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bank bugun yopiq.",
+    "answer": "The bank is closed today"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-11",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "My hobbies",
+  "title": "Mening hobbilarim",
+  "order": 9,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kitob o'qishni yaxshi ko'raman.",
+    "answer": "I like reading books"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Akam gitara chalishni yaxshi ko'radi.",
+    "answer": "My brother likes playing the guitar"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz yakshanba kuni futbol o'ynaymiz.",
+    "answer": "We play football on Sunday"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Singlim har kuni rasm chizadi.",
+    "answer": "My sister draws pictures every day"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men suzishni bilaman.",
+    "answer": "I can swim"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz qo'shiq aytishni bilasizmi?",
+    "answer": "Can you sing"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Otam baliq ovlashni yaxshi ko'radi.",
+    "answer": "My father likes fishing"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men musiqa tinglashni yaxshi ko'raman.",
+    "answer": "I like listening to music"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'stim velosiped haydashni biladi.",
+    "answer": "My friend can ride a bike"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular shaxmat o'ynaydilar.",
+    "answer": "They play chess"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kino ko'rishni yoqtirmayman.",
+    "answer": "I don't like watching films",
+    "alsoAccept": [
+     "I do not like watching films"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onam gul ekishni yaxshi ko'radi.",
+    "answer": "My mother likes growing flowers"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sen qaysi sportni yoqtirasan?",
+    "answer": "What sport do you like"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men raqsga tushishni bilmayman.",
+    "answer": "I can't dance",
+    "alsoAccept": [
+     "I can not dance"
+    ]
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz bog'da tennis o'ynaymiz.",
+    "answer": "We play tennis in the park"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Akam kompyuter o'yinlarini o'ynaydi.",
+    "answer": "My brother plays computer games"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sen kitob yig'asanmi?",
+    "answer": "Do you collect books"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men suratga olishni yaxshi ko'raman.",
+    "answer": "I like taking photos"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Opam yaxshi ovqat pishiradi.",
+    "answer": "My sister cooks well"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Otam shanba kuni televizor ko'radi.",
+    "answer": "My father watches TV on Saturday"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men yozda ko'p suzaman.",
+    "answer": "I swim a lot in summer"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning do'stlaringiz nima o'ynaydi?",
+    "answer": "What do your friends play"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Singlingiz pianino chalishni biladimi?",
+    "answer": "Can your sister play the piano"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men tez yugura olaman.",
+    "answer": "I can run fast"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz dam olish kunlari sayr qilamiz.",
+    "answer": "We go for a walk at weekends"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qizim rasm chizishni yaxshi ko'radi.",
+    "answer": "My daughter likes drawing"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular kechqurun voleybol o'ynashadi.",
+    "answer": "They play volleyball in the evening"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening mashg'ulotim juda qiziq.",
+    "answer": "My hobby is very interesting"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning sinfda shaxmat to'garagi bor.",
+    "answer": "There is a chess club in our class",
+    "alsoAccept": [
+     "there's a chess club in our class"
+    ]
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning mashg'ulotingiz nima?",
+    "answer": "What is your hobby"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-12",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Clothes and colours",
+  "title": "Kiyim va ranglar",
+  "order": 10,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening ko'ylagim oq.",
+    "answer": "My shirt is white"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sening shimlaring qora.",
+    "answer": "Your trousers are black"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menda qizil kurtka bor.",
+    "answer": "I have got a red jacket"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Opamda ko'k yubka bor.",
+    "answer": "My sister has got a blue skirt"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu shapka juda chiroyli.",
+    "answer": "This hat is very beautiful"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening etiklarim jigarrang.",
+    "answer": "My boots are brown"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qishda biz issiq palto kiyamiz.",
+    "answer": "We wear warm coats in winter"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onam yashil ro'mol kiyadi.",
+    "answer": "My mother wears a green scarf"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu paypoqlar sariq.",
+    "answer": "These socks are yellow"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening qo'lqoplarim qayerda?",
+    "answer": "Where are my gloves"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Akamda yangi tufli bor.",
+    "answer": "My brother has got new shoes"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu ko'ylak senga katta.",
+    "answer": "This shirt is big for you"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu shim menga kichik.",
+    "answer": "These trousers are small for me"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu kurtka sizniki mi?",
+    "answer": "Is this jacket yours"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bobom ko'zoynak taqadi.",
+    "answer": "My grandfather wears glasses"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qizning ko'ylagi pushti.",
+    "answer": "The girl's shirt is pink"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men har kuni oq paypoq kiyaman.",
+    "answer": "I wear white socks every day"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bolalarda yangi shapkalar bor.",
+    "answer": "The children have got new hats"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening do'stim qora palto kiyadi.",
+    "answer": "My friend wears a black coat"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sening yubkang qizil emas.",
+    "answer": "Your skirt is not red",
+    "alsoAccept": [
+     "Your skirt isn't red"
+    ]
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu qo'lqoplar juda issiq.",
+    "answer": "These gloves are very warm"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz maktabda shim va ko'ylak kiyamiz.",
+    "answer": "We wear trousers and shirts at school"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Yozda men qisqa shim kiyaman.",
+    "answer": "I wear shorts in summer"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sening etiklaring uyda.",
+    "answer": "Your boots are at home"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qizil ro'mol mening opamniki.",
+    "answer": "The red scarf is my sister's"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Akamning shapkasi ko'k.",
+    "answer": "My brother's hat is blue"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Otamda qora kostyum bor.",
+    "answer": "My father has got a black suit"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'konda ko'p chiroyli kiyimlar bor.",
+    "answer": "There are many beautiful clothes in the shop"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yashil ko'ylak sizniki.",
+    "answer": "This green shirt is yours"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sen ko'k shim kiyasanmi?",
+    "answer": "Do you wear blue trousers"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-13",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "The human body and health",
+  "title": "Tana va salomatlik",
+  "order": 11,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening boshim og'riydi.",
+    "answer": "My head hurts"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qornim og'riydi.",
+    "answer": "My stomach hurts"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menda ikkita ko'z va bitta burun bor.",
+    "answer": "I have two eyes and one nose"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bolaning tishi og'riydi.",
+    "answer": "The child's tooth hurts"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men doktorga boraman.",
+    "answer": "I go to the doctor"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Shifokor kasalxonada ishlaydi.",
+    "answer": "The doctor works at the hospital"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sen kasalmisan?",
+    "answer": "Are you ill"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Singlimning tomog'i og'riydi.",
+    "answer": "My sister's throat hurts"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men har kuni sut ichaman.",
+    "answer": "I drink milk every day"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sog'lom bo'lish uchun biz sabzavot yeymiz.",
+    "answer": "We eat vegetables to be healthy"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bobom har kuni sayr qiladi.",
+    "answer": "My grandfather goes for a walk every day"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kechasi sakkiz soat uxlayman.",
+    "answer": "I sleep eight hours at night"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening sochim uzun.",
+    "answer": "My hair is long"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onamning ko'zlari yashil.",
+    "answer": "My mother's eyes are green"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz dori ichishingiz kerak.",
+    "answer": "You must take medicine"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dorixona qayerda?",
+    "answer": "Where is the pharmacy"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dorixona kasalxonaning yonida.",
+    "answer": "The pharmacy is next to the hospital"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bolaning isitmasi bor.",
+    "answer": "The child has a fever"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menda yo'tal bor.",
+    "answer": "I have a cough"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qo'llaringni yuv.",
+    "answer": "Wash your hands"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men har kuni ertalab yuzimni yuvaman.",
+    "answer": "I wash my face every morning"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oyog'im og'riydi.",
+    "answer": "My leg hurts"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening qo'lim sinmagan.",
+    "answer": "My arm is not broken",
+    "alsoAccept": [
+     "My arm isn't broken"
+    ]
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz ko'p suv ichamiz.",
+    "answer": "We drink a lot of water"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Doktor menga yordam beradi.",
+    "answer": "The doctor helps me"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Hamshira bemorga dori beradi.",
+    "answer": "The nurse gives medicine to the patient"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga yordam kerak.",
+    "answer": "I need help"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bemor karavotda.",
+    "answer": "The patient is in bed"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Barmoqlarim sovuq.",
+    "answer": "My fingers are cold"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga dam olish kerakmi?",
+    "answer": "Do I need to rest"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-14",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Jobs and workplaces",
+  "title": "Kasblar va ish joylari",
+  "order": 12,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Otam shifokor.",
+    "answer": "My father is a doctor"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onam o'qituvchi.",
+    "answer": "My mother is a teacher"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Akam haydovchi.",
+    "answer": "My brother is a driver"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Opam hamshira.",
+    "answer": "My sister is a nurse"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz nima ish qilasiz?",
+    "answer": "What do you do"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men maktabda ishlayman.",
+    "answer": "I work at a school"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Amakim fabrikada ishlaydi.",
+    "answer": "My uncle works in a factory"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oshpaz restoranda ovqat pishiradi.",
+    "answer": "The cook makes food in a restaurant"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening xolam sotuvchi.",
+    "answer": "My aunt is a shop assistant"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Haydovchi avtobus haydaydi.",
+    "answer": "The driver drives a bus"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Politsiyachi ko'chada turadi.",
+    "answer": "The policeman stands in the street"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Muhandis ofisda ishlaydi.",
+    "answer": "The engineer works in an office"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dehqon dalada ishlaydi.",
+    "answer": "The farmer works in the field"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ofitsiant mehmonlarga ovqat olib keladi.",
+    "answer": "The waiter brings food to the guests"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sening otang qayerda ishlaydi?",
+    "answer": "Where does your father work"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning onangiz nima ish qiladi?",
+    "answer": "What does your mother do"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men yozuvchi emasman.",
+    "answer": "I am not a writer",
+    "alsoAccept": [
+     "I'm not a writer"
+    ]
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz kasalxonada ishlaymiz.",
+    "answer": "We work in a hospital"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular bankda ishlaydilar.",
+    "answer": "They work in a bank"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening do'stim dasturchi.",
+    "answer": "My friend is a programmer"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Rassom rasm chizadi.",
+    "answer": "The artist draws pictures"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Quruvchilar yangi uy quradilar.",
+    "answer": "The builders build a new house"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Pochtachi ertalab ishga boradi.",
+    "answer": "The postman goes to work in the morning"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dadam ishda.",
+    "answer": "My dad is at work"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning o'qituvchimiz juda yaxshi.",
+    "answer": "Our teacher is very good"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ofisda kompyuterlar bor.",
+    "answer": "There are computers in the office"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sening ishing qiziqmi?",
+    "answer": "Is your job interesting"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening ishim juda qiyin.",
+    "answer": "My job is very difficult"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Doktor kechasi ham ishlaydi.",
+    "answer": "The doctor works at night too"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz ishga soat nechada borasiz?",
+    "answer": "What time do you go to work"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-15",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Numbers, money and prices",
+  "title": "Raqamlar, pul va narxlar",
+  "order": 13,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menda o'nta qalam bor.",
+    "answer": "I have ten pencils"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu kitob yigirma dollar turadi.",
+    "answer": "This book costs twenty dollars"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu non qancha turadi?",
+    "answer": "How much is this bread"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sut bir dollar turadi.",
+    "answer": "The milk costs one dollar"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning sinfda o'ttiz o'quvchi bor.",
+    "answer": "There are thirty pupils in our class"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bir haftada yetti kun bor.",
+    "answer": "There are seven days in a week"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menda besh dollar bor.",
+    "answer": "I have five dollars"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizda pul bormi?",
+    "answer": "Do you have any money"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu juda qimmat.",
+    "answer": "This is very expensive"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu sumka arzon.",
+    "answer": "This bag is cheap"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men olma sotib olaman.",
+    "answer": "I buy apples"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ikki kilo olma qancha turadi?",
+    "answer": "How much are two kilos of apples"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bir yilda o'n ikki oy bor.",
+    "answer": "There are twelve months in a year"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga yuz dollar kerak.",
+    "answer": "I need a hundred dollars"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onam do'kondan guruch sotib oladi.",
+    "answer": "My mother buys rice at the shop"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Chipta o'n dollar turadi.",
+    "answer": "The ticket costs ten dollars"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qizimda o'n beshta qo'g'irchoq bor.",
+    "answer": "My daughter has got fifteen dolls"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Soat nechchi?",
+    "answer": "What time is it"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Hozir soat uch.",
+    "answer": "It is three o'clock now",
+    "alsoAccept": [
+     "it's three o'clock now"
+    ]
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Telefon raqamingiz nechchi?",
+    "answer": "What is your phone number"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'konda ellik kishi bor.",
+    "answer": "There are fifty people in the shop"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz ikkita choy buyurtma beramiz.",
+    "answer": "We order two teas"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz naqd pul to'laysizmi?",
+    "answer": "Do you pay in cash"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men karta bilan to'layman.",
+    "answer": "I pay by card"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu ko'ylak oltmish dollar turadi.",
+    "answer": "This shirt costs sixty dollars"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sumka sakson dollar turmaydi.",
+    "answer": "The bag does not cost eighty dollars",
+    "alsoAccept": [
+     "The bag doesn't cost eighty dollars"
+    ]
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Yetmish dollar to'qson dollardan kam.",
+    "answer": "Seventy dollars is less than ninety dollars"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bir dollar yuz sentdan iborat.",
+    "answer": "One dollar is a hundred cents"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu do'konda narxlar arzon.",
+    "answer": "The prices are cheap in this shop"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizga qancha pul kerak?",
+    "answer": "How much money do you need"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-16",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "School and lessons",
+  "title": "Maktab va darslar",
+  "order": 13,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men maktabda o'qiyman.",
+    "answer": "I study at school"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening o'qituvchim juda mehribon.",
+    "answer": "My teacher is very kind"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sinfimizda yigirma besh o'quvchi bor.",
+    "answer": "There are twenty five students in our class"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening yangi daftarim bor.",
+    "answer": "I have got a new notebook"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Darslar soat sakkizda boshlanadi.",
+    "answer": "Lessons start at eight o'clock"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz ingliz tilini yaxshi bilasizmi?",
+    "answer": "Do you know English well"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha men maktabda edim.",
+    "answer": "Yesterday I was at school"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening sevimli faniim matematika.",
+    "answer": "My favourite subject is maths"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Partada bitta qalam bor.",
+    "answer": "There is a pencil on the desk",
+    "alsoAccept": [
+     "there's a pencil on the desk"
+    ]
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U har kuni uy vazifasini qiladi.",
+    "answer": "He does his homework every day"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz fizkulturani juda yaxshi ko'ramiz.",
+    "answer": "We like PE very much"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sinfda kompyuter yo'q.",
+    "answer": "There is no computer in the classroom",
+    "alsoAccept": [
+     "there's no computer in the classroom"
+    ]
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men tez yoza olaman.",
+    "answer": "I can write fast"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dars qachon tugaydi?",
+    "answer": "When does the lesson end"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sening qalamingmi bu?",
+    "answer": "Is this your pen"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular o'qituvchining oldida turishadi.",
+    "answer": "They stand in front of the teacher"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha dars qiyin emas edi.",
+    "answer": "The lesson was not difficult yesterday",
+    "alsoAccept": [
+     "The lesson wasn't difficult yesterday"
+    ]
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening do'stim darsga kech qoladi.",
+    "answer": "My friend is late for the lesson"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kutubxonada ko'p kitob bor.",
+    "answer": "There are many books in the library"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular tanaffusda futbol o'ynashadi.",
+    "answer": "They play football at break"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men xaritani doskada ko'ryapman.",
+    "answer": "I can see the map on the board"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning sumkangizda nima bor?",
+    "answer": "What is in your bag"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ona tilimiz o'zbek tili.",
+    "answer": "Our native language is Uzbek"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening o'chirg'ichim yo'q.",
+    "answer": "I haven't got an eraser"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Maktab uyimizdan uzoq emas.",
+    "answer": "The school is not far from our house",
+    "alsoAccept": [
+     "The school isn't far from our house"
+    ]
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bugun biz uchta dars o'qiymiz.",
+    "answer": "Today we have three lessons"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz kecha uyda edingizmi?",
+    "answer": "Were you at home yesterday"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: O'qituvchi har kuni bizga savol beradi.",
+    "answer": "The teacher asks us questions every day"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men darsdan keyin uyga boraman.",
+    "answer": "I go home after the lesson"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sinfda katta deraza bor.",
+    "answer": "There is a big window in the classroom",
+    "alsoAccept": [
+     "there's a big window in the classroom"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-17",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Animals and pets",
+  "title": "Hayvonlar va uy hayvonlari",
+  "order": 14,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening kichkina mushugim bor.",
+    "answer": "I have got a small cat"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Itim hovlida o'ynaydi.",
+    "answer": "My dog plays in the yard"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu qanday hayvon?",
+    "answer": "What animal is this"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Fil juda katta hayvon.",
+    "answer": "An elephant is a very big animal"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bog'da uchta qush bor.",
+    "answer": "There are three birds in the garden"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Baliqlar suvda yashaydi.",
+    "answer": "Fish live in water"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening quyonim sabzini yaxshi ko'radi.",
+    "answer": "My rabbit likes carrots"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sigir sut beradi.",
+    "answer": "A cow gives milk"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz uy hayvonini yaxshi ko'rasizmi?",
+    "answer": "Do you like pets"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ota-onamda it yo'q.",
+    "answer": "My parents haven't got a dog"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Tuyalar cho'lda yashaydi.",
+    "answer": "Camels live in the desert"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha men ko'chada qora mushukni ko'rdim.",
+    "answer": "Yesterday I saw a black cat in the street"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Papagay gapira oladi.",
+    "answer": "A parrot can talk"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sher o'rmonda yashaydi.",
+    "answer": "A lion lives in the forest"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening akamda ikkita baliq bor.",
+    "answer": "My brother has got two fish"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ot juda tez yuguradi.",
+    "answer": "A horse runs very fast"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qushlar uchishi mumkin.",
+    "answer": "Birds can fly"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qo'ylar maysada turibdi.",
+    "answer": "The sheep are standing on the grass"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning itimiz juda aqlli.",
+    "answer": "Our dog is very clever"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Uning mushugi uyda yo'q.",
+    "answer": "His cat is not at home",
+    "alsoAccept": [
+     "His cat isn't at home"
+    ]
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Daraxtda kichkina sincap bor.",
+    "answer": "There is a small squirrel in the tree",
+    "alsoAccept": [
+     "there's a small squirrel in the tree"
+    ]
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bola ilonlardan qo'rqadi.",
+    "answer": "The boy is afraid of snakes"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Itingiz nima yeydi?",
+    "answer": "What does your dog eat"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular hayvonot bog'ida edilar.",
+    "answer": "They were at the zoo"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening mushugim kun bo'yi uxlaydi.",
+    "answer": "My cat sleeps all day"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mushuklar sichqonlarni tutadi.",
+    "answer": "Cats catch mice"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu mening yangi kuchugim.",
+    "answer": "This is my new puppy"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning uy hayvoningiz bormi?",
+    "answer": "Have you got a pet"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ayiq asalni yaxshi ko'radi.",
+    "answer": "A bear likes honey"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Daryoda ko'p o'rdaklar bor.",
+    "answer": "There are many ducks on the river"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-18",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Holidays and travel",
+  "title": "Dam olish va sayohat",
+  "order": 15,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz yozda dengizga boramiz.",
+    "answer": "We go to the sea in summer"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening chiptam bor.",
+    "answer": "I have got a ticket"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Poyezd soat yettida jo'naydi.",
+    "answer": "The train leaves at seven o'clock"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mehmonxonada katta hovuz bor.",
+    "answer": "There is a big pool in the hotel",
+    "alsoAccept": [
+     "there's a big pool in the hotel"
+    ]
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha biz sohilda edik.",
+    "answer": "Yesterday we were on the beach"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz ushbu shaharga birinchi marta kelganmisiz?",
+    "answer": "Is this your first time in this city"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men chamadonimga kiyimlarimni solaman.",
+    "answer": "I put my clothes in my suitcase"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Aeroport shahardan uzoqda.",
+    "answer": "The airport is far from the city"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oilam bilan tog'larga boramiz.",
+    "answer": "We go to the mountains with my family"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda yaxshi restoran bormi?",
+    "answer": "Is there a good restaurant here"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular har yili chet elga boradilar.",
+    "answer": "They go abroad every year"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ob-havo issiq va quyoshli edi.",
+    "answer": "The weather was hot and sunny"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men rasmga tushirish uchun fotoapparat olaman.",
+    "answer": "I take a camera to take photos"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Avtobus qachon keladi?",
+    "answer": "When does the bus come"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening pasportim yo'q.",
+    "answer": "I haven't got a passport"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dam olish kunlari biz ko'lga boramiz.",
+    "answer": "At weekends we go to the lake"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mehmonxona xonasi juda toza edi.",
+    "answer": "The hotel room was very clean"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz samolyotda uchamiz.",
+    "answer": "We travel by plane"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular xaritada yo'lni qidiradilar.",
+    "answer": "They look for the way on the map"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening opam Turkiyada dam oladi.",
+    "answer": "My sister has a holiday in Turkey"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sohilda ko'p odamlar bor.",
+    "answer": "There are many people on the beach"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz qayerda dam olasiz?",
+    "answer": "Where do you have a holiday"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz yangi shaharlarni ko'rishni yaxshi ko'ramiz.",
+    "answer": "We like to see new cities"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sayohat juda qiziqarli edi.",
+    "answer": "The trip was very interesting"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men mashinada sayohat qila olmayman.",
+    "answer": "I can't travel by car",
+    "alsoAccept": [
+     "I can not travel by car"
+    ]
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Stolda xarita va chipta bor.",
+    "answer": "There is a map and a ticket on the table",
+    "alsoAccept": [
+     "there's a map and a ticket on the table"
+    ]
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha biz muzeyda edik.",
+    "answer": "Yesterday we were in the museum"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U dengizda suzishni yaxshi ko'radi.",
+    "answer": "He likes swimming in the sea"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening do'stlarim yozgi lagerda edilar.",
+    "answer": "My friends were at the summer camp"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men qishda tog'ga bormayman.",
+    "answer": "I don't go to the mountains in winter",
+    "alsoAccept": [
+     "I do not go to the mountains in winter"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-19",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Sports and games",
+  "title": "Sport va o'yinlar",
+  "order": 16,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men futbol o'ynashni yaxshi ko'raman.",
+    "answer": "I like playing football"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Akam tez yugura oladi.",
+    "answer": "My brother can run fast"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizda yangi to'p bor.",
+    "answer": "We have got a new ball"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Stadionda ko'p tomoshabin bor.",
+    "answer": "There are many fans in the stadium"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz suzishni bilasizmi?",
+    "answer": "Can you swim"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular har dushanba kuni basketbol o'ynashadi.",
+    "answer": "They play basketball every Monday"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha o'yin juda qiziqarli edi.",
+    "answer": "The game was very interesting yesterday"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening sevimli sportim tennis.",
+    "answer": "My favourite sport is tennis"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sport zalida katta ko'zgu bor.",
+    "answer": "There is a big mirror in the gym",
+    "alsoAccept": [
+     "there's a big mirror in the gym"
+    ]
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men shaxmat o'ynay olmayman.",
+    "answer": "I can't play chess",
+    "alsoAccept": [
+     "I can not play chess"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Murabbiy bizni ertalab o'qitadi.",
+    "answer": "The coach trains us in the morning"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qizim velosiped haydashni yaxshi ko'radi.",
+    "answer": "My daughter likes riding a bike"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Maydonda ikkita jamoa bor.",
+    "answer": "There are two teams on the field"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning raketkangiz bormi?",
+    "answer": "Have you got a racket"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U har kuni ertalab yuguradi.",
+    "answer": "He runs every morning"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz qishda konkida uchamiz.",
+    "answer": "We skate in winter"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening jamoam g'alaba qozonmaydi.",
+    "answer": "My team doesn't win",
+    "alsoAccept": [
+     "My team does not win"
+    ]
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: O'yin soat beshda boshlanadi.",
+    "answer": "The game starts at five o'clock"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha ular stadionda edilar.",
+    "answer": "Yesterday they were at the stadium"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening do'stim voleybolni yaxshi o'ynaydi.",
+    "answer": "My friend plays volleyball well"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bolalar hovlida o'ynashadi.",
+    "answer": "The children play in the yard"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sen qaysi sportni yoqtirasan?",
+    "answer": "Which sport do you like"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Maydonda hakam turibdi.",
+    "answer": "There is a referee on the field",
+    "alsoAccept": [
+     "there's a referee on the field"
+    ]
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz kompyuter o'yinlarini o'ynaymiz.",
+    "answer": "We play computer games"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening singlim gimnastika bilan shug'ullanadi.",
+    "answer": "My sister does gymnastics"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Futbolchilar sport kiyimida.",
+    "answer": "The footballers are in sports clothes"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz kecha sport zalida edingizmi?",
+    "answer": "Were you in the gym yesterday"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men baland sakray olaman.",
+    "answer": "I can jump high"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular suzish havzasida suzishmoqda.",
+    "answer": "They are swimming in the swimming pool",
+    "alsoAccept": [
+     "they're swimming in the swimming pool"
+    ]
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dadam shanba kuni bizga futbol ko'rsatadi.",
+    "answer": "My dad shows us football on Saturday"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-20",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Birthdays and parties",
+  "title": "Tug'ilgan kun va bayramlar",
+  "order": 17,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening tug'ilgan kunim may oyida.",
+    "answer": "My birthday is in May"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz mehmonlarni uyga taklif qilamiz.",
+    "answer": "We invite guests to our house"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Stolda katta tort bor.",
+    "answer": "There is a big cake on the table",
+    "alsoAccept": [
+     "there's a big cake on the table"
+    ]
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men yangi sovg'a olaman.",
+    "answer": "I get a new present"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz nechanchi yoshdasiz?",
+    "answer": "How old are you"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men o'n ikki yoshdaman.",
+    "answer": "I am twelve years old",
+    "alsoAccept": [
+     "I'm twelve years old"
+    ]
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha mening tug'ilgan kunim edi.",
+    "answer": "Yesterday was my birthday"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Uyda ko'p sharlar bor.",
+    "answer": "There are many balloons in the house"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onam mazali pirog pishiradi.",
+    "answer": "My mother bakes a tasty pie"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'stlarim menga gul olib kelishadi.",
+    "answer": "My friends bring me flowers"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bayramda biz qo'shiq aytamiz.",
+    "answer": "We sing songs at the party"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bayram stolida meva yo'q.",
+    "answer": "There is no fruit on the party table",
+    "alsoAccept": [
+     "there's no fruit on the party table"
+    ]
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga bu sovg'a juda yoqadi.",
+    "answer": "I like this present very much"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular bayramga erta kelishadi.",
+    "answer": "They come to the party early"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Opamning tug'ilgan kuni qachon?",
+    "answer": "When is your sister's birthday"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening yangi o'yinchog'im bor.",
+    "answer": "I have got a new toy"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bayram juda quvnoq edi.",
+    "answer": "The party was very fun"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz tort ustiga sham qo'yamiz.",
+    "answer": "We put candles on the cake"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mehmonlar soat oltida kelishadi.",
+    "answer": "The guests arrive at six o'clock"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U menga chiroyli otkritka beradi.",
+    "answer": "He gives me a beautiful card"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz bayramda raqsga tushasizmi?",
+    "answer": "Do you dance at the party"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha biz mehmonda edik.",
+    "answer": "Yesterday we were guests"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bolalar bayramda o'ynashadi.",
+    "answer": "The children play at the party"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men tug'ilgan kunimda tort pishira olmayman.",
+    "answer": "I can't bake a cake on my birthday",
+    "alsoAccept": [
+     "I can not bake a cake on my birthday"
+    ]
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Xonada musiqa bor.",
+    "answer": "There is music in the room",
+    "alsoAccept": [
+     "there's music in the room"
+    ]
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening do'stimning bayrami yakshanba kuni.",
+    "answer": "My friend's party is on Sunday"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sovg'a qutida edi.",
+    "answer": "The present was in a box"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz bayramda ko'p suratga tushamiz.",
+    "answer": "We take many photos at the party"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dadam menga katta o'yinchoq beradi.",
+    "answer": "My dad gives me a big toy"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz qanday sovg'a olishni xohlaysiz?",
+    "answer": "What present do you want to get"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-21",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "My city and village",
+  "title": "Mening shahrim va qishlog'im",
+  "order": 18,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men katta shaharda yashayman.",
+    "answer": "I live in a big city"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning qishlog'imiz juda tinch.",
+    "answer": "Our village is very quiet"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ko'chada ko'p mashinalar bor.",
+    "answer": "There are many cars in the street"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Shaharda yangi bog' bor.",
+    "answer": "There is a new park in the city",
+    "alsoAccept": [
+     "there's a new park in the city"
+    ]
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'kon bizning uyimiz yonida.",
+    "answer": "The shop is near our house"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening bobom qishloqda yashaydi.",
+    "answer": "My grandfather lives in a village"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning shahringizda metro bormi?",
+    "answer": "Is there a metro in your city"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha biz bozorda edik.",
+    "answer": "Yesterday we were at the market"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qishloqda ko'p daraxtlar bor.",
+    "answer": "There are many trees in the village"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Maktab kasalxona yonida joylashgan.",
+    "answer": "The school is next to the hospital"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men shaharda velosiped hayday olaman.",
+    "answer": "I can ride a bike in the city"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Shahar markazida katta teatr bor.",
+    "answer": "There is a big theatre in the city centre",
+    "alsoAccept": [
+     "there's a big theatre in the city centre"
+    ]
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular har kuni avtobusda ishga boradilar.",
+    "answer": "They go to work by bus every day"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning qishlog'ingizda do'kon bormi?",
+    "answer": "Is there a shop in your village"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning ko'chamiz juda toza.",
+    "answer": "Our street is very clean"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening xolamning katta bog'i bor.",
+    "answer": "My aunt has got a big garden"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Shahar kecha juda gavjum edi.",
+    "answer": "The city was very busy yesterday"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda bank yo'q.",
+    "answer": "There is no bank here",
+    "alsoAccept": [
+     "there's no bank here"
+    ]
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz non sotib olish uchun novvoyxonaga boramiz.",
+    "answer": "We go to the bakery to buy bread"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Daryo qishloq yonidan oqadi.",
+    "answer": "The river flows past the village"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Poyezd bekati shaharning markazida.",
+    "answer": "The railway station is in the city centre"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening shahrim chiroyli.",
+    "answer": "My city is beautiful"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Maydonda katta fontan bor.",
+    "answer": "There is a big fountain in the square",
+    "alsoAccept": [
+     "there's a big fountain in the square"
+    ]
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kutubxonaga piyoda boraman.",
+    "answer": "I walk to the library"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bolalar qishloqda ko'p o'ynaydilar.",
+    "answer": "The children play a lot in the village"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ko'chada politsiyachi turibdi.",
+    "answer": "A policeman is standing in the street"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha qishloqda ob-havo yomon edi.",
+    "answer": "The weather was bad in the village yesterday"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz yangi uyga ko'chib o'tmaymiz.",
+    "answer": "We don't move to a new house",
+    "alsoAccept": [
+     "We do not move to a new house"
+    ]
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz qaysi shaharda yashaysiz?",
+    "answer": "Which city do you live in"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Shahrimizda ko'plab muzeylar bor.",
+    "answer": "There are many museums in our city"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-22",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "In the kitchen and cooking",
+  "title": "Oshxonada va ovqat pishirish",
+  "order": 18,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men oshxonada tuxum pishiryapman.",
+    "answer": "I am cooking eggs in the kitchen",
+    "alsoAccept": [
+     "I'm cooking eggs in the kitchen"
+    ]
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onam har kuni non pishiradi.",
+    "answer": "My mother bakes bread every day"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Stolda ikkita katta likopcha bor.",
+    "answer": "There are two big plates on the table"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Iltimos, suvni qaynating.",
+    "answer": "Please boil the water"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Muzlatkichda sut bormi?",
+    "answer": "Is there milk in the fridge"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U choy tayyorlayapti.",
+    "answer": "She is making tea",
+    "alsoAccept": [
+     "she's making tea"
+    ]
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men pichoq bilan sabzi kesaman.",
+    "answer": "I cut carrots with a knife"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Piyozni kesma!",
+    "answer": "Don't cut the onion",
+    "alsoAccept": [
+     "do not cut the onion"
+    ]
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz kechki ovqatni birga pishiramiz.",
+    "answer": "We cook dinner together"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizda qoshiq bormi?",
+    "answer": "Do you have a spoon"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Otam ertalab kofe ichadi.",
+    "answer": "My father drinks coffee in the morning"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Pechka juda issiq.",
+    "answer": "The oven is very hot"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kosada uchta olma bor.",
+    "answer": "There are three apples in the bowl"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening do'stim pishloq yoqtirmaydi.",
+    "answer": "My friend doesn't like cheese",
+    "alsoAccept": [
+     "My friend does not like cheese"
+    ]
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Tuz va qalampirni bering, iltimos.",
+    "answer": "Give me the salt and pepper, please"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bolalar stolda ovqat yeyapti.",
+    "answer": "The children are eating food at the table"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men bugun guruch pishirmayman.",
+    "answer": "I don't cook rice today",
+    "alsoAccept": [
+     "I do not cook rice today"
+    ]
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Choynakda issiq suv bor.",
+    "answer": "There is hot water in the kettle",
+    "alsoAccept": [
+     "there's hot water in the kettle"
+    ]
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qozonni plitaga qo'ying.",
+    "answer": "Put the pot on the stove"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Opam salat tayyorlayapti.",
+    "answer": "My sister is making a salad"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz ertalab nima yeysiz?",
+    "answer": "What do you eat in the morning"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu likopcha toza emas.",
+    "answer": "This plate is not clean",
+    "alsoAccept": [
+     "This plate isn't clean"
+    ]
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz oshxonada kartoshka yuvayapmiz.",
+    "answer": "We are washing potatoes in the kitchen",
+    "alsoAccept": [
+     "we're washing potatoes in the kitchen"
+    ]
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Idishlarni yuving, iltimos.",
+    "answer": "Wash the dishes, please"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bobom sho'rvani yoqtiradi.",
+    "answer": "My grandfather likes soup"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz tuxum yeysizmi?",
+    "answer": "Do you eat eggs"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Stolda stakan yo'q.",
+    "answer": "There is no glass on the table",
+    "alsoAccept": [
+     "there's no glass on the table"
+    ]
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U tovada go'sht qovuryapti.",
+    "answer": "He is frying meat in the pan",
+    "alsoAccept": [
+     "he's frying meat in the pan"
+    ]
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men qaynoq choyni ichmayman.",
+    "answer": "I don't drink hot tea",
+    "alsoAccept": [
+     "I do not drink hot tea"
+    ]
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oshxonada ikkita stul bor.",
+    "answer": "There are two chairs in the kitchen"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-23",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Transport and the bus",
+  "title": "Transport va avtobus",
+  "order": 19,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Avtobus bekati qayerda?",
+    "answer": "Where is the bus stop"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men har kuni avtobusda ishga boraman.",
+    "answer": "I go to work by bus every day"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Avtobus kelyapti.",
+    "answer": "The bus is coming"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Chipta qancha turadi?",
+    "answer": "How much is the ticket"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu avtobus markazga boradimi?",
+    "answer": "Does this bus go to the center"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men poyezdni kutyapman.",
+    "answer": "I am waiting for the train",
+    "alsoAccept": [
+     "I'm waiting for the train"
+    ]
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda taksi bormi?",
+    "answer": "Is there a taxi here"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mashinani to'xtating, iltimos.",
+    "answer": "Stop the car, please"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ko'chani ehtiyot bo'lib kesib o'ting.",
+    "answer": "Cross the street carefully"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Otam mashina haydaydi.",
+    "answer": "My father drives a car"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'stim velosipedda maktabga boradi.",
+    "answer": "My friend goes to school by bike"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz metroda ketyapmiz.",
+    "answer": "We are going by metro",
+    "alsoAccept": [
+     "we're going by metro"
+    ]
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Avtobusda bo'sh o'rindiq bor.",
+    "answer": "There is an empty seat on the bus",
+    "alsoAccept": [
+     "there's an empty seat on the bus"
+    ]
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz qaysi avtobusni kutyapsiz?",
+    "answer": "Which bus are you waiting for"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Avtobus har o'n daqiqada keladi.",
+    "answer": "The bus comes every ten minutes"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Poyezd soat beshda jo'naydi.",
+    "answer": "The train leaves at five o'clock"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Haydovchi bekatda to'xtaydi.",
+    "answer": "The driver stops at the bus stop"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men taksi chaqiryapman.",
+    "answer": "I am calling a taxi",
+    "alsoAccept": [
+     "I'm calling a taxi"
+    ]
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yo'l juda uzun.",
+    "answer": "This road is very long"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Avtobus bugun kech.",
+    "answer": "The bus is late today"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kechirasiz, bu o'rindiq bandmi?",
+    "answer": "Excuse me, is this seat taken"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Chiptangizni ko'rsating, iltimos.",
+    "answer": "Show your ticket, please"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men maktabga piyoda boraman.",
+    "answer": "I walk to school"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bekat bu yerdan uzoq emas.",
+    "answer": "The bus stop is not far from here",
+    "alsoAccept": [
+     "The bus stop isn't far from here"
+    ]
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bolalar avtobusda o'tiribdi.",
+    "answer": "The children are sitting on the bus"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz poyezdda ketyapsizmi?",
+    "answer": "Are you going by train"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men qirq daqiqa avtobus kutaman.",
+    "answer": "I wait forty minutes for the bus"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mashinani bu yerda to'xtatmang.",
+    "answer": "Don't stop the car here",
+    "alsoAccept": [
+     "do not stop the car here"
+    ]
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Aeroport shahardan uzoqda.",
+    "answer": "The airport is far from the city"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oyim bilan men tramvayda ketyapmiz.",
+    "answer": "My mother and I are going by tram"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-24",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Days, months and dates",
+  "title": "Kunlar, oylar va sanalar",
+  "order": 20,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bugun dushanba, men maktabdaman.",
+    "answer": "Today is Monday, and I am at school",
+    "alsoAccept": [
+     "Today is Monday, and I'm at school"
+    ]
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ertaga seshanba va biz uydamiz.",
+    "answer": "Tomorrow is Tuesday and we are at home",
+    "alsoAccept": [
+     "Tomorrow is Tuesday and we're at home"
+    ]
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Haftada yetti kun bor.",
+    "answer": "There are seven days in a week"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Yilda o'n ikki oy bor.",
+    "answer": "There are twelve months in a year"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening tug'ilgan kunim mayda.",
+    "answer": "My birthday is in May"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men yakshanba kuni dam olaman.",
+    "answer": "I rest on Sunday"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bugun nechanchi sana?",
+    "answer": "What is the date today"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bugun o'n beshinchi sana.",
+    "answer": "Today is the fifteenth"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Yanvar qishda.",
+    "answer": "January is in winter"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz yakshanba kuni maktabga bormaymiz.",
+    "answer": "We don't go to school on Sunday",
+    "alsoAccept": [
+     "We do not go to school on Sunday"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sen dushanba kuni ishlaysanmi?",
+    "answer": "Do you work on Monday"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Iyun oyida havo issiq.",
+    "answer": "The weather is hot in June"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dekabr yilning oxirgi oyi.",
+    "answer": "December is the last month of the year"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bugun chorshanba emas.",
+    "answer": "Today is not Wednesday",
+    "alsoAccept": [
+     "Today isn't Wednesday"
+    ]
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening do'stim avgustda keladi.",
+    "answer": "My friend comes in August"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Payshanba kuni men ingliz tilini o'rganaman.",
+    "answer": "I study English on Thursday"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mart oyida bahor boshlanadi.",
+    "answer": "Spring begins in March"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Yangi yil birinchi yanvarda.",
+    "answer": "New Year is on the first of January"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Shanba va yakshanba hafta oxiri.",
+    "answer": "Saturday and Sunday are the weekend"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qaysi oy sizga yoqadi?",
+    "answer": "Which month do you like"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bugun nima kun?",
+    "answer": "What day is it today"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oktabr noyabrdan oldin keladi.",
+    "answer": "October comes before November"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz sentabrda maktabni boshlaymiz.",
+    "answer": "We start school in September"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Fevral juda qisqa oy.",
+    "answer": "February is a very short month"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men har juma kuni sport bilan shug'ullanaman.",
+    "answer": "I do sports every Friday"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onamning tug'ilgan kuni yigirma ikkinchi iyulda.",
+    "answer": "My mother's birthday is on the twenty-second of July"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bugun yakshanba emas, shanba.",
+    "answer": "Today is not Sunday, it is Saturday",
+    "alsoAccept": [
+     "Today is not Sunday, it's Saturday",
+     "Today isn't Sunday, it is Saturday"
+    ]
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Yilda to'rt fasl bor.",
+    "answer": "There are four seasons in a year"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Chorshanba kuni darslarimiz yo'q.",
+    "answer": "We have no lessons on Wednesday"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ikki hafta o'n to'rt kun.",
+    "answer": "Two weeks are fourteen days"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-25",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "The family tree",
+  "title": "Oila daraxti",
+  "order": 21,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu mening oilam.",
+    "answer": "This is my family"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening otam o'qituvchi.",
+    "answer": "My father is a teacher"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onam shifokor.",
+    "answer": "My mother is a doctor"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening bitta akam va bitta singlim bor.",
+    "answer": "I have one brother and one sister"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bobom va buvim qishloqda yashaydi.",
+    "answer": "My grandfather and grandmother live in the village"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening amakim Toshkentda yashaydi.",
+    "answer": "My uncle lives in Tashkent"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Xolamning ikkita farzandi bor.",
+    "answer": "My aunt has two children"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Singlim hozir uxlayapti.",
+    "answer": "My sister is sleeping now"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Rasmdagi bu odam kim?",
+    "answer": "Who is this man in the picture"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U mening amakivachcham.",
+    "answer": "He is my cousin",
+    "alsoAccept": [
+     "he's my cousin"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oilamizda besh kishi bor.",
+    "answer": "There are five people in our family"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ota-onam uyda emas.",
+    "answer": "My parents are not at home",
+    "alsoAccept": [
+     "My parents aren't at home"
+    ]
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bobom har kuni gazeta o'qiydi.",
+    "answer": "My grandfather reads a newspaper every day"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Buvim mazali pirog pishiradi.",
+    "answer": "My grandmother bakes tasty pies"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening o'g'lim to'rt yoshda.",
+    "answer": "My son is four years old"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qizim rasm chizyapti.",
+    "answer": "My daughter is drawing a picture"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Eringiz nima ish qiladi?",
+    "answer": "What does your husband do"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Xotinim maktabda ishlaydi.",
+    "answer": "My wife works at a school"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oilangiz katta mi?",
+    "answer": "Is your family big"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening opam turmush qurgan.",
+    "answer": "My sister is married"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Otam ishda, onam uyda.",
+    "answer": "My father is at work and my mother is at home"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bobom sakson yoshda.",
+    "answer": "My grandfather is eighty years old"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Opam menga yordam beradi.",
+    "answer": "My sister helps me"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz yakshanba kuni bobomnikiga boramiz.",
+    "answer": "We go to my grandfather's house on Sunday"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening bobomning ismi Karim.",
+    "answer": "My grandfather's name is Karim"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning nechta qarindoshingiz bor?",
+    "answer": "How many relatives do you have"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Amakimning o'g'li mening do'stim.",
+    "answer": "My uncle's son is my friend"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Tog'am bizning uyga kelyapti.",
+    "answer": "My uncle is coming to our house"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Oilamizda hamma musiqani yaxshi ko'radi.",
+    "answer": "Everyone in our family loves music"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qiz onasini quchoqlayapti.",
+    "answer": "The girl is hugging her mother"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-26",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Shopping at the supermarket",
+  "title": "Supermarketda xarid",
+  "order": 22,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men supermarketga boryapman.",
+    "answer": "I am going to the supermarket",
+    "alsoAccept": [
+     "I'm going to the supermarket"
+    ]
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga bir litr sut kerak.",
+    "answer": "I need one liter of milk"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Non qancha turadi?",
+    "answer": "How much is the bread"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Savatchani oling, iltimos.",
+    "answer": "Take the basket, please"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'konda ko'p mahsulot bor.",
+    "answer": "There are many products in the store"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz meva sotib olyapmiz.",
+    "answer": "We are buying fruit",
+    "alsoAccept": [
+     "we're buying fruit"
+    ]
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu olma juda arzon.",
+    "answer": "This apple is very cheap"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu go'sht qimmat emas.",
+    "answer": "This meat is not expensive",
+    "alsoAccept": [
+     "This meat isn't expensive"
+    ]
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kassa qayerda?",
+    "answer": "Where is the checkout"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz naqd pul bilan to'laysizmi?",
+    "answer": "Do you pay with cash"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga bir kilo pomidor bering.",
+    "answer": "Give me one kilo of tomatoes"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizda tuxum bormi?",
+    "answer": "Do you have eggs"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ha, tuxum javonda.",
+    "answer": "Yes, the eggs are on the shelf"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening ro'yxatimda yetti narsa bor.",
+    "answer": "There are seven things on my list"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onam sabzavot sotib oladi.",
+    "answer": "My mother buys vegetables"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bolalar shirinlik so'rayapti.",
+    "answer": "The children are asking for sweets"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda ichimliklar bormi?",
+    "answer": "Are there drinks here"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men sharbat va suv sotib olaman.",
+    "answer": "I buy juice and water"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Narxi ikki dollar.",
+    "answer": "The price is two dollars"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Chekingizni oling, iltimos.",
+    "answer": "Take your receipt, please"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'kon soat to'qqizda ochiladi.",
+    "answer": "The store opens at nine o'clock"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'kon kechqurun yopiladi.",
+    "answer": "The store closes in the evening"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ko'p pul sarflamang.",
+    "answer": "Don't spend a lot of money",
+    "alsoAccept": [
+     "do not spend a lot of money"
+    ]
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu banan yangi emas.",
+    "answer": "This banana is not fresh",
+    "alsoAccept": [
+     "This banana isn't fresh"
+    ]
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kartochka bilan to'layapman.",
+    "answer": "I am paying by card",
+    "alsoAccept": [
+     "I'm paying by card"
+    ]
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qaysi guruch yaxshi?",
+    "answer": "Which rice is good"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga ikkita shokolad kerak.",
+    "answer": "I need two chocolates"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Supermarket uyimizga yaqin.",
+    "answer": "The supermarket is near our house"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening sumkam og'ir.",
+    "answer": "My bag is heavy"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mijozlar navbatda turibdi.",
+    "answer": "The customers are standing in line"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-27",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Telephone and messages",
+  "title": "Telefon va xabarlar",
+  "order": 23,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening telefonim stolda.",
+    "answer": "My phone is on the table"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men do'stimga qo'ng'iroq qilyapman.",
+    "answer": "I am calling my friend",
+    "alsoAccept": [
+     "I'm calling my friend"
+    ]
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Telefon jiringlayapti.",
+    "answer": "The phone is ringing"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Alo, bu kim?",
+    "answer": "Hello, who is this"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga xabar yozing, iltimos.",
+    "answer": "Write me a message, please"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U har kuni onasiga xabar yuboradi.",
+    "answer": "He sends a message to his mother every day"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Telefon raqamingiz nima?",
+    "answer": "What is your phone number"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Raqamimni yozib oling.",
+    "answer": "Write down my number"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Telefonim zaryadda.",
+    "answer": "My phone is charging"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Zaryadkani bering, iltimos.",
+    "answer": "Give me the charger, please"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men hozir band emasman.",
+    "answer": "I am not busy now",
+    "alsoAccept": [
+     "I'm not busy now"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kechirasiz, siz noto'g'ri raqamga qo'ng'iroq qilyapsiz.",
+    "answer": "Sorry, you are calling the wrong number",
+    "alsoAccept": [
+     "Sorry, you're calling the wrong number"
+    ]
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qizim telefonda o'ynayapti.",
+    "answer": "My daughter is playing on the phone"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz telefonda ko'p gaplashasizmi?",
+    "answer": "Do you talk on the phone a lot"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda signal yo'q.",
+    "answer": "There is no signal here",
+    "alsoAccept": [
+     "there's no signal here"
+    ]
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga yangi xabar keldi.",
+    "answer": "I have a new message"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Yangi xabarni o'qing, iltimos.",
+    "answer": "Read the new message, please"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men sizga elektron pochta yuboryapman.",
+    "answer": "I am sending you an email",
+    "alsoAccept": [
+     "I'm sending you an email"
+    ]
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Otam telefonda gaplashyapti.",
+    "answer": "My father is talking on the phone"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Telefonni o'chiring.",
+    "answer": "Turn off the phone"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ovoz baland emas.",
+    "answer": "The sound is not loud",
+    "alsoAccept": [
+     "The sound isn't loud"
+    ]
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Iltimos, menga qo'ng'iroq qiling.",
+    "answer": "Please call me"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizda telefon bormi?",
+    "answer": "Do you have a phone"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening ikkita telefonim bor.",
+    "answer": "I have two phones"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onam menga har kuni qo'ng'iroq qiladi.",
+    "answer": "My mother calls me every day"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men xabarga javob beryapman.",
+    "answer": "I am replying to the message",
+    "alsoAccept": [
+     "I'm replying to the message"
+    ]
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U telefon raqamini bilmaydi.",
+    "answer": "He doesn't know the phone number",
+    "alsoAccept": [
+     "He does not know the phone number"
+    ]
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Telefon yangi va juda yengil.",
+    "answer": "The phone is new and very light"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz kechqurun video qo'ng'iroq qilamiz.",
+    "answer": "We make a video call in the evening"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga rasm yuboring.",
+    "answer": "Send me a picture"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-28",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "At the restaurant",
+  "title": "Restoranda",
+  "order": 23,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men menyuni o'qiyman.",
+    "answer": "I read the menu"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ofitsiant bizga suv olib keladi.",
+    "answer": "The waiter brings us water"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men tovuq va guruch buyuraman.",
+    "answer": "I order chicken and rice"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizda sho'rva bormi?",
+    "answer": "Do you have soup"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha biz restoranda kechki ovqat yedik.",
+    "answer": "Yesterday we ate dinner at the restaurant"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening do'stim choy ichadi.",
+    "answer": "My friend drinks tea"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda bo'sh stol bormi?",
+    "answer": "Is there a free table here"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men go'sht yemayman.",
+    "answer": "I don't eat meat",
+    "alsoAccept": [
+     "I do not eat meat"
+    ]
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Salat juda mazali edi.",
+    "answer": "The salad was very tasty"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga bir stakan sut kerak.",
+    "answer": "I need a glass of milk"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ofitsiant hisobni olib keldi.",
+    "answer": "The waiter brought the bill"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz nima ichmoqchisiz?",
+    "answer": "What do you want to drink"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz ikki kishilik stol xohlaymiz.",
+    "answer": "We want a table for two"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening singlim tort yaydi.",
+    "answer": "My sister eats cake"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Stolda uchta likopcha bor.",
+    "answer": "There are three plates on the table"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kecha restoranda baliq yedim.",
+    "answer": "I ate fish at the restaurant yesterday"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U sho'rvani qoshiq bilan yeydi.",
+    "answer": "He eats the soup with a spoon"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bizning stolimiz oynaning yonida.",
+    "answer": "Our table is next to the window"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz kofe yoqtirasizmi?",
+    "answer": "Do you like coffee"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men bugun restoranga bormayman.",
+    "answer": "I don't go to the restaurant today",
+    "alsoAccept": [
+     "I do not go to the restaurant today"
+    ]
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ofitsiant bizdan nima xohlashimizni so'radi.",
+    "answer": "The waiter asked us what we wanted"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu restoranda pitsa mazali.",
+    "answer": "The pizza is tasty in this restaurant"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz ertaga kechqurun restoranda ovqatlanmoqchimiz.",
+    "answer": "We are going to eat at the restaurant tomorrow evening",
+    "alsoAccept": [
+     "we're going to eat at the restaurant tomorrow evening"
+    ]
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Menga pichoq va sanchqi bering, iltimos.",
+    "answer": "Give me a knife and a fork, please"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bolalar muzqaymoq yaxshi ko'radi.",
+    "answer": "The children love ice cream"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha men restoranda pul to'ladim.",
+    "answer": "Yesterday I paid for the meal at the restaurant"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda yaxshi taomlar bor.",
+    "answer": "There is good food here",
+    "alsoAccept": [
+     "there's good food here"
+    ]
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Onam restoranda salat buyurdi.",
+    "answer": "My mother ordered a salad at the restaurant"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning hisobingiz o'n dollar.",
+    "answer": "Your bill is ten dollars"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men suv ichishni xohlayman.",
+    "answer": "I want to drink water"
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-29",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Free time and weekends",
+  "title": "Bo'sh vaqt va dam olish kunlari",
+  "order": 24,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dam olish kunlari men uxlayman.",
+    "answer": "I sleep on weekends"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Shanba kuni biz parkka boramiz.",
+    "answer": "On Saturday we go to the park"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening akam futbol o'ynaydi.",
+    "answer": "My brother plays football"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha men do'stim bilan kino ko'rdim.",
+    "answer": "Yesterday I watched a film with my friend"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz bo'sh vaqtingizda nima qilasiz?",
+    "answer": "What do you do in your free time"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kitob o'qishni yaxshi ko'raman.",
+    "answer": "I like reading books"
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Yakshanba kuni biz buvimnikiga boramiz.",
+    "answer": "On Sunday we go to my grandmother's house"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U musiqa tinglamaydi.",
+    "answer": "He doesn't listen to music",
+    "alsoAccept": [
+     "He does not listen to music"
+    ]
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz o'tgan hafta dengizga bordik.",
+    "answer": "We went to the sea last week"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men suzishni bilaman.",
+    "answer": "I can swim"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz gitara chala olasizmi?",
+    "answer": "Can you play the guitar"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Singlim rasm chizadi.",
+    "answer": "My sister draws pictures"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dam olish kuni men uyda qolaman.",
+    "answer": "I stay at home on the weekend"
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular har yakshanba velosiped haydaydi.",
+    "answer": "They ride bikes every Sunday"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men kecha televizor ko'rmadim.",
+    "answer": "I didn't watch television yesterday",
+    "alsoAccept": [
+     "I did not watch television yesterday"
+    ]
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz ertaga tog'ga bormoqchimiz.",
+    "answer": "Tomorrow we are going to go to the mountains",
+    "alsoAccept": [
+     "Tomorrow we're going to go to the mountains"
+    ]
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Do'stlarim shanba kuni mening uyimga keladi.",
+    "answer": "My friends come to my house on Saturday"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men o'yin o'ynashni yoqtiraman.",
+    "answer": "I like playing games"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Otam dam olish kuni baliq tutadi.",
+    "answer": "My father catches fish on the weekend"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Siz kecha nima qildingiz?",
+    "answer": "What did you do yesterday"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men hafta oxirida do'konga boraman.",
+    "answer": "I go to the shop at the end of the week"
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: U kecha kechqurun rasm chizdi.",
+    "answer": "She drew a picture yesterday evening"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz bugun sayr qilamiz.",
+    "answer": "We take a walk today"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda katta stadion bor.",
+    "answer": "There is a big stadium here",
+    "alsoAccept": [
+     "there's a big stadium here"
+    ]
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men tez yugura olmayman.",
+    "answer": "I can't run fast",
+    "alsoAccept": [
+     "I can not run fast"
+    ]
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dam olish kunida biz pitsa pishiramiz.",
+    "answer": "On the weekend we make pizza"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ular o'tgan yakshanba muzeyga bordi.",
+    "answer": "They went to the museum last Sunday"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sen ko'proq dam olishing kerak.",
+    "answer": "You need to rest more"
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Mening do'stim shaxmat o'ynaydi.",
+    "answer": "My friend plays chess"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz yakshanba kuni erta turmaymiz.",
+    "answer": "We don't get up early on Sunday",
+    "alsoAccept": [
+     "We do not get up early on Sunday"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "a1-writing-30",
+  "level": "A1",
+  "skill": "WRITING",
+  "topic": "Weather and nature",
+  "title": "Ob-havo va tabiat",
+  "order": 25,
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bugun havo issiq.",
+    "answer": "The weather is hot today"
+   },
+   {
+    "id": "2",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha yomg'ir yog'di.",
+    "answer": "It rained yesterday"
+   },
+   {
+    "id": "3",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qishda qor yog'adi.",
+    "answer": "It snows in winter"
+   },
+   {
+    "id": "4",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Osmonda bulutlar bor.",
+    "answer": "There are clouds in the sky"
+   },
+   {
+    "id": "5",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bahorda daraxtlar yashil bo'ladi.",
+    "answer": "Trees become green in spring"
+   },
+   {
+    "id": "6",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bugun shamol kuchli emas.",
+    "answer": "The wind is not strong today",
+    "alsoAccept": [
+     "The wind isn't strong today"
+    ]
+   },
+   {
+    "id": "7",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Quyosh ertalab chiqadi.",
+    "answer": "The sun rises in the morning"
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Yozda biz daryoda cho'milamiz.",
+    "answer": "In summer we swim in the river"
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ertaga yomg'ir yog'adi.",
+    "answer": "It is going to rain tomorrow",
+    "alsoAccept": [
+     "it's going to rain tomorrow"
+    ]
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu yerda katta o'rmon bor.",
+    "answer": "There is a big forest here",
+    "alsoAccept": [
+     "there's a big forest here"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha havo sovuq edi.",
+    "answer": "The weather was cold yesterday"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Tog'lar juda baland.",
+    "answer": "The mountains are very high"
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men qishni yoqtirmayman.",
+    "answer": "I don't like winter",
+    "alsoAccept": [
+     "I do not like winter"
+    ]
+   },
+   {
+    "id": "14",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Sizning shaharingizda bugun ob-havo qanday?",
+    "answer": "What is the weather like in your city today"
+   },
+   {
+    "id": "15",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Daryo suvi sovuq.",
+    "answer": "The river water is cold"
+   },
+   {
+    "id": "16",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Gullar bahorda ochiladi.",
+    "answer": "Flowers open in spring"
+   },
+   {
+    "id": "17",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz o'tgan hafta tog'ga bordik.",
+    "answer": "We went to the mountains last week"
+   },
+   {
+    "id": "18",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Osmon bugun ochiq.",
+    "answer": "The sky is clear today"
+   },
+   {
+    "id": "19",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kuzda barglar sariq bo'ladi.",
+    "answer": "Leaves turn yellow in autumn"
+   },
+   {
+    "id": "20",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Dengizda katta to'lqinlar bor.",
+    "answer": "There are big waves in the sea"
+   },
+   {
+    "id": "21",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Men yomg'irda yurmayman.",
+    "answer": "I don't walk in the rain",
+    "alsoAccept": [
+     "I do not walk in the rain"
+    ]
+   },
+   {
+    "id": "22",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ko'lda baliqlar bor.",
+    "answer": "There are fish in the lake"
+   },
+   {
+    "id": "23",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kechasi osmonda yulduzlar bor.",
+    "answer": "There are stars in the sky at night"
+   },
+   {
+    "id": "24",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Ob-havo kecha yaxshi edi.",
+    "answer": "The weather was nice yesterday"
+   },
+   {
+    "id": "25",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bu daraxt juda eski.",
+    "answer": "This tree is very old"
+   },
+   {
+    "id": "26",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Yozda kunlar uzun bo'ladi.",
+    "answer": "The days are long in summer"
+   },
+   {
+    "id": "27",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Kecha shamol esdi.",
+    "answer": "The wind blew yesterday"
+   },
+   {
+    "id": "28",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Biz yakshanba kuni ko'lga bormoqchimiz.",
+    "answer": "We are going to go to the lake on Sunday",
+    "alsoAccept": [
+     "we're going to go to the lake on Sunday"
+    ]
+   },
+   {
+    "id": "29",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Qushlar daraxtda o'tiradi.",
+    "answer": "The birds sit in the tree"
+   },
+   {
+    "id": "30",
+    "kind": "FILL",
+    "prompt": "Inglizchaga tarjima qiling: Bugun tuman bor.",
+    "answer": "There is fog today",
+    "alsoAccept": [
+     "there's fog today"
+    ]
+   }
+  ]
+ }
+]

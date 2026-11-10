@@ -8,14 +8,17 @@ import {
   QuizSummary,
   ReviewSummary,
   reviewApi,
+  SentenceStatus,
+  sentencesApi,
   Word,
   wordsApi,
 } from '../api';
 import { Button, Card, Notice, PageHeader, ProgressBar, SpeakButton, Spinner } from '../ui';
 import { dayKey, DECK_TITLES, requestProgressCheck, speakEnglish, stopSpeaking } from '../util';
-import { FlashcardGame, MatchingGame, SpeedGame } from './StudyGames';
+import { FlashcardGame, GameResult, MatchingGame, SpeedGame } from './StudyGames';
+import { SentenceGame } from './StudySentence';
 
-type View = 'hub' | 'quiz' | 'flash' | 'match' | 'speed';
+type View = 'hub' | 'quiz' | 'flash' | 'match' | 'speed' | 'sentence';
 type QuizFormat = 'TYPED' | 'CHOICE' | 'LISTENING';
 
 export interface DeckOption {
@@ -114,12 +117,14 @@ export default function StudyPage() {
   const [loading, setLoading] = useState(true);
   const [format, setFormat] = useState<QuizFormat>('TYPED');
   const [quizMode, setQuizMode] = useState<QuizMode | null>(null);
+  const [ai, setAi] = useState<SentenceStatus | null>(null);
 
   const load = useCallback(async () => {
     try {
       const [w, r] = await Promise.all([wordsApi.list(), reviewApi.summary()]);
       setWords(w);
       setReview(r);
+      sentencesApi.status().then(setAi).catch(() => setAi(null));
     } catch {
       // keep what we have
     } finally {
@@ -143,6 +148,7 @@ export default function StudyPage() {
     return <FlashcardGame review={review} totalWords={words.length} favoriteCount={favoriteCount} onExit={exit} />;
   if (view === 'match')
     return <MatchingGame review={review} totalWords={words.length} favoriteCount={favoriteCount} onExit={exit} />;
+  if (view === 'sentence' && ai) return <SentenceGame words={words} remaining={ai.remainingToday} onExit={exit} />;
   if (view === 'speed') return <SpeedGame review={review} totalWords={words.length} onExit={exit} />;
   if (view === 'quiz' && quizMode) return <QuizSession mode={quizMode} format={format} onExit={exit} />;
 
@@ -154,6 +160,9 @@ export default function StudyPage() {
     { key: 'flash', icon: '🃏', title: 'Fleshkart', sub: "Kartani aylantiring va bilganingizni belgilang", tone: '#6366f1', min: 1 },
     { key: 'match', icon: '🧩', title: 'Juftlarni moslash', sub: "Inglizcha so'zlarni tarjimasi bilan juftlang", tone: '#a855f7', min: 3 },
     { key: 'speed', icon: '⏱️', title: 'Tez raund', sub: "60 soniyada iloji boricha ko'p savolga javob bering", tone: '#f59e0b', min: 4 },
+    ...(ai?.enabled
+      ? [{ key: 'sentence' as View, icon: '✍️', title: 'Gap tuzish', sub: "So'z bilan gap yozing, sun'iy intellekt tekshirib baho beradi", tone: '#10b981', min: 1 }]
+      : []),
   ];
 
   return (
@@ -381,27 +390,24 @@ function QuizSession({ mode, format, onExit }: { mode: QuizMode; format: QuizFor
     const took = duration(summary?.startedAt, summary?.finishedAt);
     return (
       <>
-        <Card className="result-card">
-          <div style={{ fontSize: 48 }}>{tier.icon}</div>
-          <h2>{tier.title}</h2>
-          <p className="muted">{tier.message}</p>
-          <div className="big-pct">{acc}%</div>
-          <div className="stat-pair">
-            <div>
-              <div className="stat-num" style={{ color: 'var(--secondary)' }}>{correct}</div>
-              <div className="muted">To'g'ri</div>
-            </div>
-            <div>
-              <div className="stat-num" style={{ color: 'var(--danger)' }}>{wrong}</div>
-              <div className="muted">Xato</div>
-            </div>
-          </div>
-          {took && <p className="muted">{DECK_TITLES[mode]} · {took}</p>}
-        </Card>
-        <div className="row gap">
-          <Button onClick={start}>Qayta boshlash</Button>
-          <Button variant="outline" onClick={onExit}>Bosh sahifa</Button>
-        </div>
+        <GameResult
+          icon={tier.icon}
+          title={tier.title}
+          value={acc}
+          unit={tier.message}
+          valueSuffix="%"
+          tone={acc >= 80 ? '#10b981' : acc >= 50 ? '#6366f1' : '#f59e0b'}
+          celebrate={acc >= 80 && total > 0}
+          stats={[
+            { label: "To'g'ri", value: String(correct) },
+            { label: 'Xato', value: String(wrong) },
+            ...(took ? [{ label: DECK_TITLES[mode], value: took }] : []),
+          ]}
+          againLabel="↻ Qayta boshlash"
+          exitLabel="Bosh sahifa"
+          onAgain={start}
+          onExit={onExit}
+        />
       </>
     );
   }
@@ -417,74 +423,90 @@ function QuizSession({ mode, format, onExit }: { mode: QuizMode; format: QuizFor
     submit(answer.trim());
   };
 
+  const kind = result ? (result.correct ? 'good' : result.closeMatch ? 'close' : 'bad') : '';
+  const answered = progress.answered;
+  const total = progress.totalWords;
+  const steps = !progress.unlimited && total <= 30 ? total : 0;
+
   return (
     <>
-      <PageHeader
-        title={DECK_TITLES[mode]}
-        back={leave}
-        right={
-          <span className="muted">
-            {progress.answered + 1}
-            {progress.unlimited ? '' : ` / ${progress.totalWords}`} · ✅ {progress.correctCount} · ❌ {progress.incorrectCount}
-          </span>
-        }
-      />
-      {!progress.unlimited && <ProgressBar pct={pct} />}
+      <header className="qx-top rise">
+        <button className="gp-back" onClick={leave} aria-label="Orqaga">←</button>
+        <div className="qx-title">
+          <small>Baholash</small>
+          <b>{DECK_TITLES[mode]}</b>
+        </div>
+        <div className="qx-pills">
+          <span className="qx-pill">{answered + 1}{progress.unlimited ? '' : ` / ${total}`}</span>
+          <span className="qx-pill ok">✓ {progress.correctCount}</span>
+          <span className="qx-pill bad">✕ {progress.incorrectCount}</span>
+        </div>
+      </header>
+      {!progress.unlimited &&
+        (steps > 0 ? (
+          <div className="qx-steps" aria-hidden="true">
+            {Array.from({ length: steps }, (_, i) => (
+              <i key={i} className={i < answered ? 'done' : i === answered ? 'now' : ''} />
+            ))}
+          </div>
+        ) : (
+          <ProgressBar pct={pct} />
+        ))}
       {error && <Notice>{error}</Notice>}
 
-      <Card className="q-card mt">
+      <section className={`qx-card ${kind}`} key={question.promptText}>
         {isListening ? (
           <>
-            <div className="q-badge" style={{ background: meta.bg, color: meta.fg }}>Eshiting va yozing</div>
-            <div className="row gap" style={{ justifyContent: 'center' }}>
+            <span className="qx-badge" style={{ background: meta.bg, color: meta.fg }}>Eshiting va yozing</span>
+            <div className="qx-listen">
               <SpeakButton text={question.promptText} />
               <SpeakButton text={question.promptText} slow />
             </div>
           </>
         ) : (
           <>
-            <div className="q-badge" style={{ background: meta.bg, color: meta.fg }}>{meta.badge}</div>
-            <div className={question.promptType === 'definition' ? 'q-def' : 'q-text'}>{question.promptText}</div>
+            <span className="qx-badge" style={{ background: meta.bg, color: meta.fg }}>{meta.badge}</span>
+            <div className={question.promptType === 'definition' ? 'qx-def' : 'qx-word'}>{question.promptText}</div>
             {question.promptType === 'english' && <SpeakButton text={question.promptText} />}
           </>
         )}
-        <p className="muted">{isChoice ? "To'g'ri javobni tanlang" : isListening ? "Eshitgan so'zingizni inglizcha yozing" : answerHint(question)}</p>
+        <p className="qx-hint">{isChoice ? "To'g'ri javobni tanlang" : isListening ? "Eshitgan so'zingizni inglizcha yozing" : answerHint(question)}</p>
 
         {isChoice ? (
-          <div className="options">
-            {question.options!.map((o) => {
-              const cls = result ? (o === result.correctAnswer ? 'right' : o === chosen ? 'wrong' : '') : '';
+          <div className="qx-options">
+            {question.options!.map((o, i) => {
+              const cls = result ? (o === result.correctAnswer ? 'right' : o === chosen ? 'wrong' : 'dim') : '';
               return (
                 <button
                   key={o}
-                  className={`option ${cls}`}
+                  className={`qx-opt ${cls}`}
                   disabled={!!result || submitting}
                   onClick={() => {
                     setChosen(o);
                     submit(o);
                   }}
                 >
-                  {o}
+                  <span className="qx-key">{cls === 'right' ? '✓' : cls === 'wrong' ? '✕' : String.fromCharCode(65 + i)}</span>
+                  <span className="qx-opt-text">{o}</span>
                 </button>
               );
             })}
           </div>
         ) : (
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} className="qx-form">
             <input
               ref={inputRef}
-              className="input"
-              placeholder="Javobingiz"
+              className="qx-input"
+              placeholder="Javobingizni yozing…"
               value={answer}
               disabled={!!result}
               onChange={(e) => setAnswer(e.target.value)}
               autoCapitalize="none"
               autoCorrect="off"
               spellCheck={false}
-              style={{ textAlign: 'center', fontSize: 18 }}
             />
             {!result && (
-              <Button type="submit" block loading={submitting} disabled={!answer.trim()} className="mt">
+              <Button type="submit" block loading={submitting} disabled={!answer.trim()}>
                 Tekshirish
               </Button>
             )}
@@ -492,25 +514,27 @@ function QuizSession({ mode, format, onExit }: { mode: QuizMode; format: QuizFor
         )}
 
         {result && (
-          <div className={`feedback ${result.correct ? 'good' : result.closeMatch ? 'close' : 'bad'}`}>
-            {result.correct
-              ? `✅ To'g'ri!${result.xpGained > 0 ? ` +${result.xpGained} XP` : ''}`
-              : result.closeMatch
-                ? `🟡 Deyarli to'g'ri. To'g'ri javob: ${result.correctAnswer}`
-                : `❌ Noto'g'ri. To'g'ri javob: ${result.correctAnswer}`}
+          <div className={`qx-feedback ${kind}`}>
+            <span className="qx-fb-ico">{result.correct ? '✓' : result.closeMatch ? '≈' : '✕'}</span>
+            <div className="qx-fb-txt">
+              <b>{result.correct ? "To'g'ri!" : result.closeMatch ? 'Deyarli to\'g\'ri' : "Noto'g'ri"}</b>
+              {!result.correct && <span>To'g'ri javob: <em>{result.correctAnswer}</em></span>}
+            </div>
+            {result.correct && result.xpGained > 0 && <span className="qx-xp">+{result.xpGained} XP</span>}
           </div>
         )}
-      </Card>
 
-      {result && (
-        <div className="row gap mt">
-          {next ? <Button onClick={goNext} autoFocus>Keyingi savol →</Button> : <Button onClick={finish} autoFocus>Natijani ko'rish</Button>}
-          {next && <Button variant="outline" onClick={finish}>Tugatish</Button>}
-        </div>
-      )}
+        {result && (
+          <div className="qx-actions">
+            {next ? <Button onClick={goNext} autoFocus>Keyingi savol →</Button> : <Button onClick={finish} autoFocus>Natijani ko'rish</Button>}
+            {next && <Button variant="outline" onClick={finish}>Tugatish</Button>}
+          </div>
+        )}
+      </section>
+
       {!result && progress.answered > 0 && (
-        <div className="mt">
-          <Button variant="ghost" onClick={finish}>Tugatish va natijani ko'rish</Button>
+        <div className="qx-finish">
+          <button onClick={finish}>Tugatish va natijani ko'rish</button>
         </div>
       )}
     </>

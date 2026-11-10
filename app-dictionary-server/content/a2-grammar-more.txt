@@ -1,0 +1,577 @@
+# Extra sentences for the A2 topics of a2-grammar.txt.
+
++ 11
+She [was talking] on the phone at ten. | talked, were talking, is talking ~ talk
+We [were having] lunch at one o'clock. | had, was having, are having ~ have
+The boys [were swimming] in the river. | was swimming, swam, swimming ~ swim
+I [was not sleeping] when you called. | not sleeping, wasn't sleep, didn't sleeping ~ sleep
+Who [was] he talking to? | were, did, is
+At eight yesterday I [was doing] my homework. | did, were doing, am doing ~ do
+The sun [was shining] all day. | were shining, shone, shines ~ shine
+[Were] they waiting for the bus? | Was, Did, Are
+My mother [was washing] the dishes. | washed, were washing, washes ~ wash
+It [wasn't snowing] this morning. | weren't snowing, didn't snowing, isn't snowing ~ snow
+What [was] she wearing at the party? | were, did, is
+The students [were writing] a test at ten. | was writing, wrote, writing ~ write
+He [was running] when he hurt his leg. | were running, ran, is running ~ run
+I [was walking] home at midnight. | were walking, walked, am walking ~ walk
+We [weren't paying] attention. | wasn't paying, didn't paying, aren't paying ~ pay
+The baby [was crying] all night. | were crying, cried, cries ~ cry
+Why [were] you shouting? | was, did, are
+She [was reading] while I was cooking. | were reading, read, reads ~ read
+They [were laughing] at the joke. | was laughing, laughed, laughing ~ laugh
+[Was] it raining when you left? | Were, Did, Is
+The wind [was blowing] hard last night. | were blowing, blew, blows ~ blow
+I [was waiting] for you at the station. | were waiting, waited, wait ~ wait
+
++ 12
+I was watching TV when someone [knocked] on the door. | was knocking, knocks ~ knock
+While they [were eating], the lights went out. | ate, are eating ~ eat
+She [broke] her leg while she was skiing. | was breaking, breaks ~ break
+He was driving when he [saw] a deer. | was seeing, sees ~ see
+When I [got] home, my father was cooking. | was getting, get ~ get
+While we were walking, it [started] to rain. | was starting, starts ~ start
+I [was washing] my hair when the phone rang. | washed, wash ~ wash
+They [were sleeping] when the fire started. | slept, sleeping ~ sleep
+He [dropped] his phone while he was running. | was dropping, drops ~ drop
+She was cooking when I [arrived]. | was arriving, arrives ~ arrive
+When the teacher came in, the students [were talking]. | talked, talk ~ talk
+While I [was reading], my sister was listening to music. | read, am reading ~ read
+The phone [rang] while I was having a shower. | was ringing, rings ~ ring
+We [were crossing] the street when the car stopped. | crossed, cross ~ cross
+I [heard] a noise while I was sleeping. | was hearing, hear ~ hear
+She [was crying] when I met her. | cried, cries ~ cry
+He [cut] his finger while he was cooking. | was cutting, cuts ~ cut
+They were playing football when the game [stopped]. | was stopping, stops ~ stop
+While he was working, he [had] an idea. | was having, has ~ have
+I [met] Anna when I was waiting for the bus. | was meeting, meet ~ meet
+The children [were playing] when their mother called. | played, play ~ play
+When we [left], it was snowing. | were leaving, leave ~ leave
+
++ 13
+We [used to] live in a small village. | use to, were used to, uses to
+I [used to] be afraid of dogs. | use to, was used to, am used to
+He [used to] play the piano every day. | use to, was used to, uses to
+They [didn't use to] have a car. | didn't used to, not used to, don't use to
+[Did] she use to work here? | Do, Was, Is
+My grandfather [used to] tell us stories. | use to, was used to, uses to
+I [didn't use to] like coffee. | didn't used to, don't use to, wasn't used to
+We [used to] play outside after school. | use to, were used to, uses to
+Tom [used to] have long hair. | use to, was used to, uses to
+Where [did] they use to live? | do, were, are
+There [didn't use to] be so many cars. | didn't used to, don't use to, wasn't used to
+She [used to] be very shy. | use to, was used to, uses to
+I [used to] walk to school, but now I take the bus. | use to, was used to, am used to
+My parents [used to] work in a factory. | use to, were used to, uses to
+Did you [use] to read comics? | used, using, uses ~ use
+He didn't [use] to smoke. | used, using, uses ~ use
+We [used to] go fishing every Sunday. | use to, were used to, uses to
+I [didn't use to] eat vegetables. | didn't used to, don't use to, wasn't used to
+This building [used to] be a school. | use to, was used to, uses to
+She [used to] say hello to everyone. | use to, was used to, uses to
+They [used to] be neighbours. | use to, were used to, uses to
+He [used to] drink a lot of tea. | use to, was used to, uses to
+
++ 14
+I [have cleaned] my room. | cleaned, has cleaned, cleaning ~ clean
+She [has been] to Samarkand twice. | have been, was, is ~ be
+They [have lived] here for years. | has lived, lived, living ~ live
+We [have decided] to move. | has decided, decided, deciding ~ decide
+He [has forgotten] his umbrella. | have forgotten, forgot, forgetted ~ forget
+[Have] you done your homework? | Has, Did, Do
+She [hasn't called] me today. | haven't called, didn't called, hasn't call ~ call
+I [have known] him since childhood. | has known, knew, knowed ~ know
+The children [have eaten] all the cake. | has eaten, ate, eaten ~ eat
+My brother [has taken] my bike. | have taken, took, taked ~ take
+It [has stopped] snowing. | have stopped, stop, stopping ~ stop
+I [haven't seen] him today. | hasn't seen, didn't saw, haven't saw ~ see
+We [have booked] a table for tonight. | has booked, booked, booking ~ book
+[Has] he finished his work? | Have, Did, Does
+They [have won] the match! | has won, won, winned ~ win
+She [has worked] here for ten years. | have worked, worked, working ~ work
+I [have made] a cake for you. | has made, made, maked ~ make
+The bus [has left] already. | have left, left, leaving ~ leave
+You [have grown] a lot! | has grown, grew, growed ~ grow
+We [haven't met] before. | hasn't met, didn't met, haven't meet ~ meet
+He [has played] football since he was six. | have played, played, playing ~ play
+I [have read] that book three times. | has read, reads, reading ~ read
+
++ 15
+Have you ever [tried] sushi? | try, tried, trying ~ try
+I have never [flown] in a plane. | fly, flew, flying ~ fly
+She has [never] been late for school. | ever, yet, already
+[Has] your brother ever been to China? | Have, Did, Does
+We have [never] lived abroad. | ever, yet, already
+Have they ever [seen] a snake? | see, saw, seeing ~ see
+That is the most boring book I have [ever] read. | never, yet, already
+I have [never] met a famous person. | ever, yet, already
+Have you [ever] won a prize? | never, yet, already
+He has never [driven] a truck. | drive, drove, driving ~ drive
+[Have] you ever lost your passport? | Has, Did, Do
+She has [never] eaten spicy food. | ever, yet, already
+I have never [been] so happy. | was, be, being ~ be
+Has she ever [spoken] to the president? | speak, spoke, speaking ~ speak
+They have [never] played tennis. | ever, yet, already
+Have you ever [read] this book? | reads, reading, to read ~ read
+My dad has [never] used a computer. | ever, yet, already
+Have you [ever] been in love? | never, yet, already
+We have never [had] a pet. | have, having, has ~ have
+This is the best cake I have [ever] eaten. | never, yet, already
+[Has] he ever told you the truth? | Have, Did, Does
+I have [never] understood this rule. | ever, yet, already
+
++ 16
+I have [just] seen Tom. He is outside. | yet, ever, never
+We have [already] had lunch. | yet, ever, never
+Has she called [yet]? | already, just, ever
+They haven't arrived [yet]. | already, just, ever
+I have [just] heard the news. | yet, ever, never
+He has [already] finished his homework. | yet, ever, never
+Have you packed your bag [yet]? | already, just, ever
+She has [just] left the office. | yet, ever, never
+I haven't read the letter [yet]. | already, just, ever
+The film has [already] started. | yet, ever, never
+Have they decided [yet]? | already, just, ever
+My mother has [just] gone out. | yet, ever, never
+I have [already] told you twice. | yet, ever, never
+We haven't eaten [yet]. | already, just, ever
+It has [just] stopped raining. | yet, ever, never
+He has not paid the bill [yet]. | already, just, ever
+They have [already] sold the house. | yet, ever, never
+Has the shop opened [yet]? | already, just, ever
+I have [just] finished my coffee. | yet, ever, never
+She hasn't answered my email [yet]. | already, just, ever
+Have you [already] seen this film? | yet, ever, never
+The bus has [just] gone. | yet, ever, never
+
++ 17
+He has lived in Tashkent [since] 2015. | for, ago, from
+We have been friends [for] ten years. | since, ago, from
+I have studied English [since] September. | for, ago, from
+She has been away [for] three days. | since, ago, from
+They have waited [for] an hour. | since, ago, from
+How [long] has he worked here? | much, many, often
+It has been cold [since] Monday. | for, ago, from
+I haven't smoked [for] a year. | since, ago, from
+My sister has had a cat [since] last summer. | for, ago, from
+We have lived here [for] a long time. | since, ago, from
+He has been a teacher [since] 2010. | for, ago, from
+I haven't eaten [since] breakfast. | for, ago, from
+They have known her [for] many years. | since, ago, from
+She has been ill [for] a week. | since, ago, from
+How long [have] you been here? | did, are, do
+I have worked here [since] I left school. | for, ago, from
+We haven't had a holiday [for] two years. | since, ago, from
+My phone has not worked [since] yesterday. | for, ago, from
+He has played chess [for] half his life. | since, ago, from
+How long [has] she lived in London? | have, did, is
+They have been married [since] 2012. | for, ago, from
+I have had this bag [for] ages. | since, ago, from
+
++ 18
+I [lost] my keys yesterday. | have lost, has lost, lose ~ lose
+I [have lost] my keys. Can you help me look? | lost, losing, lose ~ lose
+She [was] born in 1998. | has been, is, were ~ be
+She [has lived] here all her life. | lived, live, living ~ live
+They [went] to Spain last summer. | have gone, go, goes ~ go
+They [have been] to Spain three times. | went, was, go ~ be
+[Did] you see Tom last week? | Have, Do, Has
+[Have] you seen Tom today? | Did, Do, Has
+He [bought] a new phone on Monday. | has bought, buy, buys ~ buy
+He [has bought] a new phone, look! | bought, buy, buying ~ buy
+We [finished] the project two days ago. | have finished, finish, finishing ~ finish
+We [have finished] the project, so we can relax. | finished, finish, finishing ~ finish
+I [didn't see] the film last night. | haven't seen, don't see, hasn't seen ~ see
+I [haven't seen] the film yet. | didn't see, don't see, hasn't seen ~ see
+When [did] you arrive? | have, do, are
+How long [have] you lived here? | did, do, are
+She [wrote] to me last week. | has written, writes, write ~ write
+She [has written] five letters today. | wrote, writes, write ~ write
+I [met] him in 2019. | have met, meet, meeting ~ meet
+I [have met] him many times. | met, meet, meeting ~ meet
+Yesterday it [rained] all day. | has rained, rains, raining ~ rain
+It [has rained] a lot this week. | rained, rains, raining ~ rain
+
++ 21
+I think it [will] rain tonight. | is, does, going
+I [will] call you tomorrow. | am, does, going
+She [won't] be happy about this. | don't, isn't, not will
+[Will] you help me with my homework? | Do, Are, Does
+They [will] arrive at six. | arrives, are, do
+We [will] see you on Saturday. | sees, are, do
+He [won't] pass the exam if he doesn't study. | doesn't, isn't, not will
+Wait here. I [will] bring you some water. | am bring, brings, do
+It [will] be a great party. | is, does, going
+I'm sure you [will] like it. | likes, are, do
+They [won't] come tomorrow. | don't, aren't, not will
+Perhaps she [will] phone later. | phones, is, does
+[Will] it be hot tomorrow? | Is, Does, Do
+I promise I [won't] be late. | don't, am not, not will
+My brother [will] be twenty next year. | is, does, going
+Don't worry, everything [will] be fine. | is, does, going
+I'm hungry. I [will] make a sandwich. | am make, makes, do
+You [will] feel better tomorrow. | feels, are, do
+What [will] you do after school? | do, are, does
+He will [call] you later. | calls, to call, calling ~ call
+I'm afraid I [won't] be able to come. | don't, am not, not will
+She [will] probably win the race. | wins, is, does
+
++ 22
+I [am going to] paint my room next week. | will, shall, do
+I'm thirsty. I [will] get some water. | am going to, shall, do
+Look out! The glass [is going to] fall. | will, shall, does
+We [are going to] have a baby in June. | will, shall, do
+There's no milk. I [will] go to the shop. | am going to, shall, do
+He [is going to] become a pilot. | will, shall, does
+Someone is at the door. I [will] open it. | am going to, shall, do
+They [are going to] build a new bridge. | will, shall, do
+It's too hot. I [will] open the window. | am going to, shall, do
+My sister [is going to] study in London. | will, shall, does
+I think Uzbekistan [will] win the match. | is going to, shall, do
+The sky is dark. It [is going to] storm. | will, shall, does
+I've decided. I [am going to] quit my job. | will, shall, do
+Oh no, I've left my bag. I [will] go back for it. | am going to, shall, do
+We [are going to] stay at home this weekend. | will, shall, do
+I'll buy it. It [will] be a nice present for her. | is going to, shall, do
+He's got a ticket. He [is going to] fly to Rome. | will, shall, does
+It's raining. I [will] take an umbrella. | am going to, shall, do
+She [is going to] sell her old car. | will, shall, does
+I [will] help you carry those boxes. | am going to, shall, do
+They [are going to] move to a new flat. | will, shall, do
+Careful! You [are going to] drop that. | will, shall, do
+
++ 23
+I [am playing] tennis with Ali on Sunday. | play, will playing, plays ~ play
+We [are having] dinner with friends tonight. | have, has, will having ~ have
+She [is starting] a new job on Monday. | start, starts, started ~ start
+What time [are] you leaving tomorrow? | do, will, is
+They [are getting] married next month. | get, gets, got ~ get
+I [am not coming] to the party. | not coming, don't coming, won't coming ~ come
+[Is] he travelling to Paris next week? | Does, Will, Do
+Tom [is flying] to London on Friday. | fly, flies, flew ~ fly
+We [are visiting] my grandmother this weekend. | visit, visits, visited ~ visit
+My parents [are arriving] at six tomorrow. | arrive, arrives, arrived ~ arrive
+I [am staying] at home tomorrow. | stay, stays, stayed ~ stay
+She [isn't working] next week. | doesn't working, not working, isn't work ~ work
+Where [are] you going on holiday? | do, will, is
+We [are meeting] at the cinema at seven. | meet, meets, met ~ meet
+I [am cooking] for ten people on Saturday. | cook, cooks, cooked ~ cook
+They [are not coming] until nine. | not coming, don't coming, isn't coming ~ come
+My sister [is having] a baby in May. | has, have, will having ~ have
+[Are] you doing anything tonight? | Do, Will, Is
+He [is taking] his driving test tomorrow. | take, takes, took ~ take
+I [am seeing] Anna after work. | see, sees, saw ~ see
+We [are going] to the mountains next week. | go, goes, went ~ go
+The doctor [is coming] at three. | come, comes, came ~ come
+
++ 24
+[Shall] I turn off the light? | Do, Am, Are
+What [shall] I bring to the party? | do, will, am
+[Shall] we sit here? | Do, Are, Does
+Shall I [make] some tea? | making, makes, to make ~ make
+Where [shall] we have lunch? | do, will, are
+[Shall] I read the story to you? | Do, Am, Are
+Shall we [take] a taxi? | taking, takes, to take ~ take
+It's late. [Shall] we go home? | Do, Are, Does
+[Shall] I help you with that? | Do, Am, Are
+What [shall] we do tonight? | do, will, are
+Shall I [wait] for you outside? | waiting, waits, to wait ~ wait
+[Shall] we begin the lesson? | Do, Are, Does
+Which film [shall] we watch? | do, will, are
+Shall we [meet] at six? | meeting, meets, to meet ~ meet
+[Shall] I put the shopping in the kitchen? | Do, Am, Are
+When [shall] we leave? | do, are, will
+[Shall] I turn the music down? | Do, Am, Are
+Shall I [open] the door for you? | opening, opens, to open ~ open
+[Shall] we invite Tom to the party? | Do, Are, Does
+What [shall] I wear tonight? | do, will, am
+Shall we [try] the new restaurant? | trying, tries, to try ~ try
+[Shall] I show you the way? | Do, Am, Are
+
++ 26
+You [must] wear a seat belt in a car. | has to, should to, are to
+I [have to] get up early tomorrow. | has to, must to, am to
+He [has to] work on Sundays. | have to, must, is to
+We [must] hurry or we'll miss the bus. | must to, have to be, has to
+[Do] I have to fill in this form? | Have, Am, Must
+She [had to] stay at home yesterday. | has to, must, have to
+You [must] not forget my birthday. | not must, don't must, haven't to
+They [have to] pay before they leave. | has to, must to, are to
+I [must] go now. It's late. | must to, have to be, am to
+[Does] he have to wear a suit? | Do, Has, Must
+Last week I [had to] see a doctor. | have to, must, has to
+All passengers [must] show a ticket. | must to, has to, are to
+You [have to] be 18 to vote. | has to, must to, are to
+We [had to] walk home because the bus was late. | have to, must, has to
+I [must] finish this report today. | must to, have to be, am to
+She [has to] take medicine twice a day. | have to, must, is to
+[Did] you have to pay for the room? | Have, Do, Must
+They [have to] leave at six. | has to, must to, are to
+I [must] buy a present for my mother. | must to, have to be, am to
+He [had to] sell his car. | has to, must, have to
+You [must] listen carefully. | must to, have to be, are to
+Do we [have] to wear uniforms? | has, must, having ~ have
+
++ 27
+You [mustn't] shout in the library. | don't have to, haven't to, needn't
+You [don't have to] wear a tie. | mustn't, haven't to, can't to
+Visitors [mustn't] feed the animals. | don't have to, haven't to, doesn't have to
+We [don't have to] go to school today. | mustn't, can't to, haven't to
+You [mustn't] cross the road here. | don't have to, haven't to, doesn't have to
+She [doesn't have to] cook. We are going out. | mustn't, don't have to, haven't to
+You [mustn't] lie to your parents. | don't have to, haven't to, doesn't have to
+I [don't have to] wake up early on Sunday. | mustn't, can't to, haven't to
+Passengers [mustn't] open the door. | don't have to, haven't to, doesn't have to
+You [don't have to] answer all the questions. | mustn't, haven't to, can't to
+You [mustn't] leave your bag here. | don't have to, haven't to, doesn't have to
+He [doesn't have to] pay. He is a child. | mustn't, don't have to, haven't to
+You [mustn't] use your phone in class. | don't have to, haven't to, doesn't have to
+We [don't have to] book. There are many tables. | mustn't, can't to, haven't to
+You [mustn't] eat that. It's bad. | don't have to, haven't to, doesn't have to
+They [don't have to] pay for the ticket. | mustn't, haven't to, can't to
+You [mustn't] touch the paintings. | don't have to, haven't to, doesn't have to
+I [don't have to] work on Saturdays. | mustn't, can't to, haven't to
+Drivers [mustn't] drink alcohol. | don't have to, haven't to, doesn't have to
+It's optional. You [don't have to] come. | mustn't, can't to, haven't to
+You [mustn't] be late for the exam. | don't have to, haven't to, doesn't have to
+She [doesn't have to] queue. She has a ticket. | mustn't, don't have to, haven't to
+
++ 28
+You [should] eat more vegetables. | should to, shoulds, are
+She [shouldn't] go out in the rain. | not should, don't should, shouldn't to
+[Should] we call the police? | Do, Are, Must
+You [should] ask your teacher. | should to, shoulds, are
+He [shouldn't] drive so fast. | not should, don't should, shouldn't to
+I think we [should] leave now. | should to, shall to, would
+They [should] be more careful. | should to, shoulds, are
+You [shouldn't] eat before swimming. | not should, don't should, shouldn't to
+What [should] we bring? | must, do, are
+You should [wear] a warm coat. | to wear, wearing, wears ~ wear
+It's late. You [should] go to sleep. | should to, shoulds, are
+We [shouldn't] waste water. | not should, don't should, shouldn't to
+He [should] see a dentist. | should to, shoulds, is
+[Should] I buy this one or that one? | Do, Am, Must
+You [should] tell him the truth. | should to, shoulds, are
+She [shouldn't] be so rude. | not should, don't should, shouldn't to
+You should [take] a break. | to take, taking, takes ~ take
+Children [should] go to bed early. | should to, shoulds, are
+I [should] study more for the test. | should to, shoulds, am
+You [shouldn't] believe everything you read. | not should, don't should, shouldn't to
+How often [should] I take this medicine? | must, do, am
+We [should] hurry. The bus is coming. | should to, shoulds, are
+
++ 29
+She [might] be in the library. | might to, mights, is
+We [may] visit you next week. | may to, mays, are
+He [might] not like this food. | might not to, doesn't might, mights
+I [may] be late tonight. | may to, mays, am
+They [might] move to another city. | might to, mights, are
+It [may] snow tomorrow. | may to, mays, is
+She [might] have a cold. | might to, mights, is
+I [might] buy a new bag. | might to, mights, am
+He [may] be right. | may to, mays, is
+We [might] not go out tonight. | might not to, don't might, mights not
+The shop [may] be closed now. | may to, mays, is
+You [might] want to take a coat. | might to, mights, are
+It [might] be difficult to find a seat. | might to, mights, is
+I [may] call you later. | may to, mays, am
+They [may] not know the answer. | may not to, don't may, mays not
+She [might] come with us. | might to, mights, is
+The bus [might] be late. | might to, mights, is
+He [might] be at work. | might to, mights, is
+I [might] not have enough time. | might not to, don't might, mights not
+We [may] need more chairs. | may to, mays, are
+Be careful. You [might] fall. | might to, mights, are
+She [may] not be hungry. | may not to, don't may, mays not
+
++ 34
+I love chocolate. So [do] I. | am, did, have
+I'm not tired. Neither [am] I. | do, did, have
+He can speak French. So [can] his sister. | do, did, is
+I didn't like the film. Neither [did] my friend. | do, was, have
+We are students. So [are] they. | do, did, have
+She doesn't eat meat. Neither [does] her brother. | do, is, did
+I have been to Paris. So [have] I. | do, am, has
+They live in London. So [does] he. | do, is, did
+I can't swim. Neither [can] Tom. | do, am, is
+I was at home yesterday. So [was] she. | did, were, is
+She likes tea. So [do] we. | does, are, did
+He hasn't finished. Neither [have] I. | do, am, has
+I will go tomorrow. So [will] my friend. | do, am, is
+My mother works hard. So [does] my father. | do, is, did
+I don't know the answer. Neither [do] you. | does, am, did
+They are happy. So [am] I. | do, did, have
+I went to the market. So [did] my sister. | do, was, have
+She isn't ready. Neither [is] he. | does, did, has
+I'd like some water. So [would] I. | do, am, did
+We didn't hear anything. Neither [did] they. | do, were, have
+He plays the guitar. So [does] she. | do, is, did
+I haven't seen it. Neither [has] my brother. | do, is, did
+
++ 35
+Do you know where [she works]? | does she work, works she, is she work
+Can you tell me how [I can get there]? | can I get there, do I get there, I get can there
+I don't know what [he wants]. | does he want, wants he, is he want
+Do you know what time [the bank closes]? | does the bank close, closes the bank, is the bank close
+Could you tell me where [the toilets are]? | are the toilets, do the toilets, the toilets do
+I wonder who [she is]. | is she, does she, she does
+Do you know why [he is late]? | is he late, does he late, late is he
+Can you tell me when [the train leaves]? | does the train leave, leaves the train, is the train leave
+I'd like to know how much [this costs]. | does this cost, costs this, is this cost
+Do you know whose bag [this is]? | is this, does this, this does
+I don't know when [they arrived]. | did they arrive, arrived they, they did arrive
+Could you tell me what [your name is]? | is your name, does your name, your name does
+Do you know how old [he is]? | is he, does he, he does
+I wonder where [they went]. | did they go, went they, they did go
+Can you tell me which bus [goes to the airport]? | does go to the airport, go to the airport does, is going
+I don't know if [she is at home]. | is she at home, does she at home, at home is she
+Do you know what [happened]? | did happen, happens did, was happen
+Could you tell me where [Anna lives]? | does Anna live, lives Anna, is Anna live
+I have no idea why [she called]. | did she call, called she, she did call
+Do you know how long [the film is]? | is the film, does the film, the film does
+I'm not sure what [they said]. | did they say, said they, they did say
+Can you tell me what [this word means]? | does this word mean, means this word, is this word mean
+
++ 48
+He is a [slow] walker. | slowly, slowness, slower
+He walks [slowly]. | slow, slowness, slower
+She is a [good] singer. | well, goodly, best
+She sings [well]. | good, goodly, best
+He is a [quiet] boy. | quietly, quiet, quietness
+He speaks [quietly]. | quiet, quietness, quieter
+The film was [terrible]. | terribly, terror, terribleness
+They are [happy] children. | happily, happy, happiness
+The children play [happily]. | happy, happiness, happier
+It was a [bad] mistake. | badly, bade, worse
+He plays [badly]. | bad, badder, worse
+She is a [fast] runner. | fastly, quickly, speedy
+He answered [politely]. | polite, politeness, politer
+That is a [dangerous] road. | dangerously, danger, dangerless
+She drives [dangerously]. | dangerous, danger, dangerless
+The food tastes [delicious]. | deliciously, delicious, deliciousness
+He listened [carefully]. | careful, care, carefuly
+She looks [beautiful] today. | beautifully, beauty, beautifulness
+They were [angry]. | angrily, anger, angriness
+He shouted [angrily]. | angry, anger, angriness
+It's a [hard] question. | hardly, harder, hardness
+He worked [hard] all day. | hardly, harder, hardness
+
++ 49
+This room is [bigger] than mine. | more big, biggest, big
+My mother is [older] than my father. | more old, oldest, old
+He is [more careful] than me. | carefuler, most careful, careful ~ careful
+Today is [hotter] than yesterday. | more hot, hottest, hot
+This lesson is [easier] than the last one. | more easy, easiest, easy
+Her English is [better] than mine. | gooder, more good, best
+The train is [faster] than the bus. | more fast, fastest, fast
+This film is [more exciting] than that one. | excitinger, most exciting, exciting ~ exciting
+My bag is [heavier] than yours. | more heavy, heaviest, heavy
+Samarkand is [older] than Tashkent. | more old, oldest, old
+He is [shorter] than his brother. | more short, shortest, short
+This city is [more beautiful] than I thought. | beautifuler, most beautiful, beautiful ~ beautiful
+The weather is [worse] today. | badder, more bad, worst
+My new phone is [cheaper] than the old one. | more cheap, cheapest, cheap
+She is [more intelligent] than him. | intelligenter, most intelligent, intelligent ~ intelligent
+The river is [wider] here. | more wide, widest, wide
+Winter is [colder] than autumn. | more cold, coldest, cold
+This chair is [more comfortable] than that one. | comfortabler, most comfortable, comfortable ~ comfortable
+Her hair is [longer] than mine. | more long, longest, long
+Life is [easier] now than before. | more easy, easiest, easy
+This exam was [harder] than the last one. | more hard, hardest, hard
+He drives [more carefully] than me. | carefullier, most carefully, careful ~ carefully
+
++ 50
+She is [the youngest] in the family. | the younger, youngest, the most young
+This is [the best] restaurant in town. | the better, the goodest, best
+It's [the longest] river in Europe. | the longer, longest, the most long
+He is [the richest] man in the country. | the richer, richest, the most rich
+That was [the funniest] film of the year. | the funnier, funniest, the most funny
+Who is [the oldest] person in your family? | the older, oldest, the most old
+This is [the most important] day of my life. | the importantest, most important, more important
+She is [the smartest] girl in my class. | the smarter, smartest, the most smart
+It's [the cheapest] hotel here. | the cheaper, cheapest, the most cheap
+That was [the worst] day of my life. | the worse, the baddest, worst
+Tom is [the tallest] player in our team. | the taller, tallest, the most tall
+This is [the most popular] song this year. | the popularest, most popular, more popular
+Which is [the biggest] city in Uzbekistan? | the bigger, biggest, the most big
+He is [the happiest] boy I know. | the happier, happiest, the most happy
+It was [the coldest] night of winter. | the colder, coldest, the most cold
+This is [the most comfortable] seat. | the comfortablest, most comfortable, more comfortable
+She is [the best] dancer here. | the better, the goodest, best
+Baikal is [the deepest] lake in the world. | the deeper, deepest, the most deep
+That is [the most delicious] cake I have eaten. | the deliciousest, most delicious, more delicious
+He is [the busiest] person in the office. | the busier, busiest, the most busy
+This is [the quietest] place in town. | the quieter, quietest, the most quiet
+It's [the most beautiful] park in Tashkent. | the beautifulest, most beautiful, more beautiful
+
++ 51
+Anna is [as] tall as her mother. | so, than, like
+This book is not as long [as] that one. | than, like, so
+My phone is [as] good as yours. | so, than, like
+He doesn't speak [as] fast as his brother. | so, than, like
+It is [as] cold as ice. | so, than, like
+She runs as fast [as] I do. | than, like, so
+This isn't [as] easy as it looks. | so, than, like
+Tom is as clever [as] his sister. | than, like, so
+The film wasn't [as] good as the book. | so, than, like
+My house is not [as] big as yours. | so, than, like
+Is your bag as heavy [as] mine? | than, like, so
+Today isn't [as] warm as yesterday. | so, than, like
+He is [as] strong as a horse. | so, than, like
+Cats aren't as friendly [as] dogs. | than, like, so
+She sings as [well] as her mother. | good, better, best
+I am not [as] young as I was. | so, than, like
+This soup is as hot [as] fire. | than, like, so
+He earns as [much] as I do. | many, more, most
+The test was [as] easy as I expected. | so, than, like
+I'm as hungry [as] a wolf. | than, like, so
+Tashkent isn't as old [as] Samarkand. | than, like, so
+She is [as] kind as her mother. | so, than, like
+
++ 52
+The bag is [too] heavy to carry. | enough, very, much
+He isn't strong [enough] to lift it. | too, very, so
+I'm [too] tired to go out. | enough, much, very
+There aren't [enough] seats for everyone. | too, very, much
+The water is [too] cold to swim in. | enough, much, very
+Is this room big [enough] for us? | too, very, so
+She spoke [too] quickly for me to understand. | enough, much, very
+He is [too] young to drive. | enough, much, very
+We have [enough] time to finish. | too, very, much
+You are not old [enough] to see this film. | too, very, so
+This shirt is [too] big for me. | enough, much, very
+I don't earn [enough] money to buy a house. | too, very, much
+It's [too] noisy to study here. | enough, much, very
+Are you warm [enough]? | too, very, so
+The exam was [too] difficult for me. | enough, much, very
+The soup isn't hot [enough]. | too, very, so
+She has [too] many bags to carry. | enough, much, very
+We don't have [enough] chairs. | too, very, much
+It's [too] early to call him. | enough, much, very
+The knife isn't sharp [enough] to cut it. | too, very, so
+That is [too] expensive for a student. | enough, much, very
+Is there [enough] sugar in your tea? | too, very, much
+
++ 54
+She enjoys [cooking]. | to cook, cook, cooks ~ cook
+He wants [to be] a doctor. | being, be, is ~ be
+We decided [to stay] at home. | staying, stay, stays ~ stay
+I finished [reading] the book yesterday. | to read, read, reads ~ read
+They hope [to win] the game. | winning, win, wins ~ win
+Would you mind [closing] the door? | to close, close, closes ~ close
+She stopped [smoking] last year. | to smoke, smoke, smokes ~ smoke
+I need [to buy] a new coat. | buying, buy, buys ~ buy
+He avoids [talking] about it. | to talk, talk, talks ~ talk
+We'd like [to go] to the seaside. | going, go, goes ~ go
+I can't stand [waiting] in queues. | to wait, wait, waits ~ wait
+She promised [to help] me. | helping, help, helps ~ help
+Do you like [swimming]? | to swim, swim, swims ~ swim
+They refused [to pay]. | paying, pay, pays ~ pay
+He keeps [asking] the same question. | to ask, ask, asks ~ ask
+I'm learning [to drive]. | driving, drive, drives ~ drive
+We missed [seeing] the film. | to see, see, sees ~ see
+She agreed [to come] with us. | coming, come, comes ~ come
+I don't mind [walking]. | to walk, walk, walks ~ walk
+He forgot [to lock] the door. | locking, lock, locks ~ lock
+My brother started [learning] English last year. | to learn, learn, learns ~ learn
+She is afraid [to fly]. | flying, fly, flies ~ fly

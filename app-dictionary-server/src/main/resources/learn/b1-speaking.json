@@ -1,0 +1,5732 @@
+[
+ {
+  "code": "b1-speaking-1",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Giving opinions and agreeing/disagreeing",
+  "title": "Fikr bildirish va rozi bo'lish",
+  "order": 1,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "In my opinion, learning English online is very effective.",
+    "answer": "In my opinion, learning English online is very effective."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I think we should start the meeting a little earlier.",
+    "answer": "I think we should start the meeting a little earlier."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Personally, I believe public transport should be cheaper for students.",
+    "answer": "Personally, I believe public transport should be cheaper for students."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "As far as I'm concerned, honesty is the most important quality.",
+    "answer": "As far as I'm concerned, honesty is the most important quality."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I completely agree with you about the new schedule.",
+    "answer": "I completely agree with you about the new schedule."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "That's exactly what I was thinking when I read the report.",
+    "answer": "That's exactly what I was thinking when I read the report."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I'm afraid I don't really agree with that idea.",
+    "answer": "I'm afraid I don't really agree with that idea."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I see your point, but I have a different view.",
+    "answer": "I see your point, but I have a different view."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "You might be right, but I'm not totally convinced yet.",
+    "answer": "You might be right, but I'm not totally convinced yet."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I strongly disagree that homework is a waste of time.",
+    "answer": "I strongly disagree that homework is a waste of time."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "What do you think about working from home every day?",
+    "answer": "What do you think about working from home every day?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Do you agree that cities need more green parks?",
+    "answer": "Do you agree that cities need more green parks?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "How do you feel about the changes in our team?",
+    "answer": "How do you feel about the changes in our team?"
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I'm not sure that is the best solution for everyone.",
+    "answer": "I'm not sure that is the best solution for everyone."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "To be honest, I prefer reading books to watching films.",
+    "answer": "To be honest, I prefer reading books to watching films."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "I couldn't agree more, because healthy food really matters.",
+    "answer": "I couldn't agree more, because healthy food really matters."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "That's a good point, and I hadn't thought about it.",
+    "answer": "That's a good point, and I hadn't thought about it."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "In my view, social media has both advantages and disadvantages.",
+    "answer": "In my view, social media has both advantages and disadvantages."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I partly agree, although some of your arguments seem weak.",
+    "answer": "I partly agree, although some of your arguments seem weak."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "It seems to me that the price is too high.",
+    "answer": "It seems to me that the price is too high."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Don't you think the exam was harder than last year?",
+    "answer": "Don't you think the exam was harder than last year?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I'd say that cooking at home is healthier and cheaper.",
+    "answer": "I'd say that cooking at home is healthier and cheaper."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Neither of us likes the idea of moving abroad.",
+    "answer": "Neither of us likes the idea of moving abroad."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I'm totally against building another shopping centre near our house.",
+    "answer": "I'm totally against building another shopping centre near our house."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "From my point of view, teachers deserve much higher salaries.",
+    "answer": "From my point of view, teachers deserve much higher salaries."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "She is right that we need to save more money.",
+    "answer": "She is right that we need to save more money."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I tend to think that small classes work better.",
+    "answer": "I tend to think that small classes work better."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "We'll have to agree to disagree on this topic.",
+    "answer": "We'll have to agree to disagree on this topic."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "That's an interesting opinion, but I see it differently.",
+    "answer": "That's an interesting opinion, but I see it differently."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Would you say that technology makes our lives easier?",
+    "answer": "Would you say that technology makes our lives easier?"
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-2",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Talking about experiences (present perfect)",
+  "title": "Tajribalar haqida gapirish",
+  "order": 2,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I have visited three different countries in the last two years.",
+    "answer": "I have visited three different countries in the last two years."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Have you ever tried traditional Japanese food before?",
+    "answer": "Have you ever tried traditional Japanese food before?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "She has never flown in an airplane because she is afraid.",
+    "answer": "She has never flown in an airplane because she is afraid."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "We have lived in this neighbourhood for almost ten years.",
+    "answer": "We have lived in this neighbourhood for almost ten years."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "He has just finished his final exam and feels relieved.",
+    "answer": "He has just finished his final exam and feels relieved."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I haven't seen that film, but I've heard it's great.",
+    "answer": "I haven't seen that film, but I've heard it's great."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Have you ever met anyone famous during your travels?",
+    "answer": "Have you ever met anyone famous during your travels?"
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "They have already booked their tickets for the summer holiday.",
+    "answer": "They have already booked their tickets for the summer holiday."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "My brother has worked as a nurse since he graduated.",
+    "answer": "My brother has worked as a nurse since he graduated."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I've never eaten anything as spicy as that soup.",
+    "answer": "I've never eaten anything as spicy as that soup."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "How long have you been studying English at this school?",
+    "answer": "How long have you been studying English at this school?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "She has changed jobs twice since she moved to Tashkent.",
+    "answer": "She has changed jobs twice since she moved to Tashkent."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "We haven't decided where to go on holiday yet.",
+    "answer": "We haven't decided where to go on holiday yet."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Have you ever lost your phone in a crowded place?",
+    "answer": "Have you ever lost your phone in a crowded place?"
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I've climbed a mountain once, and it was exhausting.",
+    "answer": "I've climbed a mountain once, and it was exhausting."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "He has played the guitar since he was eight years old.",
+    "answer": "He has played the guitar since he was eight years old."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Has anyone in your family ever won a prize?",
+    "answer": "Has anyone in your family ever won a prize?"
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I have just realised that I forgot my keys.",
+    "answer": "I have just realised that I forgot my keys."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "They have grown so many vegetables in their garden this year.",
+    "answer": "They have grown so many vegetables in their garden this year."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I've been to the new museum twice this month.",
+    "answer": "I've been to the new museum twice this month."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "She hasn't called me back since yesterday morning.",
+    "answer": "She hasn't called me back since yesterday morning."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Have you ever taken part in a volunteer project?",
+    "answer": "Have you ever taken part in a volunteer project?"
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "My parents have been married for more than thirty years.",
+    "answer": "My parents have been married for more than thirty years."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I've learned a lot from working with different people.",
+    "answer": "I've learned a lot from working with different people."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "We have never had such a wonderful holiday before.",
+    "answer": "We have never had such a wonderful holiday before."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Has your teacher ever given you really useful advice?",
+    "answer": "Has your teacher ever given you really useful advice?"
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "He has already read most of the books on that shelf.",
+    "answer": "He has already read most of the books on that shelf."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "I've always wanted to learn how to swim properly.",
+    "answer": "I've always wanted to learn how to swim properly."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Have you ever stayed up all night to study?",
+    "answer": "Have you ever stayed up all night to study?"
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "It's the best meal I have ever had in my life.",
+    "answer": "It's the best meal I have ever had in my life."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-3",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Making plans and predictions",
+  "title": "Reja tuzish va bashorat qilish",
+  "order": 3,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I'm going to start my own small business next year.",
+    "answer": "I'm going to start my own small business next year."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "We are meeting our friends at the cinema this Saturday.",
+    "answer": "We are meeting our friends at the cinema this Saturday."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I think it will rain tomorrow, so take an umbrella.",
+    "answer": "I think it will rain tomorrow, so take an umbrella."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "She is going to apply for a scholarship in the spring.",
+    "answer": "She is going to apply for a scholarship in the spring."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "What are you doing after the lesson this afternoon?",
+    "answer": "What are you doing after the lesson this afternoon?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "In the future, most people will probably work from home.",
+    "answer": "In the future, most people will probably work from home."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I'll call you as soon as I arrive at the station.",
+    "answer": "I'll call you as soon as I arrive at the station."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "They are planning to buy a bigger apartment next summer.",
+    "answer": "They are planning to buy a bigger apartment next summer."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Do you think robots will replace teachers one day?",
+    "answer": "Do you think robots will replace teachers one day?"
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "He might come to the party if he finishes work early.",
+    "answer": "He might come to the party if he finishes work early."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "I'm flying to Istanbul on Friday, and I can't wait.",
+    "answer": "I'm flying to Istanbul on Friday, and I can't wait."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Maybe we will travel around Europe after we graduate.",
+    "answer": "Maybe we will travel around Europe after we graduate."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "Are you going to join the gym next month?",
+    "answer": "Are you going to join the gym next month?"
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "The weather forecast says it will be sunny all weekend.",
+    "answer": "The weather forecast says it will be sunny all weekend."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I probably won't have enough time to visit everyone this week.",
+    "answer": "I probably won't have enough time to visit everyone this week."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "We are going to paint the kitchen walls blue.",
+    "answer": "We are going to paint the kitchen walls blue."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I'm sure our team will win the match tonight.",
+    "answer": "I'm sure our team will win the match tonight."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "My sister is having a baby in about three months.",
+    "answer": "My sister is having a baby in about three months."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Shall we make a plan for the next two weeks?",
+    "answer": "Shall we make a plan for the next two weeks?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Prices will certainly go up if the demand keeps growing.",
+    "answer": "Prices will certainly go up if the demand keeps growing."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I'm not going to eat any sweets for a month.",
+    "answer": "I'm not going to eat any sweets for a month."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "What will your life be like in ten years?",
+    "answer": "What will your life be like in ten years?"
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "She might change her mind when she sees the new offer.",
+    "answer": "She might change her mind when she sees the new offer."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Let's decide what we are going to cook for dinner.",
+    "answer": "Let's decide what we are going to cook for dinner."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I'll definitely visit my grandparents during the winter holidays.",
+    "answer": "I'll definitely visit my grandparents during the winter holidays."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "They are going to open a new bakery on our street.",
+    "answer": "They are going to open a new bakery on our street."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Our company will launch a new product at the end of June.",
+    "answer": "Our company will launch a new product at the end of June."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "I'm taking my driving test on Monday morning, so wish me luck.",
+    "answer": "I'm taking my driving test on Monday morning, so wish me luck."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "It looks like the traffic is going to be terrible today.",
+    "answer": "It looks like the traffic is going to be terrible today."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Do you have any plans for the long weekend?",
+    "answer": "Do you have any plans for the long weekend?"
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-4",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Asking for and giving advice",
+  "title": "Maslahat so'rash va berish",
+  "order": 3,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "What do you think I should do about my job?",
+    "answer": "What do you think I should do about my job?"
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "If I were you, I would talk to your manager.",
+    "answer": "If I were you, I would talk to your manager."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Could you give me some advice about learning to code?",
+    "answer": "Could you give me some advice about learning to code?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "You should drink more water and get more sleep.",
+    "answer": "You should drink more water and get more sleep."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Why don't you try asking your teacher for extra help?",
+    "answer": "Why don't you try asking your teacher for extra help?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I think you'd better see a doctor about that cough.",
+    "answer": "I think you'd better see a doctor about that cough."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Do you have any suggestions for a good weekend trip?",
+    "answer": "Do you have any suggestions for a good weekend trip?"
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "You shouldn't spend so much money on things you don't need.",
+    "answer": "You shouldn't spend so much money on things you don't need."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Have you thought about taking an evening course in design?",
+    "answer": "Have you thought about taking an evening course in design?"
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "My advice would be to start saving a little each month.",
+    "answer": "My advice would be to start saving a little each month."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "What would you do if you were in my position?",
+    "answer": "What would you do if you were in my position?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "It might be a good idea to make a list first.",
+    "answer": "It might be a good idea to make a list first."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I'm not sure which university to choose, so can you help?",
+    "answer": "I'm not sure which university to choose, so can you help?"
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "You ought to apologise to her as soon as possible.",
+    "answer": "You ought to apologise to her as soon as possible."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Maybe you could ask your neighbours how they solved the problem.",
+    "answer": "Maybe you could ask your neighbours how they solved the problem."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "I really need your advice on buying my first car.",
+    "answer": "I really need your advice on buying my first car."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "You had better leave early because the roads are busy.",
+    "answer": "You had better leave early because the roads are busy."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Instead of worrying, you should make a clear plan.",
+    "answer": "Instead of worrying, you should make a clear plan."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Would you recommend studying abroad for a year?",
+    "answer": "Would you recommend studying abroad for a year?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "If I were you, I wouldn't accept the first offer.",
+    "answer": "If I were you, I wouldn't accept the first offer."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Take my advice and read the contract very carefully.",
+    "answer": "Take my advice and read the contract very carefully."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "What's the best way to prepare for an interview?",
+    "answer": "What's the best way to prepare for an interview?"
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "You could try speaking English with your colleagues every day.",
+    "answer": "You could try speaking English with your colleagues every day."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I wouldn't wait too long before making that decision.",
+    "answer": "I wouldn't wait too long before making that decision."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Can I ask your opinion about my new haircut?",
+    "answer": "Can I ask your opinion about my new haircut?"
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "She told me I should believe in myself more.",
+    "answer": "She told me I should believe in myself more."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Try to take short breaks when you study for hours.",
+    "answer": "Try to take short breaks when you study for hours."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Do you think it's wise to lend him the money?",
+    "answer": "Do you think it's wise to lend him the money?"
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Thank you for the advice, I'll definitely think about it.",
+    "answer": "Thank you for the advice, I'll definitely think about it."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Any tips on how to stay calm before an exam?",
+    "answer": "Any tips on how to stay calm before an exam?"
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-5",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Complaining and solving problems politely",
+  "title": "Shikoyat qilish va muammoni hal qilish",
+  "order": 4,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Excuse me, I'm afraid there is a problem with my order.",
+    "answer": "Excuse me, I'm afraid there is a problem with my order."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry to bother you, but the room is too noisy.",
+    "answer": "I'm sorry to bother you, but the room is too noisy."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Could you please check why my internet isn't working today?",
+    "answer": "Could you please check why my internet isn't working today?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I ordered a salad, but you brought me soup.",
+    "answer": "I ordered a salad, but you brought me soup."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Unfortunately, the product I received is damaged and doesn't work.",
+    "answer": "Unfortunately, the product I received is damaged and doesn't work."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Would it be possible to exchange this jacket for a larger size?",
+    "answer": "Would it be possible to exchange this jacket for a larger size?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I've been waiting for more than an hour for my delivery.",
+    "answer": "I've been waiting for more than an hour for my delivery."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I'd like to speak to the manager about this issue, please.",
+    "answer": "I'd like to speak to the manager about this issue, please."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Could you explain why I was charged twice for the ticket?",
+    "answer": "Could you explain why I was charged twice for the ticket?"
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I'm not happy with the service I received at your shop.",
+    "answer": "I'm not happy with the service I received at your shop."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Is there anything you can do to fix this quickly?",
+    "answer": "Is there anything you can do to fix this quickly?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Thank you for your help, that solved my problem completely.",
+    "answer": "Thank you for your help, that solved my problem completely."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I understand it's not your fault, but I need a solution.",
+    "answer": "I understand it's not your fault, but I need a solution."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "The air conditioner in our room has been broken since yesterday.",
+    "answer": "The air conditioner in our room has been broken since yesterday."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Would you mind turning the music down a little, please?",
+    "answer": "Would you mind turning the music down a little, please?"
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "I'd appreciate it if you could send me a refund.",
+    "answer": "I'd appreciate it if you could send me a refund."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Sorry, but I think there's a mistake on my bill.",
+    "answer": "Sorry, but I think there's a mistake on my bill."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Could we move to a different table away from the door?",
+    "answer": "Could we move to a different table away from the door?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "The heating hasn't worked for three days, and it's freezing.",
+    "answer": "The heating hasn't worked for three days, and it's freezing."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry for the trouble, and I'll fix it immediately.",
+    "answer": "I'm sorry for the trouble, and I'll fix it immediately."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Can you tell me when the repair will be finished?",
+    "answer": "Can you tell me when the repair will be finished?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I would like to make a complaint about the late train.",
+    "answer": "I would like to make a complaint about the late train."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Perhaps we could find a compromise that works for both of us.",
+    "answer": "Perhaps we could find a compromise that works for both of us."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I'm calling because my parcel still hasn't arrived at my address.",
+    "answer": "I'm calling because my parcel still hasn't arrived at my address."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Please let me know if you need any more information from me.",
+    "answer": "Please let me know if you need any more information from me."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "We apologise for the delay and thank you for your patience.",
+    "answer": "We apologise for the delay and thank you for your patience."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I'd be grateful if someone could look into this problem today.",
+    "answer": "I'd be grateful if someone could look into this problem today."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "It would be great if you could replace it for free.",
+    "answer": "It would be great if you could replace it for free."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Let's see what we can do to sort this out.",
+    "answer": "Let's see what we can do to sort this out."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Thanks for listening, and I hope we can resolve this soon.",
+    "answer": "Thanks for listening, and I hope we can resolve this soon."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-6",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Telling stories about the past",
+  "title": "O'tmish haqida hikoya qilish",
+  "order": 5,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "When I was a child, we lived in a small village.",
+    "answer": "When I was a child, we lived in a small village."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Last summer, I went to the mountains with my cousins.",
+    "answer": "Last summer, I went to the mountains with my cousins."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I was walking home when it suddenly started to rain.",
+    "answer": "I was walking home when it suddenly started to rain."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "She told me that she had lost her keys the day before.",
+    "answer": "She told me that she had lost her keys the day before."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "We had already eaten dinner when our guests arrived.",
+    "answer": "We had already eaten dinner when our guests arrived."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Do you remember what happened on our first day at school?",
+    "answer": "Do you remember what happened on our first day at school?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "He used to play football every afternoon after class.",
+    "answer": "He used to play football every afternoon after class."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I couldn't believe it when I saw my old friend at the station.",
+    "answer": "I couldn't believe it when I saw my old friend at the station."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "While we were waiting, a man started singing loudly in the street.",
+    "answer": "While we were waiting, a man started singing loudly in the street."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "My grandfather often told us stories about his life on the farm.",
+    "answer": "My grandfather often told us stories about his life on the farm."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "After I finished university, I moved to a different city.",
+    "answer": "After I finished university, I moved to a different city."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "What were you doing when the power went out last night?",
+    "answer": "What were you doing when the power went out last night?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "The movie had already started by the time we got to the cinema.",
+    "answer": "The movie had already started by the time we got to the cinema."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I felt very nervous because I had never flown on a plane before.",
+    "answer": "I felt very nervous because I had never flown on a plane before."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "She forgot her phone on the bus, so she went back for it.",
+    "answer": "She forgot her phone on the bus, so she went back for it."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Yesterday I met a woman who knew my mother years ago.",
+    "answer": "Yesterday I met a woman who knew my mother years ago."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "We didn't have much money, but we were really happy then.",
+    "answer": "We didn't have much money, but we were really happy then."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "It was the worst storm that I had ever experienced in my life.",
+    "answer": "It was the worst storm that I had ever experienced in my life."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "He told us a funny story about his first job in a bakery.",
+    "answer": "He told us a funny story about his first job in a bakery."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Years ago, this street was full of small shops and cafes.",
+    "answer": "Years ago, this street was full of small shops and cafes."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I was so tired that I fell asleep on the sofa.",
+    "answer": "I was so tired that I fell asleep on the sofa."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "They were laughing so loudly that the neighbors came to check.",
+    "answer": "They were laughing so loudly that the neighbors came to check."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "When did you first realize that you wanted to become a teacher?",
+    "answer": "When did you first realize that you wanted to become a teacher?"
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I missed the last train, so I had to walk home.",
+    "answer": "I missed the last train, so I had to walk home."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "My brother broke his arm while he was riding his bike.",
+    "answer": "My brother broke his arm while he was riding his bike."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Before we left, we had packed everything into the car.",
+    "answer": "Before we left, we had packed everything into the car."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Once, I got lost in a big market and couldn't find my parents.",
+    "answer": "Once, I got lost in a big market and couldn't find my parents."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "We stayed up all night talking about our plans for the future.",
+    "answer": "We stayed up all night talking about our plans for the future."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "She cried when she heard the good news about her exam results.",
+    "answer": "She cried when she heard the good news about her exam results."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "That was the moment when I understood how much my family loved me.",
+    "answer": "That was the moment when I understood how much my family loved me."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-7",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Hypothetical situations (if I were...)",
+  "title": "Farazli vaziyatlar (agar men ...)",
+  "order": 6,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "If I were rich, I would travel around the whole world.",
+    "answer": "If I were rich, I would travel around the whole world."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "If I had more free time, I would learn to play the guitar.",
+    "answer": "If I had more free time, I would learn to play the guitar."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "What would you do if you won a million dollars?",
+    "answer": "What would you do if you won a million dollars?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "If I were you, I would talk to your manager about it.",
+    "answer": "If I were you, I would talk to your manager about it."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "She would be happier if she lived closer to her family.",
+    "answer": "She would be happier if she lived closer to her family."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "If it rained tomorrow, we would stay at home and watch movies.",
+    "answer": "If it rained tomorrow, we would stay at home and watch movies."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I would buy a bigger house if I had enough money.",
+    "answer": "I would buy a bigger house if I had enough money."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "If he studied harder, he would pass the exam easily.",
+    "answer": "If he studied harder, he would pass the exam easily."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Where would you live if you could live anywhere?",
+    "answer": "Where would you live if you could live anywhere?"
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "If I could speak ten languages, I would work as a translator.",
+    "answer": "If I could speak ten languages, I would work as a translator."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "We would go to the beach if the weather were warmer.",
+    "answer": "We would go to the beach if the weather were warmer."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "If I were the president, I would build more schools and hospitals.",
+    "answer": "If I were the president, I would build more schools and hospitals."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "What would happen if everyone stopped using their phones for a week?",
+    "answer": "What would happen if everyone stopped using their phones for a week?"
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I wouldn't accept that job even if they offered me more money.",
+    "answer": "I wouldn't accept that job even if they offered me more money."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "If you found a wallet on the street, what would you do?",
+    "answer": "If you found a wallet on the street, what would you do?"
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "If I didn't have to work, I would spend every day outside.",
+    "answer": "If I didn't have to work, I would spend every day outside."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "She would help you if she knew about your problem.",
+    "answer": "She would help you if she knew about your problem."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "If I were taller, I would try to become a basketball player.",
+    "answer": "If I were taller, I would try to become a basketball player."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "They would be much healthier if they ate less sugar.",
+    "answer": "They would be much healthier if they ate less sugar."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "If you could meet any famous person, who would it be?",
+    "answer": "If you could meet any famous person, who would it be?"
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I would be very surprised if he came to the party.",
+    "answer": "I would be very surprised if he came to the party."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "If we had a car, we could visit the countryside every weekend.",
+    "answer": "If we had a car, we could visit the countryside every weekend."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "If I were in your position, I would apologize right away.",
+    "answer": "If I were in your position, I would apologize right away."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Would you change your job if you didn't like your boss?",
+    "answer": "Would you change your job if you didn't like your boss?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "If I could fly, I would visit all my friends every day.",
+    "answer": "If I could fly, I would visit all my friends every day."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "He would call you if he had your phone number.",
+    "answer": "He would call you if he had your phone number."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "If I had a time machine, I would go back to the past.",
+    "answer": "If I had a time machine, I would go back to the past."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "What would you say if your best friend asked you for money?",
+    "answer": "What would you say if your best friend asked you for money?"
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "If I were a teacher, I would give students less homework.",
+    "answer": "If I were a teacher, I would give students less homework."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "If the shop were open, I would buy some fresh bread.",
+    "answer": "If the shop were open, I would buy some fresh bread."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-8",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Job interviews and work conversations",
+  "title": "Ish suhbatlari va intervyular",
+  "order": 7,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Thank you for inviting me to this interview today.",
+    "answer": "Thank you for inviting me to this interview today."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I have three years of experience working in customer service.",
+    "answer": "I have three years of experience working in customer service."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "My greatest strength is that I always meet my deadlines.",
+    "answer": "My greatest strength is that I always meet my deadlines."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Could you tell me more about the daily responsibilities of this position?",
+    "answer": "Could you tell me more about the daily responsibilities of this position?"
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I'm looking for a job where I can learn and grow.",
+    "answer": "I'm looking for a job where I can learn and grow."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "In my previous job, I managed a small team of five people.",
+    "answer": "In my previous job, I managed a small team of five people."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I work well under pressure and enjoy solving difficult problems.",
+    "answer": "I work well under pressure and enjoy solving difficult problems."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Why do you want to work for our company?",
+    "answer": "Why do you want to work for our company?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I would like to discuss the project schedule with you this afternoon.",
+    "answer": "I would like to discuss the project schedule with you this afternoon."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Can we move our meeting to Thursday morning instead?",
+    "answer": "Can we move our meeting to Thursday morning instead?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry, but I need a little more time to finish this report.",
+    "answer": "I'm sorry, but I need a little more time to finish this report."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "What are the working hours, and is there a possibility of remote work?",
+    "answer": "What are the working hours, and is there a possibility of remote work?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I left my last job because I wanted a new challenge.",
+    "answer": "I left my last job because I wanted a new challenge."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Let me know if you need any help with the presentation.",
+    "answer": "Let me know if you need any help with the presentation."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I'll send you the document by the end of the day.",
+    "answer": "I'll send you the document by the end of the day."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Could you explain how the payment and holidays work here?",
+    "answer": "Could you explain how the payment and holidays work here?"
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I really enjoy working with other people in a team.",
+    "answer": "I really enjoy working with other people in a team."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "My colleague and I are responsible for training new employees.",
+    "answer": "My colleague and I are responsible for training new employees."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Do you have any questions for me before we finish?",
+    "answer": "Do you have any questions for me before we finish?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I'm available to start working at the beginning of next month.",
+    "answer": "I'm available to start working at the beginning of next month."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I'd like to ask for a day off next Friday.",
+    "answer": "I'd like to ask for a day off next Friday."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Our team has been working on this project for two months.",
+    "answer": "Our team has been working on this project for two months."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I believe my language skills would be very useful in this role.",
+    "answer": "I believe my language skills would be very useful in this role."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Could you please give me some feedback on my work?",
+    "answer": "Could you please give me some feedback on my work?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry I'm late, because the traffic was terrible this morning.",
+    "answer": "I'm sorry I'm late, because the traffic was terrible this morning."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "We need to finish this task before the client arrives.",
+    "answer": "We need to finish this task before the client arrives."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Where do you see yourself in five years?",
+    "answer": "Where do you see yourself in five years?"
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "I would be happy to take on more responsibility here.",
+    "answer": "I would be happy to take on more responsibility here."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Thank you for your time, and I look forward to hearing from you.",
+    "answer": "Thank you for your time, and I look forward to hearing from you."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "My manager asked me to prepare a short speech for tomorrow.",
+    "answer": "My manager asked me to prepare a short speech for tomorrow."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-9",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Travel problems and hotel/airport situations",
+  "title": "Sayohat muammolari, mehmonxona va aeroport",
+  "order": 7,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Excuse me, where can I check in for the flight to London?",
+    "answer": "Excuse me, where can I check in for the flight to London?"
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I'm afraid my luggage hasn't arrived on the carousel yet.",
+    "answer": "I'm afraid my luggage hasn't arrived on the carousel yet."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Our flight has been delayed for another two hours.",
+    "answer": "Our flight has been delayed for another two hours."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I booked a double room for three nights under the name Karimov.",
+    "answer": "I booked a double room for three nights under the name Karimov."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Could you please tell me what time breakfast is served?",
+    "answer": "Could you please tell me what time breakfast is served?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "The air conditioning in my room doesn't seem to be working.",
+    "answer": "The air conditioning in my room doesn't seem to be working."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I think I left my passport at the hotel reception.",
+    "answer": "I think I left my passport at the hotel reception."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Is there a shuttle bus from the airport to the city center?",
+    "answer": "Is there a shuttle bus from the airport to the city center?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I missed my connecting flight, so what should I do now?",
+    "answer": "I missed my connecting flight, so what should I do now?"
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Could I have a wake-up call at six o'clock tomorrow morning?",
+    "answer": "Could I have a wake-up call at six o'clock tomorrow morning?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "There is no hot water in the shower of our room.",
+    "answer": "There is no hot water in the shower of our room."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Can I change my seat to one next to the window?",
+    "answer": "Can I change my seat to one next to the window?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "My suitcase was damaged during the flight, and I want to complain.",
+    "answer": "My suitcase was damaged during the flight, and I want to complain."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "What time do I need to check out of the room?",
+    "answer": "What time do I need to check out of the room?"
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I'd like to exchange some money, please, so where is the nearest bank?",
+    "answer": "I'd like to exchange some money, please, so where is the nearest bank?"
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "We reserved a room with a sea view, but this one faces the street.",
+    "answer": "We reserved a room with a sea view, but this one faces the street."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Could you call a taxi for us to the train station?",
+    "answer": "Could you call a taxi for us to the train station?"
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I've lost my boarding pass, and I can't find it anywhere.",
+    "answer": "I've lost my boarding pass, and I can't find it anywhere."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Does the hotel have free wi-fi, and what is the password?",
+    "answer": "Does the hotel have free wi-fi, and what is the password?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Our room is very noisy, so could we move to another one?",
+    "answer": "Our room is very noisy, so could we move to another one?"
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Please keep my luggage here until my taxi comes this evening.",
+    "answer": "Please keep my luggage here until my taxi comes this evening."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "The flight attendant said we must turn off our phones now.",
+    "answer": "The flight attendant said we must turn off our phones now."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "How long does it take to get through passport control?",
+    "answer": "How long does it take to get through passport control?"
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I'd like to cancel my reservation and get my money back.",
+    "answer": "I'd like to cancel my reservation and get my money back."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Could you recommend a good restaurant that is close to the hotel?",
+    "answer": "Could you recommend a good restaurant that is close to the hotel?"
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "My bag is too heavy, and I don't want to pay extra.",
+    "answer": "My bag is too heavy, and I don't want to pay extra."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "We are looking for the gate where our flight leaves from.",
+    "answer": "We are looking for the gate where our flight leaves from."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "The train was cancelled, so we had to find another way.",
+    "answer": "The train was cancelled, so we had to find another way."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Is it possible to leave late tonight and pay for another few hours?",
+    "answer": "Is it possible to leave late tonight and pay for another few hours?"
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I need a doctor because I suddenly feel very sick.",
+    "answer": "I need a doctor because I suddenly feel very sick."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-10",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Describing people, places and feelings in detail",
+  "title": "Odamlar, joylar va his-tuyg'ularni tasvirlash",
+  "order": 8,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "My sister is tall and slim, with long dark hair.",
+    "answer": "My sister is tall and slim, with long dark hair."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "He is a quiet person, but he is very kind and generous.",
+    "answer": "He is a quiet person, but he is very kind and generous."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "The old town is full of narrow streets and colorful houses.",
+    "answer": "The old town is full of narrow streets and colorful houses."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I felt really proud when my son won the competition.",
+    "answer": "I felt really proud when my son won the competition."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Our neighbor is a cheerful woman who always smiles at everyone.",
+    "answer": "Our neighbor is a cheerful woman who always smiles at everyone."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "The beach was so peaceful that I didn't want to leave.",
+    "answer": "The beach was so peaceful that I didn't want to leave."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "She looked worried because she hadn't heard from her brother.",
+    "answer": "She looked worried because she hadn't heard from her brother."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "My best friend is funny, honest and always ready to help.",
+    "answer": "My best friend is funny, honest and always ready to help."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "The restaurant was crowded and noisy, but the food was delicious.",
+    "answer": "The restaurant was crowded and noisy, but the food was delicious."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I was so excited that I couldn't sleep the night before.",
+    "answer": "I was so excited that I couldn't sleep the night before."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "The village where my grandmother lives is surrounded by green hills.",
+    "answer": "The village where my grandmother lives is surrounded by green hills."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "He seemed angry, although he didn't say anything during dinner.",
+    "answer": "He seemed angry, although he didn't say anything during dinner."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "My new apartment is small, but it is bright and comfortable.",
+    "answer": "My new apartment is small, but it is bright and comfortable."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I felt lonely when I first moved to a new country.",
+    "answer": "I felt lonely when I first moved to a new country."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "The man at the door was wearing a long grey coat.",
+    "answer": "The man at the door was wearing a long grey coat."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "This city is exciting because there is always something to do.",
+    "answer": "This city is exciting because there is always something to do."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "She was disappointed because the trip was not as good as she expected.",
+    "answer": "She was disappointed because the trip was not as good as she expected."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "My uncle has a warm voice and a very friendly face.",
+    "answer": "My uncle has a warm voice and a very friendly face."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "The mountains looked beautiful in the light of the setting sun.",
+    "answer": "The mountains looked beautiful in the light of the setting sun."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I get embarrassed when people look at me while I speak.",
+    "answer": "I get embarrassed when people look at me while I speak."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "The hotel lobby was elegant, with huge windows and soft furniture.",
+    "answer": "The hotel lobby was elegant, with huge windows and soft furniture."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Our teacher is strict, but she explains everything clearly and patiently.",
+    "answer": "Our teacher is strict, but she explains everything clearly and patiently."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I was relieved when I finally found my lost dog.",
+    "answer": "I was relieved when I finally found my lost dog."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "The market smelled of fresh bread, spices and ripe fruit.",
+    "answer": "The market smelled of fresh bread, spices and ripe fruit."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "He is the most creative person I have ever worked with.",
+    "answer": "He is the most creative person I have ever worked with."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "My hometown is quiet in winter but very lively in summer.",
+    "answer": "My hometown is quiet in winter but very lively in summer."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "She felt confident after practicing her speech many times.",
+    "answer": "She felt confident after practicing her speech many times."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "The little boy was shy and hid behind his mother.",
+    "answer": "The little boy was shy and hid behind his mother."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "The room was dark and cold, and it made me feel uneasy.",
+    "answer": "The room was dark and cold, and it made me feel uneasy."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I'm grateful to my parents because they have always supported me.",
+    "answer": "I'm grateful to my parents because they have always supported me."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-11",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Discussing the news",
+  "title": "Yangiliklarni muhokama qilish",
+  "order": 9,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Did you see the news about the new bridge this morning?",
+    "answer": "Did you see the news about the new bridge this morning?"
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I usually read the headlines on my phone before work.",
+    "answer": "I usually read the headlines on my phone before work."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "The government has announced a plan to reduce traffic in the city.",
+    "answer": "The government has announced a plan to reduce traffic in the city."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I don't think that newspaper always tells the whole truth.",
+    "answer": "I don't think that newspaper always tells the whole truth."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Have you heard what happened in the capital yesterday?",
+    "answer": "Have you heard what happened in the capital yesterday?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "According to the report, prices will go up next month.",
+    "answer": "According to the report, prices will go up next month."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "It's hard to know which news stories you can really trust.",
+    "answer": "It's hard to know which news stories you can really trust."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "My father watches the evening news every single day.",
+    "answer": "My father watches the evening news every single day."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "The reporter said that thousands of people joined the protest.",
+    "answer": "The reporter said that thousands of people joined the protest."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I was shocked when I read about the flood in the north.",
+    "answer": "I was shocked when I read about the flood in the north."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Can you tell me more about that story on the radio?",
+    "answer": "Can you tell me more about that story on the radio?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Some people only read news that agrees with their opinions.",
+    "answer": "Some people only read news that agrees with their opinions."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "The election results will be announced late tonight.",
+    "answer": "The election results will be announced late tonight."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I'd rather listen to a podcast than watch the television news.",
+    "answer": "I'd rather listen to a podcast than watch the television news."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "There was a long article about climate change in today's paper.",
+    "answer": "There was a long article about climate change in today's paper."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Do you think the journalist checked all the facts first?",
+    "answer": "Do you think the journalist checked all the facts first?"
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "The news said that the match has been cancelled because of rain.",
+    "answer": "The news said that the match has been cancelled because of rain."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I try to follow the news, but it often makes me anxious.",
+    "answer": "I try to follow the news, but it often makes me anxious."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "What do you think about the mayor's decision to close the market?",
+    "answer": "What do you think about the mayor's decision to close the market?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "A local reporter interviewed the families who lost their homes.",
+    "answer": "A local reporter interviewed the families who lost their homes."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I found out about the accident from a message on social media.",
+    "answer": "I found out about the accident from a message on social media."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "The headline sounded dramatic, but the story was quite boring.",
+    "answer": "The headline sounded dramatic, but the story was quite boring."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Many young people get their news from videos instead of newspapers.",
+    "answer": "Many young people get their news from videos instead of newspapers."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "If you want the latest updates, you should check the website.",
+    "answer": "If you want the latest updates, you should check the website."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "The president is going to give a speech in about an hour.",
+    "answer": "The president is going to give a speech in about an hour."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I can't believe they've finally opened the new hospital.",
+    "answer": "I can't believe they've finally opened the new hospital."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "She works as a news presenter for a national television channel.",
+    "answer": "She works as a news presenter for a national television channel."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "We talked about the news for hours during dinner last night.",
+    "answer": "We talked about the news for hours during dinner last night."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Please turn up the volume, because I want to hear the weather forecast.",
+    "answer": "Please turn up the volume, because I want to hear the weather forecast."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "In my opinion, good journalism is important for a free society.",
+    "answer": "In my opinion, good journalism is important for a free society."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-12",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Technology and social media",
+  "title": "Texnologiya va ijtimoiy tarmoqlar",
+  "order": 10,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I spend almost two hours a day on social media.",
+    "answer": "I spend almost two hours a day on social media."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "My phone battery dies so quickly that I always carry a charger.",
+    "answer": "My phone battery dies so quickly that I always carry a charger."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Have you downloaded the new app that everyone is talking about?",
+    "answer": "Have you downloaded the new app that everyone is talking about?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "She posted a photo of her dinner, and it got hundreds of likes.",
+    "answer": "She posted a photo of her dinner, and it got hundreds of likes."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I'm trying to use my laptop less in the evenings.",
+    "answer": "I'm trying to use my laptop less in the evenings."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Could you help me set up my new tablet, please?",
+    "answer": "Could you help me set up my new tablet, please?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Many teenagers feel pressure to look perfect online.",
+    "answer": "Many teenagers feel pressure to look perfect online."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I don't accept friend requests from people I've never met.",
+    "answer": "I don't accept friend requests from people I've never met."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Remember to back up your files before you update the system.",
+    "answer": "Remember to back up your files before you update the system."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "My grandmother has just learned how to send voice messages.",
+    "answer": "My grandmother has just learned how to send voice messages."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "The internet connection is so slow that I can't load the video.",
+    "answer": "The internet connection is so slow that I can't load the video."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "You should never share your passwords with anyone, even close friends.",
+    "answer": "You should never share your passwords with anyone, even close friends."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I think technology has made our lives easier, but also busier.",
+    "answer": "I think technology has made our lives easier, but also busier."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "He deleted his account because he was tired of the arguments.",
+    "answer": "He deleted his account because he was tired of the arguments."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Do you know how to take a screenshot on this phone?",
+    "answer": "Do you know how to take a screenshot on this phone?"
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Online shopping is convenient, although I sometimes regret what I buy.",
+    "answer": "Online shopping is convenient, although I sometimes regret what I buy."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "My brother wants to become a software developer after university.",
+    "answer": "My brother wants to become a software developer after university."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Please put your phone away while we're having dinner together.",
+    "answer": "Please put your phone away while we're having dinner together."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I follow several travel bloggers because their photos inspire me.",
+    "answer": "I follow several travel bloggers because their photos inspire me."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "It's dangerous to use your phone while you're crossing the street.",
+    "answer": "It's dangerous to use your phone while you're crossing the street."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "The company is developing a robot that can clean the house.",
+    "answer": "The company is developing a robot that can clean the house."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I received a strange email, so I decided not to open it.",
+    "answer": "I received a strange email, so I decided not to open it."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Video calls make it much easier to stay in touch with family.",
+    "answer": "Video calls make it much easier to stay in touch with family."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Some people believe that artificial intelligence will take over many jobs.",
+    "answer": "Some people believe that artificial intelligence will take over many jobs."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "My screen is cracked, so I need to buy a new phone soon.",
+    "answer": "My screen is cracked, so I need to buy a new phone soon."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Would you mind turning off the notifications during the meeting?",
+    "answer": "Would you mind turning off the notifications during the meeting?"
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I learned to code by watching free tutorials on the internet.",
+    "answer": "I learned to code by watching free tutorials on the internet."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Sharing too much personal information online can cause serious problems.",
+    "answer": "Sharing too much personal information online can cause serious problems."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Every time I update the software, something stops working.",
+    "answer": "Every time I update the software, something stops working."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I'd like to take a break from technology for a whole weekend.",
+    "answer": "I'd like to take a break from technology for a whole weekend."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-13",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Environment and recycling",
+  "title": "Atrof-muhit va qayta ishlash",
+  "order": 11,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "We should recycle paper, plastic and glass instead of throwing them away.",
+    "answer": "We should recycle paper, plastic and glass instead of throwing them away."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I always take a reusable bag when I go shopping.",
+    "answer": "I always take a reusable bag when I go shopping."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Plastic pollution is a serious problem for the oceans.",
+    "answer": "Plastic pollution is a serious problem for the oceans."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Do you know which bin I should use for this bottle?",
+    "answer": "Do you know which bin I should use for this bottle?"
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "More people are choosing to cycle to work to protect the environment.",
+    "answer": "More people are choosing to cycle to work to protect the environment."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "The city plans to plant ten thousand trees next spring.",
+    "answer": "The city plans to plant ten thousand trees next spring."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Turning off the lights when you leave a room saves energy.",
+    "answer": "Turning off the lights when you leave a room saves energy."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I try to buy local food because it travels a shorter distance.",
+    "answer": "I try to buy local food because it travels a shorter distance."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Global warming is causing the ice at the poles to melt.",
+    "answer": "Global warming is causing the ice at the poles to melt."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Our school has started a project to collect old batteries.",
+    "answer": "Our school has started a project to collect old batteries."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "It's better to repair broken things than to buy new ones.",
+    "answer": "It's better to repair broken things than to buy new ones."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Many factories release dangerous chemicals into the rivers.",
+    "answer": "Many factories release dangerous chemicals into the rivers."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "Solar panels can provide cheap and clean electricity for homes.",
+    "answer": "Solar panels can provide cheap and clean electricity for homes."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I'm worried that our children will inherit a polluted planet.",
+    "answer": "I'm worried that our children will inherit a polluted planet."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "She uses a metal water bottle instead of buying plastic ones.",
+    "answer": "She uses a metal water bottle instead of buying plastic ones."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "The air in big cities is often dirty because of the traffic.",
+    "answer": "The air in big cities is often dirty because of the traffic."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "We could reduce waste if we stopped using so much packaging.",
+    "answer": "We could reduce waste if we stopped using so much packaging."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Last weekend, we cleaned the beach and collected ten full bags.",
+    "answer": "Last weekend, we cleaned the beach and collected ten full bags."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Would you consider taking the bus instead of driving every day?",
+    "answer": "Would you consider taking the bus instead of driving every day?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Some animals are in danger because they are losing their habitats.",
+    "answer": "Some animals are in danger because they are losing their habitats."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Compost from vegetable waste can make your garden grow better.",
+    "answer": "Compost from vegetable waste can make your garden grow better."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Governments need to do more to protect forests and wildlife.",
+    "answer": "Governments need to do more to protect forests and wildlife."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I don't think one person can solve the whole problem alone.",
+    "answer": "I don't think one person can solve the whole problem alone."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Using public transport is one of the easiest ways to help.",
+    "answer": "Using public transport is one of the easiest ways to help."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "The weather has become more extreme in recent years.",
+    "answer": "The weather has become more extreme in recent years."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Please don't leave your rubbish on the grass after the picnic.",
+    "answer": "Please don't leave your rubbish on the grass after the picnic."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "My neighbour has installed a small wind turbine in his garden.",
+    "answer": "My neighbour has installed a small wind turbine in his garden."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Buying second-hand clothes is good for your wallet and the planet.",
+    "answer": "Buying second-hand clothes is good for your wallet and the planet."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "If we waste less water, there will be enough for everyone.",
+    "answer": "If we waste less water, there will be enough for everyone."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "It only takes a few minutes to sort your rubbish properly.",
+    "answer": "It only takes a few minutes to sort your rubbish properly."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-14",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Health and lifestyle",
+  "title": "Salomatlik va turmush tarzi",
+  "order": 11,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I try to eat plenty of vegetables and fruit every day.",
+    "answer": "I try to eat plenty of vegetables and fruit every day."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "You should drink more water instead of sugary drinks.",
+    "answer": "You should drink more water instead of sugary drinks."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I've decided to go for a run three times a week.",
+    "answer": "I've decided to go for a run three times a week."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "My doctor advised me to get more sleep at night.",
+    "answer": "My doctor advised me to get more sleep at night."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Do you have any tips for reducing stress at work?",
+    "answer": "Do you have any tips for reducing stress at work?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "She has been going to the gym since the beginning of the year.",
+    "answer": "She has been going to the gym since the beginning of the year."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Eating too much fast food can cause serious health problems.",
+    "answer": "Eating too much fast food can cause serious health problems."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I felt much better after a long walk in the park.",
+    "answer": "I felt much better after a long walk in the park."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "He quit smoking last year and now he feels healthier.",
+    "answer": "He quit smoking last year and now he feels healthier."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "It's important to have breakfast before you start the day.",
+    "answer": "It's important to have breakfast before you start the day."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "I have a headache, so I'm going to lie down for a while.",
+    "answer": "I have a headache, so I'm going to lie down for a while."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Regular exercise is good for both your body and your mind.",
+    "answer": "Regular exercise is good for both your body and your mind."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "My sister is a vegetarian, so she doesn't eat any meat.",
+    "answer": "My sister is a vegetarian, so she doesn't eat any meat."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I need to make an appointment with the dentist this week.",
+    "answer": "I need to make an appointment with the dentist this week."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Staying up late every night is bad for your health.",
+    "answer": "Staying up late every night is bad for your health."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Yoga helps me relax after a busy and tiring day.",
+    "answer": "Yoga helps me relax after a busy and tiring day."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "You'd better see a doctor if the pain doesn't go away.",
+    "answer": "You'd better see a doctor if the pain doesn't go away."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I'm trying to cut down on coffee because it keeps me awake.",
+    "answer": "I'm trying to cut down on coffee because it keeps me awake."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Cooking at home is cheaper and healthier than eating out.",
+    "answer": "Cooking at home is cheaper and healthier than eating out."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "My grandfather stays active by walking for an hour every morning.",
+    "answer": "My grandfather stays active by walking for an hour every morning."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Have you ever tried meditation to calm your thoughts?",
+    "answer": "Have you ever tried meditation to calm your thoughts?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I caught a cold last week, and I still have a cough.",
+    "answer": "I caught a cold last week, and I still have a cough."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "A balanced diet should include protein, carbohydrates and healthy fats.",
+    "answer": "A balanced diet should include protein, carbohydrates and healthy fats."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "She feels tired all the time because she works too many hours.",
+    "answer": "She feels tired all the time because she works too many hours."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Spending time with friends is just as important as exercise.",
+    "answer": "Spending time with friends is just as important as exercise."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I don't have enough time to cook proper meals during the week.",
+    "answer": "I don't have enough time to cook proper meals during the week."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Always wash your hands before you prepare food.",
+    "answer": "Always wash your hands before you prepare food."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "He was told to rest for at least two weeks after the operation.",
+    "answer": "He was told to rest for at least two weeks after the operation."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Learning to say no can help you avoid feeling overwhelmed.",
+    "answer": "Learning to say no can help you avoid feeling overwhelmed."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "A healthy lifestyle doesn't have to be expensive or complicated.",
+    "answer": "A healthy lifestyle doesn't have to be expensive or complicated."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-15",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Education and learning",
+  "title": "Ta'lim va o'rganish",
+  "order": 12,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I'm studying English because I want to work abroad one day.",
+    "answer": "I'm studying English because I want to work abroad one day."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Our teacher gives us a lot of homework every week.",
+    "answer": "Our teacher gives us a lot of homework every week."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Have you finished reading the book for tomorrow's class?",
+    "answer": "Have you finished reading the book for tomorrow's class?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "She got a scholarship to study engineering at a famous university.",
+    "answer": "She got a scholarship to study engineering at a famous university."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I find it easier to learn new words when I use them.",
+    "answer": "I find it easier to learn new words when I use them."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Could you explain this grammar rule once more, please?",
+    "answer": "Could you explain this grammar rule once more, please?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "He didn't pass the exam, so he has to take it again.",
+    "answer": "He didn't pass the exam, so he has to take it again."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Online courses allow people to learn at their own pace.",
+    "answer": "Online courses allow people to learn at their own pace."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I usually revise for my tests by making short notes.",
+    "answer": "I usually revise for my tests by making short notes."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "My favourite subject at school was history because the stories were interesting.",
+    "answer": "My favourite subject at school was history because the stories were interesting."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "What are you planning to study after you finish school?",
+    "answer": "What are you planning to study after you finish school?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Learning a language takes time, patience and a lot of practice.",
+    "answer": "Learning a language takes time, patience and a lot of practice."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "The library is a quiet place where I can concentrate.",
+    "answer": "The library is a quiet place where I can concentrate."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Many students feel nervous before they give a presentation.",
+    "answer": "Many students feel nervous before they give a presentation."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I'd like to join a study group to improve my speaking.",
+    "answer": "I'd like to join a study group to improve my speaking."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "She has been learning the piano since she was seven years old.",
+    "answer": "She has been learning the piano since she was seven years old."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Making mistakes is a natural part of the learning process.",
+    "answer": "Making mistakes is a natural part of the learning process."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "The lecture was so long that I almost fell asleep.",
+    "answer": "The lecture was so long that I almost fell asleep."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "My brother is doing a master's degree in economics.",
+    "answer": "My brother is doing a master's degree in economics."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Do you think children spend too much time on homework?",
+    "answer": "Do you think children spend too much time on homework?"
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I watch films in English with subtitles to practise listening.",
+    "answer": "I watch films in English with subtitles to practise listening."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "The professor asked us to hand in our essays by Friday.",
+    "answer": "The professor asked us to hand in our essays by Friday."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Education gives people more opportunities to find a good job.",
+    "answer": "Education gives people more opportunities to find a good job."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I missed the first class, so could I borrow your notes?",
+    "answer": "I missed the first class, so could I borrow your notes?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Some schools now use tablets instead of traditional textbooks.",
+    "answer": "Some schools now use tablets instead of traditional textbooks."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "He is the kind of teacher who really inspires his students.",
+    "answer": "He is the kind of teacher who really inspires his students."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "It's never too late to start learning something new.",
+    "answer": "It's never too late to start learning something new."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "We have a vocabulary test next Monday, so I need to study.",
+    "answer": "We have a vocabulary test next Monday, so I need to study."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "She graduated with excellent grades and found a job immediately.",
+    "answer": "She graduated with excellent grades and found a job immediately."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Reading regularly is one of the best ways to improve your writing.",
+    "answer": "Reading regularly is one of the best ways to improve your writing."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-16",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Money and shopping online",
+  "title": "Pul va onlayn xaridlar",
+  "order": 13,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I usually compare prices on several websites before I buy anything.",
+    "answer": "I usually compare prices on several websites before I buy anything."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Have you ever paid for something that never arrived?",
+    "answer": "Have you ever paid for something that never arrived?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "This online shop offers free delivery if you spend fifty dollars.",
+    "answer": "This online shop offers free delivery if you spend fifty dollars."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I'm trying to save money for a new laptop this year.",
+    "answer": "I'm trying to save money for a new laptop this year."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "She checked the reviews carefully before ordering the shoes.",
+    "answer": "She checked the reviews carefully before ordering the shoes."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Could you tell me how long the delivery will take?",
+    "answer": "Could you tell me how long the delivery will take?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I prefer paying by card because it feels safer than cash.",
+    "answer": "I prefer paying by card because it feels safer than cash."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "My brother spends too much money on games every month.",
+    "answer": "My brother spends too much money on games every month."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "If the jacket doesn't fit, you can return it within thirty days.",
+    "answer": "If the jacket doesn't fit, you can return it within thirty days."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Don't forget to enter the discount code at the checkout.",
+    "answer": "Don't forget to enter the discount code at the checkout."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "I've never bought clothes online because I like trying them on.",
+    "answer": "I've never bought clothes online because I like trying them on."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "The price looked cheap, but the shipping cost was really high.",
+    "answer": "The price looked cheap, but the shipping cost was really high."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "We should make a budget so we don't spend more than we earn.",
+    "answer": "We should make a budget so we don't spend more than we earn."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Online shopping is convenient, but it can be risky sometimes.",
+    "answer": "Online shopping is convenient, but it can be risky sometimes."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "He was surprised when the package arrived two days early.",
+    "answer": "He was surprised when the package arrived two days early."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Is it safe to put my card details on this website?",
+    "answer": "Is it safe to put my card details on this website?"
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I bought a second-hand phone online and it works perfectly.",
+    "answer": "I bought a second-hand phone online and it works perfectly."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Many people wait for the sales in November to buy gifts.",
+    "answer": "Many people wait for the sales in November to buy gifts."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "She lost her password, so she couldn't log in to her account.",
+    "answer": "She lost her password, so she couldn't log in to her account."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I would rather save my money than waste it on useless things.",
+    "answer": "I would rather save my money than waste it on useless things."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "The seller promised to send a refund if I wasn't satisfied.",
+    "answer": "The seller promised to send a refund if I wasn't satisfied."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "How much did you pay for those headphones last week?",
+    "answer": "How much did you pay for those headphones last week?"
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Prices have gone up a lot since last year.",
+    "answer": "Prices have gone up a lot since last year."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I got a great deal on a tablet during the sale.",
+    "answer": "I got a great deal on a tablet during the sale."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "You should always read the description before you click the buy button.",
+    "answer": "You should always read the description before you click the buy button."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "My parents are worried that I spend too much time shopping online.",
+    "answer": "My parents are worried that I spend too much time shopping online."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Some websites send you emails every day with special offers.",
+    "answer": "Some websites send you emails every day with special offers."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "I'm saving up because I want to travel abroad next summer.",
+    "answer": "I'm saving up because I want to travel abroad next summer."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Could you help me find the cheapest flight to Istanbul?",
+    "answer": "Could you help me find the cheapest flight to Istanbul?"
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "If I had more money, I would buy a bigger apartment.",
+    "answer": "If I had more money, I would buy a bigger apartment."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-17",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "City life vs countryside",
+  "title": "Shahar va qishloq hayoti",
+  "order": 14,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I grew up in a small village, but now I live in the city.",
+    "answer": "I grew up in a small village, but now I live in the city."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Life in the countryside is calmer, but there are fewer job opportunities.",
+    "answer": "Life in the countryside is calmer, but there are fewer job opportunities."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "The traffic in the city centre gets terrible in the morning.",
+    "answer": "The traffic in the city centre gets terrible in the morning."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Some people love the noise and energy of big cities.",
+    "answer": "Some people love the noise and energy of big cities."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "In the village, everybody knows their neighbours very well.",
+    "answer": "In the village, everybody knows their neighbours very well."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I'd like to move somewhere quiet when I retire.",
+    "answer": "I'd like to move somewhere quiet when I retire."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Public transport is much better in the city than in the countryside.",
+    "answer": "Public transport is much better in the city than in the countryside."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "The air is cleaner in the mountains, and the views are beautiful.",
+    "answer": "The air is cleaner in the mountains, and the views are beautiful."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Rent in the capital is so expensive that many young people share flats.",
+    "answer": "Rent in the capital is so expensive that many young people share flats."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "My grandparents grow their own vegetables behind their house.",
+    "answer": "My grandparents grow their own vegetables behind their house."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "There is always something to do in a big city.",
+    "answer": "There is always something to do in a big city."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Do you think it's easier to make friends in a small town?",
+    "answer": "Do you think it's easier to make friends in a small town?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I miss the fresh food and the peaceful evenings in my village.",
+    "answer": "I miss the fresh food and the peaceful evenings in my village."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Hospitals and universities are usually located in larger cities.",
+    "answer": "Hospitals and universities are usually located in larger cities."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "She moved to the countryside because she was tired of the crowds.",
+    "answer": "She moved to the countryside because she was tired of the crowds."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Living in a city means you can go shopping at any time.",
+    "answer": "Living in a city means you can go shopping at any time."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "The nearest supermarket is twenty kilometres away from our house.",
+    "answer": "The nearest supermarket is twenty kilometres away from our house."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I enjoy walking in the park after a long day at work.",
+    "answer": "I enjoy walking in the park after a long day at work."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Many families leave the city at weekends to relax in nature.",
+    "answer": "Many families leave the city at weekends to relax in nature."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "It takes me an hour to get to work every day.",
+    "answer": "It takes me an hour to get to work every day."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "In the countryside, you can see thousands of stars at night.",
+    "answer": "In the countryside, you can see thousands of stars at night."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Young people often move to the city to find better jobs.",
+    "answer": "Young people often move to the city to find better jobs."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I couldn't live without fast internet and a good coffee shop nearby.",
+    "answer": "I couldn't live without fast internet and a good coffee shop nearby."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "The streets are very crowded during the rush hour.",
+    "answer": "The streets are very crowded during the rush hour."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Farmers wake up early because the animals need to be fed.",
+    "answer": "Farmers wake up early because the animals need to be fed."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Would you prefer to live in a flat or in a house with a garden?",
+    "answer": "Would you prefer to live in a flat or in a house with a garden?"
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "City life can be stressful, but I find it exciting.",
+    "answer": "City life can be stressful, but I find it exciting."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "We spent our holiday on a farm, and the children loved it.",
+    "answer": "We spent our holiday on a farm, and the children loved it."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "There are not enough buses in my village, so we need a car.",
+    "answer": "There are not enough buses in my village, so we need a car."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I think the best place to live is a small town near a big city.",
+    "answer": "I think the best place to live is a small town near a big city."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-18",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Cultures and traditions",
+  "title": "Madaniyatlar va an'analar",
+  "order": 14,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "In my country, we celebrate the new year with a big family dinner.",
+    "answer": "In my country, we celebrate the new year with a big family dinner."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Every culture has its own special traditions and customs.",
+    "answer": "Every culture has its own special traditions and customs."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "It's polite to take off your shoes before entering a house in many countries.",
+    "answer": "It's polite to take off your shoes before entering a house in many countries."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "My grandmother taught me how to cook traditional dishes.",
+    "answer": "My grandmother taught me how to cook traditional dishes."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Have you ever attended a wedding in another country?",
+    "answer": "Have you ever attended a wedding in another country?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "People wear colourful clothes and dance in the streets during the festival.",
+    "answer": "People wear colourful clothes and dance in the streets during the festival."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I was surprised that they don't shake hands when they meet.",
+    "answer": "I was surprised that they don't shake hands when they meet."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Learning about other cultures helps us understand different ways of thinking.",
+    "answer": "Learning about other cultures helps us understand different ways of thinking."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "In Uzbekistan, guests are always welcomed with tea and fresh bread.",
+    "answer": "In Uzbekistan, guests are always welcomed with tea and fresh bread."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Some traditions are changing because young people have different ideas.",
+    "answer": "Some traditions are changing because young people have different ideas."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "We usually visit our relatives during the holidays and bring them gifts.",
+    "answer": "We usually visit our relatives during the holidays and bring them gifts."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "What is the most important celebration in your country?",
+    "answer": "What is the most important celebration in your country?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I find it interesting that people greet each other differently around the world.",
+    "answer": "I find it interesting that people greet each other differently around the world."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "My friend invited me to a traditional tea ceremony in Japan.",
+    "answer": "My friend invited me to a traditional tea ceremony in Japan."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Music and dance are an important part of our national festivals.",
+    "answer": "Music and dance are an important part of our national festivals."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "It is a custom to give flowers when you visit someone's home.",
+    "answer": "It is a custom to give flowers when you visit someone's home."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "She wore a beautiful dress that her mother had made by hand.",
+    "answer": "She wore a beautiful dress that her mother had made by hand."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Some foods are only prepared on special occasions, like Nowruz.",
+    "answer": "Some foods are only prepared on special occasions, like Nowruz."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "When I travel, I always try to respect the local customs.",
+    "answer": "When I travel, I always try to respect the local customs."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "The festival attracts thousands of tourists from all over the world.",
+    "answer": "The festival attracts thousands of tourists from all over the world."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "In some cultures, it's rude to look directly into an elder's eyes.",
+    "answer": "In some cultures, it's rude to look directly into an elder's eyes."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Our family has kept this tradition for more than a hundred years.",
+    "answer": "Our family has kept this tradition for more than a hundred years."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I would love to learn more about the history of your country.",
+    "answer": "I would love to learn more about the history of your country."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "People often tell old stories and legends to their children.",
+    "answer": "People often tell old stories and legends to their children."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Table manners can be very different from one country to another.",
+    "answer": "Table manners can be very different from one country to another."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "He felt a little nervous at his first traditional wedding.",
+    "answer": "He felt a little nervous at his first traditional wedding."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "We should protect our traditions and pass them on to the next generation.",
+    "answer": "We should protect our traditions and pass them on to the next generation."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Many cities hold street parades to celebrate their national heritage.",
+    "answer": "Many cities hold street parades to celebrate their national heritage."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I was surprised to learn that they eat dinner so late.",
+    "answer": "I was surprised to learn that they eat dinner so late."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Does your family have any special traditions on birthdays?",
+    "answer": "Does your family have any special traditions on birthdays?"
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-19",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Making complaints in shops",
+  "title": "Do'konda shikoyat qilish",
+  "order": 15,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Excuse me, I'd like to make a complaint about this product.",
+    "answer": "Excuse me, I'd like to make a complaint about this product."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I bought this phone yesterday, but it doesn't turn on.",
+    "answer": "I bought this phone yesterday, but it doesn't turn on."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Could I speak to the manager, please?",
+    "answer": "Could I speak to the manager, please?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "The shirt I ordered is the wrong size and the wrong colour.",
+    "answer": "The shirt I ordered is the wrong size and the wrong colour."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I'm afraid there's a problem with my receipt.",
+    "answer": "I'm afraid there's a problem with my receipt."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I would like to return this toaster and get my money back.",
+    "answer": "I would like to return this toaster and get my money back."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "The waiter forgot our order, and we have been waiting for an hour.",
+    "answer": "The waiter forgot our order, and we have been waiting for an hour."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I've been charged twice for the same item.",
+    "answer": "I've been charged twice for the same item."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "This jacket has a hole in it, and I didn't notice in the shop.",
+    "answer": "This jacket has a hole in it, and I didn't notice in the shop."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Can you please exchange these shoes for a larger pair?",
+    "answer": "Can you please exchange these shoes for a larger pair?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "I'm not satisfied with the service I received today.",
+    "answer": "I'm not satisfied with the service I received today."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "The instructions say it should work, but nothing happens.",
+    "answer": "The instructions say it should work, but nothing happens."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I kept the receipt, so I hope I can get a refund.",
+    "answer": "I kept the receipt, so I hope I can get a refund."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Unfortunately, the food was cold when it arrived at our table.",
+    "answer": "Unfortunately, the food was cold when it arrived at our table."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I'd like to speak to someone who can solve this problem.",
+    "answer": "I'd like to speak to someone who can solve this problem."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "The screen was already broken when I opened the box.",
+    "answer": "The screen was already broken when I opened the box."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry to bother you, but this item is damaged.",
+    "answer": "I'm sorry to bother you, but this item is damaged."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Could you check if you have another one in stock?",
+    "answer": "Could you check if you have another one in stock?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "The shop assistant was rude to me when I asked for help.",
+    "answer": "The shop assistant was rude to me when I asked for help."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I was told the delivery would arrive on Monday, but it didn't.",
+    "answer": "I was told the delivery would arrive on Monday, but it didn't."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "If you can't fix it, I'd prefer a replacement.",
+    "answer": "If you can't fix it, I'd prefer a replacement."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "This is the second time that I have had this problem.",
+    "answer": "This is the second time that I have had this problem."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "The sign says the sale price is twenty percent off, but I paid full price.",
+    "answer": "The sign says the sale price is twenty percent off, but I paid full price."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "May I see your return policy, please?",
+    "answer": "May I see your return policy, please?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I tried to call your customer service, but nobody answered.",
+    "answer": "I tried to call your customer service, but nobody answered."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "The milk I bought this morning has already gone off.",
+    "answer": "The milk I bought this morning has already gone off."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Please make sure this doesn't happen to other customers.",
+    "answer": "Please make sure this doesn't happen to other customers."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "I understand it's not your fault, but I'm really disappointed.",
+    "answer": "I understand it's not your fault, but I'm really disappointed."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Thank you for your help, I appreciate you solving the problem.",
+    "answer": "Thank you for your help, I appreciate you solving the problem."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I would like to write a complaint letter to your head office.",
+    "answer": "I would like to write a complaint letter to your head office."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-20",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Phone and email etiquette",
+  "title": "Telefon va elektron pochta odobi",
+  "order": 16,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Good morning, this is Anna speaking, how can I help you?",
+    "answer": "Good morning, this is Anna speaking, how can I help you?"
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I'm calling about the job advertisement I saw on your website.",
+    "answer": "I'm calling about the job advertisement I saw on your website."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Could you please hold on for a moment while I check?",
+    "answer": "Could you please hold on for a moment while I check?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Sorry, I didn't catch your name, could you repeat it?",
+    "answer": "Sorry, I didn't catch your name, could you repeat it?"
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I'll put you through to the sales department right away.",
+    "answer": "I'll put you through to the sales department right away."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Would you like to leave a message for him?",
+    "answer": "Would you like to leave a message for him?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Please call me back as soon as you are free.",
+    "answer": "Please call me back as soon as you are free."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry, the line is bad, could you speak a little louder?",
+    "answer": "I'm sorry, the line is bad, could you speak a little louder?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Thank you for calling, and have a nice day.",
+    "answer": "Thank you for calling, and have a nice day."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I'm writing to ask for more information about your courses.",
+    "answer": "I'm writing to ask for more information about your courses."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Dear Mr Smith, I hope you are well.",
+    "answer": "Dear Mr Smith, I hope you are well."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Please find the attached document with all the details you need.",
+    "answer": "Please find the attached document with all the details you need."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I look forward to hearing from you soon.",
+    "answer": "I look forward to hearing from you soon."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Best regards, and thank you for your time.",
+    "answer": "Best regards, and thank you for your time."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry for the late reply, I was away last week.",
+    "answer": "I'm sorry for the late reply, I was away last week."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Could you send me the report by the end of the day?",
+    "answer": "Could you send me the report by the end of the day?"
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Always check your email carefully before you press the send button.",
+    "answer": "Always check your email carefully before you press the send button."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I'll forward your message to the person who can help.",
+    "answer": "I'll forward your message to the person who can help."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Please remember to turn off your phone during the meeting.",
+    "answer": "Please remember to turn off your phone during the meeting."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "It's impolite to talk loudly on the phone on public transport.",
+    "answer": "It's impolite to talk loudly on the phone on public transport."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I'm afraid he's in a meeting right now, can I take a message?",
+    "answer": "I'm afraid he's in a meeting right now, can I take a message?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Could you spell your surname for me, please?",
+    "answer": "Could you spell your surname for me, please?"
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I have tried to call you three times this afternoon.",
+    "answer": "I have tried to call you three times this afternoon."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Thank you for your quick response to my last email.",
+    "answer": "Thank you for your quick response to my last email."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I wanted to confirm our appointment for Thursday at ten o'clock.",
+    "answer": "I wanted to confirm our appointment for Thursday at ten o'clock."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Sorry to interrupt, but I have an important call coming in.",
+    "answer": "Sorry to interrupt, but I have an important call coming in."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Please don't use capital letters in emails because it looks like shouting.",
+    "answer": "Please don't use capital letters in emails because it looks like shouting."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "If you have any questions, please don't hesitate to contact me.",
+    "answer": "If you have any questions, please don't hesitate to contact me."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I'll send you a reminder email the day before the event.",
+    "answer": "I'll send you a reminder email the day before the event."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Can I call you back later? I'm driving at the moment.",
+    "answer": "Can I call you back later? I'm driving at the moment."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-21",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Giving presentations",
+  "title": "Taqdimot qilish",
+  "order": 17,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Good morning everyone, thank you for coming to my presentation today.",
+    "answer": "Good morning everyone, thank you for coming to my presentation today."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Today I am going to talk about our new marketing plan.",
+    "answer": "Today I am going to talk about our new marketing plan."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I would like to start by showing you some recent results.",
+    "answer": "I would like to start by showing you some recent results."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "My presentation has three main parts, and I will explain each one.",
+    "answer": "My presentation has three main parts, and I will explain each one."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "First of all, let me give you a little background information.",
+    "answer": "First of all, let me give you a little background information."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "If you look at this slide, you can see the sales figures.",
+    "answer": "If you look at this slide, you can see the sales figures."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "As you can see, our profits have grown by twenty percent.",
+    "answer": "As you can see, our profits have grown by twenty percent."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Let me move on to the next point, which is about costs.",
+    "answer": "Let me move on to the next point, which is about costs."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "This chart shows how customer numbers have changed over the last year.",
+    "answer": "This chart shows how customer numbers have changed over the last year."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I would like to draw your attention to this important trend.",
+    "answer": "I would like to draw your attention to this important trend."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Does anyone have a question before I continue with the presentation?",
+    "answer": "Does anyone have a question before I continue with the presentation?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "That is a very good question, and I am happy to answer it.",
+    "answer": "That is a very good question, and I am happy to answer it."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I will come back to that point later in my talk.",
+    "answer": "I will come back to that point later in my talk."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "To sum up, we need to invest more in online advertising.",
+    "answer": "To sum up, we need to invest more in online advertising."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "In conclusion, I believe this project will bring real benefits to the company.",
+    "answer": "In conclusion, I believe this project will bring real benefits to the company."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Thank you for listening, and please feel free to ask questions.",
+    "answer": "Thank you for listening, and please feel free to ask questions."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I have prepared a handout that I will give you at the end.",
+    "answer": "I have prepared a handout that I will give you at the end."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Could you please turn off the lights so everyone can see the screen?",
+    "answer": "Could you please turn off the lights so everyone can see the screen?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I am sorry, I think the projector is not working properly.",
+    "answer": "I am sorry, I think the projector is not working properly."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Let me explain why this solution is better than the old one.",
+    "answer": "Let me explain why this solution is better than the old one."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "The main advantage of this system is that it saves a lot of time.",
+    "answer": "The main advantage of this system is that it saves a lot of time."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "On the other hand, there are a few risks we should consider.",
+    "answer": "On the other hand, there are a few risks we should consider."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I would like to thank my team for all their hard work.",
+    "answer": "I would like to thank my team for all their hard work."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Can everyone at the back of the room hear me clearly?",
+    "answer": "Can everyone at the back of the room hear me clearly?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Let me repeat the most important point, because it affects everybody here.",
+    "answer": "Let me repeat the most important point, because it affects everybody here."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "This graph compares our results with those of our biggest competitor.",
+    "answer": "This graph compares our results with those of our biggest competitor."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I am going to speak for about fifteen minutes today.",
+    "answer": "I am going to speak for about fifteen minutes today."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "If you would like more details, please contact me after the presentation.",
+    "answer": "If you would like more details, please contact me after the presentation."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Before I finish, I want to leave you with one final idea.",
+    "answer": "Before I finish, I want to leave you with one final idea."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "That brings me to the end of my presentation, thank you very much.",
+    "answer": "That brings me to the end of my presentation, thank you very much."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-22",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Meetings and negotiating",
+  "title": "Yig'ilish va muzokaralar",
+  "order": 18,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Let's begin the meeting, because we have a lot to discuss today.",
+    "answer": "Let's begin the meeting, because we have a lot to discuss today."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "The purpose of this meeting is to agree on a new schedule.",
+    "answer": "The purpose of this meeting is to agree on a new schedule."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Could we look at the first item on the agenda, please?",
+    "answer": "Could we look at the first item on the agenda, please?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I think we should wait until we have more information.",
+    "answer": "I think we should wait until we have more information."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I see your point, but I have a slightly different opinion.",
+    "answer": "I see your point, but I have a slightly different opinion."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Would you mind explaining that idea in a little more detail?",
+    "answer": "Would you mind explaining that idea in a little more detail?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I am afraid I cannot agree with that suggestion.",
+    "answer": "I am afraid I cannot agree with that suggestion."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Let me make a suggestion that might help us all.",
+    "answer": "Let me make a suggestion that might help us all."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "What do you think about moving the deadline to next Friday?",
+    "answer": "What do you think about moving the deadline to next Friday?"
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "We would be able to offer you a ten percent discount.",
+    "answer": "We would be able to offer you a ten percent discount."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "That price is a little higher than we expected to pay.",
+    "answer": "That price is a little higher than we expected to pay."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "If you order more products, we can lower the price.",
+    "answer": "If you order more products, we can lower the price."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I am sure we can find a solution that works for both sides.",
+    "answer": "I am sure we can find a solution that works for both sides."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Let's compromise, and each of us will give up something.",
+    "answer": "Let's compromise, and each of us will give up something."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "We need to discuss the delivery dates before we sign anything.",
+    "answer": "We need to discuss the delivery dates before we sign anything."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Could you send me a written offer by the end of the week?",
+    "answer": "Could you send me a written offer by the end of the week?"
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I will have to talk to my manager before I can decide.",
+    "answer": "I will have to talk to my manager before I can decide."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "That sounds like a fair deal to me, so let's accept it.",
+    "answer": "That sounds like a fair deal to me, so let's accept it."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Sorry to interrupt, but I would like to add something important.",
+    "answer": "Sorry to interrupt, but I would like to add something important."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Can we go back to the previous point for a moment?",
+    "answer": "Can we go back to the previous point for a moment?"
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Does everybody agree with the plan we have just discussed?",
+    "answer": "Does everybody agree with the plan we have just discussed?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Let's take a short break and meet again in ten minutes.",
+    "answer": "Let's take a short break and meet again in ten minutes."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I will write down the main decisions and email them to everyone.",
+    "answer": "I will write down the main decisions and email them to everyone."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "We have run out of time, so we will continue tomorrow.",
+    "answer": "We have run out of time, so we will continue tomorrow."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Who is going to be responsible for contacting the customer?",
+    "answer": "Who is going to be responsible for contacting the customer?"
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "If we cannot agree on the price, we will look for another supplier.",
+    "answer": "If we cannot agree on the price, we will look for another supplier."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I really appreciate your flexibility during these difficult negotiations.",
+    "answer": "I really appreciate your flexibility during these difficult negotiations."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Let's summarize what we have agreed so far, shall we?",
+    "answer": "Let's summarize what we have agreed so far, shall we?"
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I am happy that we have reached an agreement at last.",
+    "answer": "I am happy that we have reached an agreement at last."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Thank you all for your time, and have a productive week.",
+    "answer": "Thank you all for your time, and have a productive week."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-23",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Describing past experiences at work",
+  "title": "Ishdagi o'tgan tajribalar",
+  "order": 18,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I worked as a sales assistant for three years after university.",
+    "answer": "I worked as a sales assistant for three years after university."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "My first job was in a small restaurant near my home.",
+    "answer": "My first job was in a small restaurant near my home."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "When I started, I had never used that kind of software before.",
+    "answer": "When I started, I had never used that kind of software before."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I have managed a team of ten people since last year.",
+    "answer": "I have managed a team of ten people since last year."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Once I had to deal with a very angry customer on the phone.",
+    "answer": "Once I had to deal with a very angry customer on the phone."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I learned a lot from my first manager, who was very patient.",
+    "answer": "I learned a lot from my first manager, who was very patient."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "While I was working abroad, I improved my English a great deal.",
+    "answer": "While I was working abroad, I improved my English a great deal."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I have never missed an important deadline in my whole career.",
+    "answer": "I have never missed an important deadline in my whole career."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Last summer I completed a training course in project management.",
+    "answer": "Last summer I completed a training course in project management."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I used to travel to other cities every week for meetings.",
+    "answer": "I used to travel to other cities every week for meetings."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "The hardest thing I have ever done was leading a big project.",
+    "answer": "The hardest thing I have ever done was leading a big project."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "We finished the project two weeks early, and the client was delighted.",
+    "answer": "We finished the project two weeks early, and the client was delighted."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I was nervous on my first day, but my colleagues were friendly.",
+    "answer": "I was nervous on my first day, but my colleagues were friendly."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Before I joined this company, I had worked in a bank.",
+    "answer": "Before I joined this company, I had worked in a bank."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I have been learning how to use this program for six months.",
+    "answer": "I have been learning how to use this program for six months."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "At my old job, I was responsible for answering customer emails.",
+    "answer": "At my old job, I was responsible for answering customer emails."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I made a serious mistake once, but I learned from it.",
+    "answer": "I made a serious mistake once, but I learned from it."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "In my last job, I organized events for more than a hundred guests.",
+    "answer": "In my last job, I organized events for more than a hundred guests."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I have met many interesting people through my work over the years.",
+    "answer": "I have met many interesting people through my work over the years."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I left my previous company because I wanted new challenges.",
+    "answer": "I left my previous company because I wanted new challenges."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "When the system crashed, I stayed late to help fix it.",
+    "answer": "When the system crashed, I stayed late to help fix it."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I have always enjoyed solving problems and working with other people.",
+    "answer": "I have always enjoyed solving problems and working with other people."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "My boss once asked me to give a presentation in front of everyone.",
+    "answer": "My boss once asked me to give a presentation in front of everyone."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I was promoted last year because I had worked so hard.",
+    "answer": "I was promoted last year because I had worked so hard."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "During my internship, I wrote reports and helped with research.",
+    "answer": "During my internship, I wrote reports and helped with research."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I did not enjoy my first job, but it taught me discipline.",
+    "answer": "I did not enjoy my first job, but it taught me discipline."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I have visited several countries on business trips for my company.",
+    "answer": "I have visited several countries on business trips for my company."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "We were having a meeting when the fire alarm suddenly started.",
+    "answer": "We were having a meeting when the fire alarm suddenly started."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I have gained a lot of confidence since I changed jobs.",
+    "answer": "I have gained a lot of confidence since I changed jobs."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Looking back, I think my experience abroad was the best decision I made.",
+    "answer": "Looking back, I think my experience abroad was the best decision I made."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-24",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Predicting the future",
+  "title": "Kelajakni bashorat qilish",
+  "order": 19,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I think it will rain tomorrow, so take an umbrella with you.",
+    "answer": "I think it will rain tomorrow, so take an umbrella with you."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "In the future, most people will probably work from home.",
+    "answer": "In the future, most people will probably work from home."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I believe robots will do many dangerous jobs in twenty years.",
+    "answer": "I believe robots will do many dangerous jobs in twenty years."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Cars will probably drive themselves by the end of this century.",
+    "answer": "Cars will probably drive themselves by the end of this century."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I don't think people will stop using mobile phones.",
+    "answer": "I don't think people will stop using mobile phones."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Scientists say the weather is going to get much hotter.",
+    "answer": "Scientists say the weather is going to get much hotter."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Look at those dark clouds, it is going to snow soon.",
+    "answer": "Look at those dark clouds, it is going to snow soon."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I am sure our city will be much bigger in ten years.",
+    "answer": "I am sure our city will be much bigger in ten years."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Perhaps we will all travel to other planets one day.",
+    "answer": "Perhaps we will all travel to other planets one day."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I expect that prices will continue to rise next year.",
+    "answer": "I expect that prices will continue to rise next year."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "It is likely that more people will study online in the future.",
+    "answer": "It is likely that more people will study online in the future."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "I doubt that paper books will disappear completely.",
+    "answer": "I doubt that paper books will disappear completely."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "Maybe I will start my own company when I am older.",
+    "answer": "Maybe I will start my own company when I am older."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Doctors will probably find a cure for many serious diseases.",
+    "answer": "Doctors will probably find a cure for many serious diseases."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I think the new manager is going to change a lot of things.",
+    "answer": "I think the new manager is going to change a lot of things."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "In fifty years, English may not be the only global language.",
+    "answer": "In fifty years, English may not be the only global language."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I won't be surprised if our team wins the championship this year.",
+    "answer": "I won't be surprised if our team wins the championship this year."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Technology will make our lives easier, but it may also cause problems.",
+    "answer": "Technology will make our lives easier, but it may also cause problems."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "She is so talented that she will definitely become a famous singer.",
+    "answer": "She is so talented that she will definitely become a famous singer."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I hope that people will take better care of the environment.",
+    "answer": "I hope that people will take better care of the environment."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "There will probably be fewer cars in big cities in the future.",
+    "answer": "There will probably be fewer cars in big cities in the future."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "If we do not act now, the oceans will become more polluted.",
+    "answer": "If we do not act now, the oceans will become more polluted."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I think I will be living in another country in five years.",
+    "answer": "I think I will be living in another country in five years."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Experts predict that electric cars will be cheaper than petrol cars soon.",
+    "answer": "Experts predict that electric cars will be cheaper than petrol cars soon."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "It will take a long time before we can solve this problem.",
+    "answer": "It will take a long time before we can solve this problem."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I am afraid the traffic is going to be terrible this evening.",
+    "answer": "I am afraid the traffic is going to be terrible this evening."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "My sister is going to have a baby next month.",
+    "answer": "My sister is going to have a baby next month."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Many jobs that exist today will not exist in the future.",
+    "answer": "Many jobs that exist today will not exist in the future."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I believe the next generation will live longer than we do.",
+    "answer": "I believe the next generation will live longer than we do."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Who knows what the world will look like in a hundred years?",
+    "answer": "Who knows what the world will look like in a hundred years?"
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-25",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Reported speech: telling what others said",
+  "title": "Boshqalarning gapini aytib berish",
+  "order": 20,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "She said that she was going to be late for work.",
+    "answer": "She said that she was going to be late for work."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "He told me that he had lost his keys yesterday.",
+    "answer": "He told me that he had lost his keys yesterday."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "My boss said that the meeting would start at nine.",
+    "answer": "My boss said that the meeting would start at nine."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "They told us that the flight had been cancelled.",
+    "answer": "They told us that the flight had been cancelled."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "She asked me if I wanted to join them for lunch.",
+    "answer": "She asked me if I wanted to join them for lunch."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "He asked where I had bought my new laptop.",
+    "answer": "He asked where I had bought my new laptop."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "The teacher said that we should finish the homework by Monday.",
+    "answer": "The teacher said that we should finish the homework by Monday."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "My mother told me not to forget my passport.",
+    "answer": "My mother told me not to forget my passport."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "He said that he couldn't come because he was feeling ill.",
+    "answer": "He said that he couldn't come because he was feeling ill."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "She told me that she had already finished the report.",
+    "answer": "She told me that she had already finished the report."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "The manager asked whether we had sent the invoice to the client.",
+    "answer": "The manager asked whether we had sent the invoice to the client."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "They said that they would call us back in the afternoon.",
+    "answer": "They said that they would call us back in the afternoon."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I told him that I didn't know the answer.",
+    "answer": "I told him that I didn't know the answer."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "He explained that the machine had stopped working that morning.",
+    "answer": "He explained that the machine had stopped working that morning."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "She asked me what time the train was leaving.",
+    "answer": "She asked me what time the train was leaving."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "My friend said that he had never been to London.",
+    "answer": "My friend said that he had never been to London."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "The doctor told me to drink more water and rest.",
+    "answer": "The doctor told me to drink more water and rest."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "He asked me how long I had been learning English.",
+    "answer": "He asked me how long I had been learning English."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "She said that she was looking for a new apartment.",
+    "answer": "She said that she was looking for a new apartment."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "They told me that the shop was closed on Sundays.",
+    "answer": "They told me that the shop was closed on Sundays."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "My colleague said she would send me the file later.",
+    "answer": "My colleague said she would send me the file later."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "He promised that he would never be late again.",
+    "answer": "He promised that he would never be late again."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "The customer complained that the food was cold.",
+    "answer": "The customer complained that the food was cold."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "She wanted to know if anyone had seen her phone.",
+    "answer": "She wanted to know if anyone had seen her phone."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I asked her whether she was enjoying the new job.",
+    "answer": "I asked her whether she was enjoying the new job."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "He told me that his brother lived in Canada now.",
+    "answer": "He told me that his brother lived in Canada now."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "The receptionist said that the manager was in a meeting.",
+    "answer": "The receptionist said that the manager was in a meeting."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "She replied that she would think about my offer.",
+    "answer": "She replied that she would think about my offer."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "They asked us to wait outside until the doctor was ready.",
+    "answer": "They asked us to wait outside until the doctor was ready."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "He said that he had met my sister at the conference.",
+    "answer": "He said that he had met my sister at the conference."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-26",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Talking about books and films",
+  "title": "Kitoblar va filmlar haqida",
+  "order": 21,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I have just finished a really exciting detective novel.",
+    "answer": "I have just finished a really exciting detective novel."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Have you read any good books lately?",
+    "answer": "Have you read any good books lately?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "The film was much better than I expected.",
+    "answer": "The film was much better than I expected."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I prefer reading the book before watching the movie.",
+    "answer": "I prefer reading the book before watching the movie."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Who is your favourite author, and why do you like them?",
+    "answer": "Who is your favourite author, and why do you like them?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "The story takes place in a small village in Italy.",
+    "answer": "The story takes place in a small village in Italy."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I couldn't put the book down until I finished it.",
+    "answer": "I couldn't put the book down until I finished it."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Would you recommend this film to a friend of mine?",
+    "answer": "Would you recommend this film to a friend of mine?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "The main character changes a lot during the story.",
+    "answer": "The main character changes a lot during the story."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I found the ending of the movie quite disappointing.",
+    "answer": "I found the ending of the movie quite disappointing."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "She says the book was translated into thirty languages.",
+    "answer": "She says the book was translated into thirty languages."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "We watched a documentary about wildlife last weekend.",
+    "answer": "We watched a documentary about wildlife last weekend."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "The acting was brilliant, but the plot was a bit slow.",
+    "answer": "The acting was brilliant, but the plot was a bit slow."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "What kind of films do you usually enjoy watching?",
+    "answer": "What kind of films do you usually enjoy watching?"
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I borrow most of my books from the local library.",
+    "answer": "I borrow most of my books from the local library."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "The novel is based on a true story from the war.",
+    "answer": "The novel is based on a true story from the war."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "If you like comedies, you should see this one.",
+    "answer": "If you like comedies, you should see this one."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "He has read every book that this writer has published.",
+    "answer": "He has read every book that this writer has published."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "The film won several awards at the festival last year.",
+    "answer": "The film won several awards at the festival last year."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I'd rather watch a thriller than a romantic film.",
+    "answer": "I'd rather watch a thriller than a romantic film."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Do you think the book is worth reading twice?",
+    "answer": "Do you think the book is worth reading twice?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "The special effects made the whole movie feel real.",
+    "answer": "The special effects made the whole movie feel real."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "My sister always cries when she watches sad films.",
+    "answer": "My sister always cries when she watches sad films."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I read a few pages every night before I go to sleep.",
+    "answer": "I read a few pages every night before I go to sleep."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "The director spent three years making this historical drama.",
+    "answer": "The director spent three years making this historical drama."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Can you tell me what the story is about?",
+    "answer": "Can you tell me what the story is about?"
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I was surprised by how funny the book turned out to be.",
+    "answer": "I was surprised by how funny the book turned out to be."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "They are making a new film from my favourite novel.",
+    "answer": "They are making a new film from my favourite novel."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "The soundtrack was so beautiful that I bought the album.",
+    "answer": "The soundtrack was so beautiful that I bought the album."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Let's go to the cinema together on Friday evening.",
+    "answer": "Let's go to the cinema together on Friday evening."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-27",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Volunteering and community",
+  "title": "Ko'ngillilik va jamiyat",
+  "order": 22,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I volunteer at an animal shelter every Saturday morning.",
+    "answer": "I volunteer at an animal shelter every Saturday morning."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Our community organises a clean-up day once a month.",
+    "answer": "Our community organises a clean-up day once a month."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Helping other people makes me feel useful and happy.",
+    "answer": "Helping other people makes me feel useful and happy."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Would you like to join us at the food bank?",
+    "answer": "Would you like to join us at the food bank?"
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "She has been teaching children to read for two years.",
+    "answer": "She has been teaching children to read for two years."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Many young people want to do something good for their city.",
+    "answer": "Many young people want to do something good for their city."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "We collected enough money to repair the old playground.",
+    "answer": "We collected enough money to repair the old playground."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "The volunteers worked together to plant fifty trees in the park.",
+    "answer": "The volunteers worked together to plant fifty trees in the park."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I think everyone should give a little time to their neighbourhood.",
+    "answer": "I think everyone should give a little time to their neighbourhood."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "He spends his free evenings helping elderly people with shopping.",
+    "answer": "He spends his free evenings helping elderly people with shopping."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "How did you first get involved in this charity?",
+    "answer": "How did you first get involved in this charity?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "The local library needs more people to run its reading club.",
+    "answer": "The local library needs more people to run its reading club."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "Volunteering has taught me how to work in a team.",
+    "answer": "Volunteering has taught me how to work in a team."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Our town is stronger because people care about each other.",
+    "answer": "Our town is stronger because people care about each other."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "They set up a free English class for new residents.",
+    "answer": "They set up a free English class for new residents."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "If you have a skill, you can share it with others.",
+    "answer": "If you have a skill, you can share it with others."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "The charity is looking for drivers to deliver meals to families.",
+    "answer": "The charity is looking for drivers to deliver meals to families."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I met some of my closest friends while volunteering abroad.",
+    "answer": "I met some of my closest friends while volunteering abroad."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "We should ask the council to build a safer bike path.",
+    "answer": "We should ask the council to build a safer bike path."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "She organised a concert to raise money for the hospital.",
+    "answer": "She organised a concert to raise money for the hospital."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Last summer, I helped paint a school in a small village.",
+    "answer": "Last summer, I helped paint a school in a small village."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "It doesn't take much effort to make a real difference.",
+    "answer": "It doesn't take much effort to make a real difference."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "The neighbours decided to start a community garden together.",
+    "answer": "The neighbours decided to start a community garden together."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Are you free this weekend to help us move the donations?",
+    "answer": "Are you free this weekend to help us move the donations?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Many companies now give their workers a day to volunteer.",
+    "answer": "Many companies now give their workers a day to volunteer."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "He was proud to receive an award for his charity work.",
+    "answer": "He was proud to receive an award for his charity work."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "A small act of kindness can brighten someone's whole day.",
+    "answer": "A small act of kindness can brighten someone's whole day."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "We need more volunteers who can speak other languages.",
+    "answer": "We need more volunteers who can speak other languages."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I'm planning to sign up for the summer youth programme.",
+    "answer": "I'm planning to sign up for the summer youth programme."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Thank you all for your hard work and generous support.",
+    "answer": "Thank you all for your hard work and generous support."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-28",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Changing habits",
+  "title": "Odatlarni o'zgartirish",
+  "order": 22,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I'm trying to go to bed earlier these days.",
+    "answer": "I'm trying to go to bed earlier these days."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "It took me a month to get used to waking up at six.",
+    "answer": "It took me a month to get used to waking up at six."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I used to drink a lot of coffee, but now I prefer tea.",
+    "answer": "I used to drink a lot of coffee, but now I prefer tea."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "She decided to give up sugar after talking to her doctor.",
+    "answer": "She decided to give up sugar after talking to her doctor."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Breaking a bad habit is harder than most people think.",
+    "answer": "Breaking a bad habit is harder than most people think."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I've started walking to work instead of taking the bus.",
+    "answer": "I've started walking to work instead of taking the bus."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "He promised himself that he would stop checking his phone constantly.",
+    "answer": "He promised himself that he would stop checking his phone constantly."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "What helps you stay motivated when you're trying something new?",
+    "answer": "What helps you stay motivated when you're trying something new?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I keep a small notebook to track my daily progress.",
+    "answer": "I keep a small notebook to track my daily progress."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "If you want to change, you must start with small steps.",
+    "answer": "If you want to change, you must start with small steps."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "We cook at home more often than we used to.",
+    "answer": "We cook at home more often than we used to."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "My brother has finally stopped biting his nails.",
+    "answer": "My brother has finally stopped biting his nails."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "It's easier to build a good habit with a friend.",
+    "answer": "It's easier to build a good habit with a friend."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I try to drink at least two litres of water every day.",
+    "answer": "I try to drink at least two litres of water every day."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "She no longer spends hours watching videos before bed.",
+    "answer": "She no longer spends hours watching videos before bed."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Do you find it difficult to keep your New Year's resolutions?",
+    "answer": "Do you find it difficult to keep your New Year's resolutions?"
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I'm getting better at saving money every single month.",
+    "answer": "I'm getting better at saving money every single month."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "He joined a gym to improve his health and fitness.",
+    "answer": "He joined a gym to improve his health and fitness."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Last year I managed to read one book every week.",
+    "answer": "Last year I managed to read one book every week."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Changing your routine can feel strange at the beginning.",
+    "answer": "Changing your routine can feel strange at the beginning."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I used to skip breakfast, but now I never miss it.",
+    "answer": "I used to skip breakfast, but now I never miss it."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "She reminds herself to take a short break every hour.",
+    "answer": "She reminds herself to take a short break every hour."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "The hardest part is usually the first week.",
+    "answer": "The hardest part is usually the first week."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I'm learning to say no when I'm already too busy.",
+    "answer": "I'm learning to say no when I'm already too busy."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "They have been recycling more since they moved to the new house.",
+    "answer": "They have been recycling more since they moved to the new house."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "If I forget my plan, I just start again the next day.",
+    "answer": "If I forget my plan, I just start again the next day."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "He realised that eating late at night was making him tired.",
+    "answer": "He realised that eating late at night was making him tired."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Small changes can lead to big results over time.",
+    "answer": "Small changes can lead to big results over time."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I'm proud of myself for sticking to my new schedule.",
+    "answer": "I'm proud of myself for sticking to my new schedule."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Would you like to try this challenge with me?",
+    "answer": "Would you like to try this challenge with me?"
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-29",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Regrets and wishes",
+  "title": "Afsuslar va orzular",
+  "order": 23,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I wish I had studied harder when I was at school.",
+    "answer": "I wish I had studied harder when I was at school."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "If I had left earlier, I wouldn't have missed the train.",
+    "answer": "If I had left earlier, I wouldn't have missed the train."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "She regrets not learning to play the piano as a child.",
+    "answer": "She regrets not learning to play the piano as a child."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I wish I could speak French as well as you.",
+    "answer": "I wish I could speak French as well as you."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "If only I had listened to my parents' advice.",
+    "answer": "If only I had listened to my parents' advice."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "He wishes he lived closer to the sea.",
+    "answer": "He wishes he lived closer to the sea."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I should have called her before she left the city.",
+    "answer": "I should have called her before she left the city."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "If I were you, I would accept that job offer.",
+    "answer": "If I were you, I would accept that job offer."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "We wish we hadn't spent so much money on the holiday.",
+    "answer": "We wish we hadn't spent so much money on the holiday."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry I forgot to send you the message yesterday.",
+    "answer": "I'm sorry I forgot to send you the message yesterday."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "If I had more free time, I would travel the world.",
+    "answer": "If I had more free time, I would travel the world."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "She wishes her brother would visit them more often.",
+    "answer": "She wishes her brother would visit them more often."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I regret that I never said thank you to my teacher.",
+    "answer": "I regret that I never said thank you to my teacher."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "If we had booked earlier, the tickets would have been cheaper.",
+    "answer": "If we had booked earlier, the tickets would have been cheaper."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I wish it wasn't raining so hard today.",
+    "answer": "I wish it wasn't raining so hard today."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "He often thinks about the chances he didn't take.",
+    "answer": "He often thinks about the chances he didn't take."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "If I could change one thing, I would be braver.",
+    "answer": "If I could change one thing, I would be braver."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "They wish they had bought the house when it was cheap.",
+    "answer": "They wish they had bought the house when it was cheap."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I shouldn't have eaten so much cake at the party.",
+    "answer": "I shouldn't have eaten so much cake at the party."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Do you ever wish you could go back in time?",
+    "answer": "Do you ever wish you could go back in time?"
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "If she had known the truth, she would have acted differently.",
+    "answer": "If she had known the truth, she would have acted differently."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I wish my grandfather were here to see this.",
+    "answer": "I wish my grandfather were here to see this."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "It's a pity we didn't take more photos during the trip.",
+    "answer": "It's a pity we didn't take more photos during the trip."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I would have called you if I had found your number.",
+    "answer": "I would have called you if I had found your number."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "He regrets leaving his hometown without saying goodbye.",
+    "answer": "He regrets leaving his hometown without saying goodbye."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I wish I knew how to fix this old computer.",
+    "answer": "I wish I knew how to fix this old computer."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "If I hadn't been so shy, I would have made more friends.",
+    "answer": "If I hadn't been so shy, I would have made more friends."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "She wishes she could spend more time with her children.",
+    "answer": "She wishes she could spend more time with her children."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Looking back, I think I made the right decision after all.",
+    "answer": "Looking back, I think I made the right decision after all."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I hope I don't have the same regrets next year.",
+    "answer": "I hope I don't have the same regrets next year."
+   }
+  ]
+ },
+ {
+  "code": "b1-speaking-30",
+  "level": "B1",
+  "skill": "SPEAKING",
+  "topic": "Debating pros and cons",
+  "title": "Afzallik va kamchiliklar munozarasi",
+  "order": 24,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "There are both advantages and disadvantages to working from home.",
+    "answer": "There are both advantages and disadvantages to working from home."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "On the one hand, it saves time and money.",
+    "answer": "On the one hand, it saves time and money."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "On the other hand, you can feel lonely without colleagues.",
+    "answer": "On the other hand, you can feel lonely without colleagues."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I'm not sure that I agree with that point.",
+    "answer": "I'm not sure that I agree with that point."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "One major benefit of public transport is that it's cheaper.",
+    "answer": "One major benefit of public transport is that it's cheaper."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "The main problem with big cities is the heavy traffic.",
+    "answer": "The main problem with big cities is the heavy traffic."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "In my opinion, online lessons are convenient but not perfect.",
+    "answer": "In my opinion, online lessons are convenient but not perfect."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "That's a good point, but have you considered the cost?",
+    "answer": "That's a good point, but have you considered the cost?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Some people argue that technology makes us less social.",
+    "answer": "Some people argue that technology makes us less social."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I'd say the pros clearly outweigh the cons here.",
+    "answer": "I'd say the pros clearly outweigh the cons here."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Living in the countryside is quiet, but there are fewer jobs.",
+    "answer": "Living in the countryside is quiet, but there are fewer jobs."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Let's look at the positive and negative sides first.",
+    "answer": "Let's look at the positive and negative sides first."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "Many students think that homework is a waste of time.",
+    "answer": "Many students think that homework is a waste of time."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I see what you mean, but I still disagree.",
+    "answer": "I see what you mean, but I still disagree."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "A drawback of social media is that it takes up so much time.",
+    "answer": "A drawback of social media is that it takes up so much time."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Is it better to rent a flat or buy one?",
+    "answer": "Is it better to rent a flat or buy one?"
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "The biggest advantage of studying abroad is meeting new people.",
+    "answer": "The biggest advantage of studying abroad is meeting new people."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "However, it can be very expensive and sometimes stressful.",
+    "answer": "However, it can be very expensive and sometimes stressful."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I think we should weigh up all the options carefully.",
+    "answer": "I think we should weigh up all the options carefully."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Shopping online is easy, but you can't try things on.",
+    "answer": "Shopping online is easy, but you can't try things on."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "He argued that a shorter working week would make people happier.",
+    "answer": "He argued that a shorter working week would make people happier."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "That may be true, but it isn't the whole story.",
+    "answer": "That may be true, but it isn't the whole story."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "To be honest, I'm still undecided about the whole idea.",
+    "answer": "To be honest, I'm still undecided about the whole idea."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Electric cars are better for the environment, but they cost more.",
+    "answer": "Electric cars are better for the environment, but they cost more."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "What are the main reasons for and against this plan?",
+    "answer": "What are the main reasons for and against this plan?"
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I agree with you up to a certain point.",
+    "answer": "I agree with you up to a certain point."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "In the long run, the benefits will probably be greater.",
+    "answer": "In the long run, the benefits will probably be greater."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Both sides of the argument have some very strong points.",
+    "answer": "Both sides of the argument have some very strong points."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "After thinking about it, I've changed my mind completely.",
+    "answer": "After thinking about it, I've changed my mind completely."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Let's vote on it and see what the group decides.",
+    "answer": "Let's vote on it and see what the group decides."
+   }
+  ]
+ }
+]

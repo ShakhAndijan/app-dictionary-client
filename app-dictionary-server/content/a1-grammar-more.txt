@@ -1,0 +1,551 @@
+# Extra sentences for the topics of a1-grammar.txt (same row format). "+ <topic no>" selects the topic.
+
++ 1
+You [are] my best friend. | is, am
+He [is] a taxi driver. | are, am
+We [are] not late. | is, am
+I [am] happy today. | is, are
+[Are] they your parents? | Is, Am
+The weather [is] nice today. | are, am
+My sisters [are] doctors. | is, am
+She [is] not at home. | are, am
+[Is] this your book? | Are, Am
+Ali and I [are] in the same class. | is, am
+It [is] very hot in summer. | are, am
+You [are] not alone. | is, am
+[Am] I late for the lesson? | Is, Are
+The cake [is] delicious. | are, am
+Where [is] your mother? | are, am
+These shoes [are] too small. | is, am
+I [am not] a teacher. | isn't, aren't
+Tashkent [is] a big city. | are, am
+How old [are] you? | is, am
+They [aren't] at school today. | isn't, am not
+
++ 2
+My brother [lives] in Samarkand. | live, living ~ live
+We [study] English at school. | studies, studying ~ study
+The children [play] in the garden. | plays, playing ~ play
+She [teaches] maths. | teach, teachs ~ teach
+I [read] a newspaper every day. | reads, reading ~ read
+He [goes] to bed at eleven. | go, going ~ go
+My parents [work] in a hospital. | works, working ~ work
+The train [leaves] at six. | leave, leaving ~ leave
+Our teacher [speaks] slowly. | speak, speaking ~ speak
+I [walk] to school every day. | walks, walking ~ walk
+Tom [likes] pizza very much. | like, liking ~ like
+They [take] the bus to work. | takes, taking ~ take
+She [washes] her hands before dinner. | wash, washs ~ wash
+The shop [closes] at eight. | close, closing ~ close
+We [eat] rice for lunch. | eats, eating ~ eat
+My cat [sleeps] all day. | sleep, sleeping ~ sleep
+You [know] the answer. | knows, knowing ~ know
+He [finishes] work at five. | finish, finishs ~ finish
+Rivers [flow] to the sea. | flows, flowing ~ flow
+My sister [writes] long emails. | write, writing ~ write
+
++ 3
+She [doesn't] speak Russian. | don't, isn't
+[Do] they live in Tashkent? | Does, Are
+We [don't] have a lesson on Friday. | doesn't, aren't
+[Does] your mother cook well? | Do, Is
+I [don't] eat meat. | doesn't, am not
+How [does] he go to school? | do, is
+He doesn't [watch] TV in the morning. | watches, watching ~ watch
+Do you [like] this song? | likes, liking ~ like
+My dog [doesn't] eat fish. | don't, isn't
+[Do] we need a ticket? | Does, Are
+What [do] you do on Sundays? | does, are
+She doesn't [live] here. | lives, living ~ live
+The bus [doesn't] stop here. | don't, isn't
+[Does] he know your phone number? | Do, Is
+They [don't] play tennis in winter. | doesn't, aren't
+Why [do] you want this book? | does, are
+Does Anna [work] on Saturdays? | works, working ~ work
+I [don't] understand this word. | doesn't, am not
+[Do] your friends play chess? | Does, Are
+It [doesn't] snow in July. | don't, isn't
+
++ 4
+He [is reading] a newspaper now. | reads, are reading, reading ~ read
+The students [are writing] a test. | is writing, writing, write ~ write
+I [am drinking] a cup of tea. | drink, is drinking, drinking ~ drink
+She [is wearing] a red dress today. | wears, are wearing, wearing ~ wear
+We [are eating] dinner at the moment. | is eating, eating, eat ~ eat
+The dog [is running] in the park. | runs, are running, running ~ run
+They [are not sleeping] now. | is not sleeping, not sleeping, don't sleeping ~ sleep
+[Are] you listening to me? | Is, Do, Does
+Why [is] he laughing? | are, does, do
+What [is] she doing? | are, does, do
+I [am cleaning] the kitchen now. | clean, is cleaning, cleaning ~ clean
+The baby [is not crying] now. | not crying, don't crying, isn't cry ~ cry
+My friends [are coming] to my house tonight. | is coming, coming, come ~ come
+It [isn't snowing] today. | doesn't snowing, isn't snow, not snowing ~ snow
+[Is] your brother studying now? | Are, Does, Do
+Where [are] they going? | is, do, does
+She [is making] a cake. | makes, are making, making ~ make
+We [are learning] English this year. | is learning, learning, learn ~ learn
+The phone [is ringing]. Answer it! | rings, are ringing, ringing ~ ring
+He [is swimming] in the pool. | swims, are swimming, swimming ~ swim
+
++ 5
+My father [works] in a bank. | is working, work ~ work
+Listen! Someone [is singing]. | sings, sing ~ sing
+We [play] chess every Friday. | are playing, plays ~ play
+Look! The children [are playing] in the snow. | play, plays ~ play
+She always [gets up] at six. | is getting up, get up ~ get up
+I [am studying] now, so please be quiet. | study, studies ~ study
+He usually [takes] the bus to work. | is taking, take ~ take
+It [rains] a lot in autumn. | is raining, rain ~ rain
+Where is Tom? He [is talking] on the phone. | talks, talk ~ talk
+They never [eat] fish. | are eating, eats ~ eat
+At the moment I [am reading] a good book. | read, reads ~ read
+My brother [doesn't watch] TV in the evening. | isn't watching, don't watch ~ watch
+Why [are] you wearing a coat? It's hot! | do, does, is
+[Does] she speak English? | Is, Do, Are
+The shop [opens] at nine every day. | is opening, open ~ open
+I can't talk now. I [am cooking]. | cook, cooks ~ cook
+Water [freezes] at zero degrees. | is freezing, freeze ~ freeze
+Hurry up! The bus [is coming]. | comes, come ~ come
+We [don't go] to school on Sundays. | aren't going, doesn't go ~ go
+She [is having] a shower right now. | has, have ~ have
+
++ 6
+My sister [has got] long hair. | have got, is got
+We [have got] two cars. | has got, are got
+He [hasn't got] a brother. | haven't got, doesn't got
+They [haven't got] any children. | hasn't got, don't got
+[Has] your dad got a new job? | Have, Do, Is
+[Have] we got enough time? | Has, Do, Are
+I [have] lunch at one o'clock. | has, am
+She [has got] blue eyes. | have got, is got
+The hotel [has got] a swimming pool. | have got, is got
+I [haven't got] a car. | hasn't got, don't got
+Do you [have] any brothers? | has, having ~ have
+My parents [have got] a small flat. | has got, are got
+It [hasn't got] a door. | haven't got, doesn't got
+[Have] you got a ticket? | Has, Do, Are
+He [has] a shower every morning. | have, haves
+She [doesn't have] a phone. | don't have, hasn't have
+We [have got] a lot of homework. | has got, are got
+My cat [has got] four kittens. | have got, is got
+[Has] the house got a garden? | Have, Does, Is
+I [have got] a headache. | has got, am got
+
++ 7
+He [was] at school yesterday. | were, is
+We [were] very happy yesterday. | was, are
+It [wasn't] a good film. | weren't, isn't
+They [weren't] at home last night. | wasn't, aren't
+[Was] your mother at work yesterday? | Were, Is
+[Were] the children in the garden? | Was, Are
+Where [was] Anna last Monday? | were, is
+The weather [was] terrible last week. | were, is
+I [was] ill last week. | were, am
+You [were] in my class last year. | was, are
+The tickets [were] cheap yesterday. | was, are
+Why [were] you late this morning? | was, are
+She [wasn't] at the party last Saturday. | weren't, isn't
+It [was] sunny yesterday afternoon. | were, is
+My grandparents [were] farmers fifty years ago. | was, are
+How [was] your holiday last month? | were, is
+We [weren't] tired after the walk yesterday. | wasn't, aren't
+The shop [was] closed on Sunday. | were, is
+[Was] it difficult yesterday? | Were, Is
+Tom and I [were] in London last year. | was, are
+
++ 8
+They [watched] a film last night. | watch, watches ~ watch
+She [cleaned] the house yesterday. | clean, cleans ~ clean
+I [walked] to school this morning. | walk, walks ~ walk
+He [stayed] at home last Sunday. | stay, stays ~ stay
+We [talked] for an hour yesterday. | talk, talks ~ talk
+My father [worked] in Russia in 2010. | work, works ~ work
+The baby [cried] all night. | cry, cryed ~ cry
+She [carried] the bag upstairs. | carry, carryed ~ carry
+I [asked] him a question. | ask, asks ~ ask
+They [arrived] at the hotel at six. | arrive, arriveed ~ arrive
+The teacher [explained] the rule. | explain, explains ~ explain
+He [planned] a trip to Bukhara last year. | plan, planed ~ plan
+We [listened] to music last night. | listen, listens ~ listen
+I [lived] in Samarkand as a child. | live, lives ~ live
+She [helped] me with my homework yesterday. | help, helps ~ help
+The film [started] at eight yesterday. | start, starts ~ start
+I [washed] the car on Sunday. | wash, washs ~ wash
+They [jumped] into the river. | jump, jumps ~ jump
+He [loved] his grandmother very much. | love, loves ~ love
+We [painted] the room last month. | paint, paints ~ paint
+
++ 9
+I [saw] Anna at the shop yesterday. | see, seed ~ see
+He [went] to Tashkent last week. | go, goed ~ go
+We [bought] some bread this morning. | buy, buyed ~ buy
+She [wrote] an email yesterday. | write, writed ~ write
+They [had] lunch at one o'clock yesterday. | have, haved ~ have
+I [took] a photo of the mosque. | take, taked ~ take
+My mother [made] a delicious soup yesterday. | make, maked ~ make
+He [drank] two glasses of water. | drink, drinked ~ drink
+We [met] at the station last Monday. | meet, meeted ~ meet
+She [came] to my house last night. | come, comed ~ come
+The boy [ate] all the cake. | eat, eated ~ eat
+I [got] a letter from my friend yesterday. | get, getted ~ get
+He [gave] her a red rose. | give, gived ~ give
+They [sat] in the garden all afternoon. | sit, sitted ~ sit
+We [ran] to the bus stop yesterday. | run, runned ~ run
+I [read] that book last year. | reads, readed ~ read
+She [spoke] to the manager yesterday. | speak, speaked ~ speak
+He [knew] the answer yesterday. | know, knowed ~ know
+The bird [flew] away. | fly, flyed ~ fly
+I [found] my keys yesterday. | find, finded ~ find
+
++ 10
+He [didn't] call me yesterday. | doesn't, wasn't
+[Did] they win the game? | Do, Were
+We [didn't] have breakfast this morning. | don't, weren't
+[Did] she buy a new dress? | Does, Was
+How [did] you get here? | do, were
+I didn't [know] the answer. | knew, knowing ~ know
+Did he [go] to school yesterday? | went, going ~ go
+She didn't [write] to me. | wrote, writing ~ write
+What [did] he say? | does, was
+Where [did] you buy that bag? | do, were
+They didn't [eat] anything. | ate, eating ~ eat
+[Did] you enjoy the party? | Do, Were
+It [didn't] rain last week. | doesn't, wasn't
+Why [did] she cry? | does, was
+My parents [didn't] go out last night. | don't, weren't
+Did Tom [phone] you last night? | phoned, phoning ~ phone
+I [didn't] sleep well last night. | don't, wasn't
+What time [did] the film end? | do, was
+He didn't [take] the money. | took, taking ~ take
+[Did] your sister pass the exam? | Does, Was
+
++ 20
+I [am going to] learn English this year. | is going to, going to
+He [is going to] study medicine. | are going to, am going to
+We [are going to] visit our grandparents on Sunday. | is going to, going to
+She [is going to] wear a new dress tonight. | are going to, am going to
+They [are going to] build a new school. | is going to, am going to
+Look at those clouds! It [is going to] rain. | are going to, am going to
+I [am not going to] eat that cake. | not going to, don't going to
+He [isn't going to] pass the exam. | aren't going to, don't going to
+[Are] they going to move to London? | Is, Do
+[Is] it going to be cold tomorrow? | Are, Does
+Who [is] going to cook dinner? | are, does
+When [are] you going to leave? | is, do
+I'm going to [buy] some bread. | buying, bought ~ buy
+She is going to [study] tonight. | studying, studies ~ study
+We [aren't going to] watch TV tonight. | isn't going to, don't going to
+What [is] he going to wear? | are, does
+My parents [are going to] sell their car. | is going to, am going to
+I [am going to] call you later. | is going to, going to
+Are you going to [come] to the party? | coming, came ~ come
+The baby [is going to] fall! | are going to, am going to
+
++ 25
+She [can] play the piano. | cans, can to
+I [can't] find my keys. | don't can, am not can
+[Can] he swim? | Does, Is
+We [can] see the sea from here. | cans, can to
+My little sister [can't] read yet. | don't can, isn't can
+[Could] you help me, please? | Do, Are
+He [could] run very fast when he was young. | can, is could
+I [couldn't] open the door. | can't, didn't could
+[Can] I come in? | Do, Am
+They can [speak] four languages. | to speak, speaking ~ speak
+She can't [drive] a car. | to drive, driving ~ drive
+Can you [help] me with this bag? | to help, helping ~ help
+[Could] I have some water, please? | Do, Am
+He [can't] come to the party tonight. | don't can, isn't can
+My grandmother [couldn't] walk very well last year. | can't, didn't could
+Can we [use] your phone? | to use, using ~ use
+Dogs [can] hear very well. | cans, can to
+I [could] read when I was four. | can, am could
+[Can] you speak slowly, please? | Do, Are
+We [couldn't] find the restaurant yesterday. | can't, didn't could
+
++ 30
+I [would like] a glass of water, please. | would likes, am like
+[Would] you like some more rice? | Will, Are
+He [would like] to be a pilot. | would likes, is like
+What [would] you like for breakfast? | are, do
+We [would like] to book a room. | would likes, are like
+Where [would] you like to go? | are, do
+She [would like] an apple. | would likes, is like
+[Would] you like to come to dinner? | Will, Are
+They [would like] to see the menu. | would likes, are like
+I would like [to] go to the cinema. | at, in
+I'd like [a] sandwich, please. | an, some
+Would you like [some] cake? | a, an
+He would like to [try] this dress. | tries, trying ~ try
+Would you like [to] sit down? | at, in
+I [would like] two tickets for the film. | would likes, am like
+What [would] she like to drink? | does, is
+I would [like] to ask a question. | likes, liking ~ like
+[Would] he like a cup of coffee? | Will, Is
+We [would like] to visit Khiva one day. | would likes, are like
+Would you [like] some soup? | likes, liking ~ like
+
++ 31
+What [do] you do in the evening? I watch TV. | are, does
+Where [is] your school? It is in the centre. | are, does
+How [does] he go to work? By bus. | do, is
+When [do] you get up? At seven. | does, are
+[Why] is she crying? Because she is hurt. | Who, How many
+What [is] your phone number? It's 555-1234. | do, does
+[How many] children have they got? Three. | How much, How long
+Where [did] you go yesterday? To the park. | do, were
+What time [is] it? It's nine o'clock. | does, do
+[Which] bus goes to the station? Number five. | Who, Why
+How [often] do you swim? Twice a week. | many, old
+[Where] does she live? In Bukhara. | When, Who
+How [long] is the film? Two hours. | many, old
+[What] are you eating? A banana. | Who, Where
+[When] does the lesson start? At nine. | Where, Who
+How [old] is your brother? He is ten. | many, long
+Where [are] my glasses? On the table. | do, does
+[Why] did you leave early? I was tired. | Who, Where
+What [does] this word mean? It means "house". | do, is
+How [much] is the ticket? Five dollars. | many, old
+
++ 32
+[Who] is that girl? She is my cousin. | What, Where
+[What] is that? It is a camera. | Who, Where
+[What] do you do? I am a teacher. | Who, Where
+[Who] likes ice cream? I do. | What, Where
+[What] is your job? I am a driver. | Who, Where
+[Who] opened the door? The wind did. | What, When
+[What] did she say? She said hello. | Who, Where
+[Who] is your favourite singer? Shahzoda. | What, Where
+[What] is she reading? A magazine. | Who, Where
+[Who] lives in this house? An old man. | What, Where
+[What] are you looking for? My glasses. | Who, Where
+[Who] wants coffee? I do. | What, Where
+[What] is the matter? I have a headache. | Who, Where
+[Who] was your first teacher? Mrs Green. | What, Where
+[What] is he eating? An apple. | Who, Where
+[Who] are you waiting for? My brother. | What, Where
+[What] is on TV tonight? A football match. | Who, Where
+[Who] told you that? My sister. | What, Where
+[What] does your father do? He is a doctor. | Who, Where
+[Who] is the man in the photo? My grandfather. | What, Where
+
++ 33
+Is he a doctor? Yes, he [is]. | does, are
+Do you live here? Yes, I [do]. | am, can
+Are you hungry? No, I'm [not]. | don't, isn't
+Does she speak French? No, she [doesn't]. | don't, isn't
+Can he cook? Yes, he [can]. | does, is
+Did they win? Yes, they [did]. | do, were
+Is your mother at home? No, she [isn't]. | doesn't, aren't
+Do your parents work? No, they [don't]. | doesn't, aren't
+Have they got a car? No, they [haven't]. | don't, aren't
+Was it a good film? Yes, it [was]. | were, did
+Were they late? No, they [weren't]. | wasn't, didn't
+Has she got a brother? Yes, she [has]. | have, does
+Are we late? Yes, we [are]. | do, am
+Do I know you? Yes, you [do]. | are, did
+Can they swim? No, they [can't]. | don't, aren't
+Did she call you? No, she [didn't]. | doesn't, wasn't
+Does he like fish? Yes, he [does]. | do, is
+Am I right? Yes, you [are]. | do, is
+Is it raining? No, it [isn't]. | doesn't, aren't
+Did you sleep well? Yes, I [did]. | do, was
+
++ 36
+I need [some] bread. | a, many
+She doesn't have [much] time. | many, a
+How [many] eggs do we need? | much, a
+We have [a little] sugar. | a few, many
+There are [a few] students in the room. | a little, much
+I'd like [a] cup of tea. | some, much
+Water [is] important for life. | are, am
+My trousers [are] new. | is, am
+[Some] people don't like coffee. | A, Much
+She gave me [some] advice. | an, many
+I don't eat [much] meat. | many, a
+How [much] rice do you eat? | many, a
+Luggage [is] heavy. | are, am
+There [are] many books on the shelf. | is, am
+I have [a lot of] friends. | much, a
+Can I have [a] glass of juice? | some, much
+The news [is] good today. | are, am
+[Many] children like sweets. | Much, A
+I haven't got [much] money. | many, a
+Our hair [is] long. | are, am
+
++ 37
+She is [a] nurse. | an, some
+I have [an] old car. | a, some
+He wants [a] cup of coffee. | an, some
+It is [an] interesting book. | a, some
+This is [a] European city. | an, some
+I'd like [an] ice cream. | a, some
+She is [an] honest girl. | a, some
+There is [a] cat under the table. | an, some
+It's [an] unusual name. | a, some
+He is [a] university student. | an, some
+I bought [an] umbrella yesterday. | a, some
+Do you have [a] pencil? | an, some
+She was [an] actress. | a, some
+We live in [a] small town. | an, some
+He has [an] uncle in London. | a, some
+It was [an] amazing day! | a, some
+I have [a] one-hour lesson. | an, some
+He plays [an] important role. | a, some
+My mother is [an] English teacher. | a, some
+She wore [a] blue hat. | an, some
+
++ 38
+I live in [the] centre of the city. | a, an
+Can you close [the] window, please? | a, an
+[The] sky is blue today. | A, An
+He plays [the] guitar. | a, an
+She is [the] youngest girl in the class. | a, an
+I have a cat and a dog. [The] cat is black. | A, An
+We watched [the] film you recommended. | a, an
+What is [the] time? | a, an
+Mount Everest is [the] highest mountain in the world. | a, an
+[The] Volga is a long river. | A, An
+Open [the] door, please. | a, an
+This is [the] best restaurant in town. | a, an
+I went to a café. [The] café was full. | A, An
+Look at [the] moon! | a, an
+He is [the] first person to arrive. | a, an
+Where is [the] bus station? | a, an
+My brother has a car. [The] car is red. | A, An
+She is [the] tallest girl here. | a, an
+[The] teacher gave us homework. | A, An
+The restaurant is on [the] second floor. | a, an
+
++ 40
+I haven't got [any] sisters. | some, a
+There are [some] pens on the desk. | any, a
+Is there [any] bread? | some, a
+Can I have [some] water, please? | any, a
+She didn't eat [any] rice. | some, a
+We bought [some] apples. | any, a
+Are there [any] books on the table? | some, a
+There isn't [any] sugar in my tea. | some, a
+Would you like [some] soup? | any, a
+He didn't say [any] words. | some, a
+I need [some] new shoes. | any, a
+Do you want [some] more tea? | any, a
+There are [some] eggs in the basket. | any, a
+I didn't see [any] birds. | some, a
+Does she have [any] friends here? | some, a
+They have [some] interesting books. | any, a
+We haven't got [any] time. | some, a
+There is [some] juice in the glass. | any, a
+Are there [any] shops near here? | some, a
+She gave me [some] advice. | any, a
+
++ 41
+How [many] days are there in a week? | much, a
+How [much] water do you drink? | many, a
+I don't have [many] books. | much, a
+She spends [a lot of] money. | many, much
+There isn't [much] snow this year. | many, a
+We didn't see [many] people. | much, a
+He eats [a lot of] bread. | many, a
+How [many] students are in your class? | much, a
+How [much] does it cost? | many, a
+Do you drink [much] tea? | many, a
+There aren't [many] chairs in the room. | much, a
+I have [a lot of] problems. | many, a
+Is there [much] traffic today? | many, a
+She has [a lot of] clothes. | many, much
+They don't have [many] children. | much, a
+How [much] sugar is in this cake? | many, a
+We drink [a lot of] water in summer. | many, a
+Not [many] people came to the party. | much, a
+He didn't spend [much] time there. | many, a
+How [many] sisters have you got? | much, a
+
++ 43
+There [is] a park near my house. | are, am
+There [are] three windows in the room. | is, am
+[Is] there a lift in the building? | Are, Do
+[Are] there any chairs? | Is, Do
+There [isn't] a clock on the wall. | aren't, not
+There [aren't] any students in the room. | isn't, not
+There [is] a lot of traffic today. | are, am
+How many people [are] there in your family? | is, do
+There [are] some flowers on the table. | is, am
+There [is] a mistake in this sentence. | are, am
+[Is] there a bus to the airport? | Are, Do
+There [aren't] any lessons on Sunday. | isn't, not
+There [is] a swimming pool in the hotel. | are, am
+What [is] there in your bag? | are, do
+There [are] two beds in my room. | is, am
+There [isn't] any milk left. | aren't, not
+[Are] there many tourists in summer? | Is, Do
+There [is] a letter for you. | are, am
+There [are] seven days in a week. | is, am
+There [isn't] a chair for me. | aren't, not
+
++ 44
+Is this [my] coat? | mine, me
+This pen is [mine]. | my, me
+She forgot [her] keys. | hers, she
+These keys are [hers]. | her, she
+[Our] teacher is very kind. | Ours, We
+The red car is [ours]. | our, us
+Is that [your] umbrella? | yours, you
+Is the umbrella [yours]? | your, you
+[His] shirt is white. | He, Him
+They love [their] children. | theirs, them
+The children are [theirs]. | their, them
+That is not my pen. [Mine] is blue. | My, Me
+I like [your] new shoes. | yours, you
+Can I use [your] phone? | yours, you
+This isn't my book. It's [hers]. | her, she
+Whose coat is this? It's [yours]. | your, you
+The dog is wagging [its] tail. | it, his
+Where is [my] bag? | mine, me
+This house is [ours]. | our, us
+[My] parents live in Samarkand. | Mine, I
+
++ 65
+The lesson starts [at] nine o'clock. | on, in
+I was born [in] 1998. | on, at
+We have English [on] Tuesday. | in, at
+It snows a lot [in] January. | on, at
+My train leaves [at] half past six. | on, in
+I always call my mother [on] Sunday. | in, at
+She goes to work [in] the morning. | on, at
+We have lunch [at] midday. | on, in
+Their wedding is [on] 14 July. | in, at
+Flowers grow [in] spring. | on, at
+The shop is open [from] nine to six. | at, on
+He does his homework [in] the afternoon. | on, at
+I often study [at] night. | in, on
+My birthday is [on] 3 March. | in, at
+We travel [in] summer. | on, at
+The bank closes [at] four o'clock. | on, in
+I met him [on] Friday evening. | in, at
+We'll see you [in] two days. | on, at
+She works [on] weekdays. | in, at
+Christmas is [in] December. | on, at
+
++ 66
+The cat is sitting [on] the sofa. | in, at
+My keys are [in] the drawer. | on, at
+She is waiting [at] the bus stop. | in, on
+They live [in] Uzbekistan. | on, at
+There is a clock [on] the wall. | in, at
+He is [at] work now. | in, on
+The children are [in] the garden. | on, at
+The book is [under] the chair. | at, to
+My house is [next to] the park. | next, to
+The shop is [opposite] the school. | in, on
+The picture is [above] the sofa. | in, at
+She was [at] the cinema last night. | on, in
+We are [in] the car. | on, at
+The pen is [on] the desk. | in, at
+He sat [between] his mother and his sister. | in, on
+There is a tree [behind] the house. | on, at
+I live [on] the third floor. | in, at
+The fish is [in] the water. | on, at
+They are [at] the airport. | on, in
+The dog is [in front of] the door. | in, on

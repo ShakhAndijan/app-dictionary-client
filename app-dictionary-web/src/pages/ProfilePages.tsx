@@ -4,7 +4,7 @@ import { authApi, errorMessage, Progress, progressApi } from '../api';
 import { useAuth } from '../auth';
 import { ThemeMode, useTheme } from '../theme';
 import { Button, Card, Field, Notice, PageHeader, ProgressBar, Spinner } from '../ui';
-import { TIER_META } from '../util';
+import { achievementEmoji, TIER_META } from '../util';
 
 export function EditProfilePage() {
   const { user, setUser } = useAuth();
@@ -401,7 +401,7 @@ export function AchievementsPage() {
           <div className="ac-next">
             <small>Keyingi nishon</small>
             <div className="ac-next-row">
-              <span className="ac-next-ico">{next.icon}</span>
+              <span className="ac-next-ico">{achievementEmoji(next.icon)}</span>
               <b>{next.title}</b>
             </div>
             <ProgressBar pct={Math.min(100, (next.current / Math.max(1, next.target)) * 100)} color={TIER_META[next.tier].color} />
@@ -429,7 +429,7 @@ export function AchievementsPage() {
             const p = Math.min(100, Math.round((a.current / Math.max(1, a.target)) * 100));
             return (
               <article key={a.code} className={`ac-card rise ${a.unlocked ? 'on' : ''}`} style={{ ['--tone' as string]: tier.color, ['--d' as string]: `${Math.min(i, 12) * 0.03}s` }}>
-                <div className="ac-ico">{a.unlocked ? a.icon : '🔒'}</div>
+                <div className="ac-ico">{a.unlocked ? achievementEmoji(a.icon) : '🔒'}</div>
                 <div className="ac-body">
                   <div className="ac-top">
                     <b>{a.title}</b>

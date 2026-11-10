@@ -368,6 +368,26 @@ export const flashcardApi = {
     http.post('/flashcards/answer', { wordId, known, format }),
 };
 
+export interface SentenceResult {
+  score: number;
+  usesWord: boolean;
+  corrected: string;
+  feedback: string;
+  xpGained: number;
+  remainingToday: number;
+}
+
+export interface SentenceStatus {
+  enabled: boolean;
+  remainingToday: number;
+  dailyLimit: number;
+}
+
+export const sentencesApi = {
+  status: () => d(http.get<SentenceStatus>('/sentences/status')),
+  check: (wordId: number, sentence: string) => d(http.post<SentenceResult>('/sentences/check', { wordId, sentence }, { timeout: 60000 })),
+};
+
 export const quizApi = {
   start: (mode: QuizMode, format: AnswerFormat = 'TYPED') => d(http.post<QuizQuestion>('/quiz/start', { mode, format })),
   answer: (sessionId: number, answer: string) =>
@@ -486,4 +506,134 @@ export const groupsApi = {
   leave: (id: number) => http.delete(`/groups/${id}/members/me`),
   removeMember: (id: number, userId: number) => http.delete(`/groups/${id}/members/${userId}`),
   remove: (id: number) => http.delete(`/groups/${id}`),
+};
+
+/* ------------------------------------------------------------------ level course ("Ingliz tili") */
+
+export type Skill = 'READING' | 'LISTENING' | 'SPEAKING' | 'WRITING' | 'GRAMMAR';
+
+export interface LearnLessonSummary {
+  code: string;
+  skill: Skill;
+  topic: string;
+  title: string;
+  unit: number;
+  itemCount: number;
+  bestScore: number | null;
+  passed: boolean;
+}
+
+export interface LearnGoal {
+  skill: Skill;
+  target: number;
+  done: number;
+  suggested: LearnLessonSummary[];
+}
+
+export interface LearnOverview {
+  level: string | null;
+  levels: string[];
+  progress: { passed: number; total: number; percent: number };
+  examUnlocked: boolean;
+  lastExam: { percent: number; passed: boolean; at: string } | null;
+  goals: LearnGoal[];
+  goalsDone: boolean;
+  skills: { skill: Skill; lessonsTotal: number; lessonsPassed: number }[];
+}
+
+export interface LearnItemView {
+  id: string;
+  kind: 'CHOICE' | 'FILL' | 'ORDER' | 'SPEAK';
+  prompt: string;
+  options: string[] | null;
+  words: string[] | null;
+  passage?: string | null;
+  audioText?: string | null;
+}
+
+export interface LearnLessonDetail {
+  code: string;
+  level: string;
+  skill: Skill;
+  topic: string;
+  title: string;
+  intro: string | null;
+  passage: string | null;
+  audioText: string | null;
+  items: LearnItemView[];
+}
+
+export interface LearnCheck {
+  correct: boolean;
+  answer: string;
+  explain: string | null;
+}
+
+export interface LearnFinish {
+  correct: number;
+  total: number;
+  score: number;
+  passed: boolean;
+  xpGained: number;
+  results: { itemId: string; correct: boolean; answer: string; explain: string | null }[];
+}
+
+export interface LearnExamQuestion {
+  ref: string;
+  skill: Skill;
+  kind: 'CHOICE' | 'FILL' | 'ORDER' | 'SPEAK';
+  prompt: string;
+  options: string[] | null;
+  words: string[] | null;
+  passage: string | null;
+  audioText: string | null;
+}
+
+export interface LearnExamResult {
+  percent: number;
+  passed: boolean;
+  skills: { skill: Skill; correct: number; total: number; percent: number }[];
+  newLevel: string | null;
+  xpGained: number;
+}
+
+export interface LearnRecent { code: string; title: string; percent: number; passed: boolean; at: string }
+export interface LearnWeakLesson { code: string; title: string; bestScore: number }
+
+export interface LearnSkillStat {
+  skill: Skill;
+  lessonsTotal: number;
+  lessonsPassed: number;
+  lessonPercent: number | null;
+  examPercent: number | null;
+  percent: number | null;
+  attempts: number;
+  answered: number;
+  correct: number;
+  lastAt: string | null;
+  recent: LearnRecent[];
+  weakLessons: LearnWeakLesson[];
+}
+
+export interface LearnStats {
+  level: string | null;
+  skills: LearnSkillStat[];
+  weakest: Skill | null;
+  answered: number;
+  correct: number;
+  activeDays: number;
+  examsTaken: number;
+  passMark: number;
+}
+
+export const learnApi = {
+  overview: () => d(http.get<LearnOverview>('/learn/overview')),
+  setLevel: (level: string) => d(http.put<LearnOverview>('/learn/level', { level })),
+  lessons: () => d(http.get<LearnLessonSummary[]>('/learn/lessons')),
+  lesson: (code: string) => d(http.get<LearnLessonDetail>(`/learn/lessons/${code}`)),
+  check: (code: string, itemId: string, answer: string) => d(http.post<LearnCheck>(`/learn/lessons/${code}/check`, { itemId, answer })),
+  finish: (code: string, answers: { itemId: string; answer: string }[]) => d(http.post<LearnFinish>(`/learn/lessons/${code}/finish`, { answers })),
+  exam: () => d(http.get<LearnExamQuestion[]>('/learn/exam')),
+  submitExam: (answers: { ref: string; answer: string }[]) => d(http.post<LearnExamResult>('/learn/exam', { answers })),
+  stats: () => d(http.get<LearnStats>('/learn/stats')),
 };

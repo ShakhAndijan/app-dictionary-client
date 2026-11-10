@@ -1,3 +1,4 @@
+import { achievementEmoji } from '../util';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { adminApi, Announcement, AnnouncementSeverity, AdminUserDetail, AuditEntry, errorMessage } from '../api';
@@ -209,7 +210,7 @@ export function AdminUserPage() {
             <div className="ad-ach">
               {d.achievements.map((a) => (
                 <div key={a.code} className={`ad-ach-item ${a.tier.toLowerCase()}`}>
-                  <span className="ad-ach-ico">{a.icon}</span>
+                  <span className="ad-ach-ico">{achievementEmoji(a.icon)}</span>
                   <div>
                     <div className="ad-name">{a.title}</div>
                     <div className="muted ad-sub">{a.description}</div>

@@ -1,0 +1,5732 @@
+[
+ {
+  "code": "a2-speaking-1",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Past events",
+  "title": "Kecha va o'tgan hafta",
+  "order": 1,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I went to the cinema yesterday.",
+    "answer": "I went to the cinema yesterday."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "She visited her grandmother last week.",
+    "answer": "She visited her grandmother last week."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "We played football on Saturday.",
+    "answer": "We played football on Saturday."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "They watched a film last night.",
+    "answer": "They watched a film last night."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I didn't do my homework.",
+    "answer": "I didn't do my homework."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "He bought a new jacket.",
+    "answer": "He bought a new jacket."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Did you enjoy the party?",
+    "answer": "Did you enjoy the party?"
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Where did you go on holiday?",
+    "answer": "Where did you go on holiday?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "What did you do yesterday?",
+    "answer": "What did you do yesterday?"
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I got up late this morning.",
+    "answer": "I got up late this morning."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "We had dinner at a restaurant.",
+    "answer": "We had dinner at a restaurant."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "She called me an hour ago.",
+    "answer": "She called me an hour ago."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I met an old friend in the street.",
+    "answer": "I met an old friend in the street."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "He lost his keys on the bus.",
+    "answer": "He lost his keys on the bus."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "The film started at eight.",
+    "answer": "The film started at eight."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "I didn't sleep well last night.",
+    "answer": "I didn't sleep well last night."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "We travelled by train.",
+    "answer": "We travelled by train."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "My brother broke his phone.",
+    "answer": "My brother broke his phone."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "They arrived at six o'clock.",
+    "answer": "They arrived at six o'clock."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I read a good book last month.",
+    "answer": "I read a good book last month."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "She cooked a delicious meal.",
+    "answer": "She cooked a delicious meal."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "It rained all day on Sunday.",
+    "answer": "It rained all day on Sunday."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I cleaned my room yesterday.",
+    "answer": "I cleaned my room yesterday."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "He wrote me a long email.",
+    "answer": "He wrote me a long email."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "We stayed at home on Friday.",
+    "answer": "We stayed at home on Friday."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I saw you in the park.",
+    "answer": "I saw you in the park."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "When did you start learning English?",
+    "answer": "When did you start learning English?"
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "She left the office at five.",
+    "answer": "She left the office at five."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I paid for the tickets.",
+    "answer": "I paid for the tickets."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "It was a great weekend.",
+    "answer": "It was a great weekend."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-2",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Past continuous",
+  "title": "O'sha paytda nima qilardim",
+  "order": 2,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I was sleeping at ten o'clock.",
+    "answer": "I was sleeping at ten o'clock."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "She was reading when I called.",
+    "answer": "She was reading when I called."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "We were watching TV at eight.",
+    "answer": "We were watching TV at eight."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "They were playing in the garden.",
+    "answer": "They were playing in the garden."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "What were you doing at nine?",
+    "answer": "What were you doing at nine?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "He was cooking dinner.",
+    "answer": "He was cooking dinner."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "It was raining when I left.",
+    "answer": "It was raining when I left."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I was walking home when I saw him.",
+    "answer": "I was walking home when I saw him."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "The children were laughing.",
+    "answer": "The children were laughing."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Were you waiting for me?",
+    "answer": "Were you waiting for me?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "She wasn't listening to the teacher.",
+    "answer": "She wasn't listening to the teacher."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "We were talking about the exam.",
+    "answer": "We were talking about the exam."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I was having a shower when you rang.",
+    "answer": "I was having a shower when you rang."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "They weren't working yesterday afternoon.",
+    "answer": "They weren't working yesterday afternoon."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "He was driving too fast.",
+    "answer": "He was driving too fast."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "The baby was crying all night.",
+    "answer": "The baby was crying all night."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "While I was studying, my sister was dancing.",
+    "answer": "While I was studying, my sister was dancing."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "What was she wearing at the party?",
+    "answer": "What was she wearing at the party?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I was thinking about you.",
+    "answer": "I was thinking about you."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "The sun was shining and the birds were singing.",
+    "answer": "The sun was shining and the birds were singing."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "He was running when he fell.",
+    "answer": "He was running when he fell."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "We were sitting in the cafe.",
+    "answer": "We were sitting in the cafe."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I wasn't sleeping, I was reading.",
+    "answer": "I wasn't sleeping, I was reading."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Who were you talking to?",
+    "answer": "Who were you talking to?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "My phone rang while I was eating.",
+    "answer": "My phone rang while I was eating."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "The students were writing a test.",
+    "answer": "The students were writing a test."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "She was smiling at me.",
+    "answer": "She was smiling at me."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "They were waiting for the bus.",
+    "answer": "They were waiting for the bus."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I was washing the dishes.",
+    "answer": "I was washing the dishes."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "It was snowing all morning.",
+    "answer": "It was snowing all morning."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-3",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Present perfect",
+  "title": "Tajriba: have you ever",
+  "order": 3,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I have never been to Japan.",
+    "answer": "I have never been to Japan."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Have you ever eaten sushi?",
+    "answer": "Have you ever eaten sushi?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "She has lived here for five years.",
+    "answer": "She has lived here for five years."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I have already finished my work.",
+    "answer": "I have already finished my work."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "He hasn't called me yet.",
+    "answer": "He hasn't called me yet."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "We have just arrived.",
+    "answer": "We have just arrived."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "They have visited Paris twice.",
+    "answer": "They have visited Paris twice."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I have lost my wallet.",
+    "answer": "I have lost my wallet."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Has she seen this film?",
+    "answer": "Has she seen this film?"
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I have known him since 2015.",
+    "answer": "I have known him since 2015."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "How long have you studied English?",
+    "answer": "How long have you studied English?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "He has broken his arm.",
+    "answer": "He has broken his arm."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "We have never met before.",
+    "answer": "We have never met before."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I have read this book three times.",
+    "answer": "I have read this book three times."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "She has just left the room.",
+    "answer": "She has just left the room."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Have you done your homework yet?",
+    "answer": "Have you done your homework yet?"
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "They have already eaten.",
+    "answer": "They have already eaten."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I haven't seen him today.",
+    "answer": "I haven't seen him today."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "My father has worked here for ten years.",
+    "answer": "My father has worked here for ten years."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "It has stopped raining.",
+    "answer": "It has stopped raining."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Have you ever won a prize?",
+    "answer": "Have you ever won a prize?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "She has never driven a car.",
+    "answer": "She has never driven a car."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I have bought a new bag.",
+    "answer": "I have bought a new bag."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "We have been friends for a long time.",
+    "answer": "We have been friends for a long time."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "He has forgotten his password.",
+    "answer": "He has forgotten his password."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I have just spoken to the manager.",
+    "answer": "I have just spoken to the manager."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Has the train left yet?",
+    "answer": "Has the train left yet?"
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "They have lived in London since 2010.",
+    "answer": "They have lived in London since 2010."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I have never felt so happy.",
+    "answer": "I have never felt so happy."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "That is the best meal I have ever had.",
+    "answer": "That is the best meal I have ever had."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-4",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Future plans",
+  "title": "Kelajak rejalari",
+  "order": 3,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I'm going to study medicine.",
+    "answer": "I'm going to study medicine."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "We are going to travel in summer.",
+    "answer": "We are going to travel in summer."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "She is going to buy a car.",
+    "answer": "She is going to buy a car."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I will call you tomorrow.",
+    "answer": "I will call you tomorrow."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "It will probably rain tonight.",
+    "answer": "It will probably rain tonight."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I think he will win.",
+    "answer": "I think he will win."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Shall I open the window?",
+    "answer": "Shall I open the window?"
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Shall we go to the park?",
+    "answer": "Shall we go to the park?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I'm meeting Anna at six.",
+    "answer": "I'm meeting Anna at six."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "We are flying to Dubai on Friday.",
+    "answer": "We are flying to Dubai on Friday."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "What are you doing this weekend?",
+    "answer": "What are you doing this weekend?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "I'm not going to the party.",
+    "answer": "I'm not going to the party."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "They are going to build a new school.",
+    "answer": "They are going to build a new school."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I will help you with your bags.",
+    "answer": "I will help you with your bags."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Perhaps I will visit you next week.",
+    "answer": "Perhaps I will visit you next week."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "He is going to be a doctor.",
+    "answer": "He is going to be a doctor."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I won't forget your birthday.",
+    "answer": "I won't forget your birthday."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Look at those clouds! It's going to rain.",
+    "answer": "Look at those clouds! It's going to rain."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "We are having a party on Saturday.",
+    "answer": "We are having a party on Saturday."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I'm going to learn to drive.",
+    "answer": "I'm going to learn to drive."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "The train leaves at nine tomorrow.",
+    "answer": "The train leaves at nine tomorrow."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I'll see you on Monday.",
+    "answer": "I'll see you on Monday."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Will you come to my wedding?",
+    "answer": "Will you come to my wedding?"
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I promise I won't be late.",
+    "answer": "I promise I won't be late."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "She is starting a new job next week.",
+    "answer": "She is starting a new job next week."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I'm going to save some money.",
+    "answer": "I'm going to save some money."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "What will you do after school?",
+    "answer": "What will you do after school?"
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Everything will be fine.",
+    "answer": "Everything will be fine."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "We will have a test next Tuesday.",
+    "answer": "We will have a test next Tuesday."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I'm going to stay at home tonight.",
+    "answer": "I'm going to stay at home tonight."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-5",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Modals",
+  "title": "Majburiyat va maslahat",
+  "order": 4,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "You must wear a seat belt.",
+    "answer": "You must wear a seat belt."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I have to get up early tomorrow.",
+    "answer": "I have to get up early tomorrow."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "You don't have to come.",
+    "answer": "You don't have to come."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "You mustn't smoke here.",
+    "answer": "You mustn't smoke here."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "She has to work on Saturdays.",
+    "answer": "She has to work on Saturdays."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "You should see a doctor.",
+    "answer": "You should see a doctor."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "You shouldn't eat so much sugar.",
+    "answer": "You shouldn't eat so much sugar."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I might be late tonight.",
+    "answer": "I might be late tonight."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "It may rain tomorrow.",
+    "answer": "It may rain tomorrow."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "We had to wait for an hour.",
+    "answer": "We had to wait for an hour."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Do I have to pay now?",
+    "answer": "Do I have to pay now?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "You should drink more water.",
+    "answer": "You should drink more water."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "He might not come to the party.",
+    "answer": "He might not come to the party."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Must I wear a tie?",
+    "answer": "Must I wear a tie?"
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "You mustn't use your phone in class.",
+    "answer": "You mustn't use your phone in class."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Children should go to bed early.",
+    "answer": "Children should go to bed early."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I had to sell my old car.",
+    "answer": "I had to sell my old car."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "She doesn't have to cook today.",
+    "answer": "She doesn't have to cook today."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "We must hurry or we will miss the bus.",
+    "answer": "We must hurry or we will miss the bus."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "You should listen to your parents.",
+    "answer": "You should listen to your parents."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I may buy a new phone next month.",
+    "answer": "I may buy a new phone next month."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "They have to leave at six.",
+    "answer": "They have to leave at six."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Should I call him now?",
+    "answer": "Should I call him now?"
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "You mustn't forget your passport.",
+    "answer": "You mustn't forget your passport."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "We don't have to wear uniforms.",
+    "answer": "We don't have to wear uniforms."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "She might be at home.",
+    "answer": "She might be at home."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I must finish this report today.",
+    "answer": "I must finish this report today."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "You shouldn't go out in the cold.",
+    "answer": "You shouldn't go out in the cold."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Did you have to pay for it?",
+    "answer": "Did you have to pay for it?"
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "It might be a good idea.",
+    "answer": "It might be a good idea."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-6",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Comparisons",
+  "title": "Taqqoslash",
+  "order": 5,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "My brother is taller than me.",
+    "answer": "My brother is taller than me."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "This bag is cheaper than that one.",
+    "answer": "This bag is cheaper than that one."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Tashkent is bigger than Samarkand.",
+    "answer": "Tashkent is bigger than Samarkand."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Today is hotter than yesterday.",
+    "answer": "Today is hotter than yesterday."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "English is easier than Chinese.",
+    "answer": "English is easier than Chinese."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "This is the best film of the year.",
+    "answer": "This is the best film of the year."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "She is the youngest in the family.",
+    "answer": "She is the youngest in the family."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "He is as tall as his father.",
+    "answer": "He is as tall as his father."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "My phone isn't as expensive as yours.",
+    "answer": "My phone isn't as expensive as yours."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "It is the most beautiful city I know.",
+    "answer": "It is the most beautiful city I know."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Cars are faster than bicycles.",
+    "answer": "Cars are faster than bicycles."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "This lesson is more interesting than the last one.",
+    "answer": "This lesson is more interesting than the last one."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "Winter is colder than autumn.",
+    "answer": "Winter is colder than autumn."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "He drives more carefully than me.",
+    "answer": "He drives more carefully than me."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "She sings better than her sister.",
+    "answer": "She sings better than her sister."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "This is the worst day of my life.",
+    "answer": "This is the worst day of my life."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "The blue one is more comfortable.",
+    "answer": "The blue one is more comfortable."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I am older than my cousin.",
+    "answer": "I am older than my cousin."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Which is the longest river in the world?",
+    "answer": "Which is the longest river in the world?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "The test was easier than I expected.",
+    "answer": "The test was easier than I expected."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "My room is smaller than yours.",
+    "answer": "My room is smaller than yours."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "It's the cheapest hotel in town.",
+    "answer": "It's the cheapest hotel in town."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Football is the most popular sport.",
+    "answer": "Football is the most popular sport."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "He runs faster than anybody in the class.",
+    "answer": "He runs faster than anybody in the class."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "The hotel is too expensive for us.",
+    "answer": "The hotel is too expensive for us."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "She is old enough to drive.",
+    "answer": "She is old enough to drive."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "This soup isn't hot enough.",
+    "answer": "This soup isn't hot enough."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "There are too many people here.",
+    "answer": "There are too many people here."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "It's too cold to swim.",
+    "answer": "It's too cold to swim."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Is your bag as heavy as mine?",
+    "answer": "Is your bag as heavy as mine?"
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-7",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Questions and replies",
+  "title": "Ma'lumot so'rash",
+  "order": 6,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Could you tell me where the bank is?",
+    "answer": "Could you tell me where the bank is?"
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Do you know what time it starts?",
+    "answer": "Do you know what time it starts?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I don't know where he lives.",
+    "answer": "I don't know where he lives."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Can you tell me how much this costs?",
+    "answer": "Can you tell me how much this costs?"
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I wonder who she is.",
+    "answer": "I wonder who she is."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Do you know if the shop is open?",
+    "answer": "Do you know if the shop is open?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "So do I.",
+    "answer": "So do I."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Neither do I.",
+    "answer": "Neither do I."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I'd like to book a table for four.",
+    "answer": "I'd like to book a table for four."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Could you repeat that, please?",
+    "answer": "Could you repeat that, please?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "What does this word mean?",
+    "answer": "What does this word mean?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "How do you spell your name?",
+    "answer": "How do you spell your name?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "Excuse me, is this seat free?",
+    "answer": "Excuse me, is this seat free?"
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Can I pay by card?",
+    "answer": "Can I pay by card?"
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Could I have the bill, please?",
+    "answer": "Could I have the bill, please?"
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "I'm looking for a post office.",
+    "answer": "I'm looking for a post office."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Do you mind if I open the window?",
+    "answer": "Do you mind if I open the window?"
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "What would you recommend?",
+    "answer": "What would you recommend?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "How long does it take to get there?",
+    "answer": "How long does it take to get there?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry, I didn't understand.",
+    "answer": "I'm sorry, I didn't understand."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Could you speak more slowly?",
+    "answer": "Could you speak more slowly?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "What time does the train leave?",
+    "answer": "What time does the train leave?"
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Is there a pharmacy near here?",
+    "answer": "Is there a pharmacy near here?"
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I'd like to change some money.",
+    "answer": "I'd like to change some money."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Could you help me, please?",
+    "answer": "Could you help me, please?"
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I'll have the chicken, please.",
+    "answer": "I'll have the chicken, please."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Which bus goes to the airport?",
+    "answer": "Which bus goes to the airport?"
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "I can't find my ticket.",
+    "answer": "I can't find my ticket."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Would you like some tea?",
+    "answer": "Would you like some tea?"
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "That sounds great.",
+    "answer": "That sounds great."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-8",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Habits and life",
+  "title": "Odatlar va hayot",
+  "order": 7,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I used to play football every day.",
+    "answer": "I used to play football every day."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "We used to live in a village.",
+    "answer": "We used to live in a village."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "She didn't use to like coffee.",
+    "answer": "She didn't use to like coffee."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I enjoy cooking for my family.",
+    "answer": "I enjoy cooking for my family."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "He wants to be a pilot.",
+    "answer": "He wants to be a pilot."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I'm learning to play the guitar.",
+    "answer": "I'm learning to play the guitar."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "She stopped smoking last year.",
+    "answer": "She stopped smoking last year."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I can't stand waiting in queues.",
+    "answer": "I can't stand waiting in queues."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "We decided to move to a new house.",
+    "answer": "We decided to move to a new house."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I'd like to visit Japan one day.",
+    "answer": "I'd like to visit Japan one day."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "He promised to help me.",
+    "answer": "He promised to help me."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "I'm good at drawing.",
+    "answer": "I'm good at drawing."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I'm afraid of spiders.",
+    "answer": "I'm afraid of spiders."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "She is interested in history.",
+    "answer": "She is interested in history."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I'm looking forward to the holiday.",
+    "answer": "I'm looking forward to the holiday."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "I'm tired of this weather.",
+    "answer": "I'm tired of this weather."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "He is famous for his songs.",
+    "answer": "He is famous for his songs."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "They are proud of their son.",
+    "answer": "They are proud of their son."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I'm worried about my exam.",
+    "answer": "I'm worried about my exam."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "We are late for school.",
+    "answer": "We are late for school."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "My hobby is collecting stamps.",
+    "answer": "My hobby is collecting stamps."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I spend a lot of time online.",
+    "answer": "I spend a lot of time online."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I never eat fast food.",
+    "answer": "I never eat fast food."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "She always says hello to everyone.",
+    "answer": "She always says hello to everyone."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "He hardly ever watches TV.",
+    "answer": "He hardly ever watches TV."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I usually go to bed at eleven.",
+    "answer": "I usually go to bed at eleven."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I'm trying to eat healthy food.",
+    "answer": "I'm trying to eat healthy food."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "It takes me twenty minutes to get to work.",
+    "answer": "It takes me twenty minutes to get to work."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I feel much better today.",
+    "answer": "I feel much better today."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Life is better in a small town.",
+    "answer": "Life is better in a small town."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-9",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "At the restaurant",
+  "title": "Restoranda",
+  "order": 7,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Hello, I booked a table for four people.",
+    "answer": "Hello, I booked a table for four people."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Could we have a table near the window?",
+    "answer": "Could we have a table near the window?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Can I see the menu, please?",
+    "answer": "Can I see the menu, please?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "What do you recommend for the main course?",
+    "answer": "What do you recommend for the main course?"
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Yesterday we ate here and the soup was delicious.",
+    "answer": "Yesterday we ate here and the soup was delicious."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I would like the chicken with rice, please.",
+    "answer": "I would like the chicken with rice, please."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Is the fish fresher than the beef today?",
+    "answer": "Is the fish fresher than the beef today?"
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I can't eat nuts because I am allergic.",
+    "answer": "I can't eat nuts because I am allergic."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Could you bring us some more water?",
+    "answer": "Could you bring us some more water?"
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "We will order dessert after the main course.",
+    "answer": "We will order dessert after the main course."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "My friend wants a vegetarian pizza without cheese.",
+    "answer": "My friend wants a vegetarian pizza without cheese."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "The pasta was better than the one I had last week.",
+    "answer": "The pasta was better than the one I had last week."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "Excuse me, we are ready to order now.",
+    "answer": "Excuse me, we are ready to order now."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Should I pay at the table or at the counter?",
+    "answer": "Should I pay at the table or at the counter?"
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "The waiter was very kind and he spoke slowly.",
+    "answer": "The waiter was very kind and he spoke slowly."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "I didn't order this salad, I asked for soup.",
+    "answer": "I didn't order this salad, I asked for soup."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "How long will the food take to arrive?",
+    "answer": "How long will the food take to arrive?"
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "This steak is too salty for me.",
+    "answer": "This steak is too salty for me."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Can we have the bill, please?",
+    "answer": "Can we have the bill, please?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Is service included in the price?",
+    "answer": "Is service included in the price?"
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "We waited for forty minutes yesterday evening.",
+    "answer": "We waited for forty minutes yesterday evening."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I will have a cup of tea with lemon.",
+    "answer": "I will have a cup of tea with lemon."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Do you have a smaller portion for children?",
+    "answer": "Do you have a smaller portion for children?"
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "The restaurant was more crowded than we expected.",
+    "answer": "The restaurant was more crowded than we expected."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Could I change my order to the grilled vegetables?",
+    "answer": "Could I change my order to the grilled vegetables?"
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Where can I wash my hands, please?",
+    "answer": "Where can I wash my hands, please?"
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "We enjoyed the dinner and we will come again.",
+    "answer": "We enjoyed the dinner and we will come again."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Can I pay by card, or only with cash?",
+    "answer": "Can I pay by card, or only with cash?"
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Please keep the change, the meal was wonderful.",
+    "answer": "Please keep the change, the meal was wonderful."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Could you pack the rest of my food to take away?",
+    "answer": "Could you pack the rest of my food to take away?"
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-10",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Booking and tickets",
+  "title": "Bron va chiptalar",
+  "order": 8,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I would like to book two tickets to Samarkand.",
+    "answer": "I would like to book two tickets to Samarkand."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "What time does the next train leave?",
+    "answer": "What time does the next train leave?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Is there a cheaper ticket than this one?",
+    "answer": "Is there a cheaper ticket than this one?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I bought my ticket online yesterday morning.",
+    "answer": "I bought my ticket online yesterday morning."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Can I change my flight to Friday, please?",
+    "answer": "Can I change my flight to Friday, please?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "How much is a return ticket to Bukhara?",
+    "answer": "How much is a return ticket to Bukhara?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "The bus will arrive at the station at six.",
+    "answer": "The bus will arrive at the station at six."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Do I need to show my passport at the gate?",
+    "answer": "Do I need to show my passport at the gate?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Which platform does the train to Tashkent use?",
+    "answer": "Which platform does the train to Tashkent use?"
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I booked a hotel room for three nights.",
+    "answer": "I booked a hotel room for three nights."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Could you send me the booking number by email?",
+    "answer": "Could you send me the booking number by email?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "The plane was late, so we missed our connection.",
+    "answer": "The plane was late, so we missed our connection."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I would like a window seat, if possible.",
+    "answer": "I would like a window seat, if possible."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Are there any tickets left for tonight's concert?",
+    "answer": "Are there any tickets left for tonight's concert?"
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "We can't cancel the booking after tomorrow.",
+    "answer": "We can't cancel the booking after tomorrow."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Children under five will travel for free.",
+    "answer": "Children under five will travel for free."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "The first class seats are more comfortable than these.",
+    "answer": "The first class seats are more comfortable than these."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I lost my ticket at the station yesterday.",
+    "answer": "I lost my ticket at the station yesterday."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Can you tell me where the ticket office is?",
+    "answer": "Can you tell me where the ticket office is?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "We should arrive at the airport two hours early.",
+    "answer": "We should arrive at the airport two hours early."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Does the price include breakfast and a taxi?",
+    "answer": "Does the price include breakfast and a taxi?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I paid for the tickets with my credit card.",
+    "answer": "I paid for the tickets with my credit card."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "The film starts at eight, so we must hurry.",
+    "answer": "The film starts at eight, so we must hurry."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Is this seat free, or has someone booked it?",
+    "answer": "Is this seat free, or has someone booked it?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I will check the timetable before we leave.",
+    "answer": "I will check the timetable before we leave."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "My reservation is under the name of Karimov.",
+    "answer": "My reservation is under the name of Karimov."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "May I have a receipt for the tickets, please?",
+    "answer": "May I have a receipt for the tickets, please?"
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "The tour was cancelled because of the heavy rain.",
+    "answer": "The tour was cancelled because of the heavy rain."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "We want to travel in the evening, not in the morning.",
+    "answer": "We want to travel in the evening, not in the morning."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Please call me if the train is delayed.",
+    "answer": "Please call me if the train is delayed."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-11",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Health problems",
+  "title": "Sog'liq muammolari",
+  "order": 9,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I have a terrible headache since this morning.",
+    "answer": "I have a terrible headache since this morning."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "My throat hurts and I can't swallow well.",
+    "answer": "My throat hurts and I can't swallow well."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I think I have a fever, I feel hot.",
+    "answer": "I think I have a fever, I feel hot."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Yesterday I fell down and hurt my knee.",
+    "answer": "Yesterday I fell down and hurt my knee."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "You should stay in bed and drink warm tea.",
+    "answer": "You should stay in bed and drink warm tea."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I need to make an appointment with the doctor.",
+    "answer": "I need to make an appointment with the doctor."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "How long have you felt sick, Mr. Aliyev?",
+    "answer": "How long have you felt sick, Mr. Aliyev?"
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "The doctor said I must rest for three days.",
+    "answer": "The doctor said I must rest for three days."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Take this medicine twice a day after meals.",
+    "answer": "Take this medicine twice a day after meals."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I can't sleep because my cough is getting worse.",
+    "answer": "I can't sleep because my cough is getting worse."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Do you have any allergies to medicine?",
+    "answer": "Do you have any allergies to medicine?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "My back hurt a lot after I carried the boxes.",
+    "answer": "My back hurt a lot after I carried the boxes."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "You shouldn't go to work when you are ill.",
+    "answer": "You shouldn't go to work when you are ill."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I will buy some medicine from the pharmacy.",
+    "answer": "I will buy some medicine from the pharmacy."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "She felt dizzy, so she sat down quickly.",
+    "answer": "She felt dizzy, so she sat down quickly."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "My stomach is more painful than it was last night.",
+    "answer": "My stomach is more painful than it was last night."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Please open your mouth and say aaa.",
+    "answer": "Please open your mouth and say aaa."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I didn't eat anything because I felt sick.",
+    "answer": "I didn't eat anything because I felt sick."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "You must drink plenty of water and sleep well.",
+    "answer": "You must drink plenty of water and sleep well."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "My son has a cold and a runny nose.",
+    "answer": "My son has a cold and a runny nose."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Could you give me something for my toothache?",
+    "answer": "Could you give me something for my toothache?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I will go to the dentist tomorrow morning.",
+    "answer": "I will go to the dentist tomorrow morning."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "The nurse took my temperature and checked my blood.",
+    "answer": "The nurse took my temperature and checked my blood."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Does it hurt when I touch your arm here?",
+    "answer": "Does it hurt when I touch your arm here?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I think I broke my finger in the game.",
+    "answer": "I think I broke my finger in the game."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "You will feel better in a few days.",
+    "answer": "You will feel better in a few days."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Where is the nearest hospital, please?",
+    "answer": "Where is the nearest hospital, please?"
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "I have been tired and weak all week.",
+    "answer": "I have been tired and weak all week."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Wash your hands often so you don't catch the flu.",
+    "answer": "Wash your hands often so you don't catch the flu."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Call an ambulance quickly, he cannot breathe properly!",
+    "answer": "Call an ambulance quickly, he cannot breathe properly!"
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-12",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Shopping for clothes",
+  "title": "Kiyim sotib olish",
+  "order": 10,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Excuse me, do you have this shirt in blue?",
+    "answer": "Excuse me, do you have this shirt in blue?"
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Can I try these trousers on, please?",
+    "answer": "Can I try these trousers on, please?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Where are the fitting rooms in this shop?",
+    "answer": "Where are the fitting rooms in this shop?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "This jacket is too small for me.",
+    "answer": "This jacket is too small for me."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Do you have a bigger size than this one?",
+    "answer": "Do you have a bigger size than this one?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "How much does this red dress cost?",
+    "answer": "How much does this red dress cost?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I bought these shoes last week, but they hurt.",
+    "answer": "I bought these shoes last week, but they hurt."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "These jeans are cheaper than the black ones.",
+    "answer": "These jeans are cheaper than the black ones."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I will take the green sweater, please.",
+    "answer": "I will take the green sweater, please."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Is there a discount on winter coats today?",
+    "answer": "Is there a discount on winter coats today?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "The sleeves are longer than I expected.",
+    "answer": "The sleeves are longer than I expected."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Could I return this shirt and get my money back?",
+    "answer": "Could I return this shirt and get my money back?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I am looking for a warm hat for my son.",
+    "answer": "I am looking for a warm hat for my son."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "This colour doesn't suit me very well.",
+    "answer": "This colour doesn't suit me very well."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Do you accept cards, or only cash?",
+    "answer": "Do you accept cards, or only cash?"
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "My sister will wear this dress at the wedding.",
+    "answer": "My sister will wear this dress at the wedding."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Can you show me some cheaper sandals, please?",
+    "answer": "Can you show me some cheaper sandals, please?"
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "The shop was crowded, so we left early.",
+    "answer": "The shop was crowded, so we left early."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I need a medium size, not a large one.",
+    "answer": "I need a medium size, not a large one."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "These socks are softer than my old ones.",
+    "answer": "These socks are softer than my old ones."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Yesterday I found a beautiful scarf in the market.",
+    "answer": "Yesterday I found a beautiful scarf in the market."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Could you wrap it as a gift, please?",
+    "answer": "Could you wrap it as a gift, please?"
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "The belt looks nice, but it is expensive.",
+    "answer": "The belt looks nice, but it is expensive."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I will come back tomorrow when the sale starts.",
+    "answer": "I will come back tomorrow when the sale starts."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Do you have the same coat in grey?",
+    "answer": "Do you have the same coat in grey?"
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "This T-shirt shrank after I washed it.",
+    "answer": "This T-shirt shrank after I washed it."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Which one looks better, the blue or the white?",
+    "answer": "Which one looks better, the blue or the white?"
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "I want something comfortable for the long trip.",
+    "answer": "I want something comfortable for the long trip."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "The cashier gave me the wrong change.",
+    "answer": "The cashier gave me the wrong change."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Thank you, I think I will buy both.",
+    "answer": "Thank you, I think I will buy both."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-13",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Renting a flat",
+  "title": "Kvartira ijaraga olish",
+  "order": 11,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I am looking for a flat to rent.",
+    "answer": "I am looking for a flat to rent."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "How much is the rent for this flat?",
+    "answer": "How much is the rent for this flat?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Is the flat near the metro station?",
+    "answer": "Is the flat near the metro station?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "The kitchen is bigger than in my old flat.",
+    "answer": "The kitchen is bigger than in my old flat."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Can I see the bedroom and the bathroom?",
+    "answer": "Can I see the bedroom and the bathroom?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Are the bills included in the monthly price?",
+    "answer": "Are the bills included in the monthly price?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I will need a deposit before I move in.",
+    "answer": "I will need a deposit before I move in."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "How many rooms does the apartment have?",
+    "answer": "How many rooms does the apartment have?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Last year I lived in a small studio.",
+    "answer": "Last year I lived in a small studio."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Is the building quiet at night?",
+    "answer": "Is the building quiet at night?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "The landlord said we can keep a cat.",
+    "answer": "The landlord said we can keep a cat."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Could you fix the broken window before Monday?",
+    "answer": "Could you fix the broken window before Monday?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "We will sign the contract on Friday afternoon.",
+    "answer": "We will sign the contract on Friday afternoon."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Does the flat have a washing machine and a fridge?",
+    "answer": "Does the flat have a washing machine and a fridge?"
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "This area is safer than the centre of the city.",
+    "answer": "This area is safer than the centre of the city."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "The neighbours are friendly and they help us often.",
+    "answer": "The neighbours are friendly and they help us often."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I can't pay more than four hundred dollars.",
+    "answer": "I can't pay more than four hundred dollars."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Which floor is the flat on, please?",
+    "answer": "Which floor is the flat on, please?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "There is no lift, so we must use the stairs.",
+    "answer": "There is no lift, so we must use the stairs."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "How long is the minimum rental period?",
+    "answer": "How long is the minimum rental period?"
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I moved into my new flat last month.",
+    "answer": "I moved into my new flat last month."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "The heating doesn't work, so the rooms are cold.",
+    "answer": "The heating doesn't work, so the rooms are cold."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Can we paint the walls a different colour?",
+    "answer": "Can we paint the walls a different colour?"
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "We will give you the keys tomorrow morning.",
+    "answer": "We will give you the keys tomorrow morning."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Is there a supermarket or a park nearby?",
+    "answer": "Is there a supermarket or a park nearby?"
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "The balcony is small, but the view is lovely.",
+    "answer": "The balcony is small, but the view is lovely."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I want a furnished flat with a good internet connection.",
+    "answer": "I want a furnished flat with a good internet connection."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Please tell me when I should pay the rent.",
+    "answer": "Please tell me when I should pay the rent."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "The agent will show us two more flats today.",
+    "answer": "The agent will show us two more flats today."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I think this flat is perfect for our family.",
+    "answer": "I think this flat is perfect for our family."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-14",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Telephone conversations",
+  "title": "Telefon suhbatlari",
+  "order": 11,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Hello, this is Anna speaking.",
+    "answer": "Hello, this is Anna speaking."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Can I speak to Mr. Brown, please?",
+    "answer": "Can I speak to Mr. Brown, please?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry, he is not here today.",
+    "answer": "I'm sorry, he is not here today."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Could you ask him to call me back?",
+    "answer": "Could you ask him to call me back?"
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I called you yesterday, but nobody answered.",
+    "answer": "I called you yesterday, but nobody answered."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Please hold on for a moment.",
+    "answer": "Please hold on for a moment."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Can you speak a little louder, please?",
+    "answer": "Can you speak a little louder, please?"
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I can't hear you very well.",
+    "answer": "I can't hear you very well."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "The line is bad, so I will call again.",
+    "answer": "The line is bad, so I will call again."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "What is your phone number, please?",
+    "answer": "What is your phone number, please?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Can I take a message for him?",
+    "answer": "Can I take a message for him?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "I will tell her you called.",
+    "answer": "I will tell her you called."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "Sorry, I think you have the wrong number.",
+    "answer": "Sorry, I think you have the wrong number."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "My phone battery is very low now.",
+    "answer": "My phone battery is very low now."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I will phone you after lunch tomorrow.",
+    "answer": "I will phone you after lunch tomorrow."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Who is calling, please, and from where?",
+    "answer": "Who is calling, please, and from where?"
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Can you spell your last name for me?",
+    "answer": "Can you spell your last name for me?"
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I'm calling about the flat you advertised.",
+    "answer": "I'm calling about the flat you advertised."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "She was in a meeting when I called.",
+    "answer": "She was in a meeting when I called."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Would you like to leave a message?",
+    "answer": "Would you like to leave a message?"
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I'll send you a text message later.",
+    "answer": "I'll send you a text message later."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Thank you for calling our office today.",
+    "answer": "Thank you for calling our office today."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Could you repeat that more slowly, please?",
+    "answer": "Could you repeat that more slowly, please?"
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "He will call you back in ten minutes.",
+    "answer": "He will call you back in ten minutes."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I didn't have my phone with me yesterday.",
+    "answer": "I didn't have my phone with me yesterday."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Is this a good time to talk?",
+    "answer": "Is this a good time to talk?"
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I'm busy now, so I'll call you tonight.",
+    "answer": "I'm busy now, so I'll call you tonight."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "My sister phoned me from London last night.",
+    "answer": "My sister phoned me from London last night."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Please call me if you are going to be late.",
+    "answer": "Please call me if you are going to be late."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Goodbye, and thanks for your help.",
+    "answer": "Goodbye, and thanks for your help."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-15",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Describing people",
+  "title": "Odamlarni tasvirlash",
+  "order": 12,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "My brother is taller than me.",
+    "answer": "My brother is taller than me."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "She has long dark hair and brown eyes.",
+    "answer": "She has long dark hair and brown eyes."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "He is a quiet and kind man.",
+    "answer": "He is a quiet and kind man."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "My grandmother is older than my grandfather.",
+    "answer": "My grandmother is older than my grandfather."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "What does your new teacher look like?",
+    "answer": "What does your new teacher look like?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "He was wearing a blue jacket yesterday.",
+    "answer": "He was wearing a blue jacket yesterday."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "She is the funniest girl in our class.",
+    "answer": "She is the funniest girl in our class."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "My cousin has short curly hair.",
+    "answer": "My cousin has short curly hair."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "He isn't very tall, but he is strong.",
+    "answer": "He isn't very tall, but he is strong."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "She looks younger than her real age.",
+    "answer": "She looks younger than her real age."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "My best friend is friendly and always helpful.",
+    "answer": "My best friend is friendly and always helpful."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "The man at the door has a beard.",
+    "answer": "The man at the door has a beard."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "My father will be fifty years old next month.",
+    "answer": "My father will be fifty years old next month."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "She is more careful than her little brother.",
+    "answer": "She is more careful than her little brother."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "He can be shy when he meets new people.",
+    "answer": "He can be shy when he meets new people."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "That girl with glasses is my neighbour.",
+    "answer": "That girl with glasses is my neighbour."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "My uncle was a very hard worker.",
+    "answer": "My uncle was a very hard worker."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Is your sister older or younger than you?",
+    "answer": "Is your sister older or younger than you?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "He has a big smile and a loud laugh.",
+    "answer": "He has a big smile and a loud laugh."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "She is not lazy, she is just tired.",
+    "answer": "She is not lazy, she is just tired."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "The new student is quite tall and thin.",
+    "answer": "The new student is quite tall and thin."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "My mother is the most patient person I know.",
+    "answer": "My mother is the most patient person I know."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "He looks angry, but he is really kind.",
+    "answer": "He looks angry, but he is really kind."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I think she is a little bit nervous.",
+    "answer": "I think she is a little bit nervous."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "My friend is more confident than I am.",
+    "answer": "My friend is more confident than I am."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "He had a small scar on his hand.",
+    "answer": "He had a small scar on his hand."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "The woman in the red dress is my aunt.",
+    "answer": "The woman in the red dress is my aunt."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "They are twins, but they look very different.",
+    "answer": "They are twins, but they look very different."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "She will probably be a great doctor one day.",
+    "answer": "She will probably be a great doctor one day."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I would describe him as polite and clever.",
+    "answer": "I would describe him as polite and clever."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-16",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Weekend plans",
+  "title": "Dam olish kuni rejalari",
+  "order": 13,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "What are you going to do this weekend?",
+    "answer": "What are you going to do this weekend?"
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I'm going to visit my grandparents on Saturday.",
+    "answer": "I'm going to visit my grandparents on Saturday."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "We will have a picnic if it's sunny.",
+    "answer": "We will have a picnic if it's sunny."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Do you want to come to the cinema with us?",
+    "answer": "Do you want to come to the cinema with us?"
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Last weekend I stayed at home and watched films.",
+    "answer": "Last weekend I stayed at home and watched films."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I might go shopping with my mother tomorrow.",
+    "answer": "I might go shopping with my mother tomorrow."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "On Sunday we are going to play football.",
+    "answer": "On Sunday we are going to play football."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "She will probably sleep until noon on Saturday.",
+    "answer": "She will probably sleep until noon on Saturday."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Let's meet in the park at ten o'clock.",
+    "answer": "Let's meet in the park at ten o'clock."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I can't come because I have to study.",
+    "answer": "I can't come because I have to study."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "We went to the mountains last weekend.",
+    "answer": "We went to the mountains last weekend."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Would you like to have dinner at our house?",
+    "answer": "Would you like to have dinner at our house?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "He is going to clean his room on Sunday.",
+    "answer": "He is going to clean his room on Sunday."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "The weather will be better on Sunday than Saturday.",
+    "answer": "The weather will be better on Sunday than Saturday."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I'm planning to cook a big family lunch.",
+    "answer": "I'm planning to cook a big family lunch."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Did you do anything interesting last Saturday?",
+    "answer": "Did you do anything interesting last Saturday?"
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "My friends and I are going to a concert.",
+    "answer": "My friends and I are going to a concert."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "If it rains, we will stay at home.",
+    "answer": "If it rains, we will stay at home."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I want to relax and read a good book.",
+    "answer": "I want to relax and read a good book."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "They are going to travel to the sea on Friday.",
+    "answer": "They are going to travel to the sea on Friday."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "What time shall we meet on Saturday morning?",
+    "answer": "What time shall we meet on Saturday morning?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "I will call you when I wake up.",
+    "answer": "I will call you when I wake up."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "We visited the old market and bought some fruit.",
+    "answer": "We visited the old market and bought some fruit."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Are you free on Sunday afternoon?",
+    "answer": "Are you free on Sunday afternoon?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "My brother is going to help me move house.",
+    "answer": "My brother is going to help me move house."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I'd like to go swimming, but the pool is closed.",
+    "answer": "I'd like to go swimming, but the pool is closed."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "She will bring cake, and I will bring drinks.",
+    "answer": "She will bring cake, and I will bring drinks."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "We had a great time at the party.",
+    "answer": "We had a great time at the party."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Don't forget that we are meeting at six.",
+    "answer": "Don't forget that we are meeting at six."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I hope you have a lovely weekend.",
+    "answer": "I hope you have a lovely weekend."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-17",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Giving directions in a city",
+  "title": "Shaharda yo'l ko'rsatish",
+  "order": 14,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Excuse me, how can I get to the station?",
+    "answer": "Excuse me, how can I get to the station?"
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Go straight ahead for two hundred metres.",
+    "answer": "Go straight ahead for two hundred metres."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Turn left at the traffic lights.",
+    "answer": "Turn left at the traffic lights."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "The bank is next to the big supermarket.",
+    "answer": "The bank is next to the big supermarket."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Take the second street on the right.",
+    "answer": "Take the second street on the right."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "It is about ten minutes from here on foot.",
+    "answer": "It is about ten minutes from here on foot."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "You can't miss it, it is very big.",
+    "answer": "You can't miss it, it is very big."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Cross the bridge and turn right after the church.",
+    "answer": "Cross the bridge and turn right after the church."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "The post office is opposite the hospital.",
+    "answer": "The post office is opposite the hospital."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Is there a pharmacy near here, please?",
+    "answer": "Is there a pharmacy near here, please?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Walk past the park and you will see it.",
+    "answer": "Walk past the park and you will see it."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "The bus stop is behind the library.",
+    "answer": "The bus stop is behind the library."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "You should take bus number twelve to the centre.",
+    "answer": "You should take bus number twelve to the centre."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry, I'm new here and I don't know.",
+    "answer": "I'm sorry, I'm new here and I don't know."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Go along this road until you see a cafe.",
+    "answer": "Go along this road until you see a cafe."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "The museum is between the school and the bank.",
+    "answer": "The museum is between the school and the bank."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "It's too far to walk, so take a taxi.",
+    "answer": "It's too far to walk, so take a taxi."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Turn right at the corner and go straight.",
+    "answer": "Turn right at the corner and go straight."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Where is the nearest metro station, please?",
+    "answer": "Where is the nearest metro station, please?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "You will find the market on your left.",
+    "answer": "You will find the market on your left."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Follow the signs to the city centre.",
+    "answer": "Follow the signs to the city centre."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "The hotel is at the end of this street.",
+    "answer": "The hotel is at the end of this street."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Can you show me the way on the map?",
+    "answer": "Can you show me the way on the map?"
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Take the underground and get off at Central Square.",
+    "answer": "Take the underground and get off at Central Square."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "It's easier to go by bus than by car.",
+    "answer": "It's easier to go by bus than by car."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Don't turn left, go straight on instead.",
+    "answer": "Don't turn left, go straight on instead."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I think we are lost, so let's ask someone.",
+    "answer": "I think we are lost, so let's ask someone."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "The restaurant is on the third floor, above the shop.",
+    "answer": "The restaurant is on the third floor, above the shop."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Walk down the hill and you will see the river.",
+    "answer": "Walk down the hill and you will see the river."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Thank you so much, that was very helpful.",
+    "answer": "Thank you so much, that was very helpful."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-18",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "School and studying",
+  "title": "Maktab va o'qish",
+  "order": 14,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "My first lesson starts at eight o'clock.",
+    "answer": "My first lesson starts at eight o'clock."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I studied for three hours last night.",
+    "answer": "I studied for three hours last night."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Our English teacher gave us a lot of homework.",
+    "answer": "Our English teacher gave us a lot of homework."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Maths is more difficult than history for me.",
+    "answer": "Maths is more difficult than history for me."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Can I borrow your pen, please?",
+    "answer": "Can I borrow your pen, please?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "We have an important exam next Monday.",
+    "answer": "We have an important exam next Monday."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "She will study medicine at university next year.",
+    "answer": "She will study medicine at university next year."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I didn't understand the last question in the test.",
+    "answer": "I didn't understand the last question in the test."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Could you explain this word to me again?",
+    "answer": "Could you explain this word to me again?"
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "He always sits at the front of the class.",
+    "answer": "He always sits at the front of the class."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "My favourite subject is biology because it is interesting.",
+    "answer": "My favourite subject is biology because it is interesting."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "We must hand in our projects on Friday.",
+    "answer": "We must hand in our projects on Friday."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I forgot my notebook at home this morning.",
+    "answer": "I forgot my notebook at home this morning."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "The library is quieter than the school cafe.",
+    "answer": "The library is quieter than the school cafe."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "You should read more books to learn new words.",
+    "answer": "You should read more books to learn new words."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Our teacher said we can use a dictionary.",
+    "answer": "Our teacher said we can use a dictionary."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I'm going to join the school chess club.",
+    "answer": "I'm going to join the school chess club."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Did you finish your homework before dinner yesterday?",
+    "answer": "Did you finish your homework before dinner yesterday?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "She got the best mark in the whole class.",
+    "answer": "She got the best mark in the whole class."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I have to learn twenty new words today.",
+    "answer": "I have to learn twenty new words today."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "The lesson was boring, so I felt sleepy.",
+    "answer": "The lesson was boring, so I felt sleepy."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Will you help me prepare for the exam?",
+    "answer": "Will you help me prepare for the exam?"
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "We had a short break after the second lesson.",
+    "answer": "We had a short break after the second lesson."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "He can't come to school because he is ill.",
+    "answer": "He can't come to school because he is ill."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I think science is the most useful subject.",
+    "answer": "I think science is the most useful subject."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Please open your books at page forty.",
+    "answer": "Please open your books at page forty."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "My classmates and I study together every Thursday.",
+    "answer": "My classmates and I study together every Thursday."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "She is learning to speak French at evening classes.",
+    "answer": "She is learning to speak French at evening classes."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Don't be late, because the teacher will be angry.",
+    "answer": "Don't be late, because the teacher will be angry."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I'm very happy because I passed my test.",
+    "answer": "I'm very happy because I passed my test."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-19",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Jobs and work routines",
+  "title": "Ish va kundalik tartib",
+  "order": 15,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I start work at eight every morning.",
+    "answer": "I start work at eight every morning."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "What time do you finish work today?",
+    "answer": "What time do you finish work today?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "My sister works in a big hospital.",
+    "answer": "My sister works in a big hospital."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Yesterday I had a very long meeting.",
+    "answer": "Yesterday I had a very long meeting."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "She was a teacher before she became a manager.",
+    "answer": "She was a teacher before she became a manager."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Do you usually work from home?",
+    "answer": "Do you usually work from home?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "I will send you the report tomorrow.",
+    "answer": "I will send you the report tomorrow."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "My new job is more interesting than my old one.",
+    "answer": "My new job is more interesting than my old one."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "He can fix almost any computer problem.",
+    "answer": "He can fix almost any computer problem."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "We had lunch together in the office yesterday.",
+    "answer": "We had lunch together in the office yesterday."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "You should take a short break now.",
+    "answer": "You should take a short break now."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Where did you work last year?",
+    "answer": "Where did you work last year?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I take the bus to work every day.",
+    "answer": "I take the bus to work every day."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "My boss is friendlier than I expected.",
+    "answer": "My boss is friendlier than I expected."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Could you help me with this email?",
+    "answer": "Could you help me with this email?"
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "She will start her new job next Monday.",
+    "answer": "She will start her new job next Monday."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I didn't finish my work on time.",
+    "answer": "I didn't finish my work on time."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "How many hours do you work each week?",
+    "answer": "How many hours do you work each week?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "The shop opens at nine and closes at six.",
+    "answer": "The shop opens at nine and closes at six."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "He must wear a uniform at his job.",
+    "answer": "He must wear a uniform at his job."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I worked in a restaurant two years ago.",
+    "answer": "I worked in a restaurant two years ago."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Are you going to apply for that job?",
+    "answer": "Are you going to apply for that job?"
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Our team is working on a new project.",
+    "answer": "Our team is working on a new project."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I usually drink coffee before I start working.",
+    "answer": "I usually drink coffee before I start working."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "My brother is a driver, and he works at night.",
+    "answer": "My brother is a driver, and he works at night."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "She earns more money than her husband.",
+    "answer": "She earns more money than her husband."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Can I leave early on Friday, please?",
+    "answer": "Can I leave early on Friday, please?"
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "We have a meeting at half past two.",
+    "answer": "We have a meeting at half past two."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I was tired after a busy day at work.",
+    "answer": "I was tired after a busy day at work."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "What do you want to be in the future?",
+    "answer": "What do you want to be in the future?"
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-20",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Travel stories",
+  "title": "Sayohat hikoyalari",
+  "order": 16,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Last summer we visited my uncle in Samarkand.",
+    "answer": "Last summer we visited my uncle in Samarkand."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "The train was faster than the bus.",
+    "answer": "The train was faster than the bus."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I lost my passport at the airport.",
+    "answer": "I lost my passport at the airport."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "We stayed in a small hotel near the sea.",
+    "answer": "We stayed in a small hotel near the sea."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Did you enjoy your trip to Turkey?",
+    "answer": "Did you enjoy your trip to Turkey?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "The flight was long, but I slept a lot.",
+    "answer": "The flight was long, but I slept a lot."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "She took many photos of the old city.",
+    "answer": "She took many photos of the old city."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Next year I will travel to London.",
+    "answer": "Next year I will travel to London."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "The weather was hotter than we expected.",
+    "answer": "The weather was hotter than we expected."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "How did you get to the hotel?",
+    "answer": "How did you get to the hotel?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "We missed the last bus and walked home.",
+    "answer": "We missed the last bus and walked home."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "He bought a beautiful carpet at the market.",
+    "answer": "He bought a beautiful carpet at the market."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I couldn't find the museum on the map.",
+    "answer": "I couldn't find the museum on the map."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "The tourists were waiting outside the station.",
+    "answer": "The tourists were waiting outside the station."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Can you tell me the way to the beach?",
+    "answer": "Can you tell me the way to the beach?"
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "It was the best holiday of my life.",
+    "answer": "It was the best holiday of my life."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "We met some friendly people on the train.",
+    "answer": "We met some friendly people on the train."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Are you going to visit your friends this summer?",
+    "answer": "Are you going to visit your friends this summer?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I forgot my camera, so I used my phone.",
+    "answer": "I forgot my camera, so I used my phone."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "The mountains were more beautiful than the pictures.",
+    "answer": "The mountains were more beautiful than the pictures."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Our plane landed late because of the rain.",
+    "answer": "Our plane landed late because of the rain."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "She told us a funny story about her journey.",
+    "answer": "She told us a funny story about her journey."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "We must leave the hotel before noon.",
+    "answer": "We must leave the hotel before noon."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I will never forget that wonderful night in Paris.",
+    "answer": "I will never forget that wonderful night in Paris."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "The driver showed us the way to the village.",
+    "answer": "The driver showed us the way to the village."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Did you have a good time in Dubai?",
+    "answer": "Did you have a good time in Dubai?"
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "My suitcase was heavier than yours.",
+    "answer": "My suitcase was heavier than yours."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "We climbed a hill and saw the whole town.",
+    "answer": "We climbed a hill and saw the whole town."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I would like to travel by train next time.",
+    "answer": "I would like to travel by train next time."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "They went camping by the lake last weekend.",
+    "answer": "They went camping by the lake last weekend."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-21",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Technology and phones",
+  "title": "Texnologiya va telefonlar",
+  "order": 17,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "My phone is newer than my brother's phone.",
+    "answer": "My phone is newer than my brother's phone."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I forgot to charge my battery last night.",
+    "answer": "I forgot to charge my battery last night."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Can you send me the photo, please?",
+    "answer": "Can you send me the photo, please?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "She bought a new laptop yesterday.",
+    "answer": "She bought a new laptop yesterday."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "The internet was very slow this morning.",
+    "answer": "The internet was very slow this morning."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I will call you when I get home.",
+    "answer": "I will call you when I get home."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Do you know how to use this app?",
+    "answer": "Do you know how to use this app?"
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "He dropped his phone and broke the screen.",
+    "answer": "He dropped his phone and broke the screen."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "My computer is older than yours.",
+    "answer": "My computer is older than yours."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "You should not look at your phone at dinner.",
+    "answer": "You should not look at your phone at dinner."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "We watched a funny video on my tablet.",
+    "answer": "We watched a funny video on my tablet."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "What is your phone number?",
+    "answer": "What is your phone number?"
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I sent her a message, but she didn't answer.",
+    "answer": "I sent her a message, but she didn't answer."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "This game is more fun than that one.",
+    "answer": "This game is more fun than that one."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Could you turn off your phone during the lesson?",
+    "answer": "Could you turn off your phone during the lesson?"
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "He is going to buy some new headphones.",
+    "answer": "He is going to buy some new headphones."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "My grandmother learned to send messages last year.",
+    "answer": "My grandmother learned to send messages last year."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "The wi-fi password is on the wall.",
+    "answer": "The wi-fi password is on the wall."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I can't open this file on my phone.",
+    "answer": "I can't open this file on my phone."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "She will download the app tonight.",
+    "answer": "She will download the app tonight."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "How much did you pay for that camera?",
+    "answer": "How much did you pay for that camera?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Please don't use your phone while you are driving.",
+    "answer": "Please don't use your phone while you are driving."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "My screen is too small to read the text.",
+    "answer": "My screen is too small to read the text."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "We talked online for two hours yesterday.",
+    "answer": "We talked online for two hours yesterday."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I must update my phone before the trip.",
+    "answer": "I must update my phone before the trip."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Is this laptop cheaper than the other one?",
+    "answer": "Is this laptop cheaper than the other one?"
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "He took a selfie with his friends.",
+    "answer": "He took a selfie with his friends."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "The new phone has a better camera.",
+    "answer": "The new phone has a better camera."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Did you see my message this morning?",
+    "answer": "Did you see my message this morning?"
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I need a charger because my battery is low.",
+    "answer": "I need a charger because my battery is low."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-22",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Invitations and apologies",
+  "title": "Taklif va uzr so'rash",
+  "order": 18,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Would you like to come to my party?",
+    "answer": "Would you like to come to my party?"
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry I was late this morning.",
+    "answer": "I'm sorry I was late this morning."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "We are having dinner at seven. Can you come?",
+    "answer": "We are having dinner at seven. Can you come?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Sorry, I can't come because I have to work.",
+    "answer": "Sorry, I can't come because I have to work."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Thank you for inviting me to your wedding.",
+    "answer": "Thank you for inviting me to your wedding."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "I'm really sorry about the mistake yesterday.",
+    "answer": "I'm really sorry about the mistake yesterday."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Will you join us for lunch on Saturday?",
+    "answer": "Will you join us for lunch on Saturday?"
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "She invited all her friends to her birthday.",
+    "answer": "She invited all her friends to her birthday."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I forgot your birthday, and I feel terrible.",
+    "answer": "I forgot your birthday, and I feel terrible."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "That's okay. Don't worry about it.",
+    "answer": "That's okay. Don't worry about it."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Could you please forgive me for being rude?",
+    "answer": "Could you please forgive me for being rude?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "We would love to visit you next weekend.",
+    "answer": "We would love to visit you next weekend."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "He apologized for breaking the window.",
+    "answer": "He apologized for breaking the window."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Do you want to go to the cinema tonight?",
+    "answer": "Do you want to go to the cinema tonight?"
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry, but I didn't understand the question.",
+    "answer": "I'm sorry, but I didn't understand the question."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Come to our house for tea tomorrow evening.",
+    "answer": "Come to our house for tea tomorrow evening."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Sorry for the noise. We were watching a movie.",
+    "answer": "Sorry for the noise. We were watching a movie."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "I will bring some cake to your party.",
+    "answer": "I will bring some cake to your party."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Are you free on Sunday afternoon?",
+    "answer": "Are you free on Sunday afternoon?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "She said sorry and gave me a small gift.",
+    "answer": "She said sorry and gave me a small gift."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I'd love to, but I'm busy that day.",
+    "answer": "I'd love to, but I'm busy that day."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Thank you, we had a wonderful time.",
+    "answer": "Thank you, we had a wonderful time."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Please excuse me for leaving so early.",
+    "answer": "Please excuse me for leaving so early."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Let's meet in front of the cinema at six.",
+    "answer": "Let's meet in front of the cinema at six."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry I didn't call you back.",
+    "answer": "I'm sorry I didn't call you back."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "They invited us to stay for dinner.",
+    "answer": "They invited us to stay for dinner."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "What time should we arrive at your house?",
+    "answer": "What time should we arrive at your house?"
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "He was sorry for what he said.",
+    "answer": "He was sorry for what he said."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Could you give me another chance, please?",
+    "answer": "Could you give me another chance, please?"
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "We hope you can join us next time.",
+    "answer": "We hope you can join us next time."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-23",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Money and prices",
+  "title": "Pul va narxlar",
+  "order": 18,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "How much is this jacket, please?",
+    "answer": "How much is this jacket, please?"
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "That is too expensive for me.",
+    "answer": "That is too expensive for me."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I paid ten dollars for this book.",
+    "answer": "I paid ten dollars for this book."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Can I pay by card in this shop?",
+    "answer": "Can I pay by card in this shop?"
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "The bread was cheaper than I expected.",
+    "answer": "The bread was cheaper than I expected."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "She saved enough money to buy a bike.",
+    "answer": "She saved enough money to buy a bike."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Do you have any cheaper shoes?",
+    "answer": "Do you have any cheaper shoes?"
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I will pay for the coffee today.",
+    "answer": "I will pay for the coffee today."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "He spent all his money on new clothes.",
+    "answer": "He spent all his money on new clothes."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "The vegetables at the market are fresher and cheaper.",
+    "answer": "The vegetables at the market are fresher and cheaper."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Could I have a receipt, please?",
+    "answer": "Could I have a receipt, please?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "My rent is higher than it was last year.",
+    "answer": "My rent is higher than it was last year."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "We should save some money every month.",
+    "answer": "We should save some money every month."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "How much change did you get yesterday?",
+    "answer": "How much change did you get yesterday?"
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "This phone costs more than my monthly salary.",
+    "answer": "This phone costs more than my monthly salary."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "I left my wallet at home this morning.",
+    "answer": "I left my wallet at home this morning."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Is there a discount on these shirts?",
+    "answer": "Is there a discount on these shirts?"
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "She gave the taxi driver twenty dollars.",
+    "answer": "She gave the taxi driver twenty dollars."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I'm going to open a bank account next week.",
+    "answer": "I'm going to open a bank account next week."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "The restaurant bill was bigger than we thought.",
+    "answer": "The restaurant bill was bigger than we thought."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "Can you lend me some money until Friday?",
+    "answer": "Can you lend me some money until Friday?"
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "He won't buy it because it's too dear.",
+    "answer": "He won't buy it because it's too dear."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "We spent less money on this trip than last time.",
+    "answer": "We spent less money on this trip than last time."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "What is the price of a bus ticket?",
+    "answer": "What is the price of a bus ticket?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I only have small coins in my pocket.",
+    "answer": "I only have small coins in my pocket."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "She sells fruit and makes a good profit.",
+    "answer": "She sells fruit and makes a good profit."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "Please count your change before you leave.",
+    "answer": "Please count your change before you leave."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "My father gave me some money for my birthday.",
+    "answer": "My father gave me some money for my birthday."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I usually buy my food in the cheapest shop.",
+    "answer": "I usually buy my food in the cheapest shop."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "You must pay the bill before the end of the month.",
+    "answer": "You must pay the bill before the end of the month."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-24",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Past holidays",
+  "title": "O'tgan ta'tillar",
+  "order": 19,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Last summer we went to the seaside.",
+    "answer": "Last summer we went to the seaside."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Where did you go on your last holiday?",
+    "answer": "Where did you go on your last holiday?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I stayed in a small hotel near the beach.",
+    "answer": "I stayed in a small hotel near the beach."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "The weather was hot and sunny every day.",
+    "answer": "The weather was hot and sunny every day."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "We travelled to Spain by plane.",
+    "answer": "We travelled to Spain by plane."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Did you take many photos on the trip?",
+    "answer": "Did you take many photos on the trip?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "My sister lost her passport at the airport.",
+    "answer": "My sister lost her passport at the airport."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "We visited a lot of old castles.",
+    "answer": "We visited a lot of old castles."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "The food there was cheaper than at home.",
+    "answer": "The food there was cheaper than at home."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "I didn't sleep well on the night train.",
+    "answer": "I didn't sleep well on the night train."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "How long did you stay in Italy?",
+    "answer": "How long did you stay in Italy?"
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "We rented a car and drove along the coast.",
+    "answer": "We rented a car and drove along the coast."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "The children swam in the sea all afternoon.",
+    "answer": "The children swam in the sea all afternoon."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "I bought some presents for my family.",
+    "answer": "I bought some presents for my family."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Our hotel room had a beautiful view.",
+    "answer": "Our hotel room had a beautiful view."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "It rained on the first two days.",
+    "answer": "It rained on the first two days."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "We met some friendly people from Germany.",
+    "answer": "We met some friendly people from Germany."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Did you enjoy the trip to the mountains?",
+    "answer": "Did you enjoy the trip to the mountains?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I climbed a very high hill with my dad.",
+    "answer": "I climbed a very high hill with my dad."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "The flight was longer than I expected.",
+    "answer": "The flight was longer than I expected."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "We didn't have enough money for a taxi.",
+    "answer": "We didn't have enough money for a taxi."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "My brother got sunburned on the second day.",
+    "answer": "My brother got sunburned on the second day."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Next year I will visit my uncle in Turkey.",
+    "answer": "Next year I will visit my uncle in Turkey."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Was the hotel better than the last one?",
+    "answer": "Was the hotel better than the last one?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "We ate fresh fish at a small restaurant.",
+    "answer": "We ate fresh fish at a small restaurant."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "I sent postcards to all my friends.",
+    "answer": "I sent postcards to all my friends."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "The bus to the old town was late.",
+    "answer": "The bus to the old town was late."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "She forgot her camera at the hotel.",
+    "answer": "She forgot her camera at the hotel."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "It was the best holiday of my life.",
+    "answer": "It was the best holiday of my life."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "We should go back there again next summer.",
+    "answer": "We should go back there again next summer."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-25",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Neighbours and city life",
+  "title": "Qo'shnilar va shahar hayoti",
+  "order": 20,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "My neighbours are quiet and very friendly.",
+    "answer": "My neighbours are quiet and very friendly."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Our new neighbour moved in last week.",
+    "answer": "Our new neighbour moved in last week."
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Could you turn the music down, please?",
+    "answer": "Could you turn the music down, please?"
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "The city is noisier than the village.",
+    "answer": "The city is noisier than the village."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I live in a flat on the fifth floor.",
+    "answer": "I live in a flat on the fifth floor."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "There is a big park near my house.",
+    "answer": "There is a big park near my house."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Life in a big city is quite expensive.",
+    "answer": "Life in a big city is quite expensive."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "The traffic was terrible this morning.",
+    "answer": "The traffic was terrible this morning."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I usually take the metro to work.",
+    "answer": "I usually take the metro to work."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Where is the nearest bus stop, please?",
+    "answer": "Where is the nearest bus stop, please?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "My neighbour helped me carry the shopping.",
+    "answer": "My neighbour helped me carry the shopping."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "We should clean the stairs this weekend.",
+    "answer": "We should clean the stairs this weekend."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "Do you know a good cafe around here?",
+    "answer": "Do you know a good cafe around here?"
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "The shops close earlier on Sundays.",
+    "answer": "The shops close earlier on Sundays."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Yesterday I met an old man in the lift.",
+    "answer": "Yesterday I met an old man in the lift."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "It's easier to find a job in the city.",
+    "answer": "It's easier to find a job in the city."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Our street is much cleaner than before.",
+    "answer": "Our street is much cleaner than before."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Can I borrow your ladder for an hour?",
+    "answer": "Can I borrow your ladder for an hour?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "The children play football in the yard.",
+    "answer": "The children play football in the yard."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I don't like the crowded buses at all.",
+    "answer": "I don't like the crowded buses at all."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "There will be a new library next year.",
+    "answer": "There will be a new library next year."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "My neighbour has a very big dog.",
+    "answer": "My neighbour has a very big dog."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "You must be careful when you cross the road.",
+    "answer": "You must be careful when you cross the road."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "We invited our neighbours to dinner last Friday.",
+    "answer": "We invited our neighbours to dinner last Friday."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "The air is fresher in the countryside.",
+    "answer": "The air is fresher in the countryside."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Is there a pharmacy on this street?",
+    "answer": "Is there a pharmacy on this street?"
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I walked to the market and bought some bread.",
+    "answer": "I walked to the market and bought some bread."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "The city centre is busier in the evening.",
+    "answer": "The city centre is busier in the evening."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Could you water my flowers while I'm away?",
+    "answer": "Could you water my flowers while I'm away?"
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "I think I will move to a quieter area.",
+    "answer": "I think I will move to a quieter area."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-26",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Food and cooking",
+  "title": "Ovqat va pishirish",
+  "order": 21,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Yesterday I cooked soup for the whole family.",
+    "answer": "Yesterday I cooked soup for the whole family."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Can you pass me the salt, please?",
+    "answer": "Can you pass me the salt, please?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I would like a cup of green tea.",
+    "answer": "I would like a cup of green tea."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "My mother makes the best rice in town.",
+    "answer": "My mother makes the best rice in town."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "We need some eggs and a little flour.",
+    "answer": "We need some eggs and a little flour."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "How much sugar did you put in the cake?",
+    "answer": "How much sugar did you put in the cake?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "Cut the onions into small pieces first.",
+    "answer": "Cut the onions into small pieces first."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "This pasta is tastier than the one yesterday.",
+    "answer": "This pasta is tastier than the one yesterday."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I didn't have time to make breakfast.",
+    "answer": "I didn't have time to make breakfast."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Do you prefer meat or vegetables?",
+    "answer": "Do you prefer meat or vegetables?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "The water is boiling, so add the noodles.",
+    "answer": "The water is boiling, so add the noodles."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "She baked some bread this morning.",
+    "answer": "She baked some bread this morning."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "Is this dish too spicy for you?",
+    "answer": "Is this dish too spicy for you?"
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "We should buy more fruit at the market.",
+    "answer": "We should buy more fruit at the market."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "He burned the potatoes in the oven.",
+    "answer": "He burned the potatoes in the oven."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Let's make a salad for lunch today.",
+    "answer": "Let's make a salad for lunch today."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "I can't eat nuts because I'm allergic.",
+    "answer": "I can't eat nuts because I'm allergic."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "What did you have for dinner last night?",
+    "answer": "What did you have for dinner last night?"
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Fry the meat for about ten minutes.",
+    "answer": "Fry the meat for about ten minutes."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "The soup needs a little more pepper.",
+    "answer": "The soup needs a little more pepper."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "My grandfather cooked a huge pot of plov.",
+    "answer": "My grandfather cooked a huge pot of plov."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Would you like some more milk in your coffee?",
+    "answer": "Would you like some more milk in your coffee?"
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "I will bring a dessert to the party.",
+    "answer": "I will bring a dessert to the party."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Fast food is cheaper but less healthy.",
+    "answer": "Fast food is cheaper but less healthy."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "We ate dinner at a new Italian restaurant.",
+    "answer": "We ate dinner at a new Italian restaurant."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Could I have the bill, please?",
+    "answer": "Could I have the bill, please?"
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "She washed the vegetables and put them in a bowl.",
+    "answer": "She washed the vegetables and put them in a bowl."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Cooking together is more fun than cooking alone.",
+    "answer": "Cooking together is more fun than cooking alone."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I'm going to learn how to make pizza.",
+    "answer": "I'm going to learn how to make pizza."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "The cake smelled wonderful when it came out.",
+    "answer": "The cake smelled wonderful when it came out."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-27",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Films and music",
+  "title": "Filmlar va musiqa",
+  "order": 22,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "Last night we watched a funny comedy.",
+    "answer": "Last night we watched a funny comedy."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "What kind of music do you like?",
+    "answer": "What kind of music do you like?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "The film was longer than I expected.",
+    "answer": "The film was longer than I expected."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I think the book was better than the film.",
+    "answer": "I think the book was better than the film."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "Who is your favourite singer?",
+    "answer": "Who is your favourite singer?"
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "We went to the cinema on Saturday evening.",
+    "answer": "We went to the cinema on Saturday evening."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "The actor played a brave police officer.",
+    "answer": "The actor played a brave police officer."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Can you play the guitar or the piano?",
+    "answer": "Can you play the guitar or the piano?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I didn't like the ending of that movie.",
+    "answer": "I didn't like the ending of that movie."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "She sings much better than her sister.",
+    "answer": "She sings much better than her sister."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "Let's buy tickets for the concert tonight.",
+    "answer": "Let's buy tickets for the concert tonight."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "This song is very popular with young people.",
+    "answer": "This song is very popular with young people."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "I will download the new album tomorrow.",
+    "answer": "I will download the new album tomorrow."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "The story was sad, but I enjoyed it.",
+    "answer": "The story was sad, but I enjoyed it."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Have you seen the new action film yet?",
+    "answer": "Have you seen the new action film yet?"
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "He listens to music on the way to school.",
+    "answer": "He listens to music on the way to school."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "The seats at the cinema were quite uncomfortable.",
+    "answer": "The seats at the cinema were quite uncomfortable."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "My brother learned to play the drums last year.",
+    "answer": "My brother learned to play the drums last year."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "Do you want to watch a film at my place?",
+    "answer": "Do you want to watch a film at my place?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "The singer forgot the words of the song.",
+    "answer": "The singer forgot the words of the song."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I love old films from the nineties.",
+    "answer": "I love old films from the nineties."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Could you turn up the volume a little?",
+    "answer": "Could you turn up the volume a little?"
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "We should go to a live concert together.",
+    "answer": "We should go to a live concert together."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "The film started at seven and finished at nine.",
+    "answer": "The film started at seven and finished at nine."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I cried when the dog died in the film.",
+    "answer": "I cried when the dog died in the film."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "Which is scarier, the first film or the second?",
+    "answer": "Which is scarier, the first film or the second?"
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "She danced all night at the party.",
+    "answer": "She danced all night at the party."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "I can't sleep without some quiet music.",
+    "answer": "I can't sleep without some quiet music."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "The band will play in our city next month.",
+    "answer": "The band will play in our city next month."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "That was the best concert I have ever seen.",
+    "answer": "That was the best concert I have ever seen."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-28",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Sports and fitness",
+  "title": "Sport va sog'lom hayot",
+  "order": 22,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I play football with my friends every Sunday.",
+    "answer": "I play football with my friends every Sunday."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Did you watch the match last night?",
+    "answer": "Did you watch the match last night?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "My team won the game two to one.",
+    "answer": "My team won the game two to one."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Swimming is better for your back than running.",
+    "answer": "Swimming is better for your back than running."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I go to the gym three times a week.",
+    "answer": "I go to the gym three times a week."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "You should drink more water after training.",
+    "answer": "You should drink more water after training."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "He ran five kilometres this morning.",
+    "answer": "He ran five kilometres this morning."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "I can't play tennis because my arm hurts.",
+    "answer": "I can't play tennis because my arm hurts."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "Our coach said we must practise more.",
+    "answer": "Our coach said we must practise more."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Who is the fastest runner in your class?",
+    "answer": "Who is the fastest runner in your class?"
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "I didn't win, but I did my best.",
+    "answer": "I didn't win, but I did my best."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Cycling to work is cheaper than taking the bus.",
+    "answer": "Cycling to work is cheaper than taking the bus."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "We will play basketball after school tomorrow.",
+    "answer": "We will play basketball after school tomorrow."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "She is taller and stronger than me.",
+    "answer": "She is taller and stronger than me."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Stretch your legs before you start running.",
+    "answer": "Stretch your legs before you start running."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "Last year I joined a local swimming club.",
+    "answer": "Last year I joined a local swimming club."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Do you prefer team sports or individual sports?",
+    "answer": "Do you prefer team sports or individual sports?"
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "He broke his leg when he played hockey.",
+    "answer": "He broke his leg when he played hockey."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "I want to lose some weight this year.",
+    "answer": "I want to lose some weight this year."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "Walking every day is good for your health.",
+    "answer": "Walking every day is good for your health."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "The match was cancelled because of the rain.",
+    "answer": "The match was cancelled because of the rain."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "We should do some exercise every morning.",
+    "answer": "We should do some exercise every morning."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "My father taught me how to ride a bike.",
+    "answer": "My father taught me how to ride a bike."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "Which sport is more dangerous, boxing or skiing?",
+    "answer": "Which sport is more dangerous, boxing or skiing?"
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "I felt tired after the long race.",
+    "answer": "I felt tired after the long race."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "You must wear a helmet when you cycle.",
+    "answer": "You must wear a helmet when you cycle."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "The players were nervous before the final game.",
+    "answer": "The players were nervous before the final game."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "Could you show me how to use this machine?",
+    "answer": "Could you show me how to use this machine?"
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "I will start jogging in the park next week.",
+    "answer": "I will start jogging in the park next week."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Healthy food and sport make you feel great.",
+    "answer": "Healthy food and sport make you feel great."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-29",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Weather and seasons",
+  "title": "Ob-havo va fasllar",
+  "order": 23,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "It was very cold yesterday morning.",
+    "answer": "It was very cold yesterday morning."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Will it rain tomorrow afternoon?",
+    "answer": "Will it rain tomorrow afternoon?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "Summer is hotter than spring here.",
+    "answer": "Summer is hotter than spring here."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "I think winter is the coldest season.",
+    "answer": "I think winter is the coldest season."
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "We should take an umbrella today.",
+    "answer": "We should take an umbrella today."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Last week it snowed for three days.",
+    "answer": "Last week it snowed for three days."
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "What is the weather like in your city?",
+    "answer": "What is the weather like in your city?"
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "The wind was strong last night.",
+    "answer": "The wind was strong last night."
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "It will be sunny at the weekend.",
+    "answer": "It will be sunny at the weekend."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "Autumn is my favourite season of the year.",
+    "answer": "Autumn is my favourite season of the year."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "I can't go out because it's raining.",
+    "answer": "I can't go out because it's raining."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "Yesterday was warmer than the day before.",
+    "answer": "Yesterday was warmer than the day before."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "You must wear a hat in winter.",
+    "answer": "You must wear a hat in winter."
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "Is it going to be cloudy tonight?",
+    "answer": "Is it going to be cloudy tonight?"
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "The weather forecast says it will be windy.",
+    "answer": "The weather forecast says it will be windy."
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "We went to the beach in July.",
+    "answer": "We went to the beach in July."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "It was foggy when I left home.",
+    "answer": "It was foggy when I left home."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "Spring is the best time for walking.",
+    "answer": "Spring is the best time for walking."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "How hot will it be tomorrow?",
+    "answer": "How hot will it be tomorrow?"
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "I didn't like the cold weather last month.",
+    "answer": "I didn't like the cold weather last month."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "The leaves fall from the trees in autumn.",
+    "answer": "The leaves fall from the trees in autumn."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "It might snow in the mountains tonight.",
+    "answer": "It might snow in the mountains tonight."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Today is the hottest day of the year.",
+    "answer": "Today is the hottest day of the year."
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "The storm was louder than I expected.",
+    "answer": "The storm was louder than I expected."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Can you close the window? It's freezing.",
+    "answer": "Can you close the window? It's freezing."
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "In my country, summers are long and dry.",
+    "answer": "In my country, summers are long and dry."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "I will wear a warm coat tomorrow.",
+    "answer": "I will wear a warm coat tomorrow."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "It rained all day, so we stayed home.",
+    "answer": "It rained all day, so we stayed home."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Do you prefer hot weather or cold weather?",
+    "answer": "Do you prefer hot weather or cold weather?"
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "The sky was clear and full of stars.",
+    "answer": "The sky was clear and full of stars."
+   }
+  ]
+ },
+ {
+  "code": "a2-speaking-30",
+  "level": "A2",
+  "skill": "SPEAKING",
+  "topic": "Lost and found",
+  "title": "Yo'qotilgan va topilgan narsalar",
+  "order": 24,
+  "intro": "Jumlani ovoz chiqarib ayting. 🔊 bilan namunani eshiting, 🎤 bilan o'zingiz gapiring.",
+  "items": [
+   {
+    "id": "1",
+    "kind": "SPEAK",
+    "prompt": "I lost my phone on the bus.",
+    "answer": "I lost my phone on the bus."
+   },
+   {
+    "id": "2",
+    "kind": "SPEAK",
+    "prompt": "Have you seen my blue bag anywhere?",
+    "answer": "Have you seen my blue bag anywhere?"
+   },
+   {
+    "id": "3",
+    "kind": "SPEAK",
+    "prompt": "I found a wallet near the park.",
+    "answer": "I found a wallet near the park."
+   },
+   {
+    "id": "4",
+    "kind": "SPEAK",
+    "prompt": "Where did you last see your keys?",
+    "answer": "Where did you last see your keys?"
+   },
+   {
+    "id": "5",
+    "kind": "SPEAK",
+    "prompt": "I think I left it at school.",
+    "answer": "I think I left it at school."
+   },
+   {
+    "id": "6",
+    "kind": "SPEAK",
+    "prompt": "Can you help me find my glasses?",
+    "answer": "Can you help me find my glasses?"
+   },
+   {
+    "id": "7",
+    "kind": "SPEAK",
+    "prompt": "She lost her passport at the airport.",
+    "answer": "She lost her passport at the airport."
+   },
+   {
+    "id": "8",
+    "kind": "SPEAK",
+    "prompt": "Could I ask about a lost umbrella?",
+    "answer": "Could I ask about a lost umbrella?"
+   },
+   {
+    "id": "9",
+    "kind": "SPEAK",
+    "prompt": "I will call the lost property office.",
+    "answer": "I will call the lost property office."
+   },
+   {
+    "id": "10",
+    "kind": "SPEAK",
+    "prompt": "He found a ring under the table.",
+    "answer": "He found a ring under the table."
+   },
+   {
+    "id": "11",
+    "kind": "SPEAK",
+    "prompt": "My keys were in my coat pocket.",
+    "answer": "My keys were in my coat pocket."
+   },
+   {
+    "id": "12",
+    "kind": "SPEAK",
+    "prompt": "I looked everywhere, but I couldn't find it.",
+    "answer": "I looked everywhere, but I couldn't find it."
+   },
+   {
+    "id": "13",
+    "kind": "SPEAK",
+    "prompt": "What does your lost bag look like?",
+    "answer": "What does your lost bag look like?"
+   },
+   {
+    "id": "14",
+    "kind": "SPEAK",
+    "prompt": "It is small, black and quite old.",
+    "answer": "It is small, black and quite old."
+   },
+   {
+    "id": "15",
+    "kind": "SPEAK",
+    "prompt": "Did anyone hand in a red jacket?",
+    "answer": "Did anyone hand in a red jacket?"
+   },
+   {
+    "id": "16",
+    "kind": "SPEAK",
+    "prompt": "I must have dropped it on the street.",
+    "answer": "I must have dropped it on the street."
+   },
+   {
+    "id": "17",
+    "kind": "SPEAK",
+    "prompt": "Please tell me if you find it.",
+    "answer": "Please tell me if you find it."
+   },
+   {
+    "id": "18",
+    "kind": "SPEAK",
+    "prompt": "We found a lost dog yesterday evening.",
+    "answer": "We found a lost dog yesterday evening."
+   },
+   {
+    "id": "19",
+    "kind": "SPEAK",
+    "prompt": "My name is written inside the book.",
+    "answer": "My name is written inside the book."
+   },
+   {
+    "id": "20",
+    "kind": "SPEAK",
+    "prompt": "You should go to the police station.",
+    "answer": "You should go to the police station."
+   },
+   {
+    "id": "21",
+    "kind": "SPEAK",
+    "prompt": "I was so happy when I found it.",
+    "answer": "I was so happy when I found it."
+   },
+   {
+    "id": "22",
+    "kind": "SPEAK",
+    "prompt": "Someone took my bicycle from the garden.",
+    "answer": "Someone took my bicycle from the garden."
+   },
+   {
+    "id": "23",
+    "kind": "SPEAK",
+    "prompt": "Is this your phone on the chair?",
+    "answer": "Is this your phone on the chair?"
+   },
+   {
+    "id": "24",
+    "kind": "SPEAK",
+    "prompt": "I forgot my laptop on the train.",
+    "answer": "I forgot my laptop on the train."
+   },
+   {
+    "id": "25",
+    "kind": "SPEAK",
+    "prompt": "Can I leave my phone number here?",
+    "answer": "Can I leave my phone number here?"
+   },
+   {
+    "id": "26",
+    "kind": "SPEAK",
+    "prompt": "They will send it to you tomorrow.",
+    "answer": "They will send it to you tomorrow."
+   },
+   {
+    "id": "27",
+    "kind": "SPEAK",
+    "prompt": "It was a present from my grandmother.",
+    "answer": "It was a present from my grandmother."
+   },
+   {
+    "id": "28",
+    "kind": "SPEAK",
+    "prompt": "I'm sorry, but we haven't found it yet.",
+    "answer": "I'm sorry, but we haven't found it yet."
+   },
+   {
+    "id": "29",
+    "kind": "SPEAK",
+    "prompt": "Thank you for returning my lost wallet.",
+    "answer": "Thank you for returning my lost wallet."
+   },
+   {
+    "id": "30",
+    "kind": "SPEAK",
+    "prompt": "Next time I will be more careful.",
+    "answer": "Next time I will be more careful."
+   }
+  ]
+ }
+]
