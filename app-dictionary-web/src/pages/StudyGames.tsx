@@ -13,6 +13,59 @@ interface BaseProps {
 
 /* ---------------------------------------------------------- flashcards */
 
+function GameResult({ icon, title, value, unit, tone, celebrate, stats, onAgain, onExit }: {
+  icon: string;
+  title: string;
+  value: number;
+  unit: string;
+  tone: string;
+  celebrate?: boolean;
+  stats: { label: string; value: string }[];
+  onAgain: () => void;
+  onExit: () => void;
+}) {
+  const [shown, setShown] = useState(0);
+  useEffect(() => {
+    const start = performance.now();
+    let raf = 0;
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / 900);
+      setShown(Math.round(value * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [value]);
+
+  return (
+    <section className="gr rise" style={{ ['--tone' as string]: tone }}>
+      {celebrate && (
+        <div className="gr-confetti" aria-hidden="true">
+          {Array.from({ length: 18 }, (_, i) => (
+            <i key={i} style={{ ['--i' as string]: i }} />
+          ))}
+        </div>
+      )}
+      <div className="gr-ico">{icon}</div>
+      <h2>{title}</h2>
+      <div className="gr-score">{shown}</div>
+      <p className="gr-unit">{unit}</p>
+      <div className="gr-stats">
+        {stats.map((st) => (
+          <div key={st.label}>
+            <b>{st.value}</b>
+            <small>{st.label}</small>
+          </div>
+        ))}
+      </div>
+      <div className="gr-actions">
+        <Button onClick={onAgain}>↻ Yana o'ynash</Button>
+        <Button variant="outline" onClick={onExit}>Tugatish</Button>
+      </div>
+    </section>
+  );
+}
+
 export function FlashcardGame({ review, totalWords, favoriteCount = 0, onExit }: BaseProps) {
   const [stage, setStage] = useState<'choose' | 'play' | 'done'>('choose');
   const [mode, setMode] = useState<QuizMode>('DUE');
@@ -319,17 +372,19 @@ export function MatchingGame({ review, totalWords, favoriteCount = 0, onExit }: 
     const wrongCount = mistakes.length;
     return (
       <>
-        <Card className="result-card">
-          <div style={{ fontSize: 48 }}>🧩</div>
-          <h2>Tugadi!</h2>
-          <p className="muted">
-            {total} ta so'zdan {Math.max(0, total - wrongCount)} tasini xatosiz juftladingiz
-          </p>
-        </Card>
-        <div className="col gap">
-          <Button onClick={() => setStage('choose')}>Yana o'ynash</Button>
-          <Button variant="outline" onClick={onExit}>Tugatish</Button>
-        </div>
+        <GameResult
+          icon="🧩"
+          title="Tugadi!"
+          value={Math.max(0, total - wrongCount)}
+          unit={`/ ${total} so'z xatosiz juftlandi`}
+          tone="#a855f7"
+          stats={[
+            { label: 'Xatolar', value: String(wrongCount) },
+            { label: 'Aniqlik', value: `${total > 0 ? Math.round((Math.max(0, total - wrongCount) / total) * 100) : 0}%` },
+          ]}
+          onAgain={() => setStage('choose')}
+          onExit={onExit}
+        />
       </>
     );
   }
@@ -543,17 +598,21 @@ export function SpeedGame({ review, totalWords, onExit }: Omit<BaseProps, 'favor
     const acc = tally.answered > 0 ? Math.round((tally.correct / tally.answered) * 100) : 0;
     return (
       <>
-        <Card className="result-card">
-          <div style={{ fontSize: 48 }}>{newRecord ? '🏆' : '⏱️'}</div>
-          <h2>{newRecord ? 'Yangi rekord!' : 'Vaqt tugadi!'}</h2>
-          <div className="big-pct">{tally.correct}</div>
-          <p className="muted">to'g'ri javob · aniqlik {acc}% · eng uzun combo {tally.bestCombo}</p>
-          <p className="muted">Rekord: {best}</p>
-        </Card>
-        <div className="col gap">
-          <Button onClick={() => setStage('choose')}>Yana o'ynash</Button>
-          <Button variant="outline" onClick={onExit}>Tugatish</Button>
-        </div>
+        <GameResult
+          icon={newRecord ? '🏆' : '⏱️'}
+          title={newRecord ? 'Yangi rekord!' : 'Vaqt tugadi!'}
+          value={tally.correct}
+          unit="to'g'ri javob"
+          tone={newRecord ? '#f59e0b' : '#6366f1'}
+          celebrate={newRecord}
+          stats={[
+            { label: 'Aniqlik', value: `${acc}%` },
+            { label: 'Eng uzun combo', value: String(tally.bestCombo) },
+            { label: 'Rekord', value: String(best) },
+          ]}
+          onAgain={() => setStage('choose')}
+          onExit={onExit}
+        />
       </>
     );
   }
