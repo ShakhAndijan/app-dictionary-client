@@ -5,9 +5,18 @@ export type AuthStackParamList = {
 
 export type MainTabParamList = {
   Baholash: undefined;
+  Kurs: undefined;
   Sozlar: undefined;
   Profil: undefined;
   Admin: undefined;
+};
+
+import type { Skill } from '../api/learnApi';
+
+export type LearnStackParamList = {
+  LearnHome: undefined;
+  LearnLessons: { skill: Skill };
+  LearnPlay: { mode: 'lesson' | 'exam'; code?: string };
 };
 
 export type AdminStackParamList = {

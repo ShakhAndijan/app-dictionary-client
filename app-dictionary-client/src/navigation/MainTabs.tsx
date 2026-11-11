@@ -8,6 +8,7 @@ import QuizScreen from '../screens/quiz/QuizScreen';
 import WordsScreen from '../screens/words/WordsScreen';
 import ProfileNavigator from './ProfileNavigator';
 import AdminNavigator from './AdminNavigator';
+import LearnNavigator from './LearnNavigator';
 import { useAuth } from '../context/AuthContext';
 import { colors } from '../theme/colors';
 import OfflineBanner from '../components/OfflineBanner';
@@ -23,6 +24,7 @@ const Tab = createBottomTabNavigator<MainTabParamList>();
 
 const TAB_ICONS: Record<keyof MainTabParamList, [keyof typeof Ionicons.glyphMap, keyof typeof Ionicons.glyphMap]> = {
   Baholash: ['checkmark-done-circle', 'checkmark-done-circle-outline'],
+  Kurs: ['school', 'school-outline'],
   Sozlar: ['book', 'book-outline'],
   Profil: ['person-circle', 'person-circle-outline'],
   Admin: ['shield-checkmark', 'shield-checkmark-outline'],
@@ -73,6 +75,7 @@ export default function MainTabs() {
       })}
     >
       <Tab.Screen name="Baholash" component={QuizScreen} options={{ title: 'Baholash' }} />
+      <Tab.Screen name="Kurs" component={LearnNavigator} options={{ title: "Ingliz tili" }} />
       <Tab.Screen name="Sozlar" component={WordsScreen} options={{ title: "So'zlar" }} />
       <Tab.Screen name="Profil" component={ProfileNavigator} options={{ title: 'Profil' }} />
       {user?.role === 'ADMIN' && <Tab.Screen name="Admin" component={AdminNavigator} options={{ title: 'Admin' }} />}
