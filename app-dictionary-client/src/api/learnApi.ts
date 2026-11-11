@@ -88,6 +88,33 @@ export interface ExamResult {
   xpGained: number;
 }
 
+export interface SkillStat {
+  skill: Skill;
+  lessonsTotal: number;
+  lessonsPassed: number;
+  lessonPercent: number | null;
+  examPercent: number | null;
+  percent: number | null;
+  attempts: number;
+  answered: number;
+  correct: number;
+  lastAt: string | null;
+  recent: { code: string; title: string; percent: number; passed: boolean; at: string }[];
+  weakLessons: { code: string; title: string; bestScore: number }[];
+}
+
+export interface LearnStats {
+  level: string | null;
+  skills: SkillStat[];
+  weakest: Skill | null;
+  answered: number;
+  correct: number;
+  activeDays: number;
+  examsTaken: number;
+  passMark: number;
+}
+
+export const getStats = () => apiClient.get<LearnStats>('/learn/stats').then((r) => r.data);
 export const getOverview = () => apiClient.get<Overview>('/learn/overview').then((r) => r.data);
 export const setLevel = (level: string) => apiClient.put<Overview>('/learn/level', { level }).then((r) => r.data);
 export const getLessons = (skill?: Skill) =>

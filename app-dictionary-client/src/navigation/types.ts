@@ -17,6 +17,7 @@ export type LearnStackParamList = {
   LearnHome: undefined;
   LearnLessons: { skill: Skill };
   LearnPlay: { mode: 'lesson' | 'exam'; code?: string };
+  LearnStats: undefined;
 };
 
 export type AdminStackParamList = {

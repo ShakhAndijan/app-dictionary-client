@@ -4,6 +4,7 @@ import { LearnStackParamList } from './types';
 import LearnHomeScreen from '../screens/learn/LearnHomeScreen';
 import LearnLessonsScreen from '../screens/learn/LearnLessonsScreen';
 import LearnPlayScreen from '../screens/learn/LearnPlayScreen';
+import LearnStatsScreen from '../screens/learn/LearnStatsScreen';
 import { SKILL_META } from '../api/learnApi';
 import { colors } from '../theme/colors';
 
@@ -25,6 +26,7 @@ export default function LearnNavigator() {
         options={({ route }) => ({ title: SKILL_META[route.params.skill].label })}
       />
       <Stack.Screen name="LearnPlay" component={LearnPlayScreen} options={{ title: 'Dars' }} />
+      <Stack.Screen name="LearnStats" component={LearnStatsScreen} options={{ title: 'Statistika' }} />
     </Stack.Navigator>
   );
 }
