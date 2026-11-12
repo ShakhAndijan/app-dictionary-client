@@ -10,6 +10,7 @@ import { extractErrorMessage } from '../../utils/errors';
 import { requestProgressCheck } from '../../services/progressEvents';
 import { LearnStackParamList } from '../../navigation/types';
 import ExerciseView, { Context, ExerciseData } from './ExerciseView';
+import ListeningView, { listeningGroups } from './ListeningView';
 import { Bar, IconBadge, PASS_MARK, SKILL_ICON, courseStyles } from './learnUi';
 
 type Props = NativeStackScreenProps<LearnStackParamList, 'LearnPlay'>;
@@ -84,6 +85,11 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
       setIndex(index + 1);
       return;
     }
+    await finish(next);
+  };
+
+  const finish = async (next: { key: string; answer: string }[]) => {
+    setAnswers(next);
     try {
       if (exam) {
         setExamResult(await learnApi.submitExam(next.map((a) => ({ ref: a.key, answer: a.answer }))));
@@ -192,6 +198,16 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
           <Button title="Darslarga qaytish" onPress={() => navigation.goBack()} />
           <Button title="Qayta bajarish" variant="outline" onPress={restart} />
         </View>
+      </View>
+    );
+  }
+
+  const listening = !exam && stage === 'play' ? listeningGroups(items) : null;
+  if (listening) {
+    return (
+      <View style={styles.flex}>
+        {error ? <Text style={[styles.error, { paddingHorizontal: 20, paddingTop: 10 }]}>{error}</Text> : null}
+        <ListeningView code={code} groups={listening} onFinish={finish} />
       </View>
     );
   }

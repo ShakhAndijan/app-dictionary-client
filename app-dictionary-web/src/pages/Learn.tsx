@@ -587,6 +587,271 @@ function Context({ passage, audioText }: { passage: string | null; audioText: st
   );
 }
 
+/* ------------------------------------------------------------------ listening */
+
+const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 2];
+
+function splitSentences(text: string): string[] {
+  const parts = text.replace(/\s+/g, ' ').match(/[^.!?]+[.!?]+["')]*|[^.!?]+$/g);
+  const list = (parts ?? [text]).map((s) => s.trim()).filter(Boolean);
+  return list.length ? list : [text];
+}
+
+/**
+ * Audio player on top of the browser's speech synthesis. The text is spoken sentence by sentence,
+ * so the player can jump forward and back, seek with a slider and change the speed.
+ */
+function AudioPlayer({ text }: { text: string }) {
+  const sentences = useMemo(() => splitSentences(text), [text]);
+  const [idx, setIdx] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const [rate, setRate] = useState(1);
+  const token = useRef(0);
+  const supported = typeof window !== 'undefined' && 'speechSynthesis' in window;
+
+  const stop = () => {
+    token.current += 1;
+    try { window.speechSynthesis?.cancel(); } catch { /* ignore */ }
+  };
+
+  useEffect(() => stop, []);
+
+  const playFrom = (start: number, r: number) => {
+    if (!supported) return;
+    stop();
+    const t = token.current;
+    setPlaying(true);
+    const run = (k: number) => {
+      if (t !== token.current) return;
+      if (k >= sentences.length) {
+        setPlaying(false);
+        setIdx(0);
+        return;
+      }
+      setIdx(k);
+      const u = new SpeechSynthesisUtterance(sentences[k]);
+      u.lang = 'en-US';
+      u.rate = r;
+      u.onend = () => run(k + 1);
+      u.onerror = () => { if (t === token.current) setPlaying(false); };
+      window.speechSynthesis.speak(u);
+    };
+    run(Math.max(0, Math.min(start, sentences.length - 1)));
+  };
+
+  const pause = () => {
+    stop();
+    setPlaying(false);
+  };
+
+  const seek = (to: number) => {
+    const k = Math.max(0, Math.min(to, sentences.length - 1));
+    if (playing) playFrom(k, rate);
+    else setIdx(k);
+  };
+
+  const changeRate = (r: number) => {
+    setRate(r);
+    if (playing) playFrom(idx, r);
+  };
+
+  if (!supported) return <Notice>Brauzer ovozni ijro eta olmaydi. Boshqa brauzerda (Chrome, Edge) oching.</Notice>;
+
+  const pct = Math.round(((idx + (playing ? 0.5 : 0)) / sentences.length) * 100);
+
+  return (
+    <div className="ap">
+      <div className="ap-row">
+        <button className="ap-btn" onClick={() => seek(idx - 1)} aria-label="Orqaga" title="Oldingi gap">⏮</button>
+        <button className="ap-play" onClick={() => (playing ? pause() : playFrom(idx, rate))} aria-label={playing ? 'To\'xtatish' : 'Ijro etish'}>
+          {playing ? '⏸' : '▶'}
+        </button>
+        <button className="ap-btn" onClick={() => seek(idx + 1)} aria-label="Oldinga" title="Keyingi gap">⏭</button>
+        <div className="ap-track">
+          <input
+            type="range"
+            min={0}
+            max={sentences.length - 1}
+            value={idx}
+            onChange={(e) => seek(Number(e.target.value))}
+            aria-label="Audio joylashuvi"
+            style={{ ['--p' as string]: `${pct}%` }}
+          />
+          <small>{idx + 1} / {sentences.length}</small>
+        </div>
+      </div>
+      <div className="ap-speeds" role="group" aria-label="Tezlik">
+        {SPEEDS.map((s) => (
+          <button key={s} className={`ap-speed ${rate === s ? 'on' : ''}`} onClick={() => changeRate(s)}>{s}×</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Consecutive items that share the same audio form one listening page. */
+function listeningGroups(items: LearnItemView[]): LearnItemView[][] | null {
+  if (items.length === 0) return null;
+  if (items.some((i) => !i.audioText || (i.kind !== 'CHOICE' && i.kind !== 'FILL'))) return null;
+  const groups: LearnItemView[][] = [];
+  for (const it of items) {
+    const g = groups[groups.length - 1];
+    if (g && g[0].audioText === it.audioText) g.push(it);
+    else groups.push([it]);
+  }
+  return groups;
+}
+
+function ListeningPage({ lesson, onFinish, onExit, error }: {
+  lesson: LearnLessonDetail;
+  onFinish: (answers: { itemId: string; answer: string }[]) => void;
+  onExit: () => void;
+  error: string;
+}) {
+  const groups = useMemo(() => listeningGroups(lesson.items)!, [lesson]);
+  const m = SKILL_META[lesson.skill];
+  const [gi, setGi] = useState(0);
+  const [values, setValues] = useState<Record<string, string>>({});
+  const [feedback, setFeedback] = useState<Record<string, LearnCheck> | null>(null);
+  const [collected, setCollected] = useState<{ itemId: string; answer: string }[]>([]);
+  const [busy, setBusy] = useState(false);
+  const [problem, setProblem] = useState('');
+
+  const group = groups[gi];
+  const last = gi + 1 === groups.length;
+  const answered = group.filter((it) => (values[it.id] ?? '').trim()).length;
+  const correctCount = feedback ? group.filter((it) => feedback[it.id]?.correct).length : 0;
+
+  const check = async () => {
+    if (busy || answered < group.length) return;
+    setBusy(true);
+    setProblem('');
+    try {
+      const res = await Promise.all(group.map((it) => learnApi.check(lesson.code, it.id, values[it.id].trim())));
+      const map: Record<string, LearnCheck> = {};
+      group.forEach((it, i) => { map[it.id] = res[i]; });
+      setFeedback(map);
+    } catch (e) {
+      setProblem(errorMessage(e, "Tekshirib bo'lmadi"));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const next = () => {
+    const all = [...collected, ...group.map((it) => ({ itemId: it.id, answer: values[it.id].trim() }))];
+    if (last) return onFinish(all);
+    setCollected(all);
+    setFeedback(null);
+    setGi(gi + 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <>
+      <header className="qx-top">
+        <button className="gp-back" onClick={onExit} aria-label="Orqaga">←</button>
+        <div className="qx-title">
+          <small>{m.icon} {m.label}</small>
+          <b>{lesson.title}</b>
+        </div>
+        <div className="qx-pills"><span className="qx-pill">{gi + 1} / {groups.length}</span></div>
+      </header>
+      <Steps total={groups.length} index={gi} />
+      {(error || problem) && <Notice>{error || problem}</Notice>}
+
+      <div className="ls">
+        <div className="ls-audio" key={`a${gi}`}>
+          <div className="ls-audio-head">
+            <span>🎧 Audio {gi + 1}</span>
+            <small>Savollarga javob berishdan oldin tinglang · {group.length} ta savol</small>
+          </div>
+          <AudioPlayer text={group[0].audioText!} />
+        </div>
+
+        <ol className="ls-list">
+          {group.map((it, n) => {
+            const fb = feedback?.[it.id];
+            const v = values[it.id] ?? '';
+            const blank = it.prompt.split('___');
+            return (
+              <li key={it.id} className={`ls-q ${fb ? (fb.correct ? 'good' : 'bad') : ''}`}>
+                <div className="ls-q-head">
+                  <span className="ls-num">{n + 1}</span>
+                  <p className="ls-prompt">
+                    {blank.length > 1
+                      ? blank.map((part, i) => (
+                          <span key={i}>
+                            {part}
+                            {i < blank.length - 1 && <span className="ls-blank">{v || '      '}</span>}
+                          </span>
+                        ))
+                      : it.prompt}
+                  </p>
+                </div>
+
+                {it.kind === 'CHOICE' ? (
+                  <div className="ls-opts">
+                    {it.options!.map((opt) => {
+                      const right = !!fb && opt.toLowerCase() === fb.answer.toLowerCase();
+                      const wrong = !!fb && !fb.correct && opt === v;
+                      return (
+                        <button
+                          key={opt}
+                          className={`ls-opt ${v === opt && !fb ? 'sel' : ''} ${right ? 'right' : ''} ${wrong ? 'wrong' : ''}`}
+                          disabled={!!fb}
+                          onClick={() => setValues((p) => ({ ...p, [it.id]: opt }))}
+                        >
+                          {opt}
+                        </button>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <input
+                    className={`ls-input ${fb ? (fb.correct ? 'good' : 'bad') : ''}`}
+                    value={v}
+                    disabled={!!fb}
+                    autoComplete="off"
+                    spellCheck={false}
+                    placeholder="Javobni yozing…"
+                    onChange={(e) => setValues((p) => ({ ...p, [it.id]: e.target.value }))}
+                  />
+                )}
+
+                {fb && (
+                  <div className="ls-fb">
+                    <b>{fb.correct ? "✓ To'g'ri" : "✕ Noto'g'ri"}</b>
+                    {!fb.correct && <span>To'g'ri javob: <em>{fb.answer}</em></span>}
+                    {fb.explain && <small>{fb.explain}</small>}
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+
+        <div className={`ls-bar ${feedback ? (correctCount >= group.length * 0.7 ? 'good' : 'bad') : ''}`}>
+          {feedback ? (
+            <>
+              <div className="ls-bar-text">
+                <b>{correctCount} / {group.length} to'g'ri</b>
+                <small>Xatolarni ko'rib chiqing, so'ng davom eting</small>
+              </div>
+              <button className="ex2-go" onClick={next}>{last ? 'Natija' : `Keyingi ${groups[gi + 1].length} ta`} →</button>
+            </>
+          ) : (
+            <>
+              <span className="ex2-hint">{answered} / {group.length} belgilandi</span>
+              <button className="ex2-go" disabled={answered < group.length || busy} onClick={check}>{busy ? '…' : 'Tekshirish'}</button>
+            </>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
+
 /* ------------------------------------------------------------------ lesson */
 
 export function LessonPage() {
@@ -614,13 +879,7 @@ export function LessonPage() {
     setStage('play');
   };
 
-  const done = async (answer: string) => {
-    const next = [...answers, { itemId: lesson.items[index].id, answer }];
-    if (index + 1 < lesson.items.length) {
-      setAnswers(next);
-      setIndex(index + 1);
-      return;
-    }
+  const finishWith = async (next: { itemId: string; answer: string }[]) => {
     setAnswers(next);
     try {
       setResult(await learnApi.finish(lesson.code, next));
@@ -630,6 +889,20 @@ export function LessonPage() {
       setError(errorMessage(e, "Natijani saqlab bo'lmadi"));
     }
   };
+
+  const done = async (answer: string) => {
+    const next = [...answers, { itemId: lesson.items[index].id, answer }];
+    if (index + 1 < lesson.items.length) {
+      setAnswers(next);
+      setIndex(index + 1);
+      return;
+    }
+    await finishWith(next);
+  };
+
+  if (stage === 'play' && listeningGroups(lesson.items)) {
+    return <ListeningPage lesson={lesson} onFinish={finishWith} onExit={exit} error={error} />;
+  }
 
   if (stage === 'intro') {
     return (
