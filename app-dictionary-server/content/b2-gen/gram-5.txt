@@ -1,0 +1,169 @@
+# 17 | Relative clauses | Qoida: Odamlar uchun who/whose, narsalar uchun which, ikkalasi uchun that ishlatiladi; where joy, when vaqt uchun keladi. Defining gapda vergul yo'q va that mumkin (The man who lives here is Tom), non-defining gapda vergul bor va that ishlatilmaydi (My boss, who is German, ...). Relative pronoun oldingi ismni almashtiradi, shuning uchun uni takrorlab bo'lmaydi: The man who he lives, deb emas, The man who lives deb ayting. | Who/which dan keyin yana he/it qo'shmang, non-defining gapda vergul qo'ying va that ishlatmang.
+The woman [who] lives next door is a nurse. | which, whose, whom she
+The book [that] I borrowed was boring. | who, whose, what
+He is the man [whose] car was stolen. | who, which, that
+That is the café [where] we first met. | which, when, who
+I remember the day [when] we moved here. | where, which, who
+My brother, [who] lives in Dubai, is an engineer. | that, which, whose
+Our hotel, [which] was very cheap, was awful. | that, who, what
+Paris, [which] I visited twice, is lovely. | that, who, where
+He passed the exam, [which] surprised everyone. | what, that, it
+She lost her keys, [which] was really annoying. | that, what, it
+The people [to whom] I spoke were helpful. | whom to, who to, which to
+The chair [on which] he sat broke. | which on, that on, where
+The man [who] lives next door is Tom. | who he, which, he
+Everything [that] she said was true. | what, who, whose
+Nothing [that] he said surprised me. | what, who, whose
+This is the best film [that] I have seen. | what, who, whom
+She has two sons, [both of whom] are doctors. | both of who, both of which, both they
+The boy [whose] mother is a pilot is shy. | who, which, that
+A person [who] steals is a thief. | which, whose, whom he
+2010 was the year [when] I graduated. | where, what, who
+The reason [why] he left is unclear. | what, who, where
+Where is the woman [whose] bag was stolen? | who, that, which
+The documents [that] you need are here. | who, whose, what
+The tea, [which] was cold, tasted bitter. | that, who, what
+My boss, [who] is German, speaks Uzbek. | that, whose, which
+The hotel [we] stayed at was cheap. | where we, whose we
+The man [to whom] she wrote never replied. | whom to, who to, that to
+She is a woman [whom] everybody admires. | whose, which, whom she
+The students [who] passed got certificates. | whose, whom they, which
+Anyone [who] needs help should ask. | whose, which, what
+The song [that] was playing was Uzbek. | who, what, whose
+I met a man [whose] brother knows you. | who, that, which
+We visited Samarkand, [where] my uncle lives. | which, that, when
+He told me nothing, [which] annoyed me. | what, that, who
+That is the shop [where] I bought it. | which, who, that
+The woman [with whom] he works is Swiss. | whom with, that with, who with
+Last week, [when] it rained, we stayed home. | where, which, that
+The firm [for which] she works is huge. | which for, that for, whom for
+The girl [who] won the race is my cousin. | who she, which, whose
+The apartment [where] they live is tiny. | which they, who, whose
+
+# 18 | Articles: a, an, the and no article | Qoida: Birinchi marta aytilgan narsa uchun a/an, ikkinchi marta yoki ma'lum, yagona narsa uchun the ishlatiladi (I have a car. The car is red). Umuman olingan ko'plik va sanalmaydigan otlar oldida artikl qo'yilmaydi (Books are cheap, Honesty matters). Davlat nomlari (Uzbekistan), ko'llar (Lake Baikal) artiklsiz, lekin the USA, the Alps, the Nile bilan keladi; by bus, at school kabi iboralarda ham artikl yo'q. | Umumiy gapda artiklni tashlang, ma'lum yoki yagona narsa oldiga the qo'ying.
+I bought a car, but [the] car broke down. | a, an, some
+She is [an] engineer at Samsung. | a, the, one
+We watched [the] moon from the roof. | a moon, an moon, some moon
+[Honesty] is important in business. | The honesty, A honesty, Honesties
+She likes [coffee] more than tea. | the coffee, an coffee, a coffees
+I go to work [by bus]. | by the bus, by a bus, with bus
+My son is eight, so he is [at school] now. | to school, at a school, in a school
+I usually go to [bed] at eleven. | the bed, a bed, an bed
+My cousin lives in [the USA]. | USA, an USA, a USA
+We skied in [the Alps] last winter. | Alps, an Alps, a Alps
+We swam in [Lake Baikal] last summer. | the Lake Baikal, a Lake Baikal, Baikal lake
+[The Nile] is the longest river in Africa. | Nile, A Nile, Nile river
+[Mount Everest] is the highest mountain on Earth. | The Mount Everest, A Mount Everest, Everest mount
+I am from [Uzbekistan]. | the Uzbekistan, an Uzbekistan, a Uzbekistan
+She was born in [the Netherlands]. | Netherlands, a Netherlands, an Netherlands
+They crossed [the Pacific] by boat. | Pacific, a Pacific, an Pacific
+She is [the] best player in the team. | a, an, some
+He plays [the] guitar very well. | a, an, some
+He is [the] only child in his family. | an, a, one
+We waited for [an] hour. | a, the, some
+She works as [a] university lecturer. | an, the, one
+What [a] lovely day it is! | an, the, some
+I swim twice [a] week. | the, an, in
+I love [football]. | the football, a football, an football
+She plays [tennis] every Sunday. | the tennis, a tennis, an tennis
+[Books] are cheaper online nowadays. | The books, A books, An books
+Please close [the] window; it is cold. | a, an, some
+We have [the] same teacher. | a, an, one
+My uncle is [an] honest politician. | a, the, one
+There is a bank here; [the] bank opens at nine. | a, an, some
+She lives on [the] second floor. | a, an, some
+Look at [the] sky; it is so red! | a, an, some
+I have [a] headache. | the, an, some
+Let us go to [the] cinema tonight. | a, an, some
+We had [a] great time in Turkey. | the, an, some
+[The] Smiths are our neighbours. | A, An, One
+Do you have [a] pen I can borrow? | an, the, some
+She plays [the] violin in an orchestra. | a, an, some
+[Life] is short, so enjoy it. | The life, A life, Lives
+I would like [a] cup of tea. | the, an, some
+
+# 19 | Quantifiers and countable vs uncountable | Qoida: Advice, information, news, furniture, luggage, progress, research, equipment sanalmaydigan otlar: ular hech qachon ko'plikda bo'lmaydi, a/an olmaydi va fe'l birlikda keladi (The news is bad). Sanaladigan otlar bilan many, few, a few, sanalmaydiganlar bilan much, little, a little ishlatiladi; a few/a little ijobiy (bor), few/little esa salbiy (deyarli yo'q) ma'no beradi. Sanalmaydigan narsani bo'laklash uchun a piece of kerak: a piece of advice, not an advice. | Advices, informations, furnitures yo'q; kerak bo'lsa a piece of ishlating.
+She gave me some good [advice]. | advices, an advice, advises
+I need some [information] about trains. | informations, an information, informing
+The news [is] very sad today. | are, have, were
+We bought new [furniture] yesterday. | furnitures, a furniture, many furnitures
+How [much] luggage do you have? | many, few, a lot
+How [many] suitcases did you pack? | much, little, a little
+He has made great [progress] this year. | progresses, a progress, many progress
+They did a lot of [research] first. | researches, a research, many researchs
+The [equipment] in the gym is new. | equipments, an equipment, equipmentes
+Sadly, there is [little] hope of rescue. | few, a few, many
+Hurry up; we have only [a few] minutes. | a little, much, few
+Could I have [a little] sugar in my tea? | a few, few, many
+I have [few] friends here, so I feel lonely. | a few, a little, much
+[Both] my parents are teachers. | Either, Neither, Each
+[Neither] of the two answers was correct. | Either, Both, Any
+You can catch [either] bus; both stop there. | neither, every, none
+[Each] of the students has a locker. | Every, All, Everyone
+[Every] room in the hotel has a balcony. | All, Both, Whole
+She spent the [whole] day cleaning. | all, every, each
+I worked [all] day yesterday. | whole, every, each
+[All] the tickets have been sold. | Whole, Every, Each
+He read the [whole] book in one night. | all, every, each
+That is a useful [piece] of advice. | part, item, unit
+He gave me [a piece of] advice. | an advice, a advice, advices
+We have [too much] homework tonight. | too many, too few, much too
+There were [too many] cars on the road. | too much, much too, so much
+I do not have [much] free time. | many, a few, a lot
+There are not [many] chairs in the room. | much, a little, little
+Is there [any] milk left in the fridge? | a, many, few
+[A lot of] people attended the concert. | Much, A lot, Much of
+He gave us [a lot of] help. | many, a, an
+I would like [some] more information. | an, many, a few
+The furniture in my room [is] old. | are, were, be
+My luggage [was] lost yesterday. | were, are, have
+The scenery [is] spectacular here. | are, were, have
+Both of them [are] lawyers. | is, has, was
+She has [little] experience, so they declined. | few, a few, many
+He bought two pieces of [furniture]. | furnitures, a furniture, furnitured
+Our [luggage] is too heavy to carry. | luggages, a luggage, many luggages
+There was [little] progress in the talks. | few, a few, many
+I have [a few] ideas that might help. | a little, much, little
+
+# 20 | Comparison and degree | Qoida: Qisqa sifatlarga -er/-est, uzun sifatlarga more/most qo'shiladi (taller, more interesting); good-better-best va bad-worse-worst tartibsiz. Ikki marta qo'shish xato: more taller emas, taller. Taqqoslashda than yoki as ... as ishlatiladi; much/far/slightly kuchni o'zgartiradi (much better), the more ..., the more ... esa o'zaro bog'liq o'sishni bildiradi. Too ortiqcha (to'sqinlik), enough yetarli (sifatdan keyin), very shunchaki kuchli; so + sifat, such + a + sifat + ot. | More taller yoki very better demang; such a big house, lekin so big.
+This test was [more difficult] than the last. | difficulter, most difficult, more difficulter
+She is [taller] than her brother. | more tall, tallest, more taller
+He is the [most] intelligent student here. | more, much, mostest
+Tashkent is [bigger] than Samarkand. | more big, biggest, more bigger
+Yesterday was the [worst] day of my life. | baddest, most bad, worse
+Your English is [better] than mine. | gooder, more good, best
+This is [the best] pizza in town. | the better, the goodest, the most good
+He runs [as fast as] a professional. | as fast than, so fast like, as faster as
+She is not [as] tall as her sister. | than, like, more
+The [more] you practise, the better you get. | most, much, many
+The harder you work, the [more] you earn. | most, much, many
+The older he gets, the [wiser] he becomes. | wisest, more wise, much wise
+She is [much] better today. | very, most, too
+This phone is [far] more expensive. | very, so, too
+He is [slightly] taller than me. | slight, very, most
+It is [a lot] colder today than yesterday. | a lot of, very, many
+The soup is [too] hot to eat. | enough, very, so
+He is not tall [enough] to reach it. | too, very, so
+She is [old enough] to vote. | enough old, so old, very old
+There is not [enough] time to finish. | too, very, so
+It was [so] cold that we stayed in. | such, too, very
+It was [such] cold weather that we left. | so, too, very
+She is [so] kind that everyone loves her. | such, too, very
+They live in [such] a big house! | so, too, very
+He drives [so] fast that I am afraid. | such, too, very
+I have never met [such] a rude man. | so, too, very
+This exam is [as difficult as] the last. | as difficult than, so difficult than, as more difficult as
+She sings [better] than anyone I know. | more good, gooder, best
+My flat is [smaller] than yours. | more small, more smaller, smallest
+Of all the cities, Rome is [the most] beautiful. | the more, more, the much
+This is [the least] expensive hotel here. | the less, the lesser, the littlest
+The film was [less] interesting than the book. | fewer, lesser, little
+He earns [twice as much] as I do. | twice more as, twice much than, two times as
+The traffic is getting [worse and worse]. | more and more bad, badder and badder, worse and more
+The weather is getting [warmer and warmer]. | more warm and more warm, warm and warm, more and more warm
+He is [the youngest] of the three brothers. | the younger, youngest, the most young
+This bag is [more expensive than] that one. | expensiver than, more expensive that, more expensive as
+He speaks English [more fluently] than me. | more fluent, fluentlier, most fluently
+He is [by far] the best player. | far by, much by, by very
+The film was [too] boring to watch. | enough, very, so
+I am [too] tired to go out. | enough, very, so
