@@ -25,7 +25,21 @@ function verdict(score: number): { label: string; tone: string; icon: string } {
   return { label: 'Qayta urinib ko‘ring', tone: '#ef4444', icon: '🔄' };
 }
 
-export function SentenceGame({ words, remaining, onExit }: { words: Word[]; remaining: number; onExit: () => void }) {
+export function SentenceGame({
+  words,
+  remaining,
+  onExit,
+  title = 'Gap tuzish',
+  goal,
+  onChecked,
+}: {
+  words: Word[];
+  remaining: number;
+  onExit: () => void;
+  title?: string;
+  goal?: { done: number; target: number };
+  onChecked?: (r: SentenceResult) => void;
+}) {
   const last = useRef<number | null>(null);
   const pick = (): Word => {
     const pool = words.length > 1 ? words.filter((w) => w.id !== last.current) : words;
@@ -54,6 +68,7 @@ export function SentenceGame({ words, remaining, onExit }: { words: Word[]; rema
       setLeft(r.remainingToday);
       setChecked((n) => n + 1);
       setXp((n) => n + r.xpGained);
+      onChecked?.(r);
       requestProgressCheck();
     } catch (e) {
       setError(failure(e));
@@ -75,7 +90,7 @@ export function SentenceGame({ words, remaining, onExit }: { words: Word[]; rema
   };
 
   const v = result ? verdict(result.score) : null;
-  const norm = (t: string) => t.trim().replace(/s+/g, ' ').toLowerCase();
+  const norm = (t: string) => t.trim().replace(/\s+/g, ' ').toLowerCase();
   const same = !!result && norm(result.corrected) === norm(text);
   const outOfChecks = left <= 0;
 
@@ -85,10 +100,16 @@ export function SentenceGame({ words, remaining, onExit }: { words: Word[]; rema
         <button className="gp-back" onClick={onExit} aria-label="Orqaga">←</button>
         <div className="qx-title">
           <small>Sun'iy intellekt bilan</small>
-          <b>Gap tuzish</b>
+          <b>{title}</b>
         </div>
         <div className="qx-pills">
-          <span className="qx-pill">{checked} ta gap</span>
+          {goal ? (
+            <span className={`qx-pill ${goal.done + checked >= goal.target ? 'ok' : ''}`} title="Kunlik maqsad">
+              🎯 {Math.min(goal.done + checked, goal.target)} / {goal.target}
+            </span>
+          ) : (
+            <span className="qx-pill">{checked} ta gap</span>
+          )}
           {xp > 0 && <span className="qx-pill ok">+{xp} XP</span>}
           <span className="qx-pill" title="Bugun qolgan tekshiruvlar">⚡ {left}</span>
         </div>

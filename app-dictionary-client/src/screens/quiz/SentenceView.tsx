@@ -17,6 +17,8 @@ interface Props {
   words: Word[];
   remaining: number;
   onExit: () => void;
+  title?: string;
+  goal?: { done: number; target: number };
 }
 
 const MAX = 300;
@@ -44,7 +46,7 @@ function verdict(score: number): { label: string; tone: string; icon: keyof type
 
 const norm = (t: string) => t.trim().replace(/\s+/g, ' ').toLowerCase();
 
-export default function SentenceView({ words, remaining, onExit }: Props) {
+export default function SentenceView({ words, remaining, onExit, title = 'Gap tuzish', goal }: Props) {
   const last = useRef<number | null>(null);
   const pick = (): Word => {
     const pool = words.length > 1 ? words.filter((w) => w.id !== last.current) : words;
@@ -99,9 +101,10 @@ export default function SentenceView({ words, remaining, onExit }: Props) {
           <Ionicons name="close" size={20} color={colors.text} />
         </Pressable>
         <View style={styles.flex}>
-          <Text style={styles.topTitle}>Gap tuzish</Text>
+          <Text style={styles.topTitle}>{title}</Text>
           <Text style={styles.topSub}>
-            {checked} ta gap{xp > 0 ? ` · +${xp} XP` : ''} · {left} ta tekshiruv qoldi
+            {goal ? `Maqsad ${Math.min(goal.done + checked, goal.target)} / ${goal.target}` : `${checked} ta gap`}
+            {xp > 0 ? ` · +${xp} XP` : ''} · {left} ta tekshiruv qoldi
           </Text>
         </View>
       </View>

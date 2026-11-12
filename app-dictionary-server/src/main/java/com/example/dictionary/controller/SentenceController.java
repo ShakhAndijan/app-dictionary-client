@@ -35,6 +35,19 @@ public class SentenceController {
         return ResponseEntity.ok(service.status(principal.getUsername()));
     }
 
+    @Operation(summary = "Word ids for a practice mode (TODAY, WEAK or ALL)")
+    @GetMapping("/words")
+    public ResponseEntity<java.util.List<Long>> words(@AuthenticationPrincipal UserDetails principal,
+                                                      @org.springframework.web.bind.annotation.RequestParam(defaultValue = "ALL") String mode) {
+        return ResponseEntity.ok(service.wordIds(principal.getUsername(), mode));
+    }
+
+    @Operation(summary = "Sentence totals, average score and the last 7 days")
+    @GetMapping("/stats")
+    public ResponseEntity<com.example.dictionary.dto.SentenceDtos.SentenceStatsResponse> stats(@AuthenticationPrincipal UserDetails principal) {
+        return ResponseEntity.ok(service.stats(principal.getUsername()));
+    }
+
     @Operation(summary = "Grade a sentence written with one of the user's words",
             description = "503 when AI is not configured, 429 when the daily limit is used up, 502 when the AI failed "
                     + "(the check is not counted in that case).")

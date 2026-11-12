@@ -57,6 +57,8 @@ function matchesFilter(word: Word, filter: WordFilter): boolean {
 // Dot next to each word: grey = not answered yet, amber = learning, green = mastered.
 const STATE_COLORS = themed((): Record<WordState, string> => ({ NEW: colors.border, LEARNING: '#F59E0B', MASTERED: colors.secondary }));
 
+const STATE_TEXT = themed((): Record<WordState, string> => ({ NEW: colors.textMuted, LEARNING: '#D97706', MASTERED: colors.greenText }));
+
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
 function formatDate(iso: string): string {
@@ -431,9 +433,25 @@ export default function WordsScreen() {
                     <View style={styles.wordAvatar}>
                       <Text style={styles.wordAvatarText}>{item.english.charAt(0).toUpperCase()}</Text>
                     </View>
-                    <Text style={styles.wordEnglish} numberOfLines={1}>
-                      {item.english}
-                    </Text>
+                    <View style={{ flex: 1 }}>
+                      <View style={styles.wordLine}>
+                        <Text style={styles.wordEnglish} numberOfLines={1}>
+                          {item.english}
+                        </Text>
+                        {item.weak ? <Text style={styles.weakTag}>Zaif</Text> : null}
+                      </View>
+                      <Text style={styles.wordUzbek} numberOfLines={1}>
+                        {item.uzbek}
+                      </Text>
+                      {item.definition ? (
+                        <Text style={styles.wordDef} numberOfLines={2}>
+                          {item.definition}
+                        </Text>
+                      ) : null}
+                      <Text style={[styles.statePill, { color: STATE_TEXT[item.state ?? 'NEW'] }]}>
+                        {STATE_LABELS[item.state ?? 'NEW']}
+                      </Text>
+                    </View>
                     <View style={[styles.stateDot, { backgroundColor: STATE_COLORS[item.state ?? 'NEW'] }]} />
                   </Pressable>
                   <Pressable hitSlop={8} onPress={() => toggleFavorite(item)} style={styles.rowIconBtn}>
@@ -814,7 +832,12 @@ const styles = themed(() => StyleSheet.create({
   },
   wordAvatarText: { fontSize: 15, fontWeight: '700', color: colors.primary },
   stateDot: { width: 8, height: 8, borderRadius: 4, marginRight: 4 },
-  wordEnglish: { flex: 1, fontSize: 16, fontWeight: '700', color: colors.text },
+  wordLine: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  wordEnglish: { flexShrink: 1, fontSize: 16, fontWeight: '700', color: colors.text },
+  wordUzbek: { fontSize: 14.5, color: colors.text, opacity: 0.85, marginTop: 1 },
+  wordDef: { fontSize: 12.5, color: colors.textMuted, lineHeight: 17, marginTop: 3 },
+  weakTag: { fontSize: 10.5, fontWeight: '800', color: colors.danger, backgroundColor: `${colors.danger}1F`, paddingHorizontal: 7, paddingVertical: 1, borderRadius: 999, overflow: 'hidden' },
+  statePill: { fontSize: 11.5, fontWeight: '700', marginTop: 4 },
   rowIconBtn: { padding: 6, marginLeft: 4 },
   separator: { height: StyleSheet.hairlineWidth, backgroundColor: colors.border, marginLeft: 68 },
   indexBar: {

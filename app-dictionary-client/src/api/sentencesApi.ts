@@ -4,6 +4,28 @@ export interface SentenceStatus {
   enabled: boolean;
   remainingToday: number;
   dailyLimit: number;
+  dailyGoal: number;
+  doneToday: number;
+  goodToday: number;
+}
+
+export type SentenceMode = 'TODAY' | 'WEAK' | 'ALL';
+
+export interface SentenceStats {
+  total: number;
+  averageScore: number;
+  good: number;
+  dailyGoal: number;
+  goalDays: number;
+  last7: { date: string; count: number }[];
+}
+
+export function getSentenceWords(mode: SentenceMode) {
+  return apiClient.get<number[]>('/sentences/words', { params: { mode } }).then((r) => r.data);
+}
+
+export function getSentenceStats() {
+  return apiClient.get<SentenceStats>('/sentences/stats').then((r) => r.data);
 }
 
 export interface SentenceResult {

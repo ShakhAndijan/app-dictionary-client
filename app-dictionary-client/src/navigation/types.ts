@@ -6,6 +6,7 @@ export type AuthStackParamList = {
 export type MainTabParamList = {
   Baholash: undefined;
   Kurs: undefined;
+  Gap: undefined;
   Sozlar: undefined;
   Profil: undefined;
   Admin: undefined;

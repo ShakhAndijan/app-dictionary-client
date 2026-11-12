@@ -27,6 +27,15 @@ public final class SentenceDtos {
     }
 
     /** @param enabled false when the server has no Gemini key configured */
-    public record SentenceStatusResponse(boolean enabled, int remainingToday, int dailyLimit) {
+    public record SentenceStatusResponse(boolean enabled, int remainingToday, int dailyLimit,
+                                         int dailyGoal, int doneToday, int goodToday) {
+    }
+
+    /** One day of the last-week chart. */
+    public record SentenceDay(String date, int count) {
+    }
+
+    public record SentenceStatsResponse(long total, int averageScore, long good, int dailyGoal,
+                                        int goalDays, java.util.List<SentenceDay> last7) {
     }
 }

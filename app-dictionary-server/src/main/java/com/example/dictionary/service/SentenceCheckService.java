@@ -2,6 +2,10 @@ package com.example.dictionary.service;
 
 import com.example.dictionary.dto.SentenceDtos.SentenceCheckResponse;
 import com.example.dictionary.dto.SentenceDtos.SentenceStatusResponse;
+import com.example.dictionary.dto.SentenceDtos.SentenceDay;
+import com.example.dictionary.dto.SentenceDtos.SentenceStatsResponse;
+import com.example.dictionary.model.SentenceLog;
+import com.example.dictionary.repository.SentenceLogRepository;
 import com.example.dictionary.model.AppUser;
 import com.example.dictionary.model.Word;
 import com.example.dictionary.model.XpEvent;
@@ -43,6 +47,8 @@ public class SentenceCheckService {
     private static final Logger log = LoggerFactory.getLogger(SentenceCheckService.class);
 
     static final int MAX_SENTENCE_LENGTH = 300;
+    public static final int DAILY_GOAL = 10;
+    static final int GOOD_SCORE = 70;
     static final int FULL_XP_CHECKS_PER_WORD_PER_DAY = 2;
 
     private static final String SYSTEM_PROMPT = """
@@ -68,6 +74,8 @@ public class SentenceCheckService {
     private final WordRepository wordRepository;
     private final UserRepository userRepository;
     private final XpEventRepository xpRepository;
+    private final SentenceLogRepository logRepository;
+    private final ReviewService reviewService;
     private final RestClient http;
     private final String apiKey;
     private final String model;
@@ -80,12 +88,16 @@ public class SentenceCheckService {
     public SentenceCheckService(WordRepository wordRepository,
                                 UserRepository userRepository,
                                 XpEventRepository xpRepository,
+                                SentenceLogRepository logRepository,
+                                ReviewService reviewService,
                                 @Value("${app.gemini.api-key:${GEMINI_API_KEY:}}") String apiKey,
                                 @Value("${app.gemini.model:${GEMINI_MODEL:gemini-3.5-flash}}") String model,
                                 @Value("${app.gemini.daily-limit:${GEMINI_DAILY_LIMIT:30}}") int dailyLimit) {
         this.wordRepository = wordRepository;
         this.userRepository = userRepository;
         this.xpRepository = xpRepository;
+        this.logRepository = logRepository;
+        this.reviewService = reviewService;
         this.apiKey = apiKey == null ? "" : apiKey.trim();
         this.model = model;
         this.dailyLimit = dailyLimit;
@@ -96,7 +108,44 @@ public class SentenceCheckService {
     }
 
     public SentenceStatusResponse status(String username) {
-        return new SentenceStatusResponse(!apiKey.isEmpty(), remaining(username), dailyLimit);
+        Instant from = startOfToday();
+        return new SentenceStatusResponse(!apiKey.isEmpty(), remaining(username), dailyLimit, DAILY_GOAL,
+                (int) logRepository.countByOwnerUsernameAndCreatedAtGreaterThanEqual(username, from),
+                (int) logRepository.countByOwnerUsernameAndScoreGreaterThanEqualAndCreatedAtGreaterThanEqual(username, GOOD_SCORE, from));
+    }
+
+    private Instant startOfToday() {
+        return LocalDate.now(zone).atStartOfDay(zone).toInstant();
+    }
+
+    /** Ids of the user's words for a practice mode: TODAY (added today), WEAK (often missed) or ALL. */
+    public List<Long> wordIds(String username, String mode) {
+        List<Word> words = switch (mode == null ? "ALL" : mode.toUpperCase()) {
+            case "TODAY" -> wordRepository.findByOwnerUsernameAndCreatedAtGreaterThanEqual(username, startOfToday());
+            case "WEAK" -> reviewService.weakWords(username);
+            case "ALL" -> wordRepository.findByOwnerUsernameOrderByCreatedAtDesc(username);
+            default -> throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unknown mode");
+        };
+        return words.stream().map(Word::getId).toList();
+    }
+
+    public SentenceStatsResponse stats(String username) {
+        LocalDate today = LocalDate.now(zone);
+        Instant from = today.minusDays(29).atStartOfDay(zone).toInstant();
+        List<SentenceLog> logs = logRepository.findByOwnerUsernameAndCreatedAtGreaterThanEqual(username, from);
+        Map<LocalDate, Integer> perDay = new java.util.HashMap<>();
+        for (SentenceLog l : logs) {
+            perDay.merge(l.getCreatedAt().atZone(zone).toLocalDate(), 1, Integer::sum);
+        }
+        List<SentenceDay> last7 = new java.util.ArrayList<>();
+        for (int i = 6; i >= 0; i--) {
+            LocalDate d = today.minusDays(i);
+            last7.add(new SentenceDay(d.toString(), perDay.getOrDefault(d, 0)));
+        }
+        int goalDays = (int) perDay.values().stream().filter(c -> c >= DAILY_GOAL).count();
+        int avg = logs.isEmpty() ? 0 : (int) Math.round(logs.stream().mapToInt(SentenceLog::getScore).average().orElse(0));
+        long good = logs.stream().filter(l -> l.getScore() >= GOOD_SCORE).count();
+        return new SentenceStatsResponse(logRepository.countByOwnerUsername(username), avg, good, DAILY_GOAL, goalDays, last7);
     }
 
     @Transactional
@@ -135,6 +184,7 @@ public class SentenceCheckService {
         if (xp > 0) {
             xpRepository.save(new XpEvent(user, word.getId(), xp, XpSource.ANSWER));
         }
+        logRepository.save(new SentenceLog(user, word.getId(), verdict.score()));
         return new SentenceCheckResponse(verdict.score(), verdict.usesWord(), verdict.corrected(),
                 verdict.feedback(), xp, remaining(username));
     }

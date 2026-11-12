@@ -381,10 +381,26 @@ export interface SentenceStatus {
   enabled: boolean;
   remainingToday: number;
   dailyLimit: number;
+  dailyGoal: number;
+  doneToday: number;
+  goodToday: number;
+}
+
+export type SentenceMode = 'TODAY' | 'WEAK' | 'ALL';
+
+export interface SentenceStats {
+  total: number;
+  averageScore: number;
+  good: number;
+  dailyGoal: number;
+  goalDays: number;
+  last7: { date: string; count: number }[];
 }
 
 export const sentencesApi = {
   status: () => d(http.get<SentenceStatus>('/sentences/status')),
+  words: (mode: SentenceMode) => d(http.get<number[]>('/sentences/words', { params: { mode } })),
+  stats: () => d(http.get<SentenceStats>('/sentences/stats')),
   check: (wordId: number, sentence: string) => d(http.post<SentenceResult>('/sentences/check', { wordId, sentence }, { timeout: 60000 })),
 };
 
