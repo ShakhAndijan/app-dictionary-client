@@ -23,7 +23,7 @@ const MODES: { mode: SentenceMode; icon: IconName; title: string; sub: string; t
 
 const DAYS = ['Yak', 'Dush', 'Sesh', 'Chor', 'Pay', 'Jum', 'Shan'];
 
-export default function SentencesScreen() {
+export default function SentencesScreen({ onBack }: { onBack?: () => void }) {
   const [words, setWords] = useState<Word[]>([]);
   const [status, setStatus] = useState<SentenceStatus | null>(null);
   const [stats, setStats] = useState<SentenceStats | null>(null);
@@ -103,7 +103,14 @@ export default function SentencesScreen() {
 
   return (
     <ScreenContainer>
-      <Text style={styles.title}>Gap tuzish</Text>
+      <View style={styles.titleRow}>
+        {onBack ? (
+          <Pressable onPress={onBack} hitSlop={10} style={styles.backBtn} accessibilityLabel="Orqaga">
+            <Ionicons name="arrow-back" size={20} color={colors.text} />
+          </Pressable>
+        ) : null}
+        <Text style={styles.title}>Gap tuzish</Text>
+      </View>
 
       <View style={[courseStyles.surface, styles.goal]}>
         <View style={styles.goalTop}>
@@ -182,7 +189,9 @@ function Fact({ label, value }: { label: string; value: string }) {
 
 const styles = themed(() =>
   StyleSheet.create({
-    title: { color: colors.text, fontSize: 28, fontWeight: '800', letterSpacing: -0.4, marginBottom: 14 },
+    titleRow: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 14 },
+    backBtn: { width: 36, height: 36, borderRadius: 18, backgroundColor: colors.border, alignItems: 'center', justifyContent: 'center' },
+    title: { color: colors.text, fontSize: 28, fontWeight: '800', letterSpacing: -0.4 },
     error: { color: colors.danger, marginVertical: 10 },
     goal: { padding: 16, gap: 10 },
     goalTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },

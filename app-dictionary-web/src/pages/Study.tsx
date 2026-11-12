@@ -16,7 +16,7 @@ import {
 import { Button, Card, Notice, PageHeader, ProgressBar, SpeakButton, Spinner } from '../ui';
 import { dayKey, DECK_TITLES, requestProgressCheck, speakEnglish, stopSpeaking } from '../util';
 import { FlashcardGame, GameResult, MatchingGame, SpeedGame } from './StudyGames';
-import { SentenceGame } from './StudySentence';
+import SentencesPage from './Sentences';
 
 type View = 'hub' | 'quiz' | 'flash' | 'match' | 'speed' | 'sentence';
 type QuizFormat = 'TYPED' | 'CHOICE' | 'LISTENING';
@@ -148,7 +148,7 @@ export default function StudyPage() {
     return <FlashcardGame review={review} totalWords={words.length} favoriteCount={favoriteCount} onExit={exit} />;
   if (view === 'match')
     return <MatchingGame review={review} totalWords={words.length} favoriteCount={favoriteCount} onExit={exit} />;
-  if (view === 'sentence' && ai) return <SentenceGame words={words} remaining={ai.remainingToday} onExit={exit} />;
+  if (view === 'sentence') return <SentencesPage onBack={exit} />;
   if (view === 'speed') return <SpeedGame review={review} totalWords={words.length} onExit={exit} />;
   if (view === 'quiz' && quizMode) return <QuizSession mode={quizMode} format={format} onExit={exit} />;
 

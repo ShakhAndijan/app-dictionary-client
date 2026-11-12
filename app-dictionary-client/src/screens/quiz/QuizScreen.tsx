@@ -25,7 +25,7 @@ import { speakEnglish, stopSpeaking } from '../../services/speech';
 import FlashcardView from './FlashcardView';
 import MatchingView from './MatchingView';
 import SpeedRoundView from './SpeedRoundView';
-import SentenceView from './SentenceView';
+import SentencesScreen from '../sentences/SentencesScreen';
 import * as sentencesApi from '../../api/sentencesApi';
 import { SentenceStatus } from '../../api/sentencesApi';
 
@@ -294,10 +294,8 @@ export default function QuizScreen({ navigation }: Props) {
 
   if (sentence && ai) {
     return (
-      <SentenceView
-        words={words}
-        remaining={ai.remainingToday}
-        onExit={() => {
+      <SentencesScreen
+        onBack={() => {
           setSentence(false);
           loadWords();
         }}

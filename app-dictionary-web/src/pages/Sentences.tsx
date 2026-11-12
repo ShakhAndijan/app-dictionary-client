@@ -12,7 +12,7 @@ const MODES: { mode: SentenceMode; icon: string; title: string; sub: string; col
 
 const DAYS = ['Yak', 'Dush', 'Sesh', 'Chor', 'Pay', 'Jum', 'Shan'];
 
-export default function SentencesPage() {
+export default function SentencesPage({ onBack }: { onBack?: () => void }) {
   const [words, setWords] = useState<Word[]>([]);
   const [status, setStatus] = useState<SentenceStatus | null>(null);
   const [stats, setStats] = useState<SentenceStats | null>(null);
@@ -83,6 +83,9 @@ export default function SentencesPage() {
     <>
       <header className="sx-head rise">
         <div>
+          {onBack && (
+            <button className="gp-back" onClick={onBack} aria-label="Orqaga" style={{ marginBottom: 10 }}>←</button>
+          )}
           <div className="eyebrow">Sun'iy intellekt bilan</div>
           <h1 className="dx-title">Gap tuzish</h1>
         </div>
