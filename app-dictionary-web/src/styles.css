@@ -5426,3 +5426,26 @@ i.bad,
 .ls-bar-text { display: grid; }
 .ls-bar-text small { color: var(--muted); }
 @media (max-width: 640px) { .ls-audio { top: 64px; } .ap-btn { width: 36px; height: 36px; } }
+
+/* ---- lesson road, compact version ---- */
+.lr-road2 { width: 340px; }
+.lr-path-base { stroke-width: 10; stroke: color-mix(in srgb, var(--text) 9%, transparent); }
+.lr-path-glow { stroke-width: 4; }
+.lr-n2 { width: 128px; margin-left: -64px; gap: 2px; }
+.lr-n2 b { margin-top: 6px; font-size: 13px; font-weight: 800; }
+.lr-n2 small { font-size: 11px; }
+.lr-ring { width: 64px; height: 64px; box-shadow: 0 8px 18px color-mix(in srgb, var(--tone) 28%, transparent); }
+.lr-core { width: 52px; height: 52px; background: radial-gradient(circle at 30% 22%, #fff, color-mix(in srgb, var(--tone) 20%, #fff) 85%); box-shadow: inset 0 -3px 0 color-mix(in srgb, var(--tone) 35%, transparent), inset 0 2px 0 rgba(255, 255, 255, 0.9); }
+.lr-ico { font-size: 25px; filter: none; }
+.lr-ring em { top: -4px; right: -4px; width: 22px; height: 22px; font-size: 11px; border-width: 2px; }
+.lr-n2.done .lr-core { background: radial-gradient(circle at 30% 22%, #34d399, #059669); box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2); }
+.lr-n2.done .lr-ico { font-size: 22px; }
+.lr-n2.next .lr-ring { width: 72px; height: 72px; }
+.lr-n2.next .lr-core { width: 60px; height: 60px; }
+.lr-n2.next .lr-ico { font-size: 29px; }
+.lr-n2.next .lr-ring::before { inset: -7px; border-width: 2px; }
+.lr-n2.todo .lr-core { filter: none; opacity: 0.94; }
+.lr-n2.todo .lr-ring { background: conic-gradient(var(--tone) var(--p, 0%), color-mix(in srgb, var(--text) 18%, transparent) 0); }
+.lr-go { padding: 4px 10px; margin-bottom: 6px; font-size: 10.5px; }
+.lr-banner { font-size: 11px; }
+.lr-banner span { padding: 4px 12px; }

@@ -27,30 +27,44 @@ export const SKILL_META: Record<Skill, { icon: string; label: string; tone: stri
   GRAMMAR: { icon: '🧩', label: 'Grammatika', tone: '#a855f7', tip: "Qoidani o'qib, mashqlarni xatosiz bajarguncha takrorlang." },
 };
 
-/** A picture for a lesson: by what it is about, falling back to a rotating set per skill. */
+/** A picture for a lesson: matched on what it is about (most specific first), then a rotating set per skill. */
 const TOPIC_ICONS: [RegExp, string][] = [
-  [/family|oila/i, '👨‍👩‍👧'], [/pet\b/i, '🐶'], [/teacher|school|maktab/i, '🏫'], [/sport|football|volley/i, '⚽'], [/birthday|party/i, '🎂'],
-  [/zoo/i, '🦁'], [/doctor|pharmacy|nurse/i, '🩺'], [/letter|email|phone|call/i, '✉️'], [/clothes|shopping|shop|market|supermarket/i, '🛍️'],
-  [/food|café|cafe|lunch|cook|restaurant/i, '🍲'], [/work|job|transport|station|airport|bus/i, '🚌'], [/mountain|trip|holiday|beach|plan/i, '🏔️'],
-  [/morning|day|routine|weekend|busy/i, '⏰'], [/room|home|house|hotel/i, '🏠'], [/library|book|reading/i, '📚'], [/tashkent|town|city|direction/i, '🏙️'],
-  [/season|weather|forecast/i, '⛅'], [/colour|color/i, '🎨'], [/neighbour|friend/i, '🤝'], [/new year|picnic|park/i, '🎄'], [/hobb|interview/i, '🎯'],
-  [/greeting|introduc|about me|salom/i, '👋'], [/time|day|date/i, '🕒'], [/question|savol|who|what/i, '❓'], [/yesterday|past|was|were|did/i, '⏪'],
-  [/going to|plan|rejalar/i, '🗺️'], [/can|could/i, '💪'], [/would like/i, '🙏'], [/to be/i, '🧱'], [/present continuous/i, '🔄'], [/present simple|simple/i, '📆'],
-  [/have/i, '🤲'], [/countable|sanal/i, '🍎'], [/a \/ an|the|some|any|much|many/i, '🔤'], [/there is|there are/i, '📍'], [/my \/ mine|mine/i, '🧢'],
-  [/vaqt predlog|at \/ on \/ in/i, '📍'], [/short|qisqa/i, '💬'],
+  // grammar
+  [/perfect continuous/i, '⏳'], [/present perfect|past perfect/i, '⌛'], [/narrative/i, '📜'],
+  [/used to|be used to/i, '🕰️'], [/future|\bwill\b|going to|rejalar/i, '🔮'], [/third conditional|mixed conditional/i, '🌀'],
+  [/conditional|unless|if only|wish/i, '🔀'], [/passive|have something done/i, '🔁'], [/reported|reporting verb/i, '🗨️'],
+  [/deduction|must have|modals?/i, '🕵️'], [/gerund|infinitive|verb pattern/i, '🔗'], [/relative clause/i, '🧷'],
+  [/article|a \/ an|^the$/i, '🔤'], [/quantifier|much|many|few|little|uncountable|countable|sanal/i, '🧮'], [/comparison|comparative|superlative|degree/i, '⚖️'],
+  [/confusing|look-alike|sound-alike|say\/tell|adashtir/i, '🔍'], [/preposition|predlog|at \/ on \/ in/i, '📍'], [/phrasal/i, '🧩'], [/linking|contrast|connector/i, '🌉'],
+  [/to be|am \/ is/i, '🧱'], [/present continuous/i, '🔄'], [/present simple/i, '📆'], [/past simple|was \/ were|\bdid\b/i, '⏪'], [/have \/ have got/i, '🤲'],
+  [/can \/ could|\bcan\b/i, '💪'], [/would like/i, '🙏'], [/who \/ what|savol|question/i, '❓'], [/some \/ any/i, '🥣'], [/there is|there are/i, '📌'], [/my \/ mine|possessive/i, '🧢'],
+  // people, introductions
+  [/greeting|salom/i, '👋'], [/introduc|about me|myself/i, '🙋'], [/making friends|friend|neighbour|neighbor/i, '🤝'], [/family|oila/i, '👨‍👩‍👧'], [/birthday|party/i, '🎂'],
+  [/wedding/i, '💍'], [/feeling|emotion|body|hissiyot/i, '🫀'],
+  // places and daily life
+  [/hotel|complaint/i, '🏨'], [/airport|flight|check-in|plane/i, '✈️'], [/railway|train|station|timetable|metro/i, '🚆'], [/taxi|\bbus\b|transport|bike|driver|shuttle/i, '🚌'],
+  [/doctor|pharmacy|nurse|dentist|clinic|hospital|injury|medic|health|shifokor/i, '🩺'], [/sleep|burnout|stress|mental|detox|nutrition/i, '🧘'],
+  [/school|teacher|class|lesson|student|university|exam|scholarship|study|maktab/i, '🏫'], [/library|book|novel|reading/i, '📚'],
+  [/shop|supermarket|market|bazaar|buying|present|gift|price|money|bank|salary|saving|rent|mortgage/i, '🛍️'], [/pizza|food|cafe|café|restaurant|lunch|dinner|cook|kitchen|bakery|canteen|meal|recipe|drink|ovqat/i, '🍲'],
+  [/clothes|shoes|colou?r|kiyim/i, '👕'], [/house|home|flat|room|furniture|garden/i, '🏠'], [/city|town|tashkent|direction|street|shahar|yo'l/i, '🏙️'],
+  [/park|walk|picnic|lake|forest|nature|camping/i, '🌳'], [/mountain|desert|trip|travel|holiday|beach|tour|vlog|sayohat|gap year/i, '🏔️'],
+  [/weather|forecast|season|winter|autumn|snow|rain|storm|flood|ob-havo/i, '⛅'], [/navruz|new year|festival|celebration|bayram/i, '🎉'], [/zoo|animal|\bpets?\b|\bdog\b|\bcat\b|wildlife|hayvon/i, '🦁'],
+  // activities
+  [/sport|football|tennis|volley|match|game|chess|o'yin/i, '⚽'], [/music|concert|song|piano|guitar/i, '🎵'], [/draw|paint|\bart\b|museum|gallery/i, '🎨'], [/hobb|interest|qiziq/i, '🎯'],
+  [/phone|call|message|email|letter|postcard|post office|telefon/i, '📞'], [/news|media|journalist|editor|bulletin|podcast|social media|algorithm/i, '📰'],
+  [/tech|\bapp\b|smart|computer|internet|digital|artificial|robot|laborator|invent|science|research/i, '💡'], [/environment|plastic|aral|reserve|climate|tourism|recycle/i, '🌍'],
+  [/routine|morning|tartib/i, '🌅'], [/job|work|career|interview|office|meeting|freelanc|promot|boss|kasb/i, '💼'], [/time|\bday\b|date|routine|morning|weekend|busy|kun|vaqt|tartib/i, '⏰'],
+  [/history|village|town hall|protest|oak tree|argument|quarrel|community|volunteer|food bank/i, '🏛️'], [/number|raqam/i, '🔢'], [/opinion|hedging|agree|clarif|polite|request|stress|pronounc|talaffuz|sound/i, '🗣️'],
+  [/regret|speculat|hypothetic|narrat|story|report/i, '💭'], [/help|yordam/i, '🆘'], [/like|dislike|yoqtir/i, '👍'], [/plan|goal|future|maqsad/i, '🗺️'],
 ];
 const SKILL_ICON_SET: Record<Skill, string[]> = {
   READING: ['📖', '📰', '📜', '🔖', '📕', '🗞️'], LISTENING: ['🎧', '🔊', '📻', '🎵', '📞', '🎙️'], SPEAKING: ['🎤', '🗣️', '💬', '📢', '🙋', '🎬'],
   WRITING: ['✍️', '📝', '🖋️', '📓', '✏️', '📄'], GRAMMAR: ['🧩', '📐', '🔧', '🧠', '⚙️', '🔠'],
 };
 export function lessonIcon(l: { skill: Skill; topic: string; title: string }): string {
-  const first = l.topic.split(',')[0];
-  const hit = TOPIC_ICONS.find(([re]) => re.test(first));
-  if (hit && l.skill !== 'GRAMMAR') return hit[1];
-  if (l.skill === 'GRAMMAR') {
-    const g = TOPIC_ICONS.find(([re]) => re.test(l.topic));
-    if (g) return g[1];
-  }
+  const text = l.skill === 'GRAMMAR' ? l.topic : l.topic.split(',')[0];
+  const hit = TOPIC_ICONS.find(([re]) => re.test(text));
+  if (hit) return hit[1];
   const n = parseInt(l.title.replace(/\D+/g, ''), 10) || 1;
   const set = SKILL_ICON_SET[l.skill];
   return set[(n - 1) % set.length];
@@ -263,7 +277,7 @@ export function LearnPage() {
       )}
 
       {skill !== null && ov.progress.total > 0 && (() => {
-        const W = 360, AMP = 98, TOP = 36, ROW2 = 156, BANNER = 46;
+        const W = 360, AMP = 86, TOP = 24, ROW2 = 132, BANNER = 44;
         type Entry = { l: LearnLessonSummary; kind: 'done' | 'next' | 'todo' };
         const entries: Entry[] = [
           ...road.done.slice(-2).map((l) => ({ l, kind: 'done' as const })),
@@ -277,13 +291,13 @@ export function LearnPage() {
           if (e.l.unit !== prevUnit) { banner = true; yCursor += i === 0 ? 0 : 0; }
           prevUnit = e.l.unit;
           const top = yCursor + (banner ? BANNER : 0);
-          yCursor = top + ROW2;
-          return { ...e, banner, top, cx: Math.round(Math.sin(i * 0.95 + 0.3) * AMP), cy: top + 44 };
+          yCursor = top + ROW2 + (e.kind === 'next' ? 30 : 0);
+          return { ...e, banner, top, cx: Math.round(Math.sin(i * 0.95 + 0.3) * AMP), cy: top + (e.kind === 'next' ? 64 : 32) };
         });
         const endTop = yCursor;
-        const endPt = { cx: Math.round(Math.sin(entries.length * 0.95 + 0.3) * AMP), cy: endTop + 44 };
+        const endPt = { cx: Math.round(Math.sin(entries.length * 0.95 + 0.3) * AMP), cy: endTop + 32 };
         const all = [...pts.map((p) => ({ cx: p.cx, cy: p.cy })), endPt];
-        const H = endTop + 160;
+        const H = endTop + 110;
         let d = '';
         all.forEach((p, i) => {
           const px = W / 2 + p.cx;
