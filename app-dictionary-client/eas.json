@@ -14,7 +14,8 @@
       },
       "env": {
         "EXPO_PUBLIC_API_URL": "https://shakhdict.duckdns.org/api"
-      }
+      },
+      "autoIncrement": true
     },
     "production": {
       "autoIncrement": true,
