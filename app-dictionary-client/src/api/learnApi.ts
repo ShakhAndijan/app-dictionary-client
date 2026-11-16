@@ -51,6 +51,7 @@ export interface LessonDetail {
   intro: string | null;
   passage: string | null;
   audioText: string | null;
+  theory?: string | null;
   items: ItemView[];
 }
 

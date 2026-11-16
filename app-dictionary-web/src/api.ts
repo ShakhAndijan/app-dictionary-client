@@ -576,6 +576,7 @@ export interface LearnLessonDetail {
   intro: string | null;
   passage: string | null;
   audioText: string | null;
+  theory?: string | null;
   items: LearnItemView[];
 }
 

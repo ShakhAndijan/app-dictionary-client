@@ -5449,3 +5449,26 @@ i.bad,
 .lr-go { padding: 4px 10px; margin-bottom: 6px; font-size: 10.5px; }
 .lr-banner { font-size: 11px; }
 .lr-banner span { padding: 4px 12px; }
+
+/* Grammar explanation (theory) page */
+.th { display: grid; gap: 4px; margin: 14px 0 6px; }
+.th-def { margin: 0 0 6px; padding: 14px 16px; border-radius: 14px; background: var(--indigo-bg); color: var(--indigo-text); font-size: 15.5px; line-height: 1.6; font-weight: 600; }
+.th-h { margin: 18px 0 8px; font-size: 16px; font-weight: 800; }
+.th-forms { display: grid; gap: 10px; }
+.th-form { display: grid; gap: 6px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
+.th-label { color: var(--primary); font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+.th-formula { display: block; padding: 8px 12px; border-radius: 10px; background: var(--track); color: var(--text); font-size: 15px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; }
+.th-say { display: block; padding: 0; border: 0; background: none; color: var(--text); font: inherit; text-align: left; cursor: pointer; }
+.th-form .th-say { font-size: 14.5px; font-style: italic; }
+.th-rules { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14.5px; line-height: 1.55; }
+.th-ex { display: grid; gap: 8px; }
+.th-sentence { display: grid; gap: 2px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); width: 100%; }
+.th-sentence:hover { border-color: var(--primary); }
+.th-en { font-weight: 700; font-size: 15px; }
+.th-uz { color: var(--muted); font-size: 13.5px; }
+.th-errs { display: grid; gap: 8px; }
+.th-err { padding: 10px 14px; border-radius: 12px; background: var(--amber-bg); display: grid; gap: 2px; }
+.th-wrong { color: #dc2626; font-weight: 700; text-decoration: line-through; text-decoration-thickness: 1px; }
+.th-right { color: var(--green-text); font-weight: 700; }
+.th-err small { color: var(--amber-text); font-size: 12.5px; font-weight: 600; }
+.lr-intro.has-theory { max-width: 760px; margin: 0 auto; }

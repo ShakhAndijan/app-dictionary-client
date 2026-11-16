@@ -18,6 +18,7 @@ import {
 import { Button, Card, Notice, PageHeader, ProgressBar, Spinner } from '../ui';
 import { requestProgressCheck, speakEnglish } from '../util';
 import { GameResult } from './StudyGames';
+import Theory, { parseTheory } from './Theory';
 
 export const SKILL_META: Record<Skill, { icon: string; label: string; tone: string; tip: string }> = {
   READING: { icon: '📖', label: "O'qish", tone: '#6366f1', tip: "Har kuni 1–2 ta qisqa matn o'qing va noma'lum so'zlarni lug'atingizga qo'shing." },
@@ -919,16 +920,17 @@ export function LessonPage() {
   }
 
   if (stage === 'intro') {
+    const theory = parseTheory(lesson.theory);
     return (
       <>
         <PageHeader title={lesson.title} back={exit} />
-        <Card className="lr-intro rise" >
+        <Card className={`lr-intro rise${theory ? ' has-theory' : ''}`}>
           <span className="lr-badge-skill" style={{ ['--tone' as string]: m.tone }}>{m.icon} {m.label} · {lesson.level}</span>
           <h2>{lesson.topic}</h2>
-          {lesson.intro && <p className="lr-intro-text">{lesson.intro}</p>}
+          {theory ? <Theory data={theory} /> : lesson.intro && <p className="lr-intro-text">{lesson.intro}</p>}
           <Context passage={lesson.passage} audioText={lesson.audioText} />
           <p className="lr-meta">{lesson.items.length} ta mashq · {70}% dan yuqori natija darsni o'zlashtiradi</p>
-          <Button block onClick={() => setStage('play')}>Boshlash</Button>
+          <Button block onClick={() => setStage('play')}>{theory ? 'Mavzuni tushundim — savollarni boshlash' : 'Boshlash'}</Button>
         </Card>
       </>
     );

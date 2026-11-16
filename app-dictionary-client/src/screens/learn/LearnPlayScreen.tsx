@@ -11,6 +11,7 @@ import { requestProgressCheck } from '../../services/progressEvents';
 import { LearnStackParamList } from '../../navigation/types';
 import ExerciseView, { Context, ExerciseData } from './ExerciseView';
 import ListeningView, { listeningGroups } from './ListeningView';
+import TheoryView, { parseTheory } from './TheoryView';
 import { Bar, IconBadge, PASS_MARK, SKILL_ICON, courseStyles } from './learnUi';
 
 type Props = NativeStackScreenProps<LearnStackParamList, 'LearnPlay'>;
@@ -105,6 +106,7 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
 
   if (stage === 'intro' && lesson) {
     const m = SKILL_META[lesson.skill];
+    const theory = parseTheory(lesson.theory);
     return (
       <View style={styles.flex}>
         <ScrollView contentContainerStyle={styles.page}>
@@ -115,7 +117,7 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
             </Text>
           </View>
           <Text style={styles.h1}>{lesson.topic}</Text>
-          {lesson.intro ? <Text style={styles.body}>{lesson.intro}</Text> : null}
+          {theory ? <TheoryView data={theory} /> : lesson.intro ? <Text style={styles.body}>{lesson.intro}</Text> : null}
           <Context passage={lesson.passage} audioText={lesson.audioText} />
           <View style={[courseStyles.surface, styles.facts]}>
             <Fact icon="list" text={`${lesson.items.length} ta mashq`} />
@@ -123,7 +125,7 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
           </View>
         </ScrollView>
         <View style={styles.footer}>
-          <Button title="Boshlash" onPress={() => setStage('play')} />
+          <Button title={theory ? 'Mavzuni tushundim — savollarni boshlash' : 'Boshlash'} onPress={() => setStage('play')} />
         </View>
       </View>
     );

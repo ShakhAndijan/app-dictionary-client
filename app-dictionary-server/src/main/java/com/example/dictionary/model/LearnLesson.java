@@ -50,6 +50,10 @@ public class LearnLesson {
     @Column(name = "audio_text", columnDefinition = "TEXT")
     private String audioText;
 
+    /** Grammar explanation (JSON text: definition, formulas, rules, examples) shown before the exercises. */
+    @Column(columnDefinition = "TEXT")
+    private String theory;
+
     @Column(name = "order_index", nullable = false)
     private int orderIndex;
 
@@ -65,7 +69,7 @@ public class LearnLesson {
     }
 
     public void apply(String level, String skill, String topic, String title, String intro, String passage,
-                      String audioText, int orderIndex, String itemsJson) {
+                      String audioText, int orderIndex, String itemsJson, String theory) {
         this.level = level;
         this.skill = skill;
         this.topic = topic;
@@ -75,6 +79,7 @@ public class LearnLesson {
         this.audioText = audioText;
         this.orderIndex = orderIndex;
         this.itemsJson = itemsJson;
+        this.theory = theory;
     }
 
     public String getCode() { return code; }
@@ -87,4 +92,5 @@ public class LearnLesson {
     public String getAudioText() { return audioText; }
     public int getOrderIndex() { return orderIndex; }
     public String getItemsJson() { return itemsJson; }
+    public String getTheory() { return theory; }
 }

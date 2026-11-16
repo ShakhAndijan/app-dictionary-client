@@ -48,7 +48,7 @@ public final class LearnDtos {
     }
 
     public record LessonDetail(String code, String level, String skill, String topic, String title, String intro,
-                               String passage, String audioText, List<ItemView> items) {
+                               String passage, String audioText, String theory, List<ItemView> items) {
     }
 
     public record CheckRequest(@NotBlank String itemId, @Size(max = 600) String answer) {

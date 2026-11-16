@@ -3,6 +3,7 @@ package com.example.dictionary.service;
 import com.example.dictionary.model.LearnLesson;
 import com.example.dictionary.repository.LearnLessonRepository;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,7 @@ public class LearnContentLoader implements ApplicationRunner {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     record LessonFile(String code, String level, String skill, String topic, String title, String intro,
-                      String passage, String audioText, Integer order, List<LearnItem> items) {
+                      String passage, String audioText, Integer order, JsonNode theory, List<LearnItem> items) {
     }
 
     private final LearnLessonRepository lessons;
@@ -55,7 +56,8 @@ public class LearnContentLoader implements ApplicationRunner {
                     }
                     LearnLesson lesson = lessons.findByCode(lf.code()).orElseGet(() -> new LearnLesson(lf.code()));
                     lesson.apply(lf.level(), lf.skill(), lf.topic(), lf.title(), lf.intro(), lf.passage(),
-                            lf.audioText(), lf.order() == null ? 0 : lf.order(), mapper.writeValueAsString(lf.items()));
+                            lf.audioText(), lf.order() == null ? 0 : lf.order(), mapper.writeValueAsString(lf.items()),
+                            lf.theory() == null || lf.theory().isNull() ? null : mapper.writeValueAsString(lf.theory()));
                     lessons.save(lesson);
                     seen.add(lf.code());
                     loaded++;

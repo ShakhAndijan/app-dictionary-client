@@ -162,7 +162,7 @@ public class LearnService {
             if (item.objective()) items.add(view(item));
         }
         return new LessonDetail(l.getCode(), l.getLevel(), l.getSkill(), l.getTopic(), l.getTitle(), l.getIntro(),
-                l.getPassage(), l.getAudioText(), items);
+                l.getPassage(), l.getAudioText(), l.getTheory(), items);
     }
 
     /** Feedback for one answer while the learner works through a lesson. Nothing is stored. */

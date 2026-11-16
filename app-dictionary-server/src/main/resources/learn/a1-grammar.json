@@ -368,7 +368,59 @@
     "answer": "is",
     "explain": "I bilan am, he/she/it bilan is, we/you/they bilan are."
    }
-  ]
+  ],
+  "theory": {
+   "def": "'To be' — «bo'lmoq» fe'li. U ingliz tilida har bir gapda egadan keyin kerak bo'ladi: ism, yosh, kasb, joy, holatni aytganda. O'zbekchada «Men talabaman» desak, inglizchada «Men BO'LAMAN talaba» deymiz.",
+   "forms": [
+    [
+     "Darak gap",
+     "I am / He, She, It is / We, You, They are",
+     "I am a student. She is happy. They are at home."
+    ],
+    [
+     "Inkor",
+     "subject + am / is / are + not",
+     "He is not (isn't) tired. We are not (aren't) late."
+    ],
+    [
+     "Savol",
+     "Am / Is / Are + subject ...?",
+     "Are you ready? Is she a doctor?"
+    ]
+   ],
+   "rules": [
+    "I → am, he/she/it → is, we/you/they → are.",
+    "Qisqartma: I'm, he's, she's, we're, they're, isn't, aren't.",
+    "Savolda fe'l gapning boshiga chiqadi, so'z tartibi o'zgaradi.",
+    "Ism va kasbdan oldin a / an qo'yiladi: I am a teacher."
+   ],
+   "ex": [
+    [
+     "I am Aziz. I am 20 years old.",
+     "Men Azizman. Men 20 yoshdaman."
+    ],
+    [
+     "Is your mother at work? — No, she is at home.",
+     "Onang ishdami? — Yo'q, uyda."
+    ],
+    [
+     "We are not hungry, but we are tired.",
+     "Biz och emasmiz, lekin charchaganmiz."
+    ]
+   ],
+   "err": [
+    [
+     "She is a teacher? (so'z tartibi)",
+     "Is she a teacher?",
+     "Savolda 'is' oldinga chiqadi."
+    ],
+    [
+     "I have 20 years.",
+     "I am 20 years old.",
+     "Yosh 'have' bilan emas, 'be' bilan aytiladi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -589,7 +641,59 @@
     "answer": "is",
     "explain": "I bilan am, he/she/it bilan is, we/you/they bilan are."
    }
-  ]
+  ],
+  "theory": {
+   "def": "'To be' — «bo'lmoq» fe'li. U ingliz tilida har bir gapda egadan keyin kerak bo'ladi: ism, yosh, kasb, joy, holatni aytganda. O'zbekchada «Men talabaman» desak, inglizchada «Men BO'LAMAN talaba» deymiz.",
+   "forms": [
+    [
+     "Darak gap",
+     "I am / He, She, It is / We, You, They are",
+     "I am a student. She is happy. They are at home."
+    ],
+    [
+     "Inkor",
+     "subject + am / is / are + not",
+     "He is not (isn't) tired. We are not (aren't) late."
+    ],
+    [
+     "Savol",
+     "Am / Is / Are + subject ...?",
+     "Are you ready? Is she a doctor?"
+    ]
+   ],
+   "rules": [
+    "I → am, he/she/it → is, we/you/they → are.",
+    "Qisqartma: I'm, he's, she's, we're, they're, isn't, aren't.",
+    "Savolda fe'l gapning boshiga chiqadi, so'z tartibi o'zgaradi.",
+    "Ism va kasbdan oldin a / an qo'yiladi: I am a teacher."
+   ],
+   "ex": [
+    [
+     "I am Aziz. I am 20 years old.",
+     "Men Azizman. Men 20 yoshdaman."
+    ],
+    [
+     "Is your mother at work? — No, she is at home.",
+     "Onang ishdami? — Yo'q, uyda."
+    ],
+    [
+     "We are not hungry, but we are tired.",
+     "Biz och emasmiz, lekin charchaganmiz."
+    ]
+   ],
+   "err": [
+    [
+     "She is a teacher? (so'z tartibi)",
+     "Is she a teacher?",
+     "Savolda 'is' oldinga chiqadi."
+    ],
+    [
+     "I have 20 years.",
+     "I am 20 years old.",
+     "Yosh 'have' bilan emas, 'be' bilan aytiladi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -1006,7 +1110,59 @@
     "answer": "Where is your mother",
     "explain": "I bilan am, he/she/it bilan is, we/you/they bilan are."
    }
-  ]
+  ],
+  "theory": {
+   "def": "'To be' — «bo'lmoq» fe'li. U ingliz tilida har bir gapda egadan keyin kerak bo'ladi: ism, yosh, kasb, joy, holatni aytganda. O'zbekchada «Men talabaman» desak, inglizchada «Men BO'LAMAN talaba» deymiz.",
+   "forms": [
+    [
+     "Darak gap",
+     "I am / He, She, It is / We, You, They are",
+     "I am a student. She is happy. They are at home."
+    ],
+    [
+     "Inkor",
+     "subject + am / is / are + not",
+     "He is not (isn't) tired. We are not (aren't) late."
+    ],
+    [
+     "Savol",
+     "Am / Is / Are + subject ...?",
+     "Are you ready? Is she a doctor?"
+    ]
+   ],
+   "rules": [
+    "I → am, he/she/it → is, we/you/they → are.",
+    "Qisqartma: I'm, he's, she's, we're, they're, isn't, aren't.",
+    "Savolda fe'l gapning boshiga chiqadi, so'z tartibi o'zgaradi.",
+    "Ism va kasbdan oldin a / an qo'yiladi: I am a teacher."
+   ],
+   "ex": [
+    [
+     "I am Aziz. I am 20 years old.",
+     "Men Azizman. Men 20 yoshdaman."
+    ],
+    [
+     "Is your mother at work? — No, she is at home.",
+     "Onang ishdami? — Yo'q, uyda."
+    ],
+    [
+     "We are not hungry, but we are tired.",
+     "Biz och emasmiz, lekin charchaganmiz."
+    ]
+   ],
+   "err": [
+    [
+     "She is a teacher? (so'z tartibi)",
+     "Is she a teacher?",
+     "Savolda 'is' oldinga chiqadi."
+    ],
+    [
+     "I have 20 years.",
+     "I am 20 years old.",
+     "Yosh 'have' bilan emas, 'be' bilan aytiladi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -1377,7 +1533,58 @@
     "answer": "eat",
     "explain": "Faqat he / she / it bilan fe'lga -s qo'shiladi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Simple — odat, doimiy ish va umumiy haqiqatni bildiradi: har kuni, tez-tez, odatda nima qilasiz. Fe'lning oddiy shakli ishlatiladi, faqat he / she / it dan keyin -s qo'shiladi.",
+   "forms": [
+    [
+     "Darak gap",
+     "I / you / we / they + fe'l; he / she / it + fe'l + s",
+     "I work. He works."
+    ],
+    [
+     "-es qo'shiladigan fe'llar",
+     "-s, -sh, -ch, -x, -o bilan tugasa + es",
+     "She watches TV. He goes home."
+    ],
+    [
+     "-y bilan tugasa",
+     "undosh + y → ies",
+     "study → studies, but play → plays"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: every day, always, usually, often, sometimes, never, on Mondays.",
+    "Chastota so'zlari (always, usually, never) asosiy fe'ldan oldin turadi.",
+    "have → has (he has), go → goes, do → does."
+   ],
+   "ex": [
+    [
+     "I get up at 7 o'clock every day.",
+     "Men har kuni soat 7 da turaman."
+    ],
+    [
+     "My brother works in a bank.",
+     "Akam bankda ishlaydi."
+    ],
+    [
+     "The sun rises in the east.",
+     "Quyosh sharqdan chiqadi."
+    ]
+   ],
+   "err": [
+    [
+     "He work in a shop.",
+     "He works in a shop.",
+     "he/she/it dan keyin -s kerak."
+    ],
+    [
+     "I always am late.",
+     "I am always late.",
+     "'always' 'am' dan keyin turadi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -1598,7 +1805,58 @@
     "answer": "eat",
     "explain": "Faqat he / she / it bilan fe'lga -s qo'shiladi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Simple — odat, doimiy ish va umumiy haqiqatni bildiradi: har kuni, tez-tez, odatda nima qilasiz. Fe'lning oddiy shakli ishlatiladi, faqat he / she / it dan keyin -s qo'shiladi.",
+   "forms": [
+    [
+     "Darak gap",
+     "I / you / we / they + fe'l; he / she / it + fe'l + s",
+     "I work. He works."
+    ],
+    [
+     "-es qo'shiladigan fe'llar",
+     "-s, -sh, -ch, -x, -o bilan tugasa + es",
+     "She watches TV. He goes home."
+    ],
+    [
+     "-y bilan tugasa",
+     "undosh + y → ies",
+     "study → studies, but play → plays"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: every day, always, usually, often, sometimes, never, on Mondays.",
+    "Chastota so'zlari (always, usually, never) asosiy fe'ldan oldin turadi.",
+    "have → has (he has), go → goes, do → does."
+   ],
+   "ex": [
+    [
+     "I get up at 7 o'clock every day.",
+     "Men har kuni soat 7 da turaman."
+    ],
+    [
+     "My brother works in a bank.",
+     "Akam bankda ishlaydi."
+    ],
+    [
+     "The sun rises in the east.",
+     "Quyosh sharqdan chiqadi."
+    ]
+   ],
+   "err": [
+    [
+     "He work in a shop.",
+     "He works in a shop.",
+     "he/she/it dan keyin -s kerak."
+    ],
+    [
+     "I always am late.",
+     "I am always late.",
+     "'always' 'am' dan keyin turadi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -2029,7 +2287,58 @@
     "answer": "We eat rice for lunch",
     "explain": "Faqat he / she / it bilan fe'lga -s qo'shiladi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Simple — odat, doimiy ish va umumiy haqiqatni bildiradi: har kuni, tez-tez, odatda nima qilasiz. Fe'lning oddiy shakli ishlatiladi, faqat he / she / it dan keyin -s qo'shiladi.",
+   "forms": [
+    [
+     "Darak gap",
+     "I / you / we / they + fe'l; he / she / it + fe'l + s",
+     "I work. He works."
+    ],
+    [
+     "-es qo'shiladigan fe'llar",
+     "-s, -sh, -ch, -x, -o bilan tugasa + es",
+     "She watches TV. He goes home."
+    ],
+    [
+     "-y bilan tugasa",
+     "undosh + y → ies",
+     "study → studies, but play → plays"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: every day, always, usually, often, sometimes, never, on Mondays.",
+    "Chastota so'zlari (always, usually, never) asosiy fe'ldan oldin turadi.",
+    "have → has (he has), go → goes, do → does."
+   ],
+   "ex": [
+    [
+     "I get up at 7 o'clock every day.",
+     "Men har kuni soat 7 da turaman."
+    ],
+    [
+     "My brother works in a bank.",
+     "Akam bankda ishlaydi."
+    ],
+    [
+     "The sun rises in the east.",
+     "Quyosh sharqdan chiqadi."
+    ]
+   ],
+   "err": [
+    [
+     "He work in a shop.",
+     "He works in a shop.",
+     "he/she/it dan keyin -s kerak."
+    ],
+    [
+     "I always am late.",
+     "I am always late.",
+     "'always' 'am' dan keyin turadi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -2400,7 +2709,57 @@
     "answer": "don't",
     "explain": "Does / doesn't dan keyin fe'l o'zgarmaydi: Does he like...? He doesn't like..."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Simple'da savol va inkor 'do / does' yordamchi fe'li bilan tuziladi. Yordamchi fe'l zamon va shaxsni ko'tarib turadi, shuning uchun asosiy fe'l o'z shaklida qoladi (-s yo'q).",
+   "forms": [
+    [
+     "Inkor",
+     "I / you / we / they + don't + fe'l; he / she / it + doesn't + fe'l",
+     "I don't like tea. She doesn't live here."
+    ],
+    [
+     "Savol",
+     "Do / Does + subject + fe'l ...?",
+     "Do you speak English? Does he work here?"
+    ],
+    [
+     "Savol so'zi bilan",
+     "Wh-word + do / does + subject + fe'l?",
+     "Where do you live? What does she do?"
+    ]
+   ],
+   "rules": [
+    "does / doesn't dan keyin fe'lga -s QO'SHILMAYDI: Does he work? (works emas).",
+    "Qisqa javob: Yes, I do. / No, she doesn't."
+   ],
+   "ex": [
+    [
+     "Do you drink coffee in the morning? — Yes, I do.",
+     "Ertalab kofe ichasanmi? — Ha."
+    ],
+    [
+     "He doesn't eat meat.",
+     "U go'sht yemaydi."
+    ],
+    [
+     "Where does your sister study?",
+     "Singling qayerda o'qiydi?"
+    ]
+   ],
+   "err": [
+    [
+     "Does she works here?",
+     "Does she work here?",
+     "does dan keyin fe'l oddiy shaklda."
+    ],
+    [
+     "He don't like it.",
+     "He doesn't like it.",
+     "he bilan doesn't."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -2621,7 +2980,57 @@
     "answer": "don't",
     "explain": "Does / doesn't dan keyin fe'l o'zgarmaydi: Does he like...? He doesn't like..."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Simple'da savol va inkor 'do / does' yordamchi fe'li bilan tuziladi. Yordamchi fe'l zamon va shaxsni ko'tarib turadi, shuning uchun asosiy fe'l o'z shaklida qoladi (-s yo'q).",
+   "forms": [
+    [
+     "Inkor",
+     "I / you / we / they + don't + fe'l; he / she / it + doesn't + fe'l",
+     "I don't like tea. She doesn't live here."
+    ],
+    [
+     "Savol",
+     "Do / Does + subject + fe'l ...?",
+     "Do you speak English? Does he work here?"
+    ],
+    [
+     "Savol so'zi bilan",
+     "Wh-word + do / does + subject + fe'l?",
+     "Where do you live? What does she do?"
+    ]
+   ],
+   "rules": [
+    "does / doesn't dan keyin fe'lga -s QO'SHILMAYDI: Does he work? (works emas).",
+    "Qisqa javob: Yes, I do. / No, she doesn't."
+   ],
+   "ex": [
+    [
+     "Do you drink coffee in the morning? — Yes, I do.",
+     "Ertalab kofe ichasanmi? — Ha."
+    ],
+    [
+     "He doesn't eat meat.",
+     "U go'sht yemaydi."
+    ],
+    [
+     "Where does your sister study?",
+     "Singling qayerda o'qiydi?"
+    ]
+   ],
+   "err": [
+    [
+     "Does she works here?",
+     "Does she work here?",
+     "does dan keyin fe'l oddiy shaklda."
+    ],
+    [
+     "He don't like it.",
+     "He doesn't like it.",
+     "he bilan doesn't."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -3051,7 +3460,57 @@
     "answer": "They don't play tennis in winter",
     "explain": "Does / doesn't dan keyin fe'l o'zgarmaydi: Does he like...? He doesn't like..."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Simple'da savol va inkor 'do / does' yordamchi fe'li bilan tuziladi. Yordamchi fe'l zamon va shaxsni ko'tarib turadi, shuning uchun asosiy fe'l o'z shaklida qoladi (-s yo'q).",
+   "forms": [
+    [
+     "Inkor",
+     "I / you / we / they + don't + fe'l; he / she / it + doesn't + fe'l",
+     "I don't like tea. She doesn't live here."
+    ],
+    [
+     "Savol",
+     "Do / Does + subject + fe'l ...?",
+     "Do you speak English? Does he work here?"
+    ],
+    [
+     "Savol so'zi bilan",
+     "Wh-word + do / does + subject + fe'l?",
+     "Where do you live? What does she do?"
+    ]
+   ],
+   "rules": [
+    "does / doesn't dan keyin fe'lga -s QO'SHILMAYDI: Does he work? (works emas).",
+    "Qisqa javob: Yes, I do. / No, she doesn't."
+   ],
+   "ex": [
+    [
+     "Do you drink coffee in the morning? — Yes, I do.",
+     "Ertalab kofe ichasanmi? — Ha."
+    ],
+    [
+     "He doesn't eat meat.",
+     "U go'sht yemaydi."
+    ],
+    [
+     "Where does your sister study?",
+     "Singling qayerda o'qiydi?"
+    ]
+   ],
+   "err": [
+    [
+     "Does she works here?",
+     "Does she work here?",
+     "does dan keyin fe'l oddiy shaklda."
+    ],
+    [
+     "He don't like it.",
+     "He doesn't like it.",
+     "he bilan doesn't."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -3452,7 +3911,58 @@
     "answer": "Is",
     "explain": "am / is / are + fe'l-ing: hozir bo'layotgan ish."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Continuous — aynan hozir, gap gapirilayotgan paytda davom etayotgan ish. Shuningdek, hozirgi kunlarda vaqtinchalik davom etayotgan ishlar uchun ham ishlatiladi.",
+   "forms": [
+    [
+     "Darak gap",
+     "am / is / are + fe'l-ing",
+     "I am reading. She is cooking."
+    ],
+    [
+     "Inkor",
+     "am / is / are + not + fe'l-ing",
+     "They aren't sleeping."
+    ],
+    [
+     "Savol",
+     "Am / Is / Are + subject + fe'l-ing?",
+     "Are you listening?"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: now, at the moment, right now, today, Look!, Listen!",
+    "-e tushadi: make → making. Qisqa fe'l undoshi ikkilanadi: run → running, sit → sitting.",
+    "Holat fe'llari (know, like, want, love) odatda -ing shaklida ishlatilmaydi."
+   ],
+   "ex": [
+    [
+     "Be quiet! The baby is sleeping.",
+     "Jim bo'ling! Chaqaloq uxlayapti."
+    ],
+    [
+     "What are you doing? — I'm cooking dinner.",
+     "Nima qilyapsan? — Kechki ovqat tayyorlayapman."
+    ],
+    [
+     "It is raining now.",
+     "Hozir yomg'ir yog'yapti."
+    ]
+   ],
+   "err": [
+    [
+     "I am knowing the answer.",
+     "I know the answer.",
+     "'know' holat fe'li, -ing olmaydi."
+    ],
+    [
+     "She is cook now.",
+     "She is cooking now.",
+     "-ing qo'shish esdan chiqmasin."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -3673,7 +4183,58 @@
     "answer": "Is",
     "explain": "am / is / are + fe'l-ing: hozir bo'layotgan ish."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Continuous — aynan hozir, gap gapirilayotgan paytda davom etayotgan ish. Shuningdek, hozirgi kunlarda vaqtinchalik davom etayotgan ishlar uchun ham ishlatiladi.",
+   "forms": [
+    [
+     "Darak gap",
+     "am / is / are + fe'l-ing",
+     "I am reading. She is cooking."
+    ],
+    [
+     "Inkor",
+     "am / is / are + not + fe'l-ing",
+     "They aren't sleeping."
+    ],
+    [
+     "Savol",
+     "Am / Is / Are + subject + fe'l-ing?",
+     "Are you listening?"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: now, at the moment, right now, today, Look!, Listen!",
+    "-e tushadi: make → making. Qisqa fe'l undoshi ikkilanadi: run → running, sit → sitting.",
+    "Holat fe'llari (know, like, want, love) odatda -ing shaklida ishlatilmaydi."
+   ],
+   "ex": [
+    [
+     "Be quiet! The baby is sleeping.",
+     "Jim bo'ling! Chaqaloq uxlayapti."
+    ],
+    [
+     "What are you doing? — I'm cooking dinner.",
+     "Nima qilyapsan? — Kechki ovqat tayyorlayapman."
+    ],
+    [
+     "It is raining now.",
+     "Hozir yomg'ir yog'yapti."
+    ]
+   ],
+   "err": [
+    [
+     "I am knowing the answer.",
+     "I know the answer.",
+     "'know' holat fe'li, -ing olmaydi."
+    ],
+    [
+     "She is cook now.",
+     "She is cooking now.",
+     "-ing qo'shish esdan chiqmasin."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -4114,7 +4675,58 @@
     "answer": "Is your brother studying now",
     "explain": "am / is / are + fe'l-ing: hozir bo'layotgan ish."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Continuous — aynan hozir, gap gapirilayotgan paytda davom etayotgan ish. Shuningdek, hozirgi kunlarda vaqtinchalik davom etayotgan ishlar uchun ham ishlatiladi.",
+   "forms": [
+    [
+     "Darak gap",
+     "am / is / are + fe'l-ing",
+     "I am reading. She is cooking."
+    ],
+    [
+     "Inkor",
+     "am / is / are + not + fe'l-ing",
+     "They aren't sleeping."
+    ],
+    [
+     "Savol",
+     "Am / Is / Are + subject + fe'l-ing?",
+     "Are you listening?"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: now, at the moment, right now, today, Look!, Listen!",
+    "-e tushadi: make → making. Qisqa fe'l undoshi ikkilanadi: run → running, sit → sitting.",
+    "Holat fe'llari (know, like, want, love) odatda -ing shaklida ishlatilmaydi."
+   ],
+   "ex": [
+    [
+     "Be quiet! The baby is sleeping.",
+     "Jim bo'ling! Chaqaloq uxlayapti."
+    ],
+    [
+     "What are you doing? — I'm cooking dinner.",
+     "Nima qilyapsan? — Kechki ovqat tayyorlayapman."
+    ],
+    [
+     "It is raining now.",
+     "Hozir yomg'ir yog'yapti."
+    ]
+   ],
+   "err": [
+    [
+     "I am knowing the answer.",
+     "I know the answer.",
+     "'know' holat fe'li, -ing olmaydi."
+    ],
+    [
+     "She is cook now.",
+     "She is cooking now.",
+     "-ing qo'shish esdan chiqmasin."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -4489,7 +5101,53 @@
     "answer": "opens",
     "explain": "every day, usually, often: Present Simple. now, at the moment, Look!: Present Continuous."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Simple — odat va doimiy narsa (har kuni). Present Continuous — hozir yoki vaqtinchalik davom etayotgan ish. Farq: «odatda nima qilasan» va «hozir nima qilyapsan».",
+   "forms": [
+    [
+     "Present Simple",
+     "fe'l (+s)",
+     "I drink tea every day."
+    ],
+    [
+     "Present Continuous",
+     "am / is / are + fe'l-ing",
+     "I am drinking coffee now."
+    ]
+   ],
+   "rules": [
+    "Simple belgilari: always, usually, every day, on Sundays, never.",
+    "Continuous belgilari: now, at the moment, today, these days, Look!",
+    "Holat fe'llari (like, love, want, need, know, understand) faqat Simple'da: I want water."
+   ],
+   "ex": [
+    [
+     "He usually walks to work, but today he is taking a taxi.",
+     "U odatda ishga piyoda boradi, lekin bugun taksida ketyapti."
+    ],
+    [
+     "She speaks three languages.",
+     "U uch tilda gapiradi."
+    ],
+    [
+     "Why are you laughing?",
+     "Nega kulyapsan?"
+    ]
+   ],
+   "err": [
+    [
+     "I am going to school every day.",
+     "I go to school every day.",
+     "Odat uchun Simple."
+    ],
+    [
+     "Look! It snows.",
+     "Look! It is snowing.",
+     "Hozirgi payt uchun Continuous."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -4710,7 +5368,53 @@
     "answer": "opens",
     "explain": "every day, usually, often: Present Simple. now, at the moment, Look!: Present Continuous."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Simple — odat va doimiy narsa (har kuni). Present Continuous — hozir yoki vaqtinchalik davom etayotgan ish. Farq: «odatda nima qilasan» va «hozir nima qilyapsan».",
+   "forms": [
+    [
+     "Present Simple",
+     "fe'l (+s)",
+     "I drink tea every day."
+    ],
+    [
+     "Present Continuous",
+     "am / is / are + fe'l-ing",
+     "I am drinking coffee now."
+    ]
+   ],
+   "rules": [
+    "Simple belgilari: always, usually, every day, on Sundays, never.",
+    "Continuous belgilari: now, at the moment, today, these days, Look!",
+    "Holat fe'llari (like, love, want, need, know, understand) faqat Simple'da: I want water."
+   ],
+   "ex": [
+    [
+     "He usually walks to work, but today he is taking a taxi.",
+     "U odatda ishga piyoda boradi, lekin bugun taksida ketyapti."
+    ],
+    [
+     "She speaks three languages.",
+     "U uch tilda gapiradi."
+    ],
+    [
+     "Why are you laughing?",
+     "Nega kulyapsan?"
+    ]
+   ],
+   "err": [
+    [
+     "I am going to school every day.",
+     "I go to school every day.",
+     "Odat uchun Simple."
+    ],
+    [
+     "Look! It snows.",
+     "Look! It is snowing.",
+     "Hozirgi payt uchun Continuous."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -5169,7 +5873,53 @@
     "answer": "The shop opens at nine every day",
     "explain": "every day, usually, often: Present Simple. now, at the moment, Look!: Present Continuous."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Present Simple — odat va doimiy narsa (har kuni). Present Continuous — hozir yoki vaqtinchalik davom etayotgan ish. Farq: «odatda nima qilasan» va «hozir nima qilyapsan».",
+   "forms": [
+    [
+     "Present Simple",
+     "fe'l (+s)",
+     "I drink tea every day."
+    ],
+    [
+     "Present Continuous",
+     "am / is / are + fe'l-ing",
+     "I am drinking coffee now."
+    ]
+   ],
+   "rules": [
+    "Simple belgilari: always, usually, every day, on Sundays, never.",
+    "Continuous belgilari: now, at the moment, today, these days, Look!",
+    "Holat fe'llari (like, love, want, need, know, understand) faqat Simple'da: I want water."
+   ],
+   "ex": [
+    [
+     "He usually walks to work, but today he is taking a taxi.",
+     "U odatda ishga piyoda boradi, lekin bugun taksida ketyapti."
+    ],
+    [
+     "She speaks three languages.",
+     "U uch tilda gapiradi."
+    ],
+    [
+     "Why are you laughing?",
+     "Nega kulyapsan?"
+    ]
+   ],
+   "err": [
+    [
+     "I am going to school every day.",
+     "I go to school every day.",
+     "Odat uchun Simple."
+    ],
+    [
+     "Look! It snows.",
+     "Look! It is snowing.",
+     "Hozirgi payt uchun Continuous."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -5546,7 +6296,58 @@
     "answer": "has",
     "explain": "I/you/we/they: have got; he/she/it: has got."
    }
-  ]
+  ],
+  "theory": {
+   "def": "'have' va 'have got' — «bor» ma'nosida egalik, oila, kasallik, tashqi ko'rinishni aytishda ishlatiladi. Ikkalasi ham bir xil ma'noda, 'have got' ko'proq og'zaki nutqda.",
+   "forms": [
+    [
+     "have",
+     "I / you / we / they have; he / she / it has",
+     "She has a car."
+    ],
+    [
+     "have got",
+     "have / has + got",
+     "I have got a brother. He has got a cat."
+    ],
+    [
+     "Inkor va savol (got)",
+     "haven't / hasn't got; Have / Has + subject + got?",
+     "I haven't got a pen. Have you got a phone?"
+    ]
+   ],
+   "rules": [
+    "'have' bilan inkor: don't have / doesn't have (I don't have time).",
+    "he / she / it uchun: has.",
+    "Ovqat va harakatda 'have' ishlatiladi (got emas): have breakfast, have a shower."
+   ],
+   "ex": [
+    [
+     "I have got two sisters.",
+     "Mening ikkita singlim bor."
+    ],
+    [
+     "Has she got a dog? — No, she hasn't.",
+     "Uning iti bormi? — Yo'q."
+    ],
+    [
+     "We don't have a lot of time.",
+     "Bizda vaqt ko'p emas."
+    ]
+   ],
+   "err": [
+    [
+     "He have a big house.",
+     "He has a big house.",
+     "he bilan 'has'."
+    ],
+    [
+     "I have got breakfast.",
+     "I have breakfast.",
+     "Ovqatda 'got' ishlatilmaydi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -5767,7 +6568,58 @@
     "answer": "has",
     "explain": "I/you/we/they: have got; he/she/it: has got."
    }
-  ]
+  ],
+  "theory": {
+   "def": "'have' va 'have got' — «bor» ma'nosida egalik, oila, kasallik, tashqi ko'rinishni aytishda ishlatiladi. Ikkalasi ham bir xil ma'noda, 'have got' ko'proq og'zaki nutqda.",
+   "forms": [
+    [
+     "have",
+     "I / you / we / they have; he / she / it has",
+     "She has a car."
+    ],
+    [
+     "have got",
+     "have / has + got",
+     "I have got a brother. He has got a cat."
+    ],
+    [
+     "Inkor va savol (got)",
+     "haven't / hasn't got; Have / Has + subject + got?",
+     "I haven't got a pen. Have you got a phone?"
+    ]
+   ],
+   "rules": [
+    "'have' bilan inkor: don't have / doesn't have (I don't have time).",
+    "he / she / it uchun: has.",
+    "Ovqat va harakatda 'have' ishlatiladi (got emas): have breakfast, have a shower."
+   ],
+   "ex": [
+    [
+     "I have got two sisters.",
+     "Mening ikkita singlim bor."
+    ],
+    [
+     "Has she got a dog? — No, she hasn't.",
+     "Uning iti bormi? — Yo'q."
+    ],
+    [
+     "We don't have a lot of time.",
+     "Bizda vaqt ko'p emas."
+    ]
+   ],
+   "err": [
+    [
+     "He have a big house.",
+     "He has a big house.",
+     "he bilan 'has'."
+    ],
+    [
+     "I have got breakfast.",
+     "I have breakfast.",
+     "Ovqatda 'got' ishlatilmaydi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -6211,7 +7063,58 @@
     "answer": "He has a shower every morning",
     "explain": "I/you/we/they: have got; he/she/it: has got."
    }
-  ]
+  ],
+  "theory": {
+   "def": "'have' va 'have got' — «bor» ma'nosida egalik, oila, kasallik, tashqi ko'rinishni aytishda ishlatiladi. Ikkalasi ham bir xil ma'noda, 'have got' ko'proq og'zaki nutqda.",
+   "forms": [
+    [
+     "have",
+     "I / you / we / they have; he / she / it has",
+     "She has a car."
+    ],
+    [
+     "have got",
+     "have / has + got",
+     "I have got a brother. He has got a cat."
+    ],
+    [
+     "Inkor va savol (got)",
+     "haven't / hasn't got; Have / Has + subject + got?",
+     "I haven't got a pen. Have you got a phone?"
+    ]
+   ],
+   "rules": [
+    "'have' bilan inkor: don't have / doesn't have (I don't have time).",
+    "he / she / it uchun: has.",
+    "Ovqat va harakatda 'have' ishlatiladi (got emas): have breakfast, have a shower."
+   ],
+   "ex": [
+    [
+     "I have got two sisters.",
+     "Mening ikkita singlim bor."
+    ],
+    [
+     "Has she got a dog? — No, she hasn't.",
+     "Uning iti bormi? — Yo'q."
+    ],
+    [
+     "We don't have a lot of time.",
+     "Bizda vaqt ko'p emas."
+    ]
+   ],
+   "err": [
+    [
+     "He have a big house.",
+     "He has a big house.",
+     "he bilan 'has'."
+    ],
+    [
+     "I have got breakfast.",
+     "I have breakfast.",
+     "Ovqatda 'got' ishlatilmaydi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -6583,7 +7486,57 @@
     "answer": "were",
     "explain": "I / he / she / it: was. we / you / they: were."
    }
-  ]
+  ],
+  "theory": {
+   "def": "was / were — 'to be' fe'lining o'tgan zamon shakli: «edi, bo'ldi». Kecha, o'tgan yili, oldin qayerda edingiz, qanday edi — shularni aytishda ishlatiladi.",
+   "forms": [
+    [
+     "Darak gap",
+     "I / he / she / it + was; we / you / they + were",
+     "I was at home. They were happy."
+    ],
+    [
+     "Inkor",
+     "wasn't / weren't",
+     "He wasn't at school yesterday."
+    ],
+    [
+     "Savol",
+     "Was / Were + subject ...?",
+     "Were you tired? Was it cold?"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: yesterday, last week, ago, in 2010, then.",
+    "there was / there were — «bor edi»: There were many people."
+   ],
+   "ex": [
+    [
+     "Where were you last night? — I was at work.",
+     "Kecha kechqurun qayerda eding? — Ishda edim."
+    ],
+    [
+     "The film wasn't interesting.",
+     "Film qiziqarli emas edi."
+    ],
+    [
+     "My grandparents were teachers.",
+     "Bobom va buvim o'qituvchi bo'lgan."
+    ]
+   ],
+   "err": [
+    [
+     "I were late.",
+     "I was late.",
+     "I bilan 'was'."
+    ],
+    [
+     "We was in Paris.",
+     "We were in Paris.",
+     "we bilan 'were'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -6804,7 +7757,57 @@
     "answer": "were",
     "explain": "I / he / she / it: was. we / you / they: were."
    }
-  ]
+  ],
+  "theory": {
+   "def": "was / were — 'to be' fe'lining o'tgan zamon shakli: «edi, bo'ldi». Kecha, o'tgan yili, oldin qayerda edingiz, qanday edi — shularni aytishda ishlatiladi.",
+   "forms": [
+    [
+     "Darak gap",
+     "I / he / she / it + was; we / you / they + were",
+     "I was at home. They were happy."
+    ],
+    [
+     "Inkor",
+     "wasn't / weren't",
+     "He wasn't at school yesterday."
+    ],
+    [
+     "Savol",
+     "Was / Were + subject ...?",
+     "Were you tired? Was it cold?"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: yesterday, last week, ago, in 2010, then.",
+    "there was / there were — «bor edi»: There were many people."
+   ],
+   "ex": [
+    [
+     "Where were you last night? — I was at work.",
+     "Kecha kechqurun qayerda eding? — Ishda edim."
+    ],
+    [
+     "The film wasn't interesting.",
+     "Film qiziqarli emas edi."
+    ],
+    [
+     "My grandparents were teachers.",
+     "Bobom va buvim o'qituvchi bo'lgan."
+    ]
+   ],
+   "err": [
+    [
+     "I were late.",
+     "I was late.",
+     "I bilan 'was'."
+    ],
+    [
+     "We was in Paris.",
+     "We were in Paris.",
+     "we bilan 'were'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -7252,7 +8255,57 @@
     "answer": "My grandparents were farmers fifty years ago",
     "explain": "I / he / she / it: was. we / you / they: were."
    }
-  ]
+  ],
+  "theory": {
+   "def": "was / were — 'to be' fe'lining o'tgan zamon shakli: «edi, bo'ldi». Kecha, o'tgan yili, oldin qayerda edingiz, qanday edi — shularni aytishda ishlatiladi.",
+   "forms": [
+    [
+     "Darak gap",
+     "I / he / she / it + was; we / you / they + were",
+     "I was at home. They were happy."
+    ],
+    [
+     "Inkor",
+     "wasn't / weren't",
+     "He wasn't at school yesterday."
+    ],
+    [
+     "Savol",
+     "Was / Were + subject ...?",
+     "Were you tired? Was it cold?"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: yesterday, last week, ago, in 2010, then.",
+    "there was / there were — «bor edi»: There were many people."
+   ],
+   "ex": [
+    [
+     "Where were you last night? — I was at work.",
+     "Kecha kechqurun qayerda eding? — Ishda edim."
+    ],
+    [
+     "The film wasn't interesting.",
+     "Film qiziqarli emas edi."
+    ],
+    [
+     "My grandparents were teachers.",
+     "Bobom va buvim o'qituvchi bo'lgan."
+    ]
+   ],
+   "err": [
+    [
+     "I were late.",
+     "I was late.",
+     "I bilan 'was'."
+    ],
+    [
+     "We was in Paris.",
+     "We were in Paris.",
+     "we bilan 'were'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -7623,7 +8676,52 @@
     "answer": "helped",
     "explain": "To'g'ri fe'llar: fe'l + -ed. Hamma shaxslar uchun bir xil."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Past Simple — o'tgan zamonda tugagan, aniq vaqtga bog'liq ish. To'g'ri fe'llarga -ed qo'shiladi: work → worked.",
+   "forms": [
+    [
+     "Darak gap",
+     "fe'l + ed (barcha shaxslarda bir xil)",
+     "I worked. She played. They watched."
+    ],
+    [
+     "Imlo qoidalari",
+     "-e bilan tugasa + d; undosh + y → ied; qisqa fe'l undoshi ikkilanadi",
+     "like → liked, study → studied, stop → stopped"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: yesterday, last night, two days ago, in 2020.",
+    "-ed uch xil o'qiladi: /t/ (worked), /d/ (played), /id/ (wanted, needed)."
+   ],
+   "ex": [
+    [
+     "I visited my grandmother yesterday.",
+     "Kecha buvimnikiga bordim."
+    ],
+    [
+     "We watched a film last night.",
+     "Kecha kechqurun film ko'rdik."
+    ],
+    [
+     "He studied hard and passed the exam.",
+     "U qattiq o'qidi va imtihondan o'tdi."
+    ]
+   ],
+   "err": [
+    [
+     "I visit my friend yesterday.",
+     "I visited my friend yesterday.",
+     "'yesterday' bilan o'tgan zamon kerak."
+    ],
+    [
+     "She stoped.",
+     "She stopped.",
+     "Qisqa fe'lda oxirgi undosh ikkilanadi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -7844,7 +8942,52 @@
     "answer": "helped",
     "explain": "To'g'ri fe'llar: fe'l + -ed. Hamma shaxslar uchun bir xil."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Past Simple — o'tgan zamonda tugagan, aniq vaqtga bog'liq ish. To'g'ri fe'llarga -ed qo'shiladi: work → worked.",
+   "forms": [
+    [
+     "Darak gap",
+     "fe'l + ed (barcha shaxslarda bir xil)",
+     "I worked. She played. They watched."
+    ],
+    [
+     "Imlo qoidalari",
+     "-e bilan tugasa + d; undosh + y → ied; qisqa fe'l undoshi ikkilanadi",
+     "like → liked, study → studied, stop → stopped"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: yesterday, last night, two days ago, in 2020.",
+    "-ed uch xil o'qiladi: /t/ (worked), /d/ (played), /id/ (wanted, needed)."
+   ],
+   "ex": [
+    [
+     "I visited my grandmother yesterday.",
+     "Kecha buvimnikiga bordim."
+    ],
+    [
+     "We watched a film last night.",
+     "Kecha kechqurun film ko'rdik."
+    ],
+    [
+     "He studied hard and passed the exam.",
+     "U qattiq o'qidi va imtihondan o'tdi."
+    ]
+   ],
+   "err": [
+    [
+     "I visit my friend yesterday.",
+     "I visited my friend yesterday.",
+     "'yesterday' bilan o'tgan zamon kerak."
+    ],
+    [
+     "She stoped.",
+     "She stopped.",
+     "Qisqa fe'lda oxirgi undosh ikkilanadi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -8297,7 +9440,52 @@
     "answer": "She helped me with my homework yesterday",
     "explain": "To'g'ri fe'llar: fe'l + -ed. Hamma shaxslar uchun bir xil."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Past Simple — o'tgan zamonda tugagan, aniq vaqtga bog'liq ish. To'g'ri fe'llarga -ed qo'shiladi: work → worked.",
+   "forms": [
+    [
+     "Darak gap",
+     "fe'l + ed (barcha shaxslarda bir xil)",
+     "I worked. She played. They watched."
+    ],
+    [
+     "Imlo qoidalari",
+     "-e bilan tugasa + d; undosh + y → ied; qisqa fe'l undoshi ikkilanadi",
+     "like → liked, study → studied, stop → stopped"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: yesterday, last night, two days ago, in 2020.",
+    "-ed uch xil o'qiladi: /t/ (worked), /d/ (played), /id/ (wanted, needed)."
+   ],
+   "ex": [
+    [
+     "I visited my grandmother yesterday.",
+     "Kecha buvimnikiga bordim."
+    ],
+    [
+     "We watched a film last night.",
+     "Kecha kechqurun film ko'rdik."
+    ],
+    [
+     "He studied hard and passed the exam.",
+     "U qattiq o'qidi va imtihondan o'tdi."
+    ]
+   ],
+   "err": [
+    [
+     "I visit my friend yesterday.",
+     "I visited my friend yesterday.",
+     "'yesterday' bilan o'tgan zamon kerak."
+    ],
+    [
+     "She stoped.",
+     "She stopped.",
+     "Qisqa fe'lda oxirgi undosh ikkilanadi."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -8668,7 +9856,52 @@
     "answer": "ran",
     "explain": "Noto'g'ri fe'llarni yodlab oling: go-went, see-saw, buy-bought..."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Noto'g'ri fe'llarning o'tgan zamon shakli -ed bilan hosil bo'lmaydi: ularni yodlash kerak. Eng ko'p ishlatiladigan fe'llar shular.",
+   "forms": [
+    [
+     "Eng muhim fe'llar",
+     "go → went, see → saw, eat → ate, buy → bought, make → made",
+     "I went to the market and bought bread."
+    ],
+    [
+     "Yana ko'p ishlatiladiganlari",
+     "have → had, take → took, come → came, give → gave, write → wrote, get → got",
+     "She wrote a letter. We came late."
+    ]
+   ],
+   "rules": [
+    "Shakl barcha shaxslar uchun bir xil: I went, he went, they went.",
+    "Ro'yxat 'Past Simple' ustuni — fe'lning 2-shakli."
+   ],
+   "ex": [
+    [
+     "Yesterday I saw an old friend.",
+     "Kecha eski do'stimni ko'rdim."
+    ],
+    [
+     "She took the bus and came home.",
+     "U avtobusga o'tirib, uyga keldi."
+    ],
+    [
+     "We ate rice for lunch.",
+     "Tushlikka palov yedik."
+    ]
+   ],
+   "err": [
+    [
+     "I goed to school.",
+     "I went to school.",
+     "'go' noto'g'ri fe'l, -ed olmaydi."
+    ],
+    [
+     "He buyed a book.",
+     "He bought a book.",
+     "buy → bought."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -8889,7 +10122,52 @@
     "answer": "ran",
     "explain": "Noto'g'ri fe'llarni yodlab oling: go-went, see-saw, buy-bought..."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Noto'g'ri fe'llarning o'tgan zamon shakli -ed bilan hosil bo'lmaydi: ularni yodlash kerak. Eng ko'p ishlatiladigan fe'llar shular.",
+   "forms": [
+    [
+     "Eng muhim fe'llar",
+     "go → went, see → saw, eat → ate, buy → bought, make → made",
+     "I went to the market and bought bread."
+    ],
+    [
+     "Yana ko'p ishlatiladiganlari",
+     "have → had, take → took, come → came, give → gave, write → wrote, get → got",
+     "She wrote a letter. We came late."
+    ]
+   ],
+   "rules": [
+    "Shakl barcha shaxslar uchun bir xil: I went, he went, they went.",
+    "Ro'yxat 'Past Simple' ustuni — fe'lning 2-shakli."
+   ],
+   "ex": [
+    [
+     "Yesterday I saw an old friend.",
+     "Kecha eski do'stimni ko'rdim."
+    ],
+    [
+     "She took the bus and came home.",
+     "U avtobusga o'tirib, uyga keldi."
+    ],
+    [
+     "We ate rice for lunch.",
+     "Tushlikka palov yedik."
+    ]
+   ],
+   "err": [
+    [
+     "I goed to school.",
+     "I went to school.",
+     "'go' noto'g'ri fe'l, -ed olmaydi."
+    ],
+    [
+     "He buyed a book.",
+     "He bought a book.",
+     "buy → bought."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -9349,7 +10627,52 @@
     "answer": "We ran to the bus stop yesterday",
     "explain": "Noto'g'ri fe'llarni yodlab oling: go-went, see-saw, buy-bought..."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Noto'g'ri fe'llarning o'tgan zamon shakli -ed bilan hosil bo'lmaydi: ularni yodlash kerak. Eng ko'p ishlatiladigan fe'llar shular.",
+   "forms": [
+    [
+     "Eng muhim fe'llar",
+     "go → went, see → saw, eat → ate, buy → bought, make → made",
+     "I went to the market and bought bread."
+    ],
+    [
+     "Yana ko'p ishlatiladiganlari",
+     "have → had, take → took, come → came, give → gave, write → wrote, get → got",
+     "She wrote a letter. We came late."
+    ]
+   ],
+   "rules": [
+    "Shakl barcha shaxslar uchun bir xil: I went, he went, they went.",
+    "Ro'yxat 'Past Simple' ustuni — fe'lning 2-shakli."
+   ],
+   "ex": [
+    [
+     "Yesterday I saw an old friend.",
+     "Kecha eski do'stimni ko'rdim."
+    ],
+    [
+     "She took the bus and came home.",
+     "U avtobusga o'tirib, uyga keldi."
+    ],
+    [
+     "We ate rice for lunch.",
+     "Tushlikka palov yedik."
+    ]
+   ],
+   "err": [
+    [
+     "I goed to school.",
+     "I went to school.",
+     "'go' noto'g'ri fe'l, -ed olmaydi."
+    ],
+    [
+     "He buyed a book.",
+     "He bought a book.",
+     "buy → bought."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -9720,7 +11043,58 @@
     "answer": "didn't",
     "explain": "Did / didn't dan keyin fe'l asl holida: Did you see...? I didn't go."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Past Simple'da savol va inkor 'did / didn't' bilan tuziladi. did o'tgan zamonni o'zi ko'taradi, shuning uchun asosiy fe'l oddiy shaklga qaytadi.",
+   "forms": [
+    [
+     "Inkor",
+     "subject + didn't + fe'l (oddiy shakl)",
+     "I didn't go out. She didn't call."
+    ],
+    [
+     "Savol",
+     "Did + subject + fe'l (oddiy shakl)?",
+     "Did you see him? Did they win?"
+    ],
+    [
+     "Savol so'zi bilan",
+     "Wh-word + did + subject + fe'l?",
+     "Where did you go? What did he say?"
+    ]
+   ],
+   "rules": [
+    "did / didn't dan keyin fe'l o'tgan shaklga EMAS, oddiy shaklga tushadi.",
+    "Qisqa javob: Yes, I did. / No, we didn't.",
+    "was / were bilan did ishlatilmaydi: Were you tired? (Did you were emas)."
+   ],
+   "ex": [
+    [
+     "Did you do your homework? — Yes, I did.",
+     "Uy vazifasini qildingmi? — Ha."
+    ],
+    [
+     "I didn't sleep well last night.",
+     "Kecha yaxshi uxlamadim."
+    ],
+    [
+     "What time did she leave?",
+     "U soat nechada ketdi?"
+    ]
+   ],
+   "err": [
+    [
+     "Did you went there?",
+     "Did you go there?",
+     "did dan keyin oddiy shakl."
+    ],
+    [
+     "He didn't came.",
+     "He didn't come.",
+     "didn't dan keyin 'came' emas, 'come'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -9941,7 +11315,58 @@
     "answer": "didn't",
     "explain": "Did / didn't dan keyin fe'l asl holida: Did you see...? I didn't go."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Past Simple'da savol va inkor 'did / didn't' bilan tuziladi. did o'tgan zamonni o'zi ko'taradi, shuning uchun asosiy fe'l oddiy shaklga qaytadi.",
+   "forms": [
+    [
+     "Inkor",
+     "subject + didn't + fe'l (oddiy shakl)",
+     "I didn't go out. She didn't call."
+    ],
+    [
+     "Savol",
+     "Did + subject + fe'l (oddiy shakl)?",
+     "Did you see him? Did they win?"
+    ],
+    [
+     "Savol so'zi bilan",
+     "Wh-word + did + subject + fe'l?",
+     "Where did you go? What did he say?"
+    ]
+   ],
+   "rules": [
+    "did / didn't dan keyin fe'l o'tgan shaklga EMAS, oddiy shaklga tushadi.",
+    "Qisqa javob: Yes, I did. / No, we didn't.",
+    "was / were bilan did ishlatilmaydi: Were you tired? (Did you were emas)."
+   ],
+   "ex": [
+    [
+     "Did you do your homework? — Yes, I did.",
+     "Uy vazifasini qildingmi? — Ha."
+    ],
+    [
+     "I didn't sleep well last night.",
+     "Kecha yaxshi uxlamadim."
+    ],
+    [
+     "What time did she leave?",
+     "U soat nechada ketdi?"
+    ]
+   ],
+   "err": [
+    [
+     "Did you went there?",
+     "Did you go there?",
+     "did dan keyin oddiy shakl."
+    ],
+    [
+     "He didn't came.",
+     "He didn't come.",
+     "didn't dan keyin 'came' emas, 'come'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -10369,7 +11794,58 @@
     "answer": "My parents didn't go out last night",
     "explain": "Did / didn't dan keyin fe'l asl holida: Did you see...? I didn't go."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Past Simple'da savol va inkor 'did / didn't' bilan tuziladi. did o'tgan zamonni o'zi ko'taradi, shuning uchun asosiy fe'l oddiy shaklga qaytadi.",
+   "forms": [
+    [
+     "Inkor",
+     "subject + didn't + fe'l (oddiy shakl)",
+     "I didn't go out. She didn't call."
+    ],
+    [
+     "Savol",
+     "Did + subject + fe'l (oddiy shakl)?",
+     "Did you see him? Did they win?"
+    ],
+    [
+     "Savol so'zi bilan",
+     "Wh-word + did + subject + fe'l?",
+     "Where did you go? What did he say?"
+    ]
+   ],
+   "rules": [
+    "did / didn't dan keyin fe'l o'tgan shaklga EMAS, oddiy shaklga tushadi.",
+    "Qisqa javob: Yes, I did. / No, we didn't.",
+    "was / were bilan did ishlatilmaydi: Were you tired? (Did you were emas)."
+   ],
+   "ex": [
+    [
+     "Did you do your homework? — Yes, I did.",
+     "Uy vazifasini qildingmi? — Ha."
+    ],
+    [
+     "I didn't sleep well last night.",
+     "Kecha yaxshi uxlamadim."
+    ],
+    [
+     "What time did she leave?",
+     "U soat nechada ketdi?"
+    ]
+   ],
+   "err": [
+    [
+     "Did you went there?",
+     "Did you go there?",
+     "did dan keyin oddiy shakl."
+    ],
+    [
+     "He didn't came.",
+     "He didn't come.",
+     "didn't dan keyin 'came' emas, 'come'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -10741,7 +12217,57 @@
     "answer": "aren't going to",
     "explain": "am / is / are + going to + asosiy fe'l."
    }
-  ]
+  ],
+  "theory": {
+   "def": "be going to — oldindan rejalashtirilgan niyat yoki hozirgi belgilarga ko'ra ishonchli bashorat. «... qilmoqchiman / qilaman» ma'nosiga yaqin.",
+   "forms": [
+    [
+     "Darak gap",
+     "am / is / are + going to + fe'l",
+     "I am going to study tonight."
+    ],
+    [
+     "Inkor",
+     "am / is / are + not + going to + fe'l",
+     "We aren't going to travel."
+    ],
+    [
+     "Savol",
+     "Am / Is / Are + subject + going to + fe'l?",
+     "Are you going to come?"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: tomorrow, next week, tonight, soon, in the future.",
+    "Belgiga qarab bashorat: Look at the clouds! It is going to rain."
+   ],
+   "ex": [
+    [
+     "I'm going to visit my uncle next week.",
+     "Kelasi hafta tog'amnikiga bormoqchiman."
+    ],
+    [
+     "She is going to be a doctor.",
+     "U shifokor bo'lmoqchi."
+    ],
+    [
+     "Are you going to buy this phone?",
+     "Bu telefonni sotib olmoqchimisan?"
+    ]
+   ],
+   "err": [
+    [
+     "I going to eat now.",
+     "I am going to eat now.",
+     "am / is / are tushib qolmasin."
+    ],
+    [
+     "She is going to goes.",
+     "She is going to go.",
+     "to dan keyin oddiy fe'l."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -10962,7 +12488,57 @@
     "answer": "aren't going to",
     "explain": "am / is / are + going to + asosiy fe'l."
    }
-  ]
+  ],
+  "theory": {
+   "def": "be going to — oldindan rejalashtirilgan niyat yoki hozirgi belgilarga ko'ra ishonchli bashorat. «... qilmoqchiman / qilaman» ma'nosiga yaqin.",
+   "forms": [
+    [
+     "Darak gap",
+     "am / is / are + going to + fe'l",
+     "I am going to study tonight."
+    ],
+    [
+     "Inkor",
+     "am / is / are + not + going to + fe'l",
+     "We aren't going to travel."
+    ],
+    [
+     "Savol",
+     "Am / Is / Are + subject + going to + fe'l?",
+     "Are you going to come?"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: tomorrow, next week, tonight, soon, in the future.",
+    "Belgiga qarab bashorat: Look at the clouds! It is going to rain."
+   ],
+   "ex": [
+    [
+     "I'm going to visit my uncle next week.",
+     "Kelasi hafta tog'amnikiga bormoqchiman."
+    ],
+    [
+     "She is going to be a doctor.",
+     "U shifokor bo'lmoqchi."
+    ],
+    [
+     "Are you going to buy this phone?",
+     "Bu telefonni sotib olmoqchimisan?"
+    ]
+   ],
+   "err": [
+    [
+     "I going to eat now.",
+     "I am going to eat now.",
+     "am / is / are tushib qolmasin."
+    ],
+    [
+     "She is going to goes.",
+     "She is going to go.",
+     "to dan keyin oddiy fe'l."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -11445,7 +13021,57 @@
     "answer": "We aren't going to watch TV tonight",
     "explain": "am / is / are + going to + asosiy fe'l."
    }
-  ]
+  ],
+  "theory": {
+   "def": "be going to — oldindan rejalashtirilgan niyat yoki hozirgi belgilarga ko'ra ishonchli bashorat. «... qilmoqchiman / qilaman» ma'nosiga yaqin.",
+   "forms": [
+    [
+     "Darak gap",
+     "am / is / are + going to + fe'l",
+     "I am going to study tonight."
+    ],
+    [
+     "Inkor",
+     "am / is / are + not + going to + fe'l",
+     "We aren't going to travel."
+    ],
+    [
+     "Savol",
+     "Am / Is / Are + subject + going to + fe'l?",
+     "Are you going to come?"
+    ]
+   ],
+   "rules": [
+    "Belgi so'zlar: tomorrow, next week, tonight, soon, in the future.",
+    "Belgiga qarab bashorat: Look at the clouds! It is going to rain."
+   ],
+   "ex": [
+    [
+     "I'm going to visit my uncle next week.",
+     "Kelasi hafta tog'amnikiga bormoqchiman."
+    ],
+    [
+     "She is going to be a doctor.",
+     "U shifokor bo'lmoqchi."
+    ],
+    [
+     "Are you going to buy this phone?",
+     "Bu telefonni sotib olmoqchimisan?"
+    ]
+   ],
+   "err": [
+    [
+     "I going to eat now.",
+     "I am going to eat now.",
+     "am / is / are tushib qolmasin."
+    ],
+    [
+     "She is going to goes.",
+     "She is going to go.",
+     "to dan keyin oddiy fe'l."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -11816,7 +13442,58 @@
     "answer": "couldn't",
     "explain": "can / could dan keyin 'to' yo'q, fe'lga -s qo'shilmaydi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "can — qila olish, imkoniyat, ruxsat so'rash. could — o'tgan zamondagi qobiliyat va muloyim iltimos. Modal fe'llar bo'lgani uchun -s olmaydi va fe'lning oddiy shakli bilan keladi.",
+   "forms": [
+    [
+     "Qobiliyat",
+     "subject + can + fe'l",
+     "I can swim. She can speak French."
+    ],
+    [
+     "Inkor",
+     "can't / cannot; couldn't",
+     "He can't drive. I couldn't sleep."
+    ],
+    [
+     "Savol / iltimos",
+     "Can / Could + subject + fe'l?",
+     "Can you help me? Could you open the window?"
+    ]
+   ],
+   "rules": [
+    "he / she / it bilan ham 'can' (cans emas).",
+    "can dan keyin 'to' kelmaydi.",
+    "Could you ...? — Can you ...? ga qaraganda muloyimroq."
+   ],
+   "ex": [
+    [
+     "I can play the piano, but I can't sing.",
+     "Pianino chala olaman, lekin kuylay olmayman."
+    ],
+    [
+     "When I was five, I could read.",
+     "Besh yoshimda o'qiy olardim."
+    ],
+    [
+     "Could you repeat that, please?",
+     "Iltimos, buni takrorlay olasizmi?"
+    ]
+   ],
+   "err": [
+    [
+     "She cans swim.",
+     "She can swim.",
+     "can -s olmaydi."
+    ],
+    [
+     "I can to swim.",
+     "I can swim.",
+     "can dan keyin 'to' yo'q."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -12037,7 +13714,58 @@
     "answer": "couldn't",
     "explain": "can / could dan keyin 'to' yo'q, fe'lga -s qo'shilmaydi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "can — qila olish, imkoniyat, ruxsat so'rash. could — o'tgan zamondagi qobiliyat va muloyim iltimos. Modal fe'llar bo'lgani uchun -s olmaydi va fe'lning oddiy shakli bilan keladi.",
+   "forms": [
+    [
+     "Qobiliyat",
+     "subject + can + fe'l",
+     "I can swim. She can speak French."
+    ],
+    [
+     "Inkor",
+     "can't / cannot; couldn't",
+     "He can't drive. I couldn't sleep."
+    ],
+    [
+     "Savol / iltimos",
+     "Can / Could + subject + fe'l?",
+     "Can you help me? Could you open the window?"
+    ]
+   ],
+   "rules": [
+    "he / she / it bilan ham 'can' (cans emas).",
+    "can dan keyin 'to' kelmaydi.",
+    "Could you ...? — Can you ...? ga qaraganda muloyimroq."
+   ],
+   "ex": [
+    [
+     "I can play the piano, but I can't sing.",
+     "Pianino chala olaman, lekin kuylay olmayman."
+    ],
+    [
+     "When I was five, I could read.",
+     "Besh yoshimda o'qiy olardim."
+    ],
+    [
+     "Could you repeat that, please?",
+     "Iltimos, buni takrorlay olasizmi?"
+    ]
+   ],
+   "err": [
+    [
+     "She cans swim.",
+     "She can swim.",
+     "can -s olmaydi."
+    ],
+    [
+     "I can to swim.",
+     "I can swim.",
+     "can dan keyin 'to' yo'q."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -12477,7 +14205,58 @@
     "answer": "My grandmother couldn't walk very well last year",
     "explain": "can / could dan keyin 'to' yo'q, fe'lga -s qo'shilmaydi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "can — qila olish, imkoniyat, ruxsat so'rash. could — o'tgan zamondagi qobiliyat va muloyim iltimos. Modal fe'llar bo'lgani uchun -s olmaydi va fe'lning oddiy shakli bilan keladi.",
+   "forms": [
+    [
+     "Qobiliyat",
+     "subject + can + fe'l",
+     "I can swim. She can speak French."
+    ],
+    [
+     "Inkor",
+     "can't / cannot; couldn't",
+     "He can't drive. I couldn't sleep."
+    ],
+    [
+     "Savol / iltimos",
+     "Can / Could + subject + fe'l?",
+     "Can you help me? Could you open the window?"
+    ]
+   ],
+   "rules": [
+    "he / she / it bilan ham 'can' (cans emas).",
+    "can dan keyin 'to' kelmaydi.",
+    "Could you ...? — Can you ...? ga qaraganda muloyimroq."
+   ],
+   "ex": [
+    [
+     "I can play the piano, but I can't sing.",
+     "Pianino chala olaman, lekin kuylay olmayman."
+    ],
+    [
+     "When I was five, I could read.",
+     "Besh yoshimda o'qiy olardim."
+    ],
+    [
+     "Could you repeat that, please?",
+     "Iltimos, buni takrorlay olasizmi?"
+    ]
+   ],
+   "err": [
+    [
+     "She cans swim.",
+     "She can swim.",
+     "can -s olmaydi."
+    ],
+    [
+     "I can to swim.",
+     "I can swim.",
+     "can dan keyin 'to' yo'q."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -12848,7 +14627,58 @@
     "answer": "Would",
     "explain": "would like + ot yoki to + fe'l. Savol: Would you like...?"
    }
-  ]
+  ],
+  "theory": {
+   "def": "would like — «xohlayman» ning muloyim shakli: kafe, do'kon, taklif va iltimoslarda ishlatiladi. 'want' dan ko'ra odobliroq eshitiladi.",
+   "forms": [
+    [
+     "Istak",
+     "I'd like + ot / to + fe'l",
+     "I'd like a coffee. I'd like to book a table."
+    ],
+    [
+     "Savol (taklif)",
+     "Would you like + ot / to + fe'l?",
+     "Would you like some tea?"
+    ],
+    [
+     "Inkor",
+     "wouldn't like",
+     "I wouldn't like to be late."
+    ]
+   ],
+   "rules": [
+    "I would = I'd.",
+    "Taklifga javob: Yes, please. / No, thank you.",
+    "Do you like...? — umumiy yoqtirish; Would you like...? — hozirgi taklif."
+   ],
+   "ex": [
+    [
+     "I'd like a table for two, please.",
+     "Ikki kishilik stol bo'lsa, iltimos."
+    ],
+    [
+     "Would you like to come to my party?",
+     "Mening bayramimga kelishni xohlaysanmi?"
+    ],
+    [
+     "What would you like to drink?",
+     "Nima ichishni xohlaysiz?"
+    ]
+   ],
+   "err": [
+    [
+     "I would like drink water.",
+     "I'd like to drink water.",
+     "would like dan keyin 'to' + fe'l."
+    ],
+    [
+     "Do you like some tea? (taklif)",
+     "Would you like some tea?",
+     "Taklifda 'would like'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -13069,7 +14899,58 @@
     "answer": "Would",
     "explain": "would like + ot yoki to + fe'l. Savol: Would you like...?"
    }
-  ]
+  ],
+  "theory": {
+   "def": "would like — «xohlayman» ning muloyim shakli: kafe, do'kon, taklif va iltimoslarda ishlatiladi. 'want' dan ko'ra odobliroq eshitiladi.",
+   "forms": [
+    [
+     "Istak",
+     "I'd like + ot / to + fe'l",
+     "I'd like a coffee. I'd like to book a table."
+    ],
+    [
+     "Savol (taklif)",
+     "Would you like + ot / to + fe'l?",
+     "Would you like some tea?"
+    ],
+    [
+     "Inkor",
+     "wouldn't like",
+     "I wouldn't like to be late."
+    ]
+   ],
+   "rules": [
+    "I would = I'd.",
+    "Taklifga javob: Yes, please. / No, thank you.",
+    "Do you like...? — umumiy yoqtirish; Would you like...? — hozirgi taklif."
+   ],
+   "ex": [
+    [
+     "I'd like a table for two, please.",
+     "Ikki kishilik stol bo'lsa, iltimos."
+    ],
+    [
+     "Would you like to come to my party?",
+     "Mening bayramimga kelishni xohlaysanmi?"
+    ],
+    [
+     "What would you like to drink?",
+     "Nima ichishni xohlaysiz?"
+    ]
+   ],
+   "err": [
+    [
+     "I would like drink water.",
+     "I'd like to drink water.",
+     "would like dan keyin 'to' + fe'l."
+    ],
+    [
+     "Do you like some tea? (taklif)",
+     "Would you like some tea?",
+     "Taklifda 'would like'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -13545,7 +15426,58 @@
     "answer": "Would he like a cup of coffee",
     "explain": "would like + ot yoki to + fe'l. Savol: Would you like...?"
    }
-  ]
+  ],
+  "theory": {
+   "def": "would like — «xohlayman» ning muloyim shakli: kafe, do'kon, taklif va iltimoslarda ishlatiladi. 'want' dan ko'ra odobliroq eshitiladi.",
+   "forms": [
+    [
+     "Istak",
+     "I'd like + ot / to + fe'l",
+     "I'd like a coffee. I'd like to book a table."
+    ],
+    [
+     "Savol (taklif)",
+     "Would you like + ot / to + fe'l?",
+     "Would you like some tea?"
+    ],
+    [
+     "Inkor",
+     "wouldn't like",
+     "I wouldn't like to be late."
+    ]
+   ],
+   "rules": [
+    "I would = I'd.",
+    "Taklifga javob: Yes, please. / No, thank you.",
+    "Do you like...? — umumiy yoqtirish; Would you like...? — hozirgi taklif."
+   ],
+   "ex": [
+    [
+     "I'd like a table for two, please.",
+     "Ikki kishilik stol bo'lsa, iltimos."
+    ],
+    [
+     "Would you like to come to my party?",
+     "Mening bayramimga kelishni xohlaysanmi?"
+    ],
+    [
+     "What would you like to drink?",
+     "Nima ichishni xohlaysiz?"
+    ]
+   ],
+   "err": [
+    [
+     "I would like drink water.",
+     "I'd like to drink water.",
+     "would like dan keyin 'to' + fe'l."
+    ],
+    [
+     "Do you like some tea? (taklif)",
+     "Would you like some tea?",
+     "Taklifda 'would like'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -13916,7 +15848,57 @@
     "answer": "When",
     "explain": "Savol so'zi, keyin do / does / did / am / is / are, keyin ega."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Inglizcha savolda so'z tartibi aniq: yordamchi fe'l egadan oldin keladi. O'zbekchada tartib o'zgarmaydi, inglizchada o'zgaradi — shuning uchun tartibni yodlash kerak.",
+   "forms": [
+    [
+     "Ha / yo'q savoli",
+     "Yordamchi fe'l + ega + asosiy fe'l?",
+     "Do you like pizza? Can she swim?"
+    ],
+    [
+     "So'roq so'zi bilan",
+     "Wh-word + yordamchi fe'l + ega + fe'l?",
+     "Where do you live? When did he come?"
+    ],
+    [
+     "So'roq so'zlari",
+     "who, what, where, when, why, how, which",
+     "How old are you? Why are you late?"
+    ]
+   ],
+   "rules": [
+    "Yordamchi fe'llar: do / does / did, am / is / are, can, will.",
+    "Faqat be fe'lida: Where is he? (do kerak emas)."
+   ],
+   "ex": [
+    [
+     "Where do you work?",
+     "Qayerda ishlaysan?"
+    ],
+    [
+     "What time does the film start?",
+     "Film soat nechada boshlanadi?"
+    ],
+    [
+     "Why are you crying?",
+     "Nega yig'layapsan?"
+    ]
+   ],
+   "err": [
+    [
+     "Where you live?",
+     "Where do you live?",
+     "Yordamchi fe'l unutilmasin."
+    ],
+    [
+     "What you are doing?",
+     "What are you doing?",
+     "Fe'l egadan oldin."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -14137,7 +16119,57 @@
     "answer": "When",
     "explain": "Savol so'zi, keyin do / does / did / am / is / are, keyin ega."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Inglizcha savolda so'z tartibi aniq: yordamchi fe'l egadan oldin keladi. O'zbekchada tartib o'zgarmaydi, inglizchada o'zgaradi — shuning uchun tartibni yodlash kerak.",
+   "forms": [
+    [
+     "Ha / yo'q savoli",
+     "Yordamchi fe'l + ega + asosiy fe'l?",
+     "Do you like pizza? Can she swim?"
+    ],
+    [
+     "So'roq so'zi bilan",
+     "Wh-word + yordamchi fe'l + ega + fe'l?",
+     "Where do you live? When did he come?"
+    ],
+    [
+     "So'roq so'zlari",
+     "who, what, where, when, why, how, which",
+     "How old are you? Why are you late?"
+    ]
+   ],
+   "rules": [
+    "Yordamchi fe'llar: do / does / did, am / is / are, can, will.",
+    "Faqat be fe'lida: Where is he? (do kerak emas)."
+   ],
+   "ex": [
+    [
+     "Where do you work?",
+     "Qayerda ishlaysan?"
+    ],
+    [
+     "What time does the film start?",
+     "Film soat nechada boshlanadi?"
+    ],
+    [
+     "Why are you crying?",
+     "Nega yig'layapsan?"
+    ]
+   ],
+   "err": [
+    [
+     "Where you live?",
+     "Where do you live?",
+     "Yordamchi fe'l unutilmasin."
+    ],
+    [
+     "What you are doing?",
+     "What are you doing?",
+     "Fe'l egadan oldin."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -14561,7 +16593,57 @@
     "answer": "When does the lesson start",
     "explain": "Savol so'zi, keyin do / does / did / am / is / are, keyin ega."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Inglizcha savolda so'z tartibi aniq: yordamchi fe'l egadan oldin keladi. O'zbekchada tartib o'zgarmaydi, inglizchada o'zgaradi — shuning uchun tartibni yodlash kerak.",
+   "forms": [
+    [
+     "Ha / yo'q savoli",
+     "Yordamchi fe'l + ega + asosiy fe'l?",
+     "Do you like pizza? Can she swim?"
+    ],
+    [
+     "So'roq so'zi bilan",
+     "Wh-word + yordamchi fe'l + ega + fe'l?",
+     "Where do you live? When did he come?"
+    ],
+    [
+     "So'roq so'zlari",
+     "who, what, where, when, why, how, which",
+     "How old are you? Why are you late?"
+    ]
+   ],
+   "rules": [
+    "Yordamchi fe'llar: do / does / did, am / is / are, can, will.",
+    "Faqat be fe'lida: Where is he? (do kerak emas)."
+   ],
+   "ex": [
+    [
+     "Where do you work?",
+     "Qayerda ishlaysan?"
+    ],
+    [
+     "What time does the film start?",
+     "Film soat nechada boshlanadi?"
+    ],
+    [
+     "Why are you crying?",
+     "Nega yig'layapsan?"
+    ]
+   ],
+   "err": [
+    [
+     "Where you live?",
+     "Where do you live?",
+     "Yordamchi fe'l unutilmasin."
+    ],
+    [
+     "What you are doing?",
+     "What are you doing?",
+     "Fe'l egadan oldin."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -14932,7 +17014,52 @@
     "answer": "What",
     "explain": "Who - odam haqida, What - narsa haqida."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Who va What savollari ikki xil: ega haqida so'rasak (kim ... qildi?) yordamchi fe'l ishlatilmaydi; to'ldiruvchi haqida so'rasak (kimni / nimani?) yordamchi fe'l kerak.",
+   "forms": [
+    [
+     "Ega haqida",
+     "Who / What + fe'l (darak tartibi)",
+     "Who called you? What happened?"
+    ],
+    [
+     "To'ldiruvchi haqida",
+     "Who / What + do / does / did + ega + fe'l?",
+     "Who did you call? What do you want?"
+    ]
+   ],
+   "rules": [
+    "Ega savolida do / does / did QO'YILMAYDI.",
+    "Who + he/she/it kabi uchinchi shaxs bilan: Who lives here? (lives)."
+   ],
+   "ex": [
+    [
+     "Who broke the window? — Tom did.",
+     "Derazani kim sindirdi? — Tom."
+    ],
+    [
+     "Who did you meet yesterday?",
+     "Kecha kimni uchratding?"
+    ],
+    [
+     "What makes you happy?",
+     "Seni nima xursand qiladi?"
+    ]
+   ],
+   "err": [
+    [
+     "Who did call you?",
+     "Who called you?",
+     "Ega savolida 'did' yo'q."
+    ],
+    [
+     "What you want?",
+     "What do you want?",
+     "To'ldiruvchi savolida do kerak."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -15153,7 +17280,52 @@
     "answer": "What",
     "explain": "Who - odam haqida, What - narsa haqida."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Who va What savollari ikki xil: ega haqida so'rasak (kim ... qildi?) yordamchi fe'l ishlatilmaydi; to'ldiruvchi haqida so'rasak (kimni / nimani?) yordamchi fe'l kerak.",
+   "forms": [
+    [
+     "Ega haqida",
+     "Who / What + fe'l (darak tartibi)",
+     "Who called you? What happened?"
+    ],
+    [
+     "To'ldiruvchi haqida",
+     "Who / What + do / does / did + ega + fe'l?",
+     "Who did you call? What do you want?"
+    ]
+   ],
+   "rules": [
+    "Ega savolida do / does / did QO'YILMAYDI.",
+    "Who + he/she/it kabi uchinchi shaxs bilan: Who lives here? (lives)."
+   ],
+   "ex": [
+    [
+     "Who broke the window? — Tom did.",
+     "Derazani kim sindirdi? — Tom."
+    ],
+    [
+     "Who did you meet yesterday?",
+     "Kecha kimni uchratding?"
+    ],
+    [
+     "What makes you happy?",
+     "Seni nima xursand qiladi?"
+    ]
+   ],
+   "err": [
+    [
+     "Who did call you?",
+     "Who called you?",
+     "Ega savolida 'did' yo'q."
+    ],
+    [
+     "What you want?",
+     "What do you want?",
+     "To'ldiruvchi savolida do kerak."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -15560,7 +17732,52 @@
     "answer": "Who are you waiting for",
     "explain": "Who - odam haqida, What - narsa haqida."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Who va What savollari ikki xil: ega haqida so'rasak (kim ... qildi?) yordamchi fe'l ishlatilmaydi; to'ldiruvchi haqida so'rasak (kimni / nimani?) yordamchi fe'l kerak.",
+   "forms": [
+    [
+     "Ega haqida",
+     "Who / What + fe'l (darak tartibi)",
+     "Who called you? What happened?"
+    ],
+    [
+     "To'ldiruvchi haqida",
+     "Who / What + do / does / did + ega + fe'l?",
+     "Who did you call? What do you want?"
+    ]
+   ],
+   "rules": [
+    "Ega savolida do / does / did QO'YILMAYDI.",
+    "Who + he/she/it kabi uchinchi shaxs bilan: Who lives here? (lives)."
+   ],
+   "ex": [
+    [
+     "Who broke the window? — Tom did.",
+     "Derazani kim sindirdi? — Tom."
+    ],
+    [
+     "Who did you meet yesterday?",
+     "Kecha kimni uchratding?"
+    ],
+    [
+     "What makes you happy?",
+     "Seni nima xursand qiladi?"
+    ]
+   ],
+   "err": [
+    [
+     "Who did call you?",
+     "Who called you?",
+     "Ega savolida 'did' yo'q."
+    ],
+    [
+     "What you want?",
+     "What do you want?",
+     "To'ldiruvchi savolida do kerak."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -15931,7 +18148,52 @@
     "answer": "can't",
     "explain": "Javobda ham savoldagi yordamchi fe'l (am / do / can / did...) takrorlanadi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Qisqa javob — savolga to'liq gap aytmasdan, yordamchi fe'lni takrorlab javob berish. Ingliz tilida «ha / yo'q» o'rniga yordamchi fe'l ishlatiladi: Yes, I do.",
+   "forms": [
+    [
+     "Ha",
+     "Yes, + ega + yordamchi fe'l.",
+     "Do you like tea? — Yes, I do."
+    ],
+    [
+     "Yo'q",
+     "No, + ega + yordamchi fe'l + n't.",
+     "Is she tired? — No, she isn't."
+    ]
+   ],
+   "rules": [
+    "Javobdagi yordamchi fe'l savoldagi bilan bir xil bo'ladi: Did you...? → I did; Can you...? → I can; Are you...? → I am.",
+    "Faqat «Yes» yoki «No» deyish qo'pol eshitiladi."
+   ],
+   "ex": [
+    [
+     "Are you a student? — Yes, I am.",
+     "Talabamisan? — Ha."
+    ],
+    [
+     "Does he speak English? — No, he doesn't.",
+     "U inglizcha gapiradimi? — Yo'q."
+    ],
+    [
+     "Can you drive? — Yes, I can.",
+     "Mashina hayday olasanmi? — Ha."
+    ]
+   ],
+   "err": [
+    [
+     "Do you like it? — Yes, I like.",
+     "Yes, I do.",
+     "Yordamchi fe'l bilan javob."
+    ],
+    [
+     "Are you tired? — No, I don't.",
+     "No, I'm not.",
+     "Savoldagi fe'lga mos javob."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -16152,7 +18414,52 @@
     "answer": "can't",
     "explain": "Javobda ham savoldagi yordamchi fe'l (am / do / can / did...) takrorlanadi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Qisqa javob — savolga to'liq gap aytmasdan, yordamchi fe'lni takrorlab javob berish. Ingliz tilida «ha / yo'q» o'rniga yordamchi fe'l ishlatiladi: Yes, I do.",
+   "forms": [
+    [
+     "Ha",
+     "Yes, + ega + yordamchi fe'l.",
+     "Do you like tea? — Yes, I do."
+    ],
+    [
+     "Yo'q",
+     "No, + ega + yordamchi fe'l + n't.",
+     "Is she tired? — No, she isn't."
+    ]
+   ],
+   "rules": [
+    "Javobdagi yordamchi fe'l savoldagi bilan bir xil bo'ladi: Did you...? → I did; Can you...? → I can; Are you...? → I am.",
+    "Faqat «Yes» yoki «No» deyish qo'pol eshitiladi."
+   ],
+   "ex": [
+    [
+     "Are you a student? — Yes, I am.",
+     "Talabamisan? — Ha."
+    ],
+    [
+     "Does he speak English? — No, he doesn't.",
+     "U inglizcha gapiradimi? — Yo'q."
+    ],
+    [
+     "Can you drive? — Yes, I can.",
+     "Mashina hayday olasanmi? — Ha."
+    ]
+   ],
+   "err": [
+    [
+     "Do you like it? — Yes, I like.",
+     "Yes, I do.",
+     "Yordamchi fe'l bilan javob."
+    ],
+    [
+     "Are you tired? — No, I don't.",
+     "No, I'm not.",
+     "Savoldagi fe'lga mos javob."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -16523,7 +18830,52 @@
     "answer": "No, they can't",
     "explain": "Javobda ham savoldagi yordamchi fe'l (am / do / can / did...) takrorlanadi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Qisqa javob — savolga to'liq gap aytmasdan, yordamchi fe'lni takrorlab javob berish. Ingliz tilida «ha / yo'q» o'rniga yordamchi fe'l ishlatiladi: Yes, I do.",
+   "forms": [
+    [
+     "Ha",
+     "Yes, + ega + yordamchi fe'l.",
+     "Do you like tea? — Yes, I do."
+    ],
+    [
+     "Yo'q",
+     "No, + ega + yordamchi fe'l + n't.",
+     "Is she tired? — No, she isn't."
+    ]
+   ],
+   "rules": [
+    "Javobdagi yordamchi fe'l savoldagi bilan bir xil bo'ladi: Did you...? → I did; Can you...? → I can; Are you...? → I am.",
+    "Faqat «Yes» yoki «No» deyish qo'pol eshitiladi."
+   ],
+   "ex": [
+    [
+     "Are you a student? — Yes, I am.",
+     "Talabamisan? — Ha."
+    ],
+    [
+     "Does he speak English? — No, he doesn't.",
+     "U inglizcha gapiradimi? — Yo'q."
+    ],
+    [
+     "Can you drive? — Yes, I can.",
+     "Mashina hayday olasanmi? — Ha."
+    ]
+   ],
+   "err": [
+    [
+     "Do you like it? — Yes, I like.",
+     "Yes, I do.",
+     "Yordamchi fe'l bilan javob."
+    ],
+    [
+     "Are you tired? — No, I don't.",
+     "No, I'm not.",
+     "Savoldagi fe'lga mos javob."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -16894,7 +19246,57 @@
     "answer": "a lot of",
     "explain": "Sanalmaydigan otdan oldin a / an va ko'plik -s ishlatilmaydi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Sanaladigan otlarni bittalab sanash mumkin (an apple, two apples). Sanalmaydigan otlarni sanab bo'lmaydi (water, rice, money) va ular ko'plik shakli olmaydi.",
+   "forms": [
+    [
+     "Sanaladigan",
+     "a / an + birlik; ko'plik: ot + s",
+     "a book → two books"
+    ],
+    [
+     "Sanalmaydigan",
+     "ko'plik yo'q; 'a' qo'yilmaydi; fe'l birlikda",
+     "water, rice, milk, money, bread, information, advice"
+    ],
+    [
+     "Miqdor berish",
+     "a glass of water, a piece of bread, a bottle of milk",
+     "I need a cup of tea."
+    ]
+   ],
+   "rules": [
+    "Ko'plik: -s (cat → cats), -es (box → boxes), -ies (baby → babies), noto'g'ri: man → men, child → children, foot → feet.",
+    "Sanalmaydigan otdan keyin fe'l birlikda: The water is cold."
+   ],
+   "ex": [
+    [
+     "I have two brothers and some money.",
+     "Mening ikkita akam va ozgina pulim bor."
+    ],
+    [
+     "The information is useful.",
+     "Ma'lumot foydali."
+    ],
+    [
+     "Can I have a glass of water?",
+     "Bir stakan suv bersangiz bo'ladimi?"
+    ]
+   ],
+   "err": [
+    [
+     "I need an advice.",
+     "I need some advice.",
+     "'advice' sanalmaydi."
+    ],
+    [
+     "The news are good.",
+     "The news is good.",
+     "'news' birlikda."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -17115,7 +19517,57 @@
     "answer": "a lot of",
     "explain": "Sanalmaydigan otdan oldin a / an va ko'plik -s ishlatilmaydi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Sanaladigan otlarni bittalab sanash mumkin (an apple, two apples). Sanalmaydigan otlarni sanab bo'lmaydi (water, rice, money) va ular ko'plik shakli olmaydi.",
+   "forms": [
+    [
+     "Sanaladigan",
+     "a / an + birlik; ko'plik: ot + s",
+     "a book → two books"
+    ],
+    [
+     "Sanalmaydigan",
+     "ko'plik yo'q; 'a' qo'yilmaydi; fe'l birlikda",
+     "water, rice, milk, money, bread, information, advice"
+    ],
+    [
+     "Miqdor berish",
+     "a glass of water, a piece of bread, a bottle of milk",
+     "I need a cup of tea."
+    ]
+   ],
+   "rules": [
+    "Ko'plik: -s (cat → cats), -es (box → boxes), -ies (baby → babies), noto'g'ri: man → men, child → children, foot → feet.",
+    "Sanalmaydigan otdan keyin fe'l birlikda: The water is cold."
+   ],
+   "ex": [
+    [
+     "I have two brothers and some money.",
+     "Mening ikkita akam va ozgina pulim bor."
+    ],
+    [
+     "The information is useful.",
+     "Ma'lumot foydali."
+    ],
+    [
+     "Can I have a glass of water?",
+     "Bir stakan suv bersangiz bo'ladimi?"
+    ]
+   ],
+   "err": [
+    [
+     "I need an advice.",
+     "I need some advice.",
+     "'advice' sanalmaydi."
+    ],
+    [
+     "The news are good.",
+     "The news is good.",
+     "'news' birlikda."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -17553,7 +20005,57 @@
     "answer": "I have a lot of friends",
     "explain": "Sanalmaydigan otdan oldin a / an va ko'plik -s ishlatilmaydi."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Sanaladigan otlarni bittalab sanash mumkin (an apple, two apples). Sanalmaydigan otlarni sanab bo'lmaydi (water, rice, money) va ular ko'plik shakli olmaydi.",
+   "forms": [
+    [
+     "Sanaladigan",
+     "a / an + birlik; ko'plik: ot + s",
+     "a book → two books"
+    ],
+    [
+     "Sanalmaydigan",
+     "ko'plik yo'q; 'a' qo'yilmaydi; fe'l birlikda",
+     "water, rice, milk, money, bread, information, advice"
+    ],
+    [
+     "Miqdor berish",
+     "a glass of water, a piece of bread, a bottle of milk",
+     "I need a cup of tea."
+    ]
+   ],
+   "rules": [
+    "Ko'plik: -s (cat → cats), -es (box → boxes), -ies (baby → babies), noto'g'ri: man → men, child → children, foot → feet.",
+    "Sanalmaydigan otdan keyin fe'l birlikda: The water is cold."
+   ],
+   "ex": [
+    [
+     "I have two brothers and some money.",
+     "Mening ikkita akam va ozgina pulim bor."
+    ],
+    [
+     "The information is useful.",
+     "Ma'lumot foydali."
+    ],
+    [
+     "Can I have a glass of water?",
+     "Bir stakan suv bersangiz bo'ladimi?"
+    ]
+   ],
+   "err": [
+    [
+     "I need an advice.",
+     "I need some advice.",
+     "'advice' sanalmaydi."
+    ],
+    [
+     "The news are good.",
+     "The news is good.",
+     "'news' birlikda."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -17924,7 +20426,53 @@
     "answer": "an",
     "explain": "Yozilishi emas, aytilishi muhim: a university, an hour."
    }
-  ]
+  ],
+  "theory": {
+   "def": "a / an — noaniq birlik ot oldidan «bitta, biror» ma'nosida: birinchi marta eslatayotganda yoki kasbni aytganda. a — undosh TOVUSH oldidan, an — unli TOVUSH oldidan.",
+   "forms": [
+    [
+     "a",
+     "a + undosh tovush",
+     "a book, a university (yu-), a house"
+    ],
+    [
+     "an",
+     "an + unli tovush",
+     "an apple, an hour (soat — h o'qilmaydi), an umbrella"
+    ]
+   ],
+   "rules": [
+    "Faqat birlikdagi sanaladigan otlar bilan: a car, lekin cars.",
+    "Kasb: She is a nurse.",
+    "Yozuvga emas, TALAFFUZGA qaraladi."
+   ],
+   "ex": [
+    [
+     "I have a dog and an umbrella.",
+     "Mening itim va soyabonim bor."
+    ],
+    [
+     "He is an engineer.",
+     "U muhandis."
+    ],
+    [
+     "She waited for an hour.",
+     "U bir soat kutdi."
+    ]
+   ],
+   "err": [
+    [
+     "a apple",
+     "an apple",
+     "Unli tovush oldidan 'an'."
+    ],
+    [
+     "She is teacher.",
+     "She is a teacher.",
+     "Kasb oldida 'a' kerak."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -18145,7 +20693,53 @@
     "answer": "an",
     "explain": "Yozilishi emas, aytilishi muhim: a university, an hour."
    }
-  ]
+  ],
+  "theory": {
+   "def": "a / an — noaniq birlik ot oldidan «bitta, biror» ma'nosida: birinchi marta eslatayotganda yoki kasbni aytganda. a — undosh TOVUSH oldidan, an — unli TOVUSH oldidan.",
+   "forms": [
+    [
+     "a",
+     "a + undosh tovush",
+     "a book, a university (yu-), a house"
+    ],
+    [
+     "an",
+     "an + unli tovush",
+     "an apple, an hour (soat — h o'qilmaydi), an umbrella"
+    ]
+   ],
+   "rules": [
+    "Faqat birlikdagi sanaladigan otlar bilan: a car, lekin cars.",
+    "Kasb: She is a nurse.",
+    "Yozuvga emas, TALAFFUZGA qaraladi."
+   ],
+   "ex": [
+    [
+     "I have a dog and an umbrella.",
+     "Mening itim va soyabonim bor."
+    ],
+    [
+     "He is an engineer.",
+     "U muhandis."
+    ],
+    [
+     "She waited for an hour.",
+     "U bir soat kutdi."
+    ]
+   ],
+   "err": [
+    [
+     "a apple",
+     "an apple",
+     "Unli tovush oldidan 'an'."
+    ],
+    [
+     "She is teacher.",
+     "She is a teacher.",
+     "Kasb oldida 'a' kerak."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -18575,7 +21169,53 @@
     "answer": "He has an uncle in London",
     "explain": "Yozilishi emas, aytilishi muhim: a university, an hour."
    }
-  ]
+  ],
+  "theory": {
+   "def": "a / an — noaniq birlik ot oldidan «bitta, biror» ma'nosida: birinchi marta eslatayotganda yoki kasbni aytganda. a — undosh TOVUSH oldidan, an — unli TOVUSH oldidan.",
+   "forms": [
+    [
+     "a",
+     "a + undosh tovush",
+     "a book, a university (yu-), a house"
+    ],
+    [
+     "an",
+     "an + unli tovush",
+     "an apple, an hour (soat — h o'qilmaydi), an umbrella"
+    ]
+   ],
+   "rules": [
+    "Faqat birlikdagi sanaladigan otlar bilan: a car, lekin cars.",
+    "Kasb: She is a nurse.",
+    "Yozuvga emas, TALAFFUZGA qaraladi."
+   ],
+   "ex": [
+    [
+     "I have a dog and an umbrella.",
+     "Mening itim va soyabonim bor."
+    ],
+    [
+     "He is an engineer.",
+     "U muhandis."
+    ],
+    [
+     "She waited for an hour.",
+     "U bir soat kutdi."
+    ]
+   ],
+   "err": [
+    [
+     "a apple",
+     "an apple",
+     "Unli tovush oldidan 'an'."
+    ],
+    [
+     "She is teacher.",
+     "She is a teacher.",
+     "Kasb oldida 'a' kerak."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -18946,7 +21586,58 @@
     "answer": "the",
     "explain": "Ikkinchi marta tilga olinganda, yagona yoki eng...ligi aytilganda the."
    }
-  ]
+  ],
+  "theory": {
+   "def": "the — aniq ot oldidan: gapiruvchi ham, tinglovchi ham qaysi narsa haqida gap ketayotganini biladi. Bir marta tilga olingan narsa, yagona narsa (the sun) yoki aniq tasvirlangan narsa oldida ishlatiladi.",
+   "forms": [
+    [
+     "Aniq narsa",
+     "the + ot",
+     "Open the window, please."
+    ],
+    [
+     "Ikkinchi marta eslash",
+     "a → the",
+     "I saw a dog. The dog was big."
+    ],
+    [
+     "Yagona narsa",
+     "the sun, the moon, the world, the internet",
+     "The sun is hot."
+    ]
+   ],
+   "rules": [
+    "Umumiy gapda artikl yo'q: I like music. (the music emas).",
+    "Ishlatilmaydi: ovqat nomlari (have breakfast), tillar (speak English), ko'pchilik shahar va mamlakatlar.",
+    "the + superlativ: the best, the biggest."
+   ],
+   "ex": [
+    [
+     "Where is the bathroom?",
+     "Hammom qayerda?"
+    ],
+    [
+     "I bought a shirt. The shirt is blue.",
+     "Ko'ylak sotib oldim. Ko'ylak ko'k."
+    ],
+    [
+     "She plays the piano.",
+     "U pianino chaladi."
+    ]
+   ],
+   "err": [
+    [
+     "I like the football.",
+     "I like football.",
+     "Umumiy ma'noda 'the' yo'q."
+    ],
+    [
+     "Sun is hot.",
+     "The sun is hot.",
+     "Yagona narsada 'the'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -19167,7 +21858,58 @@
     "answer": "the",
     "explain": "Ikkinchi marta tilga olinganda, yagona yoki eng...ligi aytilganda the."
    }
-  ]
+  ],
+  "theory": {
+   "def": "the — aniq ot oldidan: gapiruvchi ham, tinglovchi ham qaysi narsa haqida gap ketayotganini biladi. Bir marta tilga olingan narsa, yagona narsa (the sun) yoki aniq tasvirlangan narsa oldida ishlatiladi.",
+   "forms": [
+    [
+     "Aniq narsa",
+     "the + ot",
+     "Open the window, please."
+    ],
+    [
+     "Ikkinchi marta eslash",
+     "a → the",
+     "I saw a dog. The dog was big."
+    ],
+    [
+     "Yagona narsa",
+     "the sun, the moon, the world, the internet",
+     "The sun is hot."
+    ]
+   ],
+   "rules": [
+    "Umumiy gapda artikl yo'q: I like music. (the music emas).",
+    "Ishlatilmaydi: ovqat nomlari (have breakfast), tillar (speak English), ko'pchilik shahar va mamlakatlar.",
+    "the + superlativ: the best, the biggest."
+   ],
+   "ex": [
+    [
+     "Where is the bathroom?",
+     "Hammom qayerda?"
+    ],
+    [
+     "I bought a shirt. The shirt is blue.",
+     "Ko'ylak sotib oldim. Ko'ylak ko'k."
+    ],
+    [
+     "She plays the piano.",
+     "U pianino chaladi."
+    ]
+   ],
+   "err": [
+    [
+     "I like the football.",
+     "I like football.",
+     "Umumiy ma'noda 'the' yo'q."
+    ],
+    [
+     "Sun is hot.",
+     "The sun is hot.",
+     "Yagona narsada 'the'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -19624,7 +22366,58 @@
     "answer": "She is the tallest girl here",
     "explain": "Ikkinchi marta tilga olinganda, yagona yoki eng...ligi aytilganda the."
    }
-  ]
+  ],
+  "theory": {
+   "def": "the — aniq ot oldidan: gapiruvchi ham, tinglovchi ham qaysi narsa haqida gap ketayotganini biladi. Bir marta tilga olingan narsa, yagona narsa (the sun) yoki aniq tasvirlangan narsa oldida ishlatiladi.",
+   "forms": [
+    [
+     "Aniq narsa",
+     "the + ot",
+     "Open the window, please."
+    ],
+    [
+     "Ikkinchi marta eslash",
+     "a → the",
+     "I saw a dog. The dog was big."
+    ],
+    [
+     "Yagona narsa",
+     "the sun, the moon, the world, the internet",
+     "The sun is hot."
+    ]
+   ],
+   "rules": [
+    "Umumiy gapda artikl yo'q: I like music. (the music emas).",
+    "Ishlatilmaydi: ovqat nomlari (have breakfast), tillar (speak English), ko'pchilik shahar va mamlakatlar.",
+    "the + superlativ: the best, the biggest."
+   ],
+   "ex": [
+    [
+     "Where is the bathroom?",
+     "Hammom qayerda?"
+    ],
+    [
+     "I bought a shirt. The shirt is blue.",
+     "Ko'ylak sotib oldim. Ko'ylak ko'k."
+    ],
+    [
+     "She plays the piano.",
+     "U pianino chaladi."
+    ]
+   ],
+   "err": [
+    [
+     "I like the football.",
+     "I like football.",
+     "Umumiy ma'noda 'the' yo'q."
+    ],
+    [
+     "Sun is hot.",
+     "The sun is hot.",
+     "Yagona narsada 'the'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -19995,7 +22788,62 @@
     "answer": "any",
     "explain": "some - darak gap va taklif, any - inkor va savol."
    }
-  ]
+  ],
+  "theory": {
+   "def": "some va any — noaniq miqdorni bildiradi («ozgina, biroz»). some — darak gapda va taklif / iltimosda; any — inkor va savolda.",
+   "forms": [
+    [
+     "Darak gap",
+     "some + ko'plik ot / sanalmaydigan ot",
+     "I have some friends. There is some milk."
+    ],
+    [
+     "Inkor",
+     "not + any",
+     "I don't have any money."
+    ],
+    [
+     "Savol",
+     "any",
+     "Do you have any questions?"
+    ],
+    [
+     "Taklif / iltimos",
+     "some",
+     "Would you like some tea? Can I have some water?"
+    ]
+   ],
+   "rules": [
+    "no = not any: I have no time = I don't have any time.",
+    "something / anything / someone / anyone ham shu qoidaga amal qiladi."
+   ],
+   "ex": [
+    [
+     "There are some apples in the bag.",
+     "Sumkada bir nechta olma bor."
+    ],
+    [
+     "I haven't got any brothers.",
+     "Mening akalarim yo'q."
+    ],
+    [
+     "Is there any bread at home?",
+     "Uyda non bormi?"
+    ]
+   ],
+   "err": [
+    [
+     "I don't have some money.",
+     "I don't have any money.",
+     "Inkorda 'any'."
+    ],
+    [
+     "Do you want any tea? (taklif)",
+     "Would you like some tea?",
+     "Taklifda 'some'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -20216,7 +23064,62 @@
     "answer": "any",
     "explain": "some - darak gap va taklif, any - inkor va savol."
    }
-  ]
+  ],
+  "theory": {
+   "def": "some va any — noaniq miqdorni bildiradi («ozgina, biroz»). some — darak gapda va taklif / iltimosda; any — inkor va savolda.",
+   "forms": [
+    [
+     "Darak gap",
+     "some + ko'plik ot / sanalmaydigan ot",
+     "I have some friends. There is some milk."
+    ],
+    [
+     "Inkor",
+     "not + any",
+     "I don't have any money."
+    ],
+    [
+     "Savol",
+     "any",
+     "Do you have any questions?"
+    ],
+    [
+     "Taklif / iltimos",
+     "some",
+     "Would you like some tea? Can I have some water?"
+    ]
+   ],
+   "rules": [
+    "no = not any: I have no time = I don't have any time.",
+    "something / anything / someone / anyone ham shu qoidaga amal qiladi."
+   ],
+   "ex": [
+    [
+     "There are some apples in the bag.",
+     "Sumkada bir nechta olma bor."
+    ],
+    [
+     "I haven't got any brothers.",
+     "Mening akalarim yo'q."
+    ],
+    [
+     "Is there any bread at home?",
+     "Uyda non bormi?"
+    ]
+   ],
+   "err": [
+    [
+     "I don't have some money.",
+     "I don't have any money.",
+     "Inkorda 'any'."
+    ],
+    [
+     "Do you want any tea? (taklif)",
+     "Would you like some tea?",
+     "Taklifda 'some'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -20657,7 +23560,62 @@
     "answer": "Does she have any friends here",
     "explain": "some - darak gap va taklif, any - inkor va savol."
    }
-  ]
+  ],
+  "theory": {
+   "def": "some va any — noaniq miqdorni bildiradi («ozgina, biroz»). some — darak gapda va taklif / iltimosda; any — inkor va savolda.",
+   "forms": [
+    [
+     "Darak gap",
+     "some + ko'plik ot / sanalmaydigan ot",
+     "I have some friends. There is some milk."
+    ],
+    [
+     "Inkor",
+     "not + any",
+     "I don't have any money."
+    ],
+    [
+     "Savol",
+     "any",
+     "Do you have any questions?"
+    ],
+    [
+     "Taklif / iltimos",
+     "some",
+     "Would you like some tea? Can I have some water?"
+    ]
+   ],
+   "rules": [
+    "no = not any: I have no time = I don't have any time.",
+    "something / anything / someone / anyone ham shu qoidaga amal qiladi."
+   ],
+   "ex": [
+    [
+     "There are some apples in the bag.",
+     "Sumkada bir nechta olma bor."
+    ],
+    [
+     "I haven't got any brothers.",
+     "Mening akalarim yo'q."
+    ],
+    [
+     "Is there any bread at home?",
+     "Uyda non bormi?"
+    ]
+   ],
+   "err": [
+    [
+     "I don't have some money.",
+     "I don't have any money.",
+     "Inkorda 'any'."
+    ],
+    [
+     "Do you want any tea? (taklif)",
+     "Would you like some tea?",
+     "Taklifda 'some'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -21028,7 +23986,58 @@
     "answer": "many",
     "explain": "many + sanaladigan, much + sanalmaydigan. How many...? How much...?"
    }
-  ]
+  ],
+  "theory": {
+   "def": "many — sanaladigan ko'plik otlar bilan, much — sanalmaydigan otlar bilan (asosan savol va inkorda). a lot of / lots of — ikkalasi bilan, darak gapda.",
+   "forms": [
+    [
+     "Sanaladigan",
+     "many + ko'plik ot",
+     "How many books? Not many people."
+    ],
+    [
+     "Sanalmaydigan",
+     "much + ot",
+     "How much water? I haven't got much time."
+    ],
+    [
+     "Darak gap",
+     "a lot of + har qanday ot",
+     "She has a lot of friends and a lot of money."
+    ]
+   ],
+   "rules": [
+    "Savolda: How many ...? / How much ...?",
+    "Darak gapda 'much' kam ishlatiladi, 'a lot of' tabiiyroq.",
+    "a few (sanaladigan) / a little (sanalmaydigan) — «ozgina»."
+   ],
+   "ex": [
+    [
+     "How much does it cost?",
+     "Bu qancha turadi?"
+    ],
+    [
+     "There aren't many students today.",
+     "Bugun o'quvchilar ko'p emas."
+    ],
+    [
+     "We have a lot of homework.",
+     "Bizda uy vazifasi ko'p."
+    ]
+   ],
+   "err": [
+    [
+     "How much people came?",
+     "How many people came?",
+     "'people' sanaladi, shuning uchun 'many'."
+    ],
+    [
+     "I have much friends.",
+     "I have a lot of friends.",
+     "Darak gapda 'a lot of'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -21249,7 +24258,58 @@
     "answer": "many",
     "explain": "many + sanaladigan, much + sanalmaydigan. How many...? How much...?"
    }
-  ]
+  ],
+  "theory": {
+   "def": "many — sanaladigan ko'plik otlar bilan, much — sanalmaydigan otlar bilan (asosan savol va inkorda). a lot of / lots of — ikkalasi bilan, darak gapda.",
+   "forms": [
+    [
+     "Sanaladigan",
+     "many + ko'plik ot",
+     "How many books? Not many people."
+    ],
+    [
+     "Sanalmaydigan",
+     "much + ot",
+     "How much water? I haven't got much time."
+    ],
+    [
+     "Darak gap",
+     "a lot of + har qanday ot",
+     "She has a lot of friends and a lot of money."
+    ]
+   ],
+   "rules": [
+    "Savolda: How many ...? / How much ...?",
+    "Darak gapda 'much' kam ishlatiladi, 'a lot of' tabiiyroq.",
+    "a few (sanaladigan) / a little (sanalmaydigan) — «ozgina»."
+   ],
+   "ex": [
+    [
+     "How much does it cost?",
+     "Bu qancha turadi?"
+    ],
+    [
+     "There aren't many students today.",
+     "Bugun o'quvchilar ko'p emas."
+    ],
+    [
+     "We have a lot of homework.",
+     "Bizda uy vazifasi ko'p."
+    ]
+   ],
+   "err": [
+    [
+     "How much people came?",
+     "How many people came?",
+     "'people' sanaladi, shuning uchun 'many'."
+    ],
+    [
+     "I have much friends.",
+     "I have a lot of friends.",
+     "Darak gapda 'a lot of'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -21699,7 +24759,58 @@
     "answer": "They don't have many children",
     "explain": "many + sanaladigan, much + sanalmaydigan. How many...? How much...?"
    }
-  ]
+  ],
+  "theory": {
+   "def": "many — sanaladigan ko'plik otlar bilan, much — sanalmaydigan otlar bilan (asosan savol va inkorda). a lot of / lots of — ikkalasi bilan, darak gapda.",
+   "forms": [
+    [
+     "Sanaladigan",
+     "many + ko'plik ot",
+     "How many books? Not many people."
+    ],
+    [
+     "Sanalmaydigan",
+     "much + ot",
+     "How much water? I haven't got much time."
+    ],
+    [
+     "Darak gap",
+     "a lot of + har qanday ot",
+     "She has a lot of friends and a lot of money."
+    ]
+   ],
+   "rules": [
+    "Savolda: How many ...? / How much ...?",
+    "Darak gapda 'much' kam ishlatiladi, 'a lot of' tabiiyroq.",
+    "a few (sanaladigan) / a little (sanalmaydigan) — «ozgina»."
+   ],
+   "ex": [
+    [
+     "How much does it cost?",
+     "Bu qancha turadi?"
+    ],
+    [
+     "There aren't many students today.",
+     "Bugun o'quvchilar ko'p emas."
+    ],
+    [
+     "We have a lot of homework.",
+     "Bizda uy vazifasi ko'p."
+    ]
+   ],
+   "err": [
+    [
+     "How much people came?",
+     "How many people came?",
+     "'people' sanaladi, shuning uchun 'many'."
+    ],
+    [
+     "I have much friends.",
+     "I have a lot of friends.",
+     "Darak gapda 'a lot of'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -22070,7 +25181,58 @@
     "answer": "are",
     "explain": "Birlik: there is. Ko'plik: there are."
    }
-  ]
+  ],
+  "theory": {
+   "def": "there is / there are — «bor» ma'nosida biror narsaning joyda borligini aytadi. Birlik bo'lsa there is, ko'plik bo'lsa there are.",
+   "forms": [
+    [
+     "Darak gap",
+     "There is + birlik / sanalmaydigan; There are + ko'plik",
+     "There is a park near my house. There are two chairs."
+    ],
+    [
+     "Inkor",
+     "There isn't / There aren't (any)",
+     "There aren't any shops here."
+    ],
+    [
+     "Savol",
+     "Is there ...? / Are there ...?",
+     "Is there a bank near here? Are there any cafes?"
+    ]
+   ],
+   "rules": [
+    "Fe'l keyingi otga moslashadi: There is a book and two pens. (birinchi otga qarab)",
+    "Qisqa javob: Yes, there is. / No, there aren't.",
+    "Egalikda: I have a car (biror kishida bor); borlik: There is a car (joyda bor)."
+   ],
+   "ex": [
+    [
+     "There is a bus stop next to the school.",
+     "Maktab yonida avtobus bekati bor."
+    ],
+    [
+     "Are there any eggs in the fridge?",
+     "Muzlatgichda tuxum bormi?"
+    ],
+    [
+     "There isn't any milk.",
+     "Sut yo'q."
+    ]
+   ],
+   "err": [
+    [
+     "There are a book on the table.",
+     "There is a book on the table.",
+     "Birlik ot — 'is'."
+    ],
+    [
+     "It is a bank near here.",
+     "There is a bank near here.",
+     "Borlik uchun 'there is'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -22291,7 +25453,58 @@
     "answer": "are",
     "explain": "Birlik: there is. Ko'plik: there are."
    }
-  ]
+  ],
+  "theory": {
+   "def": "there is / there are — «bor» ma'nosida biror narsaning joyda borligini aytadi. Birlik bo'lsa there is, ko'plik bo'lsa there are.",
+   "forms": [
+    [
+     "Darak gap",
+     "There is + birlik / sanalmaydigan; There are + ko'plik",
+     "There is a park near my house. There are two chairs."
+    ],
+    [
+     "Inkor",
+     "There isn't / There aren't (any)",
+     "There aren't any shops here."
+    ],
+    [
+     "Savol",
+     "Is there ...? / Are there ...?",
+     "Is there a bank near here? Are there any cafes?"
+    ]
+   ],
+   "rules": [
+    "Fe'l keyingi otga moslashadi: There is a book and two pens. (birinchi otga qarab)",
+    "Qisqa javob: Yes, there is. / No, there aren't.",
+    "Egalikda: I have a car (biror kishida bor); borlik: There is a car (joyda bor)."
+   ],
+   "ex": [
+    [
+     "There is a bus stop next to the school.",
+     "Maktab yonida avtobus bekati bor."
+    ],
+    [
+     "Are there any eggs in the fridge?",
+     "Muzlatgichda tuxum bormi?"
+    ],
+    [
+     "There isn't any milk.",
+     "Sut yo'q."
+    ]
+   ],
+   "err": [
+    [
+     "There are a book on the table.",
+     "There is a book on the table.",
+     "Birlik ot — 'is'."
+    ],
+    [
+     "It is a bank near here.",
+     "There is a bank near here.",
+     "Borlik uchun 'there is'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -22763,7 +25976,58 @@
     "answer": "There are two beds in my room",
     "explain": "Birlik: there is. Ko'plik: there are."
    }
-  ]
+  ],
+  "theory": {
+   "def": "there is / there are — «bor» ma'nosida biror narsaning joyda borligini aytadi. Birlik bo'lsa there is, ko'plik bo'lsa there are.",
+   "forms": [
+    [
+     "Darak gap",
+     "There is + birlik / sanalmaydigan; There are + ko'plik",
+     "There is a park near my house. There are two chairs."
+    ],
+    [
+     "Inkor",
+     "There isn't / There aren't (any)",
+     "There aren't any shops here."
+    ],
+    [
+     "Savol",
+     "Is there ...? / Are there ...?",
+     "Is there a bank near here? Are there any cafes?"
+    ]
+   ],
+   "rules": [
+    "Fe'l keyingi otga moslashadi: There is a book and two pens. (birinchi otga qarab)",
+    "Qisqa javob: Yes, there is. / No, there aren't.",
+    "Egalikda: I have a car (biror kishida bor); borlik: There is a car (joyda bor)."
+   ],
+   "ex": [
+    [
+     "There is a bus stop next to the school.",
+     "Maktab yonida avtobus bekati bor."
+    ],
+    [
+     "Are there any eggs in the fridge?",
+     "Muzlatgichda tuxum bormi?"
+    ],
+    [
+     "There isn't any milk.",
+     "Sut yo'q."
+    ]
+   ],
+   "err": [
+    [
+     "There are a book on the table.",
+     "There is a book on the table.",
+     "Birlik ot — 'is'."
+    ],
+    [
+     "It is a bank near here.",
+     "There is a bank near here.",
+     "Borlik uchun 'there is'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -23134,7 +26398,53 @@
     "answer": "yours",
     "explain": "my + ot, mine - otsiz."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Egalik olmoshlarining ikki turi bor: ot oldida keladigan sifat (my, your, his, her, our, their) va otsiz alohida keladigan olmosh (mine, yours, his, hers, ours, theirs).",
+   "forms": [
+    [
+     "Ot oldida",
+     "my / your / his / her / its / our / their + ot",
+     "This is my book. Her name is Anna."
+    ],
+    [
+     "Otsiz",
+     "mine / yours / his / hers / ours / theirs",
+     "This book is mine. Is that yours?"
+    ]
+   ],
+   "rules": [
+    "his va her egasining jinsiga qarab: his brother (erkak), her brother (ayol).",
+    "'s — ot egaligi: Tom's car, my sister's phone.",
+    "its (egalik) va it's (it is) ni adashtirmang."
+   ],
+   "ex": [
+    [
+     "My phone is new, but yours is old.",
+     "Mening telefonim yangi, seniki esa eski."
+    ],
+    [
+     "This is their house. It is theirs.",
+     "Bu ularning uyi. U ularniki."
+    ],
+    [
+     "Whose bag is this? — It's mine.",
+     "Bu kimning sumkasi? — Meniki."
+    ]
+   ],
+   "err": [
+    [
+     "This is mine book.",
+     "This is my book.",
+     "Ot oldida 'my'."
+    ],
+    [
+     "The book is my.",
+     "The book is mine.",
+     "Otsiz holatda 'mine'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -23355,7 +26665,53 @@
     "answer": "yours",
     "explain": "my + ot, mine - otsiz."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Egalik olmoshlarining ikki turi bor: ot oldida keladigan sifat (my, your, his, her, our, their) va otsiz alohida keladigan olmosh (mine, yours, his, hers, ours, theirs).",
+   "forms": [
+    [
+     "Ot oldida",
+     "my / your / his / her / its / our / their + ot",
+     "This is my book. Her name is Anna."
+    ],
+    [
+     "Otsiz",
+     "mine / yours / his / hers / ours / theirs",
+     "This book is mine. Is that yours?"
+    ]
+   ],
+   "rules": [
+    "his va her egasining jinsiga qarab: his brother (erkak), her brother (ayol).",
+    "'s — ot egaligi: Tom's car, my sister's phone.",
+    "its (egalik) va it's (it is) ni adashtirmang."
+   ],
+   "ex": [
+    [
+     "My phone is new, but yours is old.",
+     "Mening telefonim yangi, seniki esa eski."
+    ],
+    [
+     "This is their house. It is theirs.",
+     "Bu ularning uyi. U ularniki."
+    ],
+    [
+     "Whose bag is this? — It's mine.",
+     "Bu kimning sumkasi? — Meniki."
+    ]
+   ],
+   "err": [
+    [
+     "This is mine book.",
+     "This is my book.",
+     "Ot oldida 'my'."
+    ],
+    [
+     "The book is my.",
+     "The book is mine.",
+     "Otsiz holatda 'mine'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -23761,7 +27117,53 @@
     "answer": "This house is ours",
     "explain": "my + ot, mine - otsiz."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Egalik olmoshlarining ikki turi bor: ot oldida keladigan sifat (my, your, his, her, our, their) va otsiz alohida keladigan olmosh (mine, yours, his, hers, ours, theirs).",
+   "forms": [
+    [
+     "Ot oldida",
+     "my / your / his / her / its / our / their + ot",
+     "This is my book. Her name is Anna."
+    ],
+    [
+     "Otsiz",
+     "mine / yours / his / hers / ours / theirs",
+     "This book is mine. Is that yours?"
+    ]
+   ],
+   "rules": [
+    "his va her egasining jinsiga qarab: his brother (erkak), her brother (ayol).",
+    "'s — ot egaligi: Tom's car, my sister's phone.",
+    "its (egalik) va it's (it is) ni adashtirmang."
+   ],
+   "ex": [
+    [
+     "My phone is new, but yours is old.",
+     "Mening telefonim yangi, seniki esa eski."
+    ],
+    [
+     "This is their house. It is theirs.",
+     "Bu ularning uyi. U ularniki."
+    ],
+    [
+     "Whose bag is this? — It's mine.",
+     "Bu kimning sumkasi? — Meniki."
+    ]
+   ],
+   "err": [
+    [
+     "This is mine book.",
+     "This is my book.",
+     "Ot oldida 'my'."
+    ],
+    [
+     "The book is my.",
+     "The book is mine.",
+     "Otsiz holatda 'mine'."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -24132,7 +27534,58 @@
     "answer": "in",
     "explain": "at + soat, on + kun / sana, in + oy / yil / fasl."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Vaqt predloglari: at — aniq vaqt nuqtasi, on — kun va sana, in — uzoqroq muddat (oy, yil, fasl, kunning qismi).",
+   "forms": [
+    [
+     "at",
+     "at + soat, night, noon, weekend (UK)",
+     "at 5 o'clock, at night, at noon"
+    ],
+    [
+     "on",
+     "on + kun, sana",
+     "on Monday, on 5 May, on my birthday"
+    ],
+    [
+     "in",
+     "in + oy, yil, fasl, kun qismi",
+     "in June, in 2024, in summer, in the morning"
+    ]
+   ],
+   "rules": [
+    "Istisno: at night, lekin in the morning / afternoon / evening.",
+    "this, next, last, every oldidan predlog qo'yilmaydi: next week, last year, every day.",
+    "from ... to / until — boshlanish va tugash."
+   ],
+   "ex": [
+    [
+     "The lesson starts at 9 a.m. on Monday.",
+     "Dars dushanba kuni soat 9 da boshlanadi."
+    ],
+    [
+     "I was born in 2005.",
+     "Men 2005 yilda tug'ilganman."
+    ],
+    [
+     "We go to the village in summer.",
+     "Biz yozda qishloqqa boramiz."
+    ]
+   ],
+   "err": [
+    [
+     "I get up in 7 o'clock.",
+     "I get up at 7 o'clock.",
+     "Aniq soat — at."
+    ],
+    [
+     "See you in Monday.",
+     "See you on Monday.",
+     "Kun — on."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -24353,7 +27806,58 @@
     "answer": "in",
     "explain": "at + soat, on + kun / sana, in + oy / yil / fasl."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Vaqt predloglari: at — aniq vaqt nuqtasi, on — kun va sana, in — uzoqroq muddat (oy, yil, fasl, kunning qismi).",
+   "forms": [
+    [
+     "at",
+     "at + soat, night, noon, weekend (UK)",
+     "at 5 o'clock, at night, at noon"
+    ],
+    [
+     "on",
+     "on + kun, sana",
+     "on Monday, on 5 May, on my birthday"
+    ],
+    [
+     "in",
+     "in + oy, yil, fasl, kun qismi",
+     "in June, in 2024, in summer, in the morning"
+    ]
+   ],
+   "rules": [
+    "Istisno: at night, lekin in the morning / afternoon / evening.",
+    "this, next, last, every oldidan predlog qo'yilmaydi: next week, last year, every day.",
+    "from ... to / until — boshlanish va tugash."
+   ],
+   "ex": [
+    [
+     "The lesson starts at 9 a.m. on Monday.",
+     "Dars dushanba kuni soat 9 da boshlanadi."
+    ],
+    [
+     "I was born in 2005.",
+     "Men 2005 yilda tug'ilganman."
+    ],
+    [
+     "We go to the village in summer.",
+     "Biz yozda qishloqqa boramiz."
+    ]
+   ],
+   "err": [
+    [
+     "I get up in 7 o'clock.",
+     "I get up at 7 o'clock.",
+     "Aniq soat — at."
+    ],
+    [
+     "See you in Monday.",
+     "See you on Monday.",
+     "Kun — on."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -24803,7 +28307,58 @@
     "answer": "We travel in summer",
     "explain": "at + soat, on + kun / sana, in + oy / yil / fasl."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Vaqt predloglari: at — aniq vaqt nuqtasi, on — kun va sana, in — uzoqroq muddat (oy, yil, fasl, kunning qismi).",
+   "forms": [
+    [
+     "at",
+     "at + soat, night, noon, weekend (UK)",
+     "at 5 o'clock, at night, at noon"
+    ],
+    [
+     "on",
+     "on + kun, sana",
+     "on Monday, on 5 May, on my birthday"
+    ],
+    [
+     "in",
+     "in + oy, yil, fasl, kun qismi",
+     "in June, in 2024, in summer, in the morning"
+    ]
+   ],
+   "rules": [
+    "Istisno: at night, lekin in the morning / afternoon / evening.",
+    "this, next, last, every oldidan predlog qo'yilmaydi: next week, last year, every day.",
+    "from ... to / until — boshlanish va tugash."
+   ],
+   "ex": [
+    [
+     "The lesson starts at 9 a.m. on Monday.",
+     "Dars dushanba kuni soat 9 da boshlanadi."
+    ],
+    [
+     "I was born in 2005.",
+     "Men 2005 yilda tug'ilganman."
+    ],
+    [
+     "We go to the village in summer.",
+     "Biz yozda qishloqqa boramiz."
+    ]
+   ],
+   "err": [
+    [
+     "I get up in 7 o'clock.",
+     "I get up at 7 o'clock.",
+     "Aniq soat — at."
+    ],
+    [
+     "See you in Monday.",
+     "See you on Monday.",
+     "Kun — on."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -25174,7 +28729,57 @@
     "answer": "between",
     "explain": "in - ichida, on - ustida, at - joyda."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Joy predloglari: at — nuqta, manzil (maktabda, bekatda); on — sirt ustida; in — biror joy ichida (xona, shahar, mamlakat).",
+   "forms": [
+    [
+     "at",
+     "at + nuqta / bino vazifasi",
+     "at home, at school, at work, at the bus stop"
+    ],
+    [
+     "on",
+     "on + sirt, qavat, ko'cha",
+     "on the table, on the wall, on the second floor"
+    ],
+    [
+     "in",
+     "in + yopiq joy, shahar, mamlakat",
+     "in the room, in Tashkent, in Uzbekistan, in bed"
+    ]
+   ],
+   "rules": [
+    "Harakat predloglari: to (tomon), from (dan).",
+    "Boshqa foydali predloglar: next to (yonida), behind (orqasida), between (orasida), under (ostida), in front of (oldida)."
+   ],
+   "ex": [
+    [
+     "My keys are on the table.",
+     "Kalitlarim stol ustida."
+    ],
+    [
+     "She lives in Samarkand, in a small flat.",
+     "U Samarqandda, kichik kvartirada yashaydi."
+    ],
+    [
+     "I'm at the station. Where are you?",
+     "Men bekatdaman. Sen qayerdasan?"
+    ]
+   ],
+   "err": [
+    [
+     "I live at Tashkent.",
+     "I live in Tashkent.",
+     "Shahar oldida 'in'."
+    ],
+    [
+     "The book is in the table.",
+     "The book is on the table.",
+     "Sirt ustida — on."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -25395,7 +29000,57 @@
     "answer": "between",
     "explain": "in - ichida, on - ustida, at - joyda."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Joy predloglari: at — nuqta, manzil (maktabda, bekatda); on — sirt ustida; in — biror joy ichida (xona, shahar, mamlakat).",
+   "forms": [
+    [
+     "at",
+     "at + nuqta / bino vazifasi",
+     "at home, at school, at work, at the bus stop"
+    ],
+    [
+     "on",
+     "on + sirt, qavat, ko'cha",
+     "on the table, on the wall, on the second floor"
+    ],
+    [
+     "in",
+     "in + yopiq joy, shahar, mamlakat",
+     "in the room, in Tashkent, in Uzbekistan, in bed"
+    ]
+   ],
+   "rules": [
+    "Harakat predloglari: to (tomon), from (dan).",
+    "Boshqa foydali predloglar: next to (yonida), behind (orqasida), between (orasida), under (ostida), in front of (oldida)."
+   ],
+   "ex": [
+    [
+     "My keys are on the table.",
+     "Kalitlarim stol ustida."
+    ],
+    [
+     "She lives in Samarkand, in a small flat.",
+     "U Samarqandda, kichik kvartirada yashaydi."
+    ],
+    [
+     "I'm at the station. Where are you?",
+     "Men bekatdaman. Sen qayerdasan?"
+    ]
+   ],
+   "err": [
+    [
+     "I live at Tashkent.",
+     "I live in Tashkent.",
+     "Shahar oldida 'in'."
+    ],
+    [
+     "The book is in the table.",
+     "The book is on the table.",
+     "Sirt ustida — on."
+    ]
+   ]
+  }
  },
  {
   "level": "A1",
@@ -25863,6 +29518,56 @@
     "answer": "He sat between his mother and his sister",
     "explain": "in - ichida, on - ustida, at - joyda."
    }
-  ]
+  ],
+  "theory": {
+   "def": "Joy predloglari: at — nuqta, manzil (maktabda, bekatda); on — sirt ustida; in — biror joy ichida (xona, shahar, mamlakat).",
+   "forms": [
+    [
+     "at",
+     "at + nuqta / bino vazifasi",
+     "at home, at school, at work, at the bus stop"
+    ],
+    [
+     "on",
+     "on + sirt, qavat, ko'cha",
+     "on the table, on the wall, on the second floor"
+    ],
+    [
+     "in",
+     "in + yopiq joy, shahar, mamlakat",
+     "in the room, in Tashkent, in Uzbekistan, in bed"
+    ]
+   ],
+   "rules": [
+    "Harakat predloglari: to (tomon), from (dan).",
+    "Boshqa foydali predloglar: next to (yonida), behind (orqasida), between (orasida), under (ostida), in front of (oldida)."
+   ],
+   "ex": [
+    [
+     "My keys are on the table.",
+     "Kalitlarim stol ustida."
+    ],
+    [
+     "She lives in Samarkand, in a small flat.",
+     "U Samarqandda, kichik kvartirada yashaydi."
+    ],
+    [
+     "I'm at the station. Where are you?",
+     "Men bekatdaman. Sen qayerdasan?"
+    ]
+   ],
+   "err": [
+    [
+     "I live at Tashkent.",
+     "I live in Tashkent.",
+     "Shahar oldida 'in'."
+    ],
+    [
+     "The book is in the table.",
+     "The book is on the table.",
+     "Sirt ustida — on."
+    ]
+   ]
+  }
  }
 ]
