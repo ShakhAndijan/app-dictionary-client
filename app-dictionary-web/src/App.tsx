@@ -4,6 +4,7 @@ import { Achievement, Announcement, announcementsApi, progressApi } from './api'
 import { useAuth } from './auth';
 import { useTheme } from './theme';
 import { Spinner } from './ui';
+import Landing from './pages/Landing';
 import HomePage from './pages/Home';
 import { AdminLayout, AdminStatsPage, AdminUsersPage } from './pages/Admin';
 import { AdminAnnouncementsPage, AdminAuditPage, AdminUserPage } from './pages/AdminMore';
@@ -167,9 +168,10 @@ export default function App() {
   if (!user) {
     return (
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     );
   }
