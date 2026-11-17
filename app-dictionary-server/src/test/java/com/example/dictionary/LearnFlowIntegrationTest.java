@@ -138,7 +138,7 @@ class LearnFlowIntegrationTest {
                 .andExpect(jsonPath("$.level").value("A1"))
                 .andExpect(jsonPath("$.progress.total").value(lessonCount))
                 .andExpect(jsonPath("$.examUnlocked").value(false))
-                .andExpect(jsonPath("$.goals.length()").value(5));
+                .andExpect(jsonPath("$.goals.length()").value(4));
         mockMvc.perform(get("/api/learn/exam").header("Authorization", auth)).andExpect(status().isConflict());
 
         // A lesson never exposes its answers.

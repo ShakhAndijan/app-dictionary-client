@@ -79,7 +79,7 @@ const LEVEL_INFO: Record<string, { title: string; sub: string }> = {
   C1: { title: "Ilg'or", sub: "Deyarli ona tili darajasida erkin muloqot" },
 };
 
-const SKILL_ORDER: Skill[] = ['READING', 'LISTENING', 'SPEAKING', 'WRITING', 'GRAMMAR'];
+const SKILL_ORDER: Skill[] = ['READING', 'LISTENING', 'WRITING', 'GRAMMAR'];
 
 /* ------------------------------------------------------------------ overview */
 

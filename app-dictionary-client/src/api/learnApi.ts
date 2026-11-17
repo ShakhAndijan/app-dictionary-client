@@ -137,4 +137,4 @@ export const SKILL_META: Record<Skill, { icon: string; label: string; tone: stri
   GRAMMAR: { icon: '🧩', label: 'Grammatika', tone: '#A855F7' },
 };
 
-export const SKILL_ORDER: Skill[] = ['READING', 'LISTENING', 'SPEAKING', 'WRITING', 'GRAMMAR'];
+export const SKILL_ORDER: Skill[] = ['READING', 'LISTENING', 'WRITING', 'GRAMMAR'];

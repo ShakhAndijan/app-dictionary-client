@@ -40,7 +40,7 @@ import java.util.Set;
 public class LearnService {
 
     public static final List<String> LEVELS = List.of("A1", "A2", "B1", "B2", "C1");
-    public static final List<String> SKILLS = List.of("READING", "LISTENING", "SPEAKING", "WRITING", "GRAMMAR");
+    public static final List<String> SKILLS = List.of("READING", "LISTENING", "WRITING", "GRAMMAR");
 
     /** A lesson counts as passed from this percentage. */
     public static final int LESSON_PASS_PERCENT = 70;
@@ -52,7 +52,7 @@ public class LearnService {
 
     /** Lessons per skill to finish each day (never more than the lessons that exist at the level). */
     static final Map<String, Integer> DAILY_TARGET = Map.of(
-            "READING", 1, "LISTENING", 1, "SPEAKING", 1, "WRITING", 1, "GRAMMAR", 3);
+            "READING", 1, "LISTENING", 1, "WRITING", 1, "GRAMMAR", 3);
 
     private final LearnLessonRepository lessonRepository;
     private final LearnProfileRepository profileRepository;
