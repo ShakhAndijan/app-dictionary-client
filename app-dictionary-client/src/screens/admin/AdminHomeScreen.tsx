@@ -28,10 +28,11 @@ export default function AdminHomeScreen({ navigation }: Props) {
 
   useFocusEffect(load);
 
-  const menu: { icon: keyof typeof Ionicons.glyphMap; label: string; to: 'AdminUsers' | 'AdminAnnouncements' | 'AdminAudit' }[] = [
+  const menu: { icon: keyof typeof Ionicons.glyphMap; label: string; to: 'AdminUsers' | 'AdminAnnouncements' | 'AdminAudit' | 'AdminNotes' }[] = [
     { icon: 'people', label: 'Foydalanuvchilar', to: 'AdminUsers' },
     { icon: 'megaphone', label: "E'lonlar", to: 'AdminAnnouncements' },
     { icon: 'document-text', label: 'Jurnal', to: 'AdminAudit' },
+    { icon: 'bookmark', label: 'Saqlangan', to: 'AdminNotes' },
   ];
 
   const max = o ? Math.max(1, ...o.series.map((p) => Math.max(p.newUsers, p.activeUsers))) : 1;

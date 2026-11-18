@@ -83,3 +83,43 @@ export const announce = (message: string, severity: Severity) =>
   apiClient.post<Announcement>('/admin/announcements', { message, severity }).then((r) => r.data);
 export const deleteAnnouncement = (id: number) => apiClient.delete(`/admin/announcements/${id}`).then(() => undefined);
 export const audit = (limit = 100) => get<AuditEntry[]>('/admin/audit', { limit });
+
+// ---- Saved messages: the admin's private chat (text, images, videos, files) ----
+export interface AdminNote {
+  id: number;
+  text: string | null;
+  kind: 'NONE' | 'IMAGE' | 'VIDEO' | 'FILE';
+  fileName: string | null;
+  contentType: string | null;
+  fileSize: number | null;
+  /** Relative, signed and expiring: prefix it with the API base. */
+  fileUrl: string | null;
+  createdAt: string;
+  editedAt: string | null;
+}
+
+export interface PickedFile {
+  uri: string;
+  name: string;
+  mimeType?: string | null;
+}
+
+export const notes = (before?: number, limit = 40) => get<AdminNote[]>('/admin/notes', { before, limit });
+export const addNote = (text: string, file: PickedFile | null, onProgress?: (percent: number) => void) => {
+  const form = new FormData();
+  if (text) form.append('text', text);
+  if (file) {
+    form.append('file', { uri: file.uri, name: file.name, type: file.mimeType || 'application/octet-stream' } as unknown as Blob);
+  }
+  // Videos can be big: no request timeout, progress for the bar.
+  return apiClient
+    .post<AdminNote>('/admin/notes', form, {
+      timeout: 0,
+      headers: { 'Content-Type': 'multipart/form-data' },
+      transformRequest: (data) => data,
+      onUploadProgress: (e) => onProgress?.(e.total ? Math.round((e.loaded / e.total) * 100) : 0),
+    })
+    .then((r) => r.data);
+};
+export const editNote = (id: number, text: string) => apiClient.put<AdminNote>(`/admin/notes/${id}`, { text }).then((r) => r.data);
+export const deleteNote = (id: number) => apiClient.delete(`/admin/notes/${id}`).then(() => undefined);

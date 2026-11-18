@@ -26,6 +26,7 @@ export type AdminStackParamList = {
   AdminUser: { id: number; name: string };
   AdminAnnouncements: undefined;
   AdminAudit: undefined;
+  AdminNotes: undefined;
 };
 
 export type ProfileStackParamList = {
