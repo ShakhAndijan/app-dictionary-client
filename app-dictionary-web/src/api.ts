@@ -479,6 +479,19 @@ export interface Announcement {
   createdAt: string;
 }
 
+/** One message of the admin's private "saved messages" chat. fileUrl is relative to API_BASE_URL and signed. */
+export interface AdminNote {
+  id: number;
+  text: string | null;
+  kind: 'NONE' | 'IMAGE' | 'VIDEO' | 'FILE';
+  fileName: string | null;
+  contentType: string | null;
+  fileSize: number | null;
+  fileUrl: string | null;
+  createdAt: string;
+  editedAt: string | null;
+}
+
 export interface AuditEntry {
   id: number;
   actor: string;
@@ -503,6 +516,19 @@ export const adminApi = {
     d(http.post<Announcement>('/admin/announcements', { message, severity })),
   deleteAnnouncement: (id: number) => http.delete(`/admin/announcements/${id}`),
   audit: (limit = 100) => d(http.get<AuditEntry[]>('/admin/audit', { params: { limit } })),
+  notes: (before?: number, limit = 40) => d(http.get<AdminNote[]>('/admin/notes', { params: { before, limit } })),
+  addNote: (text: string, file: File | null, onProgress?: (percent: number) => void) => {
+    const form = new FormData();
+    if (text) form.append('text', text);
+    if (file) form.append('file', file);
+    // Videos can be big: no request timeout, progress for the bar.
+    return d(http.post<AdminNote>('/admin/notes', form, {
+      timeout: 0,
+      onUploadProgress: (e) => onProgress?.(e.total ? Math.round((e.loaded / e.total) * 100) : 0),
+    }));
+  },
+  editNote: (id: number, text: string) => d(http.put<AdminNote>(`/admin/notes/${id}`, { text })),
+  deleteNote: (id: number) => http.delete(`/admin/notes/${id}`),
 };
 
 export const announcementsApi = {

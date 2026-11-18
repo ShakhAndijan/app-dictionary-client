@@ -19,7 +19,8 @@ FROM eclipse-temurin:21-jre AS runtime
 WORKDIR /app
 
 # Run as an unprivileged user.
-RUN useradd -r -u 1001 appuser
+RUN useradd -r -u 1001 appuser \
+ && mkdir -p /data/notes && chown appuser /data/notes
 
 # The Spring Boot executable (fat) jar built in stage 1.
 COPY --from=build /app/target/dictionary-0.0.1-SNAPSHOT.jar app.jar

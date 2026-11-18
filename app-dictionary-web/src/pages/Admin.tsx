@@ -29,6 +29,7 @@ const MODULES = [
   { to: '/admin', label: 'Statistika', end: true, icon: <svg {...ico}><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg> },
   { to: '/admin/users', label: 'Foydalanuvchilar', end: false, icon: <svg {...ico}><circle cx="9" cy="8" r="3.6" /><path d="M2.5 20c0-3.6 2.9-5.8 6.5-5.8s6.5 2.2 6.5 5.8" /><path d="M16 4.6a3.6 3.6 0 0 1 0 6.8M18 14.6c2 .7 3.5 2.4 3.5 5.4" /></svg> },
   { to: '/admin/announcements', label: "E'lonlar", end: false, icon: <svg {...ico}><path d="M3 11v3a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z" /><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg> },
+  { to: '/admin/notes', label: 'Saqlangan', end: false, icon: <svg {...ico}><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z" /></svg> },
   { to: '/admin/audit', label: 'Jurnal', end: false, icon: <svg {...ico}><path d="M8 3h8l4 4v14H4V3z" /><path d="M8 11h8M8 15h8M8 7h4" /></svg> },
 ];
 

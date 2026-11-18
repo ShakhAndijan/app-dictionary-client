@@ -43,6 +43,9 @@ services:
       JWT_REFRESH_EXPIRATION_MS: ${JWT_REFRESH_EXPIRATION_MS:-2592000000}
       JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS:--XX:MaxRAMPercentage=70}
       TZ: ${TZ:-UTC}
+      NOTES_DIR: /data/notes
+    volumes:
+      - notes:/data/notes
     expose:
       - "8080"
     networks: [internal]
@@ -71,5 +74,6 @@ networks:
 
 volumes:
   pgdata:
+  notes:
   caddy_data:
   caddy_config:

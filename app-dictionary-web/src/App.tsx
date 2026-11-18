@@ -5,6 +5,7 @@ import { useAuth } from './auth';
 import { useTheme } from './theme';
 import { Spinner } from './ui';
 import Landing from './pages/Landing';
+import { AdminNotesPage } from './pages/AdminNotes';
 import HomePage from './pages/Home';
 import { AdminLayout, AdminStatsPage, AdminUsersPage } from './pages/Admin';
 import { AdminAnnouncementsPage, AdminAuditPage, AdminUserPage } from './pages/AdminMore';
@@ -185,6 +186,7 @@ export default function App() {
           <Route path="users/:id" element={<AdminUserPage />} />
           <Route path="announcements" element={<AdminAnnouncementsPage />} />
           <Route path="audit" element={<AdminAuditPage />} />
+          <Route path="notes" element={<AdminNotesPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/admin" replace />} />
       </Routes>

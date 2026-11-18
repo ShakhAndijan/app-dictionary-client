@@ -52,6 +52,8 @@ public class SecurityConfig {
                         // Public API docs (Swagger UI + OpenAPI spec).
                         .requestMatchers("/swagger-ui.html", "/swagger-ui/**",
                                 "/v3/api-docs", "/v3/api-docs/**", "/v3/api-docs.yaml").permitAll()
+                        // Attachments of the admin's saved messages: guarded by a signed, expiring link instead of a header.
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/admin/notes/*/file").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 // Return 401 (not the default redirect/403) when a token is missing/invalid.
