@@ -27,6 +27,7 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
   const [stage, setStage] = useState<'intro' | 'play' | 'done'>(exam ? 'play' : 'intro');
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<{ key: string; answer: string }[]>([]);
+  const [marks, setMarks] = useState<(boolean | undefined)[]>([]);
   const [lessonResult, setLessonResult] = useState<FinishResult | null>(null);
   const [examResult, setExamResult] = useState<ExamResult | null>(null);
 
@@ -73,6 +74,7 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
   const restart = () => {
     setIndex(0);
     setAnswers([]);
+    setMarks([]);
     setLessonResult(null);
     setExamResult(null);
     setError('');
@@ -218,8 +220,12 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
   return (
     <View style={styles.flex}>
       <View style={styles.topBar}>
-        <View style={{ flex: 1 }}>
-          <Bar pct={(index / items.length) * 100} height={8} />
+        <View style={styles.segs}>
+          {items.map((it, i) => {
+            const m = marks[i];
+            const bg = m === true ? colors.secondary : m === false ? colors.danger : i < index ? colors.primary : i === index ? `${colors.primary}66` : colors.border;
+            return <View key={it.id} style={[styles.seg, { backgroundColor: bg }]} />;
+          })}
         </View>
         <Text style={styles.counter}>
           {index + 1} / {items.length}
@@ -232,6 +238,7 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
         last={index + 1 === items.length}
         instant={exam ? undefined : (answer) => learnApi.checkAnswer(code, item.id, answer)}
         onDone={onDone}
+        onChecked={(ok) => setMarks((p) => { const n = [...p]; n[index] = ok; return n; })}
       />
     </View>
   );
@@ -278,6 +285,8 @@ const styles = themed(() =>
     fact: { flexDirection: 'row', alignItems: 'center', gap: 12 },
     factText: { color: colors.text, fontSize: 15, flex: 1, lineHeight: 21 },
     topBar: { flexDirection: 'row', alignItems: 'center', gap: 14, paddingHorizontal: 20, paddingTop: 14, paddingBottom: 4 },
+    segs: { flex: 1, flexDirection: 'row', gap: 2 },
+    seg: { flex: 1, height: 6, borderRadius: 99 },
     counter: { color: colors.textMuted, fontWeight: '700', fontSize: 14, fontVariant: ['tabular-nums'] },
     resultHead: { alignItems: 'center', gap: 12, paddingTop: 12 },
     resultIcon: { width: 76, height: 76, borderRadius: 38, alignItems: 'center', justifyContent: 'center' },

@@ -417,12 +417,14 @@ function SpeakBox({ phrase, value, setValue, locked }: { phrase: string; value: 
   );
 }
 
-function ExerciseCard({ item, instant, last, onDone }: {
+function ExerciseCard({ item, instant, last, onDone, onChecked }: {
   item: Exercise;
   /** Returns feedback right away (lessons). Without it (exam) the answer is only collected. */
   instant?: (answer: string) => Promise<LearnCheck>;
   last: boolean;
   onDone: (answer: string) => void;
+  /** Called as soon as the answer is checked, so the progress bar can turn green / red. */
+  onChecked?: (correct: boolean) => void;
 }) {
   const [value, setValue] = useState('');
   const [picked, setPicked] = useState<number[]>([]);
@@ -438,7 +440,9 @@ function ExerciseCard({ item, instant, last, onDone }: {
     setBusy(true);
     setError('');
     try {
-      setFeedback(await instant(answer));
+      const fb = await instant(answer);
+      setFeedback(fb);
+      onChecked?.(fb.correct);
     } catch (e) {
       setError(errorMessage(e, "Tekshirib bo'lmadi"));
     } finally {
@@ -577,12 +581,15 @@ function ExerciseCard({ item, instant, last, onDone }: {
   );
 }
 
-function Steps({ total, index }: { total: number; index: number }) {
+/** Progress segments; `marks[i]` colours a checked step green (true) or red (false). */
+function Steps({ total, index, marks }: { total: number; index: number; marks?: (boolean | undefined)[] }) {
   return (
     <div className="qx-steps">
-      {Array.from({ length: total }, (_, i) => (
-        <i key={i} className={i < index ? 'done' : i === index ? 'now' : ''} />
-      ))}
+      {Array.from({ length: total }, (_, i) => {
+        const m = marks?.[i];
+        const cls = m === true ? 'ok' : m === false ? 'bad' : i < index ? 'done' : i === index ? 'now' : '';
+        return <i key={i} className={cls} />;
+      })}
     </div>
   );
 }
@@ -731,6 +738,7 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
   const [collected, setCollected] = useState<{ itemId: string; answer: string }[]>([]);
   const [busy, setBusy] = useState(false);
   const [problem, setProblem] = useState('');
+  const [marks, setMarks] = useState<(boolean | undefined)[]>([]);
 
   const group = groups[gi];
   const last = gi + 1 === groups.length;
@@ -746,6 +754,7 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
       const map: Record<string, LearnCheck> = {};
       group.forEach((it, i) => { map[it.id] = res[i]; });
       setFeedback(map);
+      setMarks((p) => { const n = [...p]; n[gi] = group.every((it) => map[it.id]?.correct); return n; });
     } catch (e) {
       setProblem(errorMessage(e, "Tekshirib bo'lmadi"));
     } finally {
@@ -772,7 +781,7 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
         </div>
         <div className="qx-pills"><span className="qx-pill">{gi + 1} / {groups.length}</span></div>
       </header>
-      <Steps total={groups.length} index={gi} />
+      <Steps total={groups.length} index={gi} marks={marks} />
       {(error || problem) && <Notice>{error || problem}</Notice>}
 
       <div className="ls">
@@ -877,6 +886,7 @@ export function LessonPage() {
   const [stage, setStage] = useState<'intro' | 'play' | 'done'>('intro');
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<{ itemId: string; answer: string }[]>([]);
+  const [marks, setMarks] = useState<(boolean | undefined)[]>([]);
   const [result, setResult] = useState<LearnFinish | null>(null);
 
   useEffect(() => {
@@ -890,6 +900,7 @@ export function LessonPage() {
   const restart = () => {
     setIndex(0);
     setAnswers([]);
+    setMarks([]);
     setResult(null);
     setStage('play');
   };
@@ -988,7 +999,7 @@ export function LessonPage() {
         </div>
         <div className="qx-pills"><span className="qx-pill">{index + 1} / {lesson.items.length}</span></div>
       </header>
-      <Steps total={lesson.items.length} index={index} />
+      <Steps total={lesson.items.length} index={index} marks={marks} />
       {error && <Notice>{error}</Notice>}
       <Context passage={lesson.passage} audioText={lesson.audioText} />
       <ExerciseCard
@@ -997,6 +1008,7 @@ export function LessonPage() {
         last={index + 1 === lesson.items.length}
         instant={(answer) => learnApi.check(lesson.code, item.id, answer)}
         onDone={done}
+        onChecked={(ok) => setMarks((p) => { const n = [...p]; n[index] = ok; return n; })}
       />
     </>
   );

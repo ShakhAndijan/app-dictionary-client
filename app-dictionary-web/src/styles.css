@@ -4860,6 +4860,8 @@ i.bad,
 .qx-steps { display: flex; gap: 4px; margin-bottom: 18px; }
 .qx-steps i { flex: 1; height: 6px; border-radius: 999px; background: var(--track); transition: background 0.3s; }
 .qx-steps i.done { background: linear-gradient(90deg, var(--primary), #a855f7); }
+.qx-steps i.ok { background: #10b981; }
+.qx-steps i.bad { background: #ef4444; }
 .qx-steps i.now { background: color-mix(in srgb, var(--primary) 45%, var(--track)); }
 
 .qx-card { position: relative; max-width: 760px; margin: 0 auto; padding: 36px 28px 26px; text-align: center; border-radius: 30px; border: 1px solid var(--glass-line); background: radial-gradient(520px 240px at 50% 0%, color-mix(in srgb, var(--primary) 14%, transparent), transparent 70%), var(--surface); box-shadow: var(--shadow); animation: qx-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; transition: border-color 0.25s, box-shadow 0.25s; }

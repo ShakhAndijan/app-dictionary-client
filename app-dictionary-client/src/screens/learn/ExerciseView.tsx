@@ -21,6 +21,8 @@ interface Props {
   /** Check the answer right away (lessons). Without it the answer is simply accepted (exam). */
   instant?: (answer: string) => Promise<CheckResult>;
   onDone: (answer: string) => void;
+  /** Called as soon as the answer is checked, so the progress bar can turn green / red. */
+  onChecked?: (correct: boolean) => void;
 }
 
 const HEADING: Record<ItemKind, string> = {
@@ -57,7 +59,7 @@ export function Context({ passage, audioText }: { passage?: string | null; audio
   );
 }
 
-export default function ExerciseView({ item, last, instant, onDone }: Props) {
+export default function ExerciseView({ item, last, instant, onDone, onChecked }: Props) {
   const [value, setValue] = useState('');
   const [picked, setPicked] = useState<number[]>([]);
   const [busy, setBusy] = useState(false);
@@ -84,7 +86,9 @@ export default function ExerciseView({ item, last, instant, onDone }: Props) {
     setBusy(true);
     setError('');
     try {
-      setFeedback(await instant(answer));
+      const fb = await instant(answer);
+      setFeedback(fb);
+      onChecked?.(fb.correct);
     } catch {
       setError("Tekshirib bo'lmadi. Aloqani tekshirib, qayta urinib ko'ring.");
     } finally {
