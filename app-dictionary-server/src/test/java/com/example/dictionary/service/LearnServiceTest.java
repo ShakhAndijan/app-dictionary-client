@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class LearnServiceTest {
 
     private static LearnItem fill(String answer, List<String> also) {
-        return new LearnItem("1", "FILL", "She ___ happy.", null, answer, also, null, null);
+        return new LearnItem("1", "FILL", "She ___ happy, she is sad.", null, answer, also, null, null);
     }
 
     @Test
@@ -51,6 +51,45 @@ class LearnServiceTest {
         assertFalse(named.matches("he is"));
         LearnItem woman = new LearnItem("5", "FILL", "Inglizchaga tarjima qiling: Ayol kofe ichadi.", null, "She drinks coffee", null, null, null);
         assertFalse(woman.matches("He drinks coffee"));
+    }
+
+    private static LearnItem fillOf(String prompt, String answer) {
+        return new LearnItem("1", "FILL", prompt, null, answer, null, null, null);
+    }
+
+    @Test
+    void affirmativeAndNegativeAreBothRightWhenThePromptDoesNotDecide() {
+        LearnItem works = fillOf("Anna ___ in a shop every day. (work)", "works");
+        assertTrue(works.matches("works"));
+        assertTrue(works.matches("doesn't work"));
+        assertTrue(works.matches("does not work"));
+        assertFalse(works.matches("don't work"));
+        assertFalse(works.matches("work"));
+
+        LearnItem plural = fillOf("My parents ___ in a hospital. (work)", "work");
+        assertTrue(plural.matches("don't work"));
+        assertFalse(plural.matches("doesn't work"));
+
+        LearnItem negative = fillOf("I ___ today. (work)", "am not working");
+        assertTrue(negative.matches("am working"));
+        assertTrue(negative.matches("I'm not working".replace("I'm", "am")));
+
+        LearnItem past = fillOf("They ___ yesterday afternoon. (work)", "weren't working");
+        assertTrue(past.matches("were working"));
+        LearnItem simplePast = fillOf("She ___ to school. (go)", "went");
+        assertTrue(simplePast.matches("didn't go"));
+        assertTrue(simplePast.matches("did not go"));
+
+        // He/she and polarity combine.
+        LearnItem both = fillOf("She ___ in a bank. (work)", "works");
+        assertTrue(both.matches("doesn't work"));
+
+        // Context in the prompt fixes the polarity.
+        assertFalse(fillOf("It ___ now. Take an umbrella. (rain)", "is raining").matches("isn't raining"));
+        assertFalse(fillOf("I ___ now, so please be quiet. (study)", "am studying").matches("am not studying"));
+        assertFalse(fillOf("She can ___ today. (swim)", "swim").matches("don't swim"));
+        assertFalse(fillOf("She needs ___ today. (rest)", "to rest").matches("didn't rest"));
+        assertFalse(fillOf("The weather is ___ today.", "better").matches("isn't better"));
     }
 
     @Test

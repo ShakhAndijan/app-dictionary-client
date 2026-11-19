@@ -51,10 +51,26 @@ public record LearnItem(String id, String kind, String prompt, List<String> opti
         if ("SPEAK".equals(kind)) return speechScore(answer, given) >= SPEECH_PASS;
         if (g.equals(normalize(answer))) return true;
         if (alsoAccept != null && alsoAccept.stream().anyMatch(a -> g.equals(normalize(a)))) return true;
-        // Typed answers: when the task does not say who is meant, "he" and "she" are equally right.
-        if ("FILL".equals(kind) && genderNeutralPrompt()) {
-            if (g.equals(swapGender(normalize(answer)))) return true;
-            return alsoAccept != null && alsoAccept.stream().anyMatch(a -> g.equals(swapGender(normalize(a))));
+        if (!"FILL".equals(kind)) return false;
+        // Typed answers: spellings that are equally right when the task leaves the choice open.
+        boolean gender = genderNeutralPrompt();
+        boolean polarity = PolarityVariants.neutralPrompt(prompt);
+        if (!gender && !polarity) return false;
+        String hint = PolarityVariants.hint(prompt);
+        java.util.List<String> known = new java.util.ArrayList<>();
+        known.add(normalize(answer));
+        if (alsoAccept != null) alsoAccept.forEach(a -> known.add(normalize(a)));
+        for (String k : known) {
+            // "He works" / "She works"; "works" / "doesn't work"; and the two combined.
+            java.util.Set<String> forms = new java.util.LinkedHashSet<>();
+            forms.add(k);
+            if (gender) forms.add(swapGender(k));
+            if (polarity) {
+                for (String f : java.util.List.copyOf(forms)) {
+                    forms.addAll(PolarityVariants.of(f, hint));
+                }
+            }
+            if (forms.contains(g)) return true;
         }
         return false;
     }
