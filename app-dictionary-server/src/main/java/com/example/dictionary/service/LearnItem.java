@@ -50,7 +50,72 @@ public record LearnItem(String id, String kind, String prompt, List<String> opti
         if (g.isEmpty()) return false;
         if ("SPEAK".equals(kind)) return speechScore(answer, given) >= SPEECH_PASS;
         if (g.equals(normalize(answer))) return true;
-        return alsoAccept != null && alsoAccept.stream().anyMatch(a -> g.equals(normalize(a)));
+        if (alsoAccept != null && alsoAccept.stream().anyMatch(a -> g.equals(normalize(a)))) return true;
+        // Typed answers: when the task does not say who is meant, "he" and "she" are equally right.
+        if ("FILL".equals(kind) && genderNeutralPrompt()) {
+            if (g.equals(swapGender(normalize(answer)))) return true;
+            return alsoAccept != null && alsoAccept.stream().anyMatch(a -> g.equals(swapGender(normalize(a))));
+        }
+        return false;
+    }
+
+    private static final java.util.regex.Pattern GENDER_CUE = java.util.regex.Pattern.compile(
+            "\\b(he|she|him|her|his|hers|himself|herself|man|woman|men|women|boy|girl|mr|mrs|ms|miss|brother|sister|father|mother|"
+                    + "dad|mum|mom|husband|wife|uncle|aunt|son|daughter|grandfather|grandmother|grandpa|grandma|waiter|waitress|"
+                    + "king|queen|actor|actress|gentleman|lady|boyfriend|girlfriend|nephew|niece|"
+                    + "qiz|ayol|erkak|yigit|o'g'il|o‘g‘il|opa|aka|ota|ona|amaki|xola|tog'a|buvi|bobo|singil|uka|qaynona|qaynota)\\b",
+            java.util.regex.Pattern.CASE_INSENSITIVE);
+    private static final java.util.regex.Pattern NAME_CUE = java.util.regex.Pattern.compile("(?<!^)(?<![.?!:]\\s)\\b[A-Z][a-z]{1,}\\b");
+    private static final Set<String> NOT_NAMES = Set.of("Is", "Are", "Do", "Does", "Did", "Was", "Were", "Has", "Have", "Can", "Will",
+            "What", "Where", "When", "Why", "How", "Who", "Which", "Whose", "Inglizchaga", "Tarjima", "Complete", "Write",
+            "The", "An", "My", "Your", "Our", "Their", "This", "That", "These", "Those", "It", "We", "You", "They", "There", "Here",
+            "In", "On", "At", "Every", "Each", "Some", "Many", "Much", "Most", "Any", "No", "Not", "Please", "Let", "If", "Because",
+            "After", "Before", "Yesterday", "Today", "Tomorrow", "Always", "Never", "Often", "Sometimes", "Usually", "Last", "Next",
+            "Choose", "Fill", "Put", "Make", "Use", "Read", "Listen", "Look", "Come", "Go", "Tell", "Ask", "Give", "Take", "Open", "Close",
+            "Mening", "Sening", "Uning", "Bizning", "Sizning", "Ularning");
+
+    /** True when nothing in the prompt tells whether a man or a woman is meant (no name, no gendered word). */
+    private boolean genderNeutralPrompt() {
+        if (prompt == null) return false;
+        if (GENDER_CUE.matcher(prompt).find()) return false;
+        var m = NAME_CUE.matcher(prompt);
+        while (m.find()) {
+            if (!NOT_NAMES.contains(m.group())) return false;
+        }
+        // A name opening the sentence ("Anna ___ a doctor.").
+        var first = java.util.regex.Pattern.compile("^([A-Z][a-z]+)\\b").matcher(prompt.trim());
+        return !(first.find() && !NOT_NAMES.contains(first.group(1)));
+    }
+
+    private static final Set<String> OBJECT_FOLLOWERS = Set.of("a", "an", "the", "some", "any", "to", "in", "on", "at", "for", "with",
+            "and", "every", "this", "that", "these", "those", "my", "your", "our", "their", "it", "me", "us", "you", "them", "of", "from", "about");
+
+    /** The same sentence about the other gender: he/she, his/her, him/her, himself/herself. */
+    static String swapGender(String s) {
+        String[] w = s.split(" ", -1);
+        StringBuilder out = new StringBuilder();
+        for (int i = 0; i < w.length; i++) {
+            String x = w[i];
+            String y = switch (x) {
+                case "he" -> "she";
+                case "she" -> "he";
+                case "he's" -> "she's";
+                case "she's" -> "he's";
+                case "he'll" -> "she'll";
+                case "she'll" -> "he'll";
+                case "he'd" -> "she'd";
+                case "she'd" -> "he'd";
+                case "his" -> "her";
+                case "him" -> "her";
+                case "himself" -> "herself";
+                case "herself" -> "himself";
+                case "her" -> (i + 1 >= w.length || OBJECT_FOLLOWERS.contains(w[i + 1])) ? "him" : "his";
+                default -> x;
+            };
+            if (i > 0) out.append(' ');
+            out.append(y);
+        }
+        return out.toString();
     }
 
     /** Words of a sentence with contractions spelled out, so "I'm" and "I am" are the same thing. */

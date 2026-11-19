@@ -32,6 +32,28 @@ class LearnServiceTest {
     }
 
     @Test
+    void heAndSheAreInterchangeableOnlyWhenThePromptDoesNotSayWho() {
+        LearnItem translate = new LearnItem("1", "FILL", "Inglizchaga tarjima qiling: U maktabga borishni yaxshi ko'radi.", null,
+                "She likes going to school", List.of("she's fond of school"), null, null);
+        assertTrue(translate.matches("She likes going to school"));
+        assertTrue(translate.matches("He likes going to school"));
+        assertTrue(translate.matches("he's fond of school"));
+        assertFalse(translate.matches("They like going to school"));
+
+        LearnItem bag = new LearnItem("2", "FILL", "Inglizchaga tarjima qiling: U sumkasini oldi.", null, "She took her bag", null, null, null);
+        assertTrue(bag.matches("He took his bag"));
+        assertFalse(bag.matches("He took her bag"));
+        LearnItem object = new LearnItem("3", "FILL", "Inglizchaga tarjima qiling: U unga kitob berdi.", null, "He gave her a book", null, null, null);
+        assertTrue(object.matches("She gave him a book"));
+
+        // Names and gendered words in the prompt fix the answer.
+        LearnItem named = new LearnItem("4", "FILL", "Anna ___ a doctor.", null, "she is", null, null, null);
+        assertFalse(named.matches("he is"));
+        LearnItem woman = new LearnItem("5", "FILL", "Inglizchaga tarjima qiling: Ayol kofe ichadi.", null, "She drinks coffee", null, null, null);
+        assertFalse(woman.matches("He drinks coffee"));
+    }
+
+    @Test
     void choiceAnswerMustBeAmongOptions() {
         LearnItem bad = new LearnItem("1", "CHOICE", "x", List.of("a", "b"), "c", null, null, null);
         assertNotNull(bad.problem());
