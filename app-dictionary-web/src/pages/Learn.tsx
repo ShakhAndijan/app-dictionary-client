@@ -18,6 +18,7 @@ import {
 import { Button, Card, Notice, PageHeader, ProgressBar, Spinner } from '../ui';
 import { requestProgressCheck, speakEnglish } from '../util';
 import { GameResult } from './StudyGames';
+import { useAuth } from '../auth';
 import Theory, { parseTheory } from './Theory';
 
 export const SKILL_META: Record<Skill, { icon: string; label: string; tone: string; tip: string }> = {
@@ -123,6 +124,7 @@ function DayRing({ done, total }: { done: number; total: number }) {
 
 export function LearnPage() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [ov, setOv] = useState<LearnOverview | null>(null);
   const [lessons, setLessons] = useState<LearnLessonSummary[]>([]);
   const [picking, setPicking] = useState(false);
@@ -229,6 +231,14 @@ export function LearnPage() {
                 </button>
               );
             })}
+            {user?.modules?.includes('ielts') && (
+              <button className="lr-card" disabled style={{ ['--tone' as string]: '#f59e0b' }}>
+                <span className="lr-card-ico">🎓</span>
+                <b>IELTS</b>
+                <small>Tez orada</small>
+                <span className="lr-card-bar"><i style={{ width: '0%' }} /></span>
+              </button>
+            )}
             <button
               className={`lr-card lr-card-exam ${ov.examUnlocked ? 'open' : ''}`}
               disabled={!ov.examUnlocked}

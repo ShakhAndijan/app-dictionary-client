@@ -198,7 +198,7 @@ export function DirectionsPage() {
 }
 
 /** A section that is chosen in the profile but not built yet. */
-export function ComingSoonPage({ icon, title, text }: { icon: IconKey; title: string; text: string }) {
+export function ComingSoonPage({ icon, title, text, topics }: { icon: IconKey; title: string; text: string; topics?: string[] }) {
   const nav = useNavigate();
   return (
     <section className="dr-soon rise">
@@ -207,15 +207,18 @@ export function ComingSoonPage({ icon, title, text }: { icon: IconKey; title: st
       <span className="dr-soon-badge">Tez orada</span>
       <h1 className="dx-title">{title}</h1>
       <p>{text}</p>
+      {topics && (
+        <div className="dr-perks" style={{ justifyContent: 'center' }}>
+          {topics.map((t) => (
+            <i key={t}>{t}</i>
+          ))}
+        </div>
+      )}
       <button className="dr-soon-btn" onClick={() => nav('/profile/directions')}>Yo'nalishlarni o'zgartirish</button>
     </section>
   );
 }
 
-export const IeltsPage = () => (
-  <ComingSoonPage icon="ielts" title="IELTS" text="IELTS imtihoniga tayyorgarlik bo'limi ustida ishlayapmiz: reading, listening, writing va speaking mashqlari, namunaviy testlar." />
-);
-
 export const FrontendPage = () => (
-  <ComingSoonPage icon="frontend" title="Frontend" text="Frontend yo'nalishi (HTML, CSS, JavaScript, React) tez orada ochiladi. Darslar va amaliy topshiriqlar tayyorlanmoqda." />
+  <ComingSoonPage icon="frontend" title="Dasturlash · Frontend" text="Frontend yo'nalishi tez orada ochiladi. Darslar va amaliy topshiriqlar tayyorlanmoqda." topics={['HTML', 'CSS', 'JavaScript', 'React']} />
 );

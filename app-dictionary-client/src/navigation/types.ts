@@ -7,7 +7,6 @@ export type MainTabParamList = {
   Baholash: undefined;
   Kurs: undefined;
   Sozlar: undefined;
-  Ielts: undefined;
   Frontend: undefined;
   Profil: undefined;
   Admin: undefined;

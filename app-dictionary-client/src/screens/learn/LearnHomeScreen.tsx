@@ -10,6 +10,7 @@ import * as learnApi from '../../api/learnApi';
 import { Overview, SKILL_META, SKILL_ORDER } from '../../api/learnApi';
 import { extractErrorMessage } from '../../utils/errors';
 import { LearnStackParamList } from '../../navigation/types';
+import { useAuth } from '../../context/AuthContext';
 import { Bar, IconBadge, SKILL_ICON, SectionTitle, courseStyles } from './learnUi';
 
 const LEVEL_INFO: Record<string, { title: string; sub: string }> = {
@@ -22,6 +23,7 @@ const LEVEL_INFO: Record<string, { title: string; sub: string }> = {
 
 export default function LearnHomeScreen() {
   const nav = useNavigation<NativeStackNavigationProp<LearnStackParamList>>();
+  const { user } = useAuth();
   const [data, setData] = useState<Overview | null>(null);
   const [error, setError] = useState('');
   const [picking, setPicking] = useState(false);
@@ -197,6 +199,16 @@ export default function LearnHomeScreen() {
         </View>
         {data.examUnlocked ? <Ionicons name="chevron-forward" size={18} color={colors.textMuted} /> : null}
       </Pressable>
+
+      {user?.modules?.includes('ielts') ? (
+        <View style={[courseStyles.surface, styles.exam, { opacity: 0.85 }]}>
+          <IconBadge name="ribbon" tone="#f59e0b" />
+          <View style={{ flex: 1 }}>
+            <Text style={styles.skillName}>IELTS</Text>
+            <Text style={styles.examSub}>Imtihonga tayyorgarlik · Tez orada</Text>
+          </View>
+        </View>
+      ) : null}
 
       {error ? <Text style={styles.error}>{error}</Text> : null}
     </ScreenContainer>

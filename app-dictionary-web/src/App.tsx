@@ -6,7 +6,7 @@ import { useTheme } from './theme';
 import { Spinner } from './ui';
 import Landing from './pages/Landing';
 import { AdminNotesPage } from './pages/AdminNotes';
-import { DirectionsPage, FrontendPage, IeltsPage } from './pages/Directions';
+import { DirectionsPage, FrontendPage } from './pages/Directions';
 import HomePage from './pages/Home';
 import { AdminLayout, AdminStatsPage, AdminUsersPage } from './pages/Admin';
 import { AdminAnnouncementsPage, AdminAuditPage, AdminUserPage } from './pages/AdminMore';
@@ -28,8 +28,7 @@ const NAV: { to: string; label: string; end?: boolean; needs?: string[]; icon: J
   { to: '/words', label: "So'zlar", needs: ['words'], icon: <svg {...ico}><path d="M5 4.5h10a3 3 0 0 1 3 3V20H8a3 3 0 0 1-3-3V4.5Z" /><path d="M9 9h5M9 12.5h5" /></svg> },
   { to: '/study', label: 'Mashq', needs: ['words'], icon: <svg {...ico}><circle cx="12" cy="12" r="8.5" /><circle cx="12" cy="12" r="4.5" /><circle cx="12" cy="12" r="1" fill="currentColor" /></svg> },
   { to: '/learn', label: 'Ingliz tili', needs: ['words', 'ielts'], icon: <svg {...ico}><path d="M3 6.5 12 3l9 3.5-9 3.5-9-3.5Z" /><path d="M7 9v5c0 1.5 2.2 3 5 3s5-1.5 5-3V9" /><path d="M21 7v6" /></svg> },
-  { to: '/ielts', label: 'IELTS', needs: ['ielts'], icon: <svg {...ico}><path d="M12 3.5 14.4 9l5.6.5-4.2 3.8 1.3 5.5L12 15.9 6.9 18.8l1.3-5.5L4 9.5 9.6 9 12 3.5Z" /></svg> },
-  { to: '/frontend', label: 'Frontend', needs: ['frontend'], icon: <svg {...ico}><path d="m8 8-4 4 4 4" /><path d="m16 8 4 4-4 4" /><path d="m13.5 5-3 14" /></svg> },
+  { to: '/frontend', label: 'Dasturlash', needs: ['frontend'], icon: <svg {...ico}><path d="m8 8-4 4 4 4" /><path d="m16 8 4 4-4 4" /><path d="m13.5 5-3 14" /></svg> },
   { to: '/profile', label: 'Profil', icon: <svg {...ico}><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" /></svg> },
 ];
 
@@ -209,7 +208,7 @@ export default function App() {
         <Route path="learn/lesson/:code" element={<LessonPage />} />
         <Route path="learn/exam" element={<ExamPage />} />
         <Route path="learn/stats" element={<LearnStatsPage />} />
-        <Route path="ielts" element={<IeltsPage />} />
+        <Route path="ielts" element={<Navigate to="/learn" replace />} />
         <Route path="frontend" element={<FrontendPage />} />
         <Route path="profile/directions" element={<DirectionsPage />} />
         <Route path="profile" element={<ProfilePage />} />

@@ -10,10 +10,11 @@ interface Props {
   icon: keyof typeof Ionicons.glyphMap;
   title: string;
   text: string;
+  topics?: string[];
 }
 
 /** A section chosen in the profile that is not built yet. */
-export default function ComingSoonScreen({ icon, title, text }: Props) {
+export default function ComingSoonScreen({ icon, title, text, topics }: Props) {
   const navigation = useNavigation<any>();
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
@@ -26,6 +27,13 @@ export default function ComingSoonScreen({ icon, title, text }: Props) {
           <Text style={styles.badgeText}>Tez orada</Text>
         </View>
         <Text style={styles.text}>{text}</Text>
+        {topics ? (
+          <View style={styles.topics}>
+            {topics.map((t) => (
+              <Text key={t} style={styles.topic}>{t}</Text>
+            ))}
+          </View>
+        ) : null}
         <Button
           title="Yo'nalishlarni o'zgartirish"
           variant="outline"
@@ -45,6 +53,8 @@ const styles = themed(() =>
     title: { color: colors.text, fontSize: 28, fontWeight: '800' },
     badge: { backgroundColor: colors.amberBg, borderRadius: 99, paddingHorizontal: 14, paddingVertical: 4 },
     badgeText: { color: colors.amberText, fontSize: 12, fontWeight: '800' },
+    topics: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8 },
+    topic: { color: colors.primary, backgroundColor: `${colors.primary}1A`, fontWeight: '700', fontSize: 13, paddingHorizontal: 14, paddingVertical: 6, borderRadius: 99, overflow: 'hidden' },
     text: { color: colors.textMuted, fontSize: 15, lineHeight: 22, textAlign: 'center' },
   }),
 );

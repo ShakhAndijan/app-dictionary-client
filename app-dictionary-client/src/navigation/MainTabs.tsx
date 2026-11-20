@@ -28,7 +28,6 @@ const TAB_ICONS: Record<keyof MainTabParamList, [keyof typeof Ionicons.glyphMap,
   Baholash: ['checkmark-done-circle', 'checkmark-done-circle-outline'],
   Kurs: ['school', 'school-outline'],
   Sozlar: ['book', 'book-outline'],
-  Ielts: ['ribbon', 'ribbon-outline'],
   Frontend: ['code-slash', 'code-slash-outline'],
   Profil: ['person-circle', 'person-circle-outline'],
   Admin: ['shield-checkmark', 'shield-checkmark-outline'],
@@ -83,14 +82,9 @@ export default function MainTabs() {
       {has('words') && <Tab.Screen name="Baholash" component={QuizScreen} options={{ title: 'Baholash' }} />}
       {has('words', 'ielts') && <Tab.Screen name="Kurs" component={LearnNavigator} options={{ title: "Ingliz tili" }} />}
       {has('words') && <Tab.Screen name="Sozlar" component={WordsScreen} options={{ title: "So'zlar" }} />}
-      {has('ielts') && (
-        <Tab.Screen name="Ielts" options={{ title: 'IELTS' }}>
-          {() => <ComingSoonScreen icon="ribbon" title="IELTS" text="IELTS imtihoniga tayyorgarlik bo'limi ustida ishlayapmiz: reading, listening, writing va speaking mashqlari, namunaviy testlar." />}
-        </Tab.Screen>
-      )}
       {has('frontend') && (
-        <Tab.Screen name="Frontend" options={{ title: 'Frontend' }}>
-          {() => <ComingSoonScreen icon="code-slash" title="Frontend" text="Frontend yo'nalishi (HTML, CSS, JavaScript, React) tez orada ochiladi. Darslar va amaliy topshiriqlar tayyorlanmoqda." />}
+        <Tab.Screen name="Frontend" options={{ title: 'Dasturlash' }}>
+          {() => <ComingSoonScreen icon="code-slash" title="Dasturlash · Frontend" text="Frontend yo'nalishi tez orada ochiladi. Darslar va amaliy topshiriqlar tayyorlanmoqda." topics={['HTML', 'CSS', 'JavaScript', 'React']} />}
         </Tab.Screen>
       )}
       <Tab.Screen name="Profil" component={ProfileNavigator} options={{ title: 'Profil' }} />
