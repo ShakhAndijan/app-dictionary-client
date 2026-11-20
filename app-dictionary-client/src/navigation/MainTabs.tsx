@@ -20,7 +20,7 @@ import * as reviewApi from '../api/reviewApi';
 import AchievementCelebration from '../components/AchievementCelebration';
 import { syncReminders } from '../services/reminders';
 import ComingSoonScreen from '../screens/ComingSoonScreen';
-import { DEFAULT_MODULES } from '../config/directions';
+import { DEFAULT_MODULES, DIRECTIONS } from '../config/directions';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
@@ -82,9 +82,9 @@ export default function MainTabs() {
       {has('words') && <Tab.Screen name="Baholash" component={QuizScreen} options={{ title: 'Baholash' }} />}
       {has('words', 'ielts') && <Tab.Screen name="Kurs" component={LearnNavigator} options={{ title: "Ingliz tili" }} />}
       {has('words') && <Tab.Screen name="Sozlar" component={WordsScreen} options={{ title: "So'zlar" }} />}
-      {has('frontend') && (
+      {has('frontend', 'html', 'css', 'javascript', 'react') && (
         <Tab.Screen name="Frontend" options={{ title: 'Dasturlash' }}>
-          {() => <ComingSoonScreen icon="code-slash" title="Dasturlash · Frontend" text="Frontend yo'nalishi tez orada ochiladi. Darslar va amaliy topshiriqlar tayyorlanmoqda." topics={['HTML', 'CSS', 'JavaScript', 'React']} />}
+          {() => <ComingSoonScreen icon="code-slash" title="Dasturlash" text="Tanlangan mavzular tez orada ochiladi. Darslar va amaliy topshiriqlar tayyorlanmoqda." topics={DIRECTIONS[1].modules.filter((m) => modules.includes(m.key)).map((m) => m.title)} />}
         </Tab.Screen>
       )}
       <Tab.Screen name="Profil" component={ProfileNavigator} options={{ title: 'Profil' }} />

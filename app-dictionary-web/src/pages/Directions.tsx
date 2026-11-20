@@ -89,7 +89,10 @@ export const DIRECTIONS: DirectionDef[] = [
     tone: '#0ea5e9',
     tone2: '#22d3ee',
     modules: [
-      { key: 'frontend', icon: 'frontend', title: 'Frontend', sub: "Saytlar va interfeyslar yaratishni o'rganing", perks: ['HTML', 'CSS', 'JavaScript', 'React'], ready: false },
+      { key: 'html', icon: 'frontend', title: 'HTML', sub: 'Sahifa tuzilishi: teglar, formalar, semantika', perks: ['Teglar', 'Formalar', 'Semantika'], ready: false },
+      { key: 'css', icon: 'code', title: 'CSS', sub: 'Dizayn: layout, flex, grid, animatsiya', perks: ['Flexbox', 'Grid', 'Responsive'], ready: false },
+      { key: 'javascript', icon: 'code', title: 'JavaScript', sub: "Dasturlash tili: mantiq, DOM, asinxron kod", perks: ['ES6+', 'DOM', 'Async'], ready: false },
+      { key: 'react', icon: 'frontend', title: 'React', sub: 'Komponentlar, holat va zamonaviy interfeyslar', perks: ['Komponentlar', 'Hooks', 'Router'], ready: false },
     ],
   },
 ];
@@ -219,6 +222,11 @@ export function ComingSoonPage({ icon, title, text, topics }: { icon: IconKey; t
   );
 }
 
-export const FrontendPage = () => (
-  <ComingSoonPage icon="frontend" title="Dasturlash · Frontend" text="Frontend yo'nalishi tez orada ochiladi. Darslar va amaliy topshiriqlar tayyorlanmoqda." topics={['HTML', 'CSS', 'JavaScript', 'React']} />
-);
+export function FrontendPage() {
+  const { user } = useAuth();
+  const chosen = user?.modules ?? [];
+  const topics = (DIRECTIONS[1]?.modules ?? []).filter((m) => chosen.includes(m.key)).map((m) => m.title);
+  return (
+    <ComingSoonPage icon="frontend" title="Dasturlash" text="Tanlangan mavzular tez orada ochiladi. Darslar va amaliy topshiriqlar tayyorlanmoqda." topics={topics} />
+  );
+}

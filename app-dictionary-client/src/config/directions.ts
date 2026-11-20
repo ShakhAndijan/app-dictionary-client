@@ -36,7 +36,12 @@ export const DIRECTIONS: DirectionDef[] = [
     title: 'Dasturlash',
     sub: 'Noldan kasbgacha',
     color: '#0EA5E9',
-    modules: [{ key: 'frontend', icon: 'color-palette', title: 'Frontend', sub: 'HTML, CSS, JavaScript va React', ready: false }],
+    modules: [
+      { key: 'html', icon: 'logo-html5', title: 'HTML', sub: 'Sahifa tuzilishi: teglar, formalar, semantika', ready: false },
+      { key: 'css', icon: 'logo-css3', title: 'CSS', sub: 'Dizayn: layout, flex, grid, animatsiya', ready: false },
+      { key: 'javascript', icon: 'logo-javascript', title: 'JavaScript', sub: 'Dasturlash tili: mantiq, DOM, asinxron kod', ready: false },
+      { key: 'react', icon: 'logo-react', title: 'React', sub: 'Komponentlar, holat va zamonaviy interfeyslar', ready: false },
+    ],
   },
 ];
 
