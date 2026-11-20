@@ -19,6 +19,8 @@ import * as wordsApi from '../api/wordsApi';
 import * as reviewApi from '../api/reviewApi';
 import AchievementCelebration from '../components/AchievementCelebration';
 import { syncReminders } from '../services/reminders';
+import ComingSoonScreen from '../screens/ComingSoonScreen';
+import { DEFAULT_MODULES } from '../config/directions';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
@@ -26,6 +28,8 @@ const TAB_ICONS: Record<keyof MainTabParamList, [keyof typeof Ionicons.glyphMap,
   Baholash: ['checkmark-done-circle', 'checkmark-done-circle-outline'],
   Kurs: ['school', 'school-outline'],
   Sozlar: ['book', 'book-outline'],
+  Ielts: ['ribbon', 'ribbon-outline'],
+  Frontend: ['code-slash', 'code-slash-outline'],
   Profil: ['person-circle', 'person-circle-outline'],
   Admin: ['shield-checkmark', 'shield-checkmark-outline'],
 };
@@ -34,6 +38,8 @@ export default function MainTabs() {
   // Fixed height would hide the system navigation buttons area, so add the bottom inset to it.
   const { bottom } = useSafeAreaInsets();
   const { user } = useAuth();
+  const modules = user?.modules ?? DEFAULT_MODULES;
+  const has = (...keys: string[]) => keys.some((k) => modules.includes(k));
 
   // Offline support: track the connection and upload answers given without it. When they are through,
   // pull the server's fresh numbers back into the phone's copy.
@@ -74,9 +80,19 @@ export default function MainTabs() {
         },
       })}
     >
-      <Tab.Screen name="Baholash" component={QuizScreen} options={{ title: 'Baholash' }} />
-      <Tab.Screen name="Kurs" component={LearnNavigator} options={{ title: "Ingliz tili" }} />
-      <Tab.Screen name="Sozlar" component={WordsScreen} options={{ title: "So'zlar" }} />
+      {has('words') && <Tab.Screen name="Baholash" component={QuizScreen} options={{ title: 'Baholash' }} />}
+      {has('words', 'ielts') && <Tab.Screen name="Kurs" component={LearnNavigator} options={{ title: "Ingliz tili" }} />}
+      {has('words') && <Tab.Screen name="Sozlar" component={WordsScreen} options={{ title: "So'zlar" }} />}
+      {has('ielts') && (
+        <Tab.Screen name="Ielts" options={{ title: 'IELTS' }}>
+          {() => <ComingSoonScreen icon="ribbon" title="IELTS" text="IELTS imtihoniga tayyorgarlik bo'limi ustida ishlayapmiz: reading, listening, writing va speaking mashqlari, namunaviy testlar." />}
+        </Tab.Screen>
+      )}
+      {has('frontend') && (
+        <Tab.Screen name="Frontend" options={{ title: 'Frontend' }}>
+          {() => <ComingSoonScreen icon="code-slash" title="Frontend" text="Frontend yo'nalishi (HTML, CSS, JavaScript, React) tez orada ochiladi. Darslar va amaliy topshiriqlar tayyorlanmoqda." />}
+        </Tab.Screen>
+      )}
       <Tab.Screen name="Profil" component={ProfileNavigator} options={{ title: 'Profil' }} />
       {user?.role === 'ADMIN' && <Tab.Screen name="Admin" component={AdminNavigator} options={{ title: 'Admin' }} />}
     </Tab.Navigator>

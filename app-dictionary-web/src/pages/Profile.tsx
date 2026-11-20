@@ -20,6 +20,7 @@ const ACTIVITY: Item[] = [
 ];
 
 const ACCOUNT: Item[] = [
+  { to: '/profile/directions', icon: '🧭', label: "Yo'nalishlarim", sub: 'Ingliz tili, IELTS, dasturlash', color: '#0ea5e9' },
   { to: '/profile/edit', icon: '✏️', label: 'Profilni tahrirlash', sub: 'Ism, familiya va email', color: '#4f46e5' },
   { to: '/profile/password', icon: '🔒', label: 'Parolni almashtirish', sub: 'Xavfsizlik', color: '#f59e0b' },
   { to: '/profile/settings', icon: '⚙️', label: 'Maqsad va ko‘rinish', sub: 'Kunlik maqsad, mavzu', color: '#ec4899' },

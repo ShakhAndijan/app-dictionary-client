@@ -10,6 +10,7 @@ import GroupsScreen from '../screens/profile/GroupsScreen';
 import GroupDetailScreen from '../screens/profile/GroupDetailScreen';
 import AchievementsScreen from '../screens/profile/AchievementsScreen';
 import ReminderSettingsScreen from '../screens/profile/ReminderSettingsScreen';
+import DirectionsScreen from '../screens/profile/DirectionsScreen';
 import { colors } from '../theme/colors';
 
 const Stack = createNativeStackNavigator<ProfileStackParamList>();
@@ -42,6 +43,7 @@ export default function ProfileNavigator() {
       />
       <Stack.Screen name="Achievements" component={AchievementsScreen} options={{ title: 'Yutuqlar' }} />
       <Stack.Screen name="WeeklyReport" component={WeeklyReportScreen} options={{ title: 'Haftalik hisobot' }} />
+      <Stack.Screen name="Directions" component={DirectionsScreen} options={{ title: "Yo'nalishlarim" }} />
       <Stack.Screen name="Groups" component={GroupsScreen} options={{ title: 'Guruhlar' }} />
       <Stack.Screen
         name="GroupDetail"

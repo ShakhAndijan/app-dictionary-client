@@ -5540,3 +5540,34 @@ i.bad,
   .sv-acts { opacity: 1; }
   .sv-bubble { max-width: 92%; }
 }
+
+/* ---- Study directions (profile) ---- */
+.dr-lead { margin: 0 0 18px; max-width: 560px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.dr-card { margin-bottom: 14px; border-radius: 24px; border: 1px solid var(--glass-line); background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
+.dr-card.open { border-color: color-mix(in srgb, var(--tone) 45%, var(--glass-line)); }
+.dr-head { display: flex; align-items: center; gap: 14px; width: 100%; padding: 18px 20px; text-align: left; color: inherit; }
+.dr-ico { flex: none; width: 52px; height: 52px; display: grid; place-items: center; font-size: 26px; border-radius: 16px; background: color-mix(in srgb, var(--tone) 14%, transparent); }
+.dr-txt { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.dr-txt b { font-size: 18px; }
+.dr-txt small { color: var(--muted); font-size: 13px; }
+.dr-count { flex: none; padding: 5px 12px; border-radius: 99px; font-size: 12px; font-weight: 700; color: var(--tone); background: color-mix(in srgb, var(--tone) 12%, transparent); }
+.dr-chev { flex: none; color: var(--muted); font-size: 14px; }
+.dr-body { display: grid; gap: 10px; padding: 4px 16px 18px; }
+.dr-mod { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 18px; text-align: left; color: inherit; border: 1.5px solid var(--glass-line); background: transparent; transition: border-color 0.2s, background 0.2s; }
+.dr-mod:hover { border-color: color-mix(in srgb, var(--tone) 40%, var(--glass-line)); }
+.dr-mod.on { border-color: var(--tone); background: color-mix(in srgb, var(--tone) 9%, transparent); }
+.dr-mod-ico { flex: none; font-size: 24px; }
+.dr-mod-txt { flex: 1; min-width: 0; display: grid; gap: 3px; }
+.dr-mod-txt b { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 15.5px; }
+.dr-mod-txt b em { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; color: #b45309; background: #f59e0b26; }
+.dr-mod-txt small { color: var(--muted); font-size: 12.5px; line-height: 1.45; }
+.dr-switch { flex: none; position: relative; width: 46px; height: 28px; border-radius: 99px; background: var(--track); transition: background 0.2s; }
+.dr-switch i { position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px #0004; transition: transform 0.2s; }
+.dr-mod.on .dr-switch { background: var(--tone); }
+.dr-mod.on .dr-switch i { transform: translateX(18px); }
+.dr-soon { display: grid; justify-items: center; gap: 10px; max-width: 520px; margin: 40px auto; padding: 40px 28px; text-align: center; border-radius: 28px; border: 1px solid var(--glass-line); background: var(--surface); box-shadow: var(--shadow); }
+.dr-soon-ico { font-size: 54px; }
+.dr-soon p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.6; }
+.dr-soon-badge { padding: 4px 14px; border-radius: 99px; font-size: 12px; font-weight: 800; color: #b45309; background: #f59e0b26; }
+.dr-soon-btn { margin-top: 8px; padding: 12px 22px; border-radius: 99px; font-weight: 700; color: var(--primary); border: 1.5px solid var(--primary); }
+@media (max-width: 560px) { .dr-count { display: none; } .dr-head { padding: 14px; } }

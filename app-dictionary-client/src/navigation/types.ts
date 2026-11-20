@@ -7,6 +7,8 @@ export type MainTabParamList = {
   Baholash: undefined;
   Kurs: undefined;
   Sozlar: undefined;
+  Ielts: undefined;
+  Frontend: undefined;
   Profil: undefined;
   Admin: undefined;
 };
@@ -39,4 +41,5 @@ export type ProfileStackParamList = {
   WeeklyReport: undefined;
   Groups: undefined;
   GroupDetail: { id: number; name: string };
+  Directions: undefined;
 };

@@ -12,6 +12,8 @@ export interface User {
   email: string;
   dailyGoal: number;
   role: 'USER' | 'ADMIN';
+  /** Chosen study modules: words, ielts, frontend. */
+  modules?: string[];
 }
 
 export type WordState = 'NEW' | 'LEARNING' | 'MASTERED';
@@ -340,7 +342,7 @@ export const authApi = {
   logout: (refreshToken: string | null) =>
     http.post('/auth/logout', refreshToken ? { refreshToken } : undefined, { timeout: 5000 }),
   me: () => d(http.get<User>('/me')),
-  updateProfile: (data: Partial<Pick<User, 'firstName' | 'lastName' | 'email' | 'dailyGoal'>>) =>
+  updateProfile: (data: Partial<Pick<User, 'firstName' | 'lastName' | 'email' | 'dailyGoal' | 'modules'>>) =>
     d(http.put<User>('/profile', data)),
   changePassword: (oldPassword: string, newPassword: string) =>
     d(http.put<AuthResponse>('/profile/password', { oldPassword, newPassword })),

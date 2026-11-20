@@ -6,6 +6,8 @@ export interface User {
   email: string;
   dailyGoal: number;
   role?: 'USER' | 'ADMIN';
+  /** Chosen study modules: words, ielts, frontend. */
+  modules?: string[];
 }
 
 export interface Word {

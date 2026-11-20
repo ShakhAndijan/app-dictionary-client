@@ -15,6 +15,9 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class ProfileService {
 
+    /** English: words (add and practise words), ielts. Programming: frontend. */
+    static final java.util.List<String> MODULES = java.util.List.of("words", "ielts", "frontend");
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RefreshTokenService refreshTokenService;
@@ -49,6 +52,15 @@ public class ProfileService {
         }
         if (request.dailyGoal() != null) {
             user.setDailyGoal(request.dailyGoal());
+        }
+
+        if (request.modules() != null) {
+            java.util.List<String> chosen = request.modules().stream().map(String::trim).distinct().toList();
+            if (!MODULES.containsAll(chosen)) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unknown module");
+            }
+            // Keep the canonical order so the stored value is stable.
+            user.setModules(MODULES.stream().filter(chosen::contains).toList());
         }
 
         return UserResponse.from(user);

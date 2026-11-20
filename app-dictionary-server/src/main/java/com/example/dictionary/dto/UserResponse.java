@@ -10,7 +10,8 @@ public record UserResponse(
         String lastName,
         String email,
         int dailyGoal,
-        String role
+        String role,
+        java.util.List<String> modules
 ) {
     public static UserResponse from(AppUser user) {
         return new UserResponse(
@@ -20,6 +21,7 @@ public record UserResponse(
                 user.getLastName(),
                 user.getEmail(),
                 user.getDailyGoal(),
-                user.getRole().name());
+                user.getRole().name(),
+                user.getModules());
     }
 }

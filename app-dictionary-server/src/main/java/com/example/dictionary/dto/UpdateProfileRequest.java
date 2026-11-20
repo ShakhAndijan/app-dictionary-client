@@ -21,6 +21,9 @@ public record UpdateProfileRequest(
         @Min(1)
         @Max(100)
         @Schema(example = "10", description = "Words to practise per day, 1-100")
-        Integer dailyGoal
+        Integer dailyGoal,
+
+        @Schema(example = "[\"words\", \"ielts\"]", description = "Chosen study modules: words, ielts, frontend")
+        java.util.List<String> modules
 ) {
 }

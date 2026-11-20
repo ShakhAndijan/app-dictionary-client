@@ -6,6 +6,7 @@ import { useTheme } from './theme';
 import { Spinner } from './ui';
 import Landing from './pages/Landing';
 import { AdminNotesPage } from './pages/AdminNotes';
+import { DirectionsPage, FrontendPage, IeltsPage } from './pages/Directions';
 import HomePage from './pages/Home';
 import { AdminLayout, AdminStatsPage, AdminUsersPage } from './pages/Admin';
 import { AdminAnnouncementsPage, AdminAuditPage, AdminUserPage } from './pages/AdminMore';
@@ -21,11 +22,14 @@ import { ExamPage, LearnPage, LearnStatsPage, LessonPage } from './pages/Learn';
 
 const ico = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
 
-const NAV = [
+/** `needs`: the study modules (chosen in the profile) that bring the item into the menu; none = always there. */
+const NAV: { to: string; label: string; end?: boolean; needs?: string[]; icon: JSX.Element }[] = [
   { to: '/', label: 'Bosh sahifa', end: true, icon: <svg {...ico}><path d="M3 11.5 12 4l9 7.5" /><path d="M5.5 10v9.5h13V10" /></svg> },
-  { to: '/words', label: "So'zlar", icon: <svg {...ico}><path d="M5 4.5h10a3 3 0 0 1 3 3V20H8a3 3 0 0 1-3-3V4.5Z" /><path d="M9 9h5M9 12.5h5" /></svg> },
-  { to: '/study', label: 'Mashq', icon: <svg {...ico}><circle cx="12" cy="12" r="8.5" /><circle cx="12" cy="12" r="4.5" /><circle cx="12" cy="12" r="1" fill="currentColor" /></svg> },
-  { to: '/learn', label: 'Ingliz tili', icon: <svg {...ico}><path d="M3 6.5 12 3l9 3.5-9 3.5-9-3.5Z" /><path d="M7 9v5c0 1.5 2.2 3 5 3s5-1.5 5-3V9" /><path d="M21 7v6" /></svg> },
+  { to: '/words', label: "So'zlar", needs: ['words'], icon: <svg {...ico}><path d="M5 4.5h10a3 3 0 0 1 3 3V20H8a3 3 0 0 1-3-3V4.5Z" /><path d="M9 9h5M9 12.5h5" /></svg> },
+  { to: '/study', label: 'Mashq', needs: ['words'], icon: <svg {...ico}><circle cx="12" cy="12" r="8.5" /><circle cx="12" cy="12" r="4.5" /><circle cx="12" cy="12" r="1" fill="currentColor" /></svg> },
+  { to: '/learn', label: 'Ingliz tili', needs: ['words', 'ielts'], icon: <svg {...ico}><path d="M3 6.5 12 3l9 3.5-9 3.5-9-3.5Z" /><path d="M7 9v5c0 1.5 2.2 3 5 3s5-1.5 5-3V9" /><path d="M21 7v6" /></svg> },
+  { to: '/ielts', label: 'IELTS', needs: ['ielts'], icon: <svg {...ico}><path d="M12 3.5 14.4 9l5.6.5-4.2 3.8 1.3 5.5L12 15.9 6.9 18.8l1.3-5.5L4 9.5 9.6 9 12 3.5Z" /></svg> },
+  { to: '/frontend', label: 'Frontend', needs: ['frontend'], icon: <svg {...ico}><path d="m8 8-4 4 4 4" /><path d="m16 8 4 4-4 4" /><path d="m13.5 5-3 14" /></svg> },
   { to: '/profile', label: 'Profil', icon: <svg {...ico}><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" /></svg> },
 ];
 
@@ -101,6 +105,7 @@ function Layout() {
   const { scheme, setMode } = useTheme();
   const loc = useLocation();
   const [fresh, setFresh] = useState<Achievement[]>([]);
+  const modules = user?.modules ?? ['words'];
 
   useEffect(
     () =>
@@ -131,7 +136,7 @@ function Layout() {
             <span className="dock-name">Lug'at</span>
           </NavLink>
           <nav className="dock-nav">
-            {NAV.map((n) => (
+            {NAV.filter((n) => !n.needs || n.needs.some((k) => modules.includes(k))).map((n) => (
               <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => `dock-link ${isActive ? 'active' : ''}`}>
                 {n.icon}
                 <span>{n.label}</span>
@@ -204,6 +209,9 @@ export default function App() {
         <Route path="learn/lesson/:code" element={<LessonPage />} />
         <Route path="learn/exam" element={<ExamPage />} />
         <Route path="learn/stats" element={<LearnStatsPage />} />
+        <Route path="ielts" element={<IeltsPage />} />
+        <Route path="frontend" element={<FrontendPage />} />
+        <Route path="profile/directions" element={<DirectionsPage />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="profile/edit" element={<EditProfilePage />} />
         <Route path="profile/password" element={<ChangePasswordPage />} />

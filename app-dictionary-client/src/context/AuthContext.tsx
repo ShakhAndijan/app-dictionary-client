@@ -20,7 +20,7 @@ interface AuthContextValue {
     password: string
   ) => Promise<void>;
   logout: () => Promise<void>;
-  updateProfile: (data: Partial<Pick<User, 'firstName' | 'lastName' | 'email' | 'dailyGoal'>>) => Promise<void>;
+  updateProfile: (data: Partial<Pick<User, 'firstName' | 'lastName' | 'email' | 'dailyGoal' | 'modules'>>) => Promise<void>;
   changePassword: (oldPassword: string, newPassword: string) => Promise<void>;
 }
 
@@ -104,7 +104,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     applyUser(me);
   };
 
-  const updateProfile = async (data: Partial<Pick<User, 'firstName' | 'lastName' | 'email' | 'dailyGoal'>>) => {
+  const updateProfile = async (data: Partial<Pick<User, 'firstName' | 'lastName' | 'email' | 'dailyGoal' | 'modules'>>) => {
     const updated = await authApi.updateProfile(data);
     applyUser(updated);
   };

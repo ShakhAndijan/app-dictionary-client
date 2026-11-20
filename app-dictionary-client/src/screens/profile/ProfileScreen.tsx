@@ -19,13 +19,14 @@ import { dayKey, monthKey } from '../../utils/date';
 type Props = NativeStackScreenProps<ProfileStackParamList, 'ProfileHome'>;
 
 type MenuItem = {
-  key: 'EditProfile' | 'ChangePassword' | 'Stats' | 'Reminders' | 'Achievements' | 'WeeklyReport' | 'Groups';
+  key: 'EditProfile' | 'ChangePassword' | 'Stats' | 'Reminders' | 'Achievements' | 'WeeklyReport' | 'Groups' | 'Directions';
   label: string;
   icon: keyof typeof Ionicons.glyphMap;
   color: string;
 };
 
 const MENU_ITEMS = themed((): MenuItem[] => [
+  { key: 'Directions', label: "Yo'nalishlarim", icon: 'compass-outline', color: '#0EA5E9' },
   { key: 'EditProfile', label: 'Profilni tahrirlash', icon: 'person-outline', color: colors.primary },
   { key: 'ChangePassword', label: 'Parolni almashtirish', icon: 'lock-closed-outline', color: '#F59E0B' },
   { key: 'Achievements', label: 'Yutuqlar', icon: 'trophy-outline', color: '#E5A100' },

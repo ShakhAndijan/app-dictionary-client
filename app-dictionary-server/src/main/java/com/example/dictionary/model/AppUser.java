@@ -58,6 +58,13 @@ public class AppUser {
     @Column(name = "last_login_at")
     private Instant lastLoginAt;
 
+    /**
+     * What the user chose to study, comma separated ("words,ielts,frontend"). Null for accounts that never
+     * picked: they keep the words and practice they always had.
+     */
+    @Column(name = "modules", length = 200)
+    private String modules;
+
     /** A blocked account cannot log in, refresh or use its existing tokens. */
     @Column(nullable = false, columnDefinition = "boolean default false")
     private boolean blocked;
@@ -117,6 +124,16 @@ public class AppUser {
 
     public void setDailyGoal(int dailyGoal) {
         this.dailyGoal = dailyGoal;
+    }
+
+    /** The chosen modules; the original words practice when nothing was ever chosen. */
+    public java.util.List<String> getModules() {
+        if (modules == null) return java.util.List.of("words");
+        return modules.isBlank() ? java.util.List.of() : java.util.List.of(modules.split(","));
+    }
+
+    public void setModules(java.util.List<String> modules) {
+        this.modules = String.join(",", modules);
     }
 
     public int getTokenVersion() {
