@@ -26,7 +26,8 @@ export const DIRECTIONS: DirectionDef[] = [
     sub: "So'zlar, kurs va imtihonga tayyorgarlik",
     color: '#4F46E5',
     modules: [
-      { key: 'words', icon: 'book', title: "So'z qo'shish", sub: "O'z so'zlaringizni qo'shing, mashq qiling va ingliz tili kursidan o'ting", ready: true },
+      { key: 'words', icon: 'book', title: "So'z qo'shish", sub: "O'z so'zlaringizni qo'shing va mashq qilib takrorlang", ready: true },
+      { key: 'course', icon: 'school', title: 'Ingliz tili kursi', sub: "A1 dan C1 gacha darslar, mashqlar va daraja imtihonlari", ready: true },
       { key: 'ielts', icon: 'ribbon', title: 'IELTS', sub: 'Imtihonga tayyorgarlik: reading, listening, writing, speaking', ready: false },
     ],
   },

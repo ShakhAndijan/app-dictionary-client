@@ -77,7 +77,8 @@ export const DIRECTIONS: DirectionDef[] = [
     tone: '#6366f1',
     tone2: '#a855f7',
     modules: [
-      { key: 'words', icon: 'words', title: "So'z qo'shish", sub: "O'z so'zlaringizni qo'shing va takrorlab yodlang", perks: ["So'zlar lug'ati", 'Mashqlar', 'Ingliz tili kursi'], ready: true },
+      { key: 'words', icon: 'words', title: "So'z qo'shish", sub: "O'z so'zlaringizni qo'shing va takrorlab yodlang", perks: ["So'zlar lug'ati", 'Mashqlar', 'Takrorlash'], ready: true },
+      { key: 'course', icon: 'english', title: 'Ingliz tili kursi', sub: "A1 dan C1 gacha darslar, mashqlar va daraja imtihonlari", perks: ['Grammar', 'Reading', 'Listening', 'Writing'], ready: true },
       { key: 'ielts', icon: 'ielts', title: 'IELTS', sub: 'Imtihonga bosqichma-bosqich tayyorlaning', perks: ['Reading', 'Listening', 'Writing', 'Speaking'], ready: false },
     ],
   },

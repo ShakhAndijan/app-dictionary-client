@@ -80,7 +80,7 @@ export default function MainTabs() {
       })}
     >
       {has('words') && <Tab.Screen name="Baholash" component={QuizScreen} options={{ title: 'Baholash' }} />}
-      {has('words', 'ielts') && <Tab.Screen name="Kurs" component={LearnNavigator} options={{ title: "Ingliz tili" }} />}
+      {has('course', 'ielts') && <Tab.Screen name="Kurs" component={LearnNavigator} options={{ title: "Ingliz tili" }} />}
       {has('words') && <Tab.Screen name="Sozlar" component={WordsScreen} options={{ title: "So'zlar" }} />}
       {has('frontend', 'html', 'css', 'javascript', 'react') && (
         <Tab.Screen name="Frontend" options={{ title: 'Dasturlash' }}>
