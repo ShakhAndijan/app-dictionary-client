@@ -62,7 +62,7 @@ class DevCourseIntegrationTest {
                         .content("{\"level\":\"JUNIOR\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.level").value("JUNIOR"))
-                .andExpect(jsonPath("$.total").value(13))
+                .andExpect(jsonPath("$.total").value(20))
                 .andExpect(jsonPath("$.passed").value(0))
                 .andExpect(jsonPath("$.examUnlocked").value(false));
 
@@ -74,7 +74,10 @@ class DevCourseIntegrationTest {
                 .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
         assertTrue(!lesson.contains("\"answer\""));
 
-        JsonNode all = new ObjectMapper().readTree(new ClassPathResource("dev/frontend-internet-junior.json").getInputStream());
+        List<JsonNode> all = new java.util.ArrayList<>();
+        for (String f : new String[]{"dev/frontend-internet-junior.json", "dev/frontend-html-junior.json"}) {
+            new ObjectMapper().readTree(new ClassPathResource(f).getInputStream()).forEach(all::add);
+        }
         Map<String, String> answers = new HashMap<>();
 
         // A wrong lesson attempt does not count; a right one does.
@@ -106,7 +109,7 @@ class DevCourseIntegrationTest {
         }
 
         mockMvc.perform(get("/api/dev/overview").header("Authorization", auth))
-                .andExpect(jsonPath("$.passed").value(13))
+                .andExpect(jsonPath("$.passed").value(20))
                 .andExpect(jsonPath("$.percent").value(100))
                 .andExpect(jsonPath("$.examUnlocked").value(true));
 

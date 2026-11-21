@@ -17,6 +17,7 @@ import {
 import { Button, Card, PageHeader, ProgressBar, Spinner } from '../ui';
 import { shortDate } from '../util';
 import { EnglishStats } from './Learn';
+import { DevStats } from './Dev';
 
 const FORMAT_LABEL: Record<AnswerFormat, string> = {
   TYPED: '⌨️ Yozma',
@@ -454,11 +455,13 @@ export function WeeklyPage() {
 export function StatsPage() {
   const nav = useNavigate();
   const [params, setParams] = useSearchParams();
-  const tab = params.get('tab') === 'english' ? 'english' : 'words';
+  const tabParam = params.get('tab');
+  const tab = tabParam === 'english' ? 'english' : tabParam === 'dev' ? 'dev' : 'words';
   const tabs = (
     <div className="st-tabs rise">
       <button className={`st-tab ${tab === 'words' ? 'on' : ''}`} onClick={() => setParams({})}>📖 So'zlar bo'yicha</button>
       <button className={`st-tab ${tab === 'english' ? 'on' : ''}`} onClick={() => setParams({ tab: 'english' })}>🇬🇧 Ingliz tili bo'yicha</button>
+      <button className={`st-tab ${tab === 'dev' ? 'on' : ''}`} onClick={() => setParams({ tab: 'dev' })}>💻 Dasturlash bo'yicha</button>
     </div>
   );
   if (tab === 'words') return <WordsStats tabs={tabs} />;
@@ -472,7 +475,7 @@ export function StatsPage() {
         </div>
       </header>
       {tabs}
-      <EnglishStats />
+      {tab === 'dev' ? <DevStats /> : <EnglishStats />}
     </>
   );
 }

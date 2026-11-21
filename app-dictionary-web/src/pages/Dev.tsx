@@ -90,7 +90,7 @@ interface ModuleMeta {
 }
 
 // Modules with written lessons; every other plan module only shows its topic names for now.
-const READY = new Set(['internet']);
+const READY = new Set(['internet', 'html']);
 const MODULES: ModuleMeta[] = PLAN.map((m) => ({
   key: m.key,
   icon: m.icon,
@@ -760,6 +760,73 @@ export function DevExamPage() {
       </header>
       <Steps total={questions.length} index={index} />
       <ExerciseCard key={q.ref} item={q} last={index + 1 === questions.length} onDone={next} />
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ statistics tab */
+
+export function DevStats() {
+  const navigate = useNavigate();
+  const [ov, setOv] = useState<DevOverview | null>(null);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    devApi.overview().then(setOv).catch((e) => setError(errorMessage(e, "Statistikani yuklab bo'lmadi")));
+  }, []);
+
+  if (!ov) return error ? <Notice>{error}</Notice> : <Spinner />;
+  if (!ov.level) {
+    return (
+      <Card className="rise">
+        <p>Dasturlash kursida hali daraja tanlanmagan.</p>
+        <Button onClick={() => navigate('/frontend')}>Kursni boshlash</Button>
+      </Card>
+    );
+  }
+  const meta = LEVEL_META[ov.level];
+  const scored = ov.lessons.filter((l) => l.bestScore !== null);
+  const avg = scored.length ? Math.round(scored.reduce((a, l) => a + (l.bestScore ?? 0), 0) / scored.length) : null;
+  const weak = scored.filter((l) => (l.bestScore ?? 0) < 85).sort((a, b) => (a.bestScore ?? 0) - (b.bestScore ?? 0)).slice(0, 4);
+  const mods = ov.modules.filter((m) => m.lessons > 0);
+
+  return (
+    <>
+      <Card className="rise">
+        <div className="lr-sec-head"><h2>{meta.icon} {meta.title} darajasi</h2></div>
+        <ProgressBar pct={ov.percent} color={meta.tone} />
+        <small>{ov.passed} / {ov.total} dars o'zlashtirildi{avg !== null ? ` · o'rtacha natija ${avg}%` : ''}</small>
+        {ov.lastExam && <small> · oxirgi imtihon {ov.lastExam.percent}% ({ov.lastExam.passed ? "o'tdi" : "o'tmadi"})</small>}
+      </Card>
+      {mods.length > 0 && (
+        <Card className="rise">
+          <div className="lr-sec-head"><h2>Mavzular bo'yicha</h2></div>
+          {mods.map((m) => {
+            const p = PLAN.find((x) => x.key === m.key);
+            return (
+              <div key={m.key} className="lr-stat">
+                <div className="lr-stat-head">
+                  <b>{p?.icon} {p?.title ?? m.key}</b>
+                  <span>{m.passed}/{m.lessons}</span>
+                </div>
+                <ProgressBar pct={Math.round((m.passed / Math.max(1, m.lessons)) * 100)} color={meta.tone} />
+              </div>
+            );
+          })}
+        </Card>
+      )}
+      {weak.length > 0 && (
+        <Card className="rise">
+          <div className="lr-sec-head"><h2>Qayta takrorlash kerak</h2></div>
+          {weak.map((l) => (
+            <button key={l.code} className="dv-lesson" onClick={() => navigate(`/frontend/lesson/${l.code}`)}>
+              <span className="dv-lesson-txt"><b>{l.title}</b></span>
+              <span className="dv-lesson-meta"><em className="low">{l.bestScore}%</em></span>
+            </button>
+          ))}
+        </Card>
+      )}
+      {scored.length === 0 && <Notice kind="info">Hali dars bajarilmagan. Bitta dars bajaring, shunda natijalar shu yerda ko'rinadi.</Notice>}
     </>
   );
 }
