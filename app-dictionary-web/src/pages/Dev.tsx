@@ -636,7 +636,7 @@ export function DevLessonPage() {
 
   const item = lesson.items[index];
   return (
-    <>
+    <div className="dv-play">
       <header className="qx-top">
         <button className="gp-back" onClick={exit} aria-label="Orqaga">←</button>
         <div className="qx-title">
@@ -655,7 +655,7 @@ export function DevLessonPage() {
         onDone={done}
         onChecked={(ok) => setMarks((p) => { const n = [...p]; n[index] = ok; return n; })}
       />
-    </>
+    </div>
   );
 }
 
@@ -749,7 +749,7 @@ export function DevExamPage() {
   };
 
   return (
-    <>
+    <div className="dv-play">
       <header className="qx-top">
         <button className="gp-back" onClick={exit} aria-label="Orqaga">←</button>
         <div className="qx-title">
@@ -760,7 +760,7 @@ export function DevExamPage() {
       </header>
       <Steps total={questions.length} index={index} />
       <ExerciseCard key={q.ref} item={q} last={index + 1 === questions.length} onDone={next} />
-    </>
+    </div>
   );
 }
 

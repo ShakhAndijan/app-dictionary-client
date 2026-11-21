@@ -5776,3 +5776,7 @@ i.bad,
 .dv-group { margin-top: 18px; }
 .dv-group-t { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .dv-lesson.plan { display: flex; align-items: center; gap: 12px; width: 100%; opacity: .72; cursor: default; }
+
+/* Programming course: answer options two per row */
+.dv-play .ex2-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 380px) { .dv-play .ex2-options { grid-template-columns: 1fr; } }
