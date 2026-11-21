@@ -16,6 +16,7 @@ import { Button, Card, Notice, PageHeader, ProgressBar, Spinner } from '../ui';
 import { requestProgressCheck } from '../util';
 import { GameResult } from './StudyGames';
 import { ExerciseCard, Steps } from './Learn';
+import { PLAN, PLAN_GROUPS } from './devPlan';
 
 /* ------------------------------------------------------------------ content shapes */
 
@@ -88,13 +89,16 @@ interface ModuleMeta {
   ready: boolean;
 }
 
-const MODULES: ModuleMeta[] = [
-  { key: 'internet', icon: '🌐', title: 'Internet', sub: "Internet, HTTP, domen, hosting, DNS va brauzer qanday ishlaydi", topics: ['HTTP', 'DNS', 'Hosting', 'Brauzer'], ready: true },
-  { key: 'html', icon: '🧱', title: 'HTML', sub: 'Sahifa tuzilishi: teglar, formalar, semantika', topics: ['Teglar', 'Formalar', 'Semantika'], ready: false },
-  { key: 'css', icon: '🎨', title: 'CSS', sub: 'Dizayn: layout, flex, grid, animatsiya', topics: ['Flexbox', 'Grid', 'Responsive'], ready: false },
-  { key: 'javascript', icon: '⚡', title: 'JavaScript', sub: 'Dasturlash tili: mantiq, DOM, asinxron kod', topics: ['ES6+', 'DOM', 'Async'], ready: false },
-  { key: 'react', icon: '⚛️', title: 'React', sub: 'Komponentlar, holat va zamonaviy interfeyslar', topics: ['Komponentlar', 'Hooks', 'Router'], ready: false },
-];
+// Modules with written lessons; every other plan module only shows its topic names for now.
+const READY = new Set(['internet']);
+const MODULES: ModuleMeta[] = PLAN.map((m) => ({
+  key: m.key,
+  icon: m.icon,
+  title: m.title,
+  sub: `${m.topics.length} mavzu · ${m.src}`,
+  topics: m.topics.slice(0, 3),
+  ready: READY.has(m.key),
+}));
 
 /* ------------------------------------------------------------------ theory renderer */
 
@@ -363,8 +367,11 @@ export function DevPage() {
       ) : (
         <>
           <h2 className="dv-title2">Mavzular</h2>
-          <div className="dv-mods">
-            {MODULES.map((m, i) => {
+          {PLAN_GROUPS.map((g) => (
+            <section key={g.title} className="dv-group">
+              <h3 className="dv-group-t">{g.title}</h3>
+              <div className="dv-mods">
+            {MODULES.filter((m) => g.keys.includes(m.key)).map((m, i) => {
               const info = ov.modules.find((x) => x.key === m.key);
               const pct = info ? Math.round((info.passed / Math.max(1, info.lessons)) * 100) : 0;
               const open = m.ready && !!info;
@@ -373,7 +380,6 @@ export function DevPage() {
                   key={m.key}
                   className={`dv-mod rise ${open ? '' : 'soon'}`}
                   style={{ ['--d' as string]: `${0.05 + i * 0.06}s` }}
-                  disabled={!open}
                   onClick={() => navigate(`/frontend/${m.key}`)}
                 >
                   <span className="dv-mod-ico">{m.icon}</span>
@@ -395,7 +401,9 @@ export function DevPage() {
                 </button>
               );
             })}
-          </div>
+              </div>
+            </section>
+          ))}
           <ExamCard ov={ov} onGo={() => navigate('/frontend/exam')} />
         </>
       )}
@@ -439,6 +447,33 @@ export function DevModulePage() {
   const meta = MODULES.find((m) => m.key === module);
   const lessons = ov.lessons.filter((l) => l.module === module);
   const level = ov.level ? LEVEL_META[ov.level] : null;
+  const plan = PLAN.find((m) => m.key === module);
+  if (plan && meta && level && lessons.length === 0) {
+    return (
+      <div className="dv">
+        <header className="dv-hero rise" style={{ ['--tone' as string]: level.tone, ['--tone2' as string]: level.tone2 }}>
+          <button className="gp-back" onClick={() => navigate('/frontend')} aria-label="Orqaga">←</button>
+          <div className="dv-hero-txt">
+            <div className="eyebrow">{level.title} · {plan.days} kunlik reja{plan.star ? ' · ⭐ asosiy' : ''}</div>
+            <h1 className="dx-title">{plan.icon} {plan.title}</h1>
+            <p>Manba: {plan.src}</p>
+          </div>
+        </header>
+        <Notice kind="info">Darslar tayyorlanmoqda. Mavzular rejasi quyida.</Notice>
+        <ol className="dv-lessons">
+          {plan.topics.map((t, i) => (
+            <li key={t} className="rise" style={{ ['--d' as string]: `${Math.min(i, 10) * 0.03}s` }}>
+              <div className="dv-lesson plan">
+                <span className="dv-lesson-no">{i + 1}</span>
+                <span className="dv-lesson-txt"><b>{t}</b></span>
+                <span className="dv-lesson-go">Tez orada</span>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    );
+  }
   if (!meta || lessons.length === 0 || !level) {
     return (
       <>

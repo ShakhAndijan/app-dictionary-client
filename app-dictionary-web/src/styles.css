@@ -5771,3 +5771,8 @@ i.bad,
 .dv-life-ic { font-size: 26px; line-height: 1; }
 .dv-life b { color: var(--green-text); font-size: 15px; }
 .dv-life p { margin: 4px 0 0; font-size: 14px; line-height: 1.6; }
+
+/* Frontend roadmap groups and planned topics */
+.dv-group { margin-top: 18px; }
+.dv-group-t { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.dv-lesson.plan { display: flex; align-items: center; gap: 12px; width: 100%; opacity: .72; cursor: default; }
