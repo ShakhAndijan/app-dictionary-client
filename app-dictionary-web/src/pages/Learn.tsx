@@ -1176,7 +1176,7 @@ function Radar({ stats }: { stats: LearnStats }) {
   );
 }
 
-function Gauge({ pct, tone, size = 84, children }: { pct: number | null; tone: string; size?: number; children?: React.ReactNode }) {
+export function Gauge({ pct, tone, size = 84, children }: { pct: number | null; tone: string; size?: number; children?: React.ReactNode }) {
   const r = (size - 12) / 2;
   const len = 2 * Math.PI * r;
   return (

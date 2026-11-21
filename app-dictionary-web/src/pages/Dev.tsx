@@ -15,7 +15,7 @@ import {
 import { Button, Card, Notice, PageHeader, ProgressBar, Spinner } from '../ui';
 import { requestProgressCheck } from '../util';
 import { GameResult } from './StudyGames';
-import { ExerciseCard, Steps } from './Learn';
+import { ExerciseCard, Gauge, Steps } from './Learn';
 import { PLAN, PLAN_GROUPS } from './devPlan';
 
 /* ------------------------------------------------------------------ content shapes */
@@ -770,63 +770,126 @@ export function DevStats() {
   const navigate = useNavigate();
   const [ov, setOv] = useState<DevOverview | null>(null);
   const [error, setError] = useState('');
+  const [open, setOpen] = useState<string | null>(null);
 
   useEffect(() => {
-    devApi.overview().then(setOv).catch((e) => setError(errorMessage(e, "Statistikani yuklab bo'lmadi")));
+    devApi.overview().then((o) => {
+      setOv(o);
+      setOpen(o.modules.find((m) => m.lessons > 0)?.key ?? null);
+    }).catch((e) => setError(errorMessage(e, "Statistikani yuklab bo'lmadi")));
   }, []);
 
   if (!ov) return error ? <Notice>{error}</Notice> : <Spinner />;
   if (!ov.level) {
     return (
-      <Card className="rise">
-        <p>Dasturlash kursida hali daraja tanlanmagan.</p>
-        <Button onClick={() => navigate('/frontend')}>Kursni boshlash</Button>
+      <Card className="rise lr-es-empty">
+        <span className="lr-es-bigicon">💻</span>
+        <b>Dasturlash kursi hali boshlanmagan</b>
+        <p>Darajangizni tanlang va birinchi darsni bajaring, shundan keyin bu yerda natijalar paydo bo'ladi.</p>
+        <Button onClick={() => navigate('/frontend')}>Kursga o'tish</Button>
       </Card>
     );
   }
   const meta = LEVEL_META[ov.level];
   const scored = ov.lessons.filter((l) => l.bestScore !== null);
-  const avg = scored.length ? Math.round(scored.reduce((a, l) => a + (l.bestScore ?? 0), 0) / scored.length) : null;
-  const weak = scored.filter((l) => (l.bestScore ?? 0) < 85).sort((a, b) => (a.bestScore ?? 0) - (b.bestScore ?? 0)).slice(0, 4);
+  const avgOf = (list: DevLessonSummary[]) => {
+    const s = list.filter((l) => l.bestScore !== null);
+    return s.length ? Math.round(s.reduce((a, l) => a + (l.bestScore ?? 0), 0) / s.length) : null;
+  };
+  const avg = avgOf(ov.lessons);
+  const best = scored.length ? Math.max(...scored.map((l) => l.bestScore ?? 0)) : null;
   const mods = ov.modules.filter((m) => m.lessons > 0);
+  const sel = mods.find((m) => m.key === open) ?? null;
 
   return (
     <>
-      <Card className="rise">
-        <div className="lr-sec-head"><h2>{meta.icon} {meta.title} darajasi</h2></div>
-        <ProgressBar pct={ov.percent} color={meta.tone} />
-        <small>{ov.passed} / {ov.total} dars o'zlashtirildi{avg !== null ? ` · o'rtacha natija ${avg}%` : ''}</small>
-        {ov.lastExam && <small> · oxirgi imtihon {ov.lastExam.percent}% ({ov.lastExam.passed ? "o'tdi" : "o'tmadi"})</small>}
-      </Card>
-      {mods.length > 0 && (
-        <Card className="rise">
-          <div className="lr-sec-head"><h2>Mavzular bo'yicha</h2></div>
-          {mods.map((m) => {
-            const p = PLAN.find((x) => x.key === m.key);
-            return (
-              <div key={m.key} className="lr-stat">
-                <div className="lr-stat-head">
-                  <b>{p?.icon} {p?.title ?? m.key}</b>
-                  <span>{m.passed}/{m.lessons}</span>
-                </div>
-                <ProgressBar pct={Math.round((m.passed / Math.max(1, m.lessons)) * 100)} color={meta.tone} />
-              </div>
-            );
-          })}
-        </Card>
-      )}
-      {weak.length > 0 && (
-        <Card className="rise">
-          <div className="lr-sec-head"><h2>Qayta takrorlash kerak</h2></div>
-          {weak.map((l) => (
-            <button key={l.code} className="dv-lesson" onClick={() => navigate(`/frontend/lesson/${l.code}`)}>
-              <span className="dv-lesson-txt"><b>{l.title}</b></span>
-              <span className="dv-lesson-meta"><em className="low">{l.bestScore}%</em></span>
+      <section className="lr-es-hero rise">
+        <Gauge pct={ov.percent} tone={meta.tone} size={112}>
+          <b>{ov.percent}%</b>
+          <small>daraja</small>
+        </Gauge>
+        <div className="lr-es-hero-main">
+          <div className="lr-es-hero-top">
+            <span className="lr-es-lvl">{meta.icon}</span>
+            <div>
+              <b>{meta.title} darajasi</b>
+              <small>{ov.passed} / {ov.total} dars o'zlashtirilgan</small>
+            </div>
+          </div>
+          <div className="lr-es-nums">
+            <div><span>✅</span><b>{ov.passed}</b><small>dars</small></div>
+            <div><span>🎯</span><b>{avg == null ? '—' : avg + '%'}</b><small>o'rtacha</small></div>
+            <div><span>🏆</span><b>{best == null ? '—' : best + '%'}</b><small>eng yaxshi</small></div>
+            <div><span>🎓</span><b>{ov.lastExam ? ov.lastExam.percent + '%' : '—'}</b><small>imtihon</small></div>
+          </div>
+        </div>
+      </section>
+
+      <div className="lr-es-gauges rise">
+        {mods.map((m) => {
+          const p = PLAN.find((x) => x.key === m.key);
+          const pct = Math.round((m.passed / Math.max(1, m.lessons)) * 100);
+          return (
+            <button key={m.key} className={`lr-es-gcard ${open === m.key ? 'on' : ''}`} style={{ ['--tone' as string]: meta.tone }} onClick={() => setOpen(m.key)}>
+              <Gauge pct={pct} tone={meta.tone} size={78}><span className="lr-g-ico">{p?.icon}</span></Gauge>
+              <b>{p?.title ?? m.key}</b>
+              <em>{pct}%</em>
+              <small>{m.passed}/{m.lessons} dars</small>
             </button>
-          ))}
-        </Card>
-      )}
-      {scored.length === 0 && <Notice kind="info">Hali dars bajarilmagan. Bitta dars bajaring, shunda natijalar shu yerda ko'rinadi.</Notice>}
+          );
+        })}
+      </div>
+
+      {sel && (() => {
+        const p = PLAN.find((x) => x.key === sel.key);
+        const lessons = ov.lessons.filter((l) => l.module === sel.key);
+        const mAvg = avgOf(lessons);
+        const pct = Math.round((sel.passed / Math.max(1, sel.lessons)) * 100);
+        const weak = lessons.filter((l) => l.bestScore !== null && (l.bestScore ?? 0) < 85).sort((a, b) => (a.bestScore ?? 0) - (b.bestScore ?? 0));
+        return (
+          <Card key={sel.key} className="lr-es-detail rise" style={{ ['--tone' as string]: meta.tone }}>
+            <header className="lr-es-skill-head">
+              <span className="lr-es-skill-ico">{p?.icon}</span>
+              <div><b>{p?.title}</b><small>{sel.passed} / {sel.lessons} dars o'zlashtirilgan</small></div>
+            </header>
+            {mAvg === null ? (
+              <div className="lr-es-startbox">
+                <p>Bu mavzu bo'yicha hali dars bajarilmagan.</p>
+                <Button onClick={() => navigate(`/frontend/${sel.key}`)}>Boshlash →</Button>
+              </div>
+            ) : (
+              <>
+                <div className="lr-es-triple">
+                  <div><Gauge pct={pct} tone={meta.tone} size={74}><b>{pct}%</b></Gauge><small>Darslar</small></div>
+                  <div><Gauge pct={mAvg} tone={meta.tone} size={74}><b>{mAvg}%</b></Gauge><small>O'rtacha</small></div>
+                </div>
+                <div className="lr-es-bars2">
+                  <b>Darslar natijasi</b>
+                  <div className="lr-es-columns">
+                    <span className="lr-es-passline" style={{ bottom: ov.passMark + '%' }}><em>{ov.passMark}%</em></span>
+                    {lessons.map((l) => (
+                      <span key={l.code} className="lr-es-col" title={l.title}>
+                        <i className={l.passed ? 'ok' : 'no'} style={{ height: Math.max(l.bestScore ?? 0, 4) + '%' }} />
+                        <small>{l.bestScore ?? '·'}</small>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                {weak.length > 0 && (
+                  <div className="lr-es-weaklist">
+                    <b>⚠️ Qayta ishlash kerak</b>
+                    {weak.map((l) => (
+                      <button key={l.code} onClick={() => navigate(`/frontend/lesson/${l.code}`)}>
+                        <span>{l.title}</span><em>{l.bestScore}%</em><i>→</i>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+          </Card>
+        );
+      })()}
     </>
   );
 }
