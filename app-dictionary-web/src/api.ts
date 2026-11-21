@@ -682,3 +682,84 @@ export const learnApi = {
   submitExam: (answers: { ref: string; answer: string }[]) => d(http.post<LearnExamResult>('/learn/exam', { answers })),
   stats: () => d(http.get<LearnStats>('/learn/stats')),
 };
+
+/* ------------------------------------------------------------------ programming course (frontend) */
+
+export type DevLevel = 'JUNIOR' | 'MIDDLE' | 'SENIOR';
+
+export interface DevLessonSummary {
+  code: string;
+  module: string;
+  title: string;
+  intro: string | null;
+  unit: number;
+  itemCount: number;
+  bestScore: number | null;
+  passed: boolean;
+}
+
+export interface DevOverview {
+  level: DevLevel | null;
+  levels: { level: DevLevel; ready: boolean; lessons: number }[];
+  passed: number;
+  total: number;
+  percent: number;
+  examUnlocked: boolean;
+  lastExam: { percent: number; passed: boolean; at: string } | null;
+  passMark: number;
+  examPassMark: number;
+  modules: { key: string; lessons: number; passed: number }[];
+  lessons: DevLessonSummary[];
+}
+
+export interface DevItemView {
+  id: string;
+  kind: 'CHOICE' | 'FILL' | 'ORDER';
+  prompt: string;
+  options: string[] | null;
+  words: string[] | null;
+}
+
+export interface DevLessonDetail {
+  code: string;
+  level: DevLevel;
+  module: string;
+  title: string;
+  intro: string | null;
+  theory: string | null;
+  practice: string | null;
+  items: DevItemView[];
+}
+
+export interface DevFinish {
+  correct: number;
+  total: number;
+  score: number;
+  passed: boolean;
+  results: { itemId: string; correct: boolean; answer: string; explain: string | null }[];
+}
+
+export interface DevExamQuestion extends DevItemView {
+  ref: string;
+  module: string;
+}
+
+export interface DevExamResult {
+  percent: number;
+  passed: boolean;
+  correct: number;
+  total: number;
+  passMark: number;
+  newLevel: DevLevel | null;
+  review: { ref: string; correct: boolean; answer: string; explain: string | null }[];
+}
+
+export const devApi = {
+  overview: () => d(http.get<DevOverview>('/dev/overview')),
+  setLevel: (level: string) => d(http.put<DevOverview>('/dev/level', { level })),
+  lesson: (code: string) => d(http.get<DevLessonDetail>(`/dev/lessons/${code}`)),
+  check: (code: string, itemId: string, answer: string) => d(http.post<LearnCheck>(`/dev/lessons/${code}/check`, { itemId, answer })),
+  finish: (code: string, answers: { itemId: string; answer: string }[]) => d(http.post<DevFinish>(`/dev/lessons/${code}/finish`, { answers })),
+  exam: () => d(http.get<DevExamQuestion[]>('/dev/exam')),
+  submitExam: (answers: { ref: string; answer: string }[]) => d(http.post<DevExamResult>('/dev/exam', { answers })),
+};

@@ -16,7 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class ProfileService {
 
     /** English: words (add and practise words), ielts. Programming: frontend. */
-    static final java.util.List<String> MODULES = java.util.List.of("words", "course", "ielts", "frontend", "html", "css", "javascript", "react");
+    static final java.util.List<String> MODULES = java.util.List.of("words", "course", "ielts", "frontend");
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;

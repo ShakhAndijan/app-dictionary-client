@@ -427,7 +427,7 @@ function SpeakBox({ phrase, value, setValue, locked }: { phrase: string; value: 
   );
 }
 
-function ExerciseCard({ item, instant, last, onDone, onChecked }: {
+export function ExerciseCard({ item, instant, last, onDone, onChecked }: {
   item: Exercise;
   /** Returns feedback right away (lessons). Without it (exam) the answer is only collected. */
   instant?: (answer: string) => Promise<LearnCheck>;
@@ -592,7 +592,7 @@ function ExerciseCard({ item, instant, last, onDone, onChecked }: {
 }
 
 /** Progress segments; `marks[i]` colours a checked step green (true) or red (false). */
-function Steps({ total, index, marks }: { total: number; index: number; marks?: (boolean | undefined)[] }) {
+export function Steps({ total, index, marks }: { total: number; index: number; marks?: (boolean | undefined)[] }) {
   return (
     <div className="qx-steps">
       {Array.from({ length: total }, (_, i) => {

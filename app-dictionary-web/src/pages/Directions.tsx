@@ -55,6 +55,7 @@ interface ModuleDef {
   sub: string;
   perks: string[];
   ready: boolean;
+  locked?: boolean;
 }
 
 interface DirectionDef {
@@ -90,10 +91,8 @@ export const DIRECTIONS: DirectionDef[] = [
     tone: '#0ea5e9',
     tone2: '#22d3ee',
     modules: [
-      { key: 'html', icon: 'frontend', title: 'HTML', sub: 'Sahifa tuzilishi: teglar, formalar, semantika', perks: ['Teglar', 'Formalar', 'Semantika'], ready: false },
-      { key: 'css', icon: 'code', title: 'CSS', sub: 'Dizayn: layout, flex, grid, animatsiya', perks: ['Flexbox', 'Grid', 'Responsive'], ready: false },
-      { key: 'javascript', icon: 'code', title: 'JavaScript', sub: "Dasturlash tili: mantiq, DOM, asinxron kod", perks: ['ES6+', 'DOM', 'Async'], ready: false },
-      { key: 'react', icon: 'frontend', title: 'React', sub: 'Komponentlar, holat va zamonaviy interfeyslar', perks: ['Komponentlar', 'Hooks', 'Router'], ready: false },
+      { key: 'frontend', icon: 'frontend', title: 'Frontend', sub: "Saytlar va interfeyslar yaratishni o'rganing: junior dan senior gacha", perks: ['Internet', 'HTML', 'CSS', 'JavaScript', 'React'], ready: true },
+      { key: 'backend', icon: 'code', title: 'Backend', sub: 'Serverlar, bazalar va API', perks: ['Server', 'Baza', 'API'], ready: false, locked: true },
     ],
   },
 ];
@@ -169,9 +168,9 @@ export function DirectionsPage() {
                 <div className="dr-fold-in">
                   <div className="dr-grid">
                     {d.modules.map((m) => {
-                      const on = chosen.includes(m.key);
+                      const on = chosen.includes(m.key) && !m.locked;
                       return (
-                        <button key={m.key} className={`dr-mod ${on ? 'on' : ''}`} onClick={() => toggle(m.key)} disabled={saving} role="switch" aria-checked={on}>
+                        <button key={m.key} className={`dr-mod ${on ? 'on' : ''}`} onClick={() => toggle(m.key)} disabled={saving || m.locked} role="switch" aria-checked={on && !m.locked} style={m.locked ? { opacity: 0.55, cursor: "not-allowed" } : undefined}>
                           <span className="dr-mod-top">
                             <span className="dr-mod-ico">{ICON[m.icon]}</span>
                             {!m.ready && <em className="dr-soon-tag">Tez orada</em>}
@@ -186,7 +185,7 @@ export function DirectionsPage() {
                               <i key={p}>{p}</i>
                             ))}
                           </span>
-                          <span className="dr-state">{on ? 'Menyuga qo\'shilgan' : "Menyuga qo'shish"}</span>
+                          <span className="dr-state">{m.locked ? "Tez orada" : on ? 'Menyuga qo\'shilgan' : "Menyuga qo'shish"}</span>
                         </button>
                       );
                     })}
@@ -220,14 +219,5 @@ export function ComingSoonPage({ icon, title, text, topics }: { icon: IconKey; t
       )}
       <button className="dr-soon-btn" onClick={() => nav('/profile/directions')}>Yo'nalishlarni o'zgartirish</button>
     </section>
-  );
-}
-
-export function FrontendPage() {
-  const { user } = useAuth();
-  const chosen = user?.modules ?? [];
-  const topics = (DIRECTIONS[1]?.modules ?? []).filter((m) => chosen.includes(m.key)).map((m) => m.title);
-  return (
-    <ComingSoonPage icon="frontend" title="Dasturlash" text="Tanlangan mavzular tez orada ochiladi. Darslar va amaliy topshiriqlar tayyorlanmoqda." topics={topics} />
   );
 }

@@ -82,7 +82,7 @@ export default function MainTabs() {
       {has('words') && <Tab.Screen name="Baholash" component={QuizScreen} options={{ title: 'Baholash' }} />}
       {has('course', 'ielts') && <Tab.Screen name="Kurs" component={LearnNavigator} options={{ title: "Ingliz tili" }} />}
       {has('words') && <Tab.Screen name="Sozlar" component={WordsScreen} options={{ title: "So'zlar" }} />}
-      {has('frontend', 'html', 'css', 'javascript', 'react') && (
+      {has('frontend') && (
         <Tab.Screen name="Frontend" options={{ title: 'Dasturlash' }}>
           {() => <ComingSoonScreen icon="code-slash" title="Dasturlash" text="Tanlangan mavzular tez orada ochiladi. Darslar va amaliy topshiriqlar tayyorlanmoqda." topics={DIRECTIONS[1].modules.filter((m) => modules.includes(m.key)).map((m) => m.title)} />}
         </Tab.Screen>

@@ -53,7 +53,7 @@ export default function DirectionsScreen() {
                 {d.modules.map((m) => {
                   const on = chosen.includes(m.key);
                   return (
-                    <Pressable key={m.key} style={[styles.mod, on && { borderColor: d.color, backgroundColor: `${d.color}14` }]} onPress={() => toggle(m.key)} disabled={saving}>
+                    <Pressable key={m.key} style={[styles.mod, m.locked && { opacity: 0.55 }, on && { borderColor: d.color, backgroundColor: `${d.color}14` }]} onPress={() => toggle(m.key)} disabled={saving || m.locked}>
                       <Ionicons name={m.icon} size={22} color={on ? d.color : colors.textMuted} />
                       <View style={{ flex: 1 }}>
                         <View style={styles.modTitleRow}>
@@ -66,7 +66,7 @@ export default function DirectionsScreen() {
                         </View>
                         <Text style={styles.modSub}>{m.sub}</Text>
                       </View>
-                      <Switch value={on} onValueChange={() => toggle(m.key)} disabled={saving} trackColor={{ true: d.color, false: colors.border }} thumbColor="#fff" />
+                      <Switch value={on && !m.locked} onValueChange={() => toggle(m.key)} disabled={saving || m.locked} trackColor={{ true: d.color, false: colors.border }} thumbColor="#fff" />
                     </Pressable>
                   );
                 })}
