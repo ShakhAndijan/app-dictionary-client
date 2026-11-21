@@ -27,6 +27,8 @@ interface Section {
   code?: { lang: string; text: string };
   flow?: string[];
   callout?: { kind: 'tip' | 'warn' | 'info'; text: string };
+  defs?: { term: string; text: string }[];
+  life?: { icon: string; title: string; text: string }[];
 }
 
 interface DevTheoryData {
@@ -146,6 +148,29 @@ function SectionView({ s }: { s: Section }) {
               ))}
             </tbody>
           </table>
+        </div>
+      )}
+      {s.defs && (
+        <div className="dv-defs">
+          {s.defs.map((d) => (
+            <div className="dv-def" key={d.term}>
+              <b>{d.term}</b>
+              <p>{d.text}</p>
+            </div>
+          ))}
+        </div>
+      )}
+      {s.life && (
+        <div className="dv-lives">
+          {s.life.map((l) => (
+            <div className="dv-life" key={l.title}>
+              <span className="dv-life-ic">{l.icon}</span>
+              <div>
+                <b>{l.title}</b>
+                <p>{l.text}</p>
+              </div>
+            </div>
+          ))}
         </div>
       )}
       {s.code && <CodeBlock lang={s.code.lang} text={s.code.text} />}

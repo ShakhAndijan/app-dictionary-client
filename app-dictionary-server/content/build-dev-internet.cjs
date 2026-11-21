@@ -37,7 +37,7 @@ lesson({
   practice: [{ title: "Paket yo'lini ko'ring", text: "Terminalda google.com gacha paket qaysi routerlardan o'tishini ko'ring. Har bir qator — bitta hop.", cmd: 'tracert google.com   (macOS/Linux: traceroute google.com)' }],
   items: [
     ch("Internet deb nimaga aytiladi?", "Millionlab tarmoqlarni bir-biriga ulaydigan katta tarmoq", ["Faqat saytlar to'plami", "Google'ning serverlari", "Brauzer dasturi"], "Internet — tarmoqlar tarmog'i (network of networks)."),
-    ch("Quyidagilardan qaysi biri web HAMDA internet xizmati, lekin email emas?", "Sayt ochish (HTTP orqali)", ["Email yuborish", "Video qo'ng'iroq", "Onlayn o'yin"], "Web — saytlar va HTTP. Email, o'yin va video qo'ng'iroq internetdan foydalanadi, lekin web emas."),
+    ch("Quyidagilardan qaysi biri web xizmatiga kiradi?", "Sayt ochish (HTTP orqali)", ["Email yuborish", "Video qo'ng'iroq", "Onlayn o'yin"], "Web — saytlar va HTTP. Email, o'yin va video qo'ng'iroq internetdan foydalanadi, lekin web emas."),
     ch("Pochta analogiyasida pochta bo'limi internetda nimaga to'g'ri keladi?", 'Router', ['Brauzer', 'Domen', 'Cookie'], "Router paketni keyingi to'g'ri tugunga uzatadi, butun yo'lni bilmaydi."),
     ch("Pochta analogiyasida uy manzili nimaga to'g'ri keladi?", 'IP manzil', ['Parol', 'Brauzer', 'Fayl nomi'], "IP manzil paket qayerga borishini belgilaydi."),
     fill("Katta ma'lumot internetda kichik bo'laklarga bo'linib yuboriladi. Bu bo'laklar nima deb ataladi? (bitta so'z, inglizcha)", 'packet', "Ma'lumot paketlarga (packet) bo'linadi.", ['paket', 'packet']),
@@ -374,6 +374,190 @@ lesson({
     ch("Server HTML javobini qaytargach, brauzerda qaysi bosqich keladi?", 'Parsing va render', ["DNS qidiruv", "TCP handshake", "Domen ro'yxatdan o'tkazish"], "Javobdan keyin parsing va render."),
   ],
 });
+
+/* Definitions ("Ta'riflar") and real-life examples ("Hayotdan misollar") per lesson. ------------------ */
+const EXTRAS = {
+  1: {
+    defs: [
+      ['Internet', "dunyodagi millionlab kompyuter tarmoqlarini umumiy qoidalar bilan bir-biriga ulaydigan global tarmoq (tarmoqlar tarmog'i)."],
+      ['Web (WWW)', "internet ustida ishlaydigan xizmat: saytlar, havolalar va ularni uzatuvchi HTTP protokoli."],
+      ['Router', "paketni olib, manziliga qarab keyingi tarmoqqa uzatadigan qurilma."],
+      ['Paket (packet)', "tarmoqda uzatiladigan kichik ma'lumot bo'lagi; ichida jo'natuvchi va qabul qiluvchi manzili yoziladi."],
+    ],
+    life: [
+      { icon: '💬', title: 'Telegram internet, lekin web emas', text: "Telegramda xabar yuborganingizda ma'lumot internet orqali ketadi, lekin siz sayt ochmayapsiz. Chrome da uz.wikipedia.org ochsangiz esa web xizmatidan foydalanasiz. Ikkalasi ham bitta internet kabelidan o'tadi." },
+      { icon: '📦', title: "Katta fayl qanday ketadi", text: "Do'stingizga 50 MB video yuborsangiz, u bir bo'lak bo'lib emas, minglab kichik paketga bo'linib ketadi va qabul qiluvchi telefonda qayta yig'iladi. Yo'lda bitta paket yo'qolsa, faqat o'shani qayta yuborish yetarli." },
+    ],
+  },
+  2: {
+    defs: [
+      ['Mijoz (client)', "so'rov yuboradigan dastur. Frontendda ko'pincha brauzer."],
+      ['Server', "tarmoqqa ulangan, so'rovlarni kutib turgan va javob qaytaradigan dastur."],
+      ["So'rov (request)", "mijozning serverga yuborgan xabari: \"menga shuni ber\" yoki \"shuni saqla\"."],
+      ['Javob (response)', "serverning so'rovga qaytargan natijasi."],
+    ],
+    life: [
+      { icon: '🍕', title: 'Yetkazib berish ilovasi', text: "Ilovada \"Pitsa\" tugmasini bosasiz: telefon (mijoz) serverga so'rov yuboradi, server menyuni bazadan olib javob qaytaradi. Server pitsani qanday tayyorlashini siz ko'rmaysiz, faqat natijani olasiz." },
+      { icon: '🏧', title: 'Bankomat', text: "Bankomat ham mijoz: u bank serveriga \"balans qancha?\" deb so'raydi. Bank serveri javob beradi. Bankomatning o'zida pul hisobi saqlanmaydi." },
+    ],
+  },
+  3: {
+    defs: [
+      ['IP manzil', "tarmoqdagi har bir qurilmaning noyob manzili. Paket qaysi qurilmaga borishini shu belgilaydi."],
+      ['Port', "bitta kompyuterdagi qaysi dastur javob berishini ko'rsatadigan raqam (0 dan 65535 gacha)."],
+      ['Private (ichki) IP', "faqat uy yoki ofis tarmog'i ichida ishlaydigan manzil, masalan 192.168.0.5."],
+      ['Public (ochiq) IP', "internetda ko'rinadigan manzil. Uyda odatda routerda bitta bo'ladi."],
+      ['NAT', "ichki manzillarni bitta public IP orqali internetga chiqaradigan router mexanizmi."],
+    ],
+    life: [
+      { icon: '🏢', title: 'Ko\'p qavatli uy', text: "Chilonzordagi 9 qavatli uyning manzili — IP, ichidagi 45-xonadon esa — port. Pochtachi avval uyni topadi, keyin kerakli xonadonga qo'ng'iroq qiladi. Kompyuter ham shunday: avval IP, keyin port." },
+      { icon: '📶', title: 'Uy Wi-Fi si', text: "Telefon, noutbuk va televizor uyda har xil ichki IP ga ega, lekin internetga routerning bitta public IP si bilan chiqadi, xuddi butun oila bitta uy telefoni raqamidan qo'ng'iroq qilgandek." },
+    ],
+  },
+  4: {
+    defs: [
+      ['HTTP', "brauzer va server o'rtasida ma'lumot almashish qoidalari to'plami (HyperText Transfer Protocol)."],
+      ['Stateless', "server oldingi so'rovni avtomatik eslab qolmaydi: har so'rov mustaqil."],
+      ['Header', "so'rov yoki javob haqidagi qo'shimcha ma'lumot (Nom: qiymat)."],
+      ['Body', "so'rov yoki javobning asosiy mazmuni, masalan JSON yoki HTML."],
+    ],
+    life: [
+      { icon: '☕', title: 'Doim yangi barista', text: "Kofexonaga har kirganingizda barista sizni birinchi marta ko'rgandek: \"Nima buyurtma qilasiz?\" Kecha nima olganingizni eslamaydi. Agar sodiqlik kartangizni ko'rsatsangiz (cookie yoki token), sizni taniydi. HTTP aynan shunday ishlaydi." },
+      { icon: '🧾', title: 'Buyurtma varaqasi', text: "Restoranda ofitsiantga yozma buyurtma berasiz: nima (metod), qaysi stol (yo'l), izoh (header) va qo'shimcha talablar (body). Oshxona esa chek (javob) qaytaradi: tayyor, tugagan yoki xato." },
+    ],
+  },
+  5: {
+    defs: [
+      ['URL', "internetdagi resursning to'liq manzili: protokol, domen, port, yo'l va parametrlar."],
+      ['Hostname', "qaysi serverga murojaat qilinayotgani (domen), masalan shop.example.com."],
+      ['Pathname', "server ichidagi resurs yo'li, masalan /cart."],
+      ['Query', "? dan keyingi qo'shimcha parametrlar, masalan ?id=7&sort=new."],
+      ['Fragment', "# dan keyingi qism: sahifa ichidagi joy. Serverga yuborilmaydi."],
+    ],
+    life: [
+      { icon: '🛍️', title: 'Onlayn do\'kondagi mahsulot', text: "uzum.uz/product/123?color=red manzilida: uzum.uz — do'kon, /product/123 — qaysi mahsulot, ?color=red — rangi qizil bo'lsin degan filtr. Havolani do'stingizga yuborsangiz, u aynan o'sha mahsulotni ochadi." },
+      { icon: '📖', title: 'Kitob sahifasiga havola', text: "Fragment kitobdagi xatcho'pga o'xshaydi: kitob (sahifa) hammaga bir xil yuboriladi, xatcho'p esa faqat sizning brauzeringizga qaysi joyga o'tishni aytadi." },
+    ],
+  },
+  6: {
+    defs: [
+      ['HTTP metodi', "so'rovda serverga qanday amal kerakligini bildiruvchi so'z: GET, POST, PUT, PATCH, DELETE."],
+      ['Safe (xavfsiz) metod', "serverdagi holatni o'zgartirmaydigan metod, masalan GET."],
+      ['Idempotent metod', "bir marta yuborilsa ham, o'n marta yuborilsa ham yakuniy natija bir xil bo'ladigan metod."],
+      ['REST API', "resurslar bilan HTTP metodlari orqali ishlaydigan server interfeysi: GET /users, POST /users, DELETE /users/42."],
+    ],
+    life: [
+      { icon: '🛒', title: 'Savat va buyurtma', text: "Mahsulotlarni ko'rish — GET. \"Buyurtma berish\" tugmasi — POST (yangi buyurtma yaratiladi). Manzilni butunlay almashtirish — PUT. Faqat telefon raqamini o'zgartirish — PATCH. Buyurtmani bekor qilish — DELETE." },
+      { icon: '💳', title: 'Ikki marta to\'lov xavfi', text: "Click orqali to'lov qilayotganda internet uzilib qoldi va tugmani yana bosdingiz. POST idempotent emas, shuning uchun pul ikki marta yechilishi mumkin. Shu sababli to'lov tugmasi bosilgach o'chiriladi." },
+      { icon: '🗑️', title: 'DELETE xavfsiz takrorlanadi', text: "Chatdagi xabarni o'chirish tugmasini ikki marta bossangiz ham, xabar bir marta o'chadi. Yakuniy natija bir xil: bu idempotentlik." },
+    ],
+  },
+  7: {
+    defs: [
+      ['Status kodi', "server javobining natijasini bildiruvchi uch xonali raqam."],
+      ['2xx', "muvaffaqiyat: so'rov bajarildi."],
+      ['3xx', "yo'naltirish: resurs boshqa joyda."],
+      ['4xx', "mijoz xatosi: so'rovning o'zida muammo bor."],
+      ['5xx', "server xatosi: so'rov to'g'ri, lekin server uddalay olmadi."],
+    ],
+    life: [
+      { icon: '🚦', title: 'Svetofor', text: "Yashil — 200 (yursangiz bo'ladi), sariq — 3xx (boshqa yo'ldan boring), qizil — 4xx va 5xx (to'xtang, muammo bor). 4xx haydovchining xatosi (noto'g'ri yo'ldan kelgan), 5xx yo'lning o'zi buzilgan." },
+      { icon: '🏛️', title: '401 va 403', text: "Bino qo'riqchisi pasportingizni so'rasa — 401 (kimligingiz noma'lum). Pasportni ko'rsatdingiz, lekin ro'yxatda yo'q bo'lsangiz va \"sizga kirish mumkin emas\" desa — 403." },
+      { icon: '🔌', title: '404 va 500', text: "Do'kon manzili noto'g'ri yozilgan: 404 (bunday do'kon yo'q). Do'kon bor, lekin ichkarida elektr o'chgan: 500 (server ichida nosozlik)." },
+    ],
+  },
+  8: {
+    defs: [
+      ['Header (sarlavha)', "so'rov yoki javob haqidagi qo'shimcha ma'lumot, \"Nom: qiymat\" ko'rinishida."],
+      ['Content-Type', "body qanday formatda ekanini bildiradi, masalan application/json yoki text/html."],
+      ['Authorization', "mijozning kimligini tasdiqlovchi token yoki parolni yuboradigan header."],
+      ['Cookie', "server brauzerga yozib qo'ygan kichik ma'lumot, brauzer uni keyingi so'rovlarda qaytaradi."],
+    ],
+    life: [
+      { icon: '✉️', title: 'Konvert', text: "Xat matni — body. Konvertdagi \"kimdan\", \"kimga\", \"shoshilinch\", \"shaxsiy\" yozuvlari — header lar. Pochtachi xatni ochmaydi, konvertga qarab ish tutadi. Internetdagi routerlar ham shunday." },
+      { icon: '🧥', title: 'Garderob raqami', text: "Teatrga kirib paltoni garderobga topshirdingiz, sizga raqam berishdi. Palto garderobda, siz esa faqat raqamni olib yuribsiz. Cookie ham shunday: foydalanuvchi ma'lumoti serverda, brauzerda esa faqat sessiya raqami." },
+      { icon: '🪪', title: 'Hujjat bilan kirish', text: "Authorization header — bank ofisiga pasport bilan kirish. Pasportni har safar ko'rsatasiz, chunki bank sizni avtomatik eslab qolmaydi." },
+    ],
+  },
+  9: {
+    defs: [
+      ['Domen nomi', "IP manzilga bog'langan, odam o'qiy oladigan nom, masalan google.com."],
+      ['TLD', "domenning eng oxirgi qismi: .com, .org, .uz."],
+      ['Subdomen', "domen egasi o'zi yaratadigan qism, masalan api.example.com."],
+      ['Registrar', "domen sotadigan kompaniya (Namecheap, Cloudflare va boshqalar)."],
+      ['Registrant', "domenni ijaraga olgan shaxs yoki tashkilot, ya'ni domen egasi."],
+    ],
+    life: [
+      { icon: '📒', title: 'Telefon kontaktlari', text: "Do'stingizning raqamini yodlamaysiz, kontaktni \"Aziz\" deb saqlaysiz. Domen — o'sha ism, IP — raqam. Aziz raqamini almashtirsa ham, siz \"Aziz\" ga qo'ng'iroq qilaverasiz." },
+      { icon: '🏘️', title: 'Mahalla va ko\'cha', text: "Domen mahalla nomi, subdomen esa shu mahalladagi ko'chalar: shop.example.uz va blog.example.uz. Yangi ko'cha ochish uchun yangi mahalla sotib olish shart emas." },
+      { icon: '📅', title: 'Kvartira ijarasi', text: "Domen sotib olinmaydi, ijaraga olinadi. To'lovni unutsangiz, boshqa odam o'sha nomni olib qo'yishi mumkin, xuddi muddati tugagan ijara shartnomasi kabi." },
+    ],
+  },
+  10: {
+    defs: [
+      ['DNS', "domen nomini IP manzilga aylantiradigan tarqatilgan tizim (Domain Name System)."],
+      ['Resolver', "mijoz nomidan DNS javobini qidiradigan server, masalan 1.1.1.1 yoki 8.8.8.8."],
+      ['A yozuvi', "domenni IPv4 manzilga bog'laydi."],
+      ['CNAME yozuvi', "bir nomni boshqa nomga yo'naltiradi (alias)."],
+      ['TXT yozuvi', "domen haqida matnli ma'lumot saqlaydi, masalan egalikni tasdiqlash uchun."],
+    ],
+    life: [
+      { icon: '📖', title: 'Telefon ma\'lumotnomasi', text: "Eski 109 xizmatiga qo'ng'iroq qilib \"Aziz Karimov raqami?\" deb so'rardingiz. DNS ham shunday: \"google.com ning IP si nima?\" deb so'raysiz, javob olasiz." },
+      { icon: '📚', title: 'Kutubxonachi', text: "Kitob qayerdaligini bilmagan kutubxonachi avval bo'lim boshlig'idan, keyin javon mas'ulidan so'raydi. Topgach, keyingi o'quvchilar uchun yodida saqlaydi. Resolver ham xuddi shunday: root, TLD, authoritative server va keshlash." },
+      { icon: '🏪', title: 'Do\'kon filiali', text: "CNAME — do'konning yangi filiali: www.example.uz ga kelganlar example.netlify.app ga yo'naltiriladi, xuddi eshikdagi \"Yangi manzil: ...\" yozuvi kabi." },
+    ],
+  },
+  11: {
+    defs: [
+      ['Hosting', "sayt fayllari yoki dasturi joylashgan va internetdan doimiy kirish mumkin bo'lgan kompyuter xizmati."],
+      ['Deploy', "tayyor saytni hostingga joylab, foydalanuvchilar uchun ochish jarayoni."],
+      ['Build', "kodni production uchun tayyor fayllarga (html, js, css) aylantirish."],
+      ['Static hosting', "faqat tayyor fayllar beradigan hosting; serverda kod ishlamaydi."],
+      ['CDN', "dunyo bo'ylab joylashgan, fayllarni foydalanuvchiga yaqin joydan beradigan serverlar tarmog'i."],
+    ],
+    life: [
+      { icon: '🏠', title: 'Uy va ijaraga olingan joy', text: "Saytingizni o'z noutbukingizda saqlab, o'chirmasdan qo'yish — uyingizda do'kon ochgandek: elektr o'chsa yoki noutbuk yopilsa, do'kon yopiladi. Hosting — savdo markazidan joy ijaraga olish: elektr, qo'riqlash va mijoz oqimiga tayyor." },
+      { icon: '🏬', title: 'Hosting turlari', text: "Shared — yotoqxona (arzon, lekin qo'shnilar halaqit beradi). VPS — kvartira. Dedicated — shaxsiy uy. Static + CDN — vitrinaga tayyor mahsulot qo'yish: arzon va tez." },
+      { icon: '🚕', title: 'Serverless', text: "Taksi kabi: mashina sotib olmaysiz, faqat borgan masofangiz uchun to'laysiz. Kod faqat so'rov kelganda ishlaydi va faqat ishlagan vaqt uchun hisoblanadi." },
+    ],
+  },
+  12: {
+    defs: [
+      ['Brauzer', "web sahifalarni yuklab, ko'rsatadigan dastur (Chrome, Firefox, Safari)."],
+      ['DOM', "HTML dan xotirada hosil bo'ladigan sahifa tuzilishining daraxt modeli."],
+      ['CSSOM', "CSS qoidalarining xotiradagi modeli."],
+      ['Rendering engine', "HTML va CSS ni piksellarga aylantiradigan brauzer qismi (Blink, Gecko, WebKit)."],
+      ['JavaScript engine', "JS kodni bajaradigan brauzer qismi (V8, SpiderMonkey, JavaScriptCore)."],
+    ],
+    life: [
+      { icon: '🏗️', title: 'Uy qurilishi', text: "HTML — uyning rejasi (xonalar, devorlar). CSS — bo'yoq va mebel. JavaScript — elektr va jalyuzni boshqaruvchi tugmalar. Brauzer — quruvchi: uchalasini olib, tayyor uyni ko'z oldingizda quradi." },
+      { icon: '🍳', title: 'Oshxona tartibi', text: "Avval masalliqlar tayyorlanadi (DOM va CSSOM), keyin qaysi taom qayerga qo'yilishi hal qilinadi (layout), so'ng taom bezaladi (paint) va oxirida tovoqlar stolga olib chiqiladi (composite)." },
+    ],
+  },
+  13: {
+    defs: [
+      ['TTFB', "so'rov yuborilgandan birinchi javob bayti kelguncha o'tgan vaqt (Time To First Byte)."],
+      ['Handshake', "ma'lumot uzatishdan oldin ikki tomonning ulanish haqida kelishuvi (TCP va TLS da bo'ladi)."],
+      ['Render', "brauzerning HTML va CSS dan ekrandagi tasvirni qurish jarayoni."],
+      ['Hydration', "serverda tayyorlangan HTML ga brauzerda JavaScript ni ulab, sahifani interaktiv qilish."],
+    ],
+    life: [
+      { icon: '✈️', title: 'Aviareys', text: "Manzilni aniqlaysiz (URL), aeroport kodini topasiz (DNS), chiptani rasmiylashtirasiz (ulanish), samolyotga o'tirasiz (so'rov), manzilga yetasiz (javob) va nihoyat shahar ko'zingiz oldida ochiladi (render). Har qadam kechikishi mumkin." },
+      { icon: '🔍', title: 'Sekin sahifa tashxisi', text: "Shifokor taxmin qilmaydi, tahlil topshiradi. Frontendchi ham: \"sayt sekin\" desa, avval Network panelida o'lchaydi: DNS sekinmi, server javob kechikdimi yoki fayl katta." },
+    ],
+  },
+};
+for (const [num, ex] of Object.entries(EXTRAS)) {
+  const t = L[Number(num) - 1].theory;
+  if (ex.defs) t.sections.unshift({ heading: "Asosiy ta'riflar", defs: ex.defs.map(([term, text]) => ({ term, text })) });
+  if (ex.life) t.sections.push({ heading: 'Hayotdan misollar', life: ex.life });
+}
+
+const EXTRA_ITEMS = require('./extra-items.cjs');
+for (const [num, list] of Object.entries(EXTRA_ITEMS)) {
+  const l = L[Number(num) - 1];
+  list.forEach((it) => l.items.push({ id: String(l.items.length + 1), ...it }));
+}
 
 const out = path.join(__dirname, '..', 'src', 'main', 'resources', 'dev', 'frontend-internet-junior.json');
 fs.mkdirSync(path.dirname(out), { recursive: true });

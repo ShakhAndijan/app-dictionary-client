@@ -5759,3 +5759,15 @@ i.bad,
 }
 @media (prefers-reduced-motion: reduce) { .dv-level, .dv-mod, .dv-lesson, .dv-exam, .dv-meter-fg { transition: none; } }
 .dv-levels .dv-hero .dx-title { margin: 2px 0 10px; }
+
+/* Definitions and real-life examples in lesson theory */
+.dv-defs { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.dv-def { background: var(--indigo-bg); border: 1px solid #c7d2fe; border-left: 4px solid var(--primary); border-radius: 14px; padding: 12px 14px; }
+.dv-def b { color: var(--indigo-text); font-size: 15px; }
+.dv-def b::before { content: 'Ta\2019 rif: '; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; opacity: .65; display: block; margin-bottom: 2px; }
+.dv-def p { margin: 4px 0 0; font-size: 14px; line-height: 1.55; }
+.dv-lives { display: grid; gap: 10px; }
+.dv-life { display: flex; gap: 12px; align-items: flex-start; background: var(--green-bg); border: 1px solid #a7f3d0; border-radius: 16px; padding: 14px 16px; }
+.dv-life-ic { font-size: 26px; line-height: 1; }
+.dv-life b { color: var(--green-text); font-size: 15px; }
+.dv-life p { margin: 4px 0 0; font-size: 14px; line-height: 1.6; }
