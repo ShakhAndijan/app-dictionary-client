@@ -30,7 +30,7 @@ public class DevContentLoader implements ApplicationRunner {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     record LessonFile(String code, String level, String module, String title, String intro, Integer order,
-                      JsonNode theory, JsonNode practice, List<LearnItem> items) {
+                      JsonNode theory, JsonNode practice, List<LearnItem> items, List<DevLab> labs) {
     }
 
     private final DevLessonRepository lessons;
@@ -56,6 +56,7 @@ public class DevContentLoader implements ApplicationRunner {
                     DevLesson lesson = lessons.findByCode(lf.code()).orElseGet(() -> new DevLesson(lf.code()));
                     lesson.apply(lf.level(), lf.module(), lf.title(), lf.intro(), json(lf.theory()), json(lf.practice()),
                             lf.order() == null ? 0 : lf.order(), mapper.writeValueAsString(lf.items()));
+                    lesson.setLabsJson(lf.labs() == null || lf.labs().isEmpty() ? null : mapper.writeValueAsString(lf.labs()));
                     lessons.save(lesson);
                     seen.add(lf.code());
                     loaded++;
@@ -89,6 +90,14 @@ public class DevContentLoader implements ApplicationRunner {
             String p = item.problem();
             if (p != null) return p;
             if (!ids.add(item.id())) return "duplicate item id " + item.id();
+        }
+        if (lf.labs() != null) {
+            Set<String> labIds = new HashSet<>();
+            for (DevLab lab : lf.labs()) {
+                String p = lab.problem();
+                if (p != null) return p;
+                if (!labIds.add(lab.id())) return "duplicate lab id " + lab.id();
+            }
         }
         return null;
     }

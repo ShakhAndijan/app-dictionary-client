@@ -696,6 +696,17 @@ export interface DevLessonSummary {
   itemCount: number;
   bestScore: number | null;
   passed: boolean;
+  labCount: number;
+  labsDone: number;
+}
+
+export interface DevLab {
+  id: string;
+  title: string;
+  task: string;
+  starter: string | null;
+  tests: { call: string; expect: string }[];
+  hint: string | null;
 }
 
 export interface DevOverview {
@@ -730,6 +741,8 @@ export interface DevLessonDetail {
   theory: string | null;
   practice: string | null;
   items: DevItemView[];
+  labs: DevLab[];
+  labsDone: string[];
 }
 
 export interface DevFinish {
@@ -761,6 +774,8 @@ export const devApi = {
   lesson: (code: string) => d(http.get<DevLessonDetail>(`/dev/lessons/${code}`)),
   check: (code: string, itemId: string, answer: string) => d(http.post<LearnCheck>(`/dev/lessons/${code}/check`, { itemId, answer })),
   finish: (code: string, answers: { itemId: string; answer: string }[]) => d(http.post<DevFinish>(`/dev/lessons/${code}/finish`, { answers })),
+  labDone: (code: string, labId: string) => d(http.post<{ done: number; total: number }>(`/dev/lessons/${code}/labs/${labId}/done`)),
+  labSolution: (code: string, labId: string) => d(http.get<{ solution: string }>(`/dev/lessons/${code}/labs/${labId}/solution`)),
   exam: () => d(http.get<DevExamQuestion[]>('/dev/exam')),
   submitExam: (answers: { ref: string; answer: string }[]) => d(http.post<DevExamResult>('/dev/exam', { answers })),
 };

@@ -17,6 +17,7 @@ import { requestProgressCheck } from '../util';
 import { GameResult } from './StudyGames';
 import { ExerciseCard, Gauge, Steps } from './Learn';
 import { PLAN, PLAN_GROUPS } from './devPlan';
+import { DevLabs } from './DevLabs';
 
 /* ------------------------------------------------------------------ content shapes */
 
@@ -517,7 +518,7 @@ function LessonRow({ l, next, delay, tone, onOpen }: { l: DevLessonSummary; next
         </span>
         <span className="dv-lesson-meta">
           {l.bestScore !== null && <em className={l.passed ? 'ok' : 'low'}>{l.bestScore}%</em>}
-          <i>{l.itemCount} mashq</i>
+          <i>{l.itemCount} mashq{l.labCount > 0 ? ` · 🧪 ${l.labsDone}/${l.labCount}` : ''}</i>
         </span>
         <span className="dv-lesson-go">{next ? 'Davom etish' : '→'}</span>
       </button>
@@ -532,7 +533,7 @@ export function DevLessonPage() {
   const navigate = useNavigate();
   const [lesson, setLesson] = useState<DevLessonDetail | null>(null);
   const [error, setError] = useState('');
-  const [stage, setStage] = useState<'theory' | 'play' | 'done'>('theory');
+  const [stage, setStage] = useState<'theory' | 'play' | 'done' | 'lab'>('theory');
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<{ itemId: string; answer: string }[]>([]);
   const [marks, setMarks] = useState<(boolean | undefined)[]>([]);
@@ -544,6 +545,7 @@ export function DevLessonPage() {
 
   if (!lesson) return error ? <Notice>{error}</Notice> : <Spinner />;
   const exit = () => navigate(`/frontend/${lesson.module}`);
+  const labsDone = lesson.labsDone.length;
 
   const restart = () => {
     setIndex(0);
@@ -574,6 +576,29 @@ export function DevLessonPage() {
     await finishWith(next);
   };
 
+  const labCard = lesson.labs.length > 0 && (
+    <Card className="dv-start dv-labcard rise">
+      <b>🧪 Laboratoriya</b>
+      <p>{lesson.labs.length} ta amaliy topshiriq: JavaScript kodini o'zingiz yozasiz, tizim to'g'riligini tekshiradi · bajarildi: {labsDone}/{lesson.labs.length}</p>
+      <Button variant="outline" block onClick={() => setStage('lab')}>{labsDone > 0 ? 'Laboratoriyani davom ettirish' : 'Laboratoriyani boshlash'}</Button>
+    </Card>
+  );
+
+  if (stage === 'lab') {
+    return (
+      <DevLabs
+        lessonCode={lesson.code}
+        title={lesson.title}
+        labs={lesson.labs}
+        doneIds={lesson.labsDone}
+        onBack={() => {
+          devApi.lesson(code).then(setLesson).catch(() => undefined);
+          setStage(result ? 'done' : 'theory');
+        }}
+      />
+    );
+  }
+
   if (stage === 'theory') {
     const theory = parseJson<DevTheoryData>(lesson.theory);
     const practice = parseJson<Practice[]>(lesson.practice) ?? [];
@@ -590,6 +615,7 @@ export function DevLessonPage() {
           <p>{lesson.items.length} ta mashq · 70% va undan yuqori natija darsni o'zlashtiradi</p>
           <Button block onClick={() => setStage('play')}>Mavzuni tushundim: mashqlarni boshlash</Button>
         </Card>
+        {labCard}
       </div>
     );
   }
@@ -615,6 +641,7 @@ export function DevLessonPage() {
           onAgain={restart}
           onExit={exit}
         />
+        {labCard}
         {wrong.length > 0 && (
           <Card className="lr-review">
             <h3>Xatolar ustida ishlang</h3>

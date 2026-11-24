@@ -53,6 +53,10 @@ public class DevLesson {
     @Column(name = "items_json", nullable = false, columnDefinition = "TEXT")
     private String itemsJson;
 
+    /** Coding labs (JSON list), null when the lesson has none. */
+    @Column(name = "labs_json", columnDefinition = "TEXT")
+    private String labsJson;
+
     protected DevLesson() {
     }
 
@@ -72,6 +76,8 @@ public class DevLesson {
         this.itemsJson = itemsJson;
     }
 
+    public void setLabsJson(String labsJson) { this.labsJson = labsJson; }
+    public String getLabsJson() { return labsJson; }
     public String getCode() { return code; }
     public String getLevel() { return level; }
     public String getModuleKey() { return moduleKey; }

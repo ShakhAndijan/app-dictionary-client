@@ -5,6 +5,8 @@ import com.example.dictionary.model.AppUser;
 import com.example.dictionary.model.DevLesson;
 import com.example.dictionary.model.DevProfile;
 import com.example.dictionary.model.DevResult;
+import com.example.dictionary.model.DevLabDone;
+import com.example.dictionary.repository.DevLabDoneRepository;
 import com.example.dictionary.repository.DevLessonRepository;
 import com.example.dictionary.repository.DevProfileRepository;
 import com.example.dictionary.repository.DevResultRepository;
@@ -41,10 +43,13 @@ public class DevService {
     private final DevProfileRepository profileRepository;
     private final DevResultRepository resultRepository;
     private final UserRepository userRepository;
+    private final DevLabDoneRepository labDoneRepository;
     private final ObjectMapper mapper = new ObjectMapper();
 
     public DevService(DevLessonRepository lessonRepository, DevProfileRepository profileRepository,
-                      DevResultRepository resultRepository, UserRepository userRepository) {
+                      DevResultRepository resultRepository, UserRepository userRepository,
+                      DevLabDoneRepository labDoneRepository) {
+        this.labDoneRepository = labDoneRepository;
         this.lessonRepository = lessonRepository;
         this.profileRepository = profileRepository;
         this.resultRepository = resultRepository;
@@ -77,6 +82,8 @@ public class DevService {
         Map<String, Integer> best = bestScores(results);
         List<DevLesson> lessons = lessonRepository.findByLevelOrderByOrderIndexAscIdAsc(level);
 
+        Map<String, Integer> labsDone = new HashMap<>();
+        for (DevLabDone d : labDoneRepository.findByOwnerUsername(username)) labsDone.merge(d.getLessonCode(), 1, Integer::sum);
         List<LessonSummary> summaries = new ArrayList<>();
         Map<String, int[]> perModule = new LinkedHashMap<>();
         int passed = 0;
@@ -89,7 +96,7 @@ public class DevService {
             m[0]++;
             if (ok) m[1]++;
             summaries.add(new LessonSummary(l.getCode(), l.getModuleKey(), l.getTitle(), l.getIntro(), ++unit,
-                    objective(l).size(), b, ok));
+                    objective(l).size(), b, ok, labs(l).size(), labsDone.getOrDefault(l.getCode(), 0)));
         }
         List<ModuleInfo> modules = new ArrayList<>();
         perModule.forEach((k, v) -> modules.add(new ModuleInfo(k, v[0], v[1])));
@@ -102,11 +109,36 @@ public class DevService {
     }
 
     @Transactional(readOnly = true)
-    public LessonDetail lesson(String code) {
+    public LessonDetail lesson(String username, String code) {
         DevLesson l = lessonByCode(code);
         List<ItemView> items = objective(l).stream().map(DevService::view).toList();
+        List<LabView> labs = labs(l).stream().map(b -> new LabView(b.id(), b.title(), b.task(), b.starter(),
+                b.tests().stream().map(t -> new LabTestView(t.call(), t.expect())).toList(), b.hint())).toList();
+        List<String> done = labDoneRepository.findByOwnerUsernameAndLessonCode(username, code).stream()
+                .map(DevLabDone::getLabId).toList();
         return new LessonDetail(l.getCode(), l.getLevel(), l.getModuleKey(), l.getTitle(), l.getIntro(), l.getTheory(),
-                l.getPractice(), items);
+                l.getPractice(), items, labs, done);
+    }
+
+    /** Marks a lab solved (the browser ran the tests); idempotent. */
+    @Transactional
+    public LabDoneResponse labDone(String username, String code, String labId) {
+        DevLesson l = lessonByCode(code);
+        List<DevLab> labs = labs(l);
+        if (labs.stream().noneMatch(b -> b.id().equals(labId))) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lab not found");
+        }
+        if (!labDoneRepository.existsByOwnerUsernameAndLessonCodeAndLabId(username, code, labId)) {
+            labDoneRepository.save(new DevLabDone(user(username), code, labId));
+        }
+        return new LabDoneResponse(labDoneRepository.findByOwnerUsernameAndLessonCode(username, code).size(), labs.size());
+    }
+
+    @Transactional(readOnly = true)
+    public LabSolution labSolution(String code, String labId) {
+        return labs(lessonByCode(code)).stream().filter(b -> b.id().equals(labId)).findFirst()
+                .map(b -> new LabSolution(b.solution()))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Lab not found"));
     }
 
     @Transactional(readOnly = true)
@@ -209,6 +241,15 @@ public class DevService {
             return mapper.readValue(l.getItemsJson(), new TypeReference<List<LearnItem>>() { });
         } catch (Exception e) {
             throw new IllegalStateException("Broken items of lesson " + l.getCode(), e);
+        }
+    }
+
+    private List<DevLab> labs(DevLesson l) {
+        if (l.getLabsJson() == null) return List.of();
+        try {
+            return mapper.readValue(l.getLabsJson(), new TypeReference<List<DevLab>>() { });
+        } catch (Exception e) {
+            throw new IllegalStateException("Broken labs of lesson " + l.getCode(), e);
         }
     }
 

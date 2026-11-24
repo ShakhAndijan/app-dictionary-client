@@ -20,7 +20,7 @@ public final class DevDtos {
     }
 
     public record LessonSummary(String code, String module, String title, String intro, int unit, int itemCount,
-                                Integer bestScore, boolean passed) {
+                                Integer bestScore, boolean passed, int labCount, int labsDone) {
     }
 
     public record ModuleInfo(String key, int lessons, int passed) {
@@ -41,7 +41,21 @@ public final class DevDtos {
 
     /** Theory and practice are JSON text; the web page renders them. */
     public record LessonDetail(String code, String level, String module, String title, String intro,
-                               String theory, String practice, List<ItemView> items) {
+                               String theory, String practice, List<ItemView> items,
+                               List<LabView> labs, List<String> labsDone) {
+    }
+
+    public record LabTestView(String call, String expect) {
+    }
+
+    /** A coding lab without its solution. */
+    public record LabView(String id, String title, String task, String starter, List<LabTestView> tests, String hint) {
+    }
+
+    public record LabSolution(String solution) {
+    }
+
+    public record LabDoneResponse(int done, int total) {
     }
 
     public record CheckRequest(@NotBlank String itemId, @Size(max = 600) String answer) {

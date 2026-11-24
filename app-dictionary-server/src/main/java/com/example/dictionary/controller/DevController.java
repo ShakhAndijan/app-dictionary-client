@@ -47,8 +47,22 @@ public class DevController {
 
     @Operation(summary = "A lesson: theory, hands-on tasks and exercises (answers are not included)")
     @GetMapping("/lessons/{code}")
-    public ResponseEntity<LessonDetail> lesson(@PathVariable String code) {
-        return ResponseEntity.ok(service.lesson(code));
+    public ResponseEntity<LessonDetail> lesson(@AuthenticationPrincipal UserDetails principal,
+                                               @PathVariable String code) {
+        return ResponseEntity.ok(service.lesson(principal.getUsername(), code));
+    }
+
+    @Operation(summary = "Mark a coding lab solved (the browser ran its tests)")
+    @PostMapping("/lessons/{code}/labs/{labId}/done")
+    public ResponseEntity<LabDoneResponse> labDone(@AuthenticationPrincipal UserDetails principal,
+                                                   @PathVariable String code, @PathVariable String labId) {
+        return ResponseEntity.ok(service.labDone(principal.getUsername(), code, labId));
+    }
+
+    @Operation(summary = "Reference solution of a coding lab")
+    @GetMapping("/lessons/{code}/labs/{labId}/solution")
+    public ResponseEntity<LabSolution> labSolution(@PathVariable String code, @PathVariable String labId) {
+        return ResponseEntity.ok(service.labSolution(code, labId));
     }
 
     @Operation(summary = "Check one answer while working through a lesson (nothing is saved)")

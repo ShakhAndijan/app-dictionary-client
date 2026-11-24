@@ -19,5 +19,13 @@ h.L.forEach((l) => {
   if (l.items.length < 10) console.warn(`${l.code} has only ${l.items.length} items`);
 });
 
-fs.writeFileSync('E:/frontend/app-dictionary/app-dictionary-server/src/main/resources/dev/frontend-javascript-junior.json', JSON.stringify(h.L, null, 1));
-console.log('lessons', h.L.length, 'items', items);
+(async () => {
+  const lab = (title, task, starter, solution, tests, hint) => ({ title, task, starter, solution, tests: tests.map(([call, expect]) => ({ call, expect })), hint });
+  const labs = {};
+  ["./js-labs1.cjs", "./js-labs2.cjs", "./js-labs3.cjs", "./js-labs4.cjs"].forEach((p) => { if (fs.existsSync(require("path").join(__dirname, p))) Object.assign(labs, require(p)(lab)); });
+  Object.values(labs).forEach((list) => list.forEach((b, i) => { b.id = String(i + 1); }));
+  const checked = await require("./lab-check.cjs")(labs);
+  h.L.forEach((l) => { if (labs[l.order]) { l.labs = labs[l.order]; if (l.labs.length < 10) console.warn(l.code + " has only " + l.labs.length + " labs"); } });
+  fs.writeFileSync('E:/frontend/app-dictionary/app-dictionary-server/src/main/resources/dev/frontend-javascript-junior.json', JSON.stringify(h.L, null, 1));
+console.log('lessons', h.L.length, 'items', items, 'labs', checked);
+})().catch((e) => { console.error(e.message); process.exit(1); });
