@@ -20,6 +20,7 @@ import { requestProgressCheck, speakEnglish } from '../util';
 import { GameResult } from './StudyGames';
 import { useAuth } from '../auth';
 import Theory, { parseTheory } from './Theory';
+import { LessonWordsDock } from './LessonWords';
 
 export const SKILL_META: Record<Skill, { icon: string; label: string; tone: string; tip: string }> = {
   READING: { icon: '📖', label: "O'qish", tone: '#6366f1', tip: "Har kuni 1–2 ta qisqa matn o'qing va noma'lum so'zlarni lug'atingizga qo'shing." },
@@ -888,7 +889,18 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
 
 /* ------------------------------------------------------------------ lesson */
 
+/** The lesson plus a side window for words the learner wants to remember (not for speaking practice). */
 export function LessonPage() {
+  const { code = '' } = useParams();
+  return (
+    <>
+      <LessonBody />
+      {!code.includes('-speaking-') && <LessonWordsDock code={code} />}
+    </>
+  );
+}
+
+function LessonBody() {
   const { code = '' } = useParams();
   const navigate = useNavigate();
   const [lesson, setLesson] = useState<LearnLessonDetail | null>(null);
