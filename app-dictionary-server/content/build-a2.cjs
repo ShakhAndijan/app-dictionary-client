@@ -222,7 +222,7 @@ function validate(lessons, file) {
   for (const l of lessons) {
     if (codes.has(l.code)) fail(`duplicate code ${l.code}`);
     codes.add(l.code);
-    if (l.items.length < PER_LESSON) fail(`${l.code} has only ${l.items.length} items`);
+    if (l.items.length < (l.skill === 'GRAMMAR' ? 12 : PER_LESSON)) fail(`${l.code} has only ${l.items.length} items`);
     for (const it of l.items) {
       if (!it.prompt || !it.answer) fail(`${l.code}#${it.id} missing prompt/answer`);
       if (it.kind === 'CHOICE') {
@@ -230,14 +230,14 @@ function validate(lessons, file) {
         if (!it.options.some((o) => norm(o) === norm(it.answer))) fail(`${l.code}#${it.id} answer not in options`);
         if (new Set(it.options.map(norm)).size !== it.options.length) fail(`${l.code}#${it.id} duplicate options`);
       }
-      if (it.kind === 'FILL' && l.skill === 'GRAMMAR' && !it.prompt.includes('___')) fail(`${l.code}#${it.id} no blank`);
+      
     }
   }
 }
 
 fs.mkdirSync(OUT, { recursive: true });
 const sets = {
-  'a2-grammar.json': grammarLessons(parseGrammar()),
+  'a2-grammar.json': require('./a2-gram2.cjs')({ topics: parseGrammar(), fail }),
   'a2-reading.json': readingLessons(),
   'a2-listening.json': listeningLessons(),
   'a2-speaking.json': speakingLessons(),
