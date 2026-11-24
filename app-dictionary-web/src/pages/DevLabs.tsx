@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { DevLab, devApi, errorMessage } from '../api';
 import { Button, Card, Notice } from '../ui';
-import { LabRun, runLab } from './devLab';
+import { LabRun, labProgram, runLab } from './devLab';
 
 /** Coding labs of a lesson: write JavaScript, run it against the tests, see which pass. */
 export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
@@ -29,6 +29,7 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   const passedCount = run ? run.tests.filter((t) => t.ok).length : 0;
   const allPassed = !!run && !run.error && run.tests.length === lab.tests.length && passedCount === run.tests.length;
   const isDone = done.has(lab.id);
+  const isGit = lab.kind === 'git';
   const doneCount = useMemo(() => labs.filter((l) => done.has(l.id)).length, [labs, done]);
 
   const setCode = (value: string) => setCodes((p) => ({ ...p, [lab.id]: value }));
@@ -37,7 +38,7 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
     if (running) return;
     setRunning(true);
     setError('');
-    const result = await runLab(code, lab.tests);
+    const result = await runLab(labProgram(lab, code), lab.tests);
     setRuns((p) => ({ ...p, [lab.id]: result }));
     setRunning(false);
     const ok = !result.error && result.tests.length === lab.tests.length && result.tests.every((t) => t.ok);
@@ -115,7 +116,8 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
           spellCheck={false}
           autoCapitalize="off"
           autoCorrect="off"
-          aria-label="JavaScript kodi"
+          aria-label={isGit ? 'Git buyruqlari' : 'JavaScript kodi'}
+          placeholder={isGit ? 'Har qatorga bitta buyruq yozing, masalan: git add .' : undefined}
           rows={Math.min(22, Math.max(9, code.split('\n').length + 2))}
         />
         <div className="dl-bar">

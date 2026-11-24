@@ -113,7 +113,8 @@ public class DevService {
         DevLesson l = lessonByCode(code);
         List<ItemView> items = objective(l).stream().map(DevService::view).toList();
         List<LabView> labs = labs(l).stream().map(b -> new LabView(b.id(), b.title(), b.task(), b.starter(),
-                b.tests().stream().map(t -> new LabTestView(t.call(), t.expect())).toList(), b.hint())).toList();
+                b.tests().stream().map(t -> new LabTestView(t.call(), t.expect())).toList(), b.hint(),
+                b.kind(), b.setup())).toList();
         List<String> done = labDoneRepository.findByOwnerUsernameAndLessonCode(username, code).stream()
                 .map(DevLabDone::getLabId).toList();
         return new LessonDetail(l.getCode(), l.getLevel(), l.getModuleKey(), l.getTitle(), l.getIntro(), l.getTheory(),

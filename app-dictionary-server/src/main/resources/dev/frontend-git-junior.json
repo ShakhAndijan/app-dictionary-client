@@ -1,0 +1,4153 @@
+[
+ {
+  "code": "fe-git-jr-01",
+  "level": "JUNIOR",
+  "module": "git",
+  "order": 1,
+  "title": "Git ichki tuzilishi",
+  "intro": "Versiyalarni boshqarish (version control), Git va GitHub farqi, uch zona (working directory, staging area, repository), obyektlar: blob, tree, commit, SHA-1 va HEAD.",
+  "theory": {
+   "analogy": {
+    "icon": "📸",
+    "title": "Fotoalbom va suratlar",
+    "text": "Git — loyihangizning fotoalbomi. Har commit (saqlash nuqtasi) — butun loyihaning bir surati (snapshot — lahzali nusxa). Staging area (tayyorlov zonasi) — suratga tushishdan oldin odamlarni saf qilib turgan joy: kimni kadrga qo'shishni siz hal qilasiz. Albom (repository — ombor) esa suratlarni hech qachon o'chirmaydi: eski suratni istalgan payt qayta ochish mumkin."
+   },
+   "sections": [
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Repository (ombor)",
+       "text": "loyiha fayllari va butun tarixi saqlanadigan joy. Mahalliy omborda `.git` papkasi tarixni ushlaydi; `.git` o'chirilsa, tarix yo'qoladi, fayllar esa qoladi."
+      },
+      {
+       "term": "Commit (saqlash nuqtasi)",
+       "text": "loyihaning o'sha paytdagi to'liq suratiga, parent (ota) commitga, muallif va xabarga havola qiluvchi obyekt. Diff emas, snapshot (surat) sifatida o'ylanadi."
+      },
+      {
+       "term": "Staging area / index (tayyorlov zonasi)",
+       "text": "keyingi commitga nima kirishini aniqlovchi oraliq ro'yxat. U tufayli bitta ishchi papkadan bir nechta mantiqiy alohida commit qilish mumkin."
+      },
+      {
+       "term": "SHA-1 hash",
+       "text": "obyekt mazmunidan hisoblangan 40 belgili identifikator. Mazmun o'zgarsa hash o'zgaradi: shu sababli tarix butunligi (integrity — buzilmaganlik) kafolatlanadi."
+      },
+      {
+       "term": "HEAD",
+       "text": "hozirgi pozitsiyani ko'rsatuvchi ko'rsatkich. Odatda branch nomiga, detached holatda esa to'g'ridan-to'g'ri commitga ishora qiladi."
+      }
+     ]
+    },
+    {
+     "heading": "Git, GitHub va versiyalarni boshqarish",
+     "text": "Version control system (VCS — versiyalarni boshqarish tizimi) fayllar tarixini saqlaydi: kim, qachon, nimani o'zgartirgani yozib boriladi va xohlagan eski holatga qaytish mumkin. Git — distributed VCS (taqsimlangan tizim): har bir dasturchida butun tarix (full history) to'liq nusxada turadi, shuning uchun commit qilish, tarixni ko'rish va branch ochish uchun internet kerak emas. GitHub esa Git emas, balki Git omborlarini (repository) internetda saqlaydigan va jamoaviy ishlash vositalarini (Pull Request, Issues, Actions) beradigan xizmat. GitLab va Bitbucket ham xuddi shunday xizmatlar."
+    },
+    {
+     "heading": "Uch zona va uch holat",
+     "text": "Fayl Git da uch zonadan o'tadi. Working directory (ishchi papka) — diskdagi oddiy fayllar, ularni tahrir qilasiz. Staging area (index — tayyorlov zonasi) — keyingi commitga kiradigan o'zgarishlar ro'yxati; `git add` shu yerga qo'shadi. Repository (.git papkasi) — commitlar tarixi; `git commit` tayyorlov zonasidagilarni shu yerga muhrlaydi. Fayl holatlari: modified (o'zgargan), staged (tayyorlangan) va committed (saqlangan)."
+    },
+    {
+     "table": {
+      "head": [
+       "Zona",
+       "Qayerda",
+       "Qaysi buyruq o'tkazadi"
+      ],
+      "rows": [
+       [
+        "Working directory",
+        "Diskdagi fayllar",
+        "Siz tahrir qilasiz"
+       ],
+       [
+        "Staging area (index)",
+        ".git/index",
+        "git add"
+       ],
+       [
+        "Repository",
+        ".git/objects",
+        "git commit"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Git obyektlari: blob, tree, commit",
+     "text": "Git ichida oddiy kalit-qiymat ombori (content-addressable storage — mazmun bo'yicha manzillanadigan ombor) bor. Har bir obyektning nomi — uning mazmunidan olingan SHA-1 hash (40 ta o'n oltilik belgi). Blob (binary large object) faqat fayl MAZMUNINI saqlaydi, fayl nomini emas. Tree papkani ifodalaydi: nomlar va ularga mos blob yoki ichki tree'larga havolalar. Commit — bitta tree'ga (loyiha holati), bitta yoki bir nechta parent commitga (ota), muallif va xabarga havola. Mazmun bir xil bo'lsa hash ham bir xil: ikkita bir xil fayl bitta blob sifatida saqlanadi."
+    },
+    {
+     "code": {
+      "lang": "bash",
+      "text": "git hash-object -w a.txt        # blob yaratadi, hash qaytaradi\ngit cat-file -p HEAD            # commit obyektini ko'rsatadi\n# tree 9f1e...\n# parent 4b2c...\n# author Ali <ali@mail.uz> 1700000000 +0500\n#\n# Add login page"
+     }
+    },
+    {
+     "heading": "Branch va HEAD — shunchaki ko'rsatkichlar",
+     "text": "Branch (shox) — nusxa emas, balki bitta commit hash yozilgan kichik fayl (.git/refs/heads/main). Yangi commit qilinsa, joriy branch ko'rsatkichi o'sha yangi commitga suriladi. HEAD — hozir qayerdaligingizni bildiruvchi ko'rsatkich: odatda branchga ishora qiladi (`ref: refs/heads/main`). Agar HEAD to'g'ridan-to'g'ri commit hashga ishora qilsa, bu detached HEAD (uzilgan HEAD) holati: shu paytda qilingan commitlarni hech qaysi branch ushlab turmaydi."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "Commit hash ichiga fayllar daraxti, parent, muallif, vaqt va xabar kiradi. Shuning uchun commit xabarini yoki parentni o'zgartirsangiz, hash ham o'zgaradi. Tarixni qayta yozish (amend, rebase) aslida YANGI commitlar yaratishdir — eskilari o'chmaydi, shunchaki ko'rinmay qoladi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🎮",
+       "title": "O'yindagi saqlash nuqtalari",
+       "text": "Commit — o'yindagi save: istalgan payt shu holatga qaytasiz. Branch — alohida save-slot bo'lib, boshqa strategiyani xavfsiz sinab ko'rasiz."
+      },
+      {
+       "icon": "📦",
+       "title": "Pochta jo'natmasi",
+       "text": "Staging area — quti: avval kerakli narsalarni solasiz (git add), keyin yopishtirib jo'natasiz (git commit). Qutiga nima solinishini siz tanlaysiz."
+      }
+     ]
+    }
+   ],
+   "recap": [
+    "Git — taqsimlangan VCS; GitHub — Git omborlarini saqlaydigan xizmat.",
+    "Uch zona: working directory → staging area → repository.",
+    "Blob — mazmun, tree — papka, commit — surat + parent + xabar; hammasi SHA-1 bilan nomlanadi.",
+    "Branch va HEAD — commitga ishora qiluvchi ko'rsatkichlar; detached HEAD — HEAD to'g'ridan-to'g'ri commitda."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Obyektlarni ko'rish",
+    "text": "Yangi papkada `git init`, bitta fayl yarating, `git add` va `git commit` qiling. So'ng `git cat-file -p HEAD` va `git cat-file -p HEAD^{tree}` ni ishga tushirib commit va tree ichini o'qing; `ls .git/objects` da yangi obyektlarni toping."
+   },
+   {
+    "title": "HEAD ni kuzatish",
+    "text": "`cat .git/HEAD` va `cat .git/refs/heads/main` ni bajaring. Yangi commit qiling va ikkinchi fayl hashi qanday o'zgarganini ko'ring. Keyin `git checkout <hash>` bilan detached HEAD holatiga o'tib `cat .git/HEAD` ni tekshiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Git va GitHub haqida qaysi gap to'g'ri?",
+    "options": [
+     "Git — dastur (VCS), GitHub — Git omborlarini internetda saqlaydigan xizmat",
+     "GitHub — dastur, Git — uning sayti",
+     "Ikkalasi bir xil narsa",
+     "Git ishlashi uchun doim GitHub akkaunti kerak"
+    ],
+    "answer": "Git — dastur (VCS), GitHub — Git omborlarini internetda saqlaydigan xizmat",
+    "explain": "Git mahalliy ishlaydi va internetsiz ham to'liq tarixni saqlaydi; GitHub — alohida kompaniya xizmati."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Git blob obyekti nimani saqlaydi?",
+    "options": [
+     "Faqat fayl mazmunini, nomini emas",
+     "Fayl nomi va mazmunini",
+     "Papka tuzilmasini",
+     "Commit xabarini"
+    ],
+    "answer": "Faqat fayl mazmunini, nomini emas",
+    "explain": "Nomlar tree obyektida saqlanadi. Shuning uchun mazmuni bir xil ikki fayl bitta blob bo'ladi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Ikkita fayl (a.txt va copy.txt) mazmuni aynan bir xil. Git ularni qanday saqlaydi?",
+    "options": [
+     "Bitta blob, ikkita nom (tree ichida)",
+     "Ikkita alohida blob",
+     "Ikkinchisini rad etadi",
+     "Faqat bitta fayl nomini eslab qoladi"
+    ],
+    "answer": "Bitta blob, ikkita nom (tree ichida)",
+    "explain": "Blob nomi mazmunning hashidan olinadi: bir xil mazmun — bir xil hash — bitta obyekt."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Commit obyekti ichida NIMA yo'q?",
+    "options": [
+     "Fayllarning to'liq mazmuni (u blob'larda)",
+     "Tree'ga havola",
+     "Parent commit hashi",
+     "Muallif va xabar"
+    ],
+    "answer": "Fayllarning to'liq mazmuni (u blob'larda)",
+    "explain": "Commit faqat havolalar va metama'lumotlarni saqlaydi; fayl mazmuni blob obyektlarida turadi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Commit xabari faqat bitta harfga o'zgartirildi (git commit --amend). Commit hashi...",
+    "options": [
+     "O'zgaradi, chunki xabar hash tarkibiga kiradi",
+     "O'zgarmaydi, chunki fayllar o'sha-o'sha",
+     "Faqat oxirgi 7 belgisi o'zgaradi",
+     "Faqat parent bo'lsa o'zgaradi"
+    ],
+    "answer": "O'zgaradi, chunki xabar hash tarkibiga kiradi",
+    "explain": "Hash butun commit obyektidan hisoblanadi. Amend aslida yangi commit yaratadi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Fayl hozir `git status` da 'Changes to be committed' bo'limida. U qaysi zonada?",
+    "options": [
+     "Staging area (index)",
+     "Faqat working directory",
+     "Repository (commit qilingan)",
+     "Remote ombor"
+    ],
+    "answer": "Staging area (index)",
+    "explain": "git add dan keyin, lekin git commit dan oldin fayl staging area da turadi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi natijaga ko'ra qaysi branchdasiz?",
+    "options": [
+     "feature/login",
+     "main",
+     "HEAD",
+     "Detached HEAD holatida, branch yo'q"
+    ],
+    "answer": "feature/login",
+    "explain": "HEAD fayli symbolic ref (ramziy havola) bo'lib, branchga ishora qiladi.",
+    "passage": "$ cat .git/HEAD\nref: refs/heads/feature/login"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Nima ro'y bergan?",
+    "options": [
+     "Detached HEAD holati: HEAD to'g'ridan-to'g'ri commitga ishora qilyapti",
+     "Repository buzilgan",
+     "Branch o'chirilgan",
+     "Remote ulanmagan"
+    ],
+    "answer": "Detached HEAD holati: HEAD to'g'ridan-to'g'ri commitga ishora qilyapti",
+    "explain": "HEAD faylida 'ref:' bo'lmasa, u hashning o'ziga ishora qiladi. Bu holatda qilingan commitlar branchsiz qoladi.",
+    "passage": "$ cat .git/HEAD\n4f2a9c1d7b0e3a8c5d6e1f20938ab47c5e0d1a22"
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Branch yaratish Git da nega juda tez bajariladi?",
+    "options": [
+     "Branch — faqat 41 baytlik hash yozilgan fayl, fayllar nusxalanmaydi",
+     "Git butun loyihani arxivlab qo'yadi",
+     "Branch faqat serverda yaratiladi",
+     "Git faqat o'zgarishlar ro'yxatini nusxalaydi"
+    ],
+    "answer": "Branch — faqat 41 baytlik hash yozilgan fayl, fayllar nusxalanmaydi",
+    "explain": "Yangi branch hozirgi commitga yangi ko'rsatkich qo'shishdan boshqa narsa emas."
+   },
+   {
+    "id": "10",
+    "kind": "CHOICE",
+    "prompt": "Git tarixi qayerda saqlanadi?",
+    "options": [
+     "Loyiha ildizidagi .git papkasida",
+     "Faqat GitHub serverida",
+     "node_modules ichida",
+     "Har bir faylning ichida"
+    ],
+    "answer": "Loyiha ildizidagi .git papkasida",
+    "explain": ".git papkasini o'chirsangiz, fayllar qoladi, lekin butun tarix yo'qoladi."
+   },
+   {
+    "id": "11",
+    "kind": "CHOICE",
+    "prompt": "`git add` buyrug'i aslida nima qiladi?",
+    "options": [
+     "Fayl mazmunini obyektlar omboriga blob qilib yozadi va indexni yangilaydi",
+     "Faylni GitHub ga yuboradi",
+     "Commit yaratadi",
+     "Faylni o'chirib, qaytadan yaratadi"
+    ],
+    "answer": "Fayl mazmunini obyektlar omboriga blob qilib yozadi va indexni yangilaydi",
+    "explain": "add paytidayoq blob yaratiladi; commit esa index asosida tree va commit obyektini yaratadi."
+   },
+   {
+    "id": "12",
+    "kind": "CHOICE",
+    "prompt": "Git 'taqsimlangan' (distributed) deyilishining sababi?",
+    "options": [
+     "Har bir klonda butun tarix to'liq nusxada bo'ladi",
+     "Fayllar bir necha serverga bo'lib saqlanadi",
+     "Git faqat bir nechta odam bilan ishlaydi",
+     "Commitlar avtomatik tarqatiladi"
+    ],
+    "answer": "Har bir klonda butun tarix to'liq nusxada bo'ladi",
+    "explain": "Shu sababli internetsiz ham log, branch va commit ishlaydi, server o'lsa ham tarix klonlarda saqlanadi."
+   },
+   {
+    "id": "13",
+    "kind": "FILL",
+    "prompt": "Hozirgi branch va HEAD holatini ko'rsatadigan buyruq (ikki so'z) qaysi? (fayllar holati ham chiqadi)",
+    "answer": "git status",
+    "explain": "`git status` branch nomini, staged, modified va untracked fayllarni ko'rsatadi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Birinchi ombor",
+    "task": "Bo'sh papkada Git omborini yarating, README.md faylini (matn: Hello) yarating, uni tayyorlab, 'Initial commit' xabari bilan commit qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git init\necho Hello > README.md\ngit add README.md\ngit commit -m \"Initial commit\"",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"Initial commit\"]"
+     },
+     {
+      "call": "repo.tree()",
+      "expect": "[\"README.md\"]"
+     }
+    ],
+    "hint": "Tartib: git init → fayl yaratish → git add → git commit -m.",
+    "kind": "git",
+    "setup": "",
+    "id": "1"
+   },
+   {
+    "title": "Ikkita commit ketma-ketligi",
+    "task": "Ombor bo'sh. a.txt (matn: 1) yarating va 'Add a' bilan commit qiling, keyin b.txt (matn: 2) yarating va 'Add b' bilan alohida commit qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo 1 > a.txt\ngit add a.txt\ngit commit -m \"Add a\"\necho 2 > b.txt\ngit add b.txt\ngit commit -m \"Add b\"",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"Add b\", \"Add a\"]"
+     },
+     {
+      "call": "repo.count()",
+      "expect": "2"
+     },
+     {
+      "call": "repo.tree()",
+      "expect": "[\"a.txt\", \"b.txt\"]"
+     }
+    ],
+    "hint": "Har bir fayl uchun add va commit ni alohida bajaring.",
+    "kind": "git",
+    "setup": "git init",
+    "id": "2"
+   },
+   {
+    "title": "Faqat bittasini tayyorlash",
+    "task": "a.txt allaqachon commit qilingan. b.txt va c.txt nomli ikkita yangi fayl yarating (istalgan matn bilan), lekin faqat b.txt ni staging area ga qo'shing. Commit qilmang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo b > b.txt\necho c > c.txt\ngit add b.txt",
+    "tests": [
+     {
+      "call": "repo.staged()",
+      "expect": "[\"A b.txt\"]"
+     },
+     {
+      "call": "repo.untracked()",
+      "expect": "[\"c.txt\"]"
+     },
+     {
+      "call": "repo.count()",
+      "expect": "1"
+     }
+    ],
+    "hint": "git add . hammasini qo'shadi; kerak bo'lgan fayl nomini aniq yozing.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"",
+    "id": "3"
+   },
+   {
+    "title": "Boshqa nomli asosiy branch",
+    "task": "Yangi omborni 'trunk' nomli asosiy branch bilan yarating (git init ning bayrog'i bor), fayl yaratib 'First' xabari bilan commit qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git init -b trunk\necho x > f.txt\ngit add .\ngit commit -m \"First\"",
+    "tests": [
+     {
+      "call": "repo.branch()",
+      "expect": "\"trunk\""
+     },
+     {
+      "call": "repo.log()",
+      "expect": "[\"First\"]"
+     }
+    ],
+    "hint": "git init -b <nom> boshlang'ich branch nomini belgilaydi.",
+    "kind": "git",
+    "setup": "",
+    "id": "4"
+   },
+   {
+    "title": "Uch zona: tayyorlangan va keyingi tahrir",
+    "task": "a.txt commit qilingan (matn: one). Uni 'two' ga o'zgartirib tayyorlang (git add), keyin yana 'three' ga o'zgartiring va tayyorlamang. Natijada fayl ham staged, ham unstaged o'zgargan bo'lishi kerak.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo two > a.txt\ngit add a.txt\necho three > a.txt",
+    "tests": [
+     {
+      "call": "repo.staged()",
+      "expect": "[\"M a.txt\"]"
+     },
+     {
+      "call": "repo.changes()",
+      "expect": "[\"M a.txt\"]"
+     },
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"three\""
+     },
+     {
+      "call": "repo.show(\"HEAD\", \"a.txt\")",
+      "expect": "\"one\""
+     }
+    ],
+    "hint": "git add o'sha paytdagi holatni oladi. Undan keyingi tahrir yana unstaged bo'lib qoladi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"",
+    "id": "5"
+   },
+   {
+    "title": "Branch — faqat ko'rsatkich",
+    "task": "Joriy main branchda turib 'backup' nomli yangi branch yarating, lekin unga O'TMANG. Ikkala branch bir xil commitga ishora qilsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git branch backup",
+    "tests": [
+     {
+      "call": "repo.branches()",
+      "expect": "[\"backup\", \"main\"]"
+     },
+     {
+      "call": "repo.branch()",
+      "expect": "\"main\""
+     },
+     {
+      "call": "repo.same(\"backup\", \"main\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "git branch <ism> yaratadi, lekin o'tmaydi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"",
+    "id": "6"
+   },
+   {
+    "title": "Detached HEAD",
+    "task": "Ombor ikkita commitdan iborat (A, keyin B). Hech qanday branchga o'tmasdan, HEAD ni birinchi commit (A) ga qo'ying (detached HEAD holati).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git checkout HEAD~1",
+    "tests": [
+     {
+      "call": "repo.detached()",
+      "expect": "true"
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"A\""
+     },
+     {
+      "call": "repo.branch()",
+      "expect": "null"
+     }
+    ],
+    "hint": "HEAD~1 — hozirgi commitning bitta oldingisi.",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\ngit add .\ngit commit -m \"B\"",
+    "id": "7"
+   },
+   {
+    "title": "Eski commitdan branch",
+    "task": "Ombor uch commitdan iborat (A, B, C). Joriy HEAD dan IKKI commit oldingi (A) commitdan 'old' nomli branch yarating, o'tmasdan.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git branch old HEAD~2",
+    "tests": [
+     {
+      "call": "repo.tip(\"old\")",
+      "expect": "\"A\""
+     },
+     {
+      "call": "repo.branch()",
+      "expect": "\"main\""
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"C\""
+     }
+    ],
+    "hint": "git branch <ism> <boshlang'ich commit>: HEAD~2 — ikki qadam orqaga.",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\ngit add .\ngit commit -m \"B\"\necho 3 > c.txt\ngit add .\ngit commit -m \"C\"",
+    "id": "8"
+   },
+   {
+    "title": "Faylni qayta nomlash",
+    "task": "a.txt ni git mv bilan main.txt ga qayta nomlang va 'Rename a' xabari bilan commit qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git mv a.txt main.txt\ngit commit -m \"Rename a\"",
+    "tests": [
+     {
+      "call": "repo.tree()",
+      "expect": "[\"main.txt\"]"
+     },
+     {
+      "call": "repo.log()",
+      "expect": "[\"Rename a\", \"A\"]"
+     },
+     {
+      "call": "repo.files()",
+      "expect": "[\"main.txt\"]"
+     }
+    ],
+    "hint": "git mv nom o'zgarishini avtomatik tayyorlaydi (stage qiladi).",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"",
+    "id": "9"
+   },
+   {
+    "title": "Faylni Git orqali o'chirish",
+    "task": "Omborda a.txt va b.txt bor. b.txt ni git rm bilan o'chirib, 'Remove b' xabari bilan commit qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git rm b.txt\ngit commit -m \"Remove b\"",
+    "tests": [
+     {
+      "call": "repo.tree()",
+      "expect": "[\"a.txt\"]"
+     },
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\"]"
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"Remove b\""
+     }
+    ],
+    "hint": "git rm faylni ham diskdan, ham indeksdan olib tashlaydi.",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\necho 2 > b.txt\ngit add .\ngit commit -m \"Init\"",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-git-jr-02",
+  "level": "JUNIOR",
+  "module": "git",
+  "order": 2,
+  "title": "Asosiy buyruqlar",
+  "intro": "init, add, commit, status, diff, log, .gitignore va config: kundalik Git ish oqimi hamda har bir buyruqning aniq nima qilishi.",
+  "theory": {
+   "analogy": {
+    "icon": "📝",
+    "title": "Kundalik daftar",
+    "text": "Git bilan ishlash — kundalik yuritishga o'xshaydi. Kun davomida sahifalarga yozasiz (working directory), kechqurun qaysi yozuvlarni daftarga muhrlashni tanlaysiz (git add), va sahifaga sarlavha qo'yib yopasiz (git commit -m). Keyin `git log` — daftarning mundarijasi."
+   },
+   "sections": [
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Tracked / untracked (kuzatilayotgan / kuzatilmayotgan)",
+       "text": "Tracked — oxirgi commitda yoki indexda bor fayllar. Untracked — Git hali tanimaydigan yangi fayllar; ular `git add` qilinmaguncha commitga kirmaydi."
+      },
+      {
+       "term": "git add .",
+       "text": "joriy papkadagi barcha o'zgargan va yangi (ignore qilinmagan) fayllarni indexga qo'shadi. Qaysi fayl kirayotganini bilish uchun avval git status qiling."
+      },
+      {
+       "term": "git commit -am",
+       "text": "`-a` (all) va `-m` (message) ni birlashtirgan yozuv: kuzatilayotgan fayllardagi o'zgarishlarni avtomatik add qilib, commit qiladi. Yangi fayllarni qo'shmaydi."
+      },
+      {
+       "term": ".gitignore",
+       "text": "Git e'tibor bermaydigan fayl va papkalar naqshlari. Allaqachon commit qilingan fayllarga ta'sir qilmaydi."
+      },
+      {
+       "term": "Conventional commit message (odatiy xabar)",
+       "text": "Qisqa sarlavha (50 belgigacha), buyruq shaklida: 'Add login form'. Kerak bo'lsa bo'sh qator va batafsil izoh qo'shiladi."
+      }
+     ]
+    },
+    {
+     "heading": "Asosiy tsikl",
+     "text": "Kundalik ish: fayllarni o'zgartirasiz → `git status` bilan holatni ko'rasiz → `git diff` bilan nima o'zgarganini tekshirasiz → `git add` bilan keraklisini tayyorlaysiz → `git commit -m \"xabar\"` bilan saqlaysiz. `git init` papkani Git omboriga aylantiradi (ichida `.git` yaratadi). Birinchi commitdan oldin branch ham 'tug'ilmagan' (unborn) bo'ladi."
+    },
+    {
+     "code": {
+      "lang": "bash",
+      "text": "git init                       # ombor yaratish\ngit status                     # holat\ngit add a.txt                  # bitta faylni tayyorlash\ngit add .                      # hammasini (ignore qilinmagan) tayyorlash\ngit commit -m \"Add a.txt\"      # saqlash\ngit commit -am \"Fix typo\"      # kuzatilayotgan fayllarni add + commit\ngit log --oneline              # qisqa tarix"
+     }
+    },
+    {
+     "heading": "diff nimani ko'rsatadi",
+     "table": {
+      "head": [
+       "Buyruq",
+       "Solishtiradi",
+       "Qachon kerak"
+      ],
+      "rows": [
+       [
+        "git diff",
+        "Working directory ↔ staging area",
+        "Hali add qilinmagan o'zgarishlar"
+       ],
+       [
+        "git diff --staged",
+        "Staging area ↔ oxirgi commit",
+        "Commitga nima kirishini tekshirish"
+       ],
+       [
+        "git diff HEAD",
+        "Working directory ↔ oxirgi commit",
+        "Umumiy o'zgarish (staged + unstaged)"
+       ],
+       [
+        "git diff a b",
+        "Ikki commit/branch",
+        "Branchlar orasidagi farq"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Yaxshi commit va -a tuzog'i",
+     "text": "Yaxshi commit — bitta mantiqiy o'zgarish, xabari esa 'nima va nega' ni qisqa aytadi (buyruq shaklida: 'Add', 'Fix'). `git commit -a` faqat allaqachon kuzatilayotgan (tracked) fayllarni oladi: yangi yaratilgan (untracked) fayl add qilinmasa, -a uni commitga qo'shmaydi. `git add .` esa .gitignore dagilardan tashqari hamma narsani (yangi fayllarni ham) qo'shadi — shuning uchun avval `git status` ni tekshiring, tasodifan .env yoki katta fayl commitga tushib qolmasin."
+    },
+    {
+     "heading": ".gitignore va config",
+     "text": "`.gitignore` — Git e'tiborsiz qoldiradigan fayl naqshlari ro'yxati: `node_modules/`, `*.log`, `.env`, `dist/`. U FAQAT hali kuzatilmayotgan fayllarga ta'sir qiladi: fayl allaqachon commit qilingan bo'lsa, keyin .gitignore ga yozish uni tarixdan olib tashlamaydi; buning uchun `git rm --cached fayl` kerak. `git config user.name` va `user.email` commitlarda muallif sifatida yoziladi; `--global` bayrog'i barcha omborlar uchun qo'llaydi."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "Parol, token yoki .env fayli bir marta commit qilinib push bo'lsa, uni keyin o'chirish yetmaydi: tarixda qoladi. Bunday kalitni darhol almashtiring (rotate) — faqat tarixni tozalash xavfsizlik uchun yetarli emas."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🧾",
+       "title": "Chek yozish",
+       "text": "Savat — working directory, kassadagi tanlangan mahsulotlar — staging area. Kassada hammasini emas, kerakli narsalarni 'chekka' (commit) kiritasiz."
+      },
+      {
+       "icon": "🧹",
+       "title": "Chiqindi qutisi",
+       "text": ".gitignore — uyga kirmaydigan narsalar ro'yxati: iflos poyabzal (node_modules), vaqtinchalik qog'ozlar (*.log). Ular hech qachon albomga tushmaydi."
+      }
+     ]
+    }
+   ],
+   "recap": [
+    "add — tayyorlash, commit — muhrlash; status va diff — tekshirish.",
+    "diff: unstaged, --staged: tayyorlangan, HEAD: ikkalasi.",
+    "commit -a faqat tracked fayllarni oladi, yangi fayllarni emas.",
+    ".gitignore faqat kuzatilmayotgan fayllarga ta'sir qiladi; sirlarni commit qilmang."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Ikkita mantiqiy commit",
+    "text": "Bir papkada ikkita fayl (a.txt, b.txt) ni o'zgartiring. `git add a.txt` va commit qiling, keyin b.txt uchun alohida commit qiling. `git log --oneline` da ikki commitni ko'ring."
+   },
+   {
+    "title": ".gitignore sinovi",
+    "text": "`node_modules/` va `*.log` ni .gitignore ga yozing, `test.log` yarating va `git status` da ko'rinmasligini tekshiring. Keyin ignore qilinmagan faylni commit qilib, undan keyin .gitignore ga qo'shib ko'ring: nega hali kuzatilishini tushuntiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Natija qanday bo'ladi?",
+    "options": [
+     "Yangi.txt commitga kirmaydi, faqat a.txt dagi o'zgarish kiradi",
+     "Ikkala fayl ham commit bo'ladi",
+     "Xato: -a faqat -m bilan ishlamaydi",
+     "Hech narsa commit bo'lmaydi"
+    ],
+    "answer": "Yangi.txt commitga kirmaydi, faqat a.txt dagi o'zgarish kiradi",
+    "explain": "-a faqat tracked fayllarni oladi. Yangi.txt kuzatilmagan, uni avval git add qilish kerak.",
+    "passage": "echo x >> a.txt        # a.txt allaqachon commit qilingan\necho y > yangi.txt     # yangi fayl\ngit commit -am \"Update\""
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`git diff` natijasi BO'SH, lekin `git status` da fayl 'Changes to be committed' deb ko'rinyapti. Sabab?",
+    "options": [
+     "O'zgarishlar allaqachon staged: oddiy git diff faqat unstaged qismni ko'rsatadi",
+     "Git xato qilgan",
+     "Fayl commit bo'lib bo'lgan",
+     "diff faqat yangi fayllar uchun ishlaydi"
+    ],
+    "answer": "O'zgarishlar allaqachon staged: oddiy git diff faqat unstaged qismni ko'rsatadi",
+    "explain": "Staged o'zgarishni ko'rish uchun `git diff --staged` kerak."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Qaysi buyruq 'commitga aynan nima kirishini' oldindan ko'rsatadi?",
+    "options": [
+     "git diff --staged",
+     "git diff",
+     "git log",
+     "git status -s"
+    ],
+    "answer": "git diff --staged",
+    "explain": "--staged (yoki --cached) indexni oxirgi commit bilan solishtiradi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Qaysi holatda `git add .` NI ishlatish xavfli?",
+    "options": [
+     "Papkada .env kabi sirli fayl bo'lib, u .gitignore da yo'q bo'lsa",
+     "Faqat bitta fayl o'zgargan bo'lsa",
+     "Yangi commit yaratayotganda",
+     "Hech qachon xavfli emas"
+    ],
+    "answer": "Papkada .env kabi sirli fayl bo'lib, u .gitignore da yo'q bo'lsa",
+    "explain": "add . hamma narsani qo'shadi. Avval git status bilan nima kirayotganini tekshirish odat bo'lsin."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "`.env` allaqachon commit qilingan. Uni keyin .gitignore ga yozdingiz. Nima bo'ladi?",
+    "options": [
+     "Fayl baribir kuzatilishda davom etadi; uni indexdan git rm --cached bilan chiqarish kerak",
+     "Fayl avtomatik tarixdan o'chadi",
+     "Git xato beradi",
+     "Fayl diskdan o'chiriladi"
+    ],
+    "answer": "Fayl baribir kuzatilishda davom etadi; uni indexdan git rm --cached bilan chiqarish kerak",
+    "explain": ".gitignore faqat untracked fayllarga ta'sir qiladi. Tarixdagi eski nusxa esa qoladi, kalitni almashtirish kerak."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Quyida nechta commit hosil bo'ladi va ikkinchisida nima bo'ladi?",
+    "options": [
+     "2 ta: birinchisida faqat a.txt, ikkinchisida b.txt",
+     "1 ta, ikkala fayl bilan",
+     "2 ta, ikkalasida ham ikkala fayl",
+     "0 ta, chunki xabar yo'q"
+    ],
+    "answer": "2 ta: birinchisida faqat a.txt, ikkinchisida b.txt",
+    "explain": "add faqat ko'rsatilgan faylni tayyorlaydi, keyingi commit shu faylni oladi.",
+    "passage": "git add a.txt\ngit commit -m \"Add a\"\ngit add b.txt\ngit commit -m \"Add b\""
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi `git status` natijasida nechta fayl commitga kiradi?",
+    "options": [
+     "1 ta (a.txt)",
+     "2 ta",
+     "3 ta",
+     "0 ta"
+    ],
+    "answer": "1 ta (a.txt)",
+    "explain": "Faqat 'Changes to be committed' bo'limidagi fayllar kiradi: a.txt. b.txt o'zgargan lekin staged emas, c.txt esa untracked.",
+    "passage": "Changes to be committed:\n  modified:   a.txt\nChanges not staged for commit:\n  modified:   b.txt\nUntracked files:\n  c.txt"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "`git log --oneline` nimani ko'rsatadi?",
+    "options": [
+     "Har bir commit uchun bitta qator: qisqa hash va xabar",
+     "Faqat oxirgi commit",
+     "O'zgargan fayllar ro'yxati",
+     "Branchlar ro'yxati"
+    ],
+    "answer": "Har bir commit uchun bitta qator: qisqa hash va xabar",
+    "explain": "--oneline tarixni ixcham ko'rinishga keltiradi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Commit xabari qaysi biri yaxshi amaliyotga mos?",
+    "options": [
+     "Fix crash when cart is empty",
+     "fixed stuff",
+     "asdf",
+     "Barcha o'zgarishlar va yangi narsalar va yana ko'p narsalar qo'shildi 2"
+    ],
+    "answer": "Fix crash when cart is empty",
+    "explain": "Qisqa, buyruq shaklidagi, nima va nega qilinganini aytuvchi xabar tarixni o'qishni osonlashtiradi."
+   },
+   {
+    "id": "10",
+    "kind": "CHOICE",
+    "prompt": "`git init` ni bajargach, hech narsa commit qilinmasdan `git log` yozildi. Natija?",
+    "options": [
+     "Xato: hali birorta commit yo'q",
+     "Bo'sh ro'yxat va hech qanday xabar",
+     "Avtomatik 'Initial commit' ko'rsatiladi",
+     "Butun papka fayllari ro'yxati"
+    ],
+    "answer": "Xato: hali birorta commit yo'q",
+    "explain": "Unborn branch da log: 'your current branch has no commits yet' xatosini beradi."
+   },
+   {
+    "id": "11",
+    "kind": "CHOICE",
+    "prompt": "Qaysi naqsh barcha .log fayllarini e'tiborsiz qoldiradi?",
+    "options": [
+     "*.log",
+     "log.*",
+     "/log",
+     "!*.log"
+    ],
+    "answer": "*.log",
+    "explain": "* — istalgan belgilar. `!` esa istisno (ignore qilinmasin) degani."
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Barcha o'zgarishlarni (yangi fayllarni ham) tayyorlash uchun to'liq buyruqni yozing (nuqta bilan).",
+    "answer": "git add .",
+    "explain": "Nuqta joriy papkadagi hamma narsani bildiradi (ignore qilinmaganlarni).",
+    "alsoAccept": [
+     "git add -A",
+     "git add --all"
+    ]
+   }
+  ],
+  "labs": [
+   {
+    "title": "Hammasini bitta commitga",
+    "task": "Ikkita yangi fayl (a.txt, b.txt) bor. Ularni birgalikda bitta 'Add files' commitiga kiriting.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git add .\ngit commit -m \"Add files\"",
+    "tests": [
+     {
+      "call": "repo.count()",
+      "expect": "1"
+     },
+     {
+      "call": "repo.tree()",
+      "expect": "[\"a.txt\", \"b.txt\"]"
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"Add files\""
+     }
+    ],
+    "hint": "git add . yangi fayllarni ham qo'shadi.",
+    "kind": "git",
+    "setup": "git init\necho x > a.txt\necho y > b.txt",
+    "id": "1"
+   },
+   {
+    "title": "Mantiqiy alohida commitlar",
+    "task": "Ikkita yangi fayl bor. Ularni ikkita alohida commit qiling: avval a.txt uchun 'Add a', keyin b.txt uchun 'Add b'.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git add a.txt\ngit commit -m \"Add a\"\ngit add b.txt\ngit commit -m \"Add b\"",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"Add b\", \"Add a\"]"
+     },
+     {
+      "call": "repo.tree()",
+      "expect": "[\"a.txt\", \"b.txt\"]"
+     }
+    ],
+    "hint": "Har commitdan oldin faqat tegishli faylni add qiling.",
+    "kind": "git",
+    "setup": "git init\necho x > a.txt\necho y > b.txt",
+    "id": "2"
+   },
+   {
+    "title": "commit -am",
+    "task": "a.txt commit qilingan va endi 'two' ga o'zgartirilgan (setup). git add ni alohida yozmasdan, bitta commit buyrug'i bilan 'Update a' xabarini yozib saqlang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git commit -am \"Update a\"",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"Update a\", \"A\"]"
+     },
+     {
+      "call": "repo.clean()",
+      "expect": "true"
+     },
+     {
+      "call": "repo.show(\"HEAD\", \"a.txt\")",
+      "expect": "\"two\""
+     }
+    ],
+    "hint": "-a o'zgargan tracked fayllarni avtomatik tayyorlaydi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho two > a.txt",
+    "id": "3"
+   },
+   {
+    "title": "commit -a tuzog'i",
+    "task": "a.txt o'zgargan va yangi n.txt fayl yaratilgan (setup). 'Update a' commitiga FAQAT a.txt dagi o'zgarish kirsin, n.txt esa kuzatilmay qolaversin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git commit -am \"Update a\"",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"Update a\", \"A\"]"
+     },
+     {
+      "call": "repo.untracked()",
+      "expect": "[\"n.txt\"]"
+     },
+     {
+      "call": "repo.tree()",
+      "expect": "[\"a.txt\"]"
+     }
+    ],
+    "hint": "-a yangi fayllarni olmaydi: aynan shu kerak.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho two > a.txt\necho new > n.txt",
+    "id": "4"
+   },
+   {
+    "title": ".gitignore bilan loglarni yashirish",
+    "task": "app.js va debug.log fayllari bor. .gitignore yarating (*.log naqshi bilan) va qolgan hamma narsani 'Init' xabari bilan commit qiling. debug.log commitga kirmasin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo \"*.log\" > .gitignore\ngit add .\ngit commit -m \"Init\"",
+    "tests": [
+     {
+      "call": "repo.tree()",
+      "expect": "[\".gitignore\", \"app.js\"]"
+     },
+     {
+      "call": "repo.untracked()",
+      "expect": "[]"
+     },
+     {
+      "call": "repo.files().includes(\"debug.log\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "Avval .gitignore ni yarating, keyin git add . qiling.",
+    "kind": "git",
+    "setup": "git init\necho x > app.js\necho trace > debug.log",
+    "id": "5"
+   },
+   {
+    "title": "node_modules papkasini e'tiborsiz qoldirish",
+    "task": "node_modules/pkg.js va src.js fayllari bor. node_modules/ ni .gitignore ga yozib, qolganini 'Init' bilan commit qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo \"node_modules/\" > .gitignore\ngit add .\ngit commit -m \"Init\"",
+    "tests": [
+     {
+      "call": "repo.tree()",
+      "expect": "[\".gitignore\", \"src.js\"]"
+     },
+     {
+      "call": "repo.untracked()",
+      "expect": "[]"
+     }
+    ],
+    "hint": "Papka naqshi oxirida / bilan yoziladi.",
+    "kind": "git",
+    "setup": "git init\necho lib > node_modules/pkg.js\necho x > src.js",
+    "id": "6"
+   },
+   {
+    "title": "Allaqachon commit qilingan .env ni kuzatuvdan chiqarish",
+    "task": ".env tasodifan commit qilingan. Uni kuzatuvdan chiqaring, lekin diskdan o'chirmang, .gitignore ga qo'shing va hammasini 'Stop tracking env' bilan commit qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git rm --cached .env\necho .env > .gitignore\ngit add .gitignore\ngit commit -m \"Stop tracking env\"",
+    "tests": [
+     {
+      "call": "repo.tree()",
+      "expect": "[\".gitignore\", \"app.js\"]"
+     },
+     {
+      "call": "repo.files().includes(\".env\")",
+      "expect": "true"
+     },
+     {
+      "call": "repo.untracked()",
+      "expect": "[]"
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"Stop tracking env\""
+     }
+    ],
+    "hint": "git rm --cached faqat indeksdan chiqaradi, fayl diskda qoladi.",
+    "kind": "git",
+    "setup": "git init\necho x > app.js\necho KEY=1 > .env\ngit add .\ngit commit -m \"Init\"",
+    "id": "7"
+   },
+   {
+    "title": "Commit xabaridagi xatoni tuzatish",
+    "task": "Oxirgi commit xabari 'Ad a' deb xato yozilgan. Yangi commit yaratmasdan, uni 'Add a' ga o'zgartiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git commit --amend -m \"Add a\"",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"Add a\"]"
+     },
+     {
+      "call": "repo.count()",
+      "expect": "1"
+     }
+    ],
+    "hint": "--amend oxirgi commitni almashtiradi.",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\ngit add .\ngit commit -m \"Ad a\"",
+    "id": "8"
+   },
+   {
+    "title": "Unutilgan faylni oxirgi commitga qo'shish",
+    "task": "a.txt commit qilindi, lekin b.txt ni unutdingiz (u yaratilgan, lekin kuzatilmaydi). Uni YANGI commit yaratmasdan, oxirgi commitga qo'shing.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git add b.txt\ngit commit --amend -m \"A\"",
+    "tests": [
+     {
+      "call": "repo.count()",
+      "expect": "1"
+     },
+     {
+      "call": "repo.tree()",
+      "expect": "[\"a.txt\", \"b.txt\"]"
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"A\""
+     }
+    ],
+    "hint": "Avval git add b.txt, keyin git commit --amend.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt",
+    "id": "9"
+   },
+   {
+    "title": "Holatni aniq tuzish",
+    "task": "b.txt commit qilingan (matn: 1). Quyidagi holatni yarating: yangi a.txt tayyorlangan (staged), b.txt 2 ga o'zgartirilgan lekin tayyorlanmagan, c.txt esa kuzatilmaydigan yangi fayl.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo a > a.txt\ngit add a.txt\necho 2 > b.txt\necho c > c.txt",
+    "tests": [
+     {
+      "call": "repo.staged()",
+      "expect": "[\"A a.txt\"]"
+     },
+     {
+      "call": "repo.changes()",
+      "expect": "[\"M b.txt\"]"
+     },
+     {
+      "call": "repo.untracked()",
+      "expect": "[\"c.txt\"]"
+     }
+    ],
+    "hint": "Faqat a.txt ni add qiling; b.txt va c.txt ga add yozmang.",
+    "kind": "git",
+    "setup": "git init\necho 1 > b.txt\ngit add .\ngit commit -m \"Init\"",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-git-jr-03",
+  "level": "JUNIOR",
+  "module": "git",
+  "order": 3,
+  "title": "Xatolarni qaytarish",
+  "intro": "restore, reset (--soft, --mixed, --hard), revert, commit --amend va reflog: har bir vaziyatda qaysi buyruq xavfsiz ekanini bilish.",
+  "theory": {
+   "analogy": {
+    "icon": "⏪",
+    "title": "Matn muharriridagi Ctrl+Z",
+    "text": "Git — har bir bosqich uchun alohida Ctrl+Z. Faylni tahrir paytida buzsangiz — working directory ni qaytarasiz (restore). Noto'g'ri faylni tayyorlab qo'ysangiz — tayyorlovdan chiqarasiz (restore --staged). Noto'g'ri commit qilsangiz — commitni bekor qilasiz (reset yoki revert). Har qadamning o'z buyrug'i bor, eng muhimi — qaysi biri ma'lumotni yo'qotishini bilish."
+   },
+   "sections": [
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "git restore",
+       "text": "ishchi papka yoki indeksdagi faylni boshqa holatdan (standart: index, --staged bilan: HEAD) tiklaydi. Commit tarixini o'zgartirmaydi."
+      },
+      {
+       "term": "git reset --soft / --mixed / --hard",
+       "text": "branch ko'rsatkichini suradi; mos ravishda hech narsaga tegmaydi / indeksni ham tiklaydi / indeks va fayllarni ham tiklaydi."
+      },
+      {
+       "term": "git revert",
+       "text": "belgilangan commitni bekor qiluvchi yangi (teskari) commit yaratadi. Tarix o'zgarmaydi, shuning uchun ulashilgan branchlar uchun xavfsiz."
+      },
+      {
+       "term": "git commit --amend",
+       "text": "oxirgi commitni almashtiradi (xabarini yoki tarkibini). Yangi hash hosil bo'ladi, shuning uchun push qilingan commit uchun tavsiya etilmaydi."
+      },
+      {
+       "term": "Reflog (ko'rsatkichlar jurnali)",
+       "text": "HEAD ning mahalliy harakatlar tarixi. Yo'qolgan commitni topishning asosiy vositasi: HEAD@{n} ko'rinishida murojaat qilinadi."
+      }
+     ]
+    },
+    {
+     "heading": "Qaysi bosqichni qaytarish kerak",
+     "table": {
+      "head": [
+       "Vaziyat",
+       "Buyruq",
+       "Ma'lumot yo'qoladimi"
+      ],
+      "rows": [
+       [
+        "Faylni noto'g'ri tahrir qildim (add qilmadim)",
+        "git restore fayl",
+        "HA: saqlanmagan o'zgarish yo'qoladi"
+       ],
+       [
+        "Faylni add qilib yubordim, qaytarmoqchiman",
+        "git restore --staged fayl",
+        "Yo'q: o'zgarish faylda qoladi"
+       ],
+       [
+        "Oxirgi commit xabarida xato",
+        "git commit --amend -m \"...\"",
+        "Yo'q (yangi commit yaratiladi)"
+       ],
+       [
+        "Commitni bekor qilib, o'zgarishlarni qoldirmoqchiman",
+        "git reset --soft HEAD~1",
+        "Yo'q"
+       ],
+       [
+        "Commit va tayyorlovni bekor qilaman",
+        "git reset HEAD~1",
+        "Yo'q (fayllar o'zgargan holda qoladi)"
+       ],
+       [
+        "Hammasini tashlab yuboraman",
+        "git reset --hard HEAD~1",
+        "HA: saqlanmaganlar yo'qoladi"
+       ],
+       [
+        "Ulashilgan (push qilingan) commitni qaytarish",
+        "git revert <commit>",
+        "Yo'q: yangi teskari commit"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "reset ning uch turi",
+     "text": "`git reset <commit>` joriy branch ko'rsatkichini boshqa commitga suradi. Farq — qo'shimcha nimani o'zgartirishida. --soft: faqat ko'rsatkichni suradi; indeks va fayllar tegilmaydi, ya'ni bekor qilingan commit o'zgarishlari 'staged' qoladi. --mixed (standart): ko'rsatkich + indeks; o'zgarishlar fayllarda qoladi, lekin staged emas. --hard: ko'rsatkich + indeks + fayllar; hammasi o'sha commit holatiga qaytadi, saqlanmagan o'zgarishlar yo'qoladi."
+    },
+    {
+     "code": {
+      "lang": "bash",
+      "text": "# tarix: A - B - C (HEAD)\ngit reset --soft HEAD~1    # HEAD=B, C ning o'zgarishlari staged\ngit reset HEAD~1           # HEAD=B, C ning o'zgarishlari faylda (unstaged)\ngit reset --hard HEAD~1    # HEAD=B, C ning o'zgarishlari butunlay yo'q"
+     }
+    },
+    {
+     "heading": "reset va revert: ulashilgan tarix qoidasi",
+     "text": "reset tarixni 'orqaga suradi' va commitlarni tarixdan olib tashlaydi. Agar o'sha commit allaqachon push qilingan bo'lsa, boshqalarning tarixi bilan ziddiyat chiqadi. Shuning uchun ulashilgan tarixda `git revert` ishlatiladi: u bekor qilinayotgan commitga TESKARI o'zgarish bilan YANGI commit qo'shadi, eski tarix o'zgarmaydi. Xabar odatda 'Revert \"...\"' bo'ladi."
+    },
+    {
+     "heading": "reflog — oxirgi najot yo'li",
+     "text": "Reflog (reference log — ko'rsatkichlar jurnali) HEAD ning har bir harakatini (commit, reset, checkout, merge) mahalliy ravishda yozib boradi. `git reset --hard` dan keyin 'yo'qolgan' commit aslida obyektlar omborida turadi, faqat hech qaysi branch unga ishora qilmaydi. `git reflog` bilan uning o'rnini topib (`HEAD@{1}`) `git reset --hard HEAD@{1}` bilan qaytarish mumkin. Reflog faqat mahalliy va odatda ~90 kun saqlanadi."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "`git restore fayl` va `git reset --hard` commit qilinmagan o'zgarishlarni TIKLAB BO'LMAYDIGAN qilib o'chiradi: ular hech qachon commit qilinmagani uchun reflogda ham yo'q. Commit qilingan narsa deyarli har doim qutqariladi, qilinmagani — yo'q."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🧯",
+       "title": "O't o'chirgich",
+       "text": "revert — yong'in bo'lgan joyni yopuvchi yangi devor: tarix saqlanadi. reset --hard — butun xonani buzib tashlash: tez, lekin qaytib bo'lmaydi."
+      },
+      {
+       "icon": "🗑️",
+       "title": "Kompyuterdagi Axlat qutisi",
+       "text": "Reflog — Axlat qutisi: reset --hard dan keyin commit 'o'chgan' ko'rinadi, lekin bir muddat qutida yotadi. Faqat hech qachon saqlanmagan fayl qutiga tushmaydi."
+      }
+     ]
+    }
+   ],
+   "recap": [
+    "Bosqichga mos buyruq: restore (fayl), restore --staged (index), reset (commit).",
+    "--soft: faqat HEAD; --mixed: HEAD + index; --hard: HEAD + index + fayllar.",
+    "Ulashilgan tarixda reset emas, revert ishlating.",
+    "reflog commit qilingan 'yo'qolgan' ishni qaytaradi; commit qilinmaganini esa hech narsa."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Uch reset ni solishtirish",
+    "text": "Uch commitli ombor yarating. Har safar `git reset --soft HEAD~1`, `git reset HEAD~1`, `git reset --hard HEAD~1` ni sinab (oralig'ida reflog bilan qaytib) `git status` va fayllar holatini jadvalga yozing."
+   },
+   {
+    "title": "Yo'qolgan commitni topish",
+    "text": "Commit qiling, `git reset --hard HEAD~1` bajaring, so'ng `git reflog` orqali commit hashini topib `git reset --hard HEAD@{1}` bilan tiklang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Tarix A-B-C (HEAD). `git reset --soft HEAD~1` dan keyin nima bo'ladi?",
+    "options": [
+     "HEAD = B, C dagi o'zgarishlar staged holatda qoladi",
+     "HEAD = B, o'zgarishlar yo'qoladi",
+     "HEAD = C, faqat indeks tozalanadi",
+     "C commiti qaytadan yaratiladi"
+    ],
+    "answer": "HEAD = B, C dagi o'zgarishlar staged holatda qoladi",
+    "explain": "--soft faqat ko'rsatkichni suradi; indeks va fayllarga tegmaydi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Tarix A-B-C (HEAD). `git reset HEAD~1` (bayroqsiz) dan keyin C dagi o'zgarishlar...",
+    "options": [
+     "Fayllarda qoladi, lekin staged emas",
+     "Staged holatda qoladi",
+     "Butunlay yo'qoladi",
+     "Yangi branchga ko'chadi"
+    ],
+    "answer": "Fayllarda qoladi, lekin staged emas",
+    "explain": "Standart rejim --mixed: ko'rsatkich va indeks qaytadi, ishchi papka saqlanadi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Tarix A-B-C (HEAD), ishchi papkada commit qilinmagan o'zgarishlar bor. `git reset --hard HEAD~1` natijasi?",
+    "options": [
+     "HEAD = B; C ning ham, commit qilinmagan o'zgarishlar ham yo'qoladi",
+     "Faqat C yo'qoladi",
+     "Hech narsa o'zgarmaydi",
+     "Xato beradi"
+    ],
+    "answer": "HEAD = B; C ning ham, commit qilinmagan o'zgarishlar ham yo'qoladi",
+    "explain": "--hard ishchi papkani ham o'sha commit holatiga qaytaradi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Hamkasblar allaqachon pull qilgan commitni bekor qilish kerak. Qaysi buyruq to'g'ri?",
+    "options": [
+     "git revert <commit>",
+     "git reset --hard HEAD~1 va force push",
+     "git commit --amend",
+     "git restore ."
+    ],
+    "answer": "git revert <commit>",
+    "explain": "revert yangi teskari commit qo'shadi, ulashilgan tarix buzilmaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "`git revert HEAD` tarixni qanday o'zgartiradi?",
+    "options": [
+     "A-B-C ustiga yangi D (C ni bekor qiluvchi) qo'shadi",
+     "C ni tarixdan olib tashlaydi",
+     "HEAD ni B ga qaytaradi, C yo'qoladi",
+     "C ning xabarini o'zgartiradi"
+    ],
+    "answer": "A-B-C ustiga yangi D (C ni bekor qiluvchi) qo'shadi",
+    "explain": "Revert yangi commit yaratadi: A-B-C-D, bunda D = C ning teskarisi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "a.txt ni tahrir qildingiz, add qilmadingiz. `git restore a.txt` natijasi?",
+    "options": [
+     "a.txt indeksdagi (oxirgi staged yoki commit) holatiga qaytadi, tahrir yo'qoladi",
+     "a.txt unstaged bo'ladi, tahrir qoladi",
+     "a.txt o'chadi",
+     "Yangi commit yaratiladi"
+    ],
+    "answer": "a.txt indeksdagi (oxirgi staged yoki commit) holatiga qaytadi, tahrir yo'qoladi",
+    "explain": "Bu buyruq ishchi papkani indeksdan qayta yozadi; saqlanmagan tahrir qaytmaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "a.txt ni tahrir qilib `git add a.txt` qildingiz. Tayyorlovdan chiqarish, lekin tahrirni saqlash uchun?",
+    "options": [
+     "git restore --staged a.txt",
+     "git restore a.txt",
+     "git reset --hard",
+     "git checkout ."
+    ],
+    "answer": "git restore --staged a.txt",
+    "explain": "--staged indeksni HEAD dan tiklaydi, ishchi papkaga tegmaydi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "`git commit --amend -m \"Yangi\"` dan keyin commit hashi...",
+    "options": [
+     "O'zgaradi: yangi commit yaratildi, eskisi esa reflogda qoladi",
+     "O'zgarmaydi",
+     "Faqat parent o'zgaradi",
+     "Eski commit tarixdan darhol butunlay o'chadi"
+    ],
+    "answer": "O'zgaradi: yangi commit yaratildi, eskisi esa reflogda qoladi",
+    "explain": "Amend eski commitni almashtirmaydi, uning o'rniga yangisini ko'rsatadi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Nima ro'y beradi va nima qilish kerak?",
+    "options": [
+     "Reflogdan HEAD@{1} ni topib git reset --hard HEAD@{1} bilan qaytarish mumkin",
+     "Commit butunlay yo'qolgan, qaytarib bo'lmaydi",
+     "git revert HEAD yetarli",
+     "git pull bilan serverdan olish kerak"
+    ],
+    "answer": "Reflogdan HEAD@{1} ni topib git reset --hard HEAD@{1} bilan qaytarish mumkin",
+    "explain": "reset --hard branch ko'rsatkichini suradi, lekin commit obyekti omborda qoladi va reflogda yozilgan.",
+    "passage": "$ git reset --hard HEAD~1     # xato qilib yubordim\n$ git reflog\n3a1f9c0 HEAD@{0}: reset: moving to HEAD~1\n8d2e4b7 HEAD@{1}: commit: Add payment"
+   },
+   {
+    "id": "10",
+    "kind": "CHOICE",
+    "prompt": "Qaysi holatda ma'lumotni reflog orqali ham TIKLAB BO'LMAYDI?",
+    "options": [
+     "Hech qachon commit/add qilinmagan o'zgarishlar restore yoki reset --hard bilan o'chirilganda",
+     "Commit qilingan va reset --hard qilingan ish",
+     "Amend qilingan commit",
+     "Revert qilingan commit"
+    ],
+    "answer": "Hech qachon commit/add qilinmagan o'zgarishlar restore yoki reset --hard bilan o'chirilganda",
+    "explain": "Git faqat obyektlar omborga yozilgan narsani saqlaydi. Hech qachon commit/add qilinmagan tahrir omborga tushmaydi."
+   },
+   {
+    "id": "11",
+    "kind": "CHOICE",
+    "prompt": "Xavfsizlik nuqtai nazaridan qaysi buyruq push qilingan umumiy branchda ISHLATILMASLIGI kerak?",
+    "options": [
+     "git reset --hard HEAD~3 va keyin force push",
+     "git revert",
+     "git log",
+     "git diff"
+    ],
+    "answer": "git reset --hard HEAD~3 va keyin force push",
+    "explain": "Tarixni qayta yozish va majburlab yuborish hamkasblar nusxasini buzadi."
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Oxirgi commitni bekor qilib, o'zgarishlarni staged holatda qoldiradigan to'liq buyruqni yozing.",
+    "answer": "git reset --soft HEAD~1",
+    "explain": "--soft indeks va fayllarga tegmaydi, faqat HEAD ni bir commit orqaga suradi.",
+    "alsoAccept": [
+     "git reset --soft HEAD^"
+    ]
+   }
+  ],
+  "labs": [
+   {
+    "title": "Noto'g'ri tahrirni bekor qilish",
+    "task": "a.txt 'broken' ga o'zgartirilgan, lekin hali tayyorlanmagan. Uni oxirgi commit holatiga qaytaring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git restore a.txt",
+    "tests": [
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"one\""
+     },
+     {
+      "call": "repo.clean()",
+      "expect": "true"
+     }
+    ],
+    "hint": "git restore ishchi papkadagi faylni indeksdan tiklaydi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho broken > a.txt",
+    "id": "1"
+   },
+   {
+    "title": "Tayyorlovdan chiqarish, tahrirni saqlash",
+    "task": "a.txt 'two' ga o'zgartirildi va tayyorlandi (staged). Uni tayyorlovdan chiqaring, lekin fayldagi 'two' tahriri saqlansin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git restore --staged a.txt",
+    "tests": [
+     {
+      "call": "repo.staged()",
+      "expect": "[]"
+     },
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"two\""
+     },
+     {
+      "call": "repo.changes()",
+      "expect": "[\"M a.txt\"]"
+     }
+    ],
+    "hint": "--staged indeksni HEAD ga qaytaradi, faylga tegmaydi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho two > a.txt\ngit add a.txt",
+    "id": "2"
+   },
+   {
+    "title": "reset --soft: commitni bekor qilib, tayyor qoldirish",
+    "task": "Ombor A, B, C commitlaridan iborat. C commitni bekor qiling, lekin uning o'zgarishlari tayyorlangan (staged) holatda qolsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git reset --soft HEAD~1",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"B\", \"A\"]"
+     },
+     {
+      "call": "repo.staged()",
+      "expect": "[\"A c.txt\"]"
+     },
+     {
+      "call": "repo.files().includes(\"c.txt\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "--soft faqat HEAD ko'rsatkichini suradi.",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\ngit add .\ngit commit -m \"B\"\necho 3 > c.txt\ngit add .\ngit commit -m \"C\"",
+    "id": "3"
+   },
+   {
+    "title": "reset (mixed): fayllar qolsin, tayyorlov bekor",
+    "task": "Ombor A, B, C. C commitni bekor qiling: c.txt fayl sifatida qolsin, lekin tayyorlanmagan (untracked) bo'lsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git reset HEAD~1",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"B\", \"A\"]"
+     },
+     {
+      "call": "repo.staged()",
+      "expect": "[]"
+     },
+     {
+      "call": "repo.untracked()",
+      "expect": "[\"c.txt\"]"
+     }
+    ],
+    "hint": "Bayroqsiz reset standart --mixed rejimida ishlaydi.",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\ngit add .\ngit commit -m \"B\"\necho 3 > c.txt\ngit add .\ngit commit -m \"C\"",
+    "id": "4"
+   },
+   {
+    "title": "reset --hard: hammasini tashlab yuborish",
+    "task": "Ombor A, B, C. Oxirgi C commitni va uning fayllarini butunlay o'chiring (tarix ham, ishchi papka ham B holatiga qaytsin).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git reset --hard HEAD~1",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"B\", \"A\"]"
+     },
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\", \"b.txt\"]"
+     },
+     {
+      "call": "repo.clean()",
+      "expect": "true"
+     }
+    ],
+    "hint": "--hard indeks va fayllarni ham tiklaydi.",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\ngit add .\ngit commit -m \"B\"\necho 3 > c.txt\ngit add .\ngit commit -m \"C\"",
+    "id": "5"
+   },
+   {
+    "title": "revert: oxirgi commitni xavfsiz bekor qilish",
+    "task": "Ombor A, B, C va C allaqachon ulashilgan. Tarixni qayta yozmasdan, C ni bekor qiluvchi yangi commit yarating (standart xabar bilan, muharrir ochmasdan).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git revert HEAD --no-edit",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"Revert \\\"C\\\"\", \"C\", \"B\", \"A\"]"
+     },
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\", \"b.txt\"]"
+     }
+    ],
+    "hint": "--no-edit standart xabarni qabul qiladi.",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\ngit add .\ngit commit -m \"B\"\necho 3 > c.txt\ngit add .\ngit commit -m \"C\"",
+    "id": "6"
+   },
+   {
+    "title": "revert: o'rtadagi commitni bekor qilish",
+    "task": "Ombor A, B, C. Faqat B commitning o'zgarishini bekor qiling (b.txt yo'qolsin), lekin C (c.txt) saqlansin. Tarix o'chmasin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git revert HEAD~1 --no-edit",
+    "tests": [
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\", \"c.txt\"]"
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"Revert \\\"B\\\"\""
+     },
+     {
+      "call": "repo.count()",
+      "expect": "4"
+     }
+    ],
+    "hint": "HEAD~1 — oxirgidan bitta oldingi commit (B).",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\ngit add .\ngit commit -m \"B\"\necho 3 > c.txt\ngit add .\ngit commit -m \"C\"",
+    "id": "7"
+   },
+   {
+    "title": "reflog bilan yo'qolgan commitni tiklash",
+    "task": "Tasodifan 'git reset --hard HEAD~2' bajarilib, B va C commitlari 'yo'qoldi' (hozir faqat A). reflog dagi oldingi holat orqali C commitni qaytaring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git reset --hard HEAD@{1}",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"C\", \"B\", \"A\"]"
+     },
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\", \"b.txt\", \"c.txt\"]"
+     }
+    ],
+    "hint": "HEAD@{1} — HEAD ning bitta oldingi holati (reflog).",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\ngit add .\ngit commit -m \"B\"\necho 3 > c.txt\ngit add .\ngit commit -m \"C\"\ngit reset --hard HEAD~2",
+    "id": "8"
+   },
+   {
+    "title": "Ikki fayldan bittasini tayyorlovdan chiqarish",
+    "task": "b.txt va c.txt yangi fayllar bo'lib ikkalasi ham tayyorlangan. Faqat c.txt ni tayyorlovdan chiqaring (fayl qolsin), b.txt tayyor holda qolsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git restore --staged c.txt",
+    "tests": [
+     {
+      "call": "repo.staged()",
+      "expect": "[\"A b.txt\"]"
+     },
+     {
+      "call": "repo.untracked()",
+      "expect": "[\"c.txt\"]"
+     }
+    ],
+    "hint": "Faqat bitta fayl nomi bilan restore --staged.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\necho 3 > c.txt\ngit add .",
+    "id": "9"
+   },
+   {
+    "title": "Faylning eski versiyasini qaytarish",
+    "task": "a.txt avval 'one', keyin 'two' bo'lib commit qilingan. Ishchi papkada a.txt ni oldingi commit dagi ('one') holatiga qaytaring (commit qilmasdan).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git restore --source=HEAD~1 a.txt",
+    "tests": [
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"one\""
+     },
+     {
+      "call": "repo.changes()",
+      "expect": "[\"M a.txt\"]"
+     },
+     {
+      "call": "repo.count()",
+      "expect": "2"
+     }
+    ],
+    "hint": "--source=<commit> faylni boshqa commitdan oladi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"v1\"\necho two > a.txt\ngit commit -am \"v2\"",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-git-jr-04",
+  "level": "JUNIOR",
+  "module": "git",
+  "order": 4,
+  "title": "Branch va merge",
+  "intro": "branch, switch/checkout, fast-forward va 3-way merge, --no-ff, branch o'chirish va merge-base: parallel ishlash asoslari.",
+  "theory": {
+   "analogy": {
+    "icon": "🛤️",
+    "title": "Yo'l ayrilishi",
+    "text": "Branch — yo'l ayrilishi: asosiy yo'l (main) ochiq qoladi, siz esa yon yo'lda yangi funksiya ustida tinch ishlaysiz. Tayyor bo'lgach, yon yo'lni asosiy yo'lga qo'shasiz (merge). Asosiy yo'ldagi harakat bu vaqt ichida to'xtamaydi, shuning uchun qo'shishda ba'zan ikki yo'l 'to'qnashadi'."
+   },
+   "sections": [
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Branch (shox)",
+       "text": "alohida ish chizig'i: commitga ishora qiluvchi ko'rsatkich. Yaratish va almashtirish deyarli bepul."
+      },
+      {
+       "term": "Merge (birlashtirish)",
+       "text": "boshqa branch tarixini joriy branchga qo'shish. Natija fast-forward yoki merge commit bo'ladi."
+      },
+      {
+       "term": "Fast-forward",
+       "text": "joriy branch qo'shilayotgan branchning ajdodi bo'lganda faqat ko'rsatkichni oldinga surish; yangi commit yaratilmaydi."
+      },
+      {
+       "term": "Merge base (umumiy ajdod)",
+       "text": "ikki branch ajralgan oxirgi umumiy commit. 3-way merge shu commit va ikkala uchini solishtiradi."
+      },
+      {
+       "term": "Merge commit",
+       "text": "ikkita (yoki ko'proq) parentga ega commit; ikki tarixni birlashtiradi."
+      }
+     ]
+    },
+    {
+     "heading": "Branch bilan ishlash",
+     "text": "`git branch ism` yangi branch yaratadi, lekin unga o'tmaydi. `git switch ism` (yoki eski `git checkout ism`) o'tadi. `git switch -c ism` (yoki `git checkout -b ism`) yaratib, o'sha zahoti o'tadi. Branchlar ro'yxati: `git branch`; joriy branch yulduzcha (*) bilan belgilanadi. O'tishda ishchi papka o'sha branch commitiga mos o'zgaradi: fayllar avtomatik almashadi. Agar saqlanmagan o'zgarishlaringiz o'tish bilan to'qnashsa, Git o'tishni rad etadi."
+    },
+    {
+     "code": {
+      "lang": "bash",
+      "text": "git switch -c feature/login     # yaratish + o'tish\n# ... ishlash va commit qilish ...\ngit switch main                 # asosiy branchga qaytish\ngit merge feature/login         # qo'shish\ngit branch -d feature/login     # qo'shilgan branchni o'chirish"
+     }
+    },
+    {
+     "heading": "Fast-forward va 3-way merge",
+     "text": "Merge — joriy branchga boshqa branch tarixini qo'shadi. Agar joriy branch ko'rsatkichi qo'shilayotgan branchning to'g'ridan-to'g'ri ajdodi bo'lsa (main o'sha paytdan beri o'zgarmagan), Git yangi commit yaratmaydi — faqat ko'rsatkichni oldinga suradi: fast-forward. Agar ikkala branch ham ajralgandan beri yangi commit olgan bo'lsa, Git merge-base (umumiy ajdod) va ikkala uchini solishtirib (3-way merge — uch tomonlama birlashtirish) yangi merge commit yaratadi, uning IKKITA parenti bo'ladi."
+    },
+    {
+     "table": {
+      "head": [
+       "",
+       "Fast-forward",
+       "3-way merge"
+      ],
+      "rows": [
+       [
+        "Qachon",
+        "Joriy branch ajdod bo'lsa",
+        "Ikkala branch ham o'zgargan bo'lsa"
+       ],
+       [
+        "Yangi commit",
+        "Yo'q (ko'rsatkich suriladi)",
+        "Ha: merge commit"
+       ],
+       [
+        "Parentlar soni",
+        "—",
+        "2"
+       ],
+       [
+        "Tarix",
+        "To'g'ri chiziq",
+        "Ikki chiziq qo'shiladi"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "--no-ff va branchni o'chirish",
+     "text": "`git merge --no-ff ism` fast-forward mumkin bo'lsa ham merge commit yaratadi: tarixda 'bu funksiya alohida branchda ishlangan' izi qoladi. Merge qilingan branchni `git branch -d` bilan o'chirish xavfsiz — Git branch to'liq qo'shilganini tekshiradi va qo'shilmagan bo'lsa rad etadi. `-D` majburlab o'chiradi: qo'shilmagan commitlarga hech narsa ishora qilmay qoladi (reflogda bir muddat turadi). Branchni o'chirish commitlarni emas, faqat ko'rsatkichni o'chiradi."
+    },
+    {
+     "callout": {
+      "kind": "info",
+      "text": "Merge faqat JORIY branchni o'zgartiradi. `git merge feature` ni main da bajarsangiz, main o'zgaradi, feature esa o'sha-o'sha qoladi. Teskarisi uchun avval feature ga o'ting."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔀",
+       "title": "Yo'l qurilishi",
+       "text": "Asosiy yo'l ochiq, yon yo'lda ta'mirlash ishlari boradi. Ish tugagach yon yo'l asosiy yo'lga ulanadi — merge. Agar asosiy yo'l bu orada o'zgarmagan bo'lsa, ulanish oddiy (fast-forward)."
+      },
+      {
+       "icon": "📄",
+       "title": "Hujjatning nusxalari",
+       "text": "Branch — hujjatning alohida nusxasi (lekin Git da nusxa ko'chirilmaydi). Ikki kishi ikkala nusxani tahrir qilgach, ularni bitta hujjatga qo'shish — 3-way merge."
+      }
+     ]
+    }
+   ],
+   "recap": [
+    "Branch — commitga ko'rsatkich; switch -c yaratadi va o'tadi.",
+    "Fast-forward: faqat ko'rsatkich suriladi; 3-way: ikki parentli merge commit.",
+    "--no-ff fast-forward mumkin bo'lsa ham merge commit majburlaydi.",
+    "branch -d faqat qo'shilgan branchni o'chiradi, -D majburlaydi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Ikki turdagi merge",
+    "text": "main da bitta commit qiling. `feature` branch ochib commit qiling va main ga qaytib merge qiling: fast-forward bo'lishini `git log --graph --oneline` bilan ko'ring. So'ng yana ikkinchi branch ochib, har ikki branchda ham commit qilib, 3-way merge natijasini solishtiring."
+   },
+   {
+    "title": "--no-ff",
+    "text": "Xuddi shu fast-forward holatini `git reset --hard` bilan qaytarib, bu safar `git merge --no-ff feature` ni bajaring va tarix grafigidagi farqni tushuntiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "`git branch yangi` dan keyin qaysi branchdasiz?",
+    "options": [
+     "Avvalgi branchda qolasiz: branch yaratildi, lekin o'tilmadi",
+     "yangi branchga o'tasiz",
+     "Detached HEAD holati",
+     "Xato: -c bayrog'i kerak"
+    ],
+    "answer": "Avvalgi branchda qolasiz: branch yaratildi, lekin o'tilmadi",
+    "explain": "O'tish uchun `git switch yangi` yoki yaratish va o'tishni birlashtirgan `git switch -c yangi` kerak."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi holatda main da `git merge feature` nima qiladi?",
+    "options": [
+     "Fast-forward: main ko'rsatkichi C ga suriladi, yangi commit yaratilmaydi",
+     "Yangi merge commit yaratadi",
+     "Konflikt chiqaradi",
+     "Hech narsa qilmaydi"
+    ],
+    "answer": "Fast-forward: main ko'rsatkichi C ga suriladi, yangi commit yaratilmaydi",
+    "explain": "main (B) feature (C) ning ajdodi, shuning uchun faqat ko'rsatkich suriladi.",
+    "passage": "A - B          <- main\n      \\\n       C       <- feature (B dan chiqqan)"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi holatda main da `git merge feature` natijasi?",
+    "options": [
+     "3-way merge: ikkita parentli yangi merge commit",
+     "Fast-forward",
+     "main o'chib ketadi",
+     "Faqat feature o'zgaradi"
+    ],
+    "answer": "3-way merge: ikkita parentli yangi merge commit",
+    "explain": "Ikkala branch ham A dan keyin ajralgan va yangi commit olgan: ajdod A, yangi merge commit hosil bo'ladi.",
+    "passage": "A - B - D      <- main\n \\\n  C            <- feature"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Merge commit nechta parentga ega bo'ladi?",
+    "options": [
+     "2 ta",
+     "1 ta",
+     "0 ta",
+     "Branchlar soniga qarab 3 ta"
+    ],
+    "answer": "2 ta",
+    "explain": "Bitta parent — joriy branch uchi, ikkinchisi — qo'shilayotgan branch uchi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "`git merge --no-ff feature` ni fast-forward mumkin bo'lgan holatda ishlatsak...",
+    "options": [
+     "Baribir merge commit yaratiladi",
+     "Xato beradi",
+     "Fast-forward bo'ladi",
+     "feature o'chiriladi"
+    ],
+    "answer": "Baribir merge commit yaratiladi",
+    "explain": "--no-ff tarixda alohida branch izini qoldirish uchun merge commitni majburlaydi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "main da turib `git merge feature` qilindi. Kim o'zgaradi?",
+    "options": [
+     "Faqat main (joriy branch); feature o'zgarmaydi",
+     "Ikkalasi ham",
+     "Faqat feature",
+     "Hech biri"
+    ],
+    "answer": "Faqat main (joriy branch); feature o'zgarmaydi",
+    "explain": "Merge qo'shilayotgan branchni emas, joriy branchni yangilaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "`git branch -d eski` xato berdi: 'not fully merged'. Bu nimani anglatadi?",
+    "options": [
+     "eski branchda hali joriy branchga qo'shilmagan commitlar bor",
+     "Branch mavjud emas",
+     "Siz shu branchdasiz",
+     "Git buzilgan"
+    ],
+    "answer": "eski branchda hali joriy branchga qo'shilmagan commitlar bor",
+    "explain": "-d himoya vazifasini bajaradi. Commitlar kerak bo'lmasa -D bilan majburlash mumkin."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "`git branch -D eski` ni qo'shilmagan branchga ishlatdik. Commitlar...",
+    "options": [
+     "Branch ko'rsatkichi o'chadi, commitlar reflogda bir muddat qoladi va tiklash mumkin",
+     "Zudlik bilan butunlay yo'qoladi",
+     "main ga ko'chadi",
+     "GitHub ga yuboriladi"
+    ],
+    "answer": "Branch ko'rsatkichi o'chadi, commitlar reflogda bir muddat qoladi va tiklash mumkin",
+    "explain": "Commit obyektlari darhol o'chmaydi, reflog orqali topish mumkin."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Natijaga ko'ra nima ro'y berdi?",
+    "options": [
+     "Saqlanmagan o'zgarish switch bilan to'qnashgani uchun Git o'tishni rad etdi",
+     "Branch mavjud emas",
+     "Git buzilgan",
+     "Remote ulanmagan"
+    ],
+    "answer": "Saqlanmagan o'zgarish switch bilan to'qnashgani uchun Git o'tishni rad etdi",
+    "explain": "Git ishingizni yo'qotmaslik uchun o'tishni to'xtatadi: avval commit yoki stash qiling.",
+    "passage": "$ git switch main\nerror: Your local changes to the following files would be overwritten by checkout:\n        app.js\nPlease commit your changes or stash them before you switch branches."
+   },
+   {
+    "id": "10",
+    "kind": "CHOICE",
+    "prompt": "Merge-base nima?",
+    "options": [
+     "Ikki branch ajralgan oxirgi umumiy commit",
+     "Birinchi commit",
+     "Eng yangi merge commit",
+     "main ning uchi"
+    ],
+    "answer": "Ikki branch ajralgan oxirgi umumiy commit",
+    "explain": "3-way merge shu ajdod bilan ikkala uchni solishtiradi: kim nimani o'zgartirganini shundan biladi."
+   },
+   {
+    "id": "11",
+    "kind": "CHOICE",
+    "prompt": "Fast-forward merge dan keyin `git log --oneline` tarixi qanday ko'rinadi?",
+    "options": [
+     "To'g'ri chiziq: merge commit yo'q",
+     "Ikki chiziq va merge commit",
+     "Bo'sh",
+     "Faqat feature commitlari"
+    ],
+    "answer": "To'g'ri chiziq: merge commit yo'q",
+    "explain": "Fast-forward yangi commit yaratmaydi, faqat ko'rsatkichni suradi."
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Yangi 'feature' branch yaratib o'sha zahoti o'tadigan zamonaviy buyruqni yozing (switch bilan).",
+    "answer": "git switch -c feature",
+    "explain": "-c (create) bayrog'i branch yaratadi va unga o'tadi.",
+    "alsoAccept": [
+     "git checkout -b feature",
+     "git switch --create feature"
+    ]
+   }
+  ],
+  "labs": [
+   {
+    "title": "Branch yaratish va o'tish",
+    "task": "main da turibsiz. 'feature' nomli branch yarating va darhol unga o'ting.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git switch -c feature",
+    "tests": [
+     {
+      "call": "repo.branch()",
+      "expect": "\"feature\""
+     },
+     {
+      "call": "repo.branches()",
+      "expect": "[\"feature\", \"main\"]"
+     }
+    ],
+    "hint": "git switch -c yaratadi va o'tadi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"",
+    "id": "1"
+   },
+   {
+    "title": "Branchda commit qilish",
+    "task": "'feature' branch yarating, unda b.txt fayl qo'shib 'B' commit qiling. main branch hali 'A' da qolishi kerak.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git switch -c feature\necho b > b.txt\ngit add .\ngit commit -m \"B\"",
+    "tests": [
+     {
+      "call": "repo.branch()",
+      "expect": "\"feature\""
+     },
+     {
+      "call": "repo.tip(\"feature\")",
+      "expect": "\"B\""
+     },
+     {
+      "call": "repo.tip(\"main\")",
+      "expect": "\"A\""
+     }
+    ],
+    "hint": "Branchga o'tgach oddiy add va commit qiling.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"",
+    "id": "2"
+   },
+   {
+    "title": "Fast-forward merge",
+    "task": "feature branchda B commit bor, main esa A da. main ga o'tib (u allaqachon main da), feature ni birlashtiring. Merge commit paydo bo'lmasligi kerak.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git merge feature",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"B\", \"A\"]"
+     },
+     {
+      "call": "repo.parents()",
+      "expect": "1"
+     },
+     {
+      "call": "repo.branch()",
+      "expect": "\"main\""
+     }
+    ],
+    "hint": "main feature ning ajdodi bo'lgani uchun faqat ko'rsatkich suriladi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c feature\necho b > b.txt\ngit add .\ngit commit -m \"B\"\ngit switch main",
+    "id": "3"
+   },
+   {
+    "title": "3-way merge",
+    "task": "main da C commit (c.txt), feature da B commit (b.txt) bor, ikkalasi ham A dan ajralgan. feature ni main ga birlashtiring: ikki parentli merge commit hosil bo'lsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git merge feature",
+    "tests": [
+     {
+      "call": "repo.parents()",
+      "expect": "2"
+     },
+     {
+      "call": "repo.count()",
+      "expect": "4"
+     },
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\", \"b.txt\", \"c.txt\"]"
+     }
+    ],
+    "hint": "Ikkala branch ham o'zgargani uchun Git 3-way merge qiladi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c feature\necho b > b.txt\ngit add .\ngit commit -m \"B\"\ngit switch main\necho c > c.txt\ngit add .\ngit commit -m \"C\"",
+    "id": "4"
+   },
+   {
+    "title": "--no-ff bilan merge commit majburlash",
+    "task": "feature branch main dan faqat oldinga ketgan (fast-forward mumkin). Shunga qaramay merge commit yarating, ya'ni tarixda alohida branch izi qolsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git merge --no-ff feature",
+    "tests": [
+     {
+      "call": "repo.parents()",
+      "expect": "2"
+     },
+     {
+      "call": "repo.count()",
+      "expect": "3"
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"Merge branch 'feature'\""
+     }
+    ],
+    "hint": "--no-ff fast-forward ni taqiqlaydi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c feature\necho b > b.txt\ngit add .\ngit commit -m \"B\"\ngit switch main",
+    "id": "5"
+   },
+   {
+    "title": "Qo'shilgan branchni o'chirish",
+    "task": "feature allaqachon main ga qo'shilgan (setup). Uni xavfsiz buyruq bilan o'chiring; main qolsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git branch -d feature",
+    "tests": [
+     {
+      "call": "repo.branches()",
+      "expect": "[\"main\"]"
+     },
+     {
+      "call": "repo.log()",
+      "expect": "[\"B\", \"A\"]"
+     }
+    ],
+    "hint": "-d faqat qo'shilgan branchni o'chiradi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c feature\necho b > b.txt\ngit add .\ngit commit -m \"B\"\ngit switch main\ngit merge feature",
+    "id": "6"
+   },
+   {
+    "title": "Qo'shilmagan branchni majburlab o'chirish",
+    "task": "feature da qo'shilmagan B commit bor, lekin u kerak emas. Branchni majburlab o'chiring. (Oddiy -d xato beradi.)",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git branch -D feature",
+    "tests": [
+     {
+      "call": "repo.branches()",
+      "expect": "[\"main\"]"
+     },
+     {
+      "call": "repo.log()",
+      "expect": "[\"A\"]"
+     },
+     {
+      "call": "repo.ok()",
+      "expect": "true"
+     }
+    ],
+    "hint": "Katta -D himoyani chetlab o'tadi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c feature\necho b > b.txt\ngit add .\ngit commit -m \"B\"\ngit switch main",
+    "id": "7"
+   },
+   {
+    "title": "Branchni qayta nomlash",
+    "task": "Asosiy branch 'master' deb nomlangan. Uni 'main' ga qayta nomlang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git branch -m master main",
+    "tests": [
+     {
+      "call": "repo.branch()",
+      "expect": "\"main\""
+     },
+     {
+      "call": "repo.branches()",
+      "expect": "[\"main\"]"
+     }
+    ],
+    "hint": "git branch -m <eski> <yangi>.",
+    "kind": "git",
+    "setup": "git init -b master\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"",
+    "id": "8"
+   },
+   {
+    "title": "Eski commitdan branch ochish",
+    "task": "Ombor A, B, C. B commitdan boshlab 'fix' nomli branch yarating va unga o'ting.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git switch -c fix HEAD~1",
+    "tests": [
+     {
+      "call": "repo.branch()",
+      "expect": "\"fix\""
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"B\""
+     },
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\", \"b.txt\"]"
+     }
+    ],
+    "hint": "switch -c <nom> <boshlang'ich commit>.",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\ngit add .\ngit commit -m \"B\"\necho 3 > c.txt\ngit add .\ngit commit -m \"C\"",
+    "id": "9"
+   },
+   {
+    "title": "Ikkita branchni ketma-ket birlashtirish",
+    "task": "main A da. f1 branchda b.txt (B), f2 branchda c.txt (C) bor. main ga o'tib ikkalasini ham birlashtiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git merge f1\ngit merge f2",
+    "tests": [
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\", \"b.txt\", \"c.txt\"]"
+     },
+     {
+      "call": "repo.branch()",
+      "expect": "\"main\""
+     },
+     {
+      "call": "repo.ok()",
+      "expect": "true"
+     }
+    ],
+    "hint": "Birinchisi fast-forward, ikkinchisi 3-way bo'ladi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c f1\necho b > b.txt\ngit add .\ngit commit -m \"B\"\ngit switch main\ngit switch -c f2\necho c > c.txt\ngit add .\ngit commit -m \"C\"\ngit switch main",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-git-jr-05",
+  "level": "JUNIOR",
+  "module": "git",
+  "order": 5,
+  "title": "Konfliktlar va rebase",
+  "intro": "Merge konflikti nima, uni qanday hal qilish, rebase bilan merge farqi, rebase da ours/theirs almashishi va rebase ning oltin qoidasi.",
+  "theory": {
+   "analogy": {
+    "icon": "✍️",
+    "title": "Ikki muharrir bitta qatorda",
+    "text": "Ikki muharrir bitta maqolaning aynan bitta jumlasini turlicha o'zgartirdi. Hakam (Git) qaysi biri to'g'riligini bilmaydi, shuning uchun ikkala variantni ham qog'ozga yozib qo'yadi va 'o'zingiz tanlang' deydi. Bu — merge konflikti. Rebase esa o'zgarishlaringizni boshqa yo'l boshidan qaytadan 'ko'chirib yozish' kabi."
+   },
+   "sections": [
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Merge conflict (birlashtirish konflikti)",
+       "text": "Git ikki o'zgarishni avtomatik qo'sha olmaydigan holat: bir joyni ikki tomon turlicha o'zgartirgan. Fayl konflikt belgilari bilan to'ladi."
+      },
+      {
+       "term": "Conflict markers (konflikt belgilari)",
+       "text": "<<<<<<< , ======= va >>>>>>> qatorlari: ular ikkala versiyani ajratib turadi. Commitdan oldin ularning hammasi olib tashlanishi shart."
+      },
+      {
+       "term": "Rebase",
+       "text": "commitlarni boshqa asos (base) ustiga qayta qo'llash. Yangi hashlar yaratadi, tarix chiziqli bo'ladi."
+      },
+      {
+       "term": "Squash merge (siqib birlashtirish)",
+       "text": "branchning barcha commitlarini bitta o'zgarishga siqib, maqsad branchga bitta oddiy commit sifatida qo'shish; merge commit yaratilmaydi."
+      },
+      {
+       "term": "Abort (bekor qilish)",
+       "text": "boshlangan merge yoki rebase ni to'xtatib, jarayondan oldingi holatga qaytarish: `git merge --abort`, `git rebase --abort`."
+      }
+     ]
+    },
+    {
+     "heading": "Konflikt qachon chiqadi",
+     "text": "Git ikki branchni qatorlar darajasida birlashtiradi. Turli fayllar yoki bitta faylning turli joylaridagi o'zgarishlar avtomatik qo'shiladi. Konflikt faqat ikkala tomon ham AYNAN BIR joyni turlicha o'zgartirganda (yoki bir tomon faylni o'chirib, ikkinchisi o'zgartirganda) chiqadi. Konflikt xato emas, bu Git ning 'inson qarori kerak' degan signali."
+    },
+    {
+     "code": {
+      "lang": "bash",
+      "text": "<<<<<<< HEAD\nconst color = 'blue';      // joriy branch (ours) versiyasi\n=======\nconst color = 'green';     // qo'shilayotgan branch (theirs) versiyasi\n>>>>>>> feature/theme"
+     }
+    },
+    {
+     "heading": "Konfliktni hal qilish ketma-ketligi",
+     "text": "1) `git status` konfliktli fayllarni 'both modified' deb ko'rsatadi. 2) Faylni ochib, `<<<<<<<`, `=======`, `>>>>>>>` belgilarini O'CHIRIB, kerakli yakuniy mazmunni qoldirasiz (birini tanlash yoki ikkalasini birlashtirish). 3) `git add fayl` — 'hal qilindi' deb belgilaydi. 4) `git commit` (merge uchun) yoki `git rebase --continue` (rebase uchun). Ortga qaytish: `git merge --abort` yoki `git rebase --abort` — jarayon boshlanmagan holatga qaytaradi."
+    },
+    {
+     "heading": "Rebase: tarixni qayta joylashtirish",
+     "text": "Rebase joriy branchdagi commitlarni boshqa branch uchiga (yangi base — asos) ketma-ket qaytadan qo'llaydi. Natija — to'g'ri chiziqli tarix, lekin har bir commit YANGI hash oladi (parent o'zgargani uchun). Merge esa tarixni o'zgartirmaydi va merge commit qo'shadi. Oltin qoida: boshqalar ishlatayotgan (push qilingan, umumiy) branchni hech qachon rebase qilmang — hamkasblaringizdagi eski hashli commitlar bilan yangi nusxalar to'qnashadi."
+    },
+    {
+     "table": {
+      "head": [
+       "",
+       "merge",
+       "rebase"
+      ],
+      "rows": [
+       [
+        "Tarix",
+        "Haqiqiy tarix saqlanadi, merge commit qo'shiladi",
+        "To'g'ri chiziqli, commitlar qayta yoziladi"
+       ],
+       [
+        "Commit hashlari",
+        "O'zgarmaydi",
+        "Yangi hashlar"
+       ],
+       [
+        "Ulashilgan branch uchun",
+        "Xavfsiz",
+        "Xavfli (oltin qoida)"
+       ],
+       [
+        "Konflikt",
+        "Bir marta (merge commitda)",
+        "Har bir commit uchun alohida bo'lishi mumkin"
+       ]
+      ]
+     }
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "Rebase paytida 'ours' va 'theirs' ma'nosi ALMASHADI: HEAD (ours) — siz rebase qilayotgan asos (masalan main), 'theirs' — qaytadan qo'llanayotgan SIZNING commitingiz. Chunki Git avval asosga o'tadi, keyin sizning commitlaringizni birin-ketin ustiga qo'yadi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📝",
+       "title": "Birgalikda yozilayotgan hujjat",
+       "text": "Ikki hamkasb bitta bandni turlicha yozdi. Dastur o'zi tanlay olmaydi, ikkala versiyani ko'rsatadi, siz yakuniy matnni yozasiz."
+      },
+      {
+       "icon": "🧱",
+       "title": "G'ishtlarni ko'chirish",
+       "text": "Rebase — g'isht devorni boshqa poydevorga tosh-toshdan qayta terish: yangi poydevorda har bir g'isht yangi 'seriya raqami' oladi."
+      }
+     ]
+    }
+   ],
+   "recap": [
+    "Konflikt — ikkala tomon bir joyni turlicha o'zgartirganda; belgilarni olib tashlab, add va commit/continue qilinadi.",
+    "merge --abort / rebase --abort jarayonni bekor qiladi.",
+    "Rebase commitlarni yangi hash bilan qayta yozadi: chiziqli tarix, lekin ulashilgan branch uchun xavfli.",
+    "Rebase da ours = asos branch, theirs = sizning commitingiz."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Konflikt yaratish va yechish",
+    "text": "Ikkita branchda bir xil faylning bir xil qatorini turlicha o'zgartirib merge qiling. Konflikt belgilarini ko'rib, yakuniy matnni yozing, `git add` va `git commit` bilan yakunlang."
+   },
+   {
+    "title": "Merge va rebase solishtirish",
+    "text": "Bir xil holatni ikki nusxada tayyorlab, biriga merge, ikkinchisiga rebase qiling. `git log --graph --oneline` va commit hashlarini solishtiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi holatda konflikt chiqadimi?",
+    "options": [
+     "Yo'q: turli qatorlar o'zgargan, Git avtomatik qo'shadi",
+     "Ha, chunki ikkalasi ham bir faylni o'zgartirgan",
+     "Ha, chunki branchlar turli",
+     "Faqat rebase da chiqadi"
+    ],
+    "answer": "Yo'q: turli qatorlar o'zgargan, Git avtomatik qo'shadi",
+    "explain": "Git qatorlar darajasida ishlaydi; bir faylning turli joylaridagi o'zgarishlar avtomatik qo'shiladi.",
+    "passage": "# main:    app.js 1-qatorni o'zgartirdi\n# feature: app.js 40-qatorni o'zgartirdi\ngit merge feature"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi faylda HEAD qismi nimani bildiradi?",
+    "options": [
+     "Joriy branch (merge qilayotgan branch) dagi versiya",
+     "Qo'shilayotgan branchdagi versiya",
+     "Eng eski versiya",
+     "Server versiyasi"
+    ],
+    "answer": "Joriy branch (merge qilayotgan branch) dagi versiya",
+    "explain": "<<<<<<< HEAD va ======= orasi — ours (siz turgan branch). ======= va >>>>>>> orasi — theirs.",
+    "passage": "<<<<<<< HEAD\nconst port = 3000;\n=======\nconst port = 8080;\n>>>>>>> feature"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konflikt belgilarini o'chirmasdan commit qilsak nima bo'ladi?",
+    "options": [
+     "Belgilar kodda qoladi va dastur sinadi (Git o'zi tekshirmaydi, add qilish yetarli)",
+     "Git commitga ruxsat bermaydi",
+     "Belgilar avtomatik o'chadi",
+     "Merge bekor qilinadi"
+    ],
+    "answer": "Belgilar kodda qoladi va dastur sinadi (Git o'zi tekshirmaydi, add qilish yetarli)",
+    "explain": "git add qilgach, Git konflikt hal bo'ldi deb hisoblaydi. Belgilar faylda qolsa, bu sizning xatongiz."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konfliktni qo'lda hal qilgandan keyingi to'g'ri ketma-ketlik?",
+    "options": [
+     "Faylni tahrirlash → git add fayl → git commit",
+     "git commit → git add → tahrirlash",
+     "git merge --continue → git push --force",
+     "Faylni o'chirib qayta clone qilish"
+    ],
+    "answer": "Faylni tahrirlash → git add fayl → git commit",
+    "explain": "add — 'hal qilindi' belgisi, commit esa merge ni yakunlaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Merge konflikti paytida hammasini bekor qilish uchun?",
+    "options": [
+     "git merge --abort",
+     "git reset --soft HEAD",
+     "git revert --abort",
+     "git clean -fd"
+    ],
+    "answer": "git merge --abort",
+    "explain": "--abort merge boshlanmagan holatga qaytaradi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Rebase dan keyin feature branchdagi commitlar...",
+    "options": [
+     "Yangi hashlarga ega bo'ladi, chunki ularning parenti o'zgargan",
+     "Oldingi hashlarda qoladi",
+     "Birlashtirilib bitta commit bo'ladi",
+     "O'chib ketadi"
+    ],
+    "answer": "Yangi hashlarga ega bo'ladi, chunki ularning parenti o'zgargan",
+    "explain": "Hash parentni ham o'z ichiga oladi, parent o'zgarsa hash o'zgaradi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi rebase paytidagi konfliktda 'ours' (HEAD) nima?",
+    "options": [
+     "main — ustiga qo'llayotgan asos branch",
+     "feature dagi sizning commitingiz",
+     "Server versiyasi",
+     "Eng yangi stash"
+    ],
+    "answer": "main — ustiga qo'llayotgan asos branch",
+    "explain": "Rebase da Git avval main ga o'tadi va commitlaringizni ustiga qo'yadi: shuning uchun ours = main, theirs = sizning commit.",
+    "passage": "$ git switch feature\n$ git rebase main\nCONFLICT (content): Merge conflict in app.js"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Oltin qoida: qaysi branchni rebase qilmaslik kerak?",
+    "options": [
+     "Boshqalar ham foydalanayotgan (push qilingan umumiy) branchni",
+     "Faqat mahalliy, hech kim ko'rmagan branchni",
+     "Hech qanday branchni",
+     "Faqat main dan chiqqan branchni"
+    ],
+    "answer": "Boshqalar ham foydalanayotgan (push qilingan umumiy) branchni",
+    "explain": "Ulashilgan branchda commit hashlari o'zgarishi hamkasblarning nusxalarini buzadi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Chiziqli tarix kerak, branch esa faqat sizda. Qaysi buyruq mos?",
+    "options": [
+     "git rebase main (feature branch da turib)",
+     "git merge --no-ff main",
+     "git reset --hard main",
+     "git revert main"
+    ],
+    "answer": "git rebase main (feature branch da turib)",
+    "explain": "Rebase commitlaringizni main uchiga qaytadan qo'llab, to'g'ri chiziq hosil qiladi."
+   },
+   {
+    "id": "10",
+    "kind": "CHOICE",
+    "prompt": "Rebase paytida konfliktni hal qildingiz. Davom etish uchun?",
+    "options": [
+     "git add fayl, so'ng git rebase --continue",
+     "git commit, so'ng git merge",
+     "git rebase --abort",
+     "git push"
+    ],
+    "answer": "git add fayl, so'ng git rebase --continue",
+    "explain": "Rebase da commit yaratishni --continue o'zi bajaradi."
+   },
+   {
+    "id": "11",
+    "kind": "CHOICE",
+    "prompt": "Squash merge ning asosiy xususiyati?",
+    "options": [
+     "Branchning barcha commitlari main ga bitta commit bo'lib tushadi, merge commit yaratilmaydi",
+     "Commitlar o'chiriladi va yo'qoladi",
+     "Branch avtomatik o'chiriladi",
+     "Konfliktlar chiqmaydi"
+    ],
+    "answer": "Branchning barcha commitlari main ga bitta commit bo'lib tushadi, merge commit yaratilmaydi",
+    "explain": "Squash tarixni ixchamlashtiradi, lekin alohida commitlar tarixi maqsad branchda saqlanmaydi."
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Boshlangan rebase ni bekor qilib avvalgi holatga qaytaruvchi to'liq buyruqni yozing.",
+    "answer": "git rebase --abort",
+    "explain": "--abort rebase boshlanmasdan oldingi holatga qaytaradi.",
+    "alsoAccept": []
+   }
+  ],
+  "labs": [
+   {
+    "title": "Konfliktni aniqlash",
+    "task": "main da a.txt 'blue', f branchda 'green' qilingan (ikkalasi commit qilingan). main da turib f ni birlashtiring va konflikt paydo bo'lishiga ishonch hosil qiling (merge tugallanmay qolsin).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git merge f",
+    "tests": [
+     {
+      "call": "repo.merging()",
+      "expect": "true"
+     },
+     {
+      "call": "repo.conflicts()",
+      "expect": "[\"a.txt\"]"
+     },
+     {
+      "call": "repo.read(\"a.txt\").includes(\"<<<<<<< HEAD\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "Konflikt xato emas: Git merge ni to'xtatib, sizdan qaror kutadi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c f\necho green > a.txt\ngit commit -am \"F\"\ngit switch main\necho blue > a.txt\ngit commit -am \"M\"",
+    "id": "1"
+   },
+   {
+    "title": "Ikkala versiyani saqlab hal qilish",
+    "task": "Konfliktli merge boshlang'ich holatda (setup). a.txt ni shunday tuzatingki, unda 2 qator bo'lsin: avval 'blue', keyin 'green'. Konflikt belgilari qolmasin. Merge ni tugallang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo blue > a.txt\necho green >> a.txt\ngit add a.txt\ngit commit -m \"Merge f\"",
+    "tests": [
+     {
+      "call": "repo.merging()",
+      "expect": "false"
+     },
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"blue\\ngreen\""
+     },
+     {
+      "call": "repo.parents()",
+      "expect": "2"
+     },
+     {
+      "call": "repo.conflicts()",
+      "expect": "[]"
+     }
+    ],
+    "hint": "Faylni qayta yozing (> bilan, keyin >> bilan qo'shing), add qiling va commit qiling.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c f\necho green > a.txt\ngit commit -am \"F\"\ngit switch main\necho blue > a.txt\ngit commit -am \"M\"\ngit merge f",
+    "id": "2"
+   },
+   {
+    "title": "Boshqa tomon versiyasini tanlash",
+    "task": "Konfliktli merge boshlangan. 'green' (f branch versiyasi) yakuniy bo'lsin. Faylni tuzatib merge ni tugallang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo green > a.txt\ngit add a.txt\ngit commit -m \"Merge f: take green\"",
+    "tests": [
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"green\""
+     },
+     {
+      "call": "repo.parents()",
+      "expect": "2"
+     },
+     {
+      "call": "repo.merging()",
+      "expect": "false"
+     }
+    ],
+    "hint": "Yakuniy mazmunni o'zingiz yozasiz, keyin add va commit.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c f\necho green > a.txt\ngit commit -am \"F\"\ngit switch main\necho blue > a.txt\ngit commit -am \"M\"\ngit merge f",
+    "id": "3"
+   },
+   {
+    "title": "merge --abort",
+    "task": "Konfliktli merge boshlangan, lekin hozir hal qilishga vaqt yo'q. Merge ni bekor qilib, main ni avvalgi holatiga qaytaring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git merge --abort",
+    "tests": [
+     {
+      "call": "repo.merging()",
+      "expect": "false"
+     },
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"blue\""
+     },
+     {
+      "call": "repo.conflicts()",
+      "expect": "[]"
+     },
+     {
+      "call": "repo.log()",
+      "expect": "[\"M\", \"A\"]"
+     }
+    ],
+    "hint": "--abort merge boshlanishidan oldingi holatni tiklaydi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c f\necho green > a.txt\ngit commit -am \"F\"\ngit switch main\necho blue > a.txt\ngit commit -am \"M\"\ngit merge f",
+    "id": "4"
+   },
+   {
+    "title": "Oddiy rebase",
+    "task": "f branchda B (b.txt), main da C (c.txt) bor (ikkalasi A dan ajralgan). f ga o'tib uni main ustiga rebase qiling: chiziqli tarix hosil bo'lsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git switch f\ngit rebase main",
+    "tests": [
+     {
+      "call": "repo.branch()",
+      "expect": "\"f\""
+     },
+     {
+      "call": "repo.log()",
+      "expect": "[\"B\", \"C\", \"A\"]"
+     },
+     {
+      "call": "repo.parents()",
+      "expect": "1"
+     }
+    ],
+    "hint": "feature branch da turib: git rebase main.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c f\necho b > b.txt\ngit add .\ngit commit -m \"B\"\ngit switch main\necho c > c.txt\ngit add .\ngit commit -m \"C\"",
+    "id": "5"
+   },
+   {
+    "title": "Rebase paytidagi konflikt",
+    "task": "f branchni main ustiga rebase qilmoqchisiz, lekin a.txt da konflikt chiqadi. Natija a.txt 'green' bo'lsin: konfliktni hal qilib rebase ni oxiriga yetkazing.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git switch f\ngit rebase main\necho green > a.txt\ngit add a.txt\ngit rebase --continue",
+    "tests": [
+     {
+      "call": "repo.rebasing()",
+      "expect": "false"
+     },
+     {
+      "call": "repo.log()",
+      "expect": "[\"F\", \"M\", \"A\"]"
+     },
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"green\""
+     },
+     {
+      "call": "repo.branch()",
+      "expect": "\"f\""
+     }
+    ],
+    "hint": "Hal qilgach add qiling va git rebase --continue (commit emas).",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c f\necho green > a.txt\ngit commit -am \"F\"\ngit switch main\necho blue > a.txt\ngit commit -am \"M\"",
+    "id": "6"
+   },
+   {
+    "title": "rebase --abort",
+    "task": "f branchda rebase konflikt tufayli to'xtab turibdi (setup). Uni bekor qilib f ni rebase boshlanishidan oldingi holatga qaytaring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git rebase --abort",
+    "tests": [
+     {
+      "call": "repo.rebasing()",
+      "expect": "false"
+     },
+     {
+      "call": "repo.branch()",
+      "expect": "\"f\""
+     },
+     {
+      "call": "repo.log()",
+      "expect": "[\"F\", \"A\"]"
+     },
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"green\""
+     }
+    ],
+    "hint": "git rebase --abort.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c f\necho green > a.txt\ngit commit -am \"F\"\ngit switch main\necho blue > a.txt\ngit commit -am \"M\"\ngit switch f\ngit rebase main",
+    "id": "7"
+   },
+   {
+    "title": "Squash merge",
+    "task": "f branchda ikkita commit bor (b1.txt va b2.txt). Ularni main ga merge commit yaratmasdan, bitta 'Add feature' commiti bo'lib tushiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git merge --squash f\ngit commit -m \"Add feature\"",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"Add feature\", \"A\"]"
+     },
+     {
+      "call": "repo.parents()",
+      "expect": "1"
+     },
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\", \"b1.txt\", \"b2.txt\"]"
+     }
+    ],
+    "hint": "--squash o'zgarishlarni tayyorlaydi, commitni siz qilasiz.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c f\necho 1 > b1.txt\ngit add .\ngit commit -m \"B1\"\necho 2 > b2.txt\ngit add .\ngit commit -m \"B2\"\ngit switch main",
+    "id": "8"
+   },
+   {
+    "title": "Ikki commitli branchni rebase qilish",
+    "task": "f branchda B1 va B2 commitlari, main da C commit bor. f ni main ustiga rebase qiling: natija tarixi (yangidan eskiga) B2, B1, C, A bo'lsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git switch f\ngit rebase main",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"B2\", \"B1\", \"C\", \"A\"]"
+     },
+     {
+      "call": "repo.branch()",
+      "expect": "\"f\""
+     },
+     {
+      "call": "repo.rebasing()",
+      "expect": "false"
+     }
+    ],
+    "hint": "Rebase commitlarni ketma-ket qayta qo'llaydi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c f\necho 1 > b1.txt\ngit add .\ngit commit -m \"B1\"\necho 2 > b2.txt\ngit add .\ngit commit -m \"B2\"\ngit switch main\necho c > c.txt\ngit add .\ngit commit -m \"C\"",
+    "id": "9"
+   },
+   {
+    "title": "Ikki fayldagi konflikt",
+    "task": "main va f branchlarda a.txt va b.txt turlicha o'zgargan (merge boshlangan, ikkala fayl konfliktda). Yakuniy natija: a.txt 'm1' (main versiyasi), b.txt 'f2' (f versiyasi). Merge ni tugallang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo m1 > a.txt\necho f2 > b.txt\ngit add .\ngit commit -m \"Merge f\"",
+    "tests": [
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"m1\""
+     },
+     {
+      "call": "repo.read(\"b.txt\")",
+      "expect": "\"f2\""
+     },
+     {
+      "call": "repo.parents()",
+      "expect": "2"
+     },
+     {
+      "call": "repo.conflicts()",
+      "expect": "[]"
+     }
+    ],
+    "hint": "Ikkala faylni ham yozib, keyin git add . va commit.",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\necho 1 > b.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c f\necho f1 > a.txt\necho f2 > b.txt\ngit commit -am \"F\"\ngit switch main\necho m1 > a.txt\necho m2 > b.txt\ngit commit -am \"M\"\ngit merge f",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-git-jr-06",
+  "level": "JUNIOR",
+  "module": "git",
+  "order": 6,
+  "title": "Kengaytirilgan Git",
+  "intro": "stash, cherry-pick, tag (lightweight va annotated), interaktiv rebase (squash, fixup, reword), bisect va reflog bilan murakkab vaziyatlarni hal qilish.",
+  "theory": {
+   "analogy": {
+    "icon": "🧰",
+    "title": "Ustaning asboblar qutisi",
+    "text": "Asosiy buyruqlar — bolg'a va ombir. Kengaytirilgan Git — ustaning maxsus asboblari: stash — ishni vaqtincha tortmaga yashirish, cherry-pick — boshqa branchdan bitta commitni 'terib olish', interactive rebase — commitlarni tartibga solish, bisect — xatoni ikkilik qidiruv bilan topish."
+   },
+   "sections": [
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Stash (vaqtinchalik yashirin ombor)",
+       "text": "commit qilinmagan o'zgarishlarni vaqtincha saqlab, ishchi papkani oxirgi commit holatiga qaytaruvchi mexanizm. Stack (stek) tartibida ishlaydi: oxirgisi birinchi chiqadi."
+      },
+      {
+       "term": "Cherry-pick (tanlab ko'chirish)",
+       "text": "boshqa branchdagi bitta commit o'zgarishini joriy branchga yangi commit sifatida qo'llash. Hash o'zgaradi, chunki parent boshqa."
+      },
+      {
+       "term": "Annotated tag (izohli teg)",
+       "text": "muallif, sana va xabar saqlovchi to'liq Git obyekti; release belgilash uchun tavsiya etiladi. Lightweight tag — oddiy ko'rsatkich."
+      },
+      {
+       "term": "Interactive rebase (interaktiv rebase)",
+       "text": "`git rebase -i` bilan commitlarni qayta tartiblash, birlashtirish, o'chirish yoki xabarini o'zgartirish. Tarixni qayta yozadi."
+      },
+      {
+       "term": "Bisect (ikkilik qidiruv)",
+       "text": "yaxshi va yomon commit oralig'ini har safar yarmiga qisqartirib, bug kiritgan commitni topish usuli."
+      }
+     ]
+    },
+    {
+     "heading": "stash: ishni vaqtincha yashirish",
+     "text": "Ish o'rtasida boshqa branchga shoshilinch o'tish kerak bo'lsa, `git stash` kuzatilayotgan fayllardagi o'zgarishlarni (staged va unstaged) alohida joyga yashirib, ishchi papkani tozalaydi. Standart holatda untracked (yangi) fayllar stashga KIRMAYDI: ular uchun `git stash -u`. `git stash list` ro'yxat, `git stash pop` oxirgisini qaytarib ro'yxatdan olib tashlaydi, `git stash apply` qaytaradi lekin ro'yxatda qoldiradi, `git stash drop` o'chiradi. Pop paytida konflikt chiqsa, stash ro'yxatdan o'chirilmaydi."
+    },
+    {
+     "code": {
+      "lang": "bash",
+      "text": "git stash -u -m \"login ishi\"   # yangi fayllar bilan, nom berib\ngit switch hotfix\n# ... tuzatish va commit ...\ngit switch feature\ngit stash pop                  # ishni qaytarish"
+     }
+    },
+    {
+     "heading": "cherry-pick va tag",
+     "text": "`git cherry-pick <commit>` boshqa branchdagi bitta commitning o'zgarishini joriy branchga YANGI commit (yangi hash) sifatida ko'chiradi; asl commit joyida qoladi. Hotfixni release branchga o'tkazishda foydali. Tag — tarixdagi muhim nuqtaga (odatda release) o'zgarmas nom: `git tag v1.0.0`. Lightweight tag — shunchaki ko'rsatkich; annotated tag (`git tag -a v1.0.0 -m \"Release\"`) esa muallif, sana va xabarni saqlaydigan to'liq obyekt, release uchun tavsiya etiladi. Taglar `git push` bilan o'zi yuborilmaydi: `git push origin v1.0.0` yoki `git push --tags`."
+    },
+    {
+     "heading": "Interaktiv rebase: tarixni tozalash",
+     "text": "`git rebase -i HEAD~3` oxirgi 3 commitni ro'yxat qilib muharrirda ochadi, har biriga amal tanlanadi: pick (qoldirish), reword (xabarni o'zgartirish), edit (to'xtab o'zgartirish), squash (oldingisiga qo'shish, xabarlarni birlashtirish), fixup (oldingisiga qo'shish, xabarini tashlab yuborish), drop (o'chirish). Qatorlar tartibini o'zgartirish commitlar tartibini o'zgartiradi. Bu tarixni qayta yozadi, shuning uchun faqat hali ulashilmagan (push qilinmagan) commitlar uchun ishlatiladi."
+    },
+    {
+     "table": {
+      "head": [
+       "Amal",
+       "Nima qiladi",
+       "Xabar"
+      ],
+      "rows": [
+       [
+        "pick",
+        "Commitni o'z holicha qoldiradi",
+        "Saqlanadi"
+       ],
+       [
+        "reword",
+        "Xabarni o'zgartirish",
+        "Yangi xabar"
+       ],
+       [
+        "squash",
+        "Oldingi commitga qo'shadi",
+        "Ikkala xabar birlashadi"
+       ],
+       [
+        "fixup",
+        "Oldingi commitga qo'shadi",
+        "Bu commit xabari tashlanadi"
+       ],
+       [
+        "drop",
+        "Commitni butunlay o'chiradi",
+        "—"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "bisect: xatoni ikkilik qidiruv bilan topish",
+     "text": "Bug qaysi commitda paydo bo'lganini bilmaysiz, lekin eski holatda ishlagani va hozir ishlamayotgani aniq. `git bisect start`, `git bisect bad` (hozirgi — buzuq), `git bisect good <eski commit>` (ma'lum yaxshi) deysiz. Git o'rtadagi commitni checkout qiladi, siz tekshirib `good` yoki `bad` deysiz va qidiruv har safar yarmiga qisqaradi: 100 ta commit uchun ~7 qadam (log₂ n). `git bisect run <test>` jarayonni avtomatlashtiradi, `git bisect reset` oddiy holatga qaytaradi."
+    },
+    {
+     "callout": {
+      "kind": "info",
+      "text": "Qutqaruv zanjiri: tasodifan o'chirilgan commit — `git reflog`; yo'qolgan stash — `git fsck --unreachable` dan topish mumkin; noto'g'ri rebase — `git reflog` dagi rebase oldingi nuqtaga `git reset --hard` qilish."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🗄️",
+       "title": "Tortmaga yashirish",
+       "text": "Stol ustidagi ishni (stash) tortmaga yashirib, shoshilinch topshiriq bilan shug'ullanasiz, keyin tortmadan olib davom etasiz."
+      },
+      {
+       "icon": "🔍",
+       "title": "Kitobda xatoni qidirish",
+       "text": "500 betlik kitobning qaysi betida xato boshlanganini bilish uchun o'rtasini ochasiz: xato bormi? Yarmini tashlab yuborasiz. Bisect shu usulda ishlaydi."
+      }
+     ]
+    }
+   ],
+   "recap": [
+    "stash tracked o'zgarishlarni yashiradi (-u bilan yangilarni ham); pop qaytaradi va olib tashlaydi.",
+    "cherry-pick commitni yangi hash bilan ko'chiradi; annotated tag release uchun yaxshi, taglar push bilan o'zi ketmaydi.",
+    "Interaktiv rebase: pick, reword, squash, fixup, drop; faqat push qilinmagan tarix uchun.",
+    "bisect ikkilik qidiruv: n ta commit uchun ~log₂ n qadam."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Stash bilan hotfix",
+    "text": "feature da tugallanmagan o'zgarish qiling, `git stash -u`, main ga o'tib kichik tuzatishni commit qiling, qaytib `git stash pop`. Stash ro'yxatining bo'shashini tekshiring."
+   },
+   {
+    "title": "bisect o'yini",
+    "text": "10 commitli ombor yarating, 6-commitda ataylab bug kiriting va `git bisect start/bad/good` bilan uni qaysi qadamlarda topishingizni yozing; keyin `git bisect run` bilan avtomatlashtiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Quyidagilardan keyin stashda nima bo'ladi?",
+    "options": [
+     "Faqat a.txt dagi o'zgarish; yangi.txt (untracked) ishchi papkada qoladi",
+     "Ikkala fayl ham stashda",
+     "Hech narsa: stash xato beradi",
+     "Faqat yangi.txt stashda"
+    ],
+    "answer": "Faqat a.txt dagi o'zgarish; yangi.txt (untracked) ishchi papkada qoladi",
+    "explain": "Standart stash untracked fayllarni olmaydi; ular uchun -u kerak.",
+    "passage": "echo x >> a.txt           # tracked fayl\necho y > yangi.txt        # untracked\ngit stash"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`git stash pop` va `git stash apply` farqi?",
+    "options": [
+     "pop qaytarib, stash ro'yxatidan olib tashlaydi; apply ro'yxatda qoldiradi",
+     "Farqi yo'q",
+     "apply stashni o'chiradi, pop qoldiradi",
+     "pop faqat yangi fayllar uchun"
+    ],
+    "answer": "pop qaytarib, stash ro'yxatidan olib tashlaydi; apply ro'yxatda qoldiradi",
+    "explain": "apply xavfsizroq: natijani tekshirgach `git stash drop` qilinadi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Pop paytida konflikt chiqdi. Stash...",
+    "options": [
+     "Ro'yxatdan o'chirilmaydi: qo'lda drop qilish kerak",
+     "Avtomatik o'chadi",
+     "Butunlay yo'qoladi",
+     "Remote ga yuboriladi"
+    ],
+    "answer": "Ro'yxatdan o'chirilmaydi: qo'lda drop qilish kerak",
+    "explain": "Git konflikt bo'lsa ma'lumotni yo'qotmaslik uchun stashni saqlab qoladi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "`git cherry-pick abc123` dan keyin yangi commit hashi...",
+    "options": [
+     "Asl commitdan farq qiladi (yangi parent tufayli)",
+     "Aynan bir xil",
+     "Faqat birinchi 3 belgi",
+     "Hash yaratilmaydi"
+    ],
+    "answer": "Asl commitdan farq qiladi (yangi parent tufayli)",
+    "explain": "Cherry-pick yangi commit yaratadi: tarkibi o'xshash, lekin parent va hash boshqa."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Hotfix main da qilindi va release/1.2 ga ham kerak. Eng mos buyruq?",
+    "options": [
+     "release/1.2 da git cherry-pick <hotfix commit>",
+     "git reset --hard main",
+     "git stash pop",
+     "git rebase -i HEAD~1"
+    ],
+    "answer": "release/1.2 da git cherry-pick <hotfix commit>",
+    "explain": "Cherry-pick faqat bitta commit o'zgarishini kerakli branchga ko'chiradi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Annotated tag va lightweight tag farqi?",
+    "options": [
+     "Annotated — muallif, sana, xabar saqlaydigan obyekt; lightweight — shunchaki ko'rsatkich",
+     "Lightweight faqat GitHub da ishlaydi",
+     "Annotated faqat branch uchun",
+     "Farqi yo'q"
+    ],
+    "answer": "Annotated — muallif, sana, xabar saqlaydigan obyekt; lightweight — shunchaki ko'rsatkich",
+    "explain": "Release uchun `git tag -a v1.0.0 -m \"...\"` tavsiya etiladi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "`git tag v1.0.0` qilgach `git push` qilindi. GitHub da tag bormi?",
+    "options": [
+     "Yo'q: taglar alohida yuboriladi (git push origin v1.0.0 yoki --tags)",
+     "Ha, avtomatik",
+     "Faqat annotated bo'lsa",
+     "Faqat main da bo'lsa"
+    ],
+    "answer": "Yo'q: taglar alohida yuboriladi (git push origin v1.0.0 yoki --tags)",
+    "explain": "Oddiy push faqat branchlarni yuboradi, taglarni emas."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Interaktiv rebase ro'yxatida quyidagi o'zgartirishdan keyin nechta commit qoladi va xabar qanday bo'ladi?",
+    "options": [
+     "2 ta: 2-commit 1-ga qo'shiladi, uning xabari tashlab yuboriladi (fixup)",
+     "3 ta, hammasi o'z holicha",
+     "1 ta",
+     "2 ta, ikkala xabar birlashadi"
+    ],
+    "answer": "2 ta: 2-commit 1-ga qo'shiladi, uning xabari tashlab yuboriladi (fixup)",
+    "explain": "fixup oldingi commitga qo'shadi va o'z xabarini tashlaydi; squash esa xabarlarni birlashtiradi.",
+    "passage": "pick a1b2c3 Add form\nfixup d4e5f6 typo\npick 7g8h9i Add tests"
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Interaktiv rebase ni qaysi commitlarda xavfsiz ishlatish mumkin?",
+    "options": [
+     "Hali push qilinmagan (faqat sizdagi) commitlarda",
+     "Allaqachon main ga merge bo'lgan commitlarda",
+     "Hamkasblar pull qilgan commitlarda",
+     "Istalgan commitda, farqi yo'q"
+    ],
+    "answer": "Hali push qilinmagan (faqat sizdagi) commitlarda",
+    "explain": "Tarixni qayta yozish hash larni o'zgartiradi; ulashilgan commitlarda muammo tug'diradi."
+   },
+   {
+    "id": "10",
+    "kind": "CHOICE",
+    "prompt": "Interaktiv rebase da commitni butunlay olib tashlash uchun qaysi so'z?",
+    "options": [
+     "drop",
+     "squash",
+     "reword",
+     "pick"
+    ],
+    "answer": "drop",
+    "explain": "drop commitni tarixdan chiqaradi (yoki qatorni o'chirish ham xuddi shu ishni qiladi)."
+   },
+   {
+    "id": "11",
+    "kind": "CHOICE",
+    "prompt": "Bisect: 128 ta commit orasidan bug topish uchun taxminan nechta qadam kerak?",
+    "options": [
+     "7 ta (log₂ 128)",
+     "64 ta",
+     "128 ta",
+     "2 ta"
+    ],
+    "answer": "7 ta (log₂ 128)",
+    "explain": "Har qadamda oraliq yarmiga qisqaradi: 128 → 64 → 32 → 16 → 8 → 4 → 2 → 1."
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Bisect tugagach oddiy holatga qaytaradigan to'liq buyruqni yozing.",
+    "answer": "git bisect reset",
+    "explain": "reset bisect rejimini tugatib, boshlang'ich branchga qaytaradi.",
+    "alsoAccept": []
+   }
+  ],
+  "labs": [
+   {
+    "title": "stash: ishni yashirish",
+    "task": "a.txt da tugallanmagan o'zgarish bor ('wip'). Ishchi papkani tozalash uchun o'zgarishni stash ga yashiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git stash",
+    "tests": [
+     {
+      "call": "repo.clean()",
+      "expect": "true"
+     },
+     {
+      "call": "repo.stashCount()",
+      "expect": "1"
+     },
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"one\""
+     }
+    ],
+    "hint": "git stash tracked o'zgarishlarni yashiradi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho wip > a.txt",
+    "id": "1"
+   },
+   {
+    "title": "stash pop",
+    "task": "Ish stash ga yashirilgan (a.txt 'wip' edi). Uni qaytaring va stash ro'yxati bo'shasin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git stash pop",
+    "tests": [
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"wip\""
+     },
+     {
+      "call": "repo.stashCount()",
+      "expect": "0"
+     },
+     {
+      "call": "repo.changes()",
+      "expect": "[\"M a.txt\"]"
+     }
+    ],
+    "hint": "pop qaytaradi va ro'yxatdan olib tashlaydi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho wip > a.txt\ngit stash",
+    "id": "2"
+   },
+   {
+    "title": "stash -u: yangi fayllar bilan",
+    "task": "n.txt yangi (untracked) fayl. Uni ham stash ga yashiring, ishchi papkada faqat a.txt qolsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git stash -u",
+    "tests": [
+     {
+      "call": "repo.untracked()",
+      "expect": "[]"
+     },
+     {
+      "call": "repo.stashCount()",
+      "expect": "1"
+     },
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\"]"
+     }
+    ],
+    "hint": "Oddiy stash untracked fayllarni olmaydi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho new > n.txt",
+    "id": "3"
+   },
+   {
+    "title": "Shoshilinch hotfix oqimi",
+    "task": "a.txt da tugallanmagan ish ('wip'). Uni stash ga yashiring, 'hotfix' branch yaratib fix.txt qo'shib 'Fix' commit qiling, main ga qaytib stash ni tiklang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git stash\ngit switch -c hotfix\necho fix > fix.txt\ngit add .\ngit commit -m \"Fix\"\ngit switch main\ngit stash pop",
+    "tests": [
+     {
+      "call": "repo.tip(\"hotfix\")",
+      "expect": "\"Fix\""
+     },
+     {
+      "call": "repo.branch()",
+      "expect": "\"main\""
+     },
+     {
+      "call": "repo.read(\"a.txt\")",
+      "expect": "\"wip\""
+     },
+     {
+      "call": "repo.stashCount()",
+      "expect": "0"
+     }
+    ],
+    "hint": "stash → hotfix branch → commit → main → stash pop.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho wip > a.txt",
+    "id": "4"
+   },
+   {
+    "title": "cherry-pick: bitta commitni olish",
+    "task": "feature branchda B (b.txt) va C (c.txt) commitlari bor. main ga FAQAT C commitni (c.txt) ko'chiring. b.txt main da bo'lmasin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git cherry-pick feature",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"C\", \"A\"]"
+     },
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\", \"c.txt\"]"
+     }
+    ],
+    "hint": "feature — branch uchi (C). cherry-pick shu commitni oladi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c feature\necho b > b.txt\ngit add .\ngit commit -m \"B\"\necho c > c.txt\ngit add .\ngit commit -m \"C\"\ngit switch main",
+    "id": "5"
+   },
+   {
+    "title": "Annotated tag",
+    "task": "Joriy commitga 'v1.0.0' nomli annotated tag qo'ying (xabari: First release).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git tag -a v1.0.0 -m \"First release\"",
+    "tests": [
+     {
+      "call": "repo.tags()",
+      "expect": "[\"v1.0.0\"]"
+     },
+     {
+      "call": "repo.same(\"v1.0.0\", \"HEAD\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "-a annotated, -m xabar.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"",
+    "id": "6"
+   },
+   {
+    "title": "Eski commitga tag",
+    "task": "Ombor 3 commitdan iborat. Eng birinchi commitga (A) 'v0.1' tagini qo'ying.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git tag v0.1 HEAD~2",
+    "tests": [
+     {
+      "call": "repo.tags()",
+      "expect": "[\"v0.1\"]"
+     },
+     {
+      "call": "repo.same(\"v0.1\", \"HEAD~2\")",
+      "expect": "true"
+     },
+     {
+      "call": "repo.msg(\"v0.1\")",
+      "expect": "\"A\""
+     }
+    ],
+    "hint": "git tag <nom> <commit>.",
+    "kind": "git",
+    "setup": "git init\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\ngit add .\ngit commit -m \"B\"\necho 3 > c.txt\ngit add .\ngit commit -m \"C\"",
+    "id": "7"
+   },
+   {
+    "title": "Xato tagni o'chirish",
+    "task": "Ikkita tag bor: v1.0.0 va xato yozilgan v1.0. Xatosini o'chiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git tag -d v1.0",
+    "tests": [
+     {
+      "call": "repo.tags()",
+      "expect": "[\"v1.0.0\"]"
+     }
+    ],
+    "hint": "git tag -d <nom>.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit tag v1.0.0\ngit tag v1.0",
+    "id": "8"
+   },
+   {
+    "title": "Oxirgi 3 commitni bittaga birlashtirish",
+    "task": "A dan keyin w1, w2, w3 nomli uchta 'wip' commit bor (har biri o'z faylida). Interaktiv rebase o'rniga: ularni bitta 'Add feature' commitiga siqing (fayllar saqlansin).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git reset --soft HEAD~3\ngit commit -m \"Add feature\"",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"Add feature\", \"A\"]"
+     },
+     {
+      "call": "repo.tree()",
+      "expect": "[\"a.txt\", \"w1.txt\", \"w2.txt\", \"w3.txt\"]"
+     }
+    ],
+    "hint": "reset --soft o'zgarishlarni tayyor qoldiradi, keyin bitta commit.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho 1 > w1.txt\ngit add .\ngit commit -m \"w1\"\necho 2 > w2.txt\ngit add .\ngit commit -m \"w2\"\necho 3 > w3.txt\ngit add .\ngit commit -m \"w3\"",
+    "id": "9"
+   },
+   {
+    "title": "reflog bilan o'chirilgan branchni tiklash",
+    "task": "feat branchda B commit bor edi, lekin branch tasodifan -D bilan o'chirildi (setup). reflog dan foydalanib, B ga ishora qiluvchi 'feat' branchni qayta yarating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git branch feat HEAD@{1}",
+    "tests": [
+     {
+      "call": "repo.tip(\"feat\")",
+      "expect": "\"B\""
+     },
+     {
+      "call": "repo.branches()",
+      "expect": "[\"feat\", \"main\"]"
+     }
+    ],
+    "hint": "HEAD@{1} — reflogdagi oldingi holat (B).",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit switch -c feat\necho b > b.txt\ngit add .\ngit commit -m \"B\"\ngit switch main\ngit branch -D feat",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-git-jr-07",
+  "level": "JUNIOR",
+  "module": "git",
+  "order": 7,
+  "title": "Remote va GitHub asoslari",
+  "intro": "remote, origin, clone, push, fetch va pull farqi, upstream, remote-tracking branch, rad etilgan push, force-with-lease, fork va autentifikatsiya.",
+  "theory": {
+   "analogy": {
+    "icon": "🌐",
+    "title": "Mahalliy daftar va umumiy daftar",
+    "text": "Mahalliy omborim — mening shaxsiy daftarim. GitHub dagi ombor — jamoaning umumiy daftari. `push` — o'zimning yozuvlarimni umumiy daftarga ko'chirish; `fetch` — umumiy daftarda nima o'zgarganini faqat ko'rib kelish (o'z daftarimga tegmasdan); `pull` — ko'rib kelish va darrov o'z daftarimga qo'shish."
+   },
+   "sections": [
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Remote (masofaviy ombor)",
+       "text": "boshqa joydagi ombor uchun nom va manzil (origin). Bitta omborda bir nechta remote bo'lishi mumkin (origin, upstream)."
+      },
+      {
+       "term": "Remote-tracking branch",
+       "text": "origin/main kabi mahalliy ko'rsatkich: serverdagi branchning oxirgi ma'lum holati. Uni faqat fetch, pull va push yangilaydi."
+      },
+      {
+       "term": "Upstream branch",
+       "text": "mahalliy branch bog'langan masofaviy branch (-u bilan o'rnatiladi); shuning uchun parametrsiz push va pull ishlaydi. Fork da `upstream` — asl ombor remote nomi."
+      },
+      {
+       "term": "Fetch / Pull",
+       "text": "fetch — yangi ma'lumotlarni yuklash (mahalliy ishga tegmaydi); pull — fetch va merge (yoki rebase)."
+      },
+      {
+       "term": "Force with lease",
+       "text": "`git push --force-with-lease`: faqat serverdagi branch siz oxirgi ko'rgan holatda bo'lsa yozadi. Oddiy --force dan xavfsizroq."
+      }
+     ]
+    },
+    {
+     "heading": "Remote va clone",
+     "text": "Remote — boshqa joydagi (odatda server) omborga berilgan nom va manzil. Odatiy nom — `origin`. `git clone <url>` butun tarixni yuklab oladi, `origin` remote ni avtomatik qo'shadi va standart branchni checkout qiladi. Mavjud omborga qo'lda: `git remote add origin <url>`; ro'yxat: `git remote -v`. Shallow clone (`--depth 1`) faqat oxirgi commitni oladi: tez, lekin to'liq tarixsiz."
+    },
+    {
+     "code": {
+      "lang": "bash",
+      "text": "git remote add origin https://github.com/ali/proj.git\ngit remote -v\ngit push -u origin main     # birinchi push + upstream o'rnatish\ngit push                    # keyingi pushlar: -u tufayli qisqa\ngit clone https://github.com/ali/proj.git"
+     }
+    },
+    {
+     "heading": "fetch, pull va remote-tracking branch",
+     "text": "`origin/main` — remote-tracking branch (masofaviy ombor holati nusxasi): u serverdagi main ning oxirgi MA'LUM holatini ko'rsatadi, uni faqat fetch/pull/push yangilaydi. `git fetch` yangi commitlarni yuklaydi va origin/main ni yangilaydi, lekin sizning mahalliy branchingiz va ishchi papkangizga tegmaydi. `git pull` = `git fetch` + `git merge origin/main` (yoki `pull --rebase` bo'lsa rebase). Fetch har doim xavfsiz; pull esa merge konflikt keltirib chiqarishi mumkin."
+    },
+    {
+     "table": {
+      "head": [
+       "Buyruq",
+       "Serverdan oladimi",
+       "Mahalliy branchni o'zgartiradimi"
+      ],
+      "rows": [
+       [
+        "git fetch",
+        "Ha",
+        "Yo'q (faqat origin/main yangilanadi)"
+       ],
+       [
+        "git pull",
+        "Ha",
+        "Ha (merge yoki rebase)"
+       ],
+       [
+        "git push",
+        "Yuboradi",
+        "Yo'q (server yangilanadi)"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Rad etilgan push va force",
+     "text": "Server tarixida sizda yo'q commit bo'lsa, `git push` 'rejected (non-fast-forward)' xatosi bilan rad etiladi: avval `git pull` (yoki fetch + rebase) qilib tarixlarni birlashtiring. `git push --force` serverdagi tarixni ko'r-ko'rona ustiga yozadi va hamkasblarning commitlarini o'chirib yuborishi mumkin. Rebase yoki amend dan keyin zarurat bo'lsa, `--force-with-lease` ishlating: u serverdagi branch siz oxirgi ko'rgan holatda bo'lsagina yozadi, aks holda rad etadi."
+    },
+    {
+     "heading": "Fork va autentifikatsiya",
+     "text": "Fork — GitHub da boshqa kishi omborining o'zingizdagi nusxasi. Odatiy oqim: fork qilasiz → o'z forkingizni clone qilasiz (origin) → asl omborni `upstream` nomi bilan remote qo'shasiz → upstream dan yangilanib turasiz → o'z forkingizga push qilib, asl omborga Pull Request ochasiz. Autentifikatsiya: HTTPS + Personal Access Token (token — parol o'rniga, GitHub endi oddiy parolni qabul qilmaydi) yoki SSH kalit (ochiq kalit GitHub da, yopiq kalit kompyuteringizda)."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "Tokenni yoki .env ni hech qachon commit qilmang. Agar tasodifan push bo'lsa, tokenni DARHOL bekor qilib (revoke), yangisini yarating: tarixni tozalash allaqachon ko'rilgan bo'lishi mumkin bo'lgan kalitni qaytarmaydi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "☁️",
+       "title": "Umumiy fayl ombori",
+       "text": "Remote — umumiy bulutli papka. Push — o'z fayllarimni yuklash; fetch — kimlar nima yuklaganini ko'rish; pull — yuklab, o'z papkamga qo'shish."
+      },
+      {
+       "icon": "🍴",
+       "title": "Retsept nusxasi (fork)",
+       "text": "Fork — boshqa oshpazning retseptidan o'z daftaringizga nusxa olish: istagancha o'zgartirasiz, yaxshi o'zgarishni asl oshpazga taklif qilasiz (PR)."
+      }
+     ]
+    }
+   ],
+   "recap": [
+    "origin — odatiy remote nomi; clone to'liq tarix va origin ni beradi.",
+    "fetch faqat yuklaydi, pull = fetch + merge/rebase, push yuboradi.",
+    "origin/main — remote-tracking branch, faqat tarmoq buyruqlari yangilaydi.",
+    "Rad etilgan push: avval pull; majburlash kerak bo'lsa --force-with-lease, --force emas."
+   ]
+  },
+  "practice": [
+   {
+    "title": "fetch va pull farqi",
+    "text": "Ikkita papkada bitta omborni clone qiling. Birida commit va push qiling. Ikkinchisida avval `git fetch` bajarib `git log origin/main` va `git log main` ni solishtiring; keyin `git pull` qiling."
+   },
+   {
+    "title": "Fork oqimi",
+    "text": "Biror ochiq omborni fork qilib clone qiling, `git remote add upstream <asl url>` qo'shing va `git remote -v` natijasini tushuntiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "`git clone <url>` dan keyin remote ro'yxatida nima bor?",
+    "options": [
+     "origin: clone qilingan url",
+     "Hech narsa, qo'lda qo'shish kerak",
+     "upstream",
+     "github"
+    ],
+    "answer": "origin: clone qilingan url",
+    "explain": "clone avtomatik ravishda origin nomli remote qo'shadi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`git fetch` mahalliy main branchingizni o'zgartiradimi?",
+    "options": [
+     "Yo'q, faqat origin/main ni yangilaydi",
+     "Ha, avtomatik merge qiladi",
+     "Ha, uni o'chiradi",
+     "Faqat konflikt bo'lsa"
+    ],
+    "answer": "Yo'q, faqat origin/main ni yangilaydi",
+    "explain": "Fetch faqat ma'lumot yuklaydi; birlashtirish uchun merge yoki pull kerak."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`git pull` aslida qaysi ikkita buyruqqa teng?",
+    "options": [
+     "git fetch + git merge",
+     "git add + git commit",
+     "git clone + git push",
+     "git stash + git pop"
+    ],
+    "answer": "git fetch + git merge",
+    "explain": "pull --rebase bo'lsa fetch + rebase."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi xatoga sabab va to'g'ri qadam?",
+    "options": [
+     "Serverda sizda yo'q commitlar bor; avval pull (fetch + merge/rebase) qiling",
+     "Git buzilgan; force push qiling",
+     "Internet yo'q",
+     "Branch nomi noto'g'ri"
+    ],
+    "answer": "Serverda sizda yo'q commitlar bor; avval pull (fetch + merge/rebase) qiling",
+    "explain": "non-fast-forward: server tarixi sizniki bilan ajralgan. Avval birlashtirish kerak.",
+    "passage": "$ git push\n ! [rejected]        main -> main (non-fast-forward)\nerror: failed to push some refs"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Rebase qilgandan keyin feature branchni pushlash uchun qaysi biri xavfsizroq?",
+    "options": [
+     "git push --force-with-lease",
+     "git push --force",
+     "git push --no-verify",
+     "git push origin HEAD~1"
+    ],
+    "answer": "git push --force-with-lease",
+    "explain": "--force-with-lease serverda kutilmagan o'zgarish bo'lsa rad etadi, boshqa odam ishini ustidan yozmaydi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "`origin/main` nima?",
+    "options": [
+     "Serverdagi main ning oxirgi ma'lum holatiga ishora qiluvchi mahalliy remote-tracking branch",
+     "Serverning o'zi",
+     "Mahalliy main ning nusxasi",
+     "Yangi remote"
+    ],
+    "answer": "Serverdagi main ning oxirgi ma'lum holatiga ishora qiluvchi mahalliy remote-tracking branch",
+    "explain": "Uni faqat fetch, pull va push yangilaydi; qo'lda commit qilib bo'lmaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "`git push -u origin main` dagi -u nima uchun?",
+    "options": [
+     "Mahalliy main ni origin/main ga bog'laydi (upstream), keyin parametrsiz push va pull ishlaydi",
+     "Majburlab yozadi",
+     "Tag yuboradi",
+     "Barcha branchlarni yuboradi"
+    ],
+    "answer": "Mahalliy main ni origin/main ga bog'laydi (upstream), keyin parametrsiz push va pull ishlaydi",
+    "explain": "-u (--set-upstream) bog'lanishni o'rnatadi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Fork qilingan omborda asl ombor odatda qaysi nom bilan remote qo'shiladi?",
+    "options": [
+     "upstream",
+     "origin (u fork ning o'zi)",
+     "fork",
+     "main"
+    ],
+    "answer": "upstream",
+    "explain": "origin — sizning forkingiz, upstream — asl ombor: undan fetch qilib yangilanasiz."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi buyruq nima qiladi?",
+    "options": [
+     "Faqat 'origin' nomi va manzilini saqlaydi; hech narsa yuborilmaydi",
+     "Barcha fayllarni GitHub ga yuklaydi",
+     "GitHub da yangi ombor yaratadi",
+     "Mavjud omborni o'chirib, qaytadan clone qiladi"
+    ],
+    "answer": "Faqat 'origin' nomi va manzilini saqlaydi; hech narsa yuborilmaydi",
+    "explain": "git remote add faqat nom va manzilni mahalliy konfiguratsiyaga yozadi. Yuborish uchun git push kerak.",
+    "passage": "git remote add origin https://github.com/ali/proj.git"
+   },
+   {
+    "id": "10",
+    "kind": "CHOICE",
+    "prompt": "GitHub da HTTPS orqali push qilishda parol o'rniga nima ishlatiladi?",
+    "options": [
+     "Personal Access Token",
+     "Oddiy akkaunt paroli",
+     "SSH ochiq kaliti",
+     "Email manzil"
+    ],
+    "answer": "Personal Access Token",
+    "explain": "GitHub 2021 dan oddiy parol bilan Git amallarini qabul qilmaydi; token yoki SSH kerak."
+   },
+   {
+    "id": "11",
+    "kind": "CHOICE",
+    "prompt": "Shallow clone (`--depth 1`) ning kamchiligi?",
+    "options": [
+     "Faqat oxirgi commit bor: to'liq tarix, log va bisect cheklangan",
+     "Fayllar yo'q bo'ladi",
+     "Push qilib bo'lmaydi",
+     "Branchlar o'chadi"
+    ],
+    "answer": "Faqat oxirgi commit bor: to'liq tarix, log va bisect cheklangan",
+    "explain": "Tez va kichik, CI uchun qulay; lekin to'liq tarix kerak bo'lsa `git fetch --unshallow`."
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "'origin' nomli yangi remote qo'shish buyrug'ini url dan oldingi qismigacha yozing.",
+    "answer": "git remote add origin",
+    "explain": "`add` yangi remote qo'shadi: git remote add <nom> <url>.",
+    "alsoAccept": []
+   }
+  ],
+  "labs": [
+   {
+    "title": "Remote qo'shish",
+    "task": "Mavjud omborga https://github.com/ali/proj.git manzilini 'origin' nomi bilan ulang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git remote add origin https://github.com/ali/proj.git",
+    "tests": [
+     {
+      "call": "repo.remotes()",
+      "expect": "{origin: \"https://github.com/ali/proj.git\"}"
+     }
+    ],
+    "hint": "git remote add <nom> <url>.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"",
+    "id": "1"
+   },
+   {
+    "title": "Birinchi push va upstream",
+    "task": "origin ulangan (setup). main ni origin ga yuboring va upstream bog'lang, shunda keyingi pushlar parametrsiz ishlasin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git push -u origin main",
+    "tests": [
+     {
+      "call": "repo.pushed()",
+      "expect": "[\"origin/main\"]"
+     },
+     {
+      "call": "repo.upstream(\"main\")",
+      "expect": "\"origin\""
+     }
+    ],
+    "hint": "-u upstream ni o'rnatadi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit remote add origin https://github.com/ali/proj.git",
+    "id": "2"
+   },
+   {
+    "title": "Yangi branchni yuborish",
+    "task": "main allaqachon origin ga yuborilgan. feature branchda B commit qilingan (setup, siz feature dasiz). feature ni ham origin ga yuboring va upstream bog'lang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git push -u origin feature",
+    "tests": [
+     {
+      "call": "repo.pushed()",
+      "expect": "[\"origin/feature\", \"origin/main\"]"
+     },
+     {
+      "call": "repo.upstream(\"feature\")",
+      "expect": "\"origin\""
+     }
+    ],
+    "hint": "Yangi branch uchun ham -u ishlating.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit remote add origin https://github.com/ali/proj.git\ngit push -u origin main\ngit switch -c feature\necho b > b.txt\ngit add .\ngit commit -m \"B\"",
+    "id": "3"
+   },
+   {
+    "title": "Remote manzilini o'zgartirish",
+    "task": "origin manzili eski (https://github.com/ali/old.git). Uni https://github.com/ali/new.git ga o'zgartiring (remote ni o'chirmasdan).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git remote set-url origin https://github.com/ali/new.git",
+    "tests": [
+     {
+      "call": "repo.remotes()",
+      "expect": "{origin: \"https://github.com/ali/new.git\"}"
+     }
+    ],
+    "hint": "git remote set-url <nom> <yangi url>.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit remote add origin https://github.com/ali/old.git",
+    "id": "4"
+   },
+   {
+    "title": "Xato nomli remote ni to'g'rilash",
+    "task": "Remote tasodifan 'orign' (xato) nomi bilan qo'shilgan. Uni olib tashlab, to'g'ri 'origin' nomi bilan https://github.com/ali/proj.git ni ulang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git remote remove orign\ngit remote add origin https://github.com/ali/proj.git",
+    "tests": [
+     {
+      "call": "Object.keys(repo.remotes())",
+      "expect": "[\"origin\"]"
+     },
+     {
+      "call": "repo.remotes().origin",
+      "expect": "\"https://github.com/ali/proj.git\""
+     }
+    ],
+    "hint": "git remote remove <nom>, keyin add.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit remote add orign https://github.com/ali/proj.git",
+    "id": "5"
+   },
+   {
+    "title": "Remote dan yangilanishni olish",
+    "task": "origin ulangan. Mahalliy branchlarni o'zgartirmaydigan, faqat serverdan ma'lumot yuklaydigan buyruqni (origin dan) bajaring. Xatosiz tugashi kerak.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git fetch origin",
+    "tests": [
+     {
+      "call": "repo.ok()",
+      "expect": "true"
+     },
+     {
+      "call": "repo.cmds",
+      "expect": "1"
+     }
+    ],
+    "hint": "fetch — yuklaydi, birlashtirmaydi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit remote add origin https://github.com/ali/proj.git",
+    "id": "6"
+   },
+   {
+    "title": "Remote yo'qligida push",
+    "task": "Mahalliy omborda remote yo'q. main ni https://github.com/ali/proj.git ga birinchi marta yuboring (avval remote ulang, so'ng upstream bilan push).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git remote add origin https://github.com/ali/proj.git\ngit push -u origin main",
+    "tests": [
+     {
+      "call": "repo.pushed()",
+      "expect": "[\"origin/main\"]"
+     },
+     {
+      "call": "Object.keys(repo.remotes())",
+      "expect": "[\"origin\"]"
+     },
+     {
+      "call": "repo.ok()",
+      "expect": "true"
+     }
+    ],
+    "hint": "push dan oldin remote bo'lishi shart.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"",
+    "id": "7"
+   },
+   {
+    "title": "master dan main ga o'tib push qilish",
+    "task": "Asosiy branch 'master', remote ulangan. Branchni 'main' ga qayta nomlang va origin ga upstream bilan yuboring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git branch -m master main\ngit push -u origin main",
+    "tests": [
+     {
+      "call": "repo.pushed()",
+      "expect": "[\"origin/main\"]"
+     },
+     {
+      "call": "repo.branch()",
+      "expect": "\"main\""
+     },
+     {
+      "call": "repo.upstream(\"main\")",
+      "expect": "\"origin\""
+     }
+    ],
+    "hint": "Avval nomni o'zgartiring, so'ng push.",
+    "kind": "git",
+    "setup": "git init -b master\necho 1 > a.txt\ngit add .\ngit commit -m \"A\"\ngit remote add origin https://github.com/ali/proj.git",
+    "id": "8"
+   },
+   {
+    "title": "Fork: upstream remote",
+    "task": "origin — sizning forkingiz (ulangan). Asl ombor https://github.com/org/proj.git ni 'upstream' nomi bilan qo'shing.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git remote add upstream https://github.com/org/proj.git",
+    "tests": [
+     {
+      "call": "Object.keys(repo.remotes()).sort()",
+      "expect": "[\"origin\", \"upstream\"]"
+     },
+     {
+      "call": "repo.remotes().upstream",
+      "expect": "\"https://github.com/org/proj.git\""
+     }
+    ],
+    "hint": "Fork ish oqimida asl ombor upstream deb ataladi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit remote add origin https://github.com/ali/proj.git",
+    "id": "9"
+   },
+   {
+    "title": "Yangi commit va keyingi push",
+    "task": "main origin ga allaqachon yuborilgan (upstream bilan). docs.md fayl qo'shib 'Add docs' commit qiling va parametrsiz git push bilan yuboring: origin/main va main bir xil bo'lsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo docs > docs.md\ngit add .\ngit commit -m \"Add docs\"\ngit push",
+    "tests": [
+     {
+      "call": "repo.same(\"origin/main\", \"main\")",
+      "expect": "true"
+     },
+     {
+      "call": "repo.count()",
+      "expect": "2"
+     },
+     {
+      "call": "repo.ok()",
+      "expect": "true"
+     }
+    ],
+    "hint": "Commit qilgach push qilmasangiz, origin/main orqada qoladi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit remote add origin https://github.com/ali/proj.git\ngit push -u origin main",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-git-jr-08",
+  "level": "JUNIOR",
+  "module": "git",
+  "order": 8,
+  "title": "GitHub ish oqimi",
+  "intro": "Pull Request va code review, birlashtirish usullari, Conventional Commits va semver, branch strategiyalari (GitHub Flow, Git Flow, trunk-based), branch protection va GitHub Actions asoslari.",
+  "theory": {
+   "analogy": {
+    "icon": "🏗️",
+    "title": "Qurilishda qabul komissiyasi",
+    "text": "Pull Request (PR — o'zgarishni qo'shish so'rovi) — qurilgan qismni asosiy binoga ulashdan oldin qabul komissiyasiga ko'rsatish. Komissiya (reviewer) tekshiradi, izoh qoldiradi; avtomatik tekshiruvlar (CI) — texnik nazorat. Hammasi o'tsagina qism asosiy binoga ulanadi (merge)."
+   },
+   "sections": [
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Pull Request (PR)",
+       "text": "branchdagi o'zgarishlarni asosiy branchga qo'shishni so'rash, muhokama va tekshirish joyi: kod review va CI shu yerda o'tadi."
+      },
+      {
+       "term": "Code review (kodni ko'rib chiqish)",
+       "text": "jamoadoshlarning o'zgarishni merge dan oldin tekshirishi: xatolar, o'qilishi, arxitektura. Natija: Approve, Request changes yoki Comment."
+      },
+      {
+       "term": "Conventional Commits (kelishilgan commit formati)",
+       "text": "`tur(soha): tavsif` ko'rinishidagi xabarlar (feat, fix, docs, ...). Versiyani va changelogni avtomatik aniqlashga imkon beradi."
+      },
+      {
+       "term": "Semantic versioning (semver, ma'noli versiyalash)",
+       "text": "MAJOR.MINOR.PATCH: buzuvchi o'zgarish MAJOR ni, yangi imkoniyat MINOR ni, tuzatish PATCH ni oshiradi."
+      },
+      {
+       "term": "CI (continuous integration — uzluksiz integratsiya)",
+       "text": "har bir push/PR da testlar va tekshiruvlarni avtomatik ishga tushirish. GitHub da GitHub Actions orqali amalga oshiriladi."
+      }
+     ]
+    },
+    {
+     "heading": "Pull Request va code review",
+     "text": "PR — branchingizdagi o'zgarishlarni asosiy branchga qo'shishni so'rash va muhokama qilish joyi. Odatiy hayot sikli: branch ochish → commitlar → push → PR ochish (sarlavha, tavsif, bog'liq issue) → CI tekshiruvlari va review → izohlarni tuzatish (yangi commit push qilinsa PR avtomatik yangilanadi) → merge. Reviewer uchta natija beradi: Approve (ma'qullash), Request changes (o'zgartirish talab qilish) yoki oddiy Comment. Tavsifda `Closes #12` yozilsa, PR merge bo'lganda 12-issue avtomatik yopiladi. Kichik PR (bitta mavzu, ~200-400 qator) tezroq va sifatliroq ko'riladi."
+    },
+    {
+     "heading": "GitHub dagi 3 ta merge usuli",
+     "table": {
+      "head": [
+       "Usul",
+       "Natija",
+       "Qachon qulay"
+      ],
+      "rows": [
+       [
+        "Create a merge commit",
+        "Barcha commitlar + merge commit; tarix to'liq",
+        "Tarixni aynan saqlash kerak bo'lsa"
+       ],
+       [
+        "Squash and merge",
+        "PR bitta commit bo'lib tushadi",
+        "Ko'p 'wip', 'fix typo' commitlarini tozalash"
+       ],
+       [
+        "Rebase and merge",
+        "Commitlar main ga chiziqli, yangi hashlar bilan qo'yiladi",
+        "Chiziqli tarix, commitlar toza bo'lsa"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Conventional Commits va semver",
+     "text": "Conventional Commits — commit xabarlari uchun kelishuv: `tur(soha): tavsif`. Asosiy turlar: feat (yangi imkoniyat), fix (xato tuzatish), docs, style (format), refactor, test, chore (yordamchi ishlar), perf, ci. Buzuvchi o'zgarish `feat!:` yoki xabarda `BREAKING CHANGE:` bilan belgilanadi. Bu Semantic Versioning (semver — MAJOR.MINOR.PATCH) bilan bog'lanadi: fix → PATCH (1.2.3 → 1.2.4), feat → MINOR (1.2.3 → 1.3.0), breaking → MAJOR (1.2.3 → 2.0.0). Shu orqali versiya va changelog avtomatik hosil qilinadi."
+    },
+    {
+     "code": {
+      "lang": "bash",
+      "text": "feat(auth): add Google login\nfix(cart): prevent negative quantity\ndocs: update README install steps\nfeat(api)!: remove v1 endpoints\n\nBREAKING CHANGE: /v1/users is no longer available"
+     }
+    },
+    {
+     "heading": "Branch strategiyalari",
+     "text": "GitHub Flow: main doim deploy qilishga tayyor; har ish qisqa muddatli branchda, PR orqali main ga qo'shiladi va darrov deploy qilinadi. Oddiy, doimiy yetkazib berish uchun mos. Git Flow: main, develop, feature/*, release/*, hotfix/* — rejali release lar uchun murakkabroq. Trunk-based development: hamma kichik o'zgarishlarni kuniga bir necha marta bitta 'trunk' (main) ga qo'shadi, tugallanmagan ish feature flag bilan yashiriladi. Branch protection (himoya qoidalari) main ga to'g'ridan-to'g'ri push qilishni taqiqlab, PR, review va o'tgan CI ni talab qiladi."
+    },
+    {
+     "heading": "GitHub Actions asoslari",
+     "text": "GitHub Actions — repository ichida ishlaydigan avtomatlashtirish (CI/CD). Workflow — `.github/workflows/*.yml` faylidagi YAML. Asosiy qismlari: `on` (qaysi hodisada ishga tushadi: push, pull_request), `jobs` (ishlar; parallel ishlaydi), `runs-on` (mashina: ubuntu-latest), `steps` (qadamlar: `uses` tayyor action ishlatadi, masalan actions/checkout, `run` shell buyrug'ini bajaradi). Maxfiy qiymatlar (tokenlar) `secrets` da saqlanadi va YAML ga yozilmaydi."
+    },
+    {
+     "code": {
+      "lang": "yaml",
+      "text": "name: CI\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: { node-version: 20 }\n      - run: npm ci\n      - run: npm test"
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🧑‍⚖️",
+       "title": "Maqolani muharrirga topshirish",
+       "text": "PR — maqolani nashrdan oldin muharrirga berish: u xatolarni belgilaydi, siz tuzatasiz, keyin nashr (merge) bo'ladi."
+      },
+      {
+       "icon": "🏷️",
+       "title": "Mahsulot yorlig'i",
+       "text": "Semver — mahsulot versiyasi yorlig'i: faqat kichik tuzatish bo'lsa 1.2.4, yangi funksiya qo'shilsa 1.3.0, eski ishlar buzilsa 2.0.0."
+      }
+     ]
+    }
+   ],
+   "recap": [
+    "PR — review va CI orqali o'zgarishni main ga olib kirish; Closes #n issueni yopadi.",
+    "Merge usullari: merge commit, squash (bitta commit), rebase (chiziqli).",
+    "Conventional Commits: fix → PATCH, feat → MINOR, breaking → MAJOR.",
+    "GitHub Flow oddiy; Git Flow rejali release; trunk-based — kichik tez o'zgarishlar; Actions — .github/workflows/*.yml."
+   ]
+  },
+  "practice": [
+   {
+    "title": "PR shabloni va CI",
+    "text": ".github/pull_request_template.md yarating (nima o'zgardi, qanday tekshirildi, bog'liq issue) va .github/workflows/ci.yml da `npm ci` va `npm test` ishlatuvchi workflow yozing. Test PR oching va CI natijasini kuzating."
+   },
+   {
+    "title": "Commit xabarlarini tuzatish",
+    "text": "Oxirgi 5 commit xabarini Conventional Commits formatiga keltiring (interaktiv rebase reword bilan, faqat push qilinmagan commitlarda) va qaysi biri MINOR yoki PATCH berishini yozing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "PR tavsifida `Closes #12` yozilsa nima bo'ladi?",
+    "options": [
+     "PR merge bo'lganda 12-issue avtomatik yopiladi",
+     "PR darhol yopiladi",
+     "12-commit o'chadi",
+     "Hech narsa"
+    ],
+    "answer": "PR merge bo'lganda 12-issue avtomatik yopiladi",
+    "explain": "GitHub 'Closes', 'Fixes', 'Resolves' kalit so'zlarini issue bilan bog'laydi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Review so'ragandan keyin izohlarni tuzatish uchun nima qilinadi?",
+    "options": [
+     "Shu branchga yangi commit push qilinadi: PR avtomatik yangilanadi",
+     "Yangi PR ochiladi",
+     "Eski PR o'chiriladi",
+     "main ga to'g'ridan-to'g'ri push qilinadi"
+    ],
+    "answer": "Shu branchga yangi commit push qilinadi: PR avtomatik yangilanadi",
+    "explain": "PR branchga bog'liq: branch yangilansa, PR ham yangilanadi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Branchda 12 ta 'wip', 'fix typo' commit bor. Main tarixi toza qolishi uchun qaysi merge usuli?",
+    "options": [
+     "Squash and merge",
+     "Create a merge commit",
+     "Faqat force push",
+     "Rebase and merge har doim"
+    ],
+    "answer": "Squash and merge",
+    "explain": "Squash butun PR ni bitta commitga aylantiradi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi xabar uchun semver qanday o'zgaradi (1.4.2 dan)?",
+    "options": [
+     "1.5.0 (MINOR): feat yangi imkoniyat",
+     "1.4.3",
+     "2.0.0",
+     "1.4.2 qoladi"
+    ],
+    "answer": "1.5.0 (MINOR): feat yangi imkoniyat",
+    "explain": "feat → MINOR oshadi va PATCH nolga tushadi.",
+    "passage": "feat(cart): add promo code field"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi xabar uchun semver (1.4.2 dan)?",
+    "options": [
+     "2.0.0 (MAJOR): ! buzuvchi o'zgarish belgisi",
+     "1.5.0",
+     "1.4.3",
+     "1.4.2"
+    ],
+    "answer": "2.0.0 (MAJOR): ! buzuvchi o'zgarish belgisi",
+    "explain": "feat! yoki BREAKING CHANGE — MAJOR ni oshiradi, MINOR va PATCH nolga tushadi.",
+    "passage": "feat(api)!: remove v1 endpoints"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "`fix(login): trim email` xabari qaysi turga kiradi va versiyaga ta'siri?",
+    "options": [
+     "fix: PATCH oshadi",
+     "feat: MINOR",
+     "docs: ta'sir yo'q",
+     "chore: MAJOR"
+    ],
+    "answer": "fix: PATCH oshadi",
+    "explain": "fix xatoni tuzatadi → PATCH."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "GitHub Flow haqida qaysi gap to'g'ri?",
+    "options": [
+     "main doim deploy qilishga tayyor; ishlar qisqa branchlarda PR orqali qo'shiladi",
+     "develop va release branchlari majburiy",
+     "Hamma to'g'ridan-to'g'ri main ga push qiladi",
+     "Faqat bitta uzoq muddatli feature branch bor"
+    ],
+    "answer": "main doim deploy qilishga tayyor; ishlar qisqa branchlarda PR orqali qo'shiladi",
+    "explain": "Oddiy model: branch → PR → review/CI → merge → deploy."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Git Flow ning o'ziga xosligi?",
+    "options": [
+     "develop, release/* va hotfix/* kabi doimiy tuzilmaga ega branchlar",
+     "Faqat main bor",
+     "Rebase majburiy",
+     "Branchlar yo'q"
+    ],
+    "answer": "develop, release/* va hotfix/* kabi doimiy tuzilmaga ega branchlar",
+    "explain": "Rejali release lar uchun mos, lekin ko'proq jarayon talab qiladi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Branch protection yoqilganda nima taqiqlanadi?",
+    "options": [
+     "main ga to'g'ridan-to'g'ri push: PR, review va o'tgan CI talab qilinadi",
+     "Branch yaratish",
+     "Commit qilish",
+     "Clone qilish"
+    ],
+    "answer": "main ga to'g'ridan-to'g'ri push: PR, review va o'tgan CI talab qilinadi",
+    "explain": "Himoya qoidalari sifat nazoratini majburiy qiladi."
+   },
+   {
+    "id": "10",
+    "kind": "CHOICE",
+    "prompt": "GitHub Actions workflow fayli qayerda turadi?",
+    "options": [
+     ".github/workflows/ papkasida (.yml)",
+     "Loyiha ildizidagi actions.js",
+     ".git/hooks ichida",
+     "package.json ichida"
+    ],
+    "answer": ".github/workflows/ papkasida (.yml)",
+    "explain": "Har bir .yml fayl alohida workflow."
+   },
+   {
+    "id": "11",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi workflow qachon ishga tushadi?",
+    "options": [
+     "Har bir push va har bir pull request da",
+     "Faqat release da",
+     "Faqat qo'lda",
+     "Faqat main ga merge bo'lganda"
+    ],
+    "answer": "Har bir push va har bir pull request da",
+    "explain": "`on` ro'yxati ishga tushiruvchi hodisalarni belgilaydi.",
+    "passage": "name: CI\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest"
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Workflow qadamida tayyor action ishlatish uchun qaysi kalit so'z yoziladi (masalan: ... actions/checkout@v4)? Bitta so'z.",
+    "answer": "uses",
+    "explain": "`uses` tayyor action ni ishga tushiradi, `run` esa shell buyrug'ini bajaradi.",
+    "alsoAccept": []
+   }
+  ],
+  "labs": [
+   {
+    "title": "feat commit xabari",
+    "task": "login.js faylini qo'shing va Conventional Commits formatida commit qiling: 'feat(auth): add login form'.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo code > login.js\ngit add login.js\ngit commit -m \"feat(auth): add login form\"",
+    "tests": [
+     {
+      "call": "repo.msg()",
+      "expect": "\"feat(auth): add login form\""
+     },
+     {
+      "call": "repo.tree()",
+      "expect": "[\"login.js\"]"
+     }
+    ],
+    "hint": "Format: tur(soha): tavsif.",
+    "kind": "git",
+    "setup": "git init",
+    "id": "1"
+   },
+   {
+    "title": "Commit xabarini formatga keltirish",
+    "task": "Oxirgi commit xabari 'fixed bug'. Uni 'fix(cart): prevent negative quantity' ga o'zgartiring (yangi commit yaratmasdan).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git commit --amend -m \"fix(cart): prevent negative quantity\"",
+    "tests": [
+     {
+      "call": "repo.msg()",
+      "expect": "\"fix(cart): prevent negative quantity\""
+     },
+     {
+      "call": "repo.count()",
+      "expect": "1"
+     }
+    ],
+    "hint": "--amend -m yangi xabar.",
+    "kind": "git",
+    "setup": "git init\necho 1 > cart.js\ngit add .\ngit commit -m \"fixed bug\"",
+    "id": "2"
+   },
+   {
+    "title": "Buzuvchi o'zgarish (breaking change)",
+    "task": "api.js ni o'zgartirib, buzuvchi o'zgarishni ko'rsatuvchi xabar bilan commit qiling: 'feat(api)!: remove v1 endpoints'.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git commit -am \"feat(api)!: remove v1 endpoints\"",
+    "tests": [
+     {
+      "call": "repo.msg()",
+      "expect": "\"feat(api)!: remove v1 endpoints\""
+     },
+     {
+      "call": "/^feat\\(api\\)!:/.test(repo.msg())",
+      "expect": "true"
+     }
+    ],
+    "hint": "Turdan keyin ! belgisi buzuvchi o'zgarishni bildiradi.",
+    "kind": "git",
+    "setup": "git init\necho 1 > api.js\ngit add .\ngit commit -m \"feat(api): add v1\"\necho 2 > api.js",
+    "id": "3"
+   },
+   {
+    "title": "PR shabloni",
+    "task": ".github/pull_request_template.md faylini yarating (ichida '## Tavsif' sarlavhasi bo'lsin) va 'docs: add PR template' bilan commit qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo \"## Tavsif\" > .github/pull_request_template.md\ngit add .\ngit commit -m \"docs: add PR template\"",
+    "tests": [
+     {
+      "call": "repo.tree()",
+      "expect": "[\".github/pull_request_template.md\"]"
+     },
+     {
+      "call": "repo.read(\".github/pull_request_template.md\").includes(\"Tavsif\")",
+      "expect": "true"
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"docs: add PR template\""
+     }
+    ],
+    "hint": "echo \"...\" > yo'l/fayl bilan yarating.",
+    "kind": "git",
+    "setup": "git init",
+    "id": "4"
+   },
+   {
+    "title": "CI workflow fayli",
+    "task": ".github/workflows/ci.yml yarating: ichida 'name: CI' va 'on: [push, pull_request]' qatorlari bo'lsin. 'ci: add workflow' bilan commit qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo \"name: CI\" > .github/workflows/ci.yml\necho \"on: [push, pull_request]\" >> .github/workflows/ci.yml\ngit add .\ngit commit -m \"ci: add workflow\"",
+    "tests": [
+     {
+      "call": "repo.tree()",
+      "expect": "[\".github/workflows/ci.yml\"]"
+     },
+     {
+      "call": "repo.read(\".github/workflows/ci.yml\")",
+      "expect": "\"name: CI\\non: [push, pull_request]\""
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"ci: add workflow\""
+     }
+    ],
+    "hint": "Birinchi qatorga > , keyingisiga >> ishlating.",
+    "kind": "git",
+    "setup": "git init",
+    "id": "5"
+   },
+   {
+    "title": "Branch nomlash va ish",
+    "task": "'feat/login-form' nomli branch yarating, unda login.js qo'shib 'feat: add login form' commit qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git switch -c feat/login-form\necho code > login.js\ngit add .\ngit commit -m \"feat: add login form\"",
+    "tests": [
+     {
+      "call": "repo.branch()",
+      "expect": "\"feat/login-form\""
+     },
+     {
+      "call": "repo.tree()",
+      "expect": "[\"README.md\", \"login.js\"]"
+     },
+     {
+      "call": "repo.msg()",
+      "expect": "\"feat: add login form\""
+     }
+    ],
+    "hint": "Branch nomi tur/qisqa-tavsif ko'rinishida.",
+    "kind": "git",
+    "setup": "git init\necho 1 > README.md\ngit add .\ngit commit -m \"Init\"",
+    "id": "6"
+   },
+   {
+    "title": "Kichik PR: ikkita commit",
+    "task": "header.html va footer.html yangi fayllar. Ularni ikkita alohida commit qiling: 'feat: add header', keyin 'feat: add footer' (kichik, mantiqiy PR uchun).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git add header.html\ngit commit -m \"feat: add header\"\ngit add footer.html\ngit commit -m \"feat: add footer\"",
+    "tests": [
+     {
+      "call": "repo.log()",
+      "expect": "[\"feat: add footer\", \"feat: add header\", \"A\"]"
+     }
+    ],
+    "hint": "Har bir fayl uchun alohida add va commit.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho h > header.html\necho f > footer.html",
+    "id": "7"
+   },
+   {
+    "title": "Release tegi",
+    "task": "Release tayyor. Joriy commitga 'v1.2.0' nomli annotated tag qo'ying (xabar: Release 1.2.0).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git tag -a v1.2.0 -m \"Release 1.2.0\"",
+    "tests": [
+     {
+      "call": "repo.tags()",
+      "expect": "[\"v1.2.0\"]"
+     },
+     {
+      "call": "repo.same(\"v1.2.0\", \"HEAD\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "Release uchun annotated tag tavsiya etiladi.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho 2 > b.txt\ngit add .\ngit commit -m \"feat: add b\"",
+    "id": "8"
+   },
+   {
+    "title": "Birlashtirilgan noto'g'ri PR ni qaytarish",
+    "task": "main ga 'feat: add promo' (promo.txt) commiti birlashtirilib bo'ldi va u allaqachon ulashilgan. Tarixni qayta yozmasdan uni bekor qiling (standart revert xabari bilan).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git revert HEAD --no-edit",
+    "tests": [
+     {
+      "call": "repo.msg()",
+      "expect": "\"Revert \\\"feat: add promo\\\"\""
+     },
+     {
+      "call": "repo.files()",
+      "expect": "[\"a.txt\"]"
+     },
+     {
+      "call": "repo.count()",
+      "expect": "3"
+     }
+    ],
+    "hint": "Ulashilgan tarixda reset emas, revert.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\necho promo > promo.txt\ngit add .\ngit commit -m \"feat: add promo\"",
+    "id": "9"
+   },
+   {
+    "title": "Hotfix oqimi",
+    "task": "main da v1.0.0 tegi bor. 'hotfix/crash' branch yarating, fix.txt qo'shib 'fix: prevent crash' commit qiling, main ga o'tib --no-ff bilan birlashtiring va 'v1.0.1' tegini qo'ying.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "git switch -c hotfix/crash\necho fix > fix.txt\ngit add .\ngit commit -m \"fix: prevent crash\"\ngit switch main\ngit merge --no-ff hotfix/crash\ngit tag v1.0.1",
+    "tests": [
+     {
+      "call": "repo.tags()",
+      "expect": "[\"v1.0.0\", \"v1.0.1\"]"
+     },
+     {
+      "call": "repo.parents()",
+      "expect": "2"
+     },
+     {
+      "call": "repo.branch()",
+      "expect": "\"main\""
+     },
+     {
+      "call": "repo.branches()",
+      "expect": "[\"hotfix/crash\", \"main\"]"
+     }
+    ],
+    "hint": "Ketma-ketlik: branch → commit → main → merge --no-ff → tag.",
+    "kind": "git",
+    "setup": "git init\necho one > a.txt\ngit add .\ngit commit -m \"A\"\ngit tag v1.0.0",
+    "id": "10"
+   }
+  ]
+ }
+]

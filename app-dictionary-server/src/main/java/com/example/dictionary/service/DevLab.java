@@ -10,7 +10,7 @@ import java.util.List;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record DevLab(String id, String title, String task, String starter, List<Test> tests, String hint,
-                     String solution) {
+                     String solution, String kind, String setup) {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record Test(String call, String expect) {

@@ -5,6 +5,8 @@
  * A test is {call, expect}: both are JavaScript expressions. `call` is evaluated after the learner's code (same scope),
  * `expect` is evaluated on its own and the two values are compared deeply.
  */
+import GIT_SIM from './gitSim.js?raw';
+
 export interface LabTest {
   call: string;
   expect: string;
@@ -119,6 +121,12 @@ let workerUrl: string | null = null;
 function url(): string {
   if (!workerUrl) workerUrl = URL.createObjectURL(new Blob([WORKER_SOURCE], { type: 'text/javascript' }));
   return workerUrl;
+}
+
+/** The code the worker really runs: a git lab's text is run by the built-in simulator, which exposes `repo` to the tests. */
+export function labProgram(lab: { kind?: string | null; setup?: string | null }, code: string): string {
+  if (lab.kind !== 'git') return code;
+  return GIT_SIM + '\nconst repo = gitRun(' + JSON.stringify(lab.setup ?? '') + ', ' + JSON.stringify(code) + ');\n';
 }
 
 /** Runs the code against the tests; resolves with every test's outcome (never rejects). */

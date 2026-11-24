@@ -49,7 +49,8 @@ public final class DevDtos {
     }
 
     /** A coding lab without its solution. */
-    public record LabView(String id, String title, String task, String starter, List<LabTestView> tests, String hint) {
+    public record LabView(String id, String title, String task, String starter, List<LabTestView> tests, String hint,
+                      String kind, String setup) {
     }
 
     public record LabSolution(String solution) {

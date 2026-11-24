@@ -707,6 +707,9 @@ export interface DevLab {
   starter: string | null;
   tests: { call: string; expect: string }[];
   hint: string | null;
+  /** "git": the learner types git commands that run in a built-in simulator (see pages/gitSim.js). */
+  kind?: string | null;
+  setup?: string | null;
 }
 
 export interface DevOverview {

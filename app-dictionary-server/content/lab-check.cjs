@@ -54,6 +54,8 @@ async function runTests(code, tests) {
   return out;
 }
 
+const GIT_SIM = fs.readFileSync('E:/frontend/app-dictionary/app-dictionary-web/src/pages/gitSim.js', 'utf8');
+const prog = (lab, code) => (lab.kind === 'git' ? GIT_SIM + '\nconst repo = gitRun(' + JSON.stringify(lab.setup || '') + ', ' + JSON.stringify(code || '') + ');\n' : code);
 module.exports = async function checkLabs(lessonLabs) {
   let n = 0;
   let bad = 0;
@@ -61,13 +63,13 @@ module.exports = async function checkLabs(lessonLabs) {
     for (const lab of labs) {
       n += 1;
       const tag = `lesson ${lesson} lab ${lab.id} (${lab.title})`;
-      const sol = await runTests(lab.solution, lab.tests.map((t) => [t.call, t.expect]));
+      const sol = await runTests(prog(lab, lab.solution), lab.tests.map((t) => [t.call, t.expect]));
       const fails = sol.map((r, i) => (r.ok ? null : `${lab.tests[i].call}: ${r.msg}`)).filter(Boolean);
       if (fails.length) {
         bad += 1;
         console.error(`SOLUTION FAILS ${tag}\n   ${fails.join('\n   ')}`);
       }
-      const st = await runTests(lab.starter || '', lab.tests.map((t) => [t.call, t.expect]));
+      const st = await runTests(prog(lab, lab.starter || ''), lab.tests.map((t) => [t.call, t.expect]));
       if (st.every((r) => r.ok)) {
         bad += 1;
         console.error(`STARTER ALREADY PASSES ${tag}`);
