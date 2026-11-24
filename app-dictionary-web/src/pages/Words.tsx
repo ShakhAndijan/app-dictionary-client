@@ -343,7 +343,7 @@ export default function WordsPage() {
   );
 }
 
-function WordForm({
+export function WordForm({
   word,
   existing,
   onClose,
