@@ -212,7 +212,7 @@ const NEG_PRON = [['I am not', "I'm not"], ['you are not', "you're not"], ['he i
   ["you aren't", "you're not"], ["he isn't", "he's not"], ["she isn't", "she's not"], ["it isn't", "it's not"], ["we aren't", "we're not"], ["they aren't", "they're not"]];
 // Equivalent words and phrases an A2 learner may reasonably use (both directions are accepted).
 const SYNONYMS = [
-  ['a lot of', 'lots of'], ['photos', 'pictures'], ['photo', 'picture'], ['children', 'kids'], ['big', 'large'], ['small', 'little'], ['TV', 'television'],
+  ['a lot of', 'lots of'], ['photos', 'pictures'], ['children', 'kids'], ['big', 'large'], ['small', 'little'], ['TV', 'television'],
   ['film', 'movie'], ['shop', 'store'], ['shops', 'stores'], ['flat', 'apartment'], ['holiday', 'vacation'], ['autumn', 'fall'], ['Mom', 'Mum'],
   ['begin', 'start'], ['began', 'started'], ['very', 'really'], ['quickly', 'fast'], ['glad', 'happy'], ['tasty', 'delicious'],
   ['at the weekend', 'on the weekend'], ['at weekends', 'on weekends'], ['trousers', 'pants'],
@@ -226,6 +226,8 @@ const DAYS = 'monday|tuesday|wednesday|thursday|friday|saturday|sunday';
 const TIME_PHRASE = `last (?:week|month|year|night|summer|winter|spring|autumn|weekend|${DAYS})|yesterday(?: (?:morning|afternoon|evening))?|today|tomorrow(?: (?:morning|afternoon|evening))?|next (?:week|month|year|summer|winter|weekend)|every (?:day|morning|evening|week|year|night|weekend|summer|winter)|this (?:morning|evening|afternoon|week|year|summer)|in the (?:morning|evening|afternoon)|at (?:the )?weekend|on (?:${DAYS})s?|at night`;
 const TIME_START = new RegExp(`^(${TIME_PHRASE})\\b,?\\s+(.+)$`, 'i');
 const TIME_END = new RegExp(`^(.+?)\\s+(${TIME_PHRASE})$`, 'i');
+const QUESTION_START = /^(have|has|had|do|does|did|is|are|was|were|am|can|could|will|would|shall|should|may|might|must|what|where|when|why|how|who|which|whose|whom)\b/i;
+const SUBORDINATE = /\b(if|that|because|when|while|although|which|who|whose|unless|until|since|before|after)\b/i;
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const ALTS = {
   "I don't have a sister": ["I haven't got a sister"], 'I like music': ['I love music'], 'Have you got a pen': ['Do you have a pen'],
@@ -251,10 +253,15 @@ function rewrites(s) {
     else if (without.test(s)) out.push(s.replace(without, '$1 that '));
   }
   // a time phrase may open or close the sentence (the server compares in lower case, so the casing of the first word does not matter)
-  let m = TIME_START.exec(s);
-  if (m) out.push(`${m[2]} ${m[1]}`);
-  m = TIME_END.exec(s);
-  if (m) out.push(`${m[2]} ${m[1]}`);
+  // Only in plain statements: not in questions, conditionals or sentences with a subordinate clause, where moving it changes the meaning.
+  const plain = !QUESTION_START.test(s) && !SUBORDINATE.test(s) && !/[,;]/.test(s);
+  if (plain) {
+    let m = TIME_START.exec(s);
+    if (m) out.push(`${m[2]} ${m[1]}`);
+    m = TIME_END.exec(s);
+    // "since yesterday" / "until Friday" belong to the preposition and must stay where they are
+    if (m && !/\b(since|until|till|by|before|after|from|for|than|of|with|to)$/i.test(m[1])) out.push(`${m[2]} ${m[1]}`);
+  }
   // number words and digits
   for (const [w, d] of Object.entries(NUM_WORDS)) {
     const reW = new RegExp(`\\b${w}\\b`, 'i');
@@ -266,7 +273,7 @@ function rewrites(s) {
 }
 const normVariant = (s) => s.toLowerCase().replace(/[’`]/g, "'").replace(/\s+/g, ' ').trim();
 // Variants that would be ungrammatical ("I've to", "Do I must") are dropped.
-const BAD_VARIANT = /'ve to\b|\b(do|does|did) \w+ (must|have to|has to)\b|\b(have|has) to not\b/i;
+const BAD_VARIANT = /'ve to\b|\b(do|does|did) \w+ (must|have to|has to)\b|\b(have|has) to not\b|\b(had|has|have|'ve|'d) (never |already |just |not )?began\b|\b(has|have) to have\b|, \w+ not (it|you|he|she|we|they|I)$/i;
 function variants(en, limit = 40) {
   const base = stripEnd(en).replace(/\u2019/g, "'");
   const seen = new Set([normVariant(base)]);

@@ -79,10 +79,7 @@
     "id": "9",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz o'tgan yakshanba nima qildingiz?",
-    "answer": "What did you do last Sunday",
-    "alsoAccept": [
-     "last Sunday What did you do"
-    ]
+    "answer": "What did you do last Sunday"
    },
    {
     "id": "10",
@@ -1278,8 +1275,7 @@
     "prompt": "Inglizchaga tarjima qiling: Bugun kechagidan issiqroq.",
     "answer": "Today is hotter than yesterday",
     "alsoAccept": [
-     "is hotter than yesterday Today",
-     "yesterday Today is hotter than"
+     "is hotter than yesterday Today"
     ]
    },
    {
@@ -2136,10 +2132,7 @@
     "id": "19",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz o'tgan yozda qayerga bordingiz?",
-    "answer": "Where did you go last summer",
-    "alsoAccept": [
-     "last summer Where did you go"
-    ]
+    "answer": "Where did you go last summer"
    },
    {
     "id": "20",
@@ -2638,10 +2631,7 @@
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ustoz allaqachon darsni boshladi.",
-    "answer": "The teacher has already started the lesson",
-    "alsoAccept": [
-     "The teacher has already began the lesson"
-    ]
+    "answer": "The teacher has already started the lesson"
    },
    {
     "id": "22",
@@ -2687,10 +2677,7 @@
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz bugun sut ichdingizmi?",
-    "answer": "Have you drunk milk today",
-    "alsoAccept": [
-     "today Have you drunk milk"
-    ]
+    "answer": "Have you drunk milk today"
    },
    {
     "id": "28",
@@ -2866,10 +2853,7 @@
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz bugun qanday his qilyapsiz?",
-    "answer": "How do you feel today",
-    "alsoAccept": [
-     "today How do you feel"
-    ]
+    "answer": "How do you feel today"
    },
    {
     "id": "19",
@@ -3076,10 +3060,7 @@
     "id": "14",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz kecha ishda nima qildingiz?",
-    "answer": "What did you do at work yesterday",
-    "alsoAccept": [
-     "yesterday What did you do at work"
-    ]
+    "answer": "What did you do at work yesterday"
    },
    {
     "id": "15",
@@ -3290,9 +3271,7 @@
     "prompt": "Inglizchaga tarjima qiling: Mashhur rassom bu rasmni yuz yil oldin chizgan.",
     "answer": "A famous painter painted this picture a hundred years ago",
     "alsoAccept": [
-     "A famous painter painted this photo a hundred years ago",
-     "A famous painter painted this picture a 100 years ago",
-     "A famous painter painted this photo a 100 years ago"
+     "A famous painter painted this picture a 100 years ago"
     ]
    },
    {
@@ -3544,9 +3523,7 @@
     "prompt": "Inglizchaga tarjima qiling: Siz dam olish kunlari nima qilmoqchisiz?",
     "answer": "What are you going to do at the weekend",
     "alsoAccept": [
-     "What are you going to do on the weekend",
-     "at the weekend What are you going to do",
-     "on the weekend What are you going to do"
+     "What are you going to do on the weekend"
     ]
    },
    {
@@ -3635,10 +3612,7 @@
     "id": "19",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sen shanba kuni tennis o'ynamoqchimisan?",
-    "answer": "Are you going to play tennis on Saturday",
-    "alsoAccept": [
-     "on Saturday Are you going to play tennis"
-    ]
+    "answer": "Are you going to play tennis on Saturday"
    },
    {
     "id": "20",
@@ -3732,10 +3706,7 @@
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz yakshanba kuni bizga yordam berasizmi?",
-    "answer": "Will you help us on Sunday",
-    "alsoAccept": [
-     "on Sunday Will you help us"
-    ]
+    "answer": "Will you help us on Sunday"
    },
    {
     "id": "30",
@@ -4517,9 +4488,7 @@
     "prompt": "Inglizchaga tarjima qiling: Nega bugun uyda qolmaysiz?",
     "answer": "Why don't you stay at home today",
     "alsoAccept": [
-     "Why do not you stay at home today",
-     "today Why don't you stay at home",
-     "today Why do not you stay at home"
+     "Why do not you stay at home today"
     ]
    },
    {
@@ -4619,10 +4588,7 @@
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz bugun kechqurun bandmisiz?",
-    "answer": "Are you busy this evening",
-    "alsoAccept": [
-     "this evening Are you busy"
-    ]
+    "answer": "Are you busy this evening"
    },
    {
     "id": "7",
@@ -4671,9 +4637,7 @@
     "answer": "Sorry, I cannot come on Saturday",
     "alsoAccept": [
      "Sorry, I can't come on Saturday",
-     "on Saturday Sorry, I cannot come",
-     "Sorry, I can not come on Saturday",
-     "on Saturday Sorry, I can't come"
+     "Sorry, I can not come on Saturday"
     ]
    },
    {
@@ -4831,10 +4795,7 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz bilan ertaga gaplashsam bo'ladimi?",
-    "answer": "Can I talk to you tomorrow",
-    "alsoAccept": [
-     "tomorrow Can I talk to you"
-    ]
+    "answer": "Can I talk to you tomorrow"
    },
    {
     "id": "29",
@@ -6668,10 +6629,7 @@
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kecha kim qo'ng'iroq qilganini bilasizmi?",
-    "answer": "Do you know who called yesterday",
-    "alsoAccept": [
-     "yesterday Do you know who called"
-    ]
+    "answer": "Do you know who called yesterday"
    },
    {
     "id": "28",
@@ -7000,10 +6958,7 @@
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: O'tgan yozda qayerga bording?",
-    "answer": "Where did you go last summer",
-    "alsoAccept": [
-     "last summer Where did you go"
-    ]
+    "answer": "Where did you go last summer"
    },
    {
     "id": "5",
@@ -7030,10 +6985,7 @@
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kecha kechqurun nima qildingiz?",
-    "answer": "What did you do last night",
-    "alsoAccept": [
-     "last night What did you do"
-    ]
+    "answer": "What did you do last night"
    },
    {
     "id": "9",
@@ -7083,19 +7035,14 @@
     "prompt": "Inglizchaga tarjima qiling: Siz kecha nima uchun kelmadingiz?",
     "answer": "Why didn't you come yesterday",
     "alsoAccept": [
-     "Why did not you come yesterday",
-     "yesterday Why didn't you come",
-     "yesterday Why did not you come"
+     "Why did not you come yesterday"
     ]
    },
    {
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sen bugun ovqatlanib bo'ldingmi?",
-    "answer": "Have you eaten today",
-    "alsoAccept": [
-     "today Have you eaten"
-    ]
+    "answer": "Have you eaten today"
    },
    {
     "id": "18",
@@ -7113,10 +7060,7 @@
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz o'tgan hafta kim bilan gaplashdingiz?",
-    "answer": "Who did you talk to last week",
-    "alsoAccept": [
-     "last week Who did you talk to"
-    ]
+    "answer": "Who did you talk to last week"
    },
    {
     "id": "21",
@@ -7140,10 +7084,7 @@
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular o'tgan oy nimani nishonlashdi?",
-    "answer": "What did they celebrate last month",
-    "alsoAccept": [
-     "last month What did they celebrate"
-    ]
+    "answer": "What did they celebrate last month"
    },
    {
     "id": "25",
@@ -7167,10 +7108,7 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U bugun ertalab soat nechada turdi?",
-    "answer": "What time did he get up this morning",
-    "alsoAccept": [
-     "this morning What time did he get up"
-    ]
+    "answer": "What time did he get up this morning"
    },
    {
     "id": "29",
