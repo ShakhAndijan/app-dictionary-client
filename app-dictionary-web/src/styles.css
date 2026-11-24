@@ -5780,3 +5780,5 @@ i.bad,
 /* Programming course: answer options two per row */
 .dv-play .ex2-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 380px) { .dv-play .ex2-options { grid-template-columns: 1fr; } }
+
+.dv-play .lr-passage { font-family: ui-monospace, Consolas, monospace; font-size: 13.5px; white-space: pre; overflow-x: auto; line-height: 1.55; }

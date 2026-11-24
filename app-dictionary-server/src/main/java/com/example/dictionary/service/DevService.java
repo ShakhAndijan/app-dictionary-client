@@ -145,7 +145,7 @@ public class DevService {
         for (DevLesson l : lessonRepository.findByLevelOrderByOrderIndexAscIdAsc(level)) {
             for (LearnItem item : objective(l)) {
                 ItemView v = view(item);
-                pool.add(new ExamQuestion(l.getCode() + "#" + item.id(), l.getModuleKey(), v.kind(), v.prompt(), v.options(), v.words()));
+                pool.add(new ExamQuestion(l.getCode() + "#" + item.id(), l.getModuleKey(), v.kind(), v.prompt(), v.options(), v.words(), v.passage()));
             }
         }
         Collections.shuffle(pool);
@@ -222,7 +222,7 @@ public class DevService {
     }
 
     private static ItemView view(LearnItem i) {
-        return new ItemView(i.id(), i.kind(), i.prompt(), shuffled(i.options()), shuffled(i.words()));
+        return new ItemView(i.id(), i.kind(), i.prompt(), shuffled(i.options()), shuffled(i.words()), i.passage());
     }
 
     private static List<String> shuffled(List<String> list) {

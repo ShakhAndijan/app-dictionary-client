@@ -35,7 +35,8 @@ public final class DevDtos {
                            List<ModuleInfo> modules, List<LessonSummary> lessons) {
     }
 
-    public record ItemView(String id, String kind, String prompt, List<String> options, List<String> words) {
+    public record ItemView(String id, String kind, String prompt, List<String> options, List<String> words,
+                           String passage) {
     }
 
     /** Theory and practice are JSON text; the web page renders them. */
@@ -62,7 +63,7 @@ public final class DevDtos {
     }
 
     public record ExamQuestion(String ref, String module, String kind, String prompt, List<String> options,
-                               List<String> words) {
+                               List<String> words, String passage) {
     }
 
     public record ExamAnswer(@NotBlank String ref, @Size(max = 600) String answer) {

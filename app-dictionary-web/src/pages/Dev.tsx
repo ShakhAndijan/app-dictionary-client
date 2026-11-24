@@ -90,7 +90,7 @@ interface ModuleMeta {
 }
 
 // Modules with written lessons; every other plan module only shows its topic names for now.
-const READY = new Set(['internet', 'html']);
+const READY = new Set(['internet', 'html', 'css']);
 const MODULES: ModuleMeta[] = PLAN.map((m) => ({
   key: m.key,
   icon: m.icon,

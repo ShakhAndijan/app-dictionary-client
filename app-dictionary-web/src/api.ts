@@ -718,6 +718,7 @@ export interface DevItemView {
   prompt: string;
   options: string[] | null;
   words: string[] | null;
+  passage?: string | null;
 }
 
 export interface DevLessonDetail {
