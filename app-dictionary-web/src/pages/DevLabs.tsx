@@ -1,8 +1,10 @@
 import { useMemo, useState } from 'react';
 import { DevLab, devApi, errorMessage } from '../api';
-import { Button, Card, Notice } from '../ui';
+import { Button, Notice } from '../ui';
 import { LabRun, labProgram, runLab } from './devLab';
 import { cssDocument, runCssLab } from './cssLab';
+import { completeCss, htmlSelectors } from './cssComplete';
+import { BrowserPreview, CodeEditor, TaskText, highlight } from './labViews';
 
 /** Coding labs of a lesson: write the code (JavaScript, CSS or git commands), run it against the tests. */
 export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
@@ -33,6 +35,16 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   const isGit = lab.kind === 'git';
   const isCss = lab.kind === 'css';
   const doneCount = useMemo(() => labs.filter((l) => done.has(l.id)).length, [labs, done]);
+  const lang = isCss ? 'css' : 'plain';
+  const fileName = isCss ? 'style.css' : isGit ? 'terminal' : 'script.js';
+  /** the page without the lab's own scaffold styles, as the learner reads it */
+  const html = isCss ? (lab.setup ?? '').replace(/<style>[\s\S]*?<\/style>\n?/g, '').trim() : '';
+  const selectors = htmlSelectors(html);
+  /** widths the tests resize to, so the learner can look at the same ones */
+  const widths = useMemo(() => {
+    const asked = lab.tests.flatMap((t) => [...t.call.matchAll(/\bat\((\d+)\)/g)].map((m) => Number(m[1])));
+    return [...new Set([600, ...asked])].sort((a, b) => a - b);
+  }, [lab]);
 
   const setCode = (value: string) => setCodes((p) => ({ ...p, [lab.id]: value }));
 
@@ -70,7 +82,7 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   };
 
   const onKey = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Tab') {
+    if (e.key === 'Tab' && !e.shiftKey) {
       e.preventDefault();
       const el = e.currentTarget;
       const s = el.selectionStart;
@@ -84,101 +96,119 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   };
 
   return (
-    <div className="dv dv-lab">
+    <div className={`dv dv-lab ${isCss ? 'dv-lab-wide' : ''}`}>
       <header className="qx-top">
         <button className="gp-back" onClick={onBack} aria-label="Orqaga">←</button>
         <div className="qx-title">
-          <small>🧪 Laboratoriya</small>
+          <small>Laboratoriya</small>
           <b>{title}</b>
         </div>
-        <div className="qx-pills"><span className="qx-pill">{doneCount} / {labs.length}</span></div>
+        <div className="qx-pills"><span className={`qx-pill ${doneCount === labs.length ? 'ok' : ''}`}>{doneCount} / {labs.length}</span></div>
       </header>
 
-      <div className="dl-chips">
+      <nav className="dl-steps" aria-label="Topshiriqlar">
         {labs.map((l, i) => (
-          <button key={l.id} className={`dl-chip ${i === index ? 'on' : ''} ${done.has(l.id) ? 'ok' : ''}`} onClick={() => go(i)}>
+          <button
+            key={l.id}
+            className={`${i === index ? 'on' : ''} ${done.has(l.id) ? 'ok' : ''}`}
+            aria-current={i === index ? 'step' : undefined}
+            aria-label={`${i + 1}-topshiriq${done.has(l.id) ? ', bajarilgan' : ''}`}
+            onClick={() => go(i)}
+          >
             {done.has(l.id) ? '✓' : i + 1}
           </button>
         ))}
-      </div>
+      </nav>
 
       {error && <Notice>{error}</Notice>}
 
-      <Card className="dl-task">
-        <span className="dl-no">Topshiriq {index + 1} / {labs.length}{isDone ? ' · bajarilgan ✓' : ''}</span>
-        <h3>{lab.title}</h3>
-        <p>{lab.task}</p>
-      </Card>
-
-      {isCss && (
-        <div className="dl-css">
-          <div>
-            <b>HTML (o'zgarmaydi)</b>
-            <pre>{(lab.setup ?? '').replace(/<style>[\s\S]*?<\/style>\n?/g, '')}</pre>
-          </div>
-          <div>
-            <b>Jonli ko'rinish</b>
-            <iframe title="Natija" sandbox="" srcDoc={cssDocument(lab.setup ?? '', code)} />
-          </div>
+      <section className={`dl-task ${isDone ? 'ok' : ''}`}>
+        <span className="dl-no" aria-hidden="true">{isDone ? '✓' : index + 1}</span>
+        <div>
+          <h3>{lab.title}</h3>
+          {isCss ? <TaskText text={lab.task} /> : <p>{lab.task}</p>}
         </div>
-      )}
+      </section>
 
-      <div className="dl-editor">
-        <textarea
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-          onKeyDown={onKey}
-          spellCheck={false}
-          autoCapitalize="off"
-          autoCorrect="off"
-          aria-label={isGit ? 'Git buyruqlari' : isCss ? 'CSS kodi' : 'JavaScript kodi'}
-          placeholder={isGit ? 'Har qatorga bitta buyruq yozing, masalan: git add .' : undefined}
-          rows={Math.min(22, Math.max(9, code.split('\n').length + 2))}
-        />
-        <div className="dl-bar">
-          <Button onClick={execute} disabled={running}>{running ? 'Ishlayapti…' : '▶ Tekshirish'}</Button>
-          <button className="dl-link" onClick={() => setCode(lab.starter ?? '')}>Boshiga qaytarish</button>
-          {lab.hint && <button className="dl-link" onClick={() => setHints((p) => new Set(p).add(lab.id))}>💡 Maslahat</button>}
-          <button className="dl-link" onClick={showSolution}>Yechimni ko'rish</button>
-          <span className="dl-key">Ctrl + Enter</span>
-        </div>
-      </div>
+      <div className={`dl-bench ${isCss ? 'split' : ''}`}>
+        <div className="dl-col">
+          <section className="dl-win dl-editor">
+            <header className="dl-winbar">
+              <span className="dl-dots" aria-hidden="true"><i /><i /><i /></span>
+              <b>{fileName}</b>
+              <button className="dl-tool" onClick={() => setCode(lab.starter ?? '')}>Boshiga qaytarish</button>
+            </header>
+            <CodeEditor
+              key={lab.id}
+              complete={isCss ? (text, caret, forced) => completeCss(text, caret, selectors, forced) : undefined}
+              value={code}
+              lang={lang}
+              label={isGit ? 'Git buyruqlari' : isCss ? 'CSS kodi' : 'JavaScript kodi'}
+              placeholder={isGit ? 'Har qatorga bitta buyruq yozing, masalan: git add .' : undefined}
+              onChange={setCode}
+              onKeyDown={onKey}
+            />
+            <footer className="dl-bar">
+              <Button onClick={execute} disabled={running}>{running ? 'Tekshirilyapti…' : '▶ Tekshirish'}</Button>
+              <kbd>Ctrl + Enter</kbd>
+              {lab.hint && <button className="dl-tool push" onClick={() => setHints((p) => new Set(p).add(lab.id))}>💡 Maslahat</button>}
+              <button className={`dl-tool ${lab.hint ? '' : 'push'}`} onClick={showSolution}>Yechimni ko'rish</button>
+            </footer>
+          </section>
 
-      {hints.has(lab.id) && lab.hint && <div className="dl-hint">💡 {lab.hint}</div>}
+          {hints.has(lab.id) && lab.hint && <div className="dl-hint">💡 {lab.hint}</div>}
 
-      {run?.error && <div className="dl-error">⚠ {run.error}</div>}
+          <div aria-live="polite">
+            {run?.error && <div className="dl-error">⚠ {run.error}</div>}
 
-      {run && !run.error && (
-        <Card className={`dl-results ${allPassed ? 'good' : ''}`}>
-          <div className="dl-verdict">
-            {allPassed ? `✅ To'g'ri! Barcha ${run.tests.length} ta test o'tdi` : `❌ ${passedCount} / ${run.tests.length} ta test o'tdi. Davom eting!`}
-          </div>
-          <ul>
-            {run.tests.map((t, i) => (
-              <li key={i} className={t.ok ? 'ok' : 'bad'}>
-                <span className="dl-mark">{t.ok ? '✓' : '✗'}</span>
-                <div>
-                  <code>{lab.tests[i].call}</code>
-                  {!t.ok && (
-                    <small>
-                      kutilgan: <b>{t.expected}</b><br />
-                      {t.error ? <>xato: <b>{t.error}</b></> : <>sizniki: <b>{t.got}</b></>}
-                    </small>
-                  )}
+            {run && !run.error && (
+              <section className={`dl-results ${allPassed ? 'good' : ''}`}>
+                <div className="dl-verdict">
+                  <b>{allPassed ? "To'g'ri! Barcha testlar o'tdi" : 'Hali tayyor emas, davom eting'}</b>
+                  <span>{passedCount} / {run.tests.length}</span>
                 </div>
-              </li>
-            ))}
-          </ul>
-          {run.logs.length > 0 && <pre className="dl-logs">{run.logs.join('\n')}</pre>}
-        </Card>
-      )}
+                <div className="dl-meter" aria-hidden="true">
+                  {run.tests.map((t, i) => <i key={i} className={t.ok ? 'ok' : ''} />)}
+                </div>
+                <ul>
+                  {run.tests.map((t, i) => (
+                    <li key={i} className={t.ok ? 'ok' : 'bad'}>
+                      <span className="dl-mark">{t.ok ? '✓' : '✗'}</span>
+                      <div>
+                        <code>{lab.tests[i].call}</code>
+                        {!t.ok && (
+                          <dl>
+                            <dt>kutilgan</dt><dd>{t.expected}</dd>
+                            <dt>{t.error ? 'xato' : 'sizniki'}</dt><dd className="got">{t.error || t.got}</dd>
+                          </dl>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                {run.logs.length > 0 && <pre className="dl-logs">{run.logs.join('\n')}</pre>}
+              </section>
+            )}
+          </div>
 
-      {solutions[lab.id] && (
-        <Card className="dl-solution">
-          <b>Namunaviy yechim</b>
-          <pre>{solutions[lab.id]}</pre>
-        </Card>
-      )}
+          {solutions[lab.id] && (
+            <section className="dl-win dl-solution">
+              <header className="dl-winbar"><b>Namunaviy yechim</b></header>
+              <pre>{highlight(solutions[lab.id], lang)}</pre>
+            </section>
+          )}
+        </div>
+
+        {isCss && (
+          <div className="dl-col dl-side">
+            <BrowserPreview key={lab.id} doc={cssDocument(lab.setup ?? '', code)} widths={widths} />
+            <section className="dl-win dl-html">
+              <header className="dl-winbar"><b>index.html</b><span className="dl-size">o'zgarmaydi</span></header>
+              <pre>{highlight(html, 'html')}</pre>
+            </section>
+          </div>
+        )}
+      </div>
 
       <div className="dl-nav">
         <Button variant="ghost" onClick={() => go(index - 1)} disabled={index === 0}>← Oldingi</Button>
