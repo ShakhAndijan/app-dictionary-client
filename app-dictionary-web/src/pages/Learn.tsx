@@ -669,6 +669,8 @@ function AudioPlayer({ text }: { text: string }) {
   const [rate, setRate] = useState(1);
   const token = useRef(0);
   const supported = typeof window !== 'undefined' && 'speechSynthesis' in window;
+  // Every sentence takes the same width, so the slider on top of the wave lines up with it.
+  const perSentence = Math.max(3, Math.round(60 / sentences.length));
 
   const stop = () => {
     token.current += 1;
@@ -718,36 +720,60 @@ function AudioPlayer({ text }: { text: string }) {
 
   if (!supported) return <Notice>Brauzer ovozni ijro eta olmaydi. Boshqa brauzerda (Chrome, Edge) oching.</Notice>;
 
-  const pct = Math.round(((idx + (playing ? 0.5 : 0)) / sentences.length) * 100);
+  const toggle = () => (playing ? pause() : playFrom(idx, rate));
 
   return (
-    <div className="ap">
-      <div className="ap-row">
-        <button className="ap-btn" onClick={() => seek(idx - 1)} aria-label="Orqaga" title="Oldingi gap">⏮</button>
-        <button className="ap-play" onClick={() => (playing ? pause() : playFrom(idx, rate))} aria-label={playing ? 'To\'xtatish' : 'Ijro etish'}>
-          {playing ? '⏸' : '▶'}
-        </button>
-        <button className="ap-btn" onClick={() => seek(idx + 1)} aria-label="Oldinga" title="Keyingi gap">⏭</button>
-        <div className="ap-track">
-          <input
-            type="range"
-            min={0}
-            max={sentences.length - 1}
-            value={idx}
-            onChange={(e) => seek(Number(e.target.value))}
-            aria-label="Audio joylashuvi"
-            style={{ ['--p' as string]: `${pct}%` }}
-          />
-          <small>{idx + 1} / {sentences.length}</small>
+    <div className={`ap ${playing ? 'playing' : ''}`}>
+      <div className="ap-wave">
+        <div className="ap-bars" aria-hidden="true">
+          {sentences.map((s, k) => (
+            <span key={k} className={k < idx ? 'past' : k === idx ? 'now' : ''}>
+              {Array.from({ length: perSentence }, (_, b) => (
+                <i key={b} style={{ height: `${barHeight(s, k, b)}%`, animationDelay: `${(b % 5) * 0.11}s` }} />
+              ))}
+            </span>
+          ))}
         </div>
+        <input
+          type="range"
+          min={0}
+          max={sentences.length - 1}
+          value={idx}
+          onChange={(e) => seek(Number(e.target.value))}
+          aria-label="Audio joylashuvi"
+          aria-valuetext={`${idx + 1}-gap, jami ${sentences.length}`}
+        />
       </div>
-      <div className="ap-speeds" role="group" aria-label="Tezlik">
-        {SPEEDS.map((s) => (
-          <button key={s} className={`ap-speed ${rate === s ? 'on' : ''}`} onClick={() => changeRate(s)}>{s}×</button>
-        ))}
+
+      <div className="ap-row">
+        <span className="ap-pos"><b>{idx + 1}</b> / {sentences.length}-gap</span>
+        <div className="ap-controls">
+          <button className="ap-btn" onClick={() => seek(idx - 1)} disabled={idx === 0} aria-label="Oldingi gap" title="Oldingi gap">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6v12M18 6.5v11L9.5 12z" /></svg>
+          </button>
+          <button className="ap-play" onClick={toggle} aria-label={playing ? "To'xtatish" : 'Ijro etish'}>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              {playing ? <path d="M8.5 6v12M15.5 6v12" /> : <path d="M8 5.5v13l11-6.5z" />}
+            </svg>
+          </button>
+          <button className="ap-btn" onClick={() => seek(idx + 1)} disabled={idx === sentences.length - 1} aria-label="Keyingi gap" title="Keyingi gap">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 6v12M6 6.5v11l8.5-5.5z" /></svg>
+          </button>
+        </div>
+        <div className="ap-speeds" role="group" aria-label="Tezlik">
+          {SPEEDS.map((s) => (
+            <button key={s} className={`ap-speed ${rate === s ? 'on' : ''}`} aria-pressed={rate === s} onClick={() => changeRate(s)}>{s}×</button>
+          ))}
+        </div>
       </div>
     </div>
   );
+}
+
+/** Height of one bar of the drawn "sound wave": steady for the same sentence, different between bars. */
+function barHeight(sentence: string, k: number, b: number): number {
+  const code = sentence.charCodeAt((b * 7 + k) % sentence.length) || 1;
+  return 22 + ((code * (b + 3) + k * 17) % 79);
 }
 
 /** Consecutive items that share the same audio form one listening page. */
@@ -826,8 +852,8 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
       <div className="ls">
         <div className="ls-audio" key={`a${gi}`}>
           <div className="ls-audio-head">
-            <span>🎧 Audio {gi + 1}</span>
-            <small>Savollarga javob berishdan oldin tinglang · {group.length} ta savol</small>
+            <b>Audio {gi + 1}</b>
+            <small>Avval tinglang, keyin {group.length} ta savolga javob bering</small>
           </div>
           <AudioPlayer text={group[0].audioText!} />
         </div>
@@ -838,9 +864,9 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
             const v = values[it.id] ?? '';
             const blank = it.prompt.split('___');
             return (
-              <li key={it.id} className={`ls-q ${fb ? (fb.correct ? 'good' : 'bad') : ''}`}>
+              <li key={it.id} className={`ls-q ${fb ? (fb.correct ? 'good' : 'bad') : v.trim() ? 'filled' : ''}`}>
                 <div className="ls-q-head">
-                  <span className="ls-num">{n + 1}</span>
+                  <span className="ls-num">{fb ? (fb.correct ? '✓' : '✕') : n + 1}</span>
                   <p className="ls-prompt">
                     {blank.length > 1
                       ? blank.map((part, i) => (
@@ -855,17 +881,19 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
 
                 {it.kind === 'CHOICE' ? (
                   <div className="ls-opts">
-                    {it.options!.map((opt) => {
+                    {it.options!.map((opt, o) => {
                       const right = !!fb && opt.toLowerCase() === fb.answer.toLowerCase();
                       const wrong = !!fb && !fb.correct && opt === v;
                       return (
                         <button
                           key={opt}
-                          className={`ls-opt ${v === opt && !fb ? 'sel' : ''} ${right ? 'right' : ''} ${wrong ? 'wrong' : ''}`}
+                          className={`ls-opt ${v === opt && !fb ? 'sel' : ''} ${right ? 'right' : ''} ${wrong ? 'wrong' : ''} ${fb && !right && !wrong ? 'dim' : ''}`}
                           disabled={!!fb}
+                          aria-pressed={v === opt}
                           onClick={() => setValues((p) => ({ ...p, [it.id]: opt }))}
                         >
-                          {opt}
+                          <span className="ls-key" aria-hidden="true">{String.fromCharCode(65 + o)}</span>
+                          <span>{opt}</span>
                         </button>
                       );
                     })}
@@ -877,6 +905,7 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
                     disabled={!!fb}
                     autoComplete="off"
                     spellCheck={false}
+                    aria-label={`${n + 1}-savolga javob`}
                     placeholder="Javobni yozing…"
                     onChange={(e) => setValues((p) => ({ ...p, [it.id]: e.target.value }))}
                   />
@@ -905,7 +934,10 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
             </>
           ) : (
             <>
-              <span className="ex2-hint">{answered} / {group.length} belgilandi</span>
+              <div className="ls-progress">
+                <span>{answered} / {group.length} belgilandi</span>
+                <div className="ls-meter" aria-hidden="true"><i style={{ width: `${(answered / group.length) * 100}%` }} /></div>
+              </div>
               <button className="ex2-go" disabled={answered < group.length || busy} onClick={check}>{busy ? '…' : 'Tekshirish'}</button>
             </>
           )}
