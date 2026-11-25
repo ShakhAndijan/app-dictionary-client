@@ -5,10 +5,14 @@ import { adminApi, Announcement, AnnouncementSeverity, AdminUserDetail, AuditEnt
 import { Button, Confirm, Spinner } from '../ui';
 import { ago, day, Failed, nf } from './Admin';
 import { ActivityChart, ActivityDetails, AreaCards } from './Activity';
+import { Grades } from './AdminGrades';
+import { DevStats } from './Dev';
+import { EnglishStats } from './Learn';
+import { WeeklyView } from './Weekly';
 
 /* ------------------------------------------------------------ user page */
 
-type Tab = 'stats' | 'words' | 'history' | 'week' | 'achievements';
+type Tab = 'stats' | 'week' | 'grades' | 'english' | 'dev' | 'words' | 'history' | 'achievements';
 
 const FORMAT_LABEL: Record<string, string> = {
   TYPED: 'Yozma',
@@ -46,7 +50,6 @@ export function AdminUserPage() {
   const u = d.user;
   const isAdmin = u.role === 'ADMIN';
   const pct = u.reviewCount ? Math.round((u.correctCount / u.reviewCount) * 100) : null;
-  const weekMax = Math.max(1, ...d.weekly.days.map((x) => x.answers));
 
   const changeRole = async () => {
     setBusy(true);
@@ -130,7 +133,7 @@ export function AdminUserPage() {
       </div>
 
       <div className="tabs ad-tabs" role="tablist">
-        {([['stats', 'Statistika'], ['words', "So'zlar"], ['history', 'Mashq tarixi'], ['week', "So'zlar haftasi"], ['achievements', 'Yutuqlar']] as [Tab, string][]).map(([k, label]) => (
+        {([['stats', 'Statistika'], ['week', 'Haftalik hisobot'], ['grades', 'Baholar'], ['english', 'Ingliz tili'], ['dev', 'Dasturlash'], ['words', "So'zlar"], ['history', "So'z tarixi"], ['achievements', 'Yutuqlar']] as [Tab, string][]).map(([k, label]) => (
           <button key={k} className={`tab ${tab === k ? 'on' : ''}`} onClick={() => setTab(k)}>{label}</button>
         ))}
       </div>
@@ -151,7 +154,12 @@ export function AdminUserPage() {
         </div>
       )}
 
-      {tab !== 'stats' && <section className="b ad-card">
+      {tab === 'week' && <WeeklyView readOnly load={(back) => adminApi.userWeekly(u.id, back)} />}
+      {tab === 'grades' && <Grades userId={u.id} />}
+      {tab === 'english' && <EnglishStats readOnly load={() => adminApi.userEnglish(u.id)} />}
+      {tab === 'dev' && <DevStats readOnly load={() => adminApi.userProgramming(u.id)} />}
+
+      {(tab === 'words' || tab === 'history' || tab === 'achievements') && <section className="b ad-card">
         {tab === 'words' &&
           (d.words.length === 0 ? (
             <div className="muted center" style={{ padding: 24 }}>So'z qo'shilmagan.</div>
@@ -194,31 +202,6 @@ export function AdminUserPage() {
               </table>
             </div>
           ))}
-
-        {tab === 'week' && (
-          <>
-            <div className="row">
-              <div className="eyebrow">{day(d.weekly.weekStart)} – {day(d.weekly.weekEnd)}</div>
-              <div className="grow" />
-              <span className="muted">{d.weekly.totals.answers} javob · {d.weekly.totals.xp} XP</span>
-            </div>
-            <div className="ad-chart">
-              {d.weekly.days.map((x) => (
-                <div key={x.date} className="ad-col" title={`${x.date}: ${x.answers} javob, ${x.correct} to'g'ri, +${x.xp} XP`}>
-                  <div className="ad-bars">
-                    <i className="b-active" style={{ height: `${(x.answers / weekMax) * 100}%` }} />
-                    <i className="b-new" style={{ height: `${(x.correct / weekMax) * 100}%` }} />
-                  </div>
-                  <span>{['Ya', 'Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh'][new Date(x.date).getDay()]}</span>
-                </div>
-              ))}
-            </div>
-            <div className="row">
-              <span className="ad-legend"><i className="b-active" /> Javoblar</span>
-              <span className="ad-legend"><i className="b-new" /> To'g'ri</span>
-            </div>
-          </>
-        )}
 
         {tab === 'achievements' &&
           (d.achievements.length === 0 ? (

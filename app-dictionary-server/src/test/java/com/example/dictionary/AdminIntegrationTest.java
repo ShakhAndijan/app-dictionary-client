@@ -186,6 +186,26 @@ class AdminIntegrationTest {
     }
 
     @Test
+    void onlyAdminsReadALearnersStatisticsAndMarks() throws Exception {
+        String ivan = registerIvan();
+        String admin = adminToken();
+        Long id = userRepository.findByUsername("ivan").orElseThrow().getId();
+        String base = "/api/admin/users/" + id;
+
+        for (String path : new String[]{"/weekly", "/english", "/programming", "/grades"}) {
+            mockMvc.perform(get(base + path).header("Authorization", ivan)).andExpect(status().isForbidden());
+            mockMvc.perform(get(base + path).header("Authorization", admin)).andExpect(status().isOk());
+        }
+        mockMvc.perform(get(base + "/weekly?weeksBack=1").header("Authorization", admin))
+                .andExpect(jsonPath("$.currentWeek").value(false))
+                .andExpect(jsonPath("$.english.days.length()").value(7));
+        mockMvc.perform(get(base + "/grades").header("Authorization", admin))
+                .andExpect(jsonPath("$.length()").value(0));
+        mockMvc.perform(get("/api/admin/users/999999/grades").header("Authorization", admin))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
     void userPageInsightsAndAnnouncements() throws Exception {
         String ivan = registerIvan();
         String admin = adminToken();

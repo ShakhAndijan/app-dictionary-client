@@ -115,6 +115,14 @@ public final class AdminDtos {
     ) {
     }
 
+    /**
+     * One mark. {@code area} is WORDS, ENGLISH or DEV; {@code kind} LESSON, EXAM or QUIZ; {@code part} the
+     * English skill, programming module or quiz format.
+     */
+    public record Grade(Instant at, String area, String kind, String level, String part, String title,
+                        int correct, int total, int percent, boolean passed) {
+    }
+
     public record AuditEntry(Long id, String actor, String action, String target, String details, Instant at) {
     }
 

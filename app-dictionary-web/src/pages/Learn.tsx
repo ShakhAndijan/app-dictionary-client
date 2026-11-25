@@ -1325,14 +1325,15 @@ export function Gauge({ pct, tone, size = 84, children }: { pct: number | null; 
 }
 
 /** The "Ingliz tili" tab of the profile statistics: charts first, one skill explained at a time. */
-export function EnglishStats() {
+/** `load` and `readOnly` let the admin see another learner's statistics, without course links or advice. */
+export function EnglishStats({ load = learnApi.stats, readOnly = false }: { load?: () => Promise<LearnStats>; readOnly?: boolean } = {}) {
   const navigate = useNavigate();
   const [stats, setStats] = useState<LearnStats | null>(null);
   const [error, setError] = useState('');
   const [open, setOpen] = useState<Skill | null>(null);
 
   useEffect(() => {
-    learnApi.stats().then((s) => {
+    load().then((s) => {
       setStats(s);
       setOpen(s.weakest ?? s.skills.find((k) => k.attempts > 0)?.skill ?? null);
     }).catch((e) => setError(errorMessage(e, "Statistikani yuklab bo'lmadi")));
@@ -1344,8 +1345,8 @@ export function EnglishStats() {
       <Card className="rise lr-es-empty">
         <span className="lr-es-bigicon">🇬🇧</span>
         <b>Ingliz tili kursi hali boshlanmagan</b>
-        <p>Darajangizni tanlang va birinchi darsni bajaring, shundan keyin bu yerda grafiklar paydo bo'ladi.</p>
-        <Button onClick={() => navigate('/learn')}>Kursga o'tish</Button>
+        {!readOnly && <p>Darajangizni tanlang va birinchi darsni bajaring, shundan keyin bu yerda grafiklar paydo bo'ladi.</p>}
+        {!readOnly && <Button onClick={() => navigate('/learn')}>Kursga o'tish</Button>}
       </Card>
     );
   }
@@ -1383,7 +1384,7 @@ export function EnglishStats() {
 
       <Card className="rise lr-es-chartcard">
         <div className="lr-sec-head"><h2>📊 Yo'nalishlar xaritasi</h2></div>
-        {!hasData && <p className="lr-es-note">Birinchi darsni bajaring, shunda diagramma to'ladi.</p>}
+        {!hasData && <p className="lr-es-note">{readOnly ? 'Hali dars bajarilmagan.' : "Birinchi darsni bajaring, shunda diagramma to'ladi."}</p>}
         <div className="lr-es-chartrow">
           <Radar stats={stats} />
           <div className="lr-es-rank">
@@ -1440,7 +1441,7 @@ export function EnglishStats() {
             {sel.attempts === 0 ? (
               <div className="lr-es-startbox">
                 <p>Bu yo'nalish bo'yicha hali dars bajarilmagan.</p>
-                {sel.lessonsTotal > 0 && <Button onClick={() => navigate('/learn')}>Boshlash →</Button>}
+                {!readOnly && sel.lessonsTotal > 0 && <Button onClick={() => navigate('/learn')}>Boshlash →</Button>}
               </div>
             ) : (
               <>
@@ -1472,7 +1473,7 @@ export function EnglishStats() {
                   <span style={{ color: lw.tone }}>{lw.icon} {lw.label}</span>
                 </div>
 
-                <div className={`lr-es-verdict ${sel.skill === stats.weakest ? 'weak' : ''}`}>
+                {!readOnly && <div className={`lr-es-verdict ${sel.skill === stats.weakest ? 'weak' : ''}`}>
                   <b>{sel.skill === stats.weakest ? '🎯 Nimani kuchaytirish kerak' : '📝 Xulosa'}</b>
                   <p>
                     {sel.percent != null && sel.percent >= 85 && "Natijangiz juda yaxshi. Darajani saqlash uchun haftada bir marta takrorlash yetarli."}
@@ -1481,14 +1482,14 @@ export function EnglishStats() {
                     {sel.percent != null && sel.percent < 50 && "Bu yo'nalish zaif. Kunlik maqsadga avval shuni qo'shing va oson darslardan boshlang."}
                   </p>
                   <p className="lr-es-tip">💡 {m.tip}</p>
-                </div>
+                </div>}
 
                 {sel.weakLessons.length > 0 && (
                   <div className="lr-es-weaklist">
                     <b>⚠️ Qayta ishlash kerak</b>
                     {sel.weakLessons.map((w) => (
-                      <button key={w.code} onClick={() => navigate(`/learn/lesson/${w.code}`)}>
-                        <span>{w.title}</span><em>{w.bestScore}%</em><i>→</i>
+                      <button key={w.code} disabled={readOnly} onClick={() => navigate(`/learn/lesson/${w.code}`)}>
+                        <span>{w.title}</span><em>{w.bestScore}%</em>{!readOnly && <i>→</i>}
                       </button>
                     ))}
                   </div>

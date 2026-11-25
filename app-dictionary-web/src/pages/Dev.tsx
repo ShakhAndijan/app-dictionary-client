@@ -805,14 +805,15 @@ export function DevExamPage() {
 
 /* ------------------------------------------------------------------ statistics tab */
 
-export function DevStats() {
+/** `load` and `readOnly` let the admin see another learner's progress, without course links. */
+export function DevStats({ load = devApi.overview, readOnly = false }: { load?: () => Promise<DevOverview>; readOnly?: boolean } = {}) {
   const navigate = useNavigate();
   const [ov, setOv] = useState<DevOverview | null>(null);
   const [error, setError] = useState('');
   const [open, setOpen] = useState<string | null>(null);
 
   useEffect(() => {
-    devApi.overview().then((o) => {
+    load().then((o) => {
       setOv(o);
       setOpen(o.modules.find((m) => m.lessons > 0)?.key ?? null);
     }).catch((e) => setError(errorMessage(e, "Statistikani yuklab bo'lmadi")));
@@ -824,8 +825,8 @@ export function DevStats() {
       <Card className="rise lr-es-empty">
         <span className="lr-es-bigicon">💻</span>
         <b>Dasturlash kursi hali boshlanmagan</b>
-        <p>Darajangizni tanlang va birinchi darsni bajaring, shundan keyin bu yerda natijalar paydo bo'ladi.</p>
-        <Button onClick={() => navigate('/frontend')}>Kursga o'tish</Button>
+        {!readOnly && <p>Darajangizni tanlang va birinchi darsni bajaring, shundan keyin bu yerda natijalar paydo bo'ladi.</p>}
+        {!readOnly && <Button onClick={() => navigate('/frontend')}>Kursga o'tish</Button>}
       </Card>
     );
   }
@@ -894,7 +895,7 @@ export function DevStats() {
             {mAvg === null ? (
               <div className="lr-es-startbox">
                 <p>Bu mavzu bo'yicha hali dars bajarilmagan.</p>
-                <Button onClick={() => navigate(`/frontend/${sel.key}`)}>Boshlash →</Button>
+                {!readOnly && <Button onClick={() => navigate(`/frontend/${sel.key}`)}>Boshlash →</Button>}
               </div>
             ) : (
               <>
@@ -918,8 +919,8 @@ export function DevStats() {
                   <div className="lr-es-weaklist">
                     <b>⚠️ Qayta ishlash kerak</b>
                     {weak.map((l) => (
-                      <button key={l.code} onClick={() => navigate(`/frontend/lesson/${l.code}`)}>
-                        <span>{l.title}</span><em>{l.bestScore}%</em><i>→</i>
+                      <button key={l.code} disabled={readOnly} onClick={() => navigate(`/frontend/lesson/${l.code}`)}>
+                        <span>{l.title}</span><em>{l.bestScore}%</em>{!readOnly && <i>→</i>}
                       </button>
                     ))}
                   </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { errorMessage, statsApi, WeeklyCourse, WeeklyReport } from '../api';
 import { Spinner } from '../ui';
@@ -115,7 +115,8 @@ function directions(r: WeeklyReport): Direction[] {
   ];
 }
 
-function DirectionCard({ d }: { d: Direction }) {
+/** `readOnly`: someone else's report, so no "go and practise" links. */
+function DirectionCard({ d, readOnly }: { d: Direction; readOnly?: boolean }) {
   const area = AREAS.find((a) => a.key === d.key)!;
   const max = Math.max(1, ...d.daily);
   return (
@@ -129,7 +130,7 @@ function DirectionCard({ d }: { d: Direction }) {
       {d.empty ? (
         <div className="wk-empty">
           <p>Bu haftada bu yo'nalishda mashq qilinmagan.</p>
-          <Link to={d.start.to}>{d.start.label}</Link>
+          {!readOnly && <Link to={d.start.to}>{d.start.label}</Link>}
         </div>
       ) : (
         <>
@@ -187,7 +188,7 @@ function DirectionCard({ d }: { d: Direction }) {
   );
 }
 
-function Report({ report }: { report: WeeklyReport }) {
+function Report({ report, readOnly }: { report: WeeklyReport; readOnly?: boolean }) {
   const dirs = directions(report);
   const { totals, previous, english, programming } = report;
   const answers = dirs.reduce((n, d) => n + d.answers, 0);
@@ -206,7 +207,7 @@ function Report({ report }: { report: WeeklyReport }) {
   return (
     <>
       <section className="wk-hero">
-        <h2>{verdict(answers, before, accuracy, accuracyBefore, activeDays)}</h2>
+        <h2>{readOnly ? 'Haftalik natija' : verdict(answers, before, accuracy, accuracyBefore, activeDays)}</h2>
         <div className="wk-totals">
           <div>
             <span>Jami javob</span>
@@ -250,14 +251,18 @@ function Report({ report }: { report: WeeklyReport }) {
       </section>
 
       <div className="wk-dirs">
-        {dirs.map((d) => <DirectionCard key={d.key} d={d} />)}
+        {dirs.map((d) => <DirectionCard key={d.key} d={d} readOnly={readOnly} />)}
       </div>
     </>
   );
 }
 
-export function WeeklyPage() {
-  const nav = useNavigate();
+/** The week switcher with its report; `load` decides whose week it is. */
+export function WeeklyView({ load, head, readOnly }: {
+  load: (weeksBack: number) => Promise<WeeklyReport>;
+  head?: ReactNode;
+  readOnly?: boolean;
+}) {
   const [weeksBack, setWeeksBack] = useState(0);
   const [report, setReport] = useState<WeeklyReport | null>(null);
   const [error, setError] = useState('');
@@ -266,8 +271,7 @@ export function WeeklyPage() {
     let stale = false;
     setReport(null);
     setError('');
-    statsApi
-      .weekly(weeksBack)
+    load(weeksBack)
       .then((r) => !stale && setReport(r))
       .catch((e) => !stale && setError(errorMessage(e, "Hisobotni yuklab bo'lmadi")));
     return () => { stale = true; };
@@ -276,8 +280,7 @@ export function WeeklyPage() {
   return (
     <div className="wk">
       <header className="wk-top">
-        <button className="st-back" onClick={() => nav('/profile')} aria-label="Orqaga">←</button>
-        <h1 className="dx-title">Haftalik hisobot</h1>
+        {head}
         <div className="wk-switch">
           <button onClick={() => setWeeksBack(weeksBack + 1)} aria-label="Oldingi hafta">‹</button>
           <div aria-live="polite">
@@ -287,7 +290,22 @@ export function WeeklyPage() {
           <button onClick={() => setWeeksBack(weeksBack - 1)} disabled={weeksBack === 0} aria-label="Keyingi hafta">›</button>
         </div>
       </header>
-      {report ? <Report report={report} /> : error ? <p className="muted center">{error}</p> : <Spinner />}
+      {report ? <Report report={report} readOnly={readOnly} /> : error ? <p className="muted center">{error}</p> : <Spinner />}
     </div>
+  );
+}
+
+export function WeeklyPage() {
+  const nav = useNavigate();
+  return (
+    <WeeklyView
+      load={statsApi.weekly}
+      head={(
+        <>
+          <button className="st-back" onClick={() => nav('/profile')} aria-label="Orqaga">←</button>
+          <h1 className="dx-title">Haftalik hisobot</h1>
+        </>
+      )}
+    />
   );
 }

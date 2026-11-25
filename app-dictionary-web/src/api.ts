@@ -115,6 +115,21 @@ export interface WeeklyReport {
   programming: WeeklyCourse;
 }
 
+/** One mark of a learner, as the admin sees it. */
+export interface AdminGrade {
+  at: string;
+  area: 'WORDS' | 'ENGLISH' | 'DEV';
+  kind: 'LESSON' | 'EXAM' | 'QUIZ';
+  level: string | null;
+  /** English skill, programming module or quiz format. */
+  part: string | null;
+  title: string | null;
+  correct: number;
+  total: number;
+  percent: number;
+  passed: boolean;
+}
+
 /** A week in the English or the programming course. */
 export interface WeeklyCourse {
   answers: number;
@@ -566,6 +581,10 @@ export interface AuditEntry {
 export const adminApi = {
   overview: (days = 14) => d(http.get<AdminOverview>('/admin/overview', { params: { days } })),
   insights: (days = 30) => d(http.get<AdminInsights>('/admin/insights', { params: { days } })),
+  userWeekly: (id: number, weeksBack = 0) => d(http.get<WeeklyReport>(`/admin/users/${id}/weekly`, { params: { weeksBack } })),
+  userEnglish: (id: number) => d(http.get<LearnStats>(`/admin/users/${id}/english`)),
+  userProgramming: (id: number) => d(http.get<DevOverview>(`/admin/users/${id}/programming`)),
+  userGrades: (id: number) => d(http.get<AdminGrade[]>(`/admin/users/${id}/grades`)),
   users: () => d(http.get<AdminUser[]>('/admin/users')),
   detail: (id: number) => d(http.get<AdminUserDetail>(`/admin/users/${id}`)),
   setBlocked: (id: number, blocked: boolean) => d(http.put<AdminUser>(`/admin/users/${id}/blocked`, { blocked })),
