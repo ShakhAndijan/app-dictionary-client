@@ -5862,19 +5862,38 @@ i.bad,
 .dv-recap ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .dv-recap li { display: flex; gap: 10px; line-height: 1.55; font-size: 14.5px; }
 .dv-recap li span { flex: none; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; font-size: 12px; font-weight: 800; color: #fff; background: #10b981; }
-.dv-practice { margin-top: 18px; display: grid; gap: 10px; padding: 20px 22px; border-radius: 24px; border: 1px dashed color-mix(in srgb, var(--primary) 50%, var(--glass-line)); background: color-mix(in srgb, var(--primary) 6%, var(--surface)); }
-.dv-practice h3 { margin: 0; font-size: 17px; }
+.dv-practice { margin-top: 18px; display: grid; gap: 14px; padding: 22px; border-radius: 24px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow); }
+.dv-practice > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.dv-practice h3 { margin: 0 0 2px; font-size: 19px; }
 .dv-practice-sub { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.55; }
-.dv-task { position: relative; display: flex; gap: 12px; padding: 14px; border-radius: 16px; cursor: pointer; background: var(--surface); border: 1px solid var(--glass-line); transition: border-color 0.2s, opacity 0.2s; }
+.dv-practice-count { flex: none; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--text) 7%, transparent); color: var(--muted); font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.dv-practice-count b { color: var(--text); font-size: 16px; }
+.dv-track { height: 6px; border-radius: 99px; background: var(--track); overflow: hidden; }
+.dv-track i { display: block; height: 100%; border-radius: inherit; background: var(--tone, #10b981); transition: width 0.3s; }
+.dv-tasks { display: grid; gap: 10px; }
+.dv-task { position: relative; display: flex; gap: 14px; padding: 16px; border-radius: 18px; cursor: pointer; border: 1px solid transparent; background: color-mix(in srgb, var(--text) 4%, transparent); transition: border-color 0.2s, background 0.2s; }
+.dv-task:hover { border-color: color-mix(in srgb, var(--primary) 45%, transparent); }
+.dv-task:has(input:focus-visible) { outline: 2px solid var(--primary); outline-offset: 2px; }
 .dv-task input { position: absolute; opacity: 0; pointer-events: none; }
-.dv-task-box { flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 8px; font-size: 13px; font-weight: 800; color: transparent; border: 1.8px solid color-mix(in srgb, var(--text) 25%, transparent); transition: all 0.2s; }
-.dv-task.done { opacity: 0.7; border-color: #10b981; }
-.dv-task.done .dv-task-box { color: #fff; border-color: transparent; background: #10b981; }
-.dv-task-body { display: grid; gap: 6px; min-width: 0; font-size: 14px; line-height: 1.55; }
-.dv-task-body span { color: var(--muted); }
-.dv-task-body code { display: block; padding: 8px 12px; border-radius: 10px; overflow-x: auto; white-space: pre; font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; color: #e2e8f8; background: #0b1020; }
-.dv-start { margin-top: 20px; display: grid; gap: 12px; text-align: center; }
-.dv-start p { margin: 0; color: var(--muted); font-size: 13.5px; }
+.dv-task-box { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; font-size: 14px; font-weight: 800; color: var(--indigo-text); background: var(--indigo-bg); transition: background 0.2s, color 0.2s; }
+.dv-task.done { border-color: color-mix(in srgb, #10b981 55%, transparent); background: color-mix(in srgb, #10b981 9%, transparent); }
+.dv-task.done .dv-task-box { color: #fff; background: #10b981; }
+.dv-task-body { display: grid; gap: 6px; min-width: 0; flex: 1; font-size: 14px; line-height: 1.65; }
+.dv-task-body b { font-size: 15px; line-height: 1.4; padding-top: 5px; }
+.dv-task-body > span { color: var(--muted); overflow-wrap: anywhere; }
+.dv-task-body code { padding: 1px 6px; border-radius: 6px; font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; color: var(--text); background: color-mix(in srgb, var(--primary) 16%, transparent); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.dv-task-body pre { margin: 2px 0 0; padding: 10px 14px; border-radius: 12px; overflow-x: auto; white-space: pre; font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; color: #e2e8f8; background: #0b1020; }
+.dv-next { margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.dv-next-card { --tone: var(--primary); display: flex; flex-direction: column; gap: 14px; min-width: 0; padding: 22px; border-radius: 24px; border: 1px solid color-mix(in srgb, var(--tone) 34%, var(--border)); background: linear-gradient(155deg, color-mix(in srgb, var(--tone) 17%, var(--surface)), var(--surface) 64%); box-shadow: var(--shadow); }
+.dv-next-card.lab { --tone: #10b981; }
+.dv-next-card header { display: flex; align-items: center; gap: 12px; }
+.dv-next-ico { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 14px; font-size: 22px; background: color-mix(in srgb, var(--tone) 22%, transparent); }
+.dv-next-card h3 { margin: 0; font-size: 19px; }
+.dv-next-figure { margin-left: auto; display: grid; justify-items: end; line-height: 1.2; }
+.dv-next-figure b { font-size: 24px; font-variant-numeric: tabular-nums; }
+.dv-next-figure small { font-size: 12px; color: var(--muted); }
+.dv-next-card p { margin: 0; flex: 1; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.dv-done-lab { margin-top: 18px; }
 
 @media (max-width: 640px) {
   .dv-hero { padding: 20px 18px; flex-wrap: wrap; }
@@ -5910,7 +5929,6 @@ i.bad,
 .dv-play .lr-passage { font-family: ui-monospace, Consolas, monospace; font-size: 13.5px; white-space: pre; overflow-x: auto; line-height: 1.55; }
 
 /* coding labs */
-.dv-labcard b { font-size: 16px; }
 .dv-lab { display: grid; gap: 14px; padding-bottom: 40px; }
 /* ---------- lab workbench ---------- */
 .container:has(.dv-lab-wide) { max-width: 1220px; }

@@ -253,25 +253,66 @@ function TheoryView({ data }: { data: DevTheoryData }) {
   );
 }
 
+/** Text with `commands` between backticks shown as inline code. */
+function Inline({ text }: { text: string }) {
+  return <>{text.split(/`([^`]+)`/).map((part, i) => (i % 2 ? <code key={i}>{part}</code> : part))}</>;
+}
+
 function PracticeView({ tasks }: { tasks: Practice[] }) {
   const [done, setDone] = useState<boolean[]>([]);
   if (tasks.length === 0) return null;
+  const count = tasks.filter((_, i) => done[i]).length;
   return (
-    <div className="dv-practice">
-      <h3>🛠 Amaliy topshiriq</h3>
-      <p className="dv-practice-sub">Shuni o'zingiz kompyuteringizda bajarib ko'ring: ko'rib o'rganilgan mavzu ancha tez o'zlashadi.</p>
-      {tasks.map((t, i) => (
-        <label key={t.title} className={`dv-task ${done[i] ? 'done' : ''}`}>
-          <input type="checkbox" checked={!!done[i]} onChange={() => setDone((p) => { const n = [...p]; n[i] = !n[i]; return n; })} />
-          <span className="dv-task-box" aria-hidden="true">✓</span>
-          <span className="dv-task-body">
-            <b>{t.title}</b>
-            <span>{t.text}</span>
-            {t.cmd && <code>{t.cmd}</code>}
-          </span>
-        </label>
-      ))}
-    </div>
+    <section className="dv-practice">
+      <header>
+        <div>
+          <h3>Amaliy topshiriq</h3>
+          <p className="dv-practice-sub">Kompyuteringizda o'zingiz bajarib ko'ring, keyin belgilab qo'ying.</p>
+        </div>
+        <span className="dv-practice-count"><b>{count}</b> / {tasks.length}</span>
+      </header>
+      <div className="dv-track" aria-hidden="true"><i style={{ width: `${(count / tasks.length) * 100}%` }} /></div>
+      <div className="dv-tasks">
+        {tasks.map((t, i) => (
+          <label key={t.title} className={`dv-task ${done[i] ? 'done' : ''}`}>
+            <input type="checkbox" checked={!!done[i]} onChange={() => setDone((p) => { const n = [...p]; n[i] = !n[i]; return n; })} />
+            <span className="dv-task-box" aria-hidden="true">{done[i] ? '✓' : i + 1}</span>
+            <span className="dv-task-body">
+              <b>{t.title}</b>
+              <span><Inline text={t.text} /></span>
+              {t.cmd && <pre>{t.cmd}</pre>}
+            </span>
+          </label>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/** One of the "what next" cards at the end of a lesson. */
+function NextCard({ tone, icon, title, text, figure, figureLabel, progress, action, onAction, secondary }: {
+  tone: 'quiz' | 'lab';
+  icon: string;
+  title: string;
+  text: string;
+  figure: string;
+  figureLabel: string;
+  progress?: number;
+  action: string;
+  onAction: () => void;
+  secondary?: boolean;
+}) {
+  return (
+    <section className={`dv-next-card ${tone}`}>
+      <header>
+        <span className="dv-next-ico" aria-hidden="true">{icon}</span>
+        <h3>{title}</h3>
+        <span className="dv-next-figure"><b>{figure}</b><small>{figureLabel}</small></span>
+      </header>
+      <p>{text}</p>
+      {progress !== undefined && <div className="dv-track" aria-hidden="true"><i style={{ width: `${progress}%` }} /></div>}
+      <Button block variant={secondary ? 'outline' : undefined} onClick={onAction}>{action}</Button>
+    </section>
   );
 }
 
@@ -589,11 +630,18 @@ export function DevLessonPage() {
   };
 
   const labCard = lesson.labs.length > 0 && (
-    <Card className="dv-start dv-labcard rise">
-      <b>🧪 Laboratoriya</b>
-      <p>{lesson.labs.length} ta amaliy topshiriq: {lesson.labs[0].kind === 'css' ? 'CSS stillarini' : lesson.labs[0].kind === 'git' ? 'git buyruqlarini' : 'JavaScript kodini'} o'zingiz yozasiz, tizim to'g'riligini tekshiradi · bajarildi: {labsDone}/{lesson.labs.length}</p>
-      <Button variant="outline" block onClick={() => setStage('lab')}>{labsDone > 0 ? 'Laboratoriyani davom ettirish' : 'Laboratoriyani boshlash'}</Button>
-    </Card>
+    <NextCard
+      tone="lab"
+      icon="🧪"
+      title="Laboratoriya"
+      text={`${lesson.labs[0].kind === 'css' ? 'CSS stillarini' : lesson.labs[0].kind === 'git' ? 'Git buyruqlarini' : 'JavaScript kodini'} o'zingiz yozasiz, tizim to'g'riligini tekshiradi.`}
+      figure={`${labsDone}/${lesson.labs.length}`}
+      figureLabel="bajarildi"
+      progress={(labsDone / lesson.labs.length) * 100}
+      action={labsDone > 0 ? 'Laboratoriyani davom ettirish' : 'Laboratoriyani boshlash'}
+      onAction={() => setStage('lab')}
+      secondary
+    />
   );
 
   if (stage === 'lab') {
@@ -623,11 +671,19 @@ export function DevLessonPage() {
         </div>
         {theory && <TheoryView data={theory} />}
         <PracticeView tasks={practice} />
-        <Card className="dv-start rise">
-          <p>{lesson.items.length} ta mashq · 70% va undan yuqori natija darsni o'zlashtiradi</p>
-          <Button block onClick={() => setStage('play')}>Mavzuni tushundim: mashqlarni boshlash</Button>
-        </Card>
-        {labCard}
+        <div className="dv-next rise">
+          <NextCard
+            tone="quiz"
+            icon="🎯"
+            title="Mashqlar"
+            text="Mavzuni tushundingizmi? 70% va undan yuqori natija darsni o'zlashtiradi."
+            figure={String(lesson.items.length)}
+            figureLabel="ta mashq"
+            action="Mashqlarni boshlash"
+            onAction={() => setStage('play')}
+          />
+          {labCard}
+        </div>
       </div>
     );
   }
@@ -653,7 +709,7 @@ export function DevLessonPage() {
           onAgain={restart}
           onExit={exit}
         />
-        {labCard}
+        {labCard && <div className="dv-done-lab">{labCard}</div>}
         {wrong.length > 0 && (
           <Card className="lr-review">
             <h3>Xatolar ustida ishlang</h3>

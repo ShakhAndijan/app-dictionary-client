@@ -169,7 +169,7 @@
    },
    {
     "title": "HEAD ni kuzatish",
-    "text": "`cat .git/HEAD` va `cat .git/refs/heads/main` ni bajaring. Yangi commit qiling va ikkinchi fayl hashi qanday o'zgarganini ko'ring. Keyin `git checkout (o'tish) <hash>` bilan detached HEAD holatiga o'tib `cat .git/HEAD` ni tekshiring."
+    "text": "`cat .git/HEAD` va `cat .git/refs/heads/main` ni bajaring. Yangi commit qiling va ikkinchi fayl hashi qanday o'zgarganini ko'ring. Keyin `git checkout <hash>` (o'tish) bilan detached HEAD holatiga o'tib `cat .git/HEAD` ni tekshiring."
    }
   ],
   "items": [
@@ -2921,7 +2921,7 @@
       },
       {
        "term": "Interactive rebase (interaktiv rebase)",
-       "text": "`git rebase (asosini ko'chirish) -i` bilan commitlarni qayta tartiblash, birlashtirish, o'chirish yoki xabarini o'zgartirish. Tarixni qayta yozadi."
+       "text": "`git rebase -i` (asosini ko'chirish) bilan commitlarni qayta tartiblash, birlashtirish, o'chirish yoki xabarini o'zgartirish. Tarixni qayta yozadi."
       },
       {
        "term": "Bisect (ikkilik qidiruv)",
@@ -3098,7 +3098,7 @@
      "pop faqat untracked fayllarni, apply esa faqat kuzatilayotgan fayllarni qaytaradi"
     ],
     "answer": "pop qaytarib, stash ro'yxatidan olib tashlaydi; apply ro'yxatda qoldiradi",
-    "explain": "apply xavfsizroq: natijani tekshirgach `git stash (vaqtincha olib qo'yish) drop` qilinadi."
+    "explain": "apply xavfsizroq: natijani tekshirgach `git stash drop` (vaqtincha olib qo'yish) qilinadi."
    },
    {
     "id": "3",
@@ -3150,7 +3150,7 @@
      "Farqi yo'q: ikkalasi ham bir xil ma'lumot saqlaydi, faqat yozilish sintaksisi boshqacharoq xolos"
     ],
     "answer": "Annotated — muallif, sana, xabar saqlaydigan obyekt; lightweight — shunchaki ko'rsatkich",
-    "explain": "Release (chiqarilgan versiya) uchun `git tag (versiya yorlig'i) -a v1.0.0 -m \"...\"` tavsiya etiladi."
+    "explain": "Release (chiqarilgan versiya) uchun `git tag -a v1.0.0 -m \"...\"` (versiya yorlig'i) tavsiya etiladi."
    },
    {
     "id": "7",
