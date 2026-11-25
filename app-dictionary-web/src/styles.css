@@ -5453,16 +5453,40 @@ i.bad,
 .lr-banner span { padding: 4px 12px; }
 
 /* Grammar explanation (theory) page */
-.th { display: grid; gap: 4px; margin: 14px 0 6px; }
-.th-def { margin: 0 0 6px; padding: 14px 16px; border-radius: 14px; background: var(--indigo-bg); color: var(--indigo-text); font-size: 15.5px; line-height: 1.6; font-weight: 600; }
-.th-h { margin: 18px 0 8px; font-size: 16px; font-weight: 800; }
-.th-forms { display: grid; gap: 10px; }
-.th-form { display: grid; gap: 6px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
-.th-label { color: var(--primary); font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
-.th-formula { display: block; padding: 8px 12px; border-radius: 10px; background: var(--track); color: var(--text); font-size: 15px; font-weight: 700; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; }
+.th { display: grid; gap: 4px; margin: 14px 0 6px; text-align: left; }
+.th > * { min-width: 0; }
+.th-def { padding: 16px 18px; border-radius: 16px; background: var(--indigo-bg); color: var(--indigo-text); }
+.th-eyebrow { display: block; margin-bottom: 4px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.75; }
+.th-def p { margin: 0; font-size: 15.5px; line-height: 1.65; font-weight: 600; }
+.th-h { margin: 22px 0 10px; font-size: 17px; font-weight: 800; }
+.th-uses { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; counter-reset: use; }
+.th-uses li { counter-increment: use; position: relative; display: grid; gap: 3px; padding: 11px 14px 11px 50px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); font-size: 14.5px; line-height: 1.45; }
+.th-uses li::before { content: counter(use); position: absolute; left: 13px; top: 12px; display: grid; place-items: center; width: 25px; height: 25px; border-radius: 8px; background: var(--indigo-bg); color: var(--indigo-text); font-size: 13px; font-weight: 800; }
+.th-uses .th-say { color: var(--muted); font-style: italic; }
+.th-forms { display: grid; gap: 12px; }
+.th-form { border: 1px solid var(--border); border-radius: 16px; background: var(--surface); overflow: hidden; }
+.th-label { margin: 0; padding: 10px 14px; border-bottom: 1px solid var(--border); background: color-mix(in srgb, var(--primary) 8%, var(--surface)); color: var(--text); font-size: 14px; font-weight: 800; }
+.th-row { display: grid; gap: 8px; padding: 12px 14px; }
+.th-row + .th-row { border-top: 1px dashed var(--border); }
+.th-kind { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.th-kind b { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; color: #fff; font-size: 15px; line-height: 1; background: var(--primary); }
+.th-kind.pos b { background: #16a34a; }
+.th-kind.neg b { background: #dc2626; }
+.th-kind.ask b { background: #d97706; }
+.th-formula { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.th-chip { padding: 6px 10px; border-radius: 9px; background: var(--track); color: var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 14px; font-weight: 700; max-width: 100%; overflow-wrap: anywhere; }
+.th-chip.subj { background: var(--indigo-bg); color: var(--indigo-text); }
+.th-chip.verb { background: var(--amber-bg); color: var(--amber-text); }
+.th-op { color: var(--muted); font-weight: 800; font-size: 14px; }
+.th-hint { flex-basis: 100%; color: var(--muted); font-size: 13px; }
 .th-say { display: block; padding: 0; border: 0; background: none; color: var(--text); font: inherit; text-align: left; cursor: pointer; }
-.th-form .th-say { font-size: 14.5px; font-style: italic; }
-.th-rules { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14.5px; line-height: 1.55; }
+.th-sample { font-size: 14.5px; font-style: italic; }
+.th-signals { display: flex; flex-wrap: wrap; gap: 6px; }
+.th-signals span { padding: 5px 12px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); font-size: 13.5px; font-weight: 600; }
+.th-tip { display: flex; gap: 12px; margin-top: 16px; padding: 14px 16px; border-radius: 16px; background: var(--amber-bg); color: var(--amber-text); }
+.th-tip > span { font-size: 20px; }
+.th-tip p { margin: 0; font-size: 14.5px; line-height: 1.55; }
+.th-rules { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 14.5px; line-height: 1.55; }
 .th-ex { display: grid; gap: 8px; }
 .th-sentence { display: grid; gap: 2px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); width: 100%; }
 .th-sentence:hover { border-color: var(--primary); }

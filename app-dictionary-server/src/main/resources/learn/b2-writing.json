@@ -6,31 +6,43 @@
   "topic": "Present perfect vs past simple",
   "title": "Present Perfect va Past Simple",
   "order": 1,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men 2019-yildan beri bu kompaniyada ishlayman.",
-    "answer": "I have worked at this company since 2019"
+    "answer": "I have worked at this company since 2019",
+    "alsoAccept": [
+     "I've worked at this company since 2019"
+    ]
    },
    {
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz o'tgan yili Samarqandga bordik.",
-    "answer": "We went to Samarkand last year"
+    "answer": "We went to Samarkand last year",
+    "alsoAccept": [
+     "last year We went to Samarkand"
+    ]
    },
    {
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Hozirgacha u uchta xorijiy tilni o'rgandi.",
-    "answer": "So far she has learned three foreign languages"
+    "answer": "So far she has learned three foreign languages",
+    "alsoAccept": [
+     "So far she has learned 3 foreign languages"
+    ]
    },
    {
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kecha kechqurun Aziz menga qo'ng'iroq qildi.",
-    "answer": "Aziz called me yesterday evening"
+    "answer": "Aziz called me yesterday evening",
+    "alsoAccept": [
+     "yesterday evening Aziz called me"
+    ]
    },
    {
     "id": "5",
@@ -42,13 +54,21 @@
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Direktor ikki soat oldin binodan chiqib ketdi.",
-    "answer": "The director left the building two hours ago"
+    "answer": "The director left the building two hours ago",
+    "alsoAccept": [
+     "The director left the building 2 hours ago"
+    ]
    },
    {
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men hayotimda hech qachon bunday mazali osh yemaganman.",
-    "answer": "I have never eaten such delicious plov in my life"
+    "answer": "I have never eaten such delicious plov in my life",
+    "alsoAccept": [
+     "I've never eaten such delicious plov in my life",
+     "I have never eaten such tasty plov in my life",
+     "I've never eaten such tasty plov in my life"
+    ]
    },
    {
     "id": "8",
@@ -60,19 +80,30 @@
     "id": "9",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz bu shaharda o'n yildan beri yashayapmiz.",
-    "answer": "We have lived in this city for ten years"
+    "answer": "We have lived in this city for ten years",
+    "alsoAccept": [
+     "we've lived in this city for ten years",
+     "We have lived in this city for 10 years",
+     "we've lived in this city for 10 years"
+    ]
    },
    {
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: O'tgan haftada ular yangi ofisga ko'chib o'tishdi.",
-    "answer": "They moved to the new office last week"
+    "answer": "They moved to the new office last week",
+    "alsoAccept": [
+     "last week They moved to the new office"
+    ]
    },
    {
     "id": "11",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men allaqachon chiptalarni sotib olganman.",
-    "answer": "I have already bought the tickets"
+    "answer": "I have already bought the tickets",
+    "alsoAccept": [
+     "I've already bought the tickets"
+    ]
    },
    {
     "id": "12",
@@ -84,13 +115,21 @@
     "id": "13",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu hafta men ikki marta shifokorga bordim.",
-    "answer": "I have been to the doctor twice this week"
+    "answer": "I have been to the doctor twice this week",
+    "alsoAccept": [
+     "I've been to the doctor twice this week",
+     "this week I have been to the doctor twice",
+     "this week I've been to the doctor twice"
+    ]
    },
    {
     "id": "14",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Dilnoza o'tgan oyda yangi mashina sotib oldi.",
-    "answer": "Dilnoza bought a new car last month"
+    "answer": "Dilnoza bought a new car last month",
+    "alsoAccept": [
+     "last month Dilnoza bought a new car"
+    ]
    },
    {
     "id": "15",
@@ -120,55 +159,93 @@
     "id": "19",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bugun ertalab hali hech narsa yemadim.",
-    "answer": "I haven't eaten anything yet this morning"
+    "answer": "I haven't eaten anything yet this morning",
+    "alsoAccept": [
+     "I have not eaten anything yet this morning",
+     "this morning I haven't eaten anything yet",
+     "I've not eaten anything yet this morning",
+     "this morning I have not eaten anything yet"
+    ]
    },
    {
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular 2020-yilda uylanishdi va hozir uchta farzandi bor.",
-    "answer": "They got married in 2020 and now have three children"
+    "answer": "They got married in 2020 and now have three children",
+    "alsoAccept": [
+     "They got married in 2020 and now have three kids",
+     "They got married in 2020 and now have 3 children",
+     "They got married in 2020 and now have 3 kids"
+    ]
    },
    {
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sardor bu yil allaqachon uch marta xorijga safar qildi.",
-    "answer": "Sardor has already travelled abroad three times this year"
+    "answer": "Sardor has already travelled abroad three times this year",
+    "alsoAccept": [
+     "this year Sardor has already travelled abroad three times",
+     "Sardor has already travelled abroad 3 times this year",
+     "this year Sardor has already travelled abroad 3 times"
+    ]
    },
    {
     "id": "22",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz ikki yil oldin bu loyihani boshlagan edik.",
-    "answer": "We started this project two years ago"
+    "answer": "We started this project two years ago",
+    "alsoAccept": [
+     "We began this project two years ago",
+     "We started this project 2 years ago",
+     "We began this project 2 years ago"
+    ]
    },
    {
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U hali ham o'z xatosini tan olgani yo'q.",
-    "answer": "He still hasn't admitted his mistake"
+    "answer": "He still hasn't admitted his mistake",
+    "alsoAccept": [
+     "He still has not admitted his mistake"
+    ]
    },
    {
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men o'tgan yozda Turkiyada dam oldim.",
-    "answer": "I had a holiday in Turkey last summer"
+    "answer": "I had a holiday in Turkey last summer",
+    "alsoAccept": [
+     "I had a vacation in Turkey last summer",
+     "last summer I had a holiday in Turkey",
+     "last summer I had a vacation in Turkey"
+    ]
    },
    {
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bolaligimdan beri men suzishni yaxshi ko'raman.",
-    "answer": "I have loved swimming since I was a child"
+    "answer": "I have loved swimming since I was a child",
+    "alsoAccept": [
+     "I've loved swimming since I was a child"
+    ]
    },
    {
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Poyezd o'n daqiqa oldin stansiyadan jo'nab ketdi.",
-    "answer": "The train left the station ten minutes ago"
+    "answer": "The train left the station ten minutes ago",
+    "alsoAccept": [
+     "The train left the station 10 minutes ago"
+    ]
    },
    {
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening do'stim ikki marta Everestga chiqishga urindi, lekin hozirgacha muvaffaqiyat qozonmadi.",
-    "answer": "My friend has tried to climb Everest twice but has not succeeded so far"
+    "answer": "My friend has tried to climb Everest twice but has not succeeded so far",
+    "alsoAccept": [
+     "My friend has tried to climb Everest twice but hasn't succeeded so far"
+    ]
    },
    {
     "id": "28",
@@ -180,7 +257,13 @@
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bugun kechqurun men hali hech kimga qo'ng'iroq qilmadim.",
-    "answer": "I haven't called anyone yet this evening"
+    "answer": "I haven't called anyone yet this evening",
+    "alsoAccept": [
+     "I have not called anyone yet this evening",
+     "this evening I haven't called anyone yet",
+     "I've not called anyone yet this evening",
+     "this evening I have not called anyone yet"
+    ]
    },
    {
     "id": "30",
@@ -197,25 +280,36 @@
   "topic": "Present perfect simple vs continuous",
   "title": "Present Perfect: oddiy va davomiy",
   "order": 2,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men ertalabdan beri hisobot ustida ishlayapman.",
-    "answer": "I have been working on the report since morning"
+    "answer": "I have been working on the report since morning",
+    "alsoAccept": [
+     "I've been working on the report since morning"
+    ]
    },
    {
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U bugun uchta hisobotni yozib tugatdi.",
-    "answer": "She has written three reports today"
+    "answer": "She has written three reports today",
+    "alsoAccept": [
+     "today She has written three reports",
+     "She has written 3 reports today",
+     "today She has written 3 reports"
+    ]
    },
    {
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz bir soatdan beri avtobusni kutyapmiz.",
-    "answer": "We have been waiting for the bus for an hour"
+    "answer": "We have been waiting for the bus for an hour",
+    "alsoAccept": [
+     "we've been waiting for the bus for an hour"
+    ]
    },
    {
     "id": "4",
@@ -227,7 +321,15 @@
     "id": "5",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bu hafta beshta kitob o'qib tugatdim.",
-    "answer": "I have finished five books this week"
+    "answer": "I have finished five books this week",
+    "alsoAccept": [
+     "I've finished five books this week",
+     "this week I have finished five books",
+     "I have finished 5 books this week",
+     "this week I've finished five books",
+     "I've finished 5 books this week",
+     "this week I have finished 5 books"
+    ]
    },
    {
     "id": "6",
@@ -239,7 +341,10 @@
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Dilshod ikki yildan beri ingliz tilini o'rganyapti.",
-    "answer": "Dilshod has been learning English for two years"
+    "answer": "Dilshod has been learning English for two years",
+    "alsoAccept": [
+     "Dilshod has been learning English for 2 years"
+    ]
    },
    {
     "id": "8",
@@ -257,7 +362,10 @@
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening qo'llarim iflos, chunki men mashinani ta'mirlayapman.",
-    "answer": "My hands are dirty because I have been repairing the car"
+    "answer": "My hands are dirty because I have been repairing the car",
+    "alsoAccept": [
+     "My hands are dirty because I've been repairing the car"
+    ]
    },
    {
     "id": "11",
@@ -269,7 +377,10 @@
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz oy boshidan beri yangi loyiha ustida mehnat qilyapmiz.",
-    "answer": "We have been working on a new project since the beginning of the month"
+    "answer": "We have been working on a new project since the beginning of the month",
+    "alsoAccept": [
+     "we've been working on a new project since the beginning of the month"
+    ]
    },
    {
     "id": "13",
@@ -277,20 +388,32 @@
     "prompt": "Inglizchaga tarjima qiling: Men o'zimning kalitlarimni yo'qotib qo'ydim, endi uyga kira olmayman.",
     "answer": "I have lost my keys, so I can't get into the house now",
     "alsoAccept": [
-     "I have lost my keys, so I can not get into the house now"
+     "I have lost my keys, so I can not get into the house now",
+     "I have lost my keys, so I cannot get into the house now",
+     "I've lost my keys, so I can't get into the house now",
+     "I've lost my keys, so I can not get into the house now",
+     "I've lost my keys, so I cannot get into the house now"
     ]
    },
    {
     "id": "14",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular tong otgandan beri futbol o'ynashyapti.",
-    "answer": "They have been playing football since dawn"
+    "answer": "They have been playing football since dawn",
+    "alsoAccept": [
+     "they've been playing football since dawn"
+    ]
    },
    {
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu yil Karim yigirmata mijoz bilan uchrashdi.",
-    "answer": "Karim has met twenty clients this year"
+    "answer": "Karim has met twenty clients this year",
+    "alsoAccept": [
+     "this year Karim has met twenty clients",
+     "Karim has met 20 clients this year",
+     "this year Karim has met 20 clients"
+    ]
    },
    {
     "id": "16",
@@ -302,13 +425,19 @@
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U ikki soatdan beri telefonda gaplashyapti.",
-    "answer": "She has been talking on the phone for two hours"
+    "answer": "She has been talking on the phone for two hours",
+    "alsoAccept": [
+     "She has been talking on the phone for 2 hours"
+    ]
    },
    {
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men hozirgina ofisni tozalab bo'ldim.",
-    "answer": "I have just finished cleaning the office"
+    "answer": "I have just finished cleaning the office",
+    "alsoAccept": [
+     "I've just finished cleaning the office"
+    ]
    },
    {
     "id": "19",
@@ -320,7 +449,10 @@
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bir necha oydan beri men ertalab yugurishni odat qildim.",
-    "answer": "I have been jogging every morning for several months"
+    "answer": "I have been jogging every morning for several months",
+    "alsoAccept": [
+     "I've been jogging every morning for several months"
+    ]
    },
    {
     "id": "21",
@@ -335,25 +467,39 @@
     "id": "22",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bugun ertalab beri bosh og'rig'idan aziyat chekyapman.",
-    "answer": "I have been suffering from a headache since this morning"
+    "answer": "I have been suffering from a headache since this morning",
+    "alsoAccept": [
+     "I've been suffering from a headache since this morning"
+    ]
    },
    {
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz uch marta bu restoranda ovqatlanganmiz.",
-    "answer": "We have eaten at this restaurant three times"
+    "answer": "We have eaten at this restaurant three times",
+    "alsoAccept": [
+     "we've eaten at this restaurant three times",
+     "We have eaten at this restaurant 3 times",
+     "we've eaten at this restaurant 3 times"
+    ]
    },
    {
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Nodira o'n yildan beri maktabda dars berib kelyapti.",
-    "answer": "Nodira has been teaching at a school for ten years"
+    "answer": "Nodira has been teaching at a school for ten years",
+    "alsoAccept": [
+     "Nodira has been teaching at a school for 10 years"
+    ]
    },
    {
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men butun hafta davomida ushbu masalani hal qilishga urinyapman.",
-    "answer": "I have been trying to solve this problem all week"
+    "answer": "I have been trying to solve this problem all week",
+    "alsoAccept": [
+     "I've been trying to solve this problem all week"
+    ]
    },
    {
     "id": "26",
@@ -365,25 +511,42 @@
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Jasur dars tayyorlayotgani uchun hali ham uxlamagan.",
-    "answer": "Jasur hasn't slept yet because he has been preparing for the lesson"
+    "answer": "Jasur hasn't slept yet because he has been preparing for the lesson",
+    "alsoAccept": [
+     "Jasur has not slept yet because he has been preparing for the lesson"
+    ]
    },
    {
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz kuz boshidan beri bir-birimizni ko'rmadik.",
-    "answer": "We haven't seen each other since the beginning of autumn"
+    "answer": "We haven't seen each other since the beginning of autumn",
+    "alsoAccept": [
+     "We have not seen each other since the beginning of autumn",
+     "We haven't seen each other since the beginning of fall",
+     "we've not seen each other since the beginning of autumn",
+     "We have not seen each other since the beginning of fall"
+    ]
    },
    {
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular besh yildan beri bu masala haqida bahslashib kelishmoqda.",
-    "answer": "They have been arguing about this issue for five years"
+    "answer": "They have been arguing about this issue for five years",
+    "alsoAccept": [
+     "they've been arguing about this issue for five years",
+     "They have been arguing about this issue for 5 years",
+     "they've been arguing about this issue for 5 years"
+    ]
    },
    {
     "id": "30",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men tushlikdan beri bu hujjatlarni tekshiryapman.",
-    "answer": "I have been checking these documents since lunch"
+    "answer": "I have been checking these documents since lunch",
+    "alsoAccept": [
+     "I've been checking these documents since lunch"
+    ]
    }
   ]
  },
@@ -394,7 +557,7 @@
   "topic": "Past simple vs past continuous",
   "title": "Past Simple va Past Continuous",
   "order": 3,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -406,7 +569,15 @@
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kecha soat sakkizda biz televizor ko'rayotgan edik.",
-    "answer": "We were watching television at eight o'clock yesterday"
+    "answer": "We were watching television at eight o'clock yesterday",
+    "alsoAccept": [
+     "We were watching TV at eight o'clock yesterday",
+     "yesterday We were watching television at eight o'clock",
+     "We were watching television at 8 o'clock yesterday",
+     "yesterday We were watching TV at eight o'clock",
+     "We were watching TV at 8 o'clock yesterday",
+     "yesterday We were watching television at 8 o'clock"
+    ]
    },
    {
     "id": "3",
@@ -424,13 +595,19 @@
     "id": "5",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Yomg'ir yog'a boshlaganda biz bog'da o'tirgan edik.",
-    "answer": "We were sitting in the garden when it started to rain"
+    "answer": "We were sitting in the garden when it started to rain",
+    "alsoAccept": [
+     "We were sitting in the garden when it began to rain"
+    ]
    },
    {
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: O'tgan dushanba kuni u ishga kech keldi.",
-    "answer": "Last Monday he arrived at work late"
+    "answer": "Last Monday he arrived at work late",
+    "alsoAccept": [
+     "he arrived at work late Last Monday"
+    ]
    },
    {
     "id": "7",
@@ -442,7 +619,10 @@
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular kecha tushdan keyin butun vaqt tennis o'ynashdi.",
-    "answer": "They played tennis all afternoon yesterday"
+    "answer": "They played tennis all afternoon yesterday",
+    "alsoAccept": [
+     "yesterday They played tennis all afternoon"
+    ]
    },
    {
     "id": "9",
@@ -460,7 +640,10 @@
     "id": "11",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: O'tgan yili Bobur Londonda yashadi va ingliz tilini o'rgandi.",
-    "answer": "Last year Bobur lived in London and learned English"
+    "answer": "Last year Bobur lived in London and learned English",
+    "alsoAccept": [
+     "Bobur lived in London and learned English Last year"
+    ]
    },
    {
     "id": "12",
@@ -472,7 +655,12 @@
     "id": "13",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men kecha soat uchda xatni yozib tugatdim.",
-    "answer": "I finished writing the letter at three o'clock yesterday"
+    "answer": "I finished writing the letter at three o'clock yesterday",
+    "alsoAccept": [
+     "yesterday I finished writing the letter at three o'clock",
+     "I finished writing the letter at 3 o'clock yesterday",
+     "yesterday I finished writing the letter at 3 o'clock"
+    ]
    },
    {
     "id": "14",
@@ -502,13 +690,19 @@
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men kechagi yig'ilishda butun vaqt eslatma yozib o'tirdim.",
-    "answer": "I was taking notes during the whole meeting yesterday"
+    "answer": "I was taking notes during the whole meeting yesterday",
+    "alsoAccept": [
+     "yesterday I was taking notes during the whole meeting"
+    ]
    },
    {
     "id": "19",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U o'tgan oy bir hafta Dubayda dam oldi.",
-    "answer": "She spent a week in Dubai last month"
+    "answer": "She spent a week in Dubai last month",
+    "alsoAccept": [
+     "last month She spent a week in Dubai"
+    ]
    },
    {
     "id": "20",
@@ -520,25 +714,39 @@
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Soat to'qqizda Anvar hali ham mashinani ta'mirlayotgan edi.",
-    "answer": "At nine o'clock Anvar was still repairing the car"
+    "answer": "At nine o'clock Anvar was still repairing the car",
+    "alsoAccept": [
+     "At 9 o'clock Anvar was still repairing the car"
+    ]
    },
    {
     "id": "22",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kecha men do'konga bordim va yangi poyabzal sotib oldim.",
-    "answer": "Yesterday I went to the shop and bought new shoes"
+    "answer": "Yesterday I went to the shop and bought new shoes",
+    "alsoAccept": [
+     "Yesterday I went to the store and bought new shoes",
+     "I went to the shop and bought new shoes Yesterday",
+     "I went to the store and bought new shoes Yesterday"
+    ]
    },
    {
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bolalar bog'da o'ynayotganida, ona ovqat tayyorlayotgan edi.",
-    "answer": "The mother was cooking while the children were playing in the garden"
+    "answer": "The mother was cooking while the children were playing in the garden",
+    "alsoAccept": [
+     "The mother was cooking while the kids were playing in the garden"
+    ]
    },
    {
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ob-havo bashorati o'tgan juma kuni noto'g'ri chiqdi.",
-    "answer": "The weather forecast turned out wrong last Friday"
+    "answer": "The weather forecast turned out wrong last Friday",
+    "alsoAccept": [
+     "last Friday The weather forecast turned out wrong"
+    ]
    },
    {
     "id": "25",
@@ -550,7 +758,10 @@
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: O'sha oqshom u soat o'nda hali ham dars tayyorlayotgan edi.",
-    "answer": "That evening at ten o'clock she was still doing her homework"
+    "answer": "That evening at ten o'clock she was still doing her homework",
+    "alsoAccept": [
+     "That evening at 10 o'clock she was still doing her homework"
+    ]
    },
    {
     "id": "27",
@@ -562,7 +773,10 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Uch kun oldin sinfimizga yangi o'qituvchi keldi.",
-    "answer": "A new teacher came to our class three days ago"
+    "answer": "A new teacher came to our class three days ago",
+    "alsoAccept": [
+     "A new teacher came to our class 3 days ago"
+    ]
    },
    {
     "id": "29",
@@ -585,7 +799,7 @@
   "topic": "Past perfect and narrative tenses",
   "title": "Past Perfect: oldin sodir bo'lgan",
   "order": 3,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -624,7 +838,10 @@
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U ishdan bo'shatilgach, bir yil davomida yangi ish topa olmadi.",
-    "answer": "After he had been fired, he couldn't find a new job for a year"
+    "answer": "After he had been fired, he couldn't find a new job for a year",
+    "alsoAccept": [
+     "After he had been fired, he could not find a new job for a year"
+    ]
    },
    {
     "id": "7",
@@ -636,7 +853,12 @@
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular filmdan oldin kechki ovqatni yeb bo'lishgan edi.",
-    "answer": "They had eaten dinner before the film began"
+    "answer": "They had eaten dinner before the film began",
+    "alsoAccept": [
+     "They had eaten dinner before the movie began",
+     "They had eaten dinner before the film started",
+     "They had eaten dinner before the movie started"
+    ]
    },
    {
     "id": "9",
@@ -648,7 +870,10 @@
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Dilnoza imtihon topshirishdan oldin juda qattiq tayyorlangan edi.",
-    "answer": "Dilnoza had prepared very hard before she took the exam"
+    "answer": "Dilnoza had prepared very hard before she took the exam",
+    "alsoAccept": [
+     "Dilnoza had prepared really hard before she took the exam"
+    ]
    },
    {
     "id": "11",
@@ -672,7 +897,10 @@
     "id": "14",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U kalitlarini yo'qotib qo'ygani uchun eshikni ochib kira olmadi.",
-    "answer": "He couldn't open the door because he had lost his keys"
+    "answer": "He couldn't open the door because he had lost his keys",
+    "alsoAccept": [
+     "He could not open the door because he had lost his keys"
+    ]
    },
    {
     "id": "15",
@@ -684,7 +912,10 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Aziz universitetni tugatgach, uch yil Germaniyada ishladi.",
-    "answer": "After Aziz had graduated from university, he worked in Germany for three years"
+    "answer": "After Aziz had graduated from university, he worked in Germany for three years",
+    "alsoAccept": [
+     "After Aziz had graduated from university, he worked in Germany for 3 years"
+    ]
    },
    {
     "id": "17",
@@ -702,13 +933,19 @@
     "id": "19",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz yomg'ir boshlanishidan oldin chodirni o'rnatib bo'lgan edik.",
-    "answer": "We had put up the tent before the rain started"
+    "answer": "We had put up the tent before the rain started",
+    "alsoAccept": [
+     "We had put up the tent before the rain began"
+    ]
    },
    {
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular ikki soat gaplashishdi, so'ng xayrlashib ketishdi.",
-    "answer": "They talked for two hours, then they said goodbye and left"
+    "answer": "They talked for two hours, then they said goodbye and left",
+    "alsoAccept": [
+     "They talked for 2 hours, then they said goodbye and left"
+    ]
    },
    {
     "id": "21",
@@ -779,7 +1016,7 @@
   "topic": "Used to, would, be used to, get used to",
   "title": "Odat va ko'nikish",
   "order": 4,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -791,7 +1028,10 @@
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men hali ham erta turishga ko'nikmadim.",
-    "answer": "I still haven't got used to getting up early"
+    "answer": "I still haven't got used to getting up early",
+    "alsoAccept": [
+     "I still have not got used to getting up early"
+    ]
    },
    {
     "id": "3",
@@ -822,7 +1062,10 @@
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening otam ilgari har kuni gazeta o'qirdi.",
-    "answer": "My father used to read a newspaper every day"
+    "answer": "My father used to read a newspaper every day",
+    "alsoAccept": [
+     "every day My father used to read a newspaper"
+    ]
    },
    {
     "id": "7",
@@ -830,7 +1073,8 @@
     "prompt": "Inglizchaga tarjima qiling: Ular chap tomondan haydashga hali o'rganishmagan.",
     "answer": "They aren't used to driving on the left yet",
     "alsoAccept": [
-     "They are not used to driving on the left yet"
+     "They are not used to driving on the left yet",
+     "they're not used to driving on the left yet"
     ]
    },
    {
@@ -852,7 +1096,10 @@
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Yangi ish jadvaliga ko'nikish uchun ikki hafta kerak bo'ldi.",
-    "answer": "It took two weeks to get used to the new work schedule"
+    "answer": "It took two weeks to get used to the new work schedule",
+    "alsoAccept": [
+     "It took 2 weeks to get used to the new work schedule"
+    ]
    },
    {
     "id": "11",
@@ -903,13 +1150,19 @@
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Dilshod katta uyda yolg'iz yashashga asta-sekin ko'nikdi.",
-    "answer": "Dilshod gradually got used to living alone in a big house"
+    "answer": "Dilshod gradually got used to living alone in a big house",
+    "alsoAccept": [
+     "Dilshod gradually got used to living alone in a large house"
+    ]
    },
    {
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu ko'chada avval katta daraxtlar o'sardi, hozir esa yo'q.",
-    "answer": "Big trees used to grow on this street, but not any more"
+    "answer": "Big trees used to grow on this street, but not any more",
+    "alsoAccept": [
+     "large trees used to grow on this street, but not any more"
+    ]
    },
    {
     "id": "19",
@@ -921,7 +1174,11 @@
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men yangi telefonning tugmalariga hali ko'nikmadim.",
-    "answer": "I haven't got used to the buttons on the new phone yet"
+    "answer": "I haven't got used to the buttons on the new phone yet",
+    "alsoAccept": [
+     "I have not got used to the buttons on the new phone yet",
+     "I've not got used to the buttons on the new phone yet"
+    ]
    },
    {
     "id": "21",
@@ -942,13 +1199,21 @@
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular kichkina kvartirada yashashga qanday ko'nikishdi?",
-    "answer": "How did they get used to living in a small flat"
+    "answer": "How did they get used to living in a small flat",
+    "alsoAccept": [
+     "How did they get used to living in a little flat",
+     "How did they get used to living in a small apartment",
+     "How did they get used to living in a little apartment"
+    ]
    },
    {
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bobom yoshligida har kuni daryoga baliq tutgani borardi.",
-    "answer": "When he was young, my grandfather would go fishing at the river every day"
+    "answer": "When he was young, my grandfather would go fishing at the river every day",
+    "alsoAccept": [
+     "When he was young, my grandpa would go fishing at the river every day"
+    ]
    },
    {
     "id": "25",
@@ -963,20 +1228,27 @@
     "answer": "We are used to hard work, so we don't get tired",
     "alsoAccept": [
      "we're used to hard work, so we don't get tired",
-     "We are used to hard work, so we do not get tired"
+     "We are used to hard work, so we do not get tired",
+     "we're used to hard work, so we do not get tired"
     ]
    },
    {
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Chet elda o'qiyotganda, men yangi taomlarga tezda ko'nikdim.",
-    "answer": "While studying abroad, I quickly got used to the new food"
+    "answer": "While studying abroad, I quickly got used to the new food",
+    "alsoAccept": [
+     "While studying abroad, I fast got used to the new food"
+    ]
    },
    {
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening do'stim ilgari juda uyatchan edi.",
-    "answer": "My friend used to be very shy"
+    "answer": "My friend used to be very shy",
+    "alsoAccept": [
+     "My friend used to be really shy"
+    ]
    },
    {
     "id": "29",
@@ -999,13 +1271,16 @@
   "topic": "Future forms (will, going to, present continuous, future perfect)",
   "title": "Kelasi zamon shakllari",
   "order": 5,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Telefon jiringlayapti. Men ko'taraman.",
-    "answer": "The phone is ringing. I will answer it"
+    "answer": "The phone is ringing. I will answer it",
+    "alsoAccept": [
+     "The phone is ringing. I'll answer it"
+    ]
    },
    {
     "id": "2",
@@ -1022,26 +1297,42 @@
     "prompt": "Inglizchaga tarjima qiling: Men shanba kuni soat oltida Jasur bilan uchrashaman, biz kelishib qo'yganmiz.",
     "answer": "I am meeting Jasur on Saturday at six; we have arranged it",
     "alsoAccept": [
-     "I'm meeting Jasur on Saturday at six; we have arranged it"
+     "I'm meeting Jasur on Saturday at six; we have arranged it",
+     "I am meeting Jasur on Saturday at six; we've arranged it",
+     "I am meeting Jasur on Saturday at 6; we have arranged it",
+     "I'm meeting Jasur on Saturday at six; we've arranged it",
+     "I'm meeting Jasur on Saturday at 6; we have arranged it",
+     "I am meeting Jasur on Saturday at 6; we've arranged it"
     ]
    },
    {
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kelasi yil shu vaqtda men universitetni tugatgan bo'laman.",
-    "answer": "By this time next year, I will have graduated from university"
+    "answer": "By this time next year, I will have graduated from university",
+    "alsoAccept": [
+     "By this time next year, I'll have graduated from university"
+    ]
    },
    {
     "id": "5",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men yozda Italiyaga borishga qaror qildim.",
-    "answer": "I have decided to go to Italy in the summer"
+    "answer": "I have decided to go to Italy in the summer",
+    "alsoAccept": [
+     "I've decided to go to Italy in the summer"
+    ]
    },
    {
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ehtimol, ertaga qor yog'ar, deb o'ylayman.",
-    "answer": "I think it will snow tomorrow"
+    "answer": "I think it will snow tomorrow",
+    "alsoAccept": [
+     "I think that it will snow tomorrow",
+     "tomorrow I think it will snow",
+     "tomorrow I think that it will snow"
+    ]
    },
    {
     "id": "7",
@@ -1049,14 +1340,19 @@
     "prompt": "Inglizchaga tarjima qiling: Dushanba kuni soat to'qqizda biz direktor bilan yig'ilish o'tkazamiz, kun tartibi tayyor.",
     "answer": "We are having a meeting with the director on Monday at nine; the schedule is ready",
     "alsoAccept": [
-     "we're having a meeting with the director on Monday at nine; the schedule is ready"
+     "we're having a meeting with the director on Monday at nine; the schedule is ready",
+     "We are having a meeting with the director on Monday at 9; the schedule is ready",
+     "we're having a meeting with the director on Monday at 9; the schedule is ready"
     ]
    },
    {
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kelasi dushanbagacha men barcha hujjatlarni tayyorlab bo'laman.",
-    "answer": "I will have prepared all the documents by next Monday"
+    "answer": "I will have prepared all the documents by next Monday",
+    "alsoAccept": [
+     "I'll have prepared all the documents by next Monday"
+    ]
    },
    {
     "id": "9",
@@ -1064,14 +1360,19 @@
     "prompt": "Inglizchaga tarjima qiling: Qarang, bola balandda turibdi, u hozir yiqiladi!",
     "answer": "Look, the child is standing so high; he is going to fall",
     "alsoAccept": [
-     "Look, the child is standing so high; he's going to fall"
+     "Look, the child is standing so high; he's going to fall",
+     "Look, the child is standing so high; he is going to autumn",
+     "Look, the child is standing so high; he's going to autumn"
     ]
    },
    {
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sizga yordam kerakmi? Men sumkangizni ko'taraman.",
-    "answer": "Do you need help? I will carry your bag"
+    "answer": "Do you need help? I will carry your bag",
+    "alsoAccept": [
+     "Do you need help? I'll carry your bag"
+    ]
    },
    {
     "id": "11",
@@ -1079,20 +1380,30 @@
     "prompt": "Inglizchaga tarjima qiling: Biz uyimizni sotmoqchimiz va katta shaharga ko'chib o'tamiz.",
     "answer": "We are going to sell our house and move to a big city",
     "alsoAccept": [
-     "we're going to sell our house and move to a big city"
+     "we're going to sell our house and move to a big city",
+     "We are going to sell our house and move to a large city",
+     "we're going to sell our house and move to a large city"
     ]
    },
    {
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ertaga kechqurun soat yettida samolyotim uchadi, chiptani sotib olganman.",
-    "answer": "My plane leaves tomorrow evening at seven; I have bought the ticket"
+    "answer": "My plane leaves tomorrow evening at seven; I have bought the ticket",
+    "alsoAccept": [
+     "My plane leaves tomorrow evening at seven; I've bought the ticket",
+     "My plane leaves tomorrow evening at 7; I have bought the ticket",
+     "My plane leaves tomorrow evening at 7; I've bought the ticket"
+    ]
    },
    {
     "id": "13",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Yoz oxirigacha u butun kitobni yozib bo'ladi.",
-    "answer": "By the end of the summer, he will have written the whole book"
+    "answer": "By the end of the summer, he will have written the whole book",
+    "alsoAccept": [
+     "By the end of the summer, he'll have written the whole book"
+    ]
    },
    {
     "id": "14",
@@ -1100,7 +1411,9 @@
     "prompt": "Inglizchaga tarjima qiling: Men yangi mashina sotib olishni rejalashtiryapman, pul yig'ib qo'yganman.",
     "answer": "I am going to buy a new car; I have saved some money",
     "alsoAccept": [
-     "I'm going to buy a new car; I have saved some money"
+     "I'm going to buy a new car; I have saved some money",
+     "I am going to buy a new car; I've saved some money",
+     "I'm going to buy a new car; I've saved some money"
     ]
    },
    {
@@ -1109,7 +1422,9 @@
     "prompt": "Inglizchaga tarjima qiling: Shoshilmang, men sizni kutaman.",
     "answer": "Don't hurry; I will wait for you",
     "alsoAccept": [
-     "do not hurry; I will wait for you"
+     "do not hurry; I will wait for you",
+     "Don't hurry; I'll wait for you",
+     "do not hurry; I'll wait for you"
     ]
    },
    {
@@ -1118,14 +1433,24 @@
     "prompt": "Inglizchaga tarjima qiling: Bu hafta oxirida biz do'stlarimiznikiga boramiz, ular bizni taklif qilishgan.",
     "answer": "We are going to our friends' house this weekend; they have invited us",
     "alsoAccept": [
-     "we're going to our friends' house this weekend; they have invited us"
+     "we're going to our friends' house this weekend; they have invited us",
+     "We are going to our friends' house this weekend; they've invited us",
+     "we're going to our friends' house this weekend; they've invited us"
     ]
    },
    {
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ertaga soat beshgacha ular ko'prikni qurib bitirishadi.",
-    "answer": "They will have finished building the bridge by five o'clock tomorrow"
+    "answer": "They will have finished building the bridge by five o'clock tomorrow",
+    "alsoAccept": [
+     "they'll have finished building the bridge by five o'clock tomorrow",
+     "tomorrow They will have finished building the bridge by five o'clock",
+     "They will have finished building the bridge by 5 o'clock tomorrow",
+     "tomorrow they'll have finished building the bridge by five o'clock",
+     "they'll have finished building the bridge by 5 o'clock tomorrow",
+     "tomorrow They will have finished building the bridge by 5 o'clock"
+    ]
    },
    {
     "id": "18",
@@ -1133,14 +1458,21 @@
     "prompt": "Inglizchaga tarjima qiling: Uning yuzi juda oqarib ketdi, u hozir hushidan ketadi.",
     "answer": "Her face has turned very pale; she is going to faint",
     "alsoAccept": [
-     "Her face has turned very pale; she's going to faint"
+     "Her face has turned very pale; she's going to faint",
+     "Her face has turned really pale; she is going to faint",
+     "Her face has turned really pale; she's going to faint"
     ]
    },
    {
     "id": "19",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening hamyonim yo'q. Hechqisi yo'q, men to'layman.",
-    "answer": "I have no wallet. Never mind, I will pay"
+    "answer": "I have no wallet. Never mind, I will pay",
+    "alsoAccept": [
+     "I've no wallet. Never mind, I will pay",
+     "I have no wallet. Never mind, I'll pay",
+     "I've no wallet. Never mind, I'll pay"
+    ]
    },
    {
     "id": "20",
@@ -1155,7 +1487,12 @@
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Soat o'ngacha biz uyga yetib kelgan bo'lamiz.",
-    "answer": "We will have arrived home by ten o'clock"
+    "answer": "We will have arrived home by ten o'clock",
+    "alsoAccept": [
+     "we'll have arrived home by ten o'clock",
+     "We will have arrived home by 10 o'clock",
+     "we'll have arrived home by 10 o'clock"
+    ]
    },
    {
     "id": "22",
@@ -1164,14 +1501,20 @@
     "answer": "I am going to sell this car because it is expensive to maintain",
     "alsoAccept": [
      "I'm going to sell this car because it is expensive to maintain",
-     "I am going to sell this car because it's expensive to maintain"
+     "I am going to sell this car because it's expensive to maintain",
+     "I'm going to sell this car because it's expensive to maintain"
     ]
    },
    {
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Menimcha, bu yangi ish sizga yoqadi.",
-    "answer": "I think you will like this new job"
+    "answer": "I think you will like this new job",
+    "alsoAccept": [
+     "I think you'll like this new job",
+     "I think that you will like this new job",
+     "I think that you'll like this new job"
+    ]
    },
    {
     "id": "24",
@@ -1186,13 +1529,21 @@
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: O'n yildan keyin odamlar Marsga uchishadi, deb o'ylayman.",
-    "answer": "I think people will fly to Mars in ten years"
+    "answer": "I think people will fly to Mars in ten years",
+    "alsoAccept": [
+     "I think that people will fly to Mars in ten years",
+     "I think people will fly to Mars in 10 years",
+     "I think that people will fly to Mars in 10 years"
+    ]
    },
    {
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Oyning oxirigacha u barcha qarzlarini to'lab bo'ladi.",
-    "answer": "By the end of the month, he will have paid off all his debts"
+    "answer": "By the end of the month, he will have paid off all his debts",
+    "alsoAccept": [
+     "By the end of the month, he'll have paid off all his debts"
+    ]
    },
    {
     "id": "27",
@@ -1200,7 +1551,12 @@
     "prompt": "Inglizchaga tarjima qiling: Biz bayramda katta tort pishirmoqchimiz va mehmonlarni taklif qilamiz.",
     "answer": "We are going to bake a big cake for the holiday and invite guests",
     "alsoAccept": [
-     "we're going to bake a big cake for the holiday and invite guests"
+     "we're going to bake a big cake for the holiday and invite guests",
+     "We are going to bake a large cake for the holiday and invite guests",
+     "We are going to bake a big cake for the vacation and invite guests",
+     "we're going to bake a large cake for the holiday and invite guests",
+     "we're going to bake a big cake for the vacation and invite guests",
+     "We are going to bake a large cake for the vacation and invite guests"
     ]
    },
    {
@@ -1209,7 +1565,9 @@
     "prompt": "Inglizchaga tarjima qiling: Sovuq bo'ldi, men derazani yopaman.",
     "answer": "It's cold; I will close the window",
     "alsoAccept": [
-     "it is cold; I will close the window"
+     "it is cold; I will close the window",
+     "It's cold; I'll close the window",
+     "it is cold; I'll close the window"
     ]
    },
    {
@@ -1218,14 +1576,21 @@
     "prompt": "Inglizchaga tarjima qiling: Kelasi yakshanba oilam bilan tog'ga chiqamiz, mehmonxonani band qilib qo'yganmiz.",
     "answer": "We are going to the mountains with my family next Sunday; we have booked the hotel",
     "alsoAccept": [
-     "we're going to the mountains with my family next Sunday; we have booked the hotel"
+     "we're going to the mountains with my family next Sunday; we have booked the hotel",
+     "We are going to the mountains with my family next Sunday; we've booked the hotel",
+     "we're going to the mountains with my family next Sunday; we've booked the hotel"
     ]
    },
    {
     "id": "30",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Shu oyning oxirida ular besh yildan beri birga ishlagan bo'lishadi.",
-    "answer": "By the end of this month, they will have worked together for five years"
+    "answer": "By the end of this month, they will have worked together for five years",
+    "alsoAccept": [
+     "By the end of this month, they'll have worked together for five years",
+     "By the end of this month, they will have worked together for 5 years",
+     "By the end of this month, they'll have worked together for 5 years"
+    ]
    }
   ]
  },
@@ -1236,13 +1601,18 @@
   "topic": "Conditionals 0, 1, 2 and unless",
   "title": "Shart gaplar: 0, 1, 2 va unless",
   "order": 6,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar suvni yuz darajagacha qizdirsangiz, u qaynaydi.",
-    "answer": "If you heat water to one hundred degrees, it boils"
+    "answer": "If you heat water to one hundred degrees, it boils",
+    "alsoAccept": [
+     "If you heat water to 1 hundred degrees, it boils",
+     "If you heat water to one 100 degrees, it boils",
+     "If you heat water to 1 100 degrees, it boils"
+    ]
    },
    {
     "id": "2",
@@ -1260,7 +1630,10 @@
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar ertaga yomg'ir yog'sa, biz uyda qolamiz.",
-    "answer": "If it rains tomorrow, we will stay at home"
+    "answer": "If it rains tomorrow, we will stay at home",
+    "alsoAccept": [
+     "If it rains tomorrow, we'll stay at home"
+    ]
    },
    {
     "id": "5",
@@ -1268,32 +1641,50 @@
     "prompt": "Inglizchaga tarjima qiling: Agar sen tezroq shoshilmasang, poyezddan kechikasan.",
     "answer": "If you don't hurry up, you will miss the train",
     "alsoAccept": [
-     "If you do not hurry up, you will miss the train"
+     "If you do not hurry up, you will miss the train",
+     "If you don't hurry up, you'll miss the train",
+     "If you do not hurry up, you'll miss the train"
     ]
    },
    {
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar u imtihondan o'tsa, ota-onasi juda xursand bo'lishadi.",
-    "answer": "If she passes the exam, her parents will be very happy"
+    "answer": "If she passes the exam, her parents will be very happy",
+    "alsoAccept": [
+     "If she passes the exam, her parents will be really happy",
+     "If she passes the exam, her parents will be very glad",
+     "If she passes the exam, her parents will be really glad"
+    ]
    },
    {
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar ertaga vaqtim bo'lsa, senga yordam beraman.",
-    "answer": "If I have time tomorrow, I will help you"
+    "answer": "If I have time tomorrow, I will help you",
+    "alsoAccept": [
+     "If I've time tomorrow, I will help you",
+     "If I have time tomorrow, I'll help you",
+     "If I've time tomorrow, I'll help you"
+    ]
    },
    {
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar menga qo'ng'iroq qilsang, men seni stansiyadan olib ketaman.",
-    "answer": "If you call me, I will pick you up from the station"
+    "answer": "If you call me, I will pick you up from the station",
+    "alsoAccept": [
+     "If you call me, I'll pick you up from the station"
+    ]
    },
    {
     "id": "9",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar kechqurun muzlasa, yo'llar juda sirpanchiq bo'ladi.",
-    "answer": "If it freezes tonight, the roads will be very slippery"
+    "answer": "If it freezes tonight, the roads will be very slippery",
+    "alsoAccept": [
+     "If it freezes tonight, the roads will be really slippery"
+    ]
    },
    {
     "id": "10",
@@ -1308,13 +1699,19 @@
     "id": "11",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar men millionlab dollarga ega bo'lsam, dunyo bo'ylab sayohat qilardim.",
-    "answer": "If I had millions of dollars, I would travel around the world"
+    "answer": "If I had millions of dollars, I would travel around the world",
+    "alsoAccept": [
+     "If I had millions of dollars, I'd travel around the world"
+    ]
    },
    {
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar men sening o'rningda bo'lsam, vrachga borardim.",
-    "answer": "If I were you, I would go to the doctor"
+    "answer": "If I were you, I would go to the doctor",
+    "alsoAccept": [
+     "If I were you, I'd go to the doctor"
+    ]
    },
    {
     "id": "13",
@@ -1332,13 +1729,20 @@
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar mening mashinam bo'lsa, ishga piyoda bormasdim.",
-    "answer": "If I had a car, I wouldn't walk to work"
+    "answer": "If I had a car, I wouldn't walk to work",
+    "alsoAccept": [
+     "If I had a car, I would not walk to work",
+     "If I had a car, I'd not walk to work"
+    ]
    },
    {
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar u bunchalik band bo'lmasa, biz bilan kechki ovqatga kelardi.",
-    "answer": "If he weren't so busy, he would come to dinner with us"
+    "answer": "If he weren't so busy, he would come to dinner with us",
+    "alsoAccept": [
+     "If he were not so busy, he would come to dinner with us"
+    ]
    },
    {
     "id": "17",
@@ -1364,7 +1768,8 @@
     "prompt": "Inglizchaga tarjima qiling: Agar yomg'ir to'xtamasa, biz sayrga chiqmaymiz.",
     "answer": "Unless the rain stops, we won't go for a walk",
     "alsoAccept": [
-     "Unless the rain stops, we will not go for a walk"
+     "Unless the rain stops, we will not go for a walk",
+     "Unless the rain stops, we'll not go for a walk"
     ]
    },
    {
@@ -1373,7 +1778,8 @@
     "prompt": "Inglizchaga tarjima qiling: Agar sen o'qimasang, imtihondan o'ta olmaysan.",
     "answer": "Unless you study, you won't be able to pass the exam",
     "alsoAccept": [
-     "Unless you study, you will not be able to pass the exam"
+     "Unless you study, you will not be able to pass the exam",
+     "Unless you study, you'll not be able to pass the exam"
     ]
    },
    {
@@ -1382,14 +1788,19 @@
     "prompt": "Inglizchaga tarjima qiling: Agar ular pul to'lashmasa, bizga xizmat ko'rsatilmaydi.",
     "answer": "Unless they pay, we won't be given the service",
     "alsoAccept": [
-     "Unless they pay, we will not be given the service"
+     "Unless they pay, we will not be given the service",
+     "Unless they pay, we'll not be given the service"
     ]
    },
    {
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar menga kerak bo'lmasa, men bu kitobni sotib olmasdim.",
-    "answer": "I wouldn't buy this book unless I needed it"
+    "answer": "I wouldn't buy this book unless I needed it",
+    "alsoAccept": [
+     "I would not buy this book unless I needed it",
+     "I'd not buy this book unless I needed it"
+    ]
    },
    {
     "id": "24",
@@ -1397,7 +1808,8 @@
     "prompt": "Inglizchaga tarjima qiling: Agar sen uni taklif qilmasang, u kelmaydi.",
     "answer": "Unless you invite him, he won't come",
     "alsoAccept": [
-     "Unless you invite him, he will not come"
+     "Unless you invite him, he will not come",
+     "Unless you invite him, he'll not come"
     ]
    },
    {
@@ -1406,7 +1818,8 @@
     "prompt": "Inglizchaga tarjima qiling: Agar siz chipta bronlamasangiz, joy topolmaysiz.",
     "answer": "Unless you book a ticket, you can't get a seat",
     "alsoAccept": [
-     "Unless you book a ticket, you can not get a seat"
+     "Unless you book a ticket, you can not get a seat",
+     "Unless you book a ticket, you cannot get a seat"
     ]
    },
    {
@@ -1421,20 +1834,32 @@
     "prompt": "Inglizchaga tarjima qiling: Agar sen ko'p kofe ichsang, tunda uxlay olmaysan.",
     "answer": "If you drink a lot of coffee, you can't sleep at night",
     "alsoAccept": [
-     "If you drink a lot of coffee, you can not sleep at night"
+     "If you drink a lot of coffee, you can not sleep at night",
+     "If you drink a lot of coffee, you cannot sleep at night",
+     "If you drink lots of coffee, you can't sleep at night",
+     "If you drink lots of coffee, you can not sleep at night",
+     "If you drink lots of coffee, you cannot sleep at night"
     ]
    },
    {
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar u kasal bo'lib qolsa, men uning o'rniga ishlayman.",
-    "answer": "If he gets sick, I will work in his place"
+    "answer": "If he gets sick, I will work in his place",
+    "alsoAccept": [
+     "If he gets sick, I'll work in his place",
+     "If he gets ill, I will work in his place",
+     "If he gets ill, I'll work in his place"
+    ]
    },
    {
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar men shaharning hokimi bo'lsam, ko'proq bog'lar qurdirardim.",
-    "answer": "If I were the mayor of the city, I would build more parks"
+    "answer": "If I were the mayor of the city, I would build more parks",
+    "alsoAccept": [
+     "If I were the mayor of the city, I'd build more parks"
+    ]
    },
    {
     "id": "30",
@@ -1442,7 +1867,8 @@
     "prompt": "Inglizchaga tarjima qiling: Agar siz bu dorini ichmasangiz, o'zingizni yaxshi his qilmaysiz.",
     "answer": "Unless you take this medicine, you won't feel better",
     "alsoAccept": [
-     "Unless you take this medicine, you will not feel better"
+     "Unless you take this medicine, you will not feel better",
+     "Unless you take this medicine, you'll not feel better"
     ]
    }
   ]
@@ -1454,7 +1880,7 @@
   "topic": "Third and mixed conditionals",
   "title": "Uchinchi va aralash shart gaplar",
   "order": 7,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -1466,61 +1892,98 @@
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar men uyg'onganimda, poyezdga ulgurgan bo'lardim.",
-    "answer": "If I had woken up, I would have caught the train"
+    "answer": "If I had woken up, I would have caught the train",
+    "alsoAccept": [
+     "If I had woken up, I'd have caught the train"
+    ]
    },
    {
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar biz xaritani olganimizda, adashmagan bo'lardik.",
-    "answer": "If we had taken the map, we wouldn't have got lost"
+    "answer": "If we had taken the map, we wouldn't have got lost",
+    "alsoAccept": [
+     "If we had taken the map, we would not have got lost"
+    ]
    },
    {
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar siz menga aytganingizda, men sizga yordam bergan bo'lardim.",
-    "answer": "If you had told me, I would have helped you"
+    "answer": "If you had told me, I would have helped you",
+    "alsoAccept": [
+     "If you had told me, I'd have helped you"
+    ]
    },
    {
     "id": "5",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar kecha yomg'ir yog'masa, biz pikniga borgan bo'lardik.",
-    "answer": "If it hadn't rained yesterday, we would have gone on a picnic"
+    "answer": "If it hadn't rained yesterday, we would have gone on a picnic",
+    "alsoAccept": [
+     "If it had not rained yesterday, we would have gone on a picnic"
+    ]
    },
    {
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar u kam uxlamaganida, majlisda uxlab qolmagan bo'lardi.",
-    "answer": "If he hadn't slept so little, he wouldn't have fallen asleep at the meeting"
+    "answer": "If he hadn't slept so little, he wouldn't have fallen asleep at the meeting",
+    "alsoAccept": [
+     "If he had not slept so little, he wouldn't have fallen asleep at the meeting",
+     "If he hadn't slept so little, he would not have fallen asleep at the meeting",
+     "If he hadn't slept so small, he wouldn't have fallen asleep at the meeting",
+     "If he had not slept so little, he would not have fallen asleep at the meeting",
+     "If he had not slept so small, he wouldn't have fallen asleep at the meeting",
+     "If he hadn't slept so small, he would not have fallen asleep at the meeting"
+    ]
    },
    {
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar ular tezroq chiqishganida, samolyotdan kechikmagan bo'lishardi.",
-    "answer": "If they had left earlier, they wouldn't have missed the flight"
+    "answer": "If they had left earlier, they wouldn't have missed the flight",
+    "alsoAccept": [
+     "If they had left earlier, they would not have missed the flight"
+    ]
    },
    {
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar men sizning telefon raqamingizni bilganimda, qo'ng'iroq qilgan bo'lardim.",
-    "answer": "If I had known your phone number, I would have called you"
+    "answer": "If I had known your phone number, I would have called you",
+    "alsoAccept": [
+     "If I had known your phone number, I'd have called you"
+    ]
    },
    {
     "id": "9",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar sen ehtiyot bo'lganingda, vaza sinmagan bo'lardi.",
-    "answer": "If you had been careful, the vase wouldn't have broken"
+    "answer": "If you had been careful, the vase wouldn't have broken",
+    "alsoAccept": [
+     "If you had been careful, the vase would not have broken"
+    ]
    },
    {
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar direktor rozi bo'lmaganida, loyiha boshlanmagan bo'lardi.",
-    "answer": "If the director hadn't agreed, the project wouldn't have started"
+    "answer": "If the director hadn't agreed, the project wouldn't have started",
+    "alsoAccept": [
+     "If the director had not agreed, the project wouldn't have started",
+     "If the director hadn't agreed, the project would not have started",
+     "If the director had not agreed, the project would not have started"
+    ]
    },
    {
     "id": "11",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar o'tgan yili ko'proq pul yig'ganimda, hozir mashina sotib olgan bo'lardim.",
-    "answer": "If I had saved more money last year, I would buy a car now"
+    "answer": "If I had saved more money last year, I would buy a car now",
+    "alsoAccept": [
+     "If I had saved more money last year, I'd buy a car now"
+    ]
    },
    {
     "id": "12",
@@ -1532,13 +1995,21 @@
     "id": "13",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar biz o'sha uyni sotib olmaganimizda, hozir qarzdor bo'lmasdik.",
-    "answer": "If we hadn't bought that house, we wouldn't be in debt now"
+    "answer": "If we hadn't bought that house, we wouldn't be in debt now",
+    "alsoAccept": [
+     "If we had not bought that house, we wouldn't be in debt now",
+     "If we hadn't bought that house, we would not be in debt now",
+     "If we had not bought that house, we would not be in debt now"
+    ]
    },
    {
     "id": "14",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar men yoshligimda ingliz tilini o'rganganimda, hozir chet elda ishlardim.",
-    "answer": "If I had learned English when I was young, I would be working abroad now"
+    "answer": "If I had learned English when I was young, I would be working abroad now",
+    "alsoAccept": [
+     "If I had learned English when I was young, I'd be working abroad now"
+    ]
    },
    {
     "id": "15",
@@ -1550,7 +2021,10 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar u o'sha paytda iste'foga chiqmaganida, hozir menejer bo'lardi.",
-    "answer": "If he hadn't resigned then, he would be a manager now"
+    "answer": "If he hadn't resigned then, he would be a manager now",
+    "alsoAccept": [
+     "If he had not resigned then, he would be a manager now"
+    ]
    },
    {
     "id": "17",
@@ -1562,7 +2036,11 @@
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar men sening o'rningda bo'lganimda, bu taklifni rad etmagan bo'lardim.",
-    "answer": "If I had been in your place, I wouldn't have refused this offer"
+    "answer": "If I had been in your place, I wouldn't have refused this offer",
+    "alsoAccept": [
+     "If I had been in your place, I would not have refused this offer",
+     "If I had been in your place, I'd not have refused this offer"
+    ]
    },
    {
     "id": "19",
@@ -1574,13 +2052,19 @@
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar telefonim zaryadlangan bo'lganida, men senga qo'ng'iroq qilgan bo'lardim.",
-    "answer": "If my phone had been charged, I would have called you"
+    "answer": "If my phone had been charged, I would have called you",
+    "alsoAccept": [
+     "If my phone had been charged, I'd have called you"
+    ]
    },
    {
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar u soatiga qaraganida, uchrashuvni unutmagan bo'lardi.",
-    "answer": "If he had looked at his watch, he wouldn't have forgotten the meeting"
+    "answer": "If he had looked at his watch, he wouldn't have forgotten the meeting",
+    "alsoAccept": [
+     "If he had looked at his watch, he would not have forgotten the meeting"
+    ]
    },
    {
     "id": "22",
@@ -1598,19 +2082,34 @@
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar sen kecha yo'lda tezlikni oshirmaganingda, jarima to'lamagan bo'lardingmi?",
-    "answer": "If you hadn't sped yesterday, would you have avoided the fine"
+    "answer": "If you hadn't sped yesterday, would you have avoided the fine",
+    "alsoAccept": [
+     "If you had not sped yesterday, would you have avoided the fine",
+     "If you hadn't sped yesterday, would you've avoided the fine",
+     "If you had not sped yesterday, would you've avoided the fine"
+    ]
    },
    {
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar men u bilan o'sha kuni gaplashmaganimda, biz hozir do'st bo'lmasdik.",
-    "answer": "If I hadn't talked to her that day, we wouldn't be friends now"
+    "answer": "If I hadn't talked to her that day, we wouldn't be friends now",
+    "alsoAccept": [
+     "If I had not talked to her that day, we wouldn't be friends now",
+     "If I hadn't talked to her that day, we would not be friends now",
+     "If I had not talked to her that day, we would not be friends now"
+    ]
    },
    {
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar bobom sigaret chekmaganida, hozir sog'lom bo'lardi.",
-    "answer": "If my grandfather hadn't smoked, he would be healthy now"
+    "answer": "If my grandfather hadn't smoked, he would be healthy now",
+    "alsoAccept": [
+     "If my grandfather had not smoked, he would be healthy now",
+     "If my grandpa hadn't smoked, he would be healthy now",
+     "If my grandpa had not smoked, he would be healthy now"
+    ]
    },
    {
     "id": "27",
@@ -1622,13 +2121,20 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar mehmonxona band bo'lmaganida, biz u yerda to'xtagan bo'lardik.",
-    "answer": "If the hotel hadn't been full, we would have stayed there"
+    "answer": "If the hotel hadn't been full, we would have stayed there",
+    "alsoAccept": [
+     "If the hotel had not been full, we would have stayed there"
+    ]
    },
    {
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar men bu qoidani bilganimda, testda xato qilmagan bo'lardim.",
-    "answer": "If I had known this rule, I wouldn't have made a mistake in the test"
+    "answer": "If I had known this rule, I wouldn't have made a mistake in the test",
+    "alsoAccept": [
+     "If I had known this rule, I would not have made a mistake in the test",
+     "If I had known this rule, I'd not have made a mistake in the test"
+    ]
    },
    {
     "id": "30",
@@ -1645,7 +2151,7 @@
   "topic": "Wish, if only, would rather, had better",
   "title": "Wish va if only",
   "order": 7,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -1657,7 +2163,10 @@
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kashki, mening katta uyim bo'lsa.",
-    "answer": "I wish I had a big house"
+    "answer": "I wish I had a big house",
+    "alsoAccept": [
+     "I wish I had a large house"
+    ]
    },
    {
     "id": "3",
@@ -1675,13 +2184,21 @@
     "id": "5",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kashki, sen bunchalik baland ovozda gapirmasang.",
-    "answer": "I wish you wouldn't talk so loudly"
+    "answer": "I wish you wouldn't talk so loudly",
+    "alsoAccept": [
+     "I wish you would not talk so loudly"
+    ]
    },
    {
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kashki, qo'shnilarimiz kechasi shovqin qilmasa.",
-    "answer": "I wish our neighbours wouldn't make noise at night"
+    "answer": "I wish our neighbours wouldn't make noise at night",
+    "alsoAccept": [
+     "I wish our neighbours would not make noise at night",
+     "at night I wish our neighbours wouldn't make noise",
+     "at night I wish our neighbours would not make noise"
+    ]
    },
    {
     "id": "7",
@@ -1689,14 +2206,21 @@
     "prompt": "Inglizchaga tarjima qiling: Kashki, ertaga dars bo'lmasa.",
     "answer": "I wish we didn't have classes tomorrow",
     "alsoAccept": [
-     "I wish we did not have classes tomorrow"
+     "I wish we did not have classes tomorrow",
+     "tomorrow I wish we didn't have classes",
+     "tomorrow I wish we did not have classes"
     ]
    },
    {
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kashki, men kecha u bilan ketmagan bo'lsam.",
-    "answer": "I wish I hadn't gone with him yesterday"
+    "answer": "I wish I hadn't gone with him yesterday",
+    "alsoAccept": [
+     "I wish I had not gone with him yesterday",
+     "yesterday I wish I hadn't gone with him",
+     "yesterday I wish I had not gone with him"
+    ]
    },
    {
     "id": "9",
@@ -1720,7 +2244,10 @@
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kashki, men o'tgan yozda Italiyaga borganimda.",
-    "answer": "I wish I had gone to Italy last summer"
+    "answer": "I wish I had gone to Italy last summer",
+    "alsoAccept": [
+     "last summer I wish I had gone to Italy"
+    ]
    },
    {
     "id": "13",
@@ -1738,7 +2265,10 @@
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Qani endi, bugun yomg'ir yog'masa.",
-    "answer": "If only it weren't raining today"
+    "answer": "If only it weren't raining today",
+    "alsoAccept": [
+     "If only it were not raining today"
+    ]
    },
    {
     "id": "16",
@@ -1762,19 +2292,30 @@
     "id": "19",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Qani endi, men o'sha xatni yubormaganimda.",
-    "answer": "If only I hadn't sent that letter"
+    "answer": "If only I hadn't sent that letter",
+    "alsoAccept": [
+     "If only I had not sent that letter"
+    ]
    },
    {
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bugun kechqurun uyda qolganim ma'qul.",
-    "answer": "I would rather stay at home this evening"
+    "answer": "I would rather stay at home this evening",
+    "alsoAccept": [
+     "I'd rather stay at home this evening",
+     "this evening I would rather stay at home",
+     "this evening I'd rather stay at home"
+    ]
    },
    {
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U kinoga emas, teatrga borganini ma'qul ko'radi.",
-    "answer": "She would rather go to the theatre than to the cinema"
+    "answer": "She would rather go to the theatre than to the cinema",
+    "alsoAccept": [
+     "She would rather go to the theatre than to the movies"
+    ]
    },
    {
     "id": "22",
@@ -1782,14 +2323,24 @@
     "prompt": "Inglizchaga tarjima qiling: Men sen bu haqda hech kimga aytmaganingni ma'qul ko'raman.",
     "answer": "I would rather you didn't tell anyone about this",
     "alsoAccept": [
-     "I would rather you did not tell anyone about this"
+     "I would rather you did not tell anyone about this",
+     "I'd rather you didn't tell anyone about this",
+     "I'd rather you did not tell anyone about this"
     ]
    },
    {
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men u kecha kelmaganini ma'qul ko'rgan bo'lardim.",
-    "answer": "I would rather he hadn't come yesterday"
+    "answer": "I would rather he hadn't come yesterday",
+    "alsoAccept": [
+     "I would rather he had not come yesterday",
+     "I'd rather he hadn't come yesterday",
+     "yesterday I would rather he hadn't come",
+     "I'd rather he had not come yesterday",
+     "yesterday I would rather he had not come",
+     "yesterday I'd rather he hadn't come"
+    ]
    },
    {
     "id": "24",
@@ -1797,7 +2348,9 @@
     "prompt": "Inglizchaga tarjima qiling: Sen kasal bo'lsang, uyda qolganing ma'qul.",
     "answer": "You had better stay at home if you are ill",
     "alsoAccept": [
-     "You had better stay at home if you're ill"
+     "You had better stay at home if you're ill",
+     "You had better stay at home if you are sick",
+     "You had better stay at home if you're sick"
     ]
    },
    {
@@ -1810,7 +2363,10 @@
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz ertaga erta turganimiz ma'qul.",
-    "answer": "We had better get up early tomorrow"
+    "answer": "We had better get up early tomorrow",
+    "alsoAccept": [
+     "tomorrow We had better get up early"
+    ]
    },
    {
     "id": "27",
@@ -1828,13 +2384,21 @@
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kashki, mening ukam bunchalik injiq bo'lmasa.",
-    "answer": "I wish my little brother weren't so naughty"
+    "answer": "I wish my little brother weren't so naughty",
+    "alsoAccept": [
+     "I wish my little brother were not so naughty",
+     "I wish my small brother weren't so naughty",
+     "I wish my small brother were not so naughty"
+    ]
    },
    {
     "id": "30",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men pasportimni unutmagan bo'lsam edi, deb afsuslanaman.",
-    "answer": "I wish I hadn't forgotten my passport"
+    "answer": "I wish I hadn't forgotten my passport",
+    "alsoAccept": [
+     "I wish I had not forgotten my passport"
+    ]
    }
   ]
  },
@@ -1845,7 +2409,7 @@
   "topic": "Passive voice in different tenses",
   "title": "Majhul nisbat",
   "order": 8,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -1857,7 +2421,10 @@
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu darslar har kuni o'qituvchi tomonidan o'tkaziladi.",
-    "answer": "These lessons are given by the teacher every day"
+    "answer": "These lessons are given by the teacher every day",
+    "alsoAccept": [
+     "every day These lessons are given by the teacher"
+    ]
    },
    {
     "id": "3",
@@ -1881,7 +2448,10 @@
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Barcha xonalar har kuni tozalanadi.",
-    "answer": "All the rooms are cleaned every day"
+    "answer": "All the rooms are cleaned every day",
+    "alsoAccept": [
+     "every day All the rooms are cleaned"
+    ]
    },
    {
     "id": "7",
@@ -1893,7 +2463,10 @@
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ofisimiz kecha tunda o'g'irlandi.",
-    "answer": "Our office was robbed last night"
+    "answer": "Our office was robbed last night",
+    "alsoAccept": [
+     "last night Our office was robbed"
+    ]
    },
    {
     "id": "9",
@@ -1923,7 +2496,10 @@
     "id": "13",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening hamyonim yo'qolgan, lekin hali topilmagan.",
-    "answer": "My wallet has been lost, but it hasn't been found yet"
+    "answer": "My wallet has been lost, but it hasn't been found yet",
+    "alsoAccept": [
+     "My wallet has been lost, but it has not been found yet"
+    ]
    },
    {
     "id": "14",
@@ -1935,19 +2511,28 @@
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Yangi qonun hozirgacha uch marta o'zgartirilgan.",
-    "answer": "The new law has been changed three times so far"
+    "answer": "The new law has been changed three times so far",
+    "alsoAccept": [
+     "The new law has been changed 3 times so far"
+    ]
    },
    {
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mehmonlar ertaga ertalab aeroportda kutib olinadi.",
-    "answer": "The guests will be met at the airport tomorrow morning"
+    "answer": "The guests will be met at the airport tomorrow morning",
+    "alsoAccept": [
+     "tomorrow morning The guests will be met at the airport"
+    ]
    },
    {
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Natijalar kelasi hafta e'lon qilinadi.",
-    "answer": "The results will be announced next week"
+    "answer": "The results will be announced next week",
+    "alsoAccept": [
+     "next week The results will be announced"
+    ]
    },
    {
     "id": "18",
@@ -1977,7 +2562,10 @@
     "id": "22",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu kitob menga bobom tomonidan sovg'a qilingan.",
-    "answer": "This book was given to me by my grandfather"
+    "answer": "This book was given to me by my grandfather",
+    "alsoAccept": [
+     "This book was given to me by my grandpa"
+    ]
    },
    {
     "id": "23",
@@ -1995,13 +2583,19 @@
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu hujjat kecha kechqurun imzolangan.",
-    "answer": "This document was signed last night"
+    "answer": "This document was signed last night",
+    "alsoAccept": [
+     "last night This document was signed"
+    ]
    },
    {
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu savol har yili o'quvchilar tomonidan so'raladi.",
-    "answer": "This question is asked by students every year"
+    "answer": "This question is asked by students every year",
+    "alsoAccept": [
+     "every year This question is asked by students"
+    ]
    },
    {
     "id": "27",
@@ -2013,7 +2607,10 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Stadion kelasi yil ochilishi kutilmoqda.",
-    "answer": "The stadium is expected to be opened next year"
+    "answer": "The stadium is expected to be opened next year",
+    "alsoAccept": [
+     "next year The stadium is expected to be opened"
+    ]
    },
    {
     "id": "29",
@@ -2025,7 +2622,10 @@
     "id": "30",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bir soatdan beri o'qituvchi tomonidan kutilmoqdaman.",
-    "answer": "I have been waited for by the teacher for an hour"
+    "answer": "I have been waited for by the teacher for an hour",
+    "alsoAccept": [
+     "I've been waited for by the teacher for an hour"
+    ]
    }
   ]
  },
@@ -2036,19 +2636,25 @@
   "topic": "Have/get something done",
   "title": "Boshqa kishiga qildirish",
   "order": 9,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men har oy sochimni oldirib turaman.",
-    "answer": "I have my hair cut every month"
+    "answer": "I have my hair cut every month",
+    "alsoAccept": [
+     "I've my hair cut every month"
+    ]
    },
    {
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U kecha mashinasini yuvdirdi.",
-    "answer": "He had his car washed yesterday"
+    "answer": "He had his car washed yesterday",
+    "alsoAccept": [
+     "yesterday He had his car washed"
+    ]
    },
    {
     "id": "3",
@@ -2062,20 +2668,28 @@
     "prompt": "Inglizchaga tarjima qiling: Men ertaga kompyuterimni ta'mirlatmoqchiman.",
     "answer": "I am going to have my computer repaired tomorrow",
     "alsoAccept": [
-     "I'm going to have my computer repaired tomorrow"
+     "I'm going to have my computer repaired tomorrow",
+     "tomorrow I am going to have my computer repaired",
+     "tomorrow I'm going to have my computer repaired"
     ]
    },
    {
     "id": "5",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U har yili ko'zini tekshirtiradi.",
-    "answer": "She has her eyes tested every year"
+    "answer": "She has her eyes tested every year",
+    "alsoAccept": [
+     "every year She has her eyes tested"
+    ]
    },
    {
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz kostyumingizni qaerda tikdirgansiz?",
-    "answer": "Where did you have your suit made"
+    "answer": "Where did you have your suit made",
+    "alsoAccept": [
+     "Where did you've your suit made"
+    ]
    },
    {
     "id": "7",
@@ -2104,7 +2718,9 @@
     "prompt": "Inglizchaga tarjima qiling: Biz kechqurun mashinamizni tekshirtirmoqchimiz.",
     "answer": "We are going to have our car checked this evening",
     "alsoAccept": [
-     "we're going to have our car checked this evening"
+     "we're going to have our car checked this evening",
+     "this evening We are going to have our car checked",
+     "this evening we're going to have our car checked"
     ]
    },
    {
@@ -2117,7 +2733,10 @@
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Uning telefoni o'g'irlatilgan, shuning uchun u yangisini oldi.",
-    "answer": "He had his phone stolen, so he bought a new one"
+    "answer": "He had his phone stolen, so he bought a new one",
+    "alsoAccept": [
+     "He had his phone stolen, so he bought a new 1"
+    ]
    },
    {
     "id": "13",
@@ -2141,7 +2760,12 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bugun kechqurun deraza oynalarini almashtirtiraman.",
-    "answer": "I will have the windows replaced this evening"
+    "answer": "I will have the windows replaced this evening",
+    "alsoAccept": [
+     "I'll have the windows replaced this evening",
+     "this evening I will have the windows replaced",
+     "this evening I'll have the windows replaced"
+    ]
    },
    {
     "id": "17",
@@ -2177,7 +2801,10 @@
     "id": "22",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bolalarimni maktabga olib borishga yollangan haydovchiga topshirdim.",
-    "answer": "I got the driver to take my children to school"
+    "answer": "I got the driver to take my children to school",
+    "alsoAccept": [
+     "I got the driver to take my kids to school"
+    ]
    },
    {
     "id": "23",
@@ -2195,7 +2822,10 @@
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men ustaga kranni tuzattirdim.",
-    "answer": "I had the plumber fix the tap"
+    "answer": "I had the plumber fix the tap",
+    "alsoAccept": [
+     "I had the plumber repair the tap"
+    ]
    },
    {
     "id": "26",
@@ -2219,7 +2849,12 @@
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men uni ertaga erta uyg'otishga erishaman.",
-    "answer": "I will get her to wake up early tomorrow"
+    "answer": "I will get her to wake up early tomorrow",
+    "alsoAccept": [
+     "I'll get her to wake up early tomorrow",
+     "tomorrow I will get her to wake up early",
+     "tomorrow I'll get her to wake up early"
+    ]
    },
    {
     "id": "30",
@@ -2236,7 +2871,7 @@
   "topic": "Reported statements (backshift, time words)",
   "title": "Ko'chirma gap: darak gaplar",
   "order": 10,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -2281,19 +2916,28 @@
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Direktor yangi loyihani boshlashlarini aytdi.",
-    "answer": "The director said that they would start a new project"
+    "answer": "The director said that they would start a new project",
+    "alsoAccept": [
+     "The director said that they would begin a new project"
+    ]
    },
    {
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Rustam o'tgan kuni kasal bo'lganini aytdi.",
-    "answer": "Rustam said that he had been ill the day before"
+    "answer": "Rustam said that he had been ill the day before",
+    "alsoAccept": [
+     "Rustam said that he had been sick the day before"
+    ]
    },
    {
     "id": "9",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Malika u yerda ikki yildan beri yashayotganini aytdi.",
-    "answer": "Malika said that she had been living there for two years"
+    "answer": "Malika said that she had been living there for two years",
+    "alsoAccept": [
+     "Malika said that she had been living there for 2 years"
+    ]
    },
    {
     "id": "10",
@@ -2346,7 +2990,9 @@
     "prompt": "Inglizchaga tarjima qiling: Sotuvchi o'sha tovar mavjud emasligini aytdi.",
     "answer": "The shop assistant said that that item was not available",
     "alsoAccept": [
-     "The shop assistant said that that item wasn't available"
+     "The shop assistant said that that item wasn't available",
+     "The store assistant said that that item was not available",
+     "The store assistant said that that item wasn't available"
     ]
    },
    {
@@ -2371,7 +3017,10 @@
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Akam uni ko'rmaganini aytdi.",
-    "answer": "My brother said that he hadn't seen her"
+    "answer": "My brother said that he hadn't seen her",
+    "alsoAccept": [
+     "My brother said that he had not seen her"
+    ]
    },
    {
     "id": "22",
@@ -2383,7 +3032,10 @@
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bobom yoshligida ko'p ishlaganini aytdi.",
-    "answer": "My grandfather said that he had worked a lot when he was young"
+    "answer": "My grandfather said that he had worked a lot when he was young",
+    "alsoAccept": [
+     "My grandpa said that he had worked a lot when he was young"
+    ]
    },
    {
     "id": "24",
@@ -2404,13 +3056,19 @@
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U ertasi kuni dars bermasligini aytdi.",
-    "answer": "She said that she wouldn't teach the next day"
+    "answer": "She said that she wouldn't teach the next day",
+    "alsoAccept": [
+     "She said that she would not teach the next day"
+    ]
    },
    {
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular uch soatdan beri kutayotganini aytdi.",
-    "answer": "They said that they had been waiting for three hours"
+    "answer": "They said that they had been waiting for three hours",
+    "alsoAccept": [
+     "They said that they had been waiting for 3 hours"
+    ]
    },
    {
     "id": "28",
@@ -2428,7 +3086,10 @@
     "id": "30",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Do'stim tushlik qilmasligini aytdi.",
-    "answer": "My friend said that he wouldn't have lunch"
+    "answer": "My friend said that he wouldn't have lunch",
+    "alsoAccept": [
+     "My friend said that he would not have lunch"
+    ]
    }
   ]
  },
@@ -2439,7 +3100,7 @@
   "topic": "Reported questions and commands",
   "title": "Ko'chirma gap: savollar va buyruqlar",
   "order": 11,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -2541,7 +3202,10 @@
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kassir mendan qanday to'lashimni so'radi.",
-    "answer": "The cashier asked me how I would pay"
+    "answer": "The cashier asked me how I would pay",
+    "alsoAccept": [
+     "The cashier asked me how I'd pay"
+    ]
    },
    {
     "id": "18",
@@ -2577,7 +3241,10 @@
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Otam menga mashinani tez haydamaslikni aytdi.",
-    "answer": "My father told me not to drive the car fast"
+    "answer": "My father told me not to drive the car fast",
+    "alsoAccept": [
+     "My father told me not to drive the car quickly"
+    ]
    },
    {
     "id": "24",
@@ -2607,7 +3274,10 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Menejer mendan majlisga nega kelmaganimni so'radi.",
-    "answer": "The manager asked me why I hadn't come to the meeting"
+    "answer": "The manager asked me why I hadn't come to the meeting",
+    "alsoAccept": [
+     "The manager asked me why I had not come to the meeting"
+    ]
    },
    {
     "id": "29",
@@ -2630,7 +3300,7 @@
   "topic": "Reporting verbs patterns (suggest, admit, deny, advise, insist, offer, refuse)",
   "title": "Gapni yetkazuvchi fe'llar",
   "order": 11,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -2660,7 +3330,10 @@
     "id": "5",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bobom biz bilan birga kelishga qat'iy turib oldi.",
-    "answer": "My grandfather insisted on coming with us"
+    "answer": "My grandfather insisted on coming with us",
+    "alsoAccept": [
+     "My grandpa insisted on coming with us"
+    ]
    },
    {
     "id": "6",
@@ -2708,7 +3381,10 @@
     "id": "13",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ustoz o'quvchilarga har kuni kitob o'qishni maslahat berdi.",
-    "answer": "The teacher advised the students to read books every day"
+    "answer": "The teacher advised the students to read books every day",
+    "alsoAccept": [
+     "every day The teacher advised the students to read books"
+    ]
    },
    {
     "id": "14",
@@ -2726,13 +3402,19 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Xotinim ertaga muzeyga borishni taklif qildi.",
-    "answer": "My wife suggested visiting the museum tomorrow"
+    "answer": "My wife suggested visiting the museum tomorrow",
+    "alsoAccept": [
+     "tomorrow My wife suggested visiting the museum"
+    ]
    },
    {
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Yigit mashinani juda tez haydaganini tan oldi.",
-    "answer": "The young man admitted driving too fast"
+    "answer": "The young man admitted driving too fast",
+    "alsoAccept": [
+     "The young man admitted driving too quickly"
+    ]
    },
    {
     "id": "18",
@@ -2786,7 +3468,10 @@
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Do'stim ertaroq ketishni taklif qildi.",
-    "answer": "My friend suggested leaving a little earlier"
+    "answer": "My friend suggested leaving a little earlier",
+    "alsoAccept": [
+     "My friend suggested leaving a small earlier"
+    ]
    },
    {
     "id": "27",
@@ -2798,13 +3483,19 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Murabbiy bizga har kuni mashq qilishni maslahat berdi.",
-    "answer": "The coach advised us to train every day"
+    "answer": "The coach advised us to train every day",
+    "alsoAccept": [
+     "every day The coach advised us to train"
+    ]
    },
    {
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Qiz imtihondan o'tmaganini tan oldi.",
-    "answer": "The girl admitted failing the exam yesterday"
+    "answer": "The girl admitted failing the exam yesterday",
+    "alsoAccept": [
+     "yesterday The girl admitted failing the exam"
+    ]
    },
    {
     "id": "30",
@@ -2821,13 +3512,16 @@
   "topic": "Modals of deduction in present and past",
   "title": "Taxmin: must, can't, might",
   "order": 12,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Uning chiroqlari yoniq, demak u uyda bo'lishi kerak.",
-    "answer": "His lights are on, so he must be at home"
+    "answer": "His lights are on, so he must be at home",
+    "alsoAccept": [
+     "His lights are on, so he has to be at home"
+    ]
    },
    {
     "id": "2",
@@ -2835,14 +3529,18 @@
     "prompt": "Inglizchaga tarjima qiling: U hozirgina tushlik qildi, shuning uchun och bo'lishi mumkin emas.",
     "answer": "He has just had lunch, so he can't be hungry",
     "alsoAccept": [
-     "He has just had lunch, so he can not be hungry"
+     "He has just had lunch, so he can not be hungry",
+     "He has just had lunch, so he cannot be hungry"
     ]
    },
    {
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Anvar ertaga ishga kelmasligi ehtimoldan xoli emas.",
-    "answer": "Anvar might not come to work tomorrow"
+    "answer": "Anvar might not come to work tomorrow",
+    "alsoAccept": [
+     "tomorrow Anvar might not come to work"
+    ]
    },
    {
     "id": "4",
@@ -2850,7 +3548,11 @@
     "prompt": "Inglizchaga tarjima qiling: U telefonga javob bermayapti, uxlayotgan bo'lsa kerak.",
     "answer": "He isn't answering the phone, so he must be sleeping",
     "alsoAccept": [
-     "He is not answering the phone, so he must be sleeping"
+     "He is not answering the phone, so he must be sleeping",
+     "he's not answering the phone, so he must be sleeping",
+     "He isn't answering the phone, so he has to be sleeping",
+     "He is not answering the phone, so he has to be sleeping",
+     "he's not answering the phone, so he has to be sleeping"
     ]
    },
    {
@@ -2865,7 +3567,8 @@
     "prompt": "Inglizchaga tarjima qiling: U bunday xatoga yo'l qo'ygan bo'lishi mumkin emas.",
     "answer": "She can't have made such a mistake",
     "alsoAccept": [
-     "She can not have made such a mistake"
+     "She can not have made such a mistake",
+     "She cannot have made such a mistake"
     ]
    },
    {
@@ -2878,13 +3581,25 @@
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U ikki soat ishladi, demak juda charchagan bo'lsa kerak.",
-    "answer": "She has worked for two hours, so she must be very tired"
+    "answer": "She has worked for two hours, so she must be very tired",
+    "alsoAccept": [
+     "She has worked for two hours, so she must be really tired",
+     "She has worked for two hours, so she has to be very tired",
+     "She has worked for 2 hours, so she must be very tired",
+     "She has worked for two hours, so she has to be really tired",
+     "She has worked for 2 hours, so she must be really tired",
+     "She has worked for 2 hours, so she has to be very tired"
+    ]
    },
    {
     "id": "9",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular hali kelmadi, tirbandlikda qolgan bo'lishi mumkin.",
-    "answer": "They haven't arrived yet, so they might have got stuck in traffic"
+    "answer": "They haven't arrived yet, so they might have got stuck in traffic",
+    "alsoAccept": [
+     "They have not arrived yet, so they might have got stuck in traffic",
+     "they've not arrived yet, so they might have got stuck in traffic"
+    ]
    },
    {
     "id": "10",
@@ -2893,7 +3608,10 @@
     "answer": "That can't be Karim's car, because he doesn't drive",
     "alsoAccept": [
      "That can't be Karim's car, because he does not drive",
-     "That can not be Karim's car, because he doesn't drive"
+     "That can not be Karim's car, because he doesn't drive",
+     "That cannot be Karim's car, because he doesn't drive",
+     "That can not be Karim's car, because he does not drive",
+     "That cannot be Karim's car, because he does not drive"
     ]
    },
    {
@@ -2915,7 +3633,10 @@
     "answer": "That can't be him, because he is abroad now",
     "alsoAccept": [
      "That can't be him, because he's abroad now",
-     "That can not be him, because he is abroad now"
+     "That can not be him, because he is abroad now",
+     "That cannot be him, because he is abroad now",
+     "That can not be him, because he's abroad now",
+     "That cannot be him, because he's abroad now"
     ]
    },
    {
@@ -2930,7 +3651,8 @@
     "prompt": "Inglizchaga tarjima qiling: U testdan o'ta olmagan bo'lishi mumkin emas, yaxshi tayyorlangan edi.",
     "answer": "She can't have failed the test, because she was well prepared",
     "alsoAccept": [
-     "She can not have failed the test, because she was well prepared"
+     "She can not have failed the test, because she was well prepared",
+     "She cannot have failed the test, because she was well prepared"
     ]
    },
    {
@@ -2958,7 +3680,12 @@
     "id": "19",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U hech narsa yemadi, demak och bo'lsa kerak.",
-    "answer": "He hasn't eaten anything, so he must be hungry"
+    "answer": "He hasn't eaten anything, so he must be hungry",
+    "alsoAccept": [
+     "He has not eaten anything, so he must be hungry",
+     "He hasn't eaten anything, so he has to be hungry",
+     "He has not eaten anything, so he has to be hungry"
+    ]
    },
    {
     "id": "20",
@@ -2967,7 +3694,10 @@
     "answer": "That news can't be true, I am sure",
     "alsoAccept": [
      "That news can't be true, I'm sure",
-     "That news can not be true, I am sure"
+     "That news can not be true, I am sure",
+     "That news cannot be true, I am sure",
+     "That news can not be true, I'm sure",
+     "That news cannot be true, I'm sure"
     ]
    },
    {
@@ -2976,7 +3706,8 @@
     "prompt": "Inglizchaga tarjima qiling: Ular kecha uyda bo'lgan bo'lishi mumkin emas, ular Londonda edi.",
     "answer": "They can't have been at home yesterday, because they were in London",
     "alsoAccept": [
-     "They can not have been at home yesterday, because they were in London"
+     "They can not have been at home yesterday, because they were in London",
+     "They cannot have been at home yesterday, because they were in London"
     ]
    },
    {
@@ -2989,7 +3720,10 @@
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U mukammal inglizcha gapiradi, demak ingliz bo'lsa kerak.",
-    "answer": "She speaks perfect English, so she must be English"
+    "answer": "She speaks perfect English, so she must be English",
+    "alsoAccept": [
+     "She speaks perfect English, so she has to be English"
+    ]
    },
    {
     "id": "24",
@@ -2997,7 +3731,8 @@
     "prompt": "Inglizchaga tarjima qiling: Bu bizning mushugimiz bo'lishi mumkin emas, bizniki oq.",
     "answer": "That can't be our cat, because ours is white",
     "alsoAccept": [
-     "That can not be our cat, because ours is white"
+     "That can not be our cat, because ours is white",
+     "That cannot be our cat, because ours is white"
     ]
    },
    {
@@ -3024,7 +3759,11 @@
     "prompt": "Inglizchaga tarjima qiling: Narxi juda past, shuning uchun u asl bo'lishi mumkin emas.",
     "answer": "The price is very low, so it can't be real",
     "alsoAccept": [
-     "The price is very low, so it can not be real"
+     "The price is very low, so it can not be real",
+     "The price is very low, so it cannot be real",
+     "The price is really low, so it can't be real",
+     "The price is really low, so it can not be real",
+     "The price is really low, so it cannot be real"
     ]
    },
    {
@@ -3037,7 +3776,15 @@
     "id": "30",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular o'n yil birga ishlashgan, bir-birini yaxshi bilishi kerak.",
-    "answer": "They have worked together for ten years, so they must know each other well"
+    "answer": "They have worked together for ten years, so they must know each other well",
+    "alsoAccept": [
+     "they've worked together for ten years, so they must know each other well",
+     "They have worked together for ten years, so they have to know each other well",
+     "They have worked together for 10 years, so they must know each other well",
+     "they've worked together for ten years, so they have to know each other well",
+     "they've worked together for 10 years, so they must know each other well",
+     "They have worked together for 10 years, so they have to know each other well"
+    ]
    }
   ]
  },
@@ -3048,7 +3795,7 @@
   "topic": "Should have, needn't have, didn't need to, ought to",
   "title": "O'tgan zamon modallari",
   "order": 13,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -3135,19 +3882,28 @@
     "id": "11",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men uning xatini ochmasligim kerak edi.",
-    "answer": "I shouldn't have opened his letter"
+    "answer": "I shouldn't have opened his letter",
+    "alsoAccept": [
+     "I should not have opened his letter"
+    ]
    },
    {
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U tortdan bunchalik ko'p yemasligi kerak edi.",
-    "answer": "She shouldn't have eaten so much of the cake"
+    "answer": "She shouldn't have eaten so much of the cake",
+    "alsoAccept": [
+     "She should not have eaten so much of the cake"
+    ]
    },
    {
     "id": "13",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz sumkangizni unutmasligingiz kerak edi.",
-    "answer": "You shouldn't have forgotten your bag"
+    "answer": "You shouldn't have forgotten your bag",
+    "alsoAccept": [
+     "You should not have forgotten your bag"
+    ]
    },
    {
     "id": "14",
@@ -3162,19 +3918,28 @@
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Haydovchi sekinroq haydashi kerak edi, lekin tez haydadi.",
-    "answer": "The driver ought to have driven more slowly, but he drove fast"
+    "answer": "The driver ought to have driven more slowly, but he drove fast",
+    "alsoAccept": [
+     "The driver ought to have driven more slowly, but he drove quickly"
+    ]
    },
    {
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bunchalik ko'p pul yo'qotmasligim kerak edi.",
-    "answer": "I shouldn't have lost so much money"
+    "answer": "I shouldn't have lost so much money",
+    "alsoAccept": [
+     "I should not have lost so much money"
+    ]
    },
    {
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular kechqurun o'qishlari kerak edi, lekin televizor ko'rishdi.",
-    "answer": "They should have studied in the evening, but they watched TV"
+    "answer": "They should have studied in the evening, but they watched TV",
+    "alsoAccept": [
+     "They should have studied in the evening, but they watched television"
+    ]
    },
    {
     "id": "18",
@@ -3201,13 +3966,19 @@
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sen eshikni ochiq qoldirmasliging kerak edi.",
-    "answer": "You shouldn't have left the door open"
+    "answer": "You shouldn't have left the door open",
+    "alsoAccept": [
+     "You should not have left the door open"
+    ]
    },
    {
     "id": "22",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Poyezd hali ketmagan edi, siz shoshilishingiz shart emas edi.",
-    "answer": "The train hadn't left yet, so you needn't have hurried"
+    "answer": "The train hadn't left yet, so you needn't have hurried",
+    "alsoAccept": [
+     "The train had not left yet, so you needn't have hurried"
+    ]
    },
    {
     "id": "23",
@@ -3215,14 +3986,24 @@
     "prompt": "Inglizchaga tarjima qiling: O'qituvchi kasal edi, shuning uchun kecha uy vazifasini qilishim shart emas edi.",
     "answer": "The teacher was ill, so I didn't need to do my homework yesterday",
     "alsoAccept": [
-     "The teacher was ill, so I did not need to do my homework yesterday"
+     "The teacher was ill, so I did not need to do my homework yesterday",
+     "The teacher was sick, so I didn't need to do my homework yesterday",
+     "The teacher was sick, so I did not need to do my homework yesterday"
     ]
    },
    {
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bolalar tunda ko'chada o'ynamasliklari kerak edi.",
-    "answer": "The children shouldn't have played in the street at night"
+    "answer": "The children shouldn't have played in the street at night",
+    "alsoAccept": [
+     "The children should not have played in the street at night",
+     "The kids shouldn't have played in the street at night",
+     "at night The children shouldn't have played in the street",
+     "The kids should not have played in the street at night",
+     "at night The children should not have played in the street",
+     "at night The kids shouldn't have played in the street"
+    ]
    },
    {
     "id": "25",
@@ -3246,7 +4027,12 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men kecha kech yotmasligim kerak edi.",
-    "answer": "I shouldn't have gone to bed late yesterday"
+    "answer": "I shouldn't have gone to bed late yesterday",
+    "alsoAccept": [
+     "I should not have gone to bed late yesterday",
+     "yesterday I shouldn't have gone to bed late",
+     "yesterday I should not have gone to bed late"
+    ]
    },
    {
     "id": "29",
@@ -3261,7 +4047,10 @@
     "id": "30",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U kuchukchani uyda yolg'iz qoldirmasligi kerak edi.",
-    "answer": "She shouldn't have left the puppy alone at home"
+    "answer": "She shouldn't have left the puppy alone at home",
+    "alsoAccept": [
+     "She should not have left the puppy alone at home"
+    ]
    }
   ]
  },
@@ -3272,34 +4061,45 @@
   "topic": "Must, have to, mustn't, don't have to",
   "title": "Majburiyat: must, have to, mustn't",
   "order": 14,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu binoda sigaret chekish qat'iyan taqiqlangan.",
-    "answer": "You mustn't smoke in this building"
+    "answer": "You mustn't smoke in this building",
+    "alsoAccept": [
+     "You must not smoke in this building"
+    ]
    },
    {
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ertaga dam olish kuni, shuning uchun ishga borishim shart emas.",
-    "answer": "Tomorrow is a day off, so I don't have to go to work",
-    "alsoAccept": [
-     "Tomorrow is a day off, so I do not have to go to work"
-    ]
+    "answer": "Tomorrow is a day off, so I don't have to go to work"
    },
    {
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ish jadvali tufayli men har kuni erta turishga majburman.",
-    "answer": "Because of my work schedule, I have to get up early every day"
+    "answer": "Because of my work schedule, I have to get up early every day",
+    "alsoAccept": [
+     "Because of my work schedule, I must get up early every day"
+    ]
    },
    {
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bolalar kechasi ko'chada yolg'iz yurmasligi kerak.",
-    "answer": "Children mustn't walk alone in the street at night"
+    "answer": "Children mustn't walk alone in the street at night",
+    "alsoAccept": [
+     "Children must not walk alone in the street at night",
+     "kids mustn't walk alone in the street at night",
+     "at night Children mustn't walk alone in the street",
+     "kids must not walk alone in the street at night",
+     "at night Children must not walk alone in the street",
+     "at night kids mustn't walk alone in the street"
+    ]
    },
    {
     "id": "5",
@@ -3307,59 +4107,62 @@
     "prompt": "Inglizchaga tarjima qiling: Ertaga forma kiyishingiz shart emas.",
     "answer": "You don't have to wear a uniform tomorrow",
     "alsoAccept": [
-     "You do not have to wear a uniform tomorrow"
+     "tomorrow You don't have to wear a uniform"
     ]
    },
    {
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Yo'l harakati qoidalariga ko'ra, biz qizil chiroqda to'xtashga majburmiz.",
-    "answer": "According to the traffic rules, we have to stop at a red light"
+    "answer": "According to the traffic rules, we have to stop at a red light",
+    "alsoAccept": [
+     "According to the traffic rules, we must stop at a red light"
+    ]
    },
    {
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Menga naqd to'lash shart emas, kartada to'lasam bo'ladi.",
-    "answer": "I don't have to pay in cash, because I can pay by card",
-    "alsoAccept": [
-     "I do not have to pay in cash, because I can pay by card"
-    ]
+    "answer": "I don't have to pay in cash, because I can pay by card"
    },
    {
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kutubxonada baland ovozda gapirish mumkin emas.",
-    "answer": "You mustn't speak loudly in the library"
+    "answer": "You mustn't speak loudly in the library",
+    "alsoAccept": [
+     "You must not speak loudly in the library"
+    ]
    },
    {
     "id": "9",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kecha men ishdan erta ketishga majbur bo'ldim.",
-    "answer": "Yesterday I had to leave work early"
+    "answer": "Yesterday I had to leave work early",
+    "alsoAccept": [
+     "I had to leave work early Yesterday"
+    ]
    },
    {
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz menga yordam berishingiz shart emas, hamma narsa tayyor.",
-    "answer": "You don't have to help me, because everything is ready",
-    "alsoAccept": [
-     "You do not have to help me, because everything is ready"
-    ]
+    "answer": "You don't have to help me, because everything is ready"
    },
    {
     "id": "11",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mashina haydayotganda telefonda gaplashish mumkin emas.",
-    "answer": "You mustn't talk on the phone while driving"
+    "answer": "You mustn't talk on the phone while driving",
+    "alsoAccept": [
+     "You must not talk on the phone while driving"
+    ]
    },
    {
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Imtihon kechasi bo'lgani uchun ertaga erta turishimiz shart emas.",
-    "answer": "We don't have to get up early tomorrow because the exam is at night",
-    "alsoAccept": [
-     "We do not have to get up early tomorrow because the exam is at night"
-    ]
+    "answer": "We don't have to get up early tomorrow because the exam is at night"
    },
    {
     "id": "13",
@@ -3371,7 +4174,12 @@
     "id": "14",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu zaharli, uni bolalarga berish mumkin emas.",
-    "answer": "This is poisonous, so you mustn't give it to children"
+    "answer": "This is poisonous, so you mustn't give it to children",
+    "alsoAccept": [
+     "This is poisonous, so you must not give it to children",
+     "This is poisonous, so you mustn't give it to kids",
+     "This is poisonous, so you must not give it to kids"
+    ]
    },
    {
     "id": "15",
@@ -3383,7 +4191,10 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U kecha butun tun ishlashga majbur bo'ldi.",
-    "answer": "He had to work all night yesterday"
+    "answer": "He had to work all night yesterday",
+    "alsoAccept": [
+     "yesterday He had to work all night"
+    ]
    },
    {
     "id": "17",
@@ -3391,15 +4202,17 @@
     "prompt": "Inglizchaga tarjima qiling: Bu bepul kontsert, shuning uchun chipta sotib olishingiz shart emas.",
     "answer": "It is a free concert, so you don't have to buy a ticket",
     "alsoAccept": [
-     "it's a free concert, so you don't have to buy a ticket",
-     "It is a free concert, so you do not have to buy a ticket"
+     "it's a free concert, so you don't have to buy a ticket"
     ]
    },
    {
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Hech kimga parolingizni aytish mumkin emas.",
-    "answer": "You mustn't tell anyone your password"
+    "answer": "You mustn't tell anyone your password",
+    "alsoAccept": [
+     "You must not tell anyone your password"
+    ]
    },
    {
     "id": "19",
@@ -3407,32 +4220,46 @@
     "prompt": "Inglizchaga tarjima qiling: Ertaga yig'ilishga kelishingiz shart emas, men yozib olaman.",
     "answer": "You don't have to come to the meeting tomorrow, because I will take notes",
     "alsoAccept": [
-     "You do not have to come to the meeting tomorrow, because I will take notes"
+     "You don't have to come to the meeting tomorrow, because I'll take notes"
     ]
    },
    {
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men har oy kvartira uchun ijara to'lashga majburman.",
-    "answer": "I have to pay rent for the flat every month"
+    "answer": "I have to pay rent for the flat every month",
+    "alsoAccept": [
+     "I have to pay rent for the apartment every month",
+     "I must pay rent for the flat every month",
+     "I must pay rent for the apartment every month"
+    ]
    },
    {
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Qimmatbaho narsalarni mashinada qoldirish mumkin emas.",
-    "answer": "You mustn't leave valuable things in the car"
+    "answer": "You mustn't leave valuable things in the car",
+    "alsoAccept": [
+     "You must not leave valuable things in the car"
+    ]
    },
    {
     "id": "22",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: O'tgan yili biz yangi hujjat olishga majbur bo'ldik.",
-    "answer": "Last year we had to get a new document"
+    "answer": "Last year we had to get a new document",
+    "alsoAccept": [
+     "we had to get a new document Last year"
+    ]
    },
    {
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Dars paytida telefondan foydalanish mumkin emas.",
-    "answer": "You mustn't use your phone during the lesson"
+    "answer": "You mustn't use your phone during the lesson",
+    "alsoAccept": [
+     "You must not use your phone during the lesson"
+    ]
    },
    {
     "id": "24",
@@ -3440,20 +4267,28 @@
     "prompt": "Inglizchaga tarjima qiling: Unga qo'ng'iroq qilishingiz shart emas, men o'zim aytaman.",
     "answer": "You don't have to call him, because I will tell him myself",
     "alsoAccept": [
-     "You do not have to call him, because I will tell him myself"
+     "You don't have to call him, because I'll tell him myself"
     ]
    },
    {
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Uchuvchilar har yili tibbiy ko'rikdan o'tishga majbur.",
-    "answer": "Pilots have to pass a medical exam every year"
+    "answer": "Pilots have to pass a medical exam every year",
+    "alsoAccept": [
+     "every year Pilots have to pass a medical exam"
+    ]
    },
    {
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Yo'l sirpanchiq, shuning uchun tez haydash mumkin emas.",
-    "answer": "The road is slippery, so you mustn't drive fast"
+    "answer": "The road is slippery, so you mustn't drive fast",
+    "alsoAccept": [
+     "The road is slippery, so you must not drive fast",
+     "The road is slippery, so you mustn't drive quickly",
+     "The road is slippery, so you must not drive quickly"
+    ]
    },
    {
     "id": "27",
@@ -3461,7 +4296,7 @@
     "prompt": "Inglizchaga tarjima qiling: Ertaga xizmat safarim yo'q, shuning uchun chamadon yig'ishim shart emas.",
     "answer": "I have no business trip tomorrow, so I don't have to pack a suitcase",
     "alsoAccept": [
-     "I have no business trip tomorrow, so I do not have to pack a suitcase"
+     "I've no business trip tomorrow, so I don't have to pack a suitcase"
     ]
    },
    {
@@ -3474,16 +4309,16 @@
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Poyabzalingizni echishingiz shart emas.",
-    "answer": "You don't have to take off your shoes",
-    "alsoAccept": [
-     "You do not have to take off your shoes"
-    ]
+    "answer": "You don't have to take off your shoes"
    },
    {
     "id": "30",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Yong'in paytida liftdan foydalanish mumkin emas.",
-    "answer": "You mustn't use the lift during a fire"
+    "answer": "You mustn't use the lift during a fire",
+    "alsoAccept": [
+     "You must not use the lift during a fire"
+    ]
    }
   ]
  },
@@ -3494,7 +4329,7 @@
   "topic": "Gerund vs infinitive with change of meaning (stop, remember, forget, try, regret)",
   "title": "Gerund yoki infinitiv",
   "order": 14,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -3515,7 +4350,10 @@
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men unga qo'ng'iroq qilishni unutdim.",
-    "answer": "I forgot to call her yesterday"
+    "answer": "I forgot to call her yesterday",
+    "alsoAccept": [
+     "yesterday I forgot to call her"
+    ]
    },
    {
     "id": "4",
@@ -3533,7 +4371,12 @@
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men o'tgan yoz Turkiyaga borganimni hech qachon unutmayman.",
-    "answer": "I will never forget going to Turkey last summer"
+    "answer": "I will never forget going to Turkey last summer",
+    "alsoAccept": [
+     "I'll never forget going to Turkey last summer",
+     "last summer I will never forget going to Turkey",
+     "last summer I'll never forget going to Turkey"
+    ]
    },
    {
     "id": "7",
@@ -3554,7 +4397,10 @@
     "id": "9",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men o'tgan yili ishimni tashlaganimdan afsuslanaman.",
-    "answer": "I regret leaving my job last year"
+    "answer": "I regret leaving my job last year",
+    "alsoAccept": [
+     "last year I regret leaving my job"
+    ]
    },
    {
     "id": "10",
@@ -3590,7 +4436,10 @@
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Iltimos, bugun kechqurun menga qo'ng'iroq qilishni unutma.",
-    "answer": "Please remember to call me this evening"
+    "answer": "Please remember to call me this evening",
+    "alsoAccept": [
+     "this evening Please remember to call me"
+    ]
    },
    {
     "id": "16",
@@ -3649,14 +4498,18 @@
     "prompt": "Inglizchaga tarjima qiling: Kechqurun dorini ichishni unutmang.",
     "answer": "Do not forget to take your medicine in the evening",
     "alsoAccept": [
-     "don't forget to take your medicine in the evening"
+     "don't forget to take your medicine in the evening",
+     "in the evening don't forget to take your medicine"
     ]
    },
    {
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bu muammoni hal qilishga urindim, lekin uddalay olmadim.",
-    "answer": "I tried to solve this problem, but I couldn't"
+    "answer": "I tried to solve this problem, but I couldn't",
+    "alsoAccept": [
+     "I tried to solve this problem, but I could not"
+    ]
    },
    {
     "id": "25",
@@ -3677,7 +4530,10 @@
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bolalar uxlashdan oldin tishlarini yuvishni unutishdi.",
-    "answer": "The children forgot to brush their teeth before bed"
+    "answer": "The children forgot to brush their teeth before bed",
+    "alsoAccept": [
+     "The kids forgot to brush their teeth before bed"
+    ]
    },
    {
     "id": "28",
@@ -3706,13 +4562,18 @@
   "topic": "Verb patterns (enjoy -ing, want somebody to do, let/make + base verb)",
   "title": "Fe'l qolipları",
   "order": 15,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men kechqurun yugurishni juda yaxshi ko'raman.",
-    "answer": "I really enjoy running in the evening"
+    "answer": "I really enjoy running in the evening",
+    "alsoAccept": [
+     "I very enjoy running in the evening",
+     "in the evening I really enjoy running",
+     "in the evening I very enjoy running"
+    ]
    },
    {
     "id": "2",
@@ -3736,7 +4597,10 @@
     "id": "5",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U ertalab shahar bo'ylab sayr qilishdan zavqlanadi.",
-    "answer": "He enjoys walking around the city in the morning"
+    "answer": "He enjoys walking around the city in the morning",
+    "alsoAccept": [
+     "in the morning He enjoys walking around the city"
+    ]
    },
    {
     "id": "6",
@@ -3757,7 +4621,10 @@
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kulgili film hammani qattiq kuldirdi.",
-    "answer": "The funny film made everyone laugh loudly"
+    "answer": "The funny film made everyone laugh loudly",
+    "alsoAccept": [
+     "The funny movie made everyone laugh loudly"
+    ]
    },
    {
     "id": "9",
@@ -3810,7 +4677,9 @@
     "prompt": "Inglizchaga tarjima qiling: U har kuni kitob o'qishni to'xtatmaydi.",
     "answer": "She does not stop reading books every day",
     "alsoAccept": [
-     "She doesn't stop reading books every day"
+     "She doesn't stop reading books every day",
+     "every day She does not stop reading books",
+     "every day She doesn't stop reading books"
     ]
    },
    {
@@ -3823,7 +4692,12 @@
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz bolalarning bu yerda o'ynashiga yo'l qo'ymasligingiz kerak.",
-    "answer": "You should not let the children play here"
+    "answer": "You should not let the children play here",
+    "alsoAccept": [
+     "You shouldn't let the children play here",
+     "You should not let the kids play here",
+     "You shouldn't let the kids play here"
+    ]
    },
    {
     "id": "19",
@@ -3841,7 +4715,10 @@
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz ular bilan ertaga uchrashishga kelishib oldik.",
-    "answer": "We agreed to meet them tomorrow"
+    "answer": "We agreed to meet them tomorrow",
+    "alsoAccept": [
+     "tomorrow We agreed to meet them"
+    ]
    },
    {
     "id": "22",
@@ -3876,7 +4753,9 @@
     "prompt": "Inglizchaga tarjima qiling: Men bu ishni bugun tugatishni rejalashtiryapman.",
     "answer": "I am planning to finish this work today",
     "alsoAccept": [
-     "I'm planning to finish this work today"
+     "I'm planning to finish this work today",
+     "today I am planning to finish this work",
+     "today I'm planning to finish this work"
     ]
    },
    {
@@ -3915,7 +4794,7 @@
   "topic": "Relative clauses (who, which, whose, where; defining and non-defining)",
   "title": "Nisbiy gaplar",
   "order": 16,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -3927,7 +4806,10 @@
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men kecha sotib olgan kitob juda qiziqarli.",
-    "answer": "The book which I bought yesterday is very interesting"
+    "answer": "The book which I bought yesterday is very interesting",
+    "alsoAccept": [
+     "The book which I bought yesterday is really interesting"
+    ]
    },
    {
     "id": "3",
@@ -3957,7 +4839,10 @@
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men tug'ilgan shahar juda chiroyli.",
-    "answer": "The city where I was born is very beautiful"
+    "answer": "The city where I was born is very beautiful",
+    "alsoAccept": [
+     "The city where I was born is really beautiful"
+    ]
    },
    {
     "id": "8",
@@ -3969,7 +4854,10 @@
     "id": "9",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Dahlizda turgan odam bizning yangi menejerimiz.",
-    "answer": "The man who is standing in the hall is our new manager"
+    "answer": "The man who is standing in the hall is our new manager",
+    "alsoAccept": [
+     "The man who's standing in the hall is our new manager"
+    ]
    },
    {
     "id": "10",
@@ -3996,7 +4884,10 @@
     "id": "13",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men kutubxonada uchratgan talaba juda xushmuomala edi.",
-    "answer": "The student whom I met in the library was very polite"
+    "answer": "The student whom I met in the library was very polite",
+    "alsoAccept": [
+     "The student whom I met in the library was really polite"
+    ]
    },
    {
     "id": "14",
@@ -4008,7 +4899,10 @@
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz tushlik qilgan restoran juda qimmat edi.",
-    "answer": "The restaurant where we had lunch was very expensive"
+    "answer": "The restaurant where we had lunch was very expensive",
+    "alsoAccept": [
+     "The restaurant where we had lunch was really expensive"
+    ]
    },
    {
     "id": "16",
@@ -4029,7 +4923,10 @@
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Gapirayotgan odam bizning universitet rektori.",
-    "answer": "The man who is speaking is the rector of our university"
+    "answer": "The man who is speaking is the rector of our university",
+    "alsoAccept": [
+     "The man who's speaking is the rector of our university"
+    ]
    },
    {
     "id": "19",
@@ -4047,13 +4944,19 @@
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U yo'qotgan soat juda qimmat edi.",
-    "answer": "The watch which he lost was very expensive"
+    "answer": "The watch which he lost was very expensive",
+    "alsoAccept": [
+     "The watch which he lost was really expensive"
+    ]
    },
    {
     "id": "22",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz yashayotgan uy yuz yil oldin qurilgan.",
-    "answer": "The house where we live was built a hundred years ago"
+    "answer": "The house where we live was built a hundred years ago",
+    "alsoAccept": [
+     "The house where we live was built a 100 years ago"
+    ]
    },
    {
     "id": "23",
@@ -4094,7 +4997,12 @@
     "prompt": "Inglizchaga tarjima qiling: Men kecha ko'rgan film, juda uzun edi, menga yoqmadi.",
     "answer": "The film which I saw yesterday was very long and I did not like it",
     "alsoAccept": [
-     "The film which I saw yesterday was very long and I didn't like it"
+     "The film which I saw yesterday was very long and I didn't like it",
+     "The movie which I saw yesterday was very long and I did not like it",
+     "The film which I saw yesterday was really long and I did not like it",
+     "The movie which I saw yesterday was very long and I didn't like it",
+     "The film which I saw yesterday was really long and I didn't like it",
+     "The movie which I saw yesterday was really long and I did not like it"
     ]
    },
    {
@@ -4110,7 +5018,10 @@
     "id": "30",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Poyezd, soat sakkizda yo'lga chiqadi, hozir perronda turibdi.",
-    "answer": "The train, which leaves at eight, is standing at the platform now"
+    "answer": "The train, which leaves at eight, is standing at the platform now",
+    "alsoAccept": [
+     "The train, which leaves at 8, is standing at the platform now"
+    ]
    }
   ]
  },
@@ -4121,7 +5032,7 @@
   "topic": "Articles a, the and zero article",
   "title": "Artikllar: a, the, artiklsiz",
   "order": 17,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -4145,7 +5056,10 @@
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Hayot ba'zan juda qiyin bo'lishi mumkin.",
-    "answer": "Life can sometimes be very difficult"
+    "answer": "Life can sometimes be very difficult",
+    "alsoAccept": [
+     "Life can sometimes be really difficult"
+    ]
    },
    {
     "id": "5",
@@ -4161,19 +5075,28 @@
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz kecha dengiz bo'yida bir soat yurdik.",
-    "answer": "We walked by the sea for an hour yesterday"
+    "answer": "We walked by the sea for an hour yesterday",
+    "alsoAccept": [
+     "yesterday We walked by the sea for an hour"
+    ]
    },
    {
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U bir soatdan keyin keladi.",
-    "answer": "He will come in an hour"
+    "answer": "He will come in an hour",
+    "alsoAccept": [
+     "he'll come in an hour"
+    ]
    },
    {
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Oshxonadagi stol juda eski.",
-    "answer": "The table in the kitchen is very old"
+    "answer": "The table in the kitchen is very old",
+    "alsoAccept": [
+     "The table in the kitchen is really old"
+    ]
    },
    {
     "id": "9",
@@ -4191,13 +5114,21 @@
     "id": "11",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bolalar kechqurun maktabdan uyga qaytishdi.",
-    "answer": "The children came home from school in the evening"
+    "answer": "The children came home from school in the evening",
+    "alsoAccept": [
+     "The kids came home from school in the evening",
+     "in the evening The children came home from school",
+     "in the evening The kids came home from school"
+    ]
    },
    {
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Nil dunyodagi eng uzun daryolardan biri.",
-    "answer": "The Nile is one of the longest rivers in the world"
+    "answer": "The Nile is one of the longest rivers in the world",
+    "alsoAccept": [
+     "The Nile is 1 of the longest rivers in the world"
+    ]
    },
    {
     "id": "13",
@@ -4209,7 +5140,10 @@
     "id": "14",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Menga yangi telefon kerak, eskisi buzilgan.",
-    "answer": "I need a new phone, the old one is broken"
+    "answer": "I need a new phone, the old one is broken",
+    "alsoAccept": [
+     "I need a new phone, the old 1 is broken"
+    ]
    },
    {
     "id": "15",
@@ -4221,7 +5155,10 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Do'stim ertaga Parijga ketadi.",
-    "answer": "My friend is going to Paris tomorrow"
+    "answer": "My friend is going to Paris tomorrow",
+    "alsoAccept": [
+     "tomorrow My friend is going to Paris"
+    ]
    },
    {
     "id": "17",
@@ -4229,14 +5166,21 @@
     "prompt": "Inglizchaga tarjima qiling: U yaxshi o'qituvchi va u har kuni ertalab keladi.",
     "answer": "She is a good teacher and she comes every morning",
     "alsoAccept": [
-     "she's a good teacher and she comes every morning"
+     "she's a good teacher and she comes every morning",
+     "every morning She is a good teacher and she comes",
+     "every morning she's a good teacher and she comes"
     ]
    },
    {
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz o'tgan yili Alp tog'larida dam oldik.",
-    "answer": "We spent our holiday in the Alps last year"
+    "answer": "We spent our holiday in the Alps last year",
+    "alsoAccept": [
+     "We spent our vacation in the Alps last year",
+     "last year We spent our holiday in the Alps",
+     "last year We spent our vacation in the Alps"
+    ]
    },
    {
     "id": "19",
@@ -4251,7 +5195,10 @@
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bugun ertalab bir olma yedim.",
-    "answer": "I ate an apple this morning"
+    "answer": "I ate an apple this morning",
+    "alsoAccept": [
+     "this morning I ate an apple"
+    ]
    },
    {
     "id": "21",
@@ -4281,7 +5228,10 @@
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U kasal bo'lgani uchun kasalxonaga yotqizildi.",
-    "answer": "He was taken to hospital because he was ill"
+    "answer": "He was taken to hospital because he was ill",
+    "alsoAccept": [
+     "He was taken to hospital because he was sick"
+    ]
    },
    {
     "id": "26",
@@ -4293,7 +5243,12 @@
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Onam menga shokolad sotib berdi, shokolad juda mazali edi.",
-    "answer": "My mother bought me some chocolate and the chocolate was very tasty"
+    "answer": "My mother bought me some chocolate and the chocolate was very tasty",
+    "alsoAccept": [
+     "My mother bought me some chocolate and the chocolate was really tasty",
+     "My mother bought me some chocolate and the chocolate was very delicious",
+     "My mother bought me some chocolate and the chocolate was really delicious"
+    ]
    },
    {
     "id": "28",
@@ -4305,13 +5260,19 @@
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bir kuni Amerika Qo'shma Shtatlariga borishni orzu qilaman.",
-    "answer": "I dream of going to the United States one day"
+    "answer": "I dream of going to the United States one day",
+    "alsoAccept": [
+     "I dream of going to the United States 1 day"
+    ]
    },
    {
     "id": "30",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kecha men bitta kitob o'qidim va kitob menga yoqdi.",
-    "answer": "Yesterday I read a book and I liked the book"
+    "answer": "Yesterday I read a book and I liked the book",
+    "alsoAccept": [
+     "I read a book and I liked the book Yesterday"
+    ]
    }
   ]
  },
@@ -4322,19 +5283,25 @@
   "topic": "Countable vs uncountable nouns and quantifiers (advice, information, news, much/many, few/little)",
   "title": "Sanaladigan va sanalmaydigan otlar",
   "order": 18,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U menga juda yaxshi maslahat berdi.",
-    "answer": "She gave me very good advice"
+    "answer": "She gave me very good advice",
+    "alsoAccept": [
+     "She gave me really good advice"
+    ]
    },
    {
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bugungi yangiliklar juda yomon.",
-    "answer": "Today's news is very bad"
+    "answer": "Today's news is very bad",
+    "alsoAccept": [
+     "Today's news is really bad"
+    ]
    },
    {
     "id": "3",
@@ -4348,7 +5315,9 @@
     "prompt": "Inglizchaga tarjima qiling: Mening xonamda juda ko'p mebel bor.",
     "answer": "There is a lot of furniture in my room",
     "alsoAccept": [
-     "there's a lot of furniture in my room"
+     "there's a lot of furniture in my room",
+     "There is lots of furniture in my room",
+     "there's lots of furniture in my room"
     ]
    },
    {
@@ -4372,14 +5341,22 @@
     "prompt": "Inglizchaga tarjima qiling: Idishda juda oz sut qoldi.",
     "answer": "There is very little milk left in the jug",
     "alsoAccept": [
-     "there's very little milk left in the jug"
+     "there's very little milk left in the jug",
+     "There is very small milk left in the jug",
+     "There is really little milk left in the jug",
+     "there's very small milk left in the jug",
+     "there's really little milk left in the jug",
+     "There is really small milk left in the jug"
     ]
    },
    {
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Nechta do'stingiz bor?",
-    "answer": "How many friends do you have"
+    "answer": "How many friends do you have",
+    "alsoAccept": [
+     "How many friends do you've"
+    ]
    },
    {
     "id": "9",
@@ -4393,7 +5370,9 @@
     "prompt": "Inglizchaga tarjima qiling: Men sumkamda ikkita yangi kitob olib yuribman.",
     "answer": "I am carrying two new books in my bag",
     "alsoAccept": [
-     "I'm carrying two new books in my bag"
+     "I'm carrying two new books in my bag",
+     "I am carrying 2 new books in my bag",
+     "I'm carrying 2 new books in my bag"
     ]
    },
    {
@@ -4411,7 +5390,9 @@
     "prompt": "Inglizchaga tarjima qiling: Bizning shaharda transport harakati juda ko'p.",
     "answer": "There is a lot of traffic in our city",
     "alsoAccept": [
-     "there's a lot of traffic in our city"
+     "there's a lot of traffic in our city",
+     "There is lots of traffic in our city",
+     "there's lots of traffic in our city"
     ]
    },
    {
@@ -4424,7 +5405,15 @@
     "id": "14",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu ish uchun tajriba kerak, lekin menda juda oz tajriba bor.",
-    "answer": "This job needs experience, but I have very little experience"
+    "answer": "This job needs experience, but I have very little experience",
+    "alsoAccept": [
+     "This job needs experience, but I've very little experience",
+     "This job needs experience, but I have very small experience",
+     "This job needs experience, but I have really little experience",
+     "This job needs experience, but I've very small experience",
+     "This job needs experience, but I've really little experience",
+     "This job needs experience, but I have really small experience"
+    ]
    },
    {
     "id": "15",
@@ -4436,7 +5425,10 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening bir nechta yaxshi do'stim bor.",
-    "answer": "I have a few good friends"
+    "answer": "I have a few good friends",
+    "alsoAccept": [
+     "I've a few good friends"
+    ]
    },
    {
     "id": "17",
@@ -4448,13 +5440,21 @@
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Parkda juda kam odam bor edi.",
-    "answer": "There were very few people in the park"
+    "answer": "There were very few people in the park",
+    "alsoAccept": [
+     "There were really few people in the park"
+    ]
    },
    {
     "id": "19",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kecha men juda ko'p ish qildim.",
-    "answer": "Yesterday I did a lot of work"
+    "answer": "Yesterday I did a lot of work",
+    "alsoAccept": [
+     "Yesterday I did lots of work",
+     "I did a lot of work Yesterday",
+     "I did lots of work Yesterday"
+    ]
    },
    {
     "id": "20",
@@ -4481,7 +5481,10 @@
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Uning uyida juda ko'p kitob bor.",
-    "answer": "There are a lot of books in his house"
+    "answer": "There are a lot of books in his house",
+    "alsoAccept": [
+     "There are lots of books in his house"
+    ]
    },
    {
     "id": "24",
@@ -4502,25 +5505,39 @@
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu yerda juda kam qor yog'adi.",
-    "answer": "Very little snow falls here"
+    "answer": "Very little snow falls here",
+    "alsoAccept": [
+     "Very small snow falls here",
+     "really little snow falls here",
+     "really small snow falls here"
+    ]
    },
    {
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bizga bir oz yordam kerak edi.",
-    "answer": "We needed a little help"
+    "answer": "We needed a little help",
+    "alsoAccept": [
+     "We needed a small help"
+    ]
    },
    {
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U yangi uy uchun ko'p mebel sotib oldi.",
-    "answer": "He bought a lot of furniture for the new house"
+    "answer": "He bought a lot of furniture for the new house",
+    "alsoAccept": [
+     "He bought lots of furniture for the new house"
+    ]
    },
    {
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Stolda ikki bo'lak pishloq bor.",
-    "answer": "There are two pieces of cheese on the table"
+    "answer": "There are two pieces of cheese on the table",
+    "alsoAccept": [
+     "There are 2 pieces of cheese on the table"
+    ]
    },
    {
     "id": "30",
@@ -4529,7 +5546,8 @@
     "answer": "He does not have many friends, so he is lonely",
     "alsoAccept": [
      "He does not have many friends, so he's lonely",
-     "He doesn't have many friends, so he is lonely"
+     "He doesn't have many friends, so he is lonely",
+     "He doesn't have many friends, so he's lonely"
     ]
    }
   ]
@@ -4541,7 +5559,7 @@
   "topic": "Comparison and degree (as...as, the more...the more, too/enough, so/such)",
   "title": "Taqqoslash va daraja",
   "order": 18,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -4592,7 +5610,12 @@
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Film shunchalik qo'rqinchli ediki, biz uxlay olmadik.",
-    "answer": "The film was so scary that we could not sleep"
+    "answer": "The film was so scary that we could not sleep",
+    "alsoAccept": [
+     "The film was so scary that we couldn't sleep",
+     "The movie was so scary that we could not sleep",
+     "The movie was so scary that we couldn't sleep"
+    ]
    },
    {
     "id": "8",
@@ -4618,7 +5641,9 @@
     "prompt": "Inglizchaga tarjima qiling: U yetarlicha tez yugurmadi, shuning uchun yutqazdi.",
     "answer": "He did not run fast enough, so he lost",
     "alsoAccept": [
-     "He didn't run fast enough, so he lost"
+     "He didn't run fast enough, so he lost",
+     "He did not run quickly enough, so he lost",
+     "He didn't run quickly enough, so he lost"
     ]
    },
    {
@@ -4633,7 +5658,9 @@
     "prompt": "Inglizchaga tarjima qiling: Ob-havo kechagidek yaxshi emas.",
     "answer": "The weather is not as good as yesterday",
     "alsoAccept": [
-     "The weather isn't as good as yesterday"
+     "The weather isn't as good as yesterday",
+     "yesterday The weather is not as good as",
+     "yesterday The weather isn't as good as"
     ]
    },
    {
@@ -4655,7 +5682,10 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu yo'l boshqasidan ko'ra xavfliroq.",
-    "answer": "This road is more dangerous than the other one"
+    "answer": "This road is more dangerous than the other one",
+    "alsoAccept": [
+     "This road is more dangerous than the other 1"
+    ]
    },
    {
     "id": "17",
@@ -4670,7 +5700,11 @@
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mashinaning narxi shunchalik balandki, men uni sotib ola olmayman.",
-    "answer": "The price of the car is so high that I cannot buy it"
+    "answer": "The price of the car is so high that I cannot buy it",
+    "alsoAccept": [
+     "The price of the car is so high that I can't buy it",
+     "The price of the car is so high that I can not buy it"
+    ]
    },
    {
     "id": "19",
@@ -4678,7 +5712,9 @@
     "prompt": "Inglizchaga tarjima qiling: Bu xona hammaga sig'ishi uchun yetarlicha katta emas.",
     "answer": "This room is not big enough for everyone",
     "alsoAccept": [
-     "This room isn't big enough for everyone"
+     "This room isn't big enough for everyone",
+     "This room is not large enough for everyone",
+     "This room isn't large enough for everyone"
     ]
    },
    {
@@ -4703,7 +5739,10 @@
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz shunday go'zal kunni kutmagan edik.",
-    "answer": "We had not expected such a beautiful day"
+    "answer": "We had not expected such a beautiful day",
+    "alsoAccept": [
+     "We hadn't expected such a beautiful day"
+    ]
    },
    {
     "id": "24",
@@ -4715,13 +5754,20 @@
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu kitob avvalgisidan kamroq qiziqarli.",
-    "answer": "This book is less interesting than the previous one"
+    "answer": "This book is less interesting than the previous one",
+    "alsoAccept": [
+     "This book is less interesting than the previous 1"
+    ]
    },
    {
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu ish shunchalik qiyinki, men uni bajara olmayman.",
-    "answer": "This job is so difficult that I cannot do it"
+    "answer": "This job is so difficult that I cannot do it",
+    "alsoAccept": [
+     "This job is so difficult that I can't do it",
+     "This job is so difficult that I can not do it"
+    ]
    },
    {
     "id": "27",
@@ -4759,7 +5805,7 @@
   "topic": "Confusing word pairs (say/tell, make/do, lend/borrow, bring/take, hear/listen)",
   "title": "Adashtiradigan so'z juftlari",
   "order": 19,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -4777,13 +5823,19 @@
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men kecha ertalab sizga qo'ng'iroq qilmoqchi edim.",
-    "answer": "I wanted to call you yesterday morning"
+    "answer": "I wanted to call you yesterday morning",
+    "alsoAccept": [
+     "yesterday morning I wanted to call you"
+    ]
    },
    {
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kechqurun men odatda kechki ovqat pishiraman.",
-    "answer": "In the evening I usually make dinner"
+    "answer": "In the evening I usually make dinner",
+    "alsoAccept": [
+     "I usually make dinner In the evening"
+    ]
    },
    {
     "id": "5",
@@ -4807,7 +5859,10 @@
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ertaga albatta darslikni o'zingiz bilan olib keling.",
-    "answer": "Please bring your textbook with you tomorrow"
+    "answer": "Please bring your textbook with you tomorrow",
+    "alsoAccept": [
+     "tomorrow Please bring your textbook with you"
+    ]
    },
    {
     "id": "9",
@@ -4822,7 +5877,8 @@
     "answer": "I am listening to music, so I did not hear you",
     "alsoAccept": [
      "I'm listening to music, so I did not hear you",
-     "I am listening to music, so I didn't hear you"
+     "I am listening to music, so I didn't hear you",
+     "I'm listening to music, so I didn't hear you"
     ]
    },
    {
@@ -4843,14 +5899,19 @@
     "prompt": "Inglizchaga tarjima qiling: Bu xato qilish uchun juda katta imkoniyat emas.",
     "answer": "This is not a big enough chance to make a mistake",
     "alsoAccept": [
-     "This isn't a big enough chance to make a mistake"
+     "This isn't a big enough chance to make a mistake",
+     "This is not a large enough chance to make a mistake",
+     "This isn't a large enough chance to make a mistake"
     ]
    },
    {
     "id": "14",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men yaxshi qaror qabul qilishim kerak.",
-    "answer": "I must make a good decision"
+    "answer": "I must make a good decision",
+    "alsoAccept": [
+     "I have to make a good decision"
+    ]
    },
    {
     "id": "15",
@@ -4858,7 +5919,9 @@
     "prompt": "Inglizchaga tarjima qiling: Biz ushbu loyihada ko'p ish qilyapmiz.",
     "answer": "We are doing a lot of work on this project",
     "alsoAccept": [
-     "we're doing a lot of work on this project"
+     "we're doing a lot of work on this project",
+     "We are doing lots of work on this project",
+     "we're doing lots of work on this project"
     ]
    },
    {
@@ -4871,7 +5934,10 @@
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kecha mening o'rtog'im mendan pul qarz oldi.",
-    "answer": "Yesterday my friend borrowed money from me"
+    "answer": "Yesterday my friend borrowed money from me",
+    "alsoAccept": [
+     "my friend borrowed money from me Yesterday"
+    ]
    },
    {
     "id": "18",
@@ -4883,7 +5949,10 @@
     "id": "19",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bolalarni ertaga bog'chaga kim olib boradi?",
-    "answer": "Who will take the children to kindergarten tomorrow"
+    "answer": "Who will take the children to kindergarten tomorrow",
+    "alsoAccept": [
+     "Who will take the kids to kindergarten tomorrow"
+    ]
    },
    {
     "id": "20",
@@ -4925,13 +5994,19 @@
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mashinangizni menga bir kunga qarzga bera olasizmi?",
-    "answer": "Can you lend me your car for one day"
+    "answer": "Can you lend me your car for one day",
+    "alsoAccept": [
+     "Can you lend me your car for 1 day"
+    ]
    },
    {
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men kutubxonadan uchta kitob qarzga olishim mumkin.",
-    "answer": "I can borrow three books from the library"
+    "answer": "I can borrow three books from the library",
+    "alsoAccept": [
+     "I can borrow 3 books from the library"
+    ]
    },
    {
     "id": "28",
@@ -4966,7 +6041,7 @@
   "topic": "Dependent prepositions",
   "title": "Bog'lanuvchi predloglar",
   "order": 20,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -4990,7 +6065,10 @@
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Kim bu xatolar uchun javobgar?",
-    "answer": "Who is responsible for these mistakes"
+    "answer": "Who is responsible for these mistakes",
+    "alsoAccept": [
+     "who's responsible for these mistakes"
+    ]
    },
    {
     "id": "5",
@@ -5014,7 +6092,12 @@
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu telefon eskisidan juda farq qiladi.",
-    "answer": "This phone is very different from the old one"
+    "answer": "This phone is very different from the old one",
+    "alsoAccept": [
+     "This phone is really different from the old one",
+     "This phone is very different from the old 1",
+     "This phone is really different from the old 1"
+    ]
    },
    {
     "id": "9",
@@ -5032,7 +6115,12 @@
     "id": "11",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz ertaga byudjetni muhokama qilamiz.",
-    "answer": "We will discuss the budget tomorrow"
+    "answer": "We will discuss the budget tomorrow",
+    "alsoAccept": [
+     "we'll discuss the budget tomorrow",
+     "tomorrow We will discuss the budget",
+     "tomorrow we'll discuss the budget"
+    ]
    },
    {
     "id": "12",
@@ -5044,7 +6132,12 @@
     "id": "13",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Samolyot Londonga ertalab soat sakkizda yetib keldi.",
-    "answer": "The plane arrived in London at eight in the morning"
+    "answer": "The plane arrived in London at eight in the morning",
+    "alsoAccept": [
+     "in the morning The plane arrived in London at eight",
+     "The plane arrived in London at 8 in the morning",
+     "in the morning The plane arrived in London at 8"
+    ]
    },
    {
     "id": "14",
@@ -5056,13 +6149,20 @@
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U mehmonxonaga kechqurun yetib keldi.",
-    "answer": "He arrived at the hotel in the evening"
+    "answer": "He arrived at the hotel in the evening",
+    "alsoAccept": [
+     "in the evening He arrived at the hotel"
+    ]
    },
    {
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men shovqinga ko'nika olmayman.",
-    "answer": "I cannot get used to the noise"
+    "answer": "I cannot get used to the noise",
+    "alsoAccept": [
+     "I can't get used to the noise",
+     "I can not get used to the noise"
+    ]
    },
    {
     "id": "17",
@@ -5097,7 +6197,9 @@
     "prompt": "Inglizchaga tarjima qiling: Men bugungi natijadan juda faxrlanaman.",
     "answer": "I am very proud of today's result",
     "alsoAccept": [
-     "I'm very proud of today's result"
+     "I'm very proud of today's result",
+     "I am really proud of today's result",
+     "I'm really proud of today's result"
     ]
    },
    {
@@ -5122,7 +6224,10 @@
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bu kitobning yaxshi bo'lishiga ishonaman.",
-    "answer": "I believe in the quality of this book"
+    "answer": "I believe in the quality of this book",
+    "alsoAccept": [
+     "I believe that in the quality of this book"
+    ]
    },
    {
     "id": "26",
@@ -5166,7 +6271,7 @@
   "topic": "Time and place prepositions",
   "title": "Vaqt va joy predloglari",
   "order": 21,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -5178,13 +6283,19 @@
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Uchrashuv dushanba kuni bo'ladi.",
-    "answer": "The meeting will be on Monday"
+    "answer": "The meeting will be on Monday",
+    "alsoAccept": [
+     "on Monday The meeting will be"
+    ]
    },
    {
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Poyezd soat yettida jo'naydi.",
-    "answer": "The train leaves at seven o'clock"
+    "answer": "The train leaves at seven o'clock",
+    "alsoAccept": [
+     "The train leaves at 7 o'clock"
+    ]
    },
    {
     "id": "4",
@@ -5202,7 +6313,12 @@
     "id": "6",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men dam olish kunlari kech turaman.",
-    "answer": "I get up late at the weekend"
+    "answer": "I get up late at the weekend",
+    "alsoAccept": [
+     "I get up late on the weekend",
+     "at the weekend I get up late",
+     "on the weekend I get up late"
+    ]
    },
    {
     "id": "7",
@@ -5214,7 +6330,10 @@
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men uch yil davomida Berlinda yashadim.",
-    "answer": "I lived in Berlin for three years"
+    "answer": "I lived in Berlin for three years",
+    "alsoAccept": [
+     "I lived in Berlin for 3 years"
+    ]
    },
    {
     "id": "9",
@@ -5226,19 +6345,28 @@
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz hisobotni juma kunigacha topshirishingiz kerak.",
-    "answer": "You must hand in the report by Friday"
+    "answer": "You must hand in the report by Friday",
+    "alsoAccept": [
+     "you have to hand in the report by Friday"
+    ]
    },
    {
     "id": "11",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men soat beshgacha ishlayman.",
-    "answer": "I work until five o'clock"
+    "answer": "I work until five o'clock",
+    "alsoAccept": [
+     "I work until 5 o'clock"
+    ]
    },
    {
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz do'konga yopilishidan oldin yetib keldik.",
-    "answer": "We reached the shop before it closed"
+    "answer": "We reached the shop before it closed",
+    "alsoAccept": [
+     "We reached the store before it closed"
+    ]
    },
    {
     "id": "13",
@@ -5250,7 +6378,12 @@
     "id": "14",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular filmning boshlanishiga yetib kelishdi, kechikishmadi.",
-    "answer": "They arrived in time for the start of the film"
+    "answer": "They arrived in time for the start of the film",
+    "alsoAccept": [
+     "They arrived in time for the start of the movie",
+     "They arrived in time for the begin of the film",
+     "They arrived in time for the begin of the movie"
+    ]
    },
    {
     "id": "15",
@@ -5262,7 +6395,10 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men kecha kutubxonada edim.",
-    "answer": "I was at the library yesterday"
+    "answer": "I was at the library yesterday",
+    "alsoAccept": [
+     "yesterday I was at the library"
+    ]
    },
    {
     "id": "17",
@@ -5298,31 +6434,48 @@
     "id": "22",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bu yerda ikki yildan beri yashayman.",
-    "answer": "I have lived here since two years ago"
+    "answer": "I have lived here since two years ago",
+    "alsoAccept": [
+     "I've lived here since two years ago",
+     "I have lived here since 2 years ago",
+     "I've lived here since 2 years ago"
+    ]
    },
    {
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men uni bir haftadan keyin ko'raman.",
-    "answer": "I will see him in a week"
+    "answer": "I will see him in a week",
+    "alsoAccept": [
+     "I'll see him in a week"
+    ]
    },
    {
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U ketganiga ikki soat bo'ldi.",
-    "answer": "He left two hours ago"
+    "answer": "He left two hours ago",
+    "alsoAccept": [
+     "He left 2 hours ago"
+    ]
    },
    {
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men tushlikdan keyin sizga qo'ng'iroq qilaman.",
-    "answer": "I will call you after lunch"
+    "answer": "I will call you after lunch",
+    "alsoAccept": [
+     "I'll call you after lunch"
+    ]
    },
    {
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular tunda yo'lga chiqishdi.",
-    "answer": "They set off at night"
+    "answer": "They set off at night",
+    "alsoAccept": [
+     "at night They set off"
+    ]
    },
    {
     "id": "27",
@@ -5334,7 +6487,12 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Dars soat to'qqizdan o'n birgacha davom etadi.",
-    "answer": "The lesson lasts from nine to eleven"
+    "answer": "The lesson lasts from nine to eleven",
+    "alsoAccept": [
+     "The lesson lasts from 9 to eleven",
+     "The lesson lasts from nine to 11",
+     "The lesson lasts from 9 to 11"
+    ]
    },
    {
     "id": "29",
@@ -5346,7 +6504,10 @@
     "id": "30",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Muzey ikki bino orasida joylashgan.",
-    "answer": "The museum is located between two buildings"
+    "answer": "The museum is located between two buildings",
+    "alsoAccept": [
+     "The museum is located between 2 buildings"
+    ]
    }
   ]
  },
@@ -5357,7 +6518,7 @@
   "topic": "Phrasal verbs: separable vs inseparable",
   "title": "Frazali fe'llar: ajraladigan va ajralmaydigan",
   "order": 22,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -5375,7 +6536,10 @@
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bolalarga qarayman.",
-    "answer": "I look after the children"
+    "answer": "I look after the children",
+    "alsoAccept": [
+     "I look after the kids"
+    ]
    },
    {
     "id": "4",
@@ -5423,13 +6587,19 @@
     "id": "11",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men kecha eski do'stimga duch keldim.",
-    "answer": "I ran into an old friend yesterday"
+    "answer": "I ran into an old friend yesterday",
+    "alsoAccept": [
+     "yesterday I ran into an old friend"
+    ]
    },
    {
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men unga kecha duch keldim.",
-    "answer": "I ran into him yesterday"
+    "answer": "I ran into him yesterday",
+    "alsoAccept": [
+     "yesterday I ran into him"
+    ]
    },
    {
     "id": "13",
@@ -5477,7 +6647,10 @@
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bu muammoni o'ylab ko'raman.",
-    "answer": "I will think about this problem"
+    "answer": "I will think about this problem",
+    "alsoAccept": [
+     "I'll think about this problem"
+    ]
    },
    {
     "id": "21",
@@ -5525,7 +6698,10 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Biz bu masalaga yaqinda qaytamiz.",
-    "answer": "We will get back to this issue soon"
+    "answer": "We will get back to this issue soon",
+    "alsoAccept": [
+     "we'll get back to this issue soon"
+    ]
    },
    {
     "id": "29",
@@ -5548,7 +6724,7 @@
   "topic": "Common phrasal verbs",
   "title": "Eng ko'p ishlatiladigan frazali fe'llar",
   "order": 22,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -5581,7 +6757,10 @@
     "id": "5",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Uyda sut tugab qoldi.",
-    "answer": "We have run out of milk at home"
+    "answer": "We have run out of milk at home",
+    "alsoAccept": [
+     "we've run out of milk at home"
+    ]
    },
    {
     "id": "6",
@@ -5611,7 +6790,11 @@
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men bu yo'qotishni hali unuta olmayman.",
-    "answer": "I cannot get over this loss yet"
+    "answer": "I cannot get over this loss yet",
+    "alsoAccept": [
+     "I can't get over this loss yet",
+     "I can not get over this loss yet"
+    ]
    },
    {
     "id": "11",
@@ -5619,7 +6802,8 @@
     "prompt": "Inglizchaga tarjima qiling: Men bunday shovqinga chidab turolmayman.",
     "answer": "I can't put up with this kind of noise",
     "alsoAccept": [
-     "I can not put up with this kind of noise"
+     "I can not put up with this kind of noise",
+     "I cannot put up with this kind of noise"
     ]
    },
    {
@@ -5643,23 +6827,25 @@
     "prompt": "Inglizchaga tarjima qiling: Biz yozgi ta'tilni intiqlik bilan kutyapmiz.",
     "answer": "We are looking forward to the summer holiday",
     "alsoAccept": [
-     "we're looking forward to the summer holiday"
+     "we're looking forward to the summer holiday",
+     "We are looking forward to the summer vacation",
+     "we're looking forward to the summer vacation"
     ]
    },
    {
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz bu kasalni yaxshi bilasiz, shunday emasmi?",
-    "answer": "You know about this illness well, don't you",
-    "alsoAccept": [
-     "You know about this illness well, do not you"
-    ]
+    "answer": "You know about this illness well, don't you"
    },
    {
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men kutubxonaga borib yangi kitoblarni tekshirib ko'raman.",
-    "answer": "I will check out the new books at the library"
+    "answer": "I will check out the new books at the library",
+    "alsoAccept": [
+     "I'll check out the new books at the library"
+    ]
    },
    {
     "id": "17",
@@ -5701,7 +6887,10 @@
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bola tez katta bo'lib ketdi.",
-    "answer": "The child grew up quickly"
+    "answer": "The child grew up quickly",
+    "alsoAccept": [
+     "The child grew up fast"
+    ]
    },
    {
     "id": "24",
@@ -5713,19 +6902,30 @@
     "id": "25",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mehmonlar soat o'nda ketishdi.",
-    "answer": "The guests left at ten o'clock"
+    "answer": "The guests left at ten o'clock",
+    "alsoAccept": [
+     "The guests left at 10 o'clock"
+    ]
    },
    {
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ular yangi do'kon ochishdi.",
-    "answer": "They set up a new shop"
+    "answer": "They set up a new shop",
+    "alsoAccept": [
+     "They set up a new store"
+    ]
    },
    {
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men ertalab soat oltida uyg'onaman.",
-    "answer": "I wake up at six in the morning"
+    "answer": "I wake up at six in the morning",
+    "alsoAccept": [
+     "in the morning I wake up at six",
+     "I wake up at 6 in the morning",
+     "in the morning I wake up at 6"
+    ]
    },
    {
     "id": "28",
@@ -5754,7 +6954,7 @@
   "topic": "Linking words",
   "title": "Bog'lovchi so'zlar",
   "order": 23,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
@@ -5778,7 +6978,10 @@
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U kasal bo'lishiga qaramay, ishga keldi.",
-    "answer": "Despite being ill, he came to work"
+    "answer": "Despite being ill, he came to work",
+    "alsoAccept": [
+     "Despite being sick, he came to work"
+    ]
    },
    {
     "id": "5",
@@ -5786,7 +6989,9 @@
     "prompt": "Inglizchaga tarjima qiling: Men juda charchadim. Biroq, dam olmadim.",
     "answer": "I was very tired. However, I did not rest",
     "alsoAccept": [
-     "I was very tired. However, I didn't rest"
+     "I was very tired. However, I didn't rest",
+     "I was really tired. However, I did not rest",
+     "I was really tired. However, I didn't rest"
     ]
    },
    {
@@ -5843,14 +7048,19 @@
     "prompt": "Inglizchaga tarjima qiling: Agar siz tayyorlanmasangiz, imtihondan o'ta olmaysiz.",
     "answer": "Unless you prepare, you will not pass the exam",
     "alsoAccept": [
-     "Unless you prepare, you won't pass the exam"
+     "Unless you prepare, you won't pass the exam",
+     "Unless you prepare, you'll not pass the exam"
     ]
    },
    {
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar ular rozi bo'lmasa, biz kelishuvga erisha olmaymiz.",
-    "answer": "Unless they agree, we cannot reach an agreement"
+    "answer": "Unless they agree, we cannot reach an agreement",
+    "alsoAccept": [
+     "Unless they agree, we can't reach an agreement",
+     "Unless they agree, we can not reach an agreement"
+    ]
    },
    {
     "id": "16",
@@ -5889,7 +7099,10 @@
     "id": "21",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Shuning uchun men bugun uyda qoldim.",
-    "answer": "That is why I stayed at home today"
+    "answer": "That is why I stayed at home today",
+    "alsoAccept": [
+     "that's why I stayed at home today"
+    ]
    },
    {
     "id": "22",
@@ -5903,7 +7116,8 @@
     "prompt": "Inglizchaga tarjima qiling: Birinchidan, bu arzon. Ikkinchidan, u qulay.",
     "answer": "Firstly, it is cheap. Secondly, it is convenient",
     "alsoAccept": [
-     "Firstly, it's cheap. Secondly, it is convenient"
+     "Firstly, it's cheap. Secondly, it is convenient",
+     "Firstly, it's cheap. Secondly, it's convenient"
     ]
    },
    {
@@ -5924,14 +7138,21 @@
     "prompt": "Inglizchaga tarjima qiling: Bir tomondan, shahar qulay, boshqa tomondan, qimmat.",
     "answer": "On the one hand, the city is convenient; on the other hand, it is expensive",
     "alsoAccept": [
-     "On the one hand, the city is convenient; on the other hand, it's expensive"
+     "On the one hand, the city is convenient; on the other hand, it's expensive",
+     "On the 1 hand, the city is convenient; on the other hand, it is expensive",
+     "On the 1 hand, the city is convenient; on the other hand, it's expensive"
     ]
    },
    {
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Xullas, biz ertaga boshlaymiz.",
-    "answer": "In short, we will start tomorrow"
+    "answer": "In short, we will start tomorrow",
+    "alsoAccept": [
+     "In short, we'll start tomorrow",
+     "In short, we will begin tomorrow",
+     "In short, we'll begin tomorrow"
+    ]
    },
    {
     "id": "28",
@@ -5939,7 +7160,9 @@
     "prompt": "Inglizchaga tarjima qiling: Kuchli ishlasangiz ham, bu ish tez tugamaydi.",
     "answer": "Even if you work hard, this job will not finish quickly",
     "alsoAccept": [
-     "Even if you work hard, this job won't finish quickly"
+     "Even if you work hard, this job won't finish quickly",
+     "Even if you work hard, this job will not finish fast",
+     "Even if you work hard, this job won't finish fast"
     ]
    },
    {
@@ -5954,7 +7177,10 @@
     "prompt": "Inglizchaga tarjima qiling: Garchi u yosh bo'lsa-da, juda tajribali.",
     "answer": "Although he is young, he is very experienced",
     "alsoAccept": [
-     "Although he's young, he is very experienced"
+     "Although he's young, he is very experienced",
+     "Although he is young, he is really experienced",
+     "Although he's young, he's very experienced",
+     "Although he's young, he is really experienced"
     ]
    }
   ]
@@ -5966,13 +7192,16 @@
   "topic": "Typical mistakes of Uzbek speakers",
   "title": "O'zbek tilida so'zlovchilarning odatiy xatolari",
   "order": 24,
-  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) ham qabul qilinadi.",
+  "intro": "O'zbekcha gaplarni inglizchaga tarjima qiling. Qisqartmalar (I'm, don't) va ma'nosi bir xil boshqa to'g'ri variantlar (sinonim, vaqt iborasining o'rni, raqam) ham qabul qilinadi.",
   "items": [
    {
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men Toshkentda yashaydigan bir do'stim bor.",
-    "answer": "I have a friend who lives in Tashkent"
+    "answer": "I have a friend who lives in Tashkent",
+    "alsoAccept": [
+     "I've a friend who lives in Tashkent"
+    ]
    },
    {
     "id": "2",
@@ -5990,7 +7219,10 @@
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu juda foydali ma'lumot edi.",
-    "answer": "That was very useful information"
+    "answer": "That was very useful information",
+    "alsoAccept": [
+     "That was really useful information"
+    ]
    },
    {
     "id": "5",
@@ -6011,25 +7243,39 @@
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men uyga borganimda, sizga qo'ng'iroq qilaman.",
-    "answer": "When I get home, I will call you"
+    "answer": "When I get home, I will call you",
+    "alsoAccept": [
+     "When I get home, I'll call you"
+    ]
    },
    {
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Agar ertaga yomg'ir yog'sa, biz uyda qolamiz.",
-    "answer": "If it rains tomorrow, we will stay at home"
+    "answer": "If it rains tomorrow, we will stay at home",
+    "alsoAccept": [
+     "If it rains tomorrow, we'll stay at home"
+    ]
    },
    {
     "id": "9",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: U kelishi bilan biz boshlaymiz.",
-    "answer": "As soon as he comes, we will begin"
+    "answer": "As soon as he comes, we will begin",
+    "alsoAccept": [
+     "As soon as he comes, we'll begin",
+     "As soon as he comes, we will start",
+     "As soon as he comes, we'll start"
+    ]
    },
    {
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Siz kelgunga qadar men ishni tugataman.",
-    "answer": "I will have finished the work by the time you come"
+    "answer": "I will have finished the work by the time you come",
+    "alsoAccept": [
+     "I'll have finished the work by the time you come"
+    ]
    },
    {
     "id": "11",
@@ -6074,19 +7320,28 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bugun hech kim kelmadi.",
-    "answer": "Nobody came today"
+    "answer": "Nobody came today",
+    "alsoAccept": [
+     "today Nobody came"
+    ]
    },
    {
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men Londonga bir marta borganman.",
-    "answer": "I have been to London once"
+    "answer": "I have been to London once",
+    "alsoAccept": [
+     "I've been to London once"
+    ]
    },
    {
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men Londonga o'tgan yili bordim.",
-    "answer": "I went to London last year"
+    "answer": "I went to London last year",
+    "alsoAccept": [
+     "last year I went to London"
+    ]
    },
    {
     "id": "19",
@@ -6098,7 +7353,10 @@
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Men 2020-yildan beri bu kompaniyada ishlayman.",
-    "answer": "I have worked in this company since 2020"
+    "answer": "I have worked in this company since 2020",
+    "alsoAccept": [
+     "I've worked in this company since 2020"
+    ]
    },
    {
     "id": "21",
@@ -6119,13 +7377,21 @@
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Menda biroz vaqt bor.",
-    "answer": "I have a little time"
+    "answer": "I have a little time",
+    "alsoAccept": [
+     "I've a little time",
+     "I have a small time",
+     "I've a small time"
+    ]
    },
    {
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Menga ikki parcha non kerak.",
-    "answer": "I need two pieces of bread"
+    "answer": "I need two pieces of bread",
+    "alsoAccept": [
+     "I need 2 pieces of bread"
+    ]
    },
    {
     "id": "25",
@@ -6143,13 +7409,21 @@
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ob-havo bugun juda yaxshi.",
-    "answer": "The weather is very nice today"
+    "answer": "The weather is very nice today",
+    "alsoAccept": [
+     "The weather is really nice today",
+     "today The weather is very nice",
+     "today The weather is really nice"
+    ]
    },
    {
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening ishim juda qiziqarli.",
-    "answer": "My job is very interesting"
+    "answer": "My job is very interesting",
+    "alsoAccept": [
+     "My job is really interesting"
+    ]
    },
    {
     "id": "29",
