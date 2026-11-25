@@ -19,6 +19,22 @@ h.L.forEach((l) => {
   if (l.items.length < 10) console.warn(`${l.code} has only ${l.items.length} items`);
 });
 
+// 10 coding labs per lesson. They need a real browser to run (web pages/cssLab.ts), so here only the shape is checked.
+const lab = (title, task, setup, solution, tests, hint) => ({
+  title, task, starter: '/* CSS ni shu yerga yozing */\n', solution, tests: tests.map(([call, expect]) => ({ call, expect: JSON.stringify(expect) })), hint, kind: 'css', setup,
+});
+const labs = {};
+['./css-labs1.cjs', './css-labs2.cjs', './css-labs3.cjs'].forEach((p) => Object.assign(labs, require(p)(lab)));
+let labCount = 0;
+h.L.forEach((l) => {
+  const list = labs[l.order];
+  if (!list || list.length !== 10) throw new Error(`${l.code}: needs 10 labs, has ${list ? list.length : 0}`);
+  list.forEach((b, i) => { b.id = String(i + 1); });
+  l.labs = list;
+  labCount += list.length;
+});
+console.log('labs', labCount);
+
 fs.writeFileSync('E:/frontend/app-dictionary/app-dictionary-server/src/main/resources/dev/frontend-css-junior.json', JSON.stringify(h.L, null, 1));
 console.log('lessons', h.L.length, 'items', items);
 

@@ -591,7 +591,7 @@ export function DevLessonPage() {
   const labCard = lesson.labs.length > 0 && (
     <Card className="dv-start dv-labcard rise">
       <b>🧪 Laboratoriya</b>
-      <p>{lesson.labs.length} ta amaliy topshiriq: JavaScript kodini o'zingiz yozasiz, tizim to'g'riligini tekshiradi · bajarildi: {labsDone}/{lesson.labs.length}</p>
+      <p>{lesson.labs.length} ta amaliy topshiriq: {lesson.labs[0].kind === 'css' ? 'CSS stillarini' : lesson.labs[0].kind === 'git' ? 'git buyruqlarini' : 'JavaScript kodini'} o'zingiz yozasiz, tizim to'g'riligini tekshiradi · bajarildi: {labsDone}/{lesson.labs.length}</p>
       <Button variant="outline" block onClick={() => setStage('lab')}>{labsDone > 0 ? 'Laboratoriyani davom ettirish' : 'Laboratoriyani boshlash'}</Button>
     </Card>
   );

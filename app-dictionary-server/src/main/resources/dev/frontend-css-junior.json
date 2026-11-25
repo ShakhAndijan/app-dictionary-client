@@ -319,6 +319,224 @@
      "focus-visible"
     ]
    }
+  ],
+  "labs": [
+   {
+    "title": "Class selector (class bo'yicha tanlovchi)",
+    "task": ".hot class li elementlarning matnini qizil (red) qiling. Boshqalari qora qolsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".hot { color: red; }",
+    "tests": [
+     {
+      "call": "all('li','color')",
+      "expect": "[\"rgb(255, 0, 0)\",\"rgb(0, 0, 0)\",\"rgb(255, 0, 0)\"]"
+     }
+    ],
+    "hint": "Class tanlovchi nuqta bilan boshlanadi.",
+    "kind": "css",
+    "setup": "<ul>\n  <li class=\"hot\">A</li>\n  <li>B</li>\n  <li class=\"hot\">C</li>\n</ul>",
+    "id": "1"
+   },
+   {
+    "title": "Faqat bevosita bola",
+    "task": ".menu ning BEVOSITA bolalari bo'lgan li larni ko'k (blue) qiling; ichki ro'yxatdagi li qora qolsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".menu > li { color: blue; }\n.menu > li li { color: black; }",
+    "tests": [
+     {
+      "call": "css('#a','color')",
+      "expect": "\"rgb(0, 0, 255)\""
+     },
+     {
+      "call": "css('#b','color')",
+      "expect": "\"rgb(0, 0, 255)\""
+     },
+     {
+      "call": "css('#c','color')",
+      "expect": "\"rgb(0, 0, 0)\""
+     },
+     {
+      "call": "rule('.menu>li','color')",
+      "expect": "\"blue\""
+     }
+    ],
+    "hint": "> belgisi — child combinator (bevosita bola).",
+    "kind": "css",
+    "setup": "<ul class=\"menu\">\n  <li id=\"a\">Bosh sahifa</li>\n  <li id=\"b\">Xizmatlar\n    <ul><li id=\"c\" style=\"color: black\">Dizayn</li></ul>\n  </li>\n</ul>\n<style>.menu ul li { color: black; }</style>",
+    "id": "2"
+   },
+   {
+    "title": "Adjacent sibling (qo'shni element)",
+    "task": "h2 dan keyin DARHOL kelgan paragrafni qalin (font-weight: 700) qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "h2 + p { font-weight: 700; }",
+    "tests": [
+     {
+      "call": "css('#a','font-weight')",
+      "expect": "\"700\""
+     },
+     {
+      "call": "css('#b','font-weight')",
+      "expect": "\"400\""
+     }
+    ],
+    "hint": "+ — faqat darhol keyingi aka-uka.",
+    "kind": "css",
+    "setup": "<h2>Sarlavha</h2>\n<p id=\"a\">Kirish matni</p>\n<p id=\"b\">Davomi</p>",
+    "id": "3"
+   },
+   {
+    "title": "Barcha keyingi aka-ukalar",
+    "task": ".start dan keyingi barcha p elementlarini yashil (green) qiling. .start dan oldingisi qora qolsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".start ~ p { color: green; }",
+    "tests": [
+     {
+      "call": "css('#a','color')",
+      "expect": "\"rgb(0, 0, 0)\""
+     },
+     {
+      "call": "css('.start','color')",
+      "expect": "\"rgb(0, 0, 0)\""
+     },
+     {
+      "call": "css('#b','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     },
+     {
+      "call": "css('#c','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     }
+    ],
+    "hint": "~ — general sibling combinator.",
+    "kind": "css",
+    "setup": "<div>\n  <p id=\"a\">Oldin</p>\n  <p class=\"start\">Boshlanish</p>\n  <span>oraliq</span>\n  <p id=\"b\">Keyin 1</p>\n  <p id=\"c\">Keyin 2</p>\n</div>",
+    "id": "4"
+   },
+   {
+    "title": "Attribute selector (atribut bo'yicha)",
+    "task": "href qiymati https bilan BOSHLANADIGAN havolalarni yashil (green) qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "a { color: blue; }\na[href^=\"https\"] { color: green; }",
+    "tests": [
+     {
+      "call": "css('#a','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     },
+     {
+      "call": "css('#c','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     },
+     {
+      "call": "color(css('#b','color')) !== color('green')",
+      "expect": "true"
+     }
+    ],
+    "hint": "[href^=\"...\"] — qiymat shu bilan boshlanadi.",
+    "kind": "css",
+    "setup": "<a id=\"a\" href=\"https://a.uz\">Xavfsiz</a>\n<a id=\"b\" href=\"http://b.uz\">Oddiy</a>\n<a id=\"c\" href=\"https://c.uz\">Xavfsiz 2</a>",
+    "id": "5"
+   },
+   {
+    "title": "Fayl turi bo'yicha",
+    "task": ".pdf bilan TUGAYDIGAN havolalarga tagiga chiziqni olib tashlang (text-decoration: none). Boshqalarida chiziq qolsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "a[href$=\".pdf\"] { text-decoration: none; }",
+    "tests": [
+     {
+      "call": "css('#a','text-decoration-line')",
+      "expect": "\"none\""
+     },
+     {
+      "call": "css('#b','text-decoration-line')",
+      "expect": "\"underline\""
+     }
+    ],
+    "hint": "[href$=\"...\"] — qiymat shu bilan tugaydi.",
+    "kind": "css",
+    "setup": "<a id=\"a\" href=\"/kitob.pdf\">Kitob</a>\n<a id=\"b\" href=\"/rasm.png\">Rasm</a>",
+    "id": "6"
+   },
+   {
+    "title": "Zebra jadval",
+    "task": ":nth-child yordamida JUFT (2, 4) qatorlarning fonini rgb(238, 238, 238) qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "li:nth-child(even) { background: rgb(238, 238, 238); }",
+    "tests": [
+     {
+      "call": "all('li','background-color')",
+      "expect": "[\"rgba(0, 0, 0, 0)\",\"rgb(238, 238, 238)\",\"rgba(0, 0, 0, 0)\",\"rgb(238, 238, 238)\"]"
+     }
+    ],
+    "hint": "even yoki 2n.",
+    "kind": "css",
+    "setup": "<ul>\n  <li>1</li>\n  <li>2</li>\n  <li>3</li>\n  <li>4</li>\n</ul>",
+    "id": "7"
+   },
+   {
+    "title": ":not() bilan inkor",
+    "task": "done class i BO'LMAGAN li larni qizil qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "li:not(.done) { color: red; }",
+    "tests": [
+     {
+      "call": "all('li','color')",
+      "expect": "[\"rgb(0, 0, 0)\",\"rgb(255, 0, 0)\",\"rgb(0, 0, 0)\",\"rgb(255, 0, 0)\"]"
+     }
+    ],
+    "hint": "li:not(.done)",
+    "kind": "css",
+    "setup": "<ul>\n  <li class=\"done\">Non olish</li>\n  <li>Dars qilish</li>\n  <li class=\"done\">Sport</li>\n  <li>Kitob</li>\n</ul>",
+    "id": "8"
+   },
+   {
+    "title": "Pseudo-element (sun'iy element)",
+    "task": ".req yorlig'idan keyin qizil yulduzcha chiqaring: ::after, content: \"*\", color: red.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".req::after { content: \"*\"; color: red; }",
+    "tests": [
+     {
+      "call": "css('.req','content','::after')",
+      "expect": "\"\\\"*\\\"\""
+     },
+     {
+      "call": "css('.req','color','::after')",
+      "expect": "\"rgb(255, 0, 0)\""
+     },
+     {
+      "call": "css('.req','color')",
+      "expect": "\"rgb(0, 0, 0)\""
+     }
+    ],
+    "hint": "::after elementi content siz chizilmaydi.",
+    "kind": "css",
+    "setup": "<label class=\"req\">Ism</label>\n<br>\n<label id=\"b\">Izoh</label>",
+    "id": "9"
+   },
+   {
+    "title": "Pseudo-class: hover va birinchi element",
+    "task": "Birinchi li ni qalin (700) qiling va li ustiga sichqoncha borganda (:hover) rangi ko'k (blue) bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "li:first-child { font-weight: 700; }\nli:hover { color: blue; }",
+    "tests": [
+     {
+      "call": "css('#a','font-weight')",
+      "expect": "\"700\""
+     },
+     {
+      "call": "css('#b','font-weight')",
+      "expect": "\"400\""
+     },
+     {
+      "call": "rule('li:hover','color')",
+      "expect": "\"blue\""
+     }
+    ],
+    "hint": ":first-child va :hover.",
+    "kind": "css",
+    "setup": "<ul>\n  <li id=\"a\">Birinchi</li>\n  <li id=\"b\">Ikkinchi</li>\n</ul>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -651,6 +869,180 @@
     "answer": "0-2-0 specificity 0-1-9 dan kuchli",
     "explain": "Xonalar o'nlik hisob emas, chapdan o'ngga alohida taqqoslanadi."
    }
+  ],
+  "labs": [
+   {
+    "title": "ID dan kuchliroq bo'lmang",
+    "task": "Sarlavha hozir qizil (#title qoidasi). !important va style atributisiz uni ko'k qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "#title.head { color: blue; }",
+    "tests": [
+     {
+      "call": "css('h1','color')",
+      "expect": "\"rgb(0, 0, 255)\""
+     },
+     {
+      "call": "src().includes('!important')",
+      "expect": "false"
+     }
+    ],
+    "hint": "ID + class (1,1,0) yolg'iz ID (1,0,0) dan kuchli.",
+    "kind": "css",
+    "setup": "<h1 id=\"title\" class=\"head\">Salom</h1>\n<style>#title { color: red; }</style>",
+    "id": "1"
+   },
+   {
+    "title": "Class li qoidani yengish",
+    "task": "Tugma .card .btn qoidasi bilan kulrang. Uni yashil (green) qiling — aniqlik (specificity) kamida teng bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card .btn.primary { color: green; }",
+    "tests": [
+     {
+      "call": "css('button','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     },
+     {
+      "call": "src().includes('!important')",
+      "expect": "false"
+     }
+    ],
+    "hint": "Teng aniqlikda keyin yozilgani yutadi.",
+    "kind": "css",
+    "setup": "<div class=\"card\"><button class=\"btn primary\">OK</button></div>\n<style>.card .btn { color: gray; }</style>",
+    "id": "2"
+   },
+   {
+    "title": "Tartib (order of appearance)",
+    "task": "Pastdagi ikki qoida bir xil aniqlikda. Oxirgisini o'zgartirmasdan, p binafsha emas, KO'K bo'lishi uchun o'z qoidangizni yozing.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".note { color: blue; }",
+    "tests": [
+     {
+      "call": "css('p','color')",
+      "expect": "\"rgb(0, 0, 255)\""
+     }
+    ],
+    "hint": "Sizning CSS ingiz keyin keladi, teng aniqlikda u yutadi.",
+    "kind": "css",
+    "setup": "<p class=\"note\">Matn</p>\n<style>.note { color: purple; }</style>",
+    "id": "3"
+   },
+   {
+    "title": ":where() — nol aniqlik",
+    "task": ":where() yordamida .list a selektorining aniqligini nolga tushiring va a ni qizil qiling: qoidani aynan :where(.list) a ko'rinishida yozing.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ":where(.list) a { color: red; }",
+    "tests": [
+     {
+      "call": "css('a','color')",
+      "expect": "\"rgb(255, 0, 0)\""
+     },
+     {
+      "call": "rule(':where(.list) a','color')",
+      "expect": "\"red\""
+     }
+    ],
+    "hint": ":where ichidagi selektor ball bermaydi.",
+    "kind": "css",
+    "setup": "<div class=\"list\"><a href=\"#\">Havola</a></div>",
+    "id": "4"
+   },
+   {
+    "title": "Inline stilni yengish",
+    "task": "Elementda style=\"color: red\" bor. Uni ko'k qiling (bu holat — !important ning kam uchraydigan o'rinli joyi).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "p { color: blue !important; }",
+    "tests": [
+     {
+      "call": "css('p','color')",
+      "expect": "\"rgb(0, 0, 255)\""
+     }
+    ],
+    "hint": "Inline stil oddiy qoidadan kuchli.",
+    "kind": "css",
+    "setup": "<p style=\"color: red\">Inline</p>",
+    "id": "5"
+   },
+   {
+    "title": "Ikki marta class",
+    "task": "Faqat .tag selektori bilan aniqlikni oshirib (class ni takrorlab), qizil emas yashil qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".tag.tag { color: green; }",
+    "tests": [
+     {
+      "call": "css('span','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     }
+    ],
+    "hint": ".tag.tag = (0,2,0).",
+    "kind": "css",
+    "setup": "<span class=\"tag\">yangi</span>\n<style>div .tag, .tag { color: red; }\nbody .tag { color: red; }</style>",
+    "id": "6"
+   },
+   {
+    "title": "initial bilan qaytarish",
+    "task": "Global qoida hamma p ni qizil qilgan. .reset class li p brauzerning boshlang'ich rangiga (qora) qaytsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".reset { color: initial; }",
+    "tests": [
+     {
+      "call": "all('p','color')",
+      "expect": "[\"rgb(255, 0, 0)\",\"rgb(0, 0, 0)\"]"
+     }
+    ],
+    "hint": "color: initial.",
+    "kind": "css",
+    "setup": "<p>Qizil</p>\n<p class=\"reset\">Asl</p>\n<style>p { color: red; }</style>",
+    "id": "7"
+   },
+   {
+    "title": "revert bilan brauzer stiliga",
+    "task": "h2 ga loyihada 12px berilgan. .doc ichidagi h2 brauzerning O'Z o'lchamiga (24px) qaytsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".doc h2 { font-size: revert; }",
+    "tests": [
+     {
+      "call": "css('h2','font-size')",
+      "expect": "\"24px\""
+     }
+    ],
+    "hint": "revert — brauzer stylesheet qiymati.",
+    "kind": "css",
+    "setup": "<div class=\"doc\"><h2>Bo'lim</h2></div>\n<style>h2 { font-size: 12px; }</style>",
+    "id": "8"
+   },
+   {
+    "title": "Shorthand tuzog'i",
+    "task": "Fon rangi rgb(255, 255, 0) qolsin, lekin keyin yozilgan background shorthand uni o'chirib yuborgan. .box ga sariq fonni qaytaring.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { background-color: yellow; }",
+    "tests": [
+     {
+      "call": "css('.box','background-color')",
+      "expect": "\"rgb(255, 255, 0)\""
+     }
+    ],
+    "hint": "Shorthand yozilmagan qismlarni ham qayta tiklaydi.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>\n<style>.box { background-color: yellow; }\n.box { background: none; }</style>",
+    "id": "9"
+   },
+   {
+    "title": "Aniqlik bo'yicha uch rang",
+    "task": "Uch element: umumiy p — yashil, .info — ko'k, #main — qizil bo'lsin. !important ishlatmang.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "p { color: green; }\n.info { color: blue; }\n#main { color: red; }",
+    "tests": [
+     {
+      "call": "all('p','color')",
+      "expect": "[\"rgb(0, 128, 0)\",\"rgb(0, 0, 255)\",\"rgb(255, 0, 0)\"]"
+     }
+    ],
+    "hint": "element < class < id.",
+    "kind": "css",
+    "setup": "<p>oddiy</p>\n<p class=\"info\">info</p>\n<p class=\"info\" id=\"main\">asosiy</p>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -974,6 +1366,200 @@
     "answer": "inherit meros bo'lmaydigan xususiyatda ham ota qiymatni oladi",
     "explain": "border (chegara chizig'i): inherit ham yozish mumkin: ota elementning border ini oladi."
    }
+  ],
+  "labs": [
+   {
+    "title": "Meros (inheritance)",
+    "task": "Faqat .card ga yozib, ichidagi barcha matnni ko'k qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card { color: blue; }",
+    "tests": [
+     {
+      "call": "css('h3','color')",
+      "expect": "\"rgb(0, 0, 255)\""
+     },
+     {
+      "call": "css('em','color')",
+      "expect": "\"rgb(0, 0, 255)\""
+     },
+     {
+      "call": "rule('.card','color')",
+      "expect": "\"blue\""
+     }
+    ],
+    "hint": "color meros bo'ladi.",
+    "kind": "css",
+    "setup": "<div class=\"card\"><h3>Sarlavha</h3><p>Matn <em>kursiv</em></p></div>",
+    "id": "1"
+   },
+   {
+    "title": "Tugmada shrift",
+    "task": "Tugma sahifa shriftini olsin: button { font: inherit } uslubida. Tugma o'lchami .wrap dagi 20px bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "button { font: inherit; }",
+    "tests": [
+     {
+      "call": "css('button','font-size')",
+      "expect": "\"20px\""
+     }
+    ],
+    "hint": "Forma elementlari shriftni o'zi meros olmaydi.",
+    "kind": "css",
+    "setup": "<div class=\"wrap\" style=\"font-size: 20px\"><button>Yuborish</button></div>",
+    "id": "2"
+   },
+   {
+    "title": "Meros bo'lmaydigan border",
+    "task": ".child ham otasi kabi ramka olsin: border ni inherit qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".child { border: inherit; }",
+    "tests": [
+     {
+      "call": "css('.child','border-top-width')",
+      "expect": "\"3px\""
+     },
+     {
+      "call": "css('.child','border-top-color')",
+      "expect": "\"rgb(255, 0, 0)\""
+     },
+     {
+      "call": "rule('.child','border-top-width')",
+      "expect": "\"inherit\""
+     }
+    ],
+    "hint": "inherit kalit so'zi har qanday xususiyatda ishlaydi.",
+    "kind": "css",
+    "setup": "<div class=\"parent\" style=\"border: 3px solid red\"><div class=\"child\">bola</div></div>",
+    "id": "3"
+   },
+   {
+    "title": "Havola rangi",
+    "task": "Havola otasining rangini olsin (brauzerning ko'k rangi emas).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "a { color: inherit; }",
+    "tests": [
+     {
+      "call": "css('a','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     }
+    ],
+    "hint": "a { color: inherit }",
+    "kind": "css",
+    "setup": "<p style=\"color: rgb(0, 128, 0)\">Batafsil: <a href=\"#\">bu yerda</a></p>",
+    "id": "4"
+   },
+   {
+    "title": "currentColor",
+    "task": "Ramka rangi matn rangi bilan bir xil bo'lsin: border: 2px solid currentColor. Matn .box da allaqachon qizil.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { border: 2px solid currentColor; }",
+    "tests": [
+     {
+      "call": "css('.box','border-top-color')",
+      "expect": "\"rgb(255, 0, 0)\""
+     },
+     {
+      "call": "css('.box','border-top-width')",
+      "expect": "\"2px\""
+     },
+     {
+      "call": "rule('.box','border-top-color').toLowerCase()",
+      "expect": "\"currentcolor\""
+     }
+    ],
+    "hint": "currentColor — joriy color qiymati.",
+    "kind": "css",
+    "setup": "<div class=\"box\" style=\"color: red\">Diqqat</div>",
+    "id": "5"
+   },
+   {
+    "title": "unset",
+    "task": ".x elementida color va margin ni unset qiling: color otadan meros bo'lsin (yashil), margin esa 0 bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".x { color: unset; margin: unset; }",
+    "tests": [
+     {
+      "call": "css('.x','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     },
+     {
+      "call": "css('.x','margin-top')",
+      "expect": "\"0px\""
+     }
+    ],
+    "hint": "unset: meros bo'lsa inherit, bo'lmasa initial.",
+    "kind": "css",
+    "setup": "<div style=\"color: green\"><p class=\"x\">Matn</p></div>\n<style>p { color: red; margin: 20px; }</style>",
+    "id": "6"
+   },
+   {
+    "title": "Cascade layer (qoidalar qatlami)",
+    "task": "@layer base, theme; e'lon qiling. base da p qizil, theme da p ko'k bo'lsin — qatlam tartibi bo'yicha natija ko'k.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@layer base, theme;\n@layer theme { p { color: blue; } }\n@layer base { p { color: red; } }",
+    "tests": [
+     {
+      "call": "css('p','color')",
+      "expect": "\"rgb(0, 0, 255)\""
+     },
+     {
+      "call": "rule('p','color') !== ''",
+      "expect": "true"
+     }
+    ],
+    "hint": "Keyin e'lon qilingan qatlam kuchli, qoida qayerda yozilgani emas.",
+    "kind": "css",
+    "setup": "<p>Qatlam</p>",
+    "id": "7"
+   },
+   {
+    "title": "Qatlam aniqlikdan ustun",
+    "task": "#t selektori base qatlamida qizil. Faqat oddiy p selektori va keyingi qatlam bilan uni yashil qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@layer top { p { color: green; } }",
+    "tests": [
+     {
+      "call": "css('p','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     }
+    ],
+    "hint": "Qatlamlar orasida specificity solishtirilmaydi.",
+    "kind": "css",
+    "setup": "<p id=\"t\">Matn</p>\n<style>@layer base { #t { color: red; } }</style>",
+    "id": "8"
+   },
+   {
+    "title": "Qatlamsiz stil ustun",
+    "task": "components qatlamidagi .btn.btn qoidasi ko'k. Qatlamsiz oddiy .btn bilan uni qizil qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".btn { color: red; }",
+    "tests": [
+     {
+      "call": "css('button','color')",
+      "expect": "\"rgb(255, 0, 0)\""
+     }
+    ],
+    "hint": "Unlayered stillar barcha qatlamlardan ustun.",
+    "kind": "css",
+    "setup": "<button class=\"btn\">OK</button>\n<style>@layer components { .btn.btn { color: blue; } }</style>",
+    "id": "9"
+   },
+   {
+    "title": "revert-layer",
+    "task": "theme qatlamida .plain uchun oldingi qatlam (base) qiymatiga qayting: natija yashil bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@layer theme { .plain { color: revert-layer; } }",
+    "tests": [
+     {
+      "call": "css('p','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     }
+    ],
+    "hint": "color: revert-layer.",
+    "kind": "css",
+    "setup": "<p class=\"plain\">Matn</p>\n<style>@layer base, theme;\n@layer base { p { color: green; } }\n@layer theme { p { color: red; } }</style>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -1264,6 +1850,220 @@
     "answer": "content padding border margin",
     "explain": "Markazda content, uni padding (ichki bo'shliq), keyin border (chegara chizig'i), eng tashqarida margin (tashqi bo'shliq) o'rab turadi."
    }
+  ],
+  "labs": [
+   {
+    "title": "border-box",
+    "task": "width: 200px, padding: 20px, border: 5px solid bo'lgan .box ning KO'RINADIGAN kengligi ham 200px bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { box-sizing: border-box; width: 200px; padding: 20px; border: 5px solid; }",
+    "tests": [
+     {
+      "call": "w('.box')",
+      "expect": "200"
+     },
+     {
+      "call": "css('.box','padding-left')",
+      "expect": "\"20px\""
+     },
+     {
+      "call": "css('.box','border-left-width')",
+      "expect": "\"5px\""
+     }
+    ],
+    "hint": "box-sizing: border-box.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "1"
+   },
+   {
+    "title": "content-box hisobi",
+    "task": "box-sizing ni o'zgartirmasdan, umumiy ko'rinadigan kenglik 300px bo'lsin: padding 20px, border 10px. width qiymatini hisoblang.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { width: 240px; padding: 20px; border: 10px solid; }",
+    "tests": [
+     {
+      "call": "w('.box')",
+      "expect": "300"
+     },
+     {
+      "call": "css('.box','box-sizing')",
+      "expect": "\"content-box\""
+     },
+     {
+      "call": "css('.box','padding-left')",
+      "expect": "\"20px\""
+     }
+    ],
+    "hint": "300 - 2*20 - 2*10.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "2"
+   },
+   {
+    "title": "Padding shorthand",
+    "task": "padding ni bitta qatorda bering: yuqori-past 10px, chap-o'ng 24px.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { padding: 10px 24px; }",
+    "tests": [
+     {
+      "call": "[css('.box','padding-top'), css('.box','padding-right'), css('.box','padding-bottom'), css('.box','padding-left')]",
+      "expect": "[\"10px\",\"24px\",\"10px\",\"24px\"]"
+     }
+    ],
+    "hint": "padding: vertikal gorizontal.",
+    "kind": "css",
+    "setup": "<div class=\"box\">Matn</div>",
+    "id": "3"
+   },
+   {
+    "title": "Gorizontal markazlash",
+    "task": "300px kenglikdagi .box ni sahifaning gorizontal markaziga qo'ying (viewport 600px).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { width: 300px; margin: 0 auto; }",
+    "tests": [
+     {
+      "call": "x('.box')",
+      "expect": "150"
+     },
+     {
+      "call": "w('.box')",
+      "expect": "300"
+     }
+    ],
+    "hint": "margin: 0 auto.",
+    "kind": "css",
+    "setup": "<div class=\"box\">markaz</div>\n<style>.box { background: #ddd; }</style>",
+    "id": "4"
+   },
+   {
+    "title": "Margin collapse",
+    "task": "Ikki blok orasidagi masofa aniq 30px bo'lsin: birinchisiga margin-bottom 30px, ikkinchisiga margin-top 20px bering va natijani kuzating.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".a { margin-bottom: 30px; }\n.b { margin-top: 20px; }",
+    "tests": [
+     {
+      "call": "y('.b') - y('.a') - h('.a')",
+      "expect": "30"
+     },
+     {
+      "call": "css('.b','margin-top')",
+      "expect": "\"20px\""
+     },
+     {
+      "call": "css('.a','margin-bottom')",
+      "expect": "\"30px\""
+     }
+    ],
+    "hint": "Vertikal marginlar qo'shilmaydi, kattasi qoladi.",
+    "kind": "css",
+    "setup": "<div class=\"a\" style=\"height: 20px\">A</div>\n<div class=\"b\" style=\"height: 20px\">B</div>",
+    "id": "5"
+   },
+   {
+    "title": "flow-root bilan to'xtatish",
+    "task": "Bolaning margin-top i otadan tashqariga chiqib ketmasin. Otaga display: flow-root bering.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".parent { display: flow-root; }",
+    "tests": [
+     {
+      "call": "y('.parent')",
+      "expect": "0"
+     },
+     {
+      "call": "y('.child')",
+      "expect": "40"
+     }
+    ],
+    "hint": "flow-root yangi BFC ochadi.",
+    "kind": "css",
+    "setup": "<div class=\"parent\"><div class=\"child\">bola</div></div>\n<style>.child { margin-top: 40px; }</style>",
+    "id": "6"
+   },
+   {
+    "title": "Manfiy margin",
+    "task": ".b ni .a ning ustiga 10px ko'taring (manfiy margin bilan).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".b { margin-top: -10px; }",
+    "tests": [
+     {
+      "call": "y('.b')",
+      "expect": "30"
+     }
+    ],
+    "hint": "margin-top manfiy bo'lishi mumkin.",
+    "kind": "css",
+    "setup": "<div class=\"a\" style=\"height: 40px\">A</div>\n<div class=\"b\" style=\"height: 40px\">B</div>",
+    "id": "7"
+   },
+   {
+    "title": "Outline joy egallamaydi",
+    "task": ".a atrofida 4px qizil chiziq chizing, lekin pastdagi element SILJIMASIN (outline).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".a { outline: 4px solid red; }",
+    "tests": [
+     {
+      "call": "css('.a','outline-width')",
+      "expect": "\"4px\""
+     },
+     {
+      "call": "css('.a','outline-color')",
+      "expect": "\"rgb(255, 0, 0)\""
+     },
+     {
+      "call": "y('.b')",
+      "expect": "20"
+     }
+    ],
+    "hint": "border joy egallaydi, outline egallamaydi.",
+    "kind": "css",
+    "setup": "<div class=\"a\" style=\"height: 20px\">A</div>\n<div class=\"b\">B</div>",
+    "id": "8"
+   },
+   {
+    "title": "Uchburchak ramka",
+    "task": "Faqat pastki ramkani 3px qizil qiling, boshqa tomonlarda ramka bo'lmasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "h2 { border-bottom: 3px solid red; }",
+    "tests": [
+     {
+      "call": "css('h2','border-bottom-width')",
+      "expect": "\"3px\""
+     },
+     {
+      "call": "css('h2','border-top-width')",
+      "expect": "\"0px\""
+     },
+     {
+      "call": "css('h2','border-bottom-color')",
+      "expect": "\"rgb(255, 0, 0)\""
+     }
+    ],
+    "hint": "border-bottom.",
+    "kind": "css",
+    "setup": "<h2>Sarlavha</h2>",
+    "id": "9"
+   },
+   {
+    "title": "Foizli padding",
+    "task": "Otasi 400px. .child ning yuqori padding i 10% bo'lsin va u necha px bo'lishini tekshiring (kenglikdan hisoblanadi).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".child { padding-top: 10%; }",
+    "tests": [
+     {
+      "call": "css('.child','padding-top')",
+      "expect": "\"40px\""
+     },
+     {
+      "call": "rule('.child','padding-top')",
+      "expect": "\"10%\""
+     }
+    ],
+    "hint": "Vertikal foiz ham otaning KENGLIGIdan.",
+    "kind": "css",
+    "setup": "<div style=\"width: 400px; height: 100px\"><div class=\"child\">x</div></div>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -1551,6 +2351,212 @@
     ],
     "answer": "rem faqat html font-size iga bog'liq, ichma-ichda ko'paymaydi",
     "explain": "em ichma-ich bo'lganda ketma-ket ko'payib ketadi (1.2 × 1.2 × 1.2 ...)."
+   }
+  ],
+  "labs": [
+   {
+    "title": "rem birligi",
+    "task": "html shrifti 16px. h1 ni rem bilan 32px qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "h1 { font-size: 2rem; }",
+    "tests": [
+     {
+      "call": "css('h1','font-size')",
+      "expect": "\"32px\""
+     },
+     {
+      "call": "rule('h1','font-size')",
+      "expect": "\"2rem\""
+     }
+    ],
+    "hint": "32 / 16.",
+    "kind": "css",
+    "setup": "<h1>Sarlavha</h1>",
+    "id": "1"
+   },
+   {
+    "title": "em ning ko'payishi",
+    "task": ".box shrifti 20px. Ichidagi .child ga em birligida shunday qiymat bering-ki, u 30px bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".child { font-size: 1.5em; }",
+    "tests": [
+     {
+      "call": "css('.child','font-size')",
+      "expect": "\"30px\""
+     },
+     {
+      "call": "rule('.child','font-size')",
+      "expect": "\"1.5em\""
+     }
+    ],
+    "hint": "em — otaning shriftiga nisbatan.",
+    "kind": "css",
+    "setup": "<div class=\"box\" style=\"font-size: 20px\"><p class=\"child\">Matn</p></div>",
+    "id": "2"
+   },
+   {
+    "title": "em li padding",
+    "task": "Tugma shrifti 20px. Ichki bo'shliq shriftga mutanosib bo'lsin: padding: 0.5em 1em.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "button { padding: 0.5em 1em; }",
+    "tests": [
+     {
+      "call": "css('button','padding-top')",
+      "expect": "\"10px\""
+     },
+     {
+      "call": "css('button','padding-left')",
+      "expect": "\"20px\""
+     },
+     {
+      "call": "rule('button','padding-left')",
+      "expect": "\"1em\""
+     }
+    ],
+    "hint": "padding dagi em elementning o'z shriftidan.",
+    "kind": "css",
+    "setup": "<button style=\"font-size: 20px\">Katta</button>",
+    "id": "3"
+   },
+   {
+    "title": "calc()",
+    "task": ".main kengligi otaning to'liq kengligidan 150px kam bo'lsin (calc bilan).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".main { width: calc(100% - 150px); }",
+    "tests": [
+     {
+      "call": "w('.main')",
+      "expect": "350"
+     }
+    ],
+    "hint": "calc(100% - 150px) — probellar shart.",
+    "kind": "css",
+    "setup": "<div style=\"width: 500px\"><div class=\"main\">x</div></div>",
+    "id": "4"
+   },
+   {
+    "title": "min()",
+    "task": ".box kengligi 90% yoki 400px — qaysi biri KICHIK bo'lsa o'sha.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { width: min(90%, 400px); }",
+    "tests": [
+     {
+      "call": "w('.box')",
+      "expect": "400"
+     },
+     {
+      "call": "(at(300), w('.box'))",
+      "expect": "270"
+     }
+    ],
+    "hint": "min(a, b) kichigini oladi.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "5"
+   },
+   {
+    "title": "max()",
+    "task": ".box kengligi 50% yoki 250px — qaysi biri KATTA bo'lsa o'sha.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { width: max(50%, 250px); }",
+    "tests": [
+     {
+      "call": "w('.box')",
+      "expect": "300"
+     },
+     {
+      "call": "(at(400), w('.box'))",
+      "expect": "250"
+     }
+    ],
+    "hint": "max() pastki chegara vazifasini bajaradi.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "6"
+   },
+   {
+    "title": "clamp()",
+    "task": "h1 shrifti: eng kam 20px, afzal 5vw, eng ko'pi 40px.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "h1 { font-size: clamp(20px, 5vw, 40px); }",
+    "tests": [
+     {
+      "call": "css('h1','font-size')",
+      "expect": "\"30px\""
+     },
+     {
+      "call": "(at(300), css('h1','font-size'))",
+      "expect": "\"20px\""
+     },
+     {
+      "call": "(at(1000), css('h1','font-size'))",
+      "expect": "\"40px\""
+     }
+    ],
+    "hint": "clamp(min, afzal, max).",
+    "kind": "css",
+    "setup": "<h1>Moslashuvchan</h1>",
+    "id": "7"
+   },
+   {
+    "title": "vw birligi",
+    "task": ".half viewport kengligining yarmini egallasin (vw bilan), otasi 200px bo'lsa ham.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".half { width: 50vw; }",
+    "tests": [
+     {
+      "call": "w('.half')",
+      "expect": "300"
+     },
+     {
+      "call": "rule('.half','width')",
+      "expect": "\"50vw\""
+     }
+    ],
+    "hint": "50vw — oynaning yarmi.",
+    "kind": "css",
+    "setup": "<div style=\"width: 200px\"><div class=\"half\">x</div></div>",
+    "id": "8"
+   },
+   {
+    "title": "ch birligi",
+    "task": "p ning eng katta kengligi 30 ta belgiga teng bo'lsin (max-width: 30ch).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "p { max-width: 30ch; }",
+    "tests": [
+     {
+      "call": "rule('p','max-width')",
+      "expect": "\"30ch\""
+     },
+     {
+      "call": "w('p') < 330",
+      "expect": "true"
+     }
+    ],
+    "hint": "1ch — \"0\" belgisi kengligi.",
+    "kind": "css",
+    "setup": "<p>Juda uzun matn: bu paragraf cheklangan kenglikda qulay o'qilishi kerak, shuning uchun qator uzunligi belgilar bilan o'lchanadi.</p>",
+    "id": "9"
+   },
+   {
+    "title": "Foizli balandlik",
+    "task": ".child otaning balandligining yarmini egallasin. Otaga 200px balandlik ham bering.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".parent { height: 200px; }\n.child { height: 50%; }",
+    "tests": [
+     {
+      "call": "h('.child')",
+      "expect": "100"
+     },
+     {
+      "call": "rule('.child','height')",
+      "expect": "\"50%\""
+     }
+    ],
+    "hint": "Foizli balandlik uchun otaning balandligi aniq bo'lishi kerak.",
+    "kind": "css",
+    "setup": "<div class=\"parent\"><div class=\"child\">x</div></div>",
+    "id": "10"
    }
   ]
  },
@@ -1895,6 +2901,192 @@
     "answer": "Brauzer stilida display: none beradi; sizning display qoidangiz uni bekor qilishi mumkin",
     "explain": "hidden — brauzerning (user-agent) display: none qoidasi. .x { display: flex } uni bosib ketadi."
    }
+  ],
+  "labs": [
+   {
+    "title": "inline → block",
+    "task": "Havolalar ustma-ust, har biri butun qatorni egallasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "a { display: block; }",
+    "tests": [
+     {
+      "call": "w('#a')",
+      "expect": "600"
+     },
+     {
+      "call": "y('#b')",
+      "expect": "24"
+     }
+    ],
+    "hint": "display: block.",
+    "kind": "css",
+    "setup": "<a id=\"a\" href=\"#\">Bir</a>\n<a id=\"b\" href=\"#\">Ikki</a>",
+    "id": "1"
+   },
+   {
+    "title": "inline-block",
+    "task": "Ikki .box yonma-yon tursin va har biri 100×50 px bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { display: inline-block; width: 100px; height: 50px; }",
+    "tests": [
+     {
+      "call": "[w('.box'), h('.box')]",
+      "expect": "[100,50]"
+     },
+     {
+      "call": "css('.box','display')",
+      "expect": "\"inline-block\""
+     }
+    ],
+    "hint": "inline element o'lchamni qabul qilmaydi.",
+    "kind": "css",
+    "setup": "<span class=\"box\">1</span><span class=\"box\">2</span>",
+    "id": "2"
+   },
+   {
+    "title": "Yashirish: joyi qolmasin",
+    "task": ".ad elementi butunlay yo'qolsin va keyingi matn yuqoriga ko'tarilsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".ad { display: none; }",
+    "tests": [
+     {
+      "call": "css('.ad','display')",
+      "expect": "\"none\""
+     },
+     {
+      "call": "y('.text')",
+      "expect": "0"
+     }
+    ],
+    "hint": "display: none joy qoldirmaydi.",
+    "kind": "css",
+    "setup": "<div class=\"ad\" style=\"height: 80px\">Reklama</div>\n<p class=\"text\" style=\"margin: 0\">Maqola</p>",
+    "id": "3"
+   },
+   {
+    "title": "Yashirish: joyi qolsin",
+    "task": ".ad ko'rinmasin, lekin joyi saqlansin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".ad { visibility: hidden; }",
+    "tests": [
+     {
+      "call": "css('.ad','visibility')",
+      "expect": "\"hidden\""
+     },
+     {
+      "call": "y('.text')",
+      "expect": "80"
+     }
+    ],
+    "hint": "visibility: hidden.",
+    "kind": "css",
+    "setup": "<div class=\"ad\" style=\"height: 80px\">Reklama</div>\n<p class=\"text\" style=\"margin: 0\">Maqola</p>",
+    "id": "4"
+   },
+   {
+    "title": "Float bilan o'rab oqish",
+    "task": "Rasm o'rnidagi .img chapga suzsin (float) va o'ng tomonida 10px bo'shliq bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".img { float: left; margin-right: 10px; }",
+    "tests": [
+     {
+      "call": "css('.img','float')",
+      "expect": "\"left\""
+     },
+     {
+      "call": "css('.img','margin-right')",
+      "expect": "\"10px\""
+     },
+     {
+      "call": "y('p')",
+      "expect": "0"
+     }
+    ],
+    "hint": "float: left.",
+    "kind": "css",
+    "setup": "<div class=\"img\" style=\"width: 100px; height: 60px; background: #999\"></div>\n<p style=\"margin: 0\">Matn rasm atrofida oqib turadi.</p>",
+    "id": "5"
+   },
+   {
+    "title": "Float ni tozalash",
+    "task": "Footer suzayotgan blokdan PASTDA boshlansin (clear).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "footer { clear: both; }",
+    "tests": [
+     {
+      "call": "y('footer')",
+      "expect": "80"
+     }
+    ],
+    "hint": "clear: both.",
+    "kind": "css",
+    "setup": "<div style=\"float: left; width: 100px; height: 80px\">yon</div>\n<footer>Footer</footer>",
+    "id": "6"
+   },
+   {
+    "title": "Otani float dan baland qilish",
+    "task": "Ota ichidagi float bola tashqariga chiqib turibdi. Otaga display: flow-root bering.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".parent { display: flow-root; }",
+    "tests": [
+     {
+      "call": "h('.parent')",
+      "expect": "70"
+     }
+    ],
+    "hint": "flow-root float larni ichida ushlaydi.",
+    "kind": "css",
+    "setup": "<div class=\"parent\"><div style=\"float: left; height: 70px; width: 70px\">float</div></div>",
+    "id": "7"
+   },
+   {
+    "title": "display: contents",
+    "task": ".wrap qutisi yo'qolsin, bolalari esa grid ning bevosita elementlariga aylansin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".wrap { display: contents; }",
+    "tests": [
+     {
+      "call": "[x('#a'), x('#b'), y('#b')]",
+      "expect": "[0,100,0]"
+     }
+    ],
+    "hint": "display: contents.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div class=\"wrap\"><div id=\"a\">A</div><div id=\"b\">B</div></div>\n</div>\n<style>.grid { display: grid; grid-template-columns: 100px 100px; }</style>",
+    "id": "8"
+   },
+   {
+    "title": "Rasm ostidagi bo'shliq",
+    "task": "Rasm otasining balandligi aniq rasm balandligiga teng bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "img { display: block; }",
+    "tests": [
+     {
+      "call": "h('.frame')",
+      "expect": "50"
+     }
+    ],
+    "hint": "img standart holatda inline, ostida matn chizig'i uchun joy qoladi.",
+    "kind": "css",
+    "setup": "<div class=\"frame\"><img alt=\"\" width=\"50\" height=\"50\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACw=\"></div>",
+    "id": "9"
+   },
+   {
+    "title": "Markazga: inline element",
+    "task": "Tugma (inline-block) .row ning markazida tursin — otasiga text-align bering.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { text-align: center; }",
+    "tests": [
+     {
+      "call": "x('button')",
+      "expect": "250"
+     }
+    ],
+    "hint": "Inline elementlar text-align bilan tekislanadi.",
+    "kind": "css",
+    "setup": "<div class=\"row\"><button style=\"width: 100px\">OK</button></div>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -2231,6 +3423,204 @@
     "answer": "Bir xil yorqinlikdagi ranglar ko'zga ham bir xil yorqin ko'rinadi",
     "explain": "hsl da bir xil L ga ega sariq va ko'k yorqinligi juda farq qiladi, oklch da yo'q."
    }
+  ],
+  "labs": [
+   {
+    "title": "Hex rang",
+    "task": "p matnini #ff0000 rangiga bo'yang.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "p { color: #ff0000; }",
+    "tests": [
+     {
+      "call": "css('p','color')",
+      "expect": "\"rgb(255, 0, 0)\""
+     }
+    ],
+    "hint": "#rrggbb.",
+    "kind": "css",
+    "setup": "<p>Rang</p>",
+    "id": "1"
+   },
+   {
+    "title": "hsl()",
+    "task": "Fonni hsl bilan sof ko'k qiling: hsl(240, 100%, 50%).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { background: hsl(240, 100%, 50%); }",
+    "tests": [
+     {
+      "call": "css('.box','background-color')",
+      "expect": "\"rgb(0, 0, 255)\""
+     }
+    ],
+    "hint": "hsl(tus, to'yinganlik, yorqinlik).",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "2"
+   },
+   {
+    "title": "Yarim shaffof",
+    "task": "Fon qora va 50% shaffof bo'lsin, matn esa to'liq ko'rinsin (opacity ishlatmang).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".veil { background: rgb(0 0 0 / 50%); }",
+    "tests": [
+     {
+      "call": "css('.veil','background-color')",
+      "expect": "\"rgba(0, 0, 0, 0.5)\""
+     },
+     {
+      "call": "css('.veil','opacity')",
+      "expect": "\"1\""
+     },
+     {
+      "call": "css('.veil','color')",
+      "expect": "\"rgb(255, 0, 0)\""
+     }
+    ],
+    "hint": "rgb(0 0 0 / 50%).",
+    "kind": "css",
+    "setup": "<div class=\"veil\" style=\"color: red\">Matn</div>",
+    "id": "3"
+   },
+   {
+    "title": "opacity farqi",
+    "task": "Butun .card (matni bilan) 40% ko'rinsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card { opacity: 0.4; }",
+    "tests": [
+     {
+      "call": "css('.card','opacity')",
+      "expect": "\"0.4\""
+     }
+    ],
+    "hint": "opacity butun elementga ta'sir qiladi.",
+    "kind": "css",
+    "setup": "<div class=\"card\">Karta</div>",
+    "id": "4"
+   },
+   {
+    "title": "Gradient",
+    "task": "Fon chapdan o'ngga qizildan ko'kka o'tsin (linear-gradient).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".bar { background: linear-gradient(to right, red, blue); }",
+    "tests": [
+     {
+      "call": "/linear-gradient\\(to right, rgb\\(255, 0, 0\\).*rgb\\(0, 0, 255\\)\\)/.test(css('.bar','background-image'))",
+      "expect": "true"
+     }
+    ],
+    "hint": "linear-gradient(to right, red, blue).",
+    "kind": "css",
+    "setup": "<div class=\"bar\" style=\"height: 40px\"></div>",
+    "id": "5"
+   },
+   {
+    "title": "Fon rasmi sozlamasi",
+    "task": "Fon takrorlanmasin, markazda tursin va butun qutini qoplasin (cover).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".hero { background-repeat: no-repeat; background-position: center; background-size: cover; }",
+    "tests": [
+     {
+      "call": "css('.hero','background-repeat')",
+      "expect": "\"no-repeat\""
+     },
+     {
+      "call": "css('.hero','background-position')",
+      "expect": "\"50% 50%\""
+     },
+     {
+      "call": "css('.hero','background-size')",
+      "expect": "\"cover\""
+     }
+    ],
+    "hint": "background-repeat, -position, -size.",
+    "kind": "css",
+    "setup": "<div class=\"hero\" style=\"height: 100px; background-image: linear-gradient(red, blue)\"></div>",
+    "id": "6"
+   },
+   {
+    "title": "currentColor ramkada",
+    "task": "Matn va chap ramka (5px solid) yashil bo'lsin, rangni faqat color da yozing.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "blockquote { color: green; border-left: 5px solid currentColor; }",
+    "tests": [
+     {
+      "call": "css('blockquote','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     },
+     {
+      "call": "css('blockquote','border-left-color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     },
+     {
+      "call": "css('blockquote','border-left-width')",
+      "expect": "\"5px\""
+     }
+    ],
+    "hint": "currentColor.",
+    "kind": "css",
+    "setup": "<blockquote>Iqtibos</blockquote>",
+    "id": "7"
+   },
+   {
+    "title": "transparent chegara",
+    "task": "Hover da sakramasligi uchun tugmaga 2px shaffof ramka bering, hover da ramka rangi qizil bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "button { border: 2px solid transparent; }\nbutton:hover { border-color: red; }",
+    "tests": [
+     {
+      "call": "css('button','border-top-width')",
+      "expect": "\"2px\""
+     },
+     {
+      "call": "css('button','border-top-color')",
+      "expect": "\"rgba(0, 0, 0, 0)\""
+     },
+     {
+      "call": "color(rule('button:hover','border-top-color') || rule('button:hover','border-color'))",
+      "expect": "\"rgb(255, 0, 0)\""
+     }
+    ],
+    "hint": "border-color: transparent.",
+    "kind": "css",
+    "setup": "<button>Bos</button>",
+    "id": "8"
+   },
+   {
+    "title": "color-mix()",
+    "task": "Fon qizil va ko'kning teng aralashmasi bo'lsin: color-mix(in srgb, red 50%, blue).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".mix { background: color-mix(in srgb, red 50%, blue); }",
+    "tests": [
+     {
+      "call": "css('.mix','background-color')",
+      "expect": "\"color(srgb 0.5 0 0.5)\""
+     }
+    ],
+    "hint": "color-mix(in srgb, A 50%, B).",
+    "kind": "css",
+    "setup": "<div class=\"mix\">x</div>",
+    "id": "9"
+   },
+   {
+    "title": "Ikki fon qatlami",
+    "task": ".box ga ikkita fon qatlami bering: ustida yarim shaffof qora gradient, ostida #ff0000 rang.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { background: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), #ff0000; }",
+    "tests": [
+     {
+      "call": "css('.box','background-color')",
+      "expect": "\"rgb(255, 0, 0)\""
+     },
+     {
+      "call": "css('.box','background-image').startsWith('linear-gradient')",
+      "expect": "true"
+     }
+    ],
+    "hint": "background: gradient, rang;",
+    "kind": "css",
+    "setup": "<div class=\"box\" style=\"height: 50px\"></div>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -2533,6 +3923,208 @@
     ],
     "answer": "Hech qanday shrift fayli yuklanmaydi, qurilmaning o'z shrifti ishlatiladi",
     "explain": "Tarmoq so'rovi yo'q, FOIT/FOUT yo'q."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Shrift zaxirasi",
+    "task": "p uchun font stack yozing: Georgia, Times, serif (shu tartibda).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "p { font-family: Georgia, Times, serif; }",
+    "tests": [
+     {
+      "call": "css('p','font-family')",
+      "expect": "\"Georgia, Times, serif\""
+     }
+    ],
+    "hint": "Oxirida umumiy oila bo'lsin.",
+    "kind": "css",
+    "setup": "<p>Matn</p>",
+    "id": "1"
+   },
+   {
+    "title": "line-height",
+    "task": "p shrifti 20px, qator balandligi birliksiz 1.5 bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "p { font-size: 20px; line-height: 1.5; }",
+    "tests": [
+     {
+      "call": "css('p','line-height')",
+      "expect": "\"30px\""
+     },
+     {
+      "call": "rule('p','line-height')",
+      "expect": "\"1.5\""
+     }
+    ],
+    "hint": "Birliksiz son shriftga ko'paytiriladi.",
+    "kind": "css",
+    "setup": "<p>Bir qator</p>",
+    "id": "2"
+   },
+   {
+    "title": "Qalinlik va uslub",
+    "task": "h2 yupqa (300) va kursiv bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "h2 { font-weight: 300; font-style: italic; }",
+    "tests": [
+     {
+      "call": "css('h2','font-weight')",
+      "expect": "\"300\""
+     },
+     {
+      "call": "css('h2','font-style')",
+      "expect": "\"italic\""
+     }
+    ],
+    "hint": "font-weight va font-style.",
+    "kind": "css",
+    "setup": "<h2>Sarlavha</h2>",
+    "id": "3"
+   },
+   {
+    "title": "Katta harflar",
+    "task": "Tugma matni HTML ni o'zgartirmasdan katta harflarda va harflar orasi 2px bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "button { text-transform: uppercase; letter-spacing: 2px; }",
+    "tests": [
+     {
+      "call": "css('button','text-transform')",
+      "expect": "\"uppercase\""
+     },
+     {
+      "call": "css('button','letter-spacing')",
+      "expect": "\"2px\""
+     }
+    ],
+    "hint": "text-transform, letter-spacing.",
+    "kind": "css",
+    "setup": "<button>yuborish</button>",
+    "id": "4"
+   },
+   {
+    "title": "Matnni kesish (ellipsis)",
+    "task": "Uzun matn bir qatorda qolsin va oxiri uch nuqta bilan kesilsin. Kenglik 150px.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".t { width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }",
+    "tests": [
+     {
+      "call": "w('.t')",
+      "expect": "150"
+     },
+     {
+      "call": "h('.t')",
+      "expect": "24"
+     },
+     {
+      "call": "css('.t','text-overflow')",
+      "expect": "\"ellipsis\""
+     },
+     {
+      "call": "css('.t','overflow-x')",
+      "expect": "\"hidden\""
+     }
+    ],
+    "hint": "Uchta xususiyat birga kerak.",
+    "kind": "css",
+    "setup": "<div class=\"t\">Bu juda uzun sarlavha, u qutiga sig'maydi va kesilishi kerak</div>",
+    "id": "5"
+   },
+   {
+    "title": "Ko'p qatorda kesish",
+    "task": "Matn 2 qatordan keyin kesilsin (-webkit-line-clamp).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".c { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }",
+    "tests": [
+     {
+      "call": "h('.c')",
+      "expect": "48"
+     }
+    ],
+    "hint": "display: -webkit-box bilan birga.",
+    "kind": "css",
+    "setup": "<p class=\"c\" style=\"width: 160px\">Bu paragraf ancha uzun va bir necha qatorga bo'linadi, lekin faqat ikkitasi ko'rinishi kerak.</p>",
+    "id": "6"
+   },
+   {
+    "title": "Uzun so'zni sindirish",
+    "task": "Uzun URL qutidan chiqib ketmasin (overflow-wrap).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".u { overflow-wrap: anywhere; }",
+    "tests": [
+     {
+      "call": "h('.u') > 24",
+      "expect": "true"
+     },
+     {
+      "call": "css('.u','overflow-wrap') !== 'normal' || css('.u','word-break') !== 'normal'",
+      "expect": "true"
+     }
+    ],
+    "hint": "overflow-wrap: anywhere yoki break-word.",
+    "kind": "css",
+    "setup": "<p class=\"u\" style=\"width: 150px\">https://juda-uzun-manzil.example.uz/bolim/sahifa</p>",
+    "id": "7"
+   },
+   {
+    "title": "text-align va indent",
+    "task": "Paragraf markazga tekislansin, sarlavha o'ngga.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "h3 { text-align: right; }\np { text-align: center; }",
+    "tests": [
+     {
+      "call": "css('h3','text-align')",
+      "expect": "\"right\""
+     },
+     {
+      "call": "css('p','text-align')",
+      "expect": "\"center\""
+     }
+    ],
+    "hint": "text-align.",
+    "kind": "css",
+    "setup": "<h3>Muallif</h3>\n<p>She'r</p>",
+    "id": "8"
+   },
+   {
+    "title": "Chiziqlar",
+    "task": "Eski narx ustidan chizilsin, havola tagidagi chiziq esa olib tashlansin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".old { text-decoration: line-through; }\na { text-decoration: none; }",
+    "tests": [
+     {
+      "call": "css('.old','text-decoration-line')",
+      "expect": "\"line-through\""
+     },
+     {
+      "call": "css('a','text-decoration-line')",
+      "expect": "\"none\""
+     }
+    ],
+    "hint": "text-decoration.",
+    "kind": "css",
+    "setup": "<span class=\"old\">100 000</span>\n<a href=\"#\">Savat</a>",
+    "id": "9"
+   },
+   {
+    "title": "font shorthand",
+    "task": "Bitta font xususiyati bilan bering: kursiv, 700, 20px, qator balandligi 2, sans-serif.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "p { font: italic 700 20px/2 sans-serif; }",
+    "tests": [
+     {
+      "call": "[css('p','font-style'), css('p','font-weight'), css('p','font-size'), css('p','line-height')]",
+      "expect": "[\"italic\",\"700\",\"20px\",\"40px\"]"
+     },
+     {
+      "call": "rule('p','font-size')",
+      "expect": "\"20px\""
+     }
+    ],
+    "hint": "font: style weight size/line-height family.",
+    "kind": "css",
+    "setup": "<p>Matn</p>",
+    "id": "10"
    }
   ]
  },
@@ -2840,6 +4432,184 @@
     "answer": "Gorizontal markazda, vertikal tepada (stretch yoki flex-start)",
     "explain": "Faqat bosh o'q markazlanadi."
    }
+  ],
+  "labs": [
+   {
+    "title": "Yonma-yon",
+    "task": "Uch element bitta qatorda yonma-yon tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; }",
+    "tests": [
+     {
+      "call": "[x('#a'), x('#b'), x('#c')]",
+      "expect": "[0,100,200]"
+     },
+     {
+      "call": "y('#c')",
+      "expect": "0"
+     }
+    ],
+    "hint": "display: flex.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 100px; height: 40px; background: #ddd; }</style>",
+    "id": "1"
+   },
+   {
+    "title": "gap",
+    "task": "Elementlar orasida 20px oraliq bo'lsin (margin ishlatmasdan).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; gap: 20px; }",
+    "tests": [
+     {
+      "call": "[x('#a'), x('#b'), x('#c')]",
+      "expect": "[0,120,240]"
+     },
+     {
+      "call": "css('.item','margin-left')",
+      "expect": "\"0px\""
+     }
+    ],
+    "hint": "gap faqat elementlar orasiga qo'yadi.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 100px; height: 40px; background: #ddd; }</style>",
+    "id": "2"
+   },
+   {
+    "title": "space-between",
+    "task": "Birinchi va oxirgi element chetlarda, o'rtadagisi markazda tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; justify-content: space-between; }",
+    "tests": [
+     {
+      "call": "[x('#a'), x('#b'), x('#c')]",
+      "expect": "[0,250,500]"
+     }
+    ],
+    "hint": "justify-content — bosh o'q.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 100px; height: 40px; background: #ddd; }</style>",
+    "id": "3"
+   },
+   {
+    "title": "To'liq markazlash",
+    "task": ".item larni 200px balandlikdagi qatorning ham gorizontal, ham vertikal markaziga qo'ying.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; height: 200px; justify-content: center; align-items: center; }",
+    "tests": [
+     {
+      "call": "[x('#a'), y('#a')]",
+      "expect": "[150,80]"
+     },
+     {
+      "call": "h('.row')",
+      "expect": "200"
+     }
+    ],
+    "hint": "justify-content va align-items.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 100px; height: 40px; background: #ddd; }</style>",
+    "id": "4"
+   },
+   {
+    "title": "Ustun yo'nalishi",
+    "task": "Elementlar ustma-ust tursin va gorizontal markazda bo'lsin (flex ichida).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; flex-direction: column; align-items: center; }",
+    "tests": [
+     {
+      "call": "[x('#a'), y('#b'), y('#c')]",
+      "expect": "[250,40,80]"
+     },
+     {
+      "call": "css('.row','flex-direction')",
+      "expect": "\"column\""
+     }
+    ],
+    "hint": "column da bosh o'q vertikal.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 100px; height: 40px; background: #ddd; }</style>",
+    "id": "5"
+   },
+   {
+    "title": "Teskari tartib",
+    "task": "HTML ni o'zgartirmasdan tartib C, B, A bo'lsin va chap chetdan boshlansin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; flex-direction: row-reverse; justify-content: flex-end; }",
+    "tests": [
+     {
+      "call": "[x('#c'), x('#b'), x('#a')]",
+      "expect": "[0,100,200]"
+     }
+    ],
+    "hint": "row-reverse da boshlanish o'ng tomonda.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 100px; height: 40px; background: #ddd; }</style>",
+    "id": "6"
+   },
+   {
+    "title": "margin-left: auto",
+    "task": "Oxirgi element o'ng chetga yopishsin, qolganlari chapda qolsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; }\n#c { margin-left: auto; }",
+    "tests": [
+     {
+      "call": "[x('#a'), x('#b'), x('#c')]",
+      "expect": "[0,100,500]"
+     }
+    ],
+    "hint": "auto margin bo'sh joyni yutadi.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 100px; height: 40px; background: #ddd; }</style>",
+    "id": "7"
+   },
+   {
+    "title": "align-self",
+    "task": "Qator balandligi 200px. Faqat B pastga tekislansin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; height: 200px; align-items: flex-start; }\n#b { align-self: flex-end; }",
+    "tests": [
+     {
+      "call": "[y('#a'), y('#b'), y('#c')]",
+      "expect": "[0,160,0]"
+     }
+    ],
+    "hint": "align-self bitta elementga.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 100px; height: 40px; background: #ddd; }</style>",
+    "id": "8"
+   },
+   {
+    "title": "Qatorga o'tish",
+    "task": "250px konteynerda 100px li elementlar sig'masa keyingi qatorga tushsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; flex-wrap: wrap; width: 250px; }",
+    "tests": [
+     {
+      "call": "[x('#b'), y('#c'), x('#c')]",
+      "expect": "[100,40,0]"
+     }
+    ],
+    "hint": "flex-wrap: wrap.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 100px; height: 40px; background: #ddd; }</style>",
+    "id": "9"
+   },
+   {
+    "title": "space-evenly",
+    "task": "Chetlar va elementlar orasidagi barcha oraliqlar TENG bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; justify-content: space-evenly; }",
+    "tests": [
+     {
+      "call": "[x('#a'), x('#b'), x('#c')]",
+      "expect": "[75,250,425]"
+     }
+    ],
+    "hint": "space-evenly.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 100px; height: 40px; background: #ddd; }</style>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -3124,6 +4894,184 @@
     ],
     "answer": "Elementni vizual jihatdan eng boshiga o'tkazadi (DOM o'zgarmaydi)",
     "explain": "order vizual tartibni o'zgartiradi, klaviatura tab tartibini emas, bu qulaylik muammosi bo'lishi mumkin."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Teng bo'lish",
+    "task": "Uch element 600px ni teng bo'lib olsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; }\n.item { flex: 1; }",
+    "tests": [
+     {
+      "call": "[w('#a'), w('#b'), w('#c')]",
+      "expect": "[200,200,200]"
+     }
+    ],
+    "hint": "flex: 1.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>",
+    "id": "1"
+   },
+   {
+    "title": "Nisbat 1:2:1",
+    "task": "O'rtadagi element yonidagilardan 2 baravar keng bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; }\n.item { flex: 1; }\n#b { flex: 2; }",
+    "tests": [
+     {
+      "call": "[w('#a'), w('#b'), w('#c')]",
+      "expect": "[150,300,150]"
+     }
+    ],
+    "hint": "flex: 2.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>",
+    "id": "2"
+   },
+   {
+    "title": "Qotirilgan yon panel",
+    "task": "A aniq 200px bo'lsin (o'smasin, siqilmasin), B qolgan joyni olsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; }\n#a { flex: 0 0 200px; }\n#b { flex: 1; }",
+    "tests": [
+     {
+      "call": "[w('#a'), w('#b')]",
+      "expect": "[200,400]"
+     },
+     {
+      "call": "(at(400), [w('#a'), w('#b')])",
+      "expect": "[200,200]"
+     }
+    ],
+    "hint": "flex: 0 0 200px.",
+    "kind": "css",
+    "setup": "<div class=\"row\"><div id=\"a\">Panel</div><div id=\"b\">Asosiy</div></div>",
+    "id": "3"
+   },
+   {
+    "title": "flex-grow ulushi",
+    "task": "Hamma elementning asosi 100px. Qolgan 300px dan A ikki ulush, B bir ulush olsin, C o'smasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; }\n.item { flex-basis: 100px; }\n#a { flex-grow: 2; }\n#b { flex-grow: 1; }",
+    "tests": [
+     {
+      "call": "[w('#a'), w('#b'), w('#c')]",
+      "expect": "[300,200,100]"
+     }
+    ],
+    "hint": "grow faqat BO'SH joyni taqsimlaydi.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>",
+    "id": "4"
+   },
+   {
+    "title": "Siqilmaslik",
+    "task": "Konteyner 300px, elementlar 150px. A siqilmasin, B va C qolgan joyni teng bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; width: 300px; }\n#a { flex-shrink: 0; }",
+    "tests": [
+     {
+      "call": "[w('#a'), w('#b'), w('#c')]",
+      "expect": "[150,75,75]"
+     }
+    ],
+    "hint": "flex-shrink: 0.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 150px; }</style>",
+    "id": "5"
+   },
+   {
+    "title": "min-width: 0",
+    "task": "Uzun matnli B konteynerdan chiqib ketmasin: kengligi aniq 500px bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; }\n#b { flex: 1; min-width: 0; }",
+    "tests": [
+     {
+      "call": "w('#b')",
+      "expect": "500"
+     }
+    ],
+    "hint": "Standart min-width: auto kichrayishga yo'l qo'ymaydi.",
+    "kind": "css",
+    "setup": "<div class=\"row\"><div id=\"a\">A</div><div id=\"b\"><div class=\"t\">juda_uzun_bosh_joysiz_matn_juda_uzun_bosh_joysiz_matn_juda_uzun_bosh_joysiz_matn_juda_uzun</div></div></div>\n<style>#a { flex: 0 0 100px; } .t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }</style>",
+    "id": "6"
+   },
+   {
+    "title": "flex: auto",
+    "task": "Elementlar o'z matni kengligidan boshlab, qolgan joyni teng olsin: flex: auto.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; }\n.row > div { flex: auto; }",
+    "tests": [
+     {
+      "call": "w('#b') > w('#a')",
+      "expect": "true"
+     },
+     {
+      "call": "w('#a') + w('#b')",
+      "expect": "600"
+     },
+     {
+      "call": "css('#a','flex-basis')",
+      "expect": "\"auto\""
+     }
+    ],
+    "hint": "flex: auto = 1 1 auto.",
+    "kind": "css",
+    "setup": "<div class=\"row\"><div id=\"a\">A</div><div id=\"b\">Juda uzun matnli element</div></div>",
+    "id": "7"
+   },
+   {
+    "title": "order",
+    "task": "HTML ni o'zgartirmasdan C birinchi bo'lib ko'rinsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; }\n#c { order: -1; }",
+    "tests": [
+     {
+      "call": "[x('#c'), x('#a'), x('#b')]",
+      "expect": "[0,100,200]"
+     }
+    ],
+    "hint": "order: -1.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>\n<style>.item { width: 100px; height: 40px; background: #ddd; }</style>",
+    "id": "8"
+   },
+   {
+    "title": "Yopishgan footer",
+    "task": "Sahifa 400px balandlikda: footer matn kam bo'lsa ham eng pastda tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".page { display: flex; flex-direction: column; height: 400px; }\nmain { flex: 1; }",
+    "tests": [
+     {
+      "call": "y('footer')",
+      "expect": "360"
+     }
+    ],
+    "hint": "main { flex: 1 }.",
+    "kind": "css",
+    "setup": "<div class=\"page\"><main>Qisqa matn</main><footer style=\"height: 40px\">Footer</footer></div>",
+    "id": "9"
+   },
+   {
+    "title": "wrap va grow",
+    "task": "Elementlar kamida 250px bo'lsin, sig'ganicha yonma-yon tursin va qatorni to'ldirsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".row { display: flex; flex-wrap: wrap; }\n.item { flex: 1 1 250px; }",
+    "tests": [
+     {
+      "call": "[w('#a'), w('#b'), w('#c')]",
+      "expect": "[300,300,600]"
+     },
+     {
+      "call": "(at(900), [w('#a'), w('#b'), w('#c')])",
+      "expect": "[300,300,300]"
+     }
+    ],
+    "hint": "flex: 1 1 250px.",
+    "kind": "css",
+    "setup": "<div class=\"row\">\n  <div class=\"item\" id=\"a\">A</div>\n  <div class=\"item\" id=\"b\">B</div>\n  <div class=\"item\" id=\"c\">C</div>\n</div>",
+    "id": "10"
    }
   ]
  },
@@ -3413,6 +5361,188 @@
     "answer": "Media query siz ustunlar soni oyna kengligiga moslashadi",
     "explain": "Brauzer nechta 200px ustun sig'ishini o'zi hisoblaydi."
    }
+  ],
+  "labs": [
+   {
+    "title": "Ikki ustun",
+    "task": "Ikki teng ustun yarating.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: 1fr 1fr; }",
+    "tests": [
+     {
+      "call": "[w('#a'), x('#b'), y('#c')]",
+      "expect": "[300,300,40]"
+     }
+    ],
+    "hint": "1fr 1fr.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "1"
+   },
+   {
+    "title": "repeat()",
+    "task": "repeat() yordamida 3 ta teng ustun va 15px gap.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }",
+    "tests": [
+     {
+      "call": "[w('#a'), x('#b'), x('#c')]",
+      "expect": "[190,205,410]"
+     },
+     {
+      "call": "y('#d')",
+      "expect": "55"
+     }
+    ],
+    "hint": "(600 - 30) / 3 = 190.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "2"
+   },
+   {
+    "title": "Aniq va moslashuvchan",
+    "task": "Birinchi ustun 150px, ikkinchisi qolgan joy.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: 150px 1fr; }",
+    "tests": [
+     {
+      "call": "[w('#a'), w('#b'), x('#b')]",
+      "expect": "[150,450,150]"
+     }
+    ],
+    "hint": "150px 1fr.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "3"
+   },
+   {
+    "title": "fr nisbati",
+    "task": "Ustunlar nisbati 1 : 3.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: 1fr 3fr; }",
+    "tests": [
+     {
+      "call": "[w('#a'), w('#b')]",
+      "expect": "[150,450]"
+     }
+    ],
+    "hint": "1fr 3fr.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "4"
+   },
+   {
+    "title": "Butun qatorni egallash",
+    "task": "3 ustunli gridda A butun qatorni egallasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: repeat(3, 1fr); }\n#a { grid-column: 1 / -1; }",
+    "tests": [
+     {
+      "call": "w('#a')",
+      "expect": "600"
+     },
+     {
+      "call": "[x('#c'), y('#c')]",
+      "expect": "[200,40]"
+     }
+    ],
+    "hint": "grid-column: 1 / -1.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "5"
+   },
+   {
+    "title": "span",
+    "task": "3 ustunli gridda B ikkita ustunni egallasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: repeat(3, 1fr); }\n#b { grid-column: span 2; }",
+    "tests": [
+     {
+      "call": "w('#b')",
+      "expect": "400"
+     },
+     {
+      "call": "x('#b')",
+      "expect": "200"
+     }
+    ],
+    "hint": "grid-column: span 2.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "6"
+   },
+   {
+    "title": "Aniq joyga qo'yish",
+    "task": "D elementini 1-qator, 3-ustunga qo'ying.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: repeat(3, 1fr); }\n#d { grid-column: 3; grid-row: 1; }",
+    "tests": [
+     {
+      "call": "[x('#d'), y('#d')]",
+      "expect": "[400,0]"
+     }
+    ],
+    "hint": "grid-column va grid-row.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "7"
+   },
+   {
+    "title": "auto-fit va minmax",
+    "task": "Ustunlar kamida 200px bo'lsin va sonini brauzer o'zi tanlasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }",
+    "tests": [
+     {
+      "call": "w('#a')",
+      "expect": "200"
+     },
+     {
+      "call": "(at(420), w('#a'))",
+      "expect": "210"
+     },
+     {
+      "call": "(at(900), w('#a'))",
+      "expect": "225"
+     }
+    ],
+    "hint": "repeat(auto-fit, minmax(200px, 1fr)).",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "8"
+   },
+   {
+    "title": "Qator balandligi",
+    "task": "2 ustun; birinchi qator 100px, ikkinchi qator 50px.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 100px 50px; }",
+    "tests": [
+     {
+      "call": "[h('#a'), h('#c'), y('#c')]",
+      "expect": "[100,50,100]"
+     }
+    ],
+    "hint": "grid-template-rows.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "9"
+   },
+   {
+    "title": "Markazlash: place-items",
+    "task": "300px balandlikdagi grid ichida bitta elementni aniq markazga qo'ying.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { display: grid; height: 300px; place-items: center; }",
+    "tests": [
+     {
+      "call": "[x('#a'), y('#a')]",
+      "expect": "[250,125]"
+     }
+    ],
+    "hint": "place-items: center.",
+    "kind": "css",
+    "setup": "<div class=\"box\"><div id=\"a\" style=\"width: 100px; height: 50px\">x</div></div>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -3700,6 +5830,192 @@
     ],
     "answer": "300px: stretch faqat width auto bo'lsa ishlaydi",
     "explain": "Stretch faqat o'lcham auto bo'lganda element (sahifa unsuri) kataki to'ldiradi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Nomlangan hududlar",
+    "task": "grid-template-areas bilan: header butun qator, pastda side (150px) va main.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".page { display: grid; grid-template-columns: 150px 1fr; grid-template-areas: \"head head\" \"side main\"; }\nheader { grid-area: head; }\naside { grid-area: side; }\nmain { grid-area: main; }",
+    "tests": [
+     {
+      "call": "w('header')",
+      "expect": "600"
+     },
+     {
+      "call": "[w('aside'), x('main'), y('main')]",
+      "expect": "[150,150,40]"
+     },
+     {
+      "call": "css('.page','grid-template-areas') !== 'none'",
+      "expect": "true"
+     }
+    ],
+    "hint": "Har qator alohida qo'shtirnoqda.",
+    "kind": "css",
+    "setup": "<div class=\"page\"><header>H</header><aside>S</aside><main>M</main></div>\n<style>.page > * { min-height: 40px; }</style>",
+    "id": "1"
+   },
+   {
+    "title": "Footer qo'shish",
+    "task": "Uch qator: head, (nav main), foot. nav 100px.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".page { display: grid; grid-template-columns: 100px 1fr; grid-template-areas: \"head head\" \"nav main\" \"foot foot\"; }\nheader { grid-area: head; }\nnav { grid-area: nav; }\nmain { grid-area: main; }\nfooter { grid-area: foot; }",
+    "tests": [
+     {
+      "call": "[y('footer'), w('footer')]",
+      "expect": "[80,600]"
+     },
+     {
+      "call": "[w('nav'), x('main')]",
+      "expect": "[100,100]"
+     }
+    ],
+    "hint": "footer ham butun qator.",
+    "kind": "css",
+    "setup": "<div class=\"page\"><header>H</header><nav>N</nav><main>M</main><footer>F</footer></div>\n<style>.page > * { min-height: 40px; }</style>",
+    "id": "2"
+   },
+   {
+    "title": "Bo'sh katak",
+    "task": "Birinchi qatorda logo chapda, o'rtasi bo'sh (nuqta), menyu o'ngda; uchta 200px ustun.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".top { display: grid; grid-template-columns: repeat(3, 200px); grid-template-areas: \"logo . menu\"; }\n#logo { grid-area: logo; }\n#menu { grid-area: menu; }",
+    "tests": [
+     {
+      "call": "[x('#logo'), x('#menu')]",
+      "expect": "[0,400]"
+     },
+     {
+      "call": "css('#menu','grid-column-start')",
+      "expect": "\"menu\""
+     }
+    ],
+    "hint": "Nuqta — bo'sh katak.",
+    "kind": "css",
+    "setup": "<div class=\"top\"><div id=\"logo\">L</div><div id=\"menu\">M</div></div>",
+    "id": "3"
+   },
+   {
+    "title": "Mobil maket",
+    "task": "Keng ekranda side va main yonma-yon, 500px dan torda esa ustma-ust (main tepada).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".page { display: grid; grid-template-columns: 150px 1fr; grid-template-areas: \"side main\"; }\naside { grid-area: side; }\nmain { grid-area: main; }\n@media (max-width: 500px) {\n  .page { grid-template-columns: 1fr; grid-template-areas: \"main\" \"side\"; }\n}",
+    "tests": [
+     {
+      "call": "[x('main'), y('main')]",
+      "expect": "[150,0]"
+     },
+     {
+      "call": "(at(400), [y('main'), y('aside'), w('main')])",
+      "expect": "[0,40,400]"
+     }
+    ],
+    "hint": "Media query da faqat areas va ustunlarni almashtiring.",
+    "kind": "css",
+    "setup": "<div class=\"page\"><aside>S</aside><main>M</main></div>\n<style>.page > * { min-height: 40px; }</style>",
+    "id": "4"
+   },
+   {
+    "title": "justify-items",
+    "task": "Elementlar katak ichida gorizontal markazda tursin (kengligi mazmuniga qarab).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".g { display: grid; grid-template-columns: 300px 300px; justify-items: center; }",
+    "tests": [
+     {
+      "call": "[x('#a'), x('#b')]",
+      "expect": "[125,425]"
+     }
+    ],
+    "hint": "justify-items — katak ichida.",
+    "kind": "css",
+    "setup": "<div class=\"g\"><div id=\"a\" style=\"width: 50px\">A</div><div id=\"b\" style=\"width: 50px\">B</div></div>",
+    "id": "5"
+   },
+   {
+    "title": "justify-content",
+    "task": "Ikki 100px ustun butun konteyner markazida tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".g { display: grid; grid-template-columns: 100px 100px; justify-content: center; }",
+    "tests": [
+     {
+      "call": "[x('#a'), x('#b')]",
+      "expect": "[200,300]"
+     }
+    ],
+    "hint": "justify-content — treklar to'plami.",
+    "kind": "css",
+    "setup": "<div class=\"g\"><div id=\"a\">A</div><div id=\"b\">B</div></div>",
+    "id": "6"
+   },
+   {
+    "title": "align-self gridda",
+    "task": "Qator balandligi 200px, B katakning pastiga yopishsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".g { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px; }\n#b { align-self: end; }",
+    "tests": [
+     {
+      "call": "[h('#a'), y('#b'), h('#b')]",
+      "expect": "[200,176,24]"
+     }
+    ],
+    "hint": "align-self: end.",
+    "kind": "css",
+    "setup": "<div class=\"g\"><div id=\"a\">A</div><div id=\"b\">B</div></div>",
+    "id": "7"
+   },
+   {
+    "title": "Chiziq raqamlari bilan",
+    "task": "4 ustunli gridda .hero 2-chiziqdan 4-chiziqqacha tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".g { display: grid; grid-template-columns: repeat(4, 1fr); }\n.hero { grid-column: 2 / 4; }",
+    "tests": [
+     {
+      "call": "[x('.hero'), w('.hero')]",
+      "expect": "[150,300]"
+     }
+    ],
+    "hint": "grid-column: 2 / 4.",
+    "kind": "css",
+    "setup": "<div class=\"g\"><div class=\"hero\">H</div></div>",
+    "id": "8"
+   },
+   {
+    "title": "Manfiy chiziq",
+    "task": "4 ustunli gridda .last oxirgi ikki ustunni egallasin (manfiy raqam bilan).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".g { display: grid; grid-template-columns: repeat(4, 1fr); }\n.last { grid-column: -3 / -1; }",
+    "tests": [
+     {
+      "call": "[x('.last'), w('.last')]",
+      "expect": "[300,300]"
+     }
+    ],
+    "hint": "-1 — oxirgi chiziq.",
+    "kind": "css",
+    "setup": "<div class=\"g\"><div class=\"last\">L</div></div>",
+    "id": "9"
+   },
+   {
+    "title": "Ustma-ust qatlam",
+    "task": "Matn rasm ustiga chiqsin: ikkalasini bitta katakka qo'ying.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".stack { display: grid; }\n.stack > * { grid-area: 1 / 1; }\n#txt { align-self: end; }",
+    "tests": [
+     {
+      "call": "[y('#img'), y('#txt')]",
+      "expect": "[0,76]"
+     },
+     {
+      "call": "h('.stack')",
+      "expect": "100"
+     }
+    ],
+    "hint": "grid-area: 1 / 1.",
+    "kind": "css",
+    "setup": "<div class=\"stack\"><div id=\"img\" style=\"height: 100px; background: #999\"></div><div id=\"txt\">Sarlavha</div></div>",
+    "id": "10"
    }
   ]
  },
@@ -3992,6 +6308,188 @@
     ],
     "answer": "Grid",
     "explain": "Ham ustun, ham qator bo'yicha."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Yashirin qatorlar balandligi",
+    "task": "2 ustunli gridda avtomatik yaratiladigan har qator 60px bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 60px; }",
+    "tests": [
+     {
+      "call": "[h('#a'), y('#c')]",
+      "expect": "[60,60]"
+     }
+    ],
+    "hint": "grid-auto-rows.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "1"
+   },
+   {
+    "title": "minmax qator",
+    "task": "Qatorlar kamida 50px, mazmun ko'p bo'lsa o'ssin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".g { display: grid; grid-auto-rows: minmax(50px, auto); }",
+    "tests": [
+     {
+      "call": "[h('#a'), h('#b')]",
+      "expect": "[50,90]"
+     },
+     {
+      "call": "css('.g','grid-auto-rows')",
+      "expect": "\"minmax(50px, auto)\""
+     }
+    ],
+    "hint": "minmax(50px, auto).",
+    "kind": "css",
+    "setup": "<div class=\"g\"><div id=\"a\">qisqa</div><div id=\"b\" style=\"height: 90px\">baland</div></div>",
+    "id": "2"
+   },
+   {
+    "title": "Ustun yo'nalishida oqim",
+    "task": "Elementlar ustunlar bo'ylab joylashsin: 2 qator, tartib yuqoridan pastga.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-rows: 40px 40px; grid-auto-flow: column; grid-auto-columns: 100px; }",
+    "tests": [
+     {
+      "call": "[x('#b'), y('#b'), x('#c'), y('#c')]",
+      "expect": "[0,40,100,0]"
+     }
+    ],
+    "hint": "grid-auto-flow: column.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "3"
+   },
+   {
+    "title": "dense",
+    "task": "3 ustunli gridda keng B sig'may pastga tushadi. Bo'sh joyni keyingi elementlar to'ldirsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-flow: dense; }",
+    "tests": [
+     {
+      "call": "[x('#c'), y('#c')]",
+      "expect": "[400,0]"
+     }
+    ],
+    "hint": "grid-auto-flow: dense.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>\n<style>#a, #b { grid-column: span 2; }</style>",
+    "id": "4"
+   },
+   {
+    "title": "Subgrid: ustunlar",
+    "task": "Ichki .row ota gridning 3 ustunini meros olsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".g { display: grid; grid-template-columns: 100px 200px 300px; }\n.row { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; }",
+    "tests": [
+     {
+      "call": "[x('#b'), x('#c'), w('#c')]",
+      "expect": "[100,300,300]"
+     },
+     {
+      "call": "css('.row','grid-template-columns').startsWith('subgrid')",
+      "expect": "true"
+     }
+    ],
+    "hint": "grid-template-columns: subgrid.",
+    "kind": "css",
+    "setup": "<div class=\"g\"><div class=\"row\"><div id=\"a\">A</div><div id=\"b\">B</div><div id=\"c\">C</div></div></div>",
+    "id": "5"
+   },
+   {
+    "title": "Subgrid: kartalar tekisligi",
+    "task": "Ikki kartaning sarlavha va matni bir chiziqda tursin: har karta 2 qatorni egallab, subgrid qilsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".cards { display: grid; grid-template-columns: 1fr 1fr; }\narticle { display: grid; grid-row: span 2; grid-template-rows: subgrid; }",
+    "tests": [
+     {
+      "call": "y('#p1') === y('#p2')",
+      "expect": "true"
+     },
+     {
+      "call": "css('article','grid-template-rows').startsWith('subgrid')",
+      "expect": "true"
+     }
+    ],
+    "hint": "grid-row: span 2 + subgrid.",
+    "kind": "css",
+    "setup": "<div class=\"cards\">\n  <article><h4>Qisqa</h4><p id=\"p1\">matn</p></article>\n  <article><h4>Juda uzun sarlavha ikki qatorga bo'linadi albatta shunday bo'ladi</h4><p id=\"p2\">matn</p></article>\n</div>\n<style>h4, p { margin: 0; }</style>",
+    "id": "6"
+   },
+   {
+    "title": "Implicit ustun o'lchami",
+    "task": "1 ta e'lon qilingan ustun 200px; 2-ustunga qo'yilgan element 80px li yashirin ustunda tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".g { display: grid; grid-template-columns: 200px; grid-auto-columns: 80px; }\n#b { grid-column: 2; grid-row: 1; }",
+    "tests": [
+     {
+      "call": "[x('#b'), w('#b')]",
+      "expect": "[200,80]"
+     }
+    ],
+    "hint": "grid-auto-columns.",
+    "kind": "css",
+    "setup": "<div class=\"g\"><div id=\"a\">A</div><div id=\"b\">B</div></div>",
+    "id": "7"
+   },
+   {
+    "title": "Katta karta",
+    "task": "4 ustun, qator 50px. A 2×2 joy egallasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 50px; }\n#a { grid-column: span 2; grid-row: span 2; }",
+    "tests": [
+     {
+      "call": "[w('#a'), h('#a'), x('#b')]",
+      "expect": "[300,100,300]"
+     }
+    ],
+    "hint": "span 2 ikki yo'nalishda.",
+    "kind": "css",
+    "setup": "<div class=\"grid\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n  <div id=\"c\">C</div>\n  <div id=\"d\">D</div>\n</div>\n<style>.grid > div { background: #ddd; min-height: 40px; }</style>",
+    "id": "8"
+   },
+   {
+    "title": "auto-fill",
+    "task": "Ustunlar kamida 150px bo'lsin va bo'sh ustunlar saqlansin (auto-fill).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".g { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }",
+    "tests": [
+     {
+      "call": "w('#a')",
+      "expect": "150"
+     },
+     {
+      "call": "css('.g','grid-template-columns')",
+      "expect": "\"150px 150px 150px 150px\""
+     }
+    ],
+    "hint": "auto-fill bo'sh treklarni o'chirmaydi.",
+    "kind": "css",
+    "setup": "<div class=\"g\"><div id=\"a\">A</div></div>",
+    "id": "9"
+   },
+   {
+    "title": "auto-fit bilan solishtirish",
+    "task": "Xuddi shu holatda yagona element butun qatorni egallasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".g { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }",
+    "tests": [
+     {
+      "call": "w('#a')",
+      "expect": "600"
+     },
+     {
+      "call": "css('.g','display')",
+      "expect": "\"grid\""
+     }
+    ],
+    "hint": "auto-fit bo'sh treklarni yig'ishtiradi.",
+    "kind": "css",
+    "setup": "<div class=\"g\"><div id=\"a\">A</div></div>",
+    "id": "10"
    }
   ]
  },
@@ -4308,6 +6806,192 @@
     "answer": "DOM da keyin kelgani (z-index bir xil bo'lsa)",
     "explain": "Teng z-index da tartib hal qiladi."
    }
+  ],
+  "labs": [
+   {
+    "title": "relative siljitish",
+    "task": ".b ni o'z joyidan 20px pastga suring; C joyidan qimirlamasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".b { position: relative; top: 20px; }",
+    "tests": [
+     {
+      "call": "[y('.b'), y('.c')]",
+      "expect": "[50,60]"
+     }
+    ],
+    "hint": "relative asl joyini saqlaydi.",
+    "kind": "css",
+    "setup": "<div style=\"height: 30px\">A</div>\n<div class=\"b\" style=\"height: 30px\">B</div>\n<div class=\"c\" style=\"height: 30px\">C</div>",
+    "id": "1"
+   },
+   {
+    "title": "Burchakdagi belgi",
+    "task": ".badge kartaning yuqori o'ng burchagida tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card { position: relative; }\n.badge { position: absolute; top: 0; right: 0; }",
+    "tests": [
+     {
+      "call": "[x('.badge'), y('.badge')]",
+      "expect": "[230,50]"
+     }
+    ],
+    "hint": "Otaga relative, bolaga absolute.",
+    "kind": "css",
+    "setup": "<div class=\"card\"><span class=\"badge\">3</span>Savat</div>\n<style>.card { width: 200px; height: 100px; margin: 50px; background: #eee; } .badge { width: 20px; height: 20px; }</style>",
+    "id": "2"
+   },
+   {
+    "title": "To'liq qoplash",
+    "task": ".veil kartani to'liq qoplasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card { position: relative; }\n.veil { position: absolute; inset: 0; }",
+    "tests": [
+     {
+      "call": "[w('.veil'), h('.veil'), x('.veil'), y('.veil')]",
+      "expect": "[200,120,0,0]"
+     }
+    ],
+    "hint": "inset: 0.",
+    "kind": "css",
+    "setup": "<div class=\"card\"><div class=\"veil\"></div>Matn</div>\n<style>.card { width: 200px; height: 120px; } .veil { background: rgb(0 0 0 / 40%); }</style>",
+    "id": "3"
+   },
+   {
+    "title": "Markazga: absolute",
+    "task": ".modal (100×60) 400×200 li otaning aniq markazida tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".stage { position: relative; }\n.modal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }",
+    "tests": [
+     {
+      "call": "[x('.modal'), y('.modal')]",
+      "expect": "[150,70]"
+     },
+     {
+      "call": "css('.modal','position')",
+      "expect": "\"absolute\""
+     }
+    ],
+    "hint": "translate(-50%, -50%).",
+    "kind": "css",
+    "setup": "<div class=\"stage\"><div class=\"modal\">M</div></div>\n<style>.stage { width: 400px; height: 200px; } .modal { width: 100px; height: 60px; background: #ddd; }</style>",
+    "id": "4"
+   },
+   {
+    "title": "fixed tugma",
+    "task": ".fab oynaning pastki o'ng burchagidan 20px ichkarida tursin (600×400 oyna). O'lchami 50×50.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".fab { position: fixed; right: 20px; bottom: 20px; width: 50px; height: 50px; box-sizing: border-box; }",
+    "tests": [
+     {
+      "call": "[x('.fab'), y('.fab')]",
+      "expect": "[530,330]"
+     },
+     {
+      "call": "css('.fab','position')",
+      "expect": "\"fixed\""
+     }
+    ],
+    "hint": "right va bottom.",
+    "kind": "css",
+    "setup": "<button class=\"fab\">+</button>",
+    "id": "5"
+   },
+   {
+    "title": "sticky sarlavha",
+    "task": "h3 aylantirilganda tepada yopishib tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "h3 { position: sticky; top: 0; margin: 0; }",
+    "tests": [
+     {
+      "call": "css('h3','position')",
+      "expect": "\"sticky\""
+     },
+     {
+      "call": "css('h3','top')",
+      "expect": "\"0px\""
+     }
+    ],
+    "hint": "position: sticky + top.",
+    "kind": "css",
+    "setup": "<div class=\"list\" style=\"height: 100px; overflow: auto\">\n  <h3>A</h3><p>1</p><p>2</p><p>3</p><p>4</p>\n</div>",
+    "id": "6"
+   },
+   {
+    "title": "Cho'zilgan pastki panel",
+    "task": ".bar oynaning pastida butun kenglikda, balandligi 40px bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".bar { position: fixed; left: 0; right: 0; bottom: 0; height: 40px; }",
+    "tests": [
+     {
+      "call": "[x('.bar'), y('.bar'), w('.bar'), h('.bar')]",
+      "expect": "[0,360,600,40]"
+     }
+    ],
+    "hint": "left: 0; right: 0.",
+    "kind": "css",
+    "setup": "<div class=\"bar\">Panel</div>",
+    "id": "7"
+   },
+   {
+    "title": "static ota o'tkazib yuboriladi",
+    "task": ".mark .outer ga nisbatan (o'rtadagi .inner ga emas) pastki chap burchakda tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".outer { position: relative; }\n.mark { position: absolute; left: 0; bottom: 0; }",
+    "tests": [
+     {
+      "call": "[x('.mark'), y('.outer') + h('.outer') - y('.mark') - h('.mark')]",
+      "expect": "[0,0]"
+     },
+     {
+      "call": "css('.inner','position')",
+      "expect": "\"static\""
+     }
+    ],
+    "hint": "Eng yaqin static bo'lmagan ota.",
+    "kind": "css",
+    "setup": "<div class=\"outer\"><div class=\"inner\"><span class=\"mark\">*</span></div></div>\n<style>.outer { width: 300px; height: 150px; } .inner { margin: 20px; height: 50px; } .mark { width: 10px; height: 10px; }</style>",
+    "id": "8"
+   },
+   {
+    "title": "Tooltip joylash",
+    "task": ".tip tugmaning TEPASIDA (pastki cheti tugma tepasiga tegib) tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".wrap { position: relative; }\n.tip { position: absolute; bottom: 100%; left: 0; }",
+    "tests": [
+     {
+      "call": "y('button') - y('.tip') - h('.tip')",
+      "expect": "0"
+     },
+     {
+      "call": "x('.tip')",
+      "expect": "0"
+     }
+    ],
+    "hint": "bottom: 100%.",
+    "kind": "css",
+    "setup": "<div class=\"wrap\" style=\"margin-top: 60px; display: inline-block\"><button style=\"height: 30px\">Yordam</button><span class=\"tip\" style=\"height: 20px\">Izoh</span></div>",
+    "id": "9"
+   },
+   {
+    "title": "Foizli joylashuv",
+    "task": ".dot 200px li chiziqning chapdan 25% joyida tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".line { position: relative; }\n.dot { position: absolute; left: 25%; top: 0; }",
+    "tests": [
+     {
+      "call": "x('.dot')",
+      "expect": "50"
+     },
+     {
+      "call": "rule('.dot','left')",
+      "expect": "\"25%\""
+     }
+    ],
+    "hint": "left: 25%.",
+    "kind": "css",
+    "setup": "<div class=\"line\"><i class=\"dot\"></i></div>\n<style>.line { width: 200px; height: 4px; } .dot { display: block; width: 4px; height: 4px; }</style>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -4587,6 +7271,196 @@
     ],
     "answer": "Ota stacking context yaratmagan: negativ element ota fonidan ham pastga tushadi",
     "explain": "Ota da isolation/position+z-index bo'lsa, negativ element (sahifa unsuri) ota fonidan keyin chiziladi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Ustiga chiqarish",
+    "task": ".b elementi .a ning ustida tursin (z-index).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".b { z-index: 10; }",
+    "tests": [
+     {
+      "call": "Number(css('.b','z-index')) > Number(css('.a','z-index'))",
+      "expect": "true"
+     }
+    ],
+    "hint": "Kattaroq z-index ustda.",
+    "kind": "css",
+    "setup": "<div class=\"a\">A</div><div class=\"b\">B</div>\n<style>.a, .b { position: absolute; top: 0; width: 100px; height: 100px; } .a { z-index: 5; }</style>",
+    "id": "1"
+   },
+   {
+    "title": "static ga z-index",
+    "task": ".card ga z-index ishlashi uchun uni joylashtiring va qiymati 2 bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card { position: relative; z-index: 2; }",
+    "tests": [
+     {
+      "call": "css('.card','position') !== 'static'",
+      "expect": "true"
+     },
+     {
+      "call": "css('.card','z-index')",
+      "expect": "\"2\""
+     }
+    ],
+    "hint": "static elementda z-index ishlamaydi.",
+    "kind": "css",
+    "setup": "<div class=\"card\">Karta</div>",
+    "id": "2"
+   },
+   {
+    "title": "isolation",
+    "task": ".widget o'z stacking context (qatlamlar konteksti) ini ochsin, z-index va position siz.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".widget { isolation: isolate; }",
+    "tests": [
+     {
+      "call": "css('.widget','isolation')",
+      "expect": "\"isolate\""
+     },
+     {
+      "call": "css('.widget','position')",
+      "expect": "\"static\""
+     }
+    ],
+    "hint": "isolation: isolate.",
+    "kind": "css",
+    "setup": "<div class=\"widget\"><div>ichki</div></div>",
+    "id": "3"
+   },
+   {
+    "title": "Fon qatlami orqaga",
+    "task": ".bg bezagi matn orqasida tursin, lekin kartaning o'zidan tashqariga tushib ketmasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card { z-index: 0; }\n.bg { z-index: -1; }",
+    "tests": [
+     {
+      "call": "css('.bg','z-index')",
+      "expect": "\"-1\""
+     },
+     {
+      "call": "css('.card','z-index') !== 'auto' || css('.card','isolation') === 'isolate'",
+      "expect": "true"
+     }
+    ],
+    "hint": "Otada kontekst oching, bolaga -1.",
+    "kind": "css",
+    "setup": "<div class=\"card\"><span class=\"bg\"></span>Matn</div>\n<style>.card { position: relative; background: #eee; } .bg { position: absolute; inset: 0; background: gold; }</style>",
+    "id": "4"
+   },
+   {
+    "title": "Qatlam shkalasi",
+    "task": "O'zgaruvchilar bilan: dropdown 10, modal 100, toast 1000.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ":root { --z-drop: 10; --z-modal: 100; --z-toast: 1000; }\n.dropdown, .modal, .toast { position: relative; }\n.dropdown { z-index: var(--z-drop); }\n.modal { z-index: var(--z-modal); }\n.toast { z-index: var(--z-toast); }",
+    "tests": [
+     {
+      "call": "[css('.dropdown','z-index'), css('.modal','z-index'), css('.toast','z-index')]",
+      "expect": "[\"10\",\"100\",\"1000\"]"
+     },
+     {
+      "call": "/var\\(/.test(rule('.modal','z-index'))",
+      "expect": "true"
+     }
+    ],
+    "hint": "z-index: var(--z-modal).",
+    "kind": "css",
+    "setup": "<div class=\"dropdown\">d</div><div class=\"modal\">m</div><div class=\"toast\">t</div>",
+    "id": "5"
+   },
+   {
+    "title": "flex bolada z-index",
+    "task": "position bermasdan flex bolasi .b ga z-index 3 bering.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".b { z-index: 3; }",
+    "tests": [
+     {
+      "call": "css('.b','z-index')",
+      "expect": "\"3\""
+     },
+     {
+      "call": "css('.b','position')",
+      "expect": "\"static\""
+     }
+    ],
+    "hint": "Flex bolalarida position siz ham ishlaydi.",
+    "kind": "css",
+    "setup": "<div class=\"row\"><div class=\"a\">a</div><div class=\"b\">b</div></div>\n<style>.row { display: flex; }</style>",
+    "id": "6"
+   },
+   {
+    "title": "opacity konteksti",
+    "task": ".layer yangi kontekst ochsin va deyarli ko'rinmaydigan farq bilan: opacity 0.99.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".layer { opacity: 0.99; }",
+    "tests": [
+     {
+      "call": "css('.layer','opacity')",
+      "expect": "\"0.99\""
+     }
+    ],
+    "hint": "1 dan kichik opacity kontekst ochadi.",
+    "kind": "css",
+    "setup": "<div class=\"layer\">x</div>",
+    "id": "7"
+   },
+   {
+    "title": "Tuzoqdan chiqarish",
+    "task": "Menyu .header ostida qolib ketyapti. .header kontekstini .content dan yuqori qiling (menyuning z-index ini o'zgartirmang).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".header { z-index: 3; }",
+    "tests": [
+     {
+      "call": "Number(css('.header','z-index')) > Number(css('.content','z-index'))",
+      "expect": "true"
+     },
+     {
+      "call": "css('.menu','z-index')",
+      "expect": "\"9999\""
+     }
+    ],
+    "hint": "Solishtirish ota kontekstlari orasida bo'ladi.",
+    "kind": "css",
+    "setup": "<div class=\"header\"><div class=\"menu\">menyu</div></div><div class=\"content\">kontent</div>\n<style>.header { position: relative; z-index: 1; } .content { position: relative; z-index: 2; } .menu { position: absolute; z-index: 9999; }</style>",
+    "id": "8"
+   },
+   {
+    "title": "fixed va transform",
+    "task": ".panel ichidagi fixed element panelga nisbatan joylashsin (panelga transform bering, ko'rinishi o'zgarmasin).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".panel { transform: translateZ(0); }",
+    "tests": [
+     {
+      "call": "[x('.pin'), y('.pin')]",
+      "expect": "[100,100]"
+     }
+    ],
+    "hint": "transform li ota fixed uchun containing block bo'ladi.",
+    "kind": "css",
+    "setup": "<div class=\"panel\"><div class=\"pin\">pin</div></div>\n<style>.panel { margin: 100px; width: 200px; height: 100px; } .pin { position: fixed; top: 0; left: 0; }</style>",
+    "id": "9"
+   },
+   {
+    "title": "DOM tartibi",
+    "task": "z-index bir xil. HTML ni o'zgartirmasdan .a ustda bo'lsin: unga kattaroq qiymat bering (2), .b ga 1.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".a, .b { position: relative; }\n.a { z-index: 2; }\n.b { z-index: 1; }",
+    "tests": [
+     {
+      "call": "[css('.a','z-index'), css('.b','z-index')]",
+      "expect": "[\"2\",\"1\"]"
+     },
+     {
+      "call": "css('.a','position') !== 'static'",
+      "expect": "true"
+     }
+    ],
+    "hint": "Teng bo'lsa DOM da keyingisi ustda.",
+    "kind": "css",
+    "setup": "<div class=\"a\">A</div><div class=\"b\">B</div>",
+    "id": "10"
    }
   ]
  },
@@ -4882,6 +7756,180 @@
     "answer": "scroll-snap-align",
     "explain": "Har bir slayd o'zining yopishish chizig'ini belgilaydi."
    }
+  ],
+  "labs": [
+   {
+    "title": "Aylanadigan quti",
+    "task": ".log balandligi 100px, matn ko'p bo'lsa vertikal aylantirilsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".log { height: 100px; overflow-y: auto; }",
+    "tests": [
+     {
+      "call": "h('.log')",
+      "expect": "100"
+     },
+     {
+      "call": "css('.log','overflow-y')",
+      "expect": "\"auto\""
+     }
+    ],
+    "hint": "overflow-y: auto.",
+    "kind": "css",
+    "setup": "<div class=\"log\"><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p></div>",
+    "id": "1"
+   },
+   {
+    "title": "max-height",
+    "task": "Qisqa ro'yxat o'z bo'yicha, uzun bo'lsa 120px dan oshmasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".a, .b { max-height: 120px; overflow: auto; }",
+    "tests": [
+     {
+      "call": "[h('.a'), h('.b')]",
+      "expect": "[30,120]"
+     }
+    ],
+    "hint": "max-height + overflow.",
+    "kind": "css",
+    "setup": "<div class=\"a\"><p>1</p></div><div class=\"b\"><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p></div>\n<style>p { margin: 0; line-height: 30px; }</style>",
+    "id": "2"
+   },
+   {
+    "title": "Kesib tashlash",
+    "task": ".thumb 100×100, tashqariga chiqqan qism ko'rinmasin va aylantirgich bo'lmasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".thumb { width: 100px; height: 100px; overflow: hidden; }",
+    "tests": [
+     {
+      "call": "[w('.thumb'), h('.thumb'), css('.thumb','overflow-x'), css('.thumb','overflow-y')]",
+      "expect": "[100,100,\"hidden\",\"hidden\"]"
+     }
+    ],
+    "hint": "overflow: hidden.",
+    "kind": "css",
+    "setup": "<div class=\"thumb\"><div style=\"width: 300px; height: 300px\">katta</div></div>",
+    "id": "3"
+   },
+   {
+    "title": "Gorizontal lenta",
+    "task": "Kartochkalar bir qatorda tursin va gorizontal aylantirilsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".strip { display: flex; overflow-x: auto; }\n.c { flex: 0 0 200px; }",
+    "tests": [
+     {
+      "call": "[w('#e'), x('#e'), y('#e')]",
+      "expect": "[200,600,0]"
+     },
+     {
+      "call": "css('.strip','overflow-x')",
+      "expect": "\"auto\""
+     }
+    ],
+    "hint": "flex-shrink: 0 bo'lsin.",
+    "kind": "css",
+    "setup": "<div class=\"strip\"><div class=\"c\" id=\"a\">1</div><div class=\"c\" id=\"b\">2</div><div class=\"c\" id=\"d\">3</div><div class=\"c\" id=\"e\">4</div></div>\n<style>.c { width: 200px; height: 50px; }</style>",
+    "id": "4"
+   },
+   {
+    "title": "Scroll snap",
+    "task": "Lentada aylantirish har kartaning boshiga yopishsin (x mandatory, start).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".strip { scroll-snap-type: x mandatory; }\n.s { scroll-snap-align: start; }",
+    "tests": [
+     {
+      "call": "css('.strip','scroll-snap-type')",
+      "expect": "\"x mandatory\""
+     },
+     {
+      "call": "css('.s','scroll-snap-align')",
+      "expect": "\"start\""
+     }
+    ],
+    "hint": "Otaga type, bolalarga align.",
+    "kind": "css",
+    "setup": "<div class=\"strip\"><div class=\"s\">1</div><div class=\"s\">2</div></div>\n<style>.strip { display: flex; overflow-x: auto; } .s { flex: 0 0 100%; }</style>",
+    "id": "5"
+   },
+   {
+    "title": "Silliq aylantirish",
+    "task": "Sahifa ichidagi havolalar silliq aylantirilsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "html { scroll-behavior: smooth; }",
+    "tests": [
+     {
+      "call": "css('html','scroll-behavior')",
+      "expect": "\"smooth\""
+     }
+    ],
+    "hint": "scroll-behavior: smooth.",
+    "kind": "css",
+    "setup": "<a href=\"#b\">pastga</a><div style=\"height: 600px\"></div><h2 id=\"b\">B</h2>",
+    "id": "6"
+   },
+   {
+    "title": "overscroll-behavior",
+    "task": "Modal ichida oxirigacha aylantirilganda orqa sahifa siljimasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".modal { overscroll-behavior: contain; }",
+    "tests": [
+     {
+      "call": "css('.modal','overscroll-behavior-y')",
+      "expect": "\"contain\""
+     }
+    ],
+    "hint": "overscroll-behavior: contain.",
+    "kind": "css",
+    "setup": "<div class=\"modal\" style=\"height: 80px; overflow: auto\"><p>1</p><p>2</p><p>3</p></div>",
+    "id": "7"
+   },
+   {
+    "title": "scrollbar-gutter",
+    "task": "Aylantirgich paydo bo'lganda tarkib sakramasligi uchun joy oldindan ajratilsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { scrollbar-gutter: stable; }",
+    "tests": [
+     {
+      "call": "css('.box','scrollbar-gutter')",
+      "expect": "\"stable\""
+     }
+    ],
+    "hint": "scrollbar-gutter: stable.",
+    "kind": "css",
+    "setup": "<div class=\"box\" style=\"height: 80px; overflow: auto\">x</div>",
+    "id": "8"
+   },
+   {
+    "title": "scroll-margin",
+    "task": "Sarlavhaga o'tilganda 60px li menyu uni yopib qo'ymasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "h2 { scroll-margin-top: 60px; }",
+    "tests": [
+     {
+      "call": "css('h2','scroll-margin-top')",
+      "expect": "\"60px\""
+     }
+    ],
+    "hint": "scroll-margin-top.",
+    "kind": "css",
+    "setup": "<h2 id=\"s\">Bo'lim</h2>",
+    "id": "9"
+   },
+   {
+    "title": "Gorizontal toshishni tuzatish",
+    "task": ".wide otasidan chiqib ketyapti. Rasm kabi otasiga sig'sin (max-width).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".wide { max-width: 100%; }",
+    "tests": [
+     {
+      "call": "w('.wide')",
+      "expect": "200"
+     }
+    ],
+    "hint": "max-width: 100%.",
+    "kind": "css",
+    "setup": "<div style=\"width: 200px\"><div class=\"wide\">x</div></div>\n<style>.wide { width: 500px; height: 20px; }</style>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -5166,6 +8214,208 @@
     "answer": "Foydalanuvchi shrift kattalashtirsa, breakpoint ham mos ravishda siljiydi",
     "explain": "Shrift sozlamasiga mos moslashadi."
    }
+  ],
+  "labs": [
+   {
+    "title": "Mobile-first (avval telefon)",
+    "task": "Telefonda bitta ustun, 500px dan boshlab ikki ustun.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".g { display: grid; grid-template-columns: 1fr; }\n@media (min-width: 500px) { .g { grid-template-columns: 1fr 1fr; } }",
+    "tests": [
+     {
+      "call": "(at(400), [w('#a'), y('#b')])",
+      "expect": "[400,24]"
+     },
+     {
+      "call": "(at(600), [w('#a'), y('#b')])",
+      "expect": "[300,0]"
+     }
+    ],
+    "hint": "@media (min-width: 500px).",
+    "kind": "css",
+    "setup": "<div class=\"g\"><div id=\"a\">A</div><div id=\"b\">B</div></div>",
+    "id": "1"
+   },
+   {
+    "title": "max-width so'rovi",
+    "task": "400px va undan torda .side yashirilsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@media (max-width: 400px) { .side { display: none; } }",
+    "tests": [
+     {
+      "call": "(at(600), css('.side','display'))",
+      "expect": "\"block\""
+     },
+     {
+      "call": "(at(400), css('.side','display'))",
+      "expect": "\"none\""
+     }
+    ],
+    "hint": "max-width: 400px (chegara ham kiradi).",
+    "kind": "css",
+    "setup": "<aside class=\"side\">yon</aside>",
+    "id": "2"
+   },
+   {
+    "title": "Uch bosqich",
+    "task": "p shrifti: 400px gacha 14px, 400px dan 16px, 800px dan 20px.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "p { font-size: 14px; }\n@media (min-width: 400px) { p { font-size: 16px; } }\n@media (min-width: 800px) { p { font-size: 20px; } }",
+    "tests": [
+     {
+      "call": "(at(320), css('p','font-size'))",
+      "expect": "\"14px\""
+     },
+     {
+      "call": "(at(500), css('p','font-size'))",
+      "expect": "\"16px\""
+     },
+     {
+      "call": "(at(900), css('p','font-size'))",
+      "expect": "\"20px\""
+     }
+    ],
+    "hint": "Kichikdan kattaga yozing.",
+    "kind": "css",
+    "setup": "<p>Matn</p>",
+    "id": "3"
+   },
+   {
+    "title": "Oraliq",
+    "task": "Faqat 400–700px oralig'ida fon qizil bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@media (min-width: 400px) and (max-width: 700px) { .box { background: red; } }",
+    "tests": [
+     {
+      "call": "(at(300), css('.box','background-color'))",
+      "expect": "\"rgba(0, 0, 0, 0)\""
+     },
+     {
+      "call": "(at(500), css('.box','background-color'))",
+      "expect": "\"rgb(255, 0, 0)\""
+     },
+     {
+      "call": "(at(800), css('.box','background-color'))",
+      "expect": "\"rgba(0, 0, 0, 0)\""
+     }
+    ],
+    "hint": "and bilan ikki shart.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "4"
+   },
+   {
+    "title": "Moslashuvchan rasm",
+    "task": "Rasm otasidan katta bo'lmasin va nisbati saqlansin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "img { max-width: 100%; height: auto; }",
+    "tests": [
+     {
+      "call": "[w('img'), h('img')]",
+      "expect": "[200,100]"
+     }
+    ],
+    "hint": "max-width: 100%; height: auto.",
+    "kind": "css",
+    "setup": "<div style=\"width: 200px\"><img alt=\"\" width=\"400\" height=\"200\" src=\"data:image/gif;base64,R0lGODlhAgABAAAAACw=\"></div>",
+    "id": "5"
+   },
+   {
+    "title": "aspect-ratio",
+    "task": ".video har qanday kenglikda 16:9 nisbatda bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".video { aspect-ratio: 16 / 9; }",
+    "tests": [
+     {
+      "call": "h('.video')",
+      "expect": "338"
+     },
+     {
+      "call": "(at(320), h('.video'))",
+      "expect": "180"
+     }
+    ],
+    "hint": "aspect-ratio: 16 / 9.",
+    "kind": "css",
+    "setup": "<div class=\"video\"></div>",
+    "id": "6"
+   },
+   {
+    "title": "object-fit",
+    "task": "Rasm 100×100 qutini cho'zilmasdan to'ldirsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "img { width: 100px; height: 100px; object-fit: cover; }",
+    "tests": [
+     {
+      "call": "[w('img'), h('img'), css('img','object-fit')]",
+      "expect": "[100,100,\"cover\"]"
+     }
+    ],
+    "hint": "object-fit: cover.",
+    "kind": "css",
+    "setup": "<img alt=\"\" src=\"data:image/gif;base64,R0lGODlhAgABAAAAACw=\">",
+    "id": "7"
+   },
+   {
+    "title": "Konteyner kengligi",
+    "task": ".wrap eng ko'pi 480px, torroq ekranda esa 100% bo'lib, markazda tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".wrap { max-width: 480px; margin: 0 auto; }",
+    "tests": [
+     {
+      "call": "[w('.wrap'), x('.wrap')]",
+      "expect": "[480,60]"
+     },
+     {
+      "call": "(at(320), [w('.wrap'), x('.wrap')])",
+      "expect": "[320,0]"
+     }
+    ],
+    "hint": "max-width + margin auto.",
+    "kind": "css",
+    "setup": "<div class=\"wrap\">x</div>",
+    "id": "8"
+   },
+   {
+    "title": "Orientatsiya",
+    "task": "Oyna balandligidan keng (landscape) bo'lsa matn ko'k, aks holda qora.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@media (orientation: landscape) { p { color: blue; } }",
+    "tests": [
+     {
+      "call": "(at(600), css('p','color'))",
+      "expect": "\"rgb(0, 0, 255)\""
+     },
+     {
+      "call": "(at(300), css('p','color'))",
+      "expect": "\"rgb(0, 0, 0)\""
+     }
+    ],
+    "hint": "@media (orientation: landscape).",
+    "kind": "css",
+    "setup": "<p>Matn</p>",
+    "id": "9"
+   },
+   {
+    "title": "Fluid shrift",
+    "task": "h1 shrifti calc(16px + 2vw) bo'lsin — oyna bilan silliq o'sadi.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "h1 { font-size: calc(16px + 2vw); }",
+    "tests": [
+     {
+      "call": "css('h1','font-size')",
+      "expect": "\"28px\""
+     },
+     {
+      "call": "(at(300), css('h1','font-size'))",
+      "expect": "\"22px\""
+     }
+    ],
+    "hint": "calc(16px + 2vw).",
+    "kind": "css",
+    "setup": "<h1>Sarlavha</h1>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -5444,6 +8694,180 @@
     "answer": "30px",
     "explain": "5% × 600 = 30."
    }
+  ],
+  "labs": [
+   {
+    "title": "Konteyner e'lon qilish",
+    "task": ".slot ni o'lcham so'raladigan konteyner qiling (inline-size).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".slot { container-type: inline-size; }",
+    "tests": [
+     {
+      "call": "css('.slot','container-type')",
+      "expect": "\"inline-size\""
+     }
+    ],
+    "hint": "container-type: inline-size.",
+    "kind": "css",
+    "setup": "<div class=\"slot\"><div>x</div></div>",
+    "id": "1"
+   },
+   {
+    "title": "@container asoslari",
+    "task": "Konteyner 300px dan keng bo'lsa .card fon rangi qizil.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".slot { container-type: inline-size; }\n@container (min-width: 300px) { .card { background: red; } }",
+    "tests": [
+     {
+      "call": "[css('#a','background-color'), css('#b','background-color')]",
+      "expect": "[\"rgba(0, 0, 0, 0)\",\"rgb(255, 0, 0)\"]"
+     }
+    ],
+    "hint": "@container (min-width: 300px).",
+    "kind": "css",
+    "setup": "<div class=\"slot\" style=\"width: 200px\"><div class=\"card\" id=\"a\">x</div></div>\n<div class=\"slot\" style=\"width: 400px\"><div class=\"card\" id=\"b\">x</div></div>",
+    "id": "2"
+   },
+   {
+    "title": "Karta yo'nalishi",
+    "task": "Tor joyda karta ustun, 400px dan keng joyda qator bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".slot { container-type: inline-size; }\n.card { display: flex; flex-direction: column; }\n@container (min-width: 400px) { .card { flex-direction: row; } }",
+    "tests": [
+     {
+      "call": "[css('#a','flex-direction'), css('#b','flex-direction')]",
+      "expect": "[\"column\",\"row\"]"
+     }
+    ],
+    "hint": "Ichki elementni o'zgartiring.",
+    "kind": "css",
+    "setup": "<div class=\"slot\" style=\"width: 300px\"><div class=\"card\" id=\"a\"><b>rasm</b><span>matn</span></div></div>\n<div class=\"slot\" style=\"width: 500px\"><div class=\"card\" id=\"b\"><b>rasm</b><span>matn</span></div></div>",
+    "id": "3"
+   },
+   {
+    "title": "Nomlangan konteyner",
+    "task": ".side ni 'side' deb nomlang va faqat shu nomli konteyner 200px dan tor bo'lsa .t yashirilsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".side { container-type: inline-size; container-name: side; }\n@container side (max-width: 200px) { .t { display: none; } }",
+    "tests": [
+     {
+      "call": "css('.side','container-name')",
+      "expect": "\"side\""
+     },
+     {
+      "call": "css('.t','display')",
+      "expect": "\"none\""
+     }
+    ],
+    "hint": "@container side (...).",
+    "kind": "css",
+    "setup": "<div class=\"side\" style=\"width: 150px\"><span class=\"t\">izoh</span></div>",
+    "id": "4"
+   },
+   {
+    "title": "container shorthand",
+    "task": "Bitta xususiyat bilan nom va tur bering: card / inline-size.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { container: card / inline-size; }",
+    "tests": [
+     {
+      "call": "[css('.box','container-name'), css('.box','container-type')]",
+      "expect": "[\"card\",\"inline-size\"]"
+     }
+    ],
+    "hint": "container: nom / tur.",
+    "kind": "css",
+    "setup": "<div class=\"box\"><i>x</i></div>",
+    "id": "5"
+   },
+   {
+    "title": "cqw birligi",
+    "task": "Sarlavha shrifti konteyner kengligining 10% i bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".slot { container-type: inline-size; }\nh3 { font-size: 10cqw; }",
+    "tests": [
+     {
+      "call": "css('h3','font-size')",
+      "expect": "\"30px\""
+     },
+     {
+      "call": "rule('h3','font-size')",
+      "expect": "\"10cqw\""
+     }
+    ],
+    "hint": "1cqw — konteyner kengligining 1%.",
+    "kind": "css",
+    "setup": "<div class=\"slot\" style=\"width: 300px\"><h3>Matn</h3></div>",
+    "id": "6"
+   },
+   {
+    "title": "Konteyner ichida ustunlar",
+    "task": "Ro'yxat 500px dan keng konteynerda 3 ustun, aks holda 1 ustun.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".slot { container-type: inline-size; }\n.list { display: grid; }\n@container (min-width: 500px) { .list { grid-template-columns: repeat(3, 1fr); } }",
+    "tests": [
+     {
+      "call": "css('#a','grid-template-columns')",
+      "expect": "\"200px 200px 200px\""
+     },
+     {
+      "call": "css('#b','grid-template-columns')",
+      "expect": "\"300px\""
+     }
+    ],
+    "hint": "@container + grid.",
+    "kind": "css",
+    "setup": "<div class=\"slot\" style=\"width: 600px\"><div class=\"list\" id=\"a\"><i>1</i><i>2</i><i>3</i></div></div>\n<div class=\"slot\" style=\"width: 300px\"><div class=\"list\" id=\"b\"><i>1</i><i>2</i><i>3</i></div></div>",
+    "id": "7"
+   },
+   {
+    "title": "Media va container farqi",
+    "task": "Oyna keng (600px) bo'lsa ham, tor konteynerdagi matn qora qolsin; keng konteynerdagisi ko'k.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".slot { container-type: inline-size; }\n@container (min-width: 300px) { p { color: blue; } }",
+    "tests": [
+     {
+      "call": "[css('#a','color'), css('#b','color')]",
+      "expect": "[\"rgb(0, 0, 0)\",\"rgb(0, 0, 255)\"]"
+     }
+    ],
+    "hint": "Media query emas, container query.",
+    "kind": "css",
+    "setup": "<div class=\"slot\" style=\"width: 100px\"><p id=\"a\">a</p></div><div class=\"slot\" style=\"width: 350px\"><p id=\"b\">b</p></div>",
+    "id": "8"
+   },
+   {
+    "title": "Ikki chegara",
+    "task": "Konteyner 200–400px bo'lsa .tag yashil.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".slot { container-type: inline-size; }\n@container (min-width: 200px) and (max-width: 400px) { .tag { color: green; } }",
+    "tests": [
+     {
+      "call": "[css('#a','color'), css('#b','color')]",
+      "expect": "[\"rgb(0, 128, 0)\",\"rgb(0, 0, 0)\"]"
+     }
+    ],
+    "hint": "and.",
+    "kind": "css",
+    "setup": "<div class=\"slot\" style=\"width: 300px\"><span class=\"tag\" id=\"a\">a</span></div><div class=\"slot\" style=\"width: 500px\"><span class=\"tag\" id=\"b\">b</span></div>",
+    "id": "9"
+   },
+   {
+    "title": "Tugma to'liq kenglikda",
+    "task": "Konteyner 250px dan tor bo'lsa tugma butun kenglikni egallasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".slot { container-type: inline-size; }\n@container (max-width: 250px) { button { width: 100%; } }",
+    "tests": [
+     {
+      "call": "w('button')",
+      "expect": "200"
+     }
+    ],
+    "hint": "width: 100%.",
+    "kind": "css",
+    "setup": "<div class=\"slot\" style=\"width: 200px\"><button>Sotib olish</button></div>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -5717,6 +9141,200 @@
     "answer": "red",
     "explain": "Fallback (zaxira qiymat) ichida yana var ishlatish mumkin."
    }
+  ],
+  "labs": [
+   {
+    "title": "O'zgaruvchi e'lon qilish",
+    "task": ":root da --brand: red; yarating va h1 rangi uchun ishlating.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ":root { --brand: red; }\nh1 { color: var(--brand); }",
+    "tests": [
+     {
+      "call": "css('h1','color')",
+      "expect": "\"rgb(255, 0, 0)\""
+     },
+     {
+      "call": "css('html','--brand')",
+      "expect": "\"red\""
+     },
+     {
+      "call": "rule('h1','color')",
+      "expect": "\"var(--brand)\""
+     }
+    ],
+    "hint": "var(--brand).",
+    "kind": "css",
+    "setup": "<h1>Brend</h1>",
+    "id": "1"
+   },
+   {
+    "title": "Zaxira qiymat",
+    "task": "--gap berilmagan. .box padding i var(--gap, 12px) bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { padding: var(--gap, 12px); }",
+    "tests": [
+     {
+      "call": "css('.box','padding-left')",
+      "expect": "\"12px\""
+     },
+     {
+      "call": "/--gap/.test(rule('.box','padding-left') || rule('.box','padding'))",
+      "expect": "true"
+     }
+    ],
+    "hint": "Vergul bilan fallback.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "2"
+   },
+   {
+    "title": "Mahalliy qayta belgilash",
+    "task": "Ikkala tugma var(--c) ishlatadi. .danger ichida --c ni qizil qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".danger { --c: red; }",
+    "tests": [
+     {
+      "call": "[css('#a','color'), css('#b','color')]",
+      "expect": "[\"rgb(0, 0, 255)\",\"rgb(255, 0, 0)\"]"
+     }
+    ],
+    "hint": "O'zgaruvchi meros bo'ladi.",
+    "kind": "css",
+    "setup": "<button id=\"a\">OK</button>\n<div class=\"danger\"><button id=\"b\">O'chirish</button></div>\n<style>:root { --c: blue; } button { color: var(--c); }</style>",
+    "id": "3"
+   },
+   {
+    "title": "Mavzu (theme)",
+    "task": "[data-theme=\"dark\"] ichida fon qora, matn oq bo'lsin — faqat o'zgaruvchilarni qayta belgilab.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".app { background: var(--bg); color: var(--fg); }\n[data-theme=\"dark\"] { --bg: black; --fg: white; }",
+    "tests": [
+     {
+      "call": "[css('#light','color'), css('#dark','color')]",
+      "expect": "[\"rgb(0, 0, 0)\",\"rgb(255, 255, 255)\"]"
+     },
+     {
+      "call": "css('#dark','background-color')",
+      "expect": "\"rgb(0, 0, 0)\""
+     }
+    ],
+    "hint": "Bitta qoida, ikki qiymat to'plami.",
+    "kind": "css",
+    "setup": "<div class=\"app\" id=\"light\">a</div><div class=\"app\" data-theme=\"dark\" id=\"dark\">b</div>\n<style>.app { --bg: white; --fg: black; }</style>",
+    "id": "4"
+   },
+   {
+    "title": "calc bilan",
+    "task": "--space: 8px. .box padding i calc(var(--space) * 3) bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { --space: 8px; padding: calc(var(--space) * 3); }",
+    "tests": [
+     {
+      "call": "css('.box','padding-top')",
+      "expect": "\"24px\""
+     },
+     {
+      "call": "css('.box','--space')",
+      "expect": "\"8px\""
+     }
+    ],
+    "hint": "calc(var(--space) * 3).",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "5"
+   },
+   {
+    "title": "Birliksiz sondan px",
+    "task": "--s: 20 (birliksiz). Undan margin-left 20px hosil qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { margin-left: calc(var(--s) * 1px); }",
+    "tests": [
+     {
+      "call": "css('.box','margin-left')",
+      "expect": "\"20px\""
+     }
+    ],
+    "hint": "var(--s)px ishlamaydi.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>\n<style>.box { --s: 20; }</style>",
+    "id": "6"
+   },
+   {
+    "title": "Variant yaratish",
+    "task": ".btn rangi var(--btn) dan olinadi (standart ko'k). .btn-success faqat o'zgaruvchini yashil qilsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".btn { --btn: blue; background: var(--btn); }\n.btn-success { --btn: green; }",
+    "tests": [
+     {
+      "call": "[css('#a','background-color'), css('#b','background-color')]",
+      "expect": "[\"rgb(0, 0, 255)\",\"rgb(0, 128, 0)\"]"
+     }
+    ],
+    "hint": "Variant faqat qiymatni almashtiradi.",
+    "kind": "css",
+    "setup": "<button class=\"btn\" id=\"a\">a</button><button class=\"btn btn-success\" id=\"b\">b</button>",
+    "id": "7"
+   },
+   {
+    "title": "Boshqa o'zgaruvchiga havola",
+    "task": "--primary: green; --link: var(--primary). Havola var(--link) ni ishlatsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ":root { --primary: green; --link: var(--primary); }\na { color: var(--link); }",
+    "tests": [
+     {
+      "call": "css('a','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     },
+     {
+      "call": "rule('a','color')",
+      "expect": "\"var(--link)\""
+     }
+    ],
+    "hint": "O'zgaruvchi boshqasiga tayanishi mumkin.",
+    "kind": "css",
+    "setup": "<a href=\"#\">Havola</a>",
+    "id": "8"
+   },
+   {
+    "title": "Shorthand qismlari",
+    "task": "Ramkani o'zgaruvchilardan yig'ing: --w: 4px, --c: red → border: var(--w) solid var(--c).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { --w: 4px; --c: red; border: var(--w) solid var(--c); }",
+    "tests": [
+     {
+      "call": "[css('.box','border-left-width'), css('.box','border-left-color')]",
+      "expect": "[\"4px\",\"rgb(255, 0, 0)\"]"
+     },
+     {
+      "call": "css('.box','--w')",
+      "expect": "\"4px\""
+     }
+    ],
+    "hint": "var() shorthand ichida.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "9"
+   },
+   {
+    "title": "@property",
+    "task": "--p o'zgaruvchisini @property bilan <length> turida e'lon qiling (initial-value 5px) va .box kengligida ishlating.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@property --p { syntax: \"<length>\"; inherits: false; initial-value: 5px; }\n.box { width: var(--p); }",
+    "tests": [
+     {
+      "call": "w('.box')",
+      "expect": "5"
+     },
+     {
+      "call": "css('.box','--p')",
+      "expect": "\"5px\""
+     }
+    ],
+    "hint": "@property uchta tavsif talab qiladi.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "10"
+   }
   ]
  },
  {
@@ -5984,6 +9602,200 @@
     ],
     "answer": "Specificity: :is eng kuchli argument, :where esa 0",
     "explain": "Reset va kutubxona stillari uchun :where qulay: oson override qilinadi."
+   }
+  ],
+  "labs": [
+   {
+    "title": ":has()",
+    "task": "Ichida rasm bor kartaning ramkasi 2px qizil bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card:has(img) { border: 2px solid red; }",
+    "tests": [
+     {
+      "call": "[css('#a','border-top-width'), css('#b','border-top-width')]",
+      "expect": "[\"2px\",\"0px\"]"
+     }
+    ],
+    "hint": ".card:has(img).",
+    "kind": "css",
+    "setup": "<div class=\"card\" id=\"a\"><img alt=\"\">rasmli</div><div class=\"card\" id=\"b\">oddiy</div>",
+    "id": "1"
+   },
+   {
+    "title": ":has() bilan forma",
+    "task": "Belgilangan checkbox ga ega label yashil bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "label:has(input:checked) { color: green; }",
+    "tests": [
+     {
+      "call": "[css('#a','color'), css('#b','color')]",
+      "expect": "[\"rgb(0, 128, 0)\",\"rgb(0, 0, 0)\"]"
+     }
+    ],
+    "hint": "label:has(input:checked).",
+    "kind": "css",
+    "setup": "<label id=\"a\"><input type=\"checkbox\" checked> Ha</label><label id=\"b\"><input type=\"checkbox\"> Yo'q</label>",
+    "id": "2"
+   },
+   {
+    "title": ":is()",
+    "task": "header, main va footer ichidagi a larni bitta selector bilan qizil qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ":is(header, main, footer) a { color: red; }",
+    "tests": [
+     {
+      "call": "[css('#a','color'), css('#b','color'), css('#c','color')]",
+      "expect": "[\"rgb(255, 0, 0)\",\"rgb(255, 0, 0)\",\"rgb(255, 0, 0)\"]"
+     },
+     {
+      "call": "css('#d','color') !== 'rgb(255, 0, 0)'",
+      "expect": "true"
+     },
+     {
+      "call": "rule(':is(header,main,footer) a','color')",
+      "expect": "\"red\""
+     }
+    ],
+    "hint": ":is(a, b, c) x.",
+    "kind": "css",
+    "setup": "<header><a id=\"a\" href=\"#\">1</a></header><main><a id=\"b\" href=\"#\">2</a></main><footer><a id=\"c\" href=\"#\">3</a></footer><a id=\"d\" href=\"#\">4</a>",
+    "id": "3"
+   },
+   {
+    "title": ":where() asos stili",
+    "task": ":where(ul) li uchun margin-bottom: 8px yozing (aniqligi past bo'lsin).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ":where(ul) li { margin-bottom: 8px; }",
+    "tests": [
+     {
+      "call": "css('li','margin-bottom')",
+      "expect": "\"8px\""
+     },
+     {
+      "call": "rule(':where(ul) li','margin-bottom')",
+      "expect": "\"8px\""
+     }
+    ],
+    "hint": ":where() ball bermaydi.",
+    "kind": "css",
+    "setup": "<ul><li>1</li></ul>",
+    "id": "4"
+   },
+   {
+    "title": "Nesting (ichma-ich yozish)",
+    "task": ".card ichida nesting bilan h3 ni ko'k qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card {\n  h3 { color: blue; }\n}",
+    "tests": [
+     {
+      "call": "css('.card h3','color')",
+      "expect": "\"rgb(0, 0, 255)\""
+     },
+     {
+      "call": "css('#out','color')",
+      "expect": "\"rgb(0, 0, 0)\""
+     },
+     {
+      "call": "rule('.card h3','color')",
+      "expect": "\"blue\""
+     }
+    ],
+    "hint": ".card { h3 { } }",
+    "kind": "css",
+    "setup": "<div class=\"card\"><h3>Sarlavha</h3></div><h3 id=\"out\">Tashqi</h3>",
+    "id": "5"
+   },
+   {
+    "title": "& bilan hover",
+    "task": ".btn uchun nesting ichida &:hover rangi qizil.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".btn {\n  color: black;\n  &:hover { color: red; }\n}",
+    "tests": [
+     {
+      "call": "rule('.btn:hover','color')",
+      "expect": "\"red\""
+     },
+     {
+      "call": "css('.btn','color')",
+      "expect": "\"rgb(0, 0, 0)\""
+     }
+    ],
+    "hint": "&:hover.",
+    "kind": "css",
+    "setup": "<button class=\"btn\">x</button>",
+    "id": "6"
+   },
+   {
+    "title": "& modifikator",
+    "task": ".tab ichida nesting bilan .active holati qalin (700) bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".tab {\n  &.active { font-weight: 700; }\n}",
+    "tests": [
+     {
+      "call": "[css('#a','font-weight'), css('#b','font-weight')]",
+      "expect": "[\"700\",\"400\"]"
+     },
+     {
+      "call": "rule('.tab.active','font-weight')",
+      "expect": "\"700\""
+     }
+    ],
+    "hint": "&.active (probelsiz).",
+    "kind": "css",
+    "setup": "<div class=\"tab active\" id=\"a\">a</div><div class=\"tab\" id=\"b\">b</div>",
+    "id": "7"
+   },
+   {
+    "title": ":focus-within",
+    "task": "Ichidagi maydon fokus olganda .field ramkasi ko'k bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".field:focus-within { border-color: blue; }",
+    "tests": [
+     {
+      "call": "rule('.field:focus-within','border-top-color') || rule('.field:focus-within','border-color')",
+      "expect": "\"blue\""
+     }
+    ],
+    "hint": ":focus-within.",
+    "kind": "css",
+    "setup": "<div class=\"field\"><input></div>",
+    "id": "8"
+   },
+   {
+    "title": "Keyingisiga ta'sir",
+    "task": "Ortidan p keladigan h2 ning margin-bottom i 0 bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "h2:has(+ p) { margin-bottom: 0; }",
+    "tests": [
+     {
+      "call": "css('#a','margin-bottom')",
+      "expect": "\"0px\""
+     },
+     {
+      "call": "css('#b','margin-bottom') !== '0px'",
+      "expect": "true"
+     }
+    ],
+    "hint": "h2:has(+ p).",
+    "kind": "css",
+    "setup": "<h2 id=\"a\">A</h2><p>matn</p><h2 id=\"b\">B</h2><div>blok</div>",
+    "id": "9"
+   },
+   {
+    "title": ":nth-child(n of S)",
+    "task": "Faqat .item lar orasida 2-chisini qizil qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "li:nth-child(2 of .item) { color: red; }",
+    "tests": [
+     {
+      "call": "[css('#a','color'), css('#x','color'), css('#b','color'), css('#c','color')]",
+      "expect": "[\"rgb(0, 0, 0)\",\"rgb(0, 0, 0)\",\"rgb(255, 0, 0)\",\"rgb(0, 0, 0)\"]"
+     }
+    ],
+    "hint": ":nth-child(2 of .item).",
+    "kind": "css",
+    "setup": "<ul><li class=\"item\" id=\"a\">1</li><li id=\"x\">sarlavha</li><li class=\"item\" id=\"b\">2</li><li class=\"item\" id=\"c\">3</li></ul>",
+    "id": "10"
    }
   ]
  },
@@ -6275,6 +10087,196 @@
     ],
     "answer": "transform ni qayta yozmasdan mustaqil boshqarish mumkin",
     "explain": "Har biri o'z transition (silliq o'tish) i bilan alohida animatsiya qilinadi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "translate",
+    "task": ".box ni joylashuvga ta'sir qilmasdan 50px o'ngga suring.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { transform: translateX(50px); }",
+    "tests": [
+     {
+      "call": "x('.box')",
+      "expect": "50"
+     },
+     {
+      "call": "y('.next')",
+      "expect": "40"
+     }
+    ],
+    "hint": "transform: translateX.",
+    "kind": "css",
+    "setup": "<div class=\"box\" style=\"width: 100px; height: 40px\">x</div>\n<div class=\"next\">keyingi</div>",
+    "id": "1"
+   },
+   {
+    "title": "scale",
+    "task": ".box ko'rinishi ikki baravar kattalashsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { transform: scale(2); }",
+    "tests": [
+     {
+      "call": "[w('.box'), h('.box'), x('.box')]",
+      "expect": "[100,100,75]"
+     },
+     {
+      "call": "css('.box','width')",
+      "expect": "\"50px\""
+     }
+    ],
+    "hint": "scale markazdan kattalashtiradi.",
+    "kind": "css",
+    "setup": "<div class=\"box\" style=\"width: 50px; height: 50px; margin: 100px\">x</div>",
+    "id": "2"
+   },
+   {
+    "title": "rotate",
+    "task": "100×20 chiziqni 90° buring.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".bar { transform: rotate(90deg); }",
+    "tests": [
+     {
+      "call": "[w('.bar'), h('.bar')]",
+      "expect": "[20,100]"
+     }
+    ],
+    "hint": "rotate(90deg).",
+    "kind": "css",
+    "setup": "<div class=\"bar\" style=\"width: 100px; height: 20px; margin: 100px\">x</div>",
+    "id": "3"
+   },
+   {
+    "title": "transform-origin",
+    "task": "scale(2) chap yuqori burchakdan boshlansin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { transform: scale(2); transform-origin: top left; }",
+    "tests": [
+     {
+      "call": "[x('.box'), y('.box'), w('.box')]",
+      "expect": "[0,0,100]"
+     }
+    ],
+    "hint": "transform-origin: top left.",
+    "kind": "css",
+    "setup": "<div class=\"box\" style=\"width: 50px; height: 50px\">x</div>",
+    "id": "4"
+   },
+   {
+    "title": "transition",
+    "task": "Tugma foni 0.3s davomida silliq o'zgarsin, hover da fon qizil.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "button { transition: background-color 0.3s; }\nbutton:hover { background-color: red; }",
+    "tests": [
+     {
+      "call": "css('button','transition-duration')",
+      "expect": "\"0.3s\""
+     },
+     {
+      "call": "css('button','transition-property')",
+      "expect": "\"background-color\""
+     },
+     {
+      "call": "color(rule('button:hover','background-color'))",
+      "expect": "\"rgb(255, 0, 0)\""
+     }
+    ],
+    "hint": "transition: property vaqt.",
+    "kind": "css",
+    "setup": "<button>x</button>",
+    "id": "5"
+   },
+   {
+    "title": "Ikki xususiyat",
+    "task": "transform 0.2s va opacity 0.4s alohida o'tsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card { transition: transform 0.2s, opacity 0.4s; }",
+    "tests": [
+     {
+      "call": "css('.card','transition-property')",
+      "expect": "\"transform, opacity\""
+     },
+     {
+      "call": "css('.card','transition-duration')",
+      "expect": "\"0.2s, 0.4s\""
+     }
+    ],
+    "hint": "Vergul bilan sanang.",
+    "kind": "css",
+    "setup": "<div class=\"card\">x</div>",
+    "id": "6"
+   },
+   {
+    "title": "Easing va delay",
+    "task": "opacity 1s davomida, ease-in-out bilan, 0.5s kechikib o'tsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { transition: opacity 1s ease-in-out 0.5s; }",
+    "tests": [
+     {
+      "call": "[css('.box','transition-duration'), css('.box','transition-timing-function'), css('.box','transition-delay')]",
+      "expect": "[\"1s\",\"ease-in-out\",\"0.5s\"]"
+     }
+    ],
+    "hint": "duration, easing, delay tartibida.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "7"
+   },
+   {
+    "title": "Hover ko'tarilish",
+    "task": "Karta ustiga borilganda translateY(-4px) bo'lsin va o'tish 0.2s.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card { transition: transform 0.2s; }\n.card:hover { transform: translateY(-4px); }",
+    "tests": [
+     {
+      "call": "css('.card','transition-duration')",
+      "expect": "\"0.2s\""
+     },
+     {
+      "call": "rule('.card:hover','transform')",
+      "expect": "\"translateY(-4px)\""
+     }
+    ],
+    "hint": "transition boshlang'ich holatga yoziladi.",
+    "kind": "css",
+    "setup": "<div class=\"card\">x</div>",
+    "id": "8"
+   },
+   {
+    "title": "Alohida xususiyatlar",
+    "task": "transform yozmasdan, translate: 30px 10px ishlating.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { translate: 30px 10px; }",
+    "tests": [
+     {
+      "call": "[x('.box'), y('.box')]",
+      "expect": "[30,10]"
+     },
+     {
+      "call": "css('.box','transform')",
+      "expect": "\"none\""
+     }
+    ],
+    "hint": "translate xususiyati.",
+    "kind": "css",
+    "setup": "<div class=\"box\" style=\"width: 40px; height: 40px\">x</div>",
+    "id": "9"
+   },
+   {
+    "title": "Tartib muhim",
+    "task": "Element avval 100px o'ngga surilsin, keyin o'z markazida 2 baravar kattalashsin (siljish 100px bo'lib qolsin).",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".box { transform: translateX(100px) scale(2); }",
+    "tests": [
+     {
+      "call": "[x('.box'), w('.box')]",
+      "expect": "[190,40]"
+     }
+    ],
+    "hint": "translateX(...) scale(...).",
+    "kind": "css",
+    "setup": "<div class=\"box\" style=\"width: 20px; height: 20px; margin: 100px\">x</div>",
+    "id": "10"
    }
   ]
  },
@@ -6573,6 +10575,196 @@
     ],
     "answer": "Element joriy (computed) qiymatidan boshlanadi",
     "explain": "Yetishmagan 0%/100% kadr element (sahifa unsuri) hozirgi stilidan olinadi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Birinchi animatsiya",
+    "task": "fade nomli @keyframes yarating (opacity 0 → 1) va .box ga 2s bilan bering.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@keyframes fade { from { opacity: 0; } to { opacity: 1; } }\n.box { animation: fade 2s; }",
+    "tests": [
+     {
+      "call": "[css('.box','animation-name'), css('.box','animation-duration')]",
+      "expect": "[\"fade\",\"2s\"]"
+     },
+     {
+      "call": "Number(css('.box','opacity')) < 0.5",
+      "expect": "true"
+     }
+    ],
+    "hint": "@keyframes + animation.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "1"
+   },
+   {
+    "title": "Cheksiz aylanish",
+    "task": "spin animatsiyasi: 1s, linear, cheksiz.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@keyframes spin { to { transform: rotate(360deg); } }\n.loader { animation: spin 1s linear infinite; }",
+    "tests": [
+     {
+      "call": "[css('.loader','animation-name'), css('.loader','animation-timing-function'), css('.loader','animation-iteration-count')]",
+      "expect": "[\"spin\",\"linear\",\"infinite\"]"
+     }
+    ],
+    "hint": "animation: nom vaqt easing soni.",
+    "kind": "css",
+    "setup": "<div class=\"loader\">o</div>",
+    "id": "2"
+   },
+   {
+    "title": "fill-mode: forwards",
+    "task": "Element 0.001s da o'ngga 100px surilsin va O'SHA YERDA qolsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@keyframes go { to { margin-left: 100px; } }\n.box { animation: go 0.001s forwards; }",
+    "tests": [
+     {
+      "call": "css('.box','animation-fill-mode')",
+      "expect": "\"forwards\""
+     },
+     {
+      "call": "css('.box','animation-name')",
+      "expect": "\"go\""
+     }
+    ],
+    "hint": "forwards oxirgi kadrni saqlaydi.",
+    "kind": "css",
+    "setup": "<div class=\"box\" style=\"width: 20px\">x</div>",
+    "id": "3"
+   },
+   {
+    "title": "backwards va delay",
+    "task": "Animatsiya 10s kechiksin, lekin kutish paytida element birinchi kadrda (opacity 0) tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@keyframes in { from { opacity: 0; } to { opacity: 1; } }\n.box { animation: in 1s 10s backwards; }",
+    "tests": [
+     {
+      "call": "css('.box','animation-delay')",
+      "expect": "\"10s\""
+     },
+     {
+      "call": "css('.box','opacity')",
+      "expect": "\"0\""
+     }
+    ],
+    "hint": "backwards yoki both.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "4"
+   },
+   {
+    "title": "Manfiy delay",
+    "task": "4s lik chiziqli opacity (0 → 1) animatsiyasi yarmidan boshlansin va to'xtab tursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@keyframes in { from { opacity: 0; } to { opacity: 1; } }\n.box { animation: in 4s linear -2s paused; }",
+    "tests": [
+     {
+      "call": "css('.box','opacity')",
+      "expect": "\"0.5\""
+     },
+     {
+      "call": "css('.box','animation-play-state')",
+      "expect": "\"paused\""
+     }
+    ],
+    "hint": "animation-delay: -2s.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "5"
+   },
+   {
+    "title": "alternate",
+    "task": "pulse animatsiyasi cheksiz, oldinga-orqaga yursin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@keyframes pulse { to { transform: scale(1.5); } }\n.dot { animation: pulse 1s infinite alternate; }",
+    "tests": [
+     {
+      "call": "[css('.dot','animation-direction'), css('.dot','animation-iteration-count')]",
+      "expect": "[\"alternate\",\"infinite\"]"
+     }
+    ],
+    "hint": "animation-direction: alternate.",
+    "kind": "css",
+    "setup": "<div class=\"dot\">o</div>",
+    "id": "6"
+   },
+   {
+    "title": "steps()",
+    "task": "Yozuv mashinasi effekti uchun 12 qadamli timing function, 3s.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@keyframes typing { from { width: 0; } to { width: 12ch; } }\n.type { animation: typing 3s steps(12); }",
+    "tests": [
+     {
+      "call": "css('.type','animation-timing-function')",
+      "expect": "\"steps(12)\""
+     },
+     {
+      "call": "css('.type','animation-duration')",
+      "expect": "\"3s\""
+     }
+    ],
+    "hint": "steps(12).",
+    "kind": "css",
+    "setup": "<div class=\"type\">Salom dunyo!</div>",
+    "id": "7"
+   },
+   {
+    "title": "Foizli kadrlar",
+    "task": "Yarmida qizil bo'ladigan flash animatsiyasi: 0% va 100% oq, 50% qizil; 2s, -1s dan paused.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@keyframes flash { 0%, 100% { color: white; } 50% { color: red; } }\n.box { animation: flash 2s linear -1s paused; }",
+    "tests": [
+     {
+      "call": "css('.box','color')",
+      "expect": "\"rgb(255, 0, 0)\""
+     },
+     {
+      "call": "css('.box','animation-name')",
+      "expect": "\"flash\""
+     }
+    ],
+    "hint": "0%, 50%, 100%.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "8"
+   },
+   {
+    "title": "Ikki animatsiya birga",
+    "task": "a (1s) va b (3s) animatsiyalarini bitta elementga bering.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@keyframes a { from { opacity: 0; } }\n@keyframes b { from { margin-left: 20px; } }\n.box { animation: a 1s, b 3s; }",
+    "tests": [
+     {
+      "call": "[css('.box','animation-name'), css('.box','animation-duration')]",
+      "expect": "[\"a, b\",\"1s, 3s\"]"
+     }
+    ],
+    "hint": "Vergul bilan.",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "9"
+   },
+   {
+    "title": "Harakatni kamaytirish",
+    "task": "prefers-reduced-motion: reduce so'rovida .box animatsiyasi o'chsin; oddiy holatda move 1s ishlasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@keyframes move { from { margin-left: 50px; } }\n.box { animation: move 1s; }\n@media (prefers-reduced-motion: reduce) { .box { animation: none; } }",
+    "tests": [
+     {
+      "call": "css('.box','animation-name') === 'move' || css('.box','animation-name') === 'none'",
+      "expect": "true"
+     },
+     {
+      "call": "rule('.box','animation-name')",
+      "expect": "\"none\""
+     }
+    ],
+    "hint": "@media (prefers-reduced-motion: reduce).",
+    "kind": "css",
+    "setup": "<div class=\"box\">x</div>",
+    "id": "10"
    }
   ]
  },
@@ -6873,6 +11065,196 @@
     ],
     "answer": "Bitta komponent o'zgarsa boshqasi buzilmaydi",
     "explain": "Izolyatsiya va bashorat qilish mumkinligi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "BEM nomlari",
+    "task": "BEM bo'yicha: .menu__link rangi qora, .menu__link--active rangi ko'k.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".menu__link { color: black; }\n.menu__link--active { color: blue; }",
+    "tests": [
+     {
+      "call": "[css('#a','color'), css('#b','color')]",
+      "expect": "[\"rgb(0, 0, 0)\",\"rgb(0, 0, 255)\"]"
+     },
+     {
+      "call": "rule('.menu__link--active','color')",
+      "expect": "\"blue\""
+     }
+    ],
+    "hint": "blok__element--modifikator.",
+    "kind": "css",
+    "setup": "<nav class=\"menu\"><a class=\"menu__link\" id=\"a\" href=\"#\">1</a><a class=\"menu__link menu__link--active\" id=\"b\" href=\"#\">2</a></nav>",
+    "id": "1"
+   },
+   {
+    "title": "Past specificity",
+    "task": "Zanjirsiz, bitta class bilan .card__title o'lchami 20px bo'lsin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".card__title { font-size: 20px; }",
+    "tests": [
+     {
+      "call": "css('h3','font-size')",
+      "expect": "\"20px\""
+     },
+     {
+      "call": "rule('.card__title','font-size')",
+      "expect": "\"20px\""
+     }
+    ],
+    "hint": ".card h3 emas, .card__title.",
+    "kind": "css",
+    "setup": "<div class=\"card\"><h3 class=\"card__title\">x</h3></div>",
+    "id": "2"
+   },
+   {
+    "title": "Design token",
+    "task": "--color-primary: green va --radius: 8px tokenlarini :root da yarating, .btn foni va burchagida ishlating.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ":root { --color-primary: green; --radius: 8px; }\n.btn { background: var(--color-primary); border-radius: var(--radius); }",
+    "tests": [
+     {
+      "call": "[css('.btn','background-color'), css('.btn','border-top-left-radius')]",
+      "expect": "[\"rgb(0, 128, 0)\",\"8px\"]"
+     },
+     {
+      "call": "rule('.btn','border-top-left-radius') || rule('.btn','border-radius')",
+      "expect": "\"var(--radius)\""
+     }
+    ],
+    "hint": "Qiymatni emas, tokenni yozing.",
+    "kind": "css",
+    "setup": "<button class=\"btn\">x</button>",
+    "id": "3"
+   },
+   {
+    "title": "Utility class",
+    "task": "Uchta utility yarating: .text-center, .font-bold, .mt-16.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".text-center { text-align: center; }\n.font-bold { font-weight: 700; }\n.mt-16 { margin-top: 16px; }",
+    "tests": [
+     {
+      "call": "[css('p','text-align'), css('p','font-weight'), css('p','margin-top')]",
+      "expect": "[\"center\",\"700\",\"16px\"]"
+     }
+    ],
+    "hint": "Har class bitta ishni qiladi.",
+    "kind": "css",
+    "setup": "<p class=\"text-center font-bold mt-16\">x</p>",
+    "id": "4"
+   },
+   {
+    "title": "Layer arxitekturasi",
+    "task": "reset, components, utilities qatlamlarini e'lon qiling: components da .btn qizil, utilities da .text-blue ko'k — natija ko'k.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "@layer reset, components, utilities;\n@layer utilities { .text-blue { color: blue; } }\n@layer components { .btn { color: red; } }",
+    "tests": [
+     {
+      "call": "css('button','color')",
+      "expect": "\"rgb(0, 0, 255)\""
+     },
+     {
+      "call": "rule('.btn','color')",
+      "expect": "\"red\""
+     }
+    ],
+    "hint": "utilities oxirgi qatlam.",
+    "kind": "css",
+    "setup": "<button class=\"btn text-blue\">x</button>",
+    "id": "5"
+   },
+   {
+    "title": "Global reset",
+    "task": "Hamma element uchun box-sizing: border-box va body margin 0.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "*, *::before, *::after { box-sizing: border-box; }\nbody { margin: 0; }",
+    "tests": [
+     {
+      "call": "w('.a')",
+      "expect": "100"
+     },
+     {
+      "call": "css('body','margin-top')",
+      "expect": "\"0px\""
+     }
+    ],
+    "hint": "* selektori.",
+    "kind": "css",
+    "setup": "<div class=\"a\">x</div>\n<style>body { margin: 8px; } .a { width: 100px; padding: 10px; }</style>",
+    "id": "6"
+   },
+   {
+    "title": "Komponent izolyatsiyasi",
+    "task": "Faqat .alert ichidagi p ning margin i 0 bo'lsin, tashqaridagi p o'zgarmasin.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".alert p { margin: 0; }",
+    "tests": [
+     {
+      "call": "[css('#a','margin-top'), css('#b','margin-top')]",
+      "expect": "[\"0px\",\"16px\"]"
+     }
+    ],
+    "hint": "Komponent doirasida yozing.",
+    "kind": "css",
+    "setup": "<div class=\"alert\"><p id=\"a\">ichki</p></div><p id=\"b\">tashqi</p>",
+    "id": "7"
+   },
+   {
+    "title": "Modifikator o'zgaruvchi bilan",
+    "task": ".badge rangi var(--tone, gray); .badge--ok faqat --tone ni green qiladi.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".badge { color: var(--tone, gray); }\n.badge--ok { --tone: green; }",
+    "tests": [
+     {
+      "call": "[css('#a','color'), css('#b','color')]",
+      "expect": "[\"rgb(128, 128, 128)\",\"rgb(0, 128, 0)\"]"
+     }
+    ],
+    "hint": "Qoidani takrorlamang.",
+    "kind": "css",
+    "setup": "<span class=\"badge\" id=\"a\">a</span><span class=\"badge badge--ok\" id=\"b\">b</span>",
+    "id": "8"
+   },
+   {
+    "title": "Tashqi bo'shliq komponentda emas",
+    "task": "Kartalar orasidagi masofani kartaga margin bermasdan, o'rovchida gap bilan 24px qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": ".stack { display: flex; flex-direction: column; gap: 24px; }",
+    "tests": [
+     {
+      "call": "y('#b') - y('#a') - h('#a')",
+      "expect": "24"
+     },
+     {
+      "call": "css('.card','margin-top')",
+      "expect": "\"0px\""
+     }
+    ],
+    "hint": "Layout oraliqni boshqaradi.",
+    "kind": "css",
+    "setup": "<div class=\"stack\"><div class=\"card\" id=\"a\">1</div><div class=\"card\" id=\"b\">2</div></div>",
+    "id": "9"
+   },
+   {
+    "title": "!important siz tuzatish",
+    "task": "Kutubxona #app .btn bilan qizil bergan. @layer ishlatmasdan va !important siz yashil qiling.",
+    "starter": "/* CSS ni shu yerga yozing */\n",
+    "solution": "#app .btn { color: green; }",
+    "tests": [
+     {
+      "call": "css('button','color')",
+      "expect": "\"rgb(0, 128, 0)\""
+     },
+     {
+      "call": "/!important|@layer/.test(src())",
+      "expect": "false"
+     }
+    ],
+    "hint": "Teng aniqlik + keyingi tartib.",
+    "kind": "css",
+    "setup": "<div id=\"app\"><button class=\"btn\">x</button></div>\n<style>#app .btn { color: red; }</style>",
+    "id": "10"
    }
   ]
  }
