@@ -1,0 +1,129 @@
+1.7 ~ Faqat B ni ~ Faqat C ni ~ B va C ni
+2.7 ~ 0-1-0 (eng kuchsiz argument) ~ 1-1-0 (ikkalasi qo'shiladi) ~ 0-0-0 (:is hisobga olinmaydi)
+2.10 ~ Brauzer .title selektorini qo'llab-quvvatlamaydi ~ color xususiyati faqat p da ishlaydi ~ CSS faylda ko'k rang noto'g'ri yozilgan
+3.3 ~ Qizil (ota elementdan olinadi) ~ Shaffof (rang berilmagani uchun) ~ Ko'k (brauzerning havola uchun rangi)
+3.7 ~ Layer ichidagi qoida doim ~ Specificity si kuchliroq qoida ~ Ikkala qiymat aralashib ketadi
+4.4 ~ Ota elementning ichida, p ning tepasida ichki bo'shliq bo'lib ~ Hech qayerda ko'rinmaydi: bola margin i butunlay yo'qoladi ~ Ota va bola orasida teng ikkiga bo'linib, 20px dan chiqadi
+4.7 ~ margin: auto faqat flex va grid konteynerlarida ishlaydi, oddiy oqimda ta'siri yo'q ~ auto o'rniga 50% yozish va transform bilan elementni orqaga surish shart bo'ladi ~ div ga avval display: block va position: relative xususiyatlari berilishi kerak edi
+4.8 ~ Elementning o'z balandligidan, uning ichidagi mazmunga qarab ~ Ota elementning balandligidan (yuqori va past uchun) ~ Brauzer oynasining kengligidan (viewport o'lchamidan)
+5.7 ~ vh birligi faqat kompyuter brauzerlarida ishlaydi, telefonda e'tiborga olinmaydi ~ vh piksel emas, foiz bo'lgani uchun telefon ekranida qiymati har safar tasodifiy ~ 100vh telefonda ekran zichligi sabab sahifani ikki barobar uzaytirib yuboradi
+5.8 ~ Eng ko'pi bilan 65 ta piksel kenglik bo'lishini ~ Ota element kengligining 65 foizi qadar bo'lishini ~ Bir qatorga ko'pi bilan 65 ta so'z sig'ishini
+5.11 ~ rem brauzerda em ga qaraganda ancha tez hisoblanadi, shuning uchun ~ em ichma-ich joyda avtomatik pikselga aylanib, o'zgarmay qoladi ~ rem faqat shrift o'lchamiga ta'sir qiladi, em esa hamma xususiyatga
+6.1 ~ Span aniq 200×50 o'lchamli to'rtburchak bo'lib chiziladi ~ Faqat width ishlaydi: span 200px kengayadi, balandlik matnniki ~ Faqat height ishlaydi: span 50px balandlashadi, kenglik matnniki
+6.2 ~ Brauzer har inline-block elementga avtomatik margin qo'shadi ~ inline-block turining o'zida 4px standart tashqi chekka bor ~ Bu eski brauzerlardagi xato, zamonaviylarida kuzatilmaydi
+6.3 ~ display: none ~ opacity: 0 ~ position: absolute
+6.4 ~ Bolaning to'liq balandligiga teng, ya'ni ramkasiz aniq 100px bo'ladi ~ Bola balandligi va ramka qo'shiladi: jami taxminan 102px bo'ladi ~ Nol: ramka ham chizilmaydi, chunki ota ichida mazmun yo'q
+6.7 ~ Element va uning barcha bolalari ko'rinmas bo'lib, joyi saqlanib qoladi ~ Element inline turiga aylanib, atrofidagi matn bilan bir qatorda turadi ~ Element mazmuni avtomatik ikki ustunga bo'linib, yonma-yon chiqadi
+6.8 ~ Sahifadagi barcha float qoidalarini butunlay bekor qiladi ~ Elementning o'zini ikkala tomonga suzuvchi float qiladi ~ Ota element balandligini bolalariga qarab tozalab beradi
+6.9 ~ img elementining brauzer standartida taxminan 4px pastki margin i bor, uni margin: 0 bilan olib tashlash kerak ~ div elementida ko'rinmas yashirin padding bor, uni padding: 0 deb bekor qilmaguncha shu farq qoladi ~ Brauzer rasmni ekran zichligiga moslab bir necha pikselga kattalashtiradi, height: auto bilan yechiladi
+6.11 ~ Elementni DOM daraxtidan butunlay o'chiradi, JavaScript uni keyin topa olmaydi va qayta qo'sha olmaydi ~ Elementni faqat ekran o'quvchidan yashiradi, ko'zga esa u odatdagidek ko'rinishda qolaveradi ~ visibility: hidden beradi: element ko'rinmaydi, lekin joyi saqlanadi va uni hech qanday stil bekor qilolmaydi
+7.3 ~ O'ng tomonda: yo'nalish o'ngdan chapga hisoblanadi ~ Tepada: gradient standart bo'yicha yuqoridan boshlanadi ~ Pastda: birinchi rang doim gradient oxiriga tushadi
+7.4 ~ Yuqorida qizildan pastda ko'kka butun balandlik bo'ylab silliq o'tish ~ Butunlay qizil: ikkinchi rang birinchi rang tagida qolib ko'rinmaydi ~ Chap yarmi qizil, o'ng yarmi ko'k bo'lgan vertikal chegarali fon
+7.6 ~ #eee rangi har doim fon rasmidan ustun chizilib, uni yopib qo'yadi ~ background-image bitta elementga faqat bir marta yozilishi mumkin ~ Brauzer ikki fon qoidasini qo'shishda ichki xatoga yo'l qo'yadi
+7.9 ~ Rasmni butunlay sig'diradi, nisbati saqlanib, yonida bo'sh joy qoladi ~ Rasmni asl o'lchamida qoldirib, element to'lguncha takrorlab chizadi ~ Rasmni element eni va bo'yiga cho'zadi, nisbati buzilsa ham to'ldiradi
+7.10 ~ To'q qizil (qizil rang ustun chiqadi) ~ Yashil (ikki rangga qarama-qarshi) ~ Kulrang (ranglar bir-birini so'ndiradi)
+7.12 ~ oklch hatto juda eski brauzerlarda ham hsl dan yaxshiroq qo'llab-quvvatlanadi ~ oklch ranglarga shaffoflik berish imkonini qo'shadi, hsl da bu imkoniyat yo'q ~ oklch yozuvi CSS fayl hajmini kamaytiradi va ranglar tezroq chiziladi
+8.1 ~ Shriftlar ro'yxati qisqarib, CSS faylining umumiy hajmi kamayishi uchun ~ Nomlangan shriftlar serverdan ancha tezroq yuklanib olinishi uchun ~ Aks holda brauzer font-family qoidasini xato deb butunlay tashlab yuboradi
+8.4 ~ ellipsis faqat div va p elementlarida ishlaydi, boshqalarida yo'q ~ Matn font-size i 16px dan kichik bo'lsa, ellipsis chizilmaydi ~ Shrift fayli to'liq yuklanmaguncha brauzer uch nuqtani chizmaydi
+8.6 ~ Uzun maqolaning asosiy matn paragraflari ~ Ko'p qatorli jadvalning har bir katagi ~ Bo'shliqlari muhim bo'lgan kod bloklari
+8.8 ~ hyphens: auto hozircha faqat Safari brauzerida ishlaydi, boshqalarida e'tiborga olinmaydi ~ hyphens ni overflow-wrap bilan bitta qoidada ishlatib bo'lmaydi, biri ikkinchisini o'chiradi ~ font-size 14px dan kichik bo'lsa, brauzer so'zlarni bo'g'inga bo'lishni avtomatik o'chirib qo'yadi
+8.9 ~ Har bir og'irlik uchun alohida fayl bo'lib, brauzer keraklisini tanlab yuklaydi ~ Har qanday oddiy shriftdan doim kichik hajmli bo'lib, bir zumda yuklanadi ~ Brauzer ichida tayyor turadigan shrift bo'lib, serverdan umuman yuklanmaydi
+8.11 ~ Bu maxsus siqilgan veb-shrift bo'lib, hajmi bir necha kilobaytdan oshmaydi ~ Brauzer bu shrift faylini birinchi o'rnatilishida serverdan keshlab qo'ygan ~ Uning faylida faqat lotin harflari bor, shuning uchun juda tez yuklanib bo'ladi
+9.1 ~ Hammasi chap tomonga zich yig'ilib, o'ngda bo'sh joy qoladi ~ Hammasi markazga zich yig'ilib, ikki chetda bo'sh joy qoladi ~ Har birining ikki yonida teng joy, chetlarda ham oraliq qoladi
+9.5 ~ align-content faqat grid konteynerlarida ishlaydi, flex da ta'siri yo'q ~ justify-content berilgan joyda align-content brauzer tomonidan o'chiriladi ~ Bolalarga align-self berilgani uchun konteyner qoidasi bekor bo'lib qolgan
+9.7 ~ Bosh o'q bo'ylab konteynerning butun kengligini teng bo'lib egallaydigan darajagacha ~ Umuman cho'zilmaydi: har bir bola faqat o'z mazmuni balandligi va kengligida qoladi ~ Faqat height qiymati aniq berilgan bolalar konteynerning balandligigacha cho'ziladi
+9.9 ~ Yo'q: span inline bo'lib qolaveradi ~ Faqat span ga inline-block berilsa ~ Faqat height ishlaydi, width esa yo'q
+9.10 ~ Chap tomonga: flex-start doim chapni bildiradi ~ Markazga: ikki teskari qoida bir-birini muvozanatlaydi ~ O'zgarmaydi: reverse faqat DOM tartibiga ta'sir qiladi
+9.11 ~ Konteynerning aniq markazida, ikkala o'q bo'yicha ham ~ Chap pastki burchakda, chunki vertikal yo'nalish teskari ~ Ko'rinmaydi: align-items yo'qligidan balandligi nol bo'ladi
+10.6 ~ flex-shrink: 0 berish ~ Elementga width: auto berish ~ Elementga display: block berish
+10.7 ~ Hech qanday farq yo'q: ikkalasi ham bir xil shorthand qiymatga ochiladi ~ auto elementi qisilmaydi, 1 esa konteyner torayganda erkin qisiladi ~ 1 faqat column yo'nalishida ishlaydi, auto esa faqat row yo'nalishida
+10.9 ~ width (u aniqroq xususiyat) ~ Ikkalasidan kattaroq qiymat ~ Ikkalasining o'rtacha qiymati
+10.11 ~ Elementni DOM daraxtida eng birinchi bola o'rniga ko'chirib qo'yadi ~ Elementni konteynerdan tashqariga chiqarib, ko'rinmas qilib yashiradi ~ Elementni faqat column yo'nalishida bir pog'ona yuqoriga ko'taradi
+11.5 ~ Farqi yo'q: ikkalasi ham 2 ta elementni butun konteynerga bir xil cho'zadi ~ auto-fit ortiqcha elementlarni yashiradi, auto-fill esa ularni yangi qatorga tushiradi ~ auto-fill elementlarni kengaytiradi, auto-fit esa bo'sh ustun joyini saqlab qoladi
+11.7 ~ Farqi yo'q: ikkala yozuv ham elementni doim 1-chiziqdan joylashtiradi ~ Birinchisi ikkita qatorni egallaydi, ikkinchisi esa ikkita ustunni egallaydi ~ Ikkinchisi yaroqsiz yozuv, chunki span so'zini slesh bilan ishlatib bo'lmaydi
+11.9 ~ 2 ta (oxirgisida to'rtta element) ~ 7 ta (har elementga bittadan) ~ 4 ta (oxirgisida bo'sh kataklar)
+11.10 ~ 20px ustunlar orasi, 40px qatorlar orasi ~ Ikkala yo'nalishda ham jami 60px bo'ladi ~ 20px tashqi chekka, 40px ichki oraliq
+11.11 ~ Konteyner kengligidan qat'i nazar doim aniq 200px li bitta ustun beradi ~ Faqat mobil ekranda ishlaydi, kompyuterda ustunlar soni o'zgarmay qoladi ~ Har bir element balandligini 200px dan kam bo'lmaydigan qilib tenglaydi
+12.2 ~ Ha: yetmagan katak avtomatik bo'sh qoladi ~ Ha, agar gap qiymati ham berilgan bo'lsa ~ Ha: oxirgi nom o'zi cho'zilib to'ldiradi
+12.3 ~ 1 ta (chap ustun) ~ 3 ta (barcha qator) ~ 0 ta (ko'rinmaydi)
+12.6 ~ Farqi yo'q: ikkalasi ham elementlarni konteyner markaziga bir xil tarzda joylaydi ~ items faqat flex konteynerida ishlaydi, grid da esa uning o'rniga content yoziladi ~ content katak ichidagi elementni, items esa butun treklar to'plamini konteynerda joylaydi
+12.9 ~ Konteynerga faqat display: flex berib, boshqa hech narsa o'zgartirmaslik ~ HTML da elementlar tartibini qo'lda almashtirish, CSS bilan buning iloji yo'q ~ Sidebar ga kattaroq z-index berib, uni main ustida ko'rinadigan qilib qo'yish
+12.10 ~ 600px: stretch katakni baribir to'ldiradi ~ 450px: ikki qiymatning o'rtachasi olinadi ~ 900px: width katak kengligiga qo'shiladi
+13.1 ~ Brauzer ota gridni hisoblashini tezlashtirib, sahifani yengillatish uchun ~ Grid chiziqlari o'zgarganda elementlarni silliq animatsiya bilan surish uchun ~ Ichki elementni o'z qutisisiz ota grid bolalariga aylantirib yuborish uchun
+13.2 ~ Chizish tezligi sezilarli pasayib ketadi ~ Elementlar orasidagi gap yo'qolib qoladi ~ Elementlar katakka sig'ishi uchun kichrayadi
+13.5 ~ Hech qanday: gap meros bo'lmaydi ~ Doim 0, uni o'zgartirib ham bo'lmaydi ~ Brauzerning standart 8px qiymatini
+13.6 ~ Karta uchta nusxada takrorlanib, uchta qatorga bittadan joylashadi ~ Brauzer xato beradi, chunki subgrid bilan span birga ishlamaydi ~ Karta bitta qatorni egallab, ichki uch qismi ustma-ust chiziladi
+13.7 ~ Faqat grid-auto-rows: 1fr qiymatini berish ~ display: flex va flex-wrap: wrap ishlatish ~ Har bir kartaga position: sticky berish
+13.9 ~ Mumkin emas: bitta sahifada faqat bittasi ishlaydi ~ Mumkin, lekin ular bir-birining gap qiymatini buzadi ~ Brauzer grid ichidagi flex konteynerni e'tiborsiz qoldiradi
+14.1 ~ Karta elementining yuqori o'ng burchagida, ramka ichida ~ Kartaning aniq o'rtasida, matn ustiga chiqib turadi ~ Karta ichida, oddiy oqimdagi o'z joyida qoladi
+14.2 ~ Sahifaning yuqori o'ng burchagida ~ Kartaning pastki o'ng burchagida ~ Oddiy oqimdagi avvalgi joyida
+14.3 ~ Keyingi elementlar yuqoriga surilib, joyni to'ldiradi ~ Joy yo'qoladi va sahifa balandligi shunga qisqaradi ~ Element oqimdan chiqib, otasiga nisbatan joylashadi
+14.4 ~ Elementga z-index qiymati berilmagani ~ sticky faqat fixed ota ichida ishlaydi ~ top: 0 bilan birga left: 0 ham shart
+14.6 ~ Odatdagidek brauzer oynasiga yopishib turadi ~ Ekrandan butunlay yo'qolib, ko'rinmay qoladi ~ Sahifa boshiga nisbatan absolute dek turadi
+14.8 ~ Faqat ichidagi mazmun kengligiga teng ~ Nolga teng, chunki width ko'rsatilmagan ~ Doim brauzer oynasining to'liq kengligi
+14.9 ~ Brauzer oynasining (viewport) o'lchamiga ~ Containing block ning faqat content box iga ~ Elementning o'z mazmuni egallagan o'lchamga
+14.11 ~ DOM da avvalroq kelgan element ustida turadi ~ O'lchami kattaroq bo'lgan element ustida turadi ~ Brauzer har safar tasodifiy birini tanlab chizadi
+15.1 ~ 9999 qiymati brauzer ruxsat bergan eng katta z-index dan oshgani uchun hisobga olinmay, nolga tushib qoladi ~ Ko'k elementga position: fixed berilgan, fixed elementlar esa z-index qiymatidan qat'i nazar doim ustida turadi ~ Qizil elementga opacity berilmagani uchun u alohida qatlam olmaydi va ko'k rang ostida qolib ketaveradi
+15.3 ~ Yo'q: z-index uchun position shart bo'lib qolaveradi ~ Faqat position: relative qo'shilsagina ta'sir qiladi ~ Faqat konteynerga ham z-index berilsa ishlaydi
+15.4 ~ Element boshqa barcha elementlardan yuqoriga chiqadi ~ Brauzer xato berib, butun qoidani tashlab yuboradi ~ Element 100 qatlam pastga tushib, fon ostiga o'tadi
+15.5 ~ Oddiy oqimdan chiqarilgan float elementlar (suzuvchi bloklar) ~ Pozitiv z-index li positioned elementlar (barcha matndan oldin) ~ Oddiy oqimdagi inline matn va rasmlar (bloklar fonidan oldin)
+15.6 ~ Dropdown va modalning ikkalasiga ham z-index: 99999 berib, DOM da modalni keyinroqqa joylashtirib qo'yish ~ Modal stillariga !important qo'shib, boshqa komponentlarning z-index qiymatlarini har safar majburan bosib o'tish ~ Hamma elementlardan position ni olib tashlab, tartibni faqat HTML dagi yozilish ketma-ketligiga qoldirish
+15.7 ~ fixed holati faqat sahifaning birinchi ekranida ishlab, keyin o'z-o'zidan o'chadi ~ Elementga z-index berilmagani sababli u skroll paytida oqimga qaytib qoladi ~ Brauzer uzun sahifalarda fixed elementlarni qayta chizishga ulgurmay qoladi
+15.8 ~ DOM da avval kelgani ~ Kattaroq o'lchamlisi ~ Tasodifan tanlangani
+15.10 ~ CSS da z-index manfiy qiymat qabul qilmaydi va brauzer uni 9999 deb hisoblab yuboradi ~ Ota elementga opacity: 1 aniq yozilmagani sababli bola rangi fon bilan aralashib ko'rinmay qoladi ~ Brauzer manfiy qatlamdagi elementlarni xotirani tejash uchun umuman chizmasdan o'tkazib yuboradi
+16.2 ~ Aynan yozilgandek: gorizontal kesiladi, vertikal esa erkin toshib chiqaveradi ~ Faqat x kesiladi, y bo'yicha esa element mazmuniga qarab cho'zilib ketadi ~ Ikkala qoida ham yaroqsiz bo'lib, brauzer standart visible ni ishlatadi
+16.4 ~ Vertikal scroll har bo'limda majburan to'xtaydi ~ Snap faqat tugma bosib scroll qilinganda ishlaydi ~ Gorizontal scroll o'chiriladi va joyida qotib qoladi
+16.5 ~ overflow-x: hidden ~ width: 100vw va padding: 0 ~ margin: 0 auto
+16.6 ~ Hech qanday ta'siri yo'q: sticky bola sahifa tepasiga odatdagidek yopishib turaveradi ~ Sticky element avtomatik ravishda position: fixed ga aylanib, viewport ga yopishib oladi ~ Brauzer sticky bor ota uchun overflow: hidden qoidasini o'zi bekor qilib, visible qiladi
+16.8 ~ Element chizilishini tezlashtirib, sahifani qayta joylashtirishdan butunlay xalos qiladi ~ Element ichida doim ko'rinadigan scrollbar hosil qilib, mazmunni aylantirish imkonini beradi ~ Elementga avtomatik z-index berib, uni qo'shni bloklarning ustiga chiqarib qo'yadi
+16.9 ~ 100vw o'lchami padding larni avtomatik ikki baravar hisoblaydi ~ vw birligi eski brauzerlarda piksel deb noto'g'ri o'qiladi ~ Elementga overflow: visible aniq yozib qo'yilmagani sabab
+17.3 ~ Faqat birinchi qoida ishlab, ko'k rang qoladi ~ Faqat birinchi shart: ikkinchisi yaroqsiz yozilgan ~ Hech biri: ikki shart bir-birini bekor qiladi
+17.6 ~ Brauzer bitta katta rasmni yuklab, o'zi siqib beradi ~ Bir nechta rasmni navbat bilan almashtirib ko'rsatadi ~ Rasm yuklanguncha uning xira nusxasini chizib turadi
+17.9 ~ Qurilma protsessori sekin va animatsiyani tortolmaydi ~ Internet ulanishi sekin va trafik tejash rejimi yoqilgan ~ Ekran kichik bo'lib, harakat uchun joy yetarli emas
+17.10 ~ 769px dan 1022px gacha (chegaralar kirmaydi) ~ 768px dan 1024px gacha (1024 ham albatta kiradi) ~ Faqat aniq 768px va 1023px kenglikning o'zida
+17.11 ~ rem li media query brauzerda px ga qaraganda sezilarli darajada tezroq hisoblanadi ~ px birligi zamonaviy brauzerlarda media query shartida ishlamay qo'yishi mumkin ~ rem faqat min-width bilan ishlagani uchun mobile-first yozishni majburan ta'minlaydi
+18.2 ~ Ha: shart elementning o'ziga qo'llanadi ~ Ha, agar container-type: inline-size bo'lsa ~ Faqat container-name berilgan bo'lsa
+18.3 ~ Faqat konteyner balandligini so'rash imkonini, kenglik esa mazmunga qarab erkin hisoblanaveradi ~ Konteyner o'lchami o'zgarganda ichki elementlarga avtomatik silliq animatsiya qo'llash imkonini ~ Konteyner kengligini mazmundan hisoblab, uni keyin o'zgarmaydigan qattiq piksel qiymatga aylantirishni
+18.4 ~ Farqi yozuvda xolos: ikkalasi ham brauzer oynasi kengligini tekshirib qoida qo'llaydi ~ Container query faqat balandlikni, media query esa faqat kenglikni tekshira oladi ~ Birinchisi ajdod konteyner o'lchamiga, ikkinchisi brauzer oynasi o'lchamiga bog'liq
+18.6 ~ Ikki joyda ham bir xil maket: oyna kengligi o'zgarmagani uchun ~ Faqat main da stil qo'llanadi, sidebar ichida so'rov ishlamaydi ~ Sidebar dagi karta main dagisidan nusxa olib, kichraytirib chiziladi
+18.7 ~ Brauzer har bir kadrda sahifaning hamma qismini qayta hisoblab, scroll juda sekinlashib ketadi ~ U faqat planshet o'lchamidagi ekranlarda ishlaydi, telefon va kompyuterda shartlar hisoblanmaydi ~ Konteyner ichidagi matn elementlari uchun @container qoidalari umuman qo'llanmay qolib ketadi
+18.8 ~ Konteyner animatsiyasiga nom berib, keyin chaqirish uchun ~ Uzun selektorlar o'rniga qisqa taxallus yozish uchun ~ HTML dagi class atributining o'rnini bosish uchun
+19.3 ~ 16px: brauzer birlikni o'zi qo'shadi ~ 16 em: birliksiz son em deb olinadi ~ Xato bo'lib, butun CSS fayl o'qilmaydi
+19.4 ~ margin: var(--s)px !important ~ margin: var(--s) + 1px ~ margin: "var(--s)px"
+19.6 ~ CSS faylining hajmini kamaytirib, tez yuklanishiga yordam berish ~ JavaScript ishlatmasdan matematik hisob-kitob qilish imkonini berish ~ O'zgaruvchining meros bo'lishini butunlay va har doim o'chirib qo'yish
+19.7 ~ Sahifaning istalgan joyida ishlayveradi ~ Faqat shu elementning qo'shnilarida ko'rinadi ~ Faqat :root va body darajasida mavjud bo'ladi
+19.8 ~ Har bir mavjud qoida yoniga qorong'i rangli ikkinchi nusxasini qo'lda yozib chiqish ~ Sahifa ustiga filter: invert(1) berib, hamma rang va rasmlarni teskarisiga aylantirish ~ JavaScript bilan har bir elementni aylanib chiqib, style orqali yangi rang berish
+19.9 ~ el.style['--x'] = value ~ el.style.setVariable('x', value) ~ el.setAttribute('--x', value)
+20.2 ~ 0-1-1 (class va p) ~ 0-2-1 (2 class va p) ~ 0-0-0 (butunlay nol)
+20.5 ~ Faqat form elementining o'zi fokus olganda ~ Faqat ichidagi checkbox belgilab qo'yilganda ~ Form serverga muvaffaqiyatli yuborilganda
+20.8 ~ Faqat done class li li lar ~ done bo'lmagan hamma element ~ Birinchi li dan boshqa hammasi
+20.9 ~ Selektorlarni brauzer avvalgidan ancha tez hisoblaydi ~ class va id yozmasdan elementga nom berish mumkin bo'ldi ~ Element paydo bo'lganda animatsiyani o'zi boshlaydi
+20.10 ~ Farqi yo'q: ikkalasi aynan bir xil specificity beradi ~ :where brauzerda :is ga qaraganda sekinroq ishlaydi ~ :is faqat sarlavhalar uchun, :where esa class lar uchun
+21.1 ~ O'ngga 100px: translate doim ekranning gorizontal o'qi bo'ylab ishlab, burilish shaklga ta'sir qiladi ~ Joyida qoladi: rotate va translate bir qoidada yozilsa, ular bir-birining ta'sirini to'liq bekor qiladi ~ Yuqoriga 100px: 90° burilgandan keyin X o'qining musbat yo'nalishi ekranda tepaga qarab qoladi
+21.2 ~ Ha: qo'shni elementlar 100px o'ngga suriladi ~ Ha, lekin faqat flex konteyner ichida bo'lsa ~ Faqat element position: static bo'lmagan holda
+21.3 ~ width va height ~ top va left ~ margin va padding
+21.4 ~ all kalit so'zi zamonaviy brauzerlarda ishlamaydi va hech qanday o'tish bo'lmaydi ~ all faqat opacity va transform ga ta'sir qiladi, qolgan o'zgarishlar sakrab ketadi ~ all yozilsa, brauzer davomiylikni e'tiborsiz qoldirib, har doim 1 soniya oladi
+21.5 ~ Ha: transition-duration berilsa, element o'zi silliq paydo bo'lib keladi ~ Faqat timing function sifatida ease-in-out tanlangan holatdagina bo'ladi ~ Faqat transition-delay qiymati noldan katta qilib berilganda bo'ladi
+21.6 ~ Ha, layout kengligi 2 barobar ~ Faqat width ikki barobar bo'ladi ~ Faqat qo'shni elementlar suriladi
+21.8 ~ Odatdagidek viewport ga yopishadi ~ Ekrandan yashirinib, chizilmaydi ~ Sahifa oxiriga surilib qoladi
+21.9 ~ Sahifa yuklanishi bilan o'zi avtomatik boshlanganda ~ Elementga @keyframes qoidasi ham yozib berilgandagina ~ Qiymat faqat JavaScript orqali o'zgartirilgandagina
+21.10 ~ Ular transform ga qaraganda har doim tezroq chiziladi ~ Ular transform ni bilmaydigan eski brauzerlarda ham ishlaydi ~ Ular qo'shni elementlar joylashuvini ham mos ravishda o'zgartiradi
+22.1 ~ animation-iteration-count 1 qilib qo'yilgani ~ @keyframes ichida 100% kadr xato yozilgani ~ Elementga transition xususiyati berilmagani
+22.2 ~ 3 soniyalik animatsiya, 2 marta takrorlanib ishlaydi ~ 2 soniyalik animatsiya, 3 soniya kutib keyin boshlanadi ~ 2 soniyalik animatsiya, 3-darajali silliqlik bilan cheksiz
+22.3 ~ animation-fill-mode: forwards (yoki none) ~ animation-play-state: running (standart) ~ animation-direction: reverse (yoki alternate)
+22.4 ~ Animatsiya 1 soniya kutib, keyin odatdagidek boshidan boshlanadi ~ Manfiy qiymat yaroqsiz bo'lib, butun animation qoidasi bekor bo'ladi ~ Animatsiya darhol boshlanib, 1 soniya davomida teskari yuradi
+22.5 ~ 4 soniyalik silliq animatsiya ~ 4 marta takrorlanadigan sikl ~ 4 barobar tezlashgan harakat
+22.6 ~ Farqi yo'q: ikkalasi ham @keyframes asosida ishlab, faqat sintaksisi boshqacha ~ Animation faqat hover paytida ishlaydi, transition esa sahifa yuklanishida boshlanadi ~ Animation ikki holat orasida, transition esa ko'p kadr bilan o'zi boshlanib ketadi
+22.7 ~ Animatsiyani aniq ikki marta takrorlaydi ~ Doim oxirgi kadrdan boshiga qarab yuradi ~ Har takrorda tezligini ikki barobar oshiradi
+22.8 ~ U boshqa usullardan eng qisqa kod bilan yoziladi ~ Brauzer aylanishni boshqa xususiyatda qabul qilmaydi ~ U animatsiyani JavaScript oqimida boshqarib turadi
+22.9 ~ Hech narsa: brauzer animatsiyani o'zi o'chiradi ~ Animatsiya tezligi ikki barobar oshirib qo'yiladi ~ Sahifa animatsiyasiz versiyaga qayta yuklanadi
+22.10 ~ Butun animatsiya yaroqsiz deb hisoblanib, ishlamaydi ~ Element ko'rinmas holatdan (opacity 0) boshlanadi ~ Brauzer 100% kadrni 0% o'rniga ham nusxalab oladi
+23.2 ~ menu ichidagi item ichida joylashgan active nomli element ~ item elementining ota qismi bo'lgan faol menu bloki ~ Faol menu blokining modifikatorsiz oddiy item qismi
+23.3 ~ Brauzer id li selektorni class li selektorga qaraganda ancha sekin qidiradi, sahifa chizilishi sezilarli darajada qotib qoladi ~ id selektorini class lar bilan bir qatorda ishlatib bo'lmaydi, brauzer bunday qoidani yaroqsiz deb tashlab yuboradi ~ Probel bilan yozilgan avlod selektori zamonaviy CSS da eskirgan va uning o'rniga faqat > belgisini ishlatish shart
+23.4 ~ Komponentning o'zi: har joyda bir xil tashqi chekka bilan turishi uchun uni ichida qotirib yozadi ~ Brauzerning standart stillari: komponent va layout tashqi chekkaga umuman aralashmasligi kerak ~ Global reset fayli: barcha komponentlarning tashqi chekkasi bitta umumiy qoidada belgilanadi
+23.5 ~ Eng birinchi: komponentlar ularni bemalol bosib ketishi uchun ~ reset qatlamida: ular ham asosiy tozalash qoidalari hisoblanadi ~ Hech qaysi layer da emas: ular faqat inline style da turishi kerak
+23.6 ~ Qoidaga yana bir !important qo'shish ~ Selektorga bir nechta ID qo'shib chiqish ~ Hamma stilni inline style ga ko'chirish
+23.7 ~ Brauzerda sahifaning sekin chizilishi ~ Eski brauzerlarning uni qo'llamasligi ~ Stillarni qayta ishlatib bo'lmasligi
+23.8 ~ JavaScript kodida login uchun ishlatiladigan maxfiy kalit ~ Brauzer CSS ni o'qiyotganda ajratadigan eng kichik bo'lak ~ Bir komponentga bir marta beriladigan noyob class nomi
+23.9 ~ Brauzerlar CSS da uchinchi darajadan chuqur nesting ni qo'llamaydi ~ Chuqur nesting CSS faylining yuklanishini bir necha barobar sekinlashtiradi ~ Brauzer bunday qoidani xato deb, undan keyingi stillarni o'qimaydi
+23.10 ~ CSS fayli iloji boricha eng qisqa va siqilgan holda bo'lishi ~ Har bir elementga alohida ID berilib, stil shunga yozilishi ~ Muhim qoidalarning hammasi !important bilan himoyalanishi

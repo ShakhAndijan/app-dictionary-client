@@ -21,3 +21,6 @@ h.L.forEach((l) => {
 
 fs.writeFileSync('E:/frontend/app-dictionary/app-dictionary-server/src/main/resources/dev/frontend-css-junior.json', JSON.stringify(h.L, null, 1));
 console.log('lessons', h.L.length, 'items', items);
+
+// richer theory blocks and Uzbek meanings of English terms
+require('./add-dev-theory.cjs')('css');

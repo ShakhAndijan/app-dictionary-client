@@ -31,6 +31,7 @@ interface Section {
   callout?: { kind: 'tip' | 'warn' | 'info'; text: string };
   defs?: { term: string; text: string }[];
   life?: { icon: string; title: string; text: string }[];
+  mistakes?: [wrong: string, right: string, note: string][];
 }
 
 interface DevTheoryData {
@@ -179,6 +180,17 @@ function SectionView({ s }: { s: Section }) {
         </div>
       )}
       {s.code && <CodeBlock lang={s.code.lang} text={s.code.text} />}
+      {s.mistakes && (
+        <div className="th-errs">
+          {s.mistakes.map(([wrong, right, note]) => (
+            <div key={wrong} className="th-err">
+              <div className="th-wrong">✗ {wrong}</div>
+              <div className="th-right">✓ {right}</div>
+              <small>{note}</small>
+            </div>
+          ))}
+        </div>
+      )}
       {s.callout && (
         <div className={`dv-callout ${s.callout.kind}`}>
           <span>{CALLOUT_ICON[s.callout.kind]}</span>

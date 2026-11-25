@@ -1,0 +1,56 @@
+1.1 ~ Dunyodagi barcha saytlar va sahifalarning umumiy to'plami ~ Google kompaniyasining butun dunyodagi serverlar tizimi ~ Sahifalarni ochib ko'rsatadigan brauzer dasturlari tizimi
+1.2 ~ Email yuborish (SMTP orqali) ~ Fayl yuborish (FTP orqali) ~ Onlayn o'yin (UDP orqali)
+1.6 ~ Havo orqali ishlaydigan maxsus simsiz saqlash tarmog'i ~ Brauzer ichidagi cheksiz hajmli yashirin xotira bo'limi ~ Ma'lumotni sun'iy yo'ldoshda saqlaydigan kosmik tizim
+1.7 ~ Butun internetning o'zi, faqat uy ichida joylashgan nusxasi ~ Uy qurilmalariga sahifa tarqatadigan alohida web-sayt ~ Barcha qurilmalaringiz uchun ishlaydigan web-server
+1.8 ~ Web va internet bir xil narsaning ikki nomi ~ Internet — web tarkibidagi xizmatlardan biri ~ Web — kabel va routerlardan iborat tarmoq
+1.10 ~ Web ishlatildi, chunki har qanday ma'lumot yuborilishi web hisoblanadi ~ Internet ishlatilmadi, chunki Telegram brauzersiz alohida ilova sifatida ishlaydi ~ Faqat Wi-Fi ishlatildi, chunki video qo'shni qurilmaga to'g'ridan-to'g'ri o'tdi
+2.1 ~ Server (host) ~ Router (shlyuz) ~ DNS (resolver)
+2.3 ~ Faqat maxsus xonada turadigan qimmat va kuchli kompyuter ~ Brauzer ichida sahifalarni chizib beradigan alohida qism ~ Mijozlarni internetga ulab turadigan asosiy tarmoq kabeli
+2.7 ~ Ha, istalgan paytda o'zi yubora oladi ~ Ha, agar mijoz sahifani yopmagan bo'lsa ~ Ha, lekin faqat Wi-Fi orqali ulanganda
+2.9 ~ Foydalanuvchi og'ir sayt ochgan har qanday holatda ~ Sahifaga rasm va videolar yuklanayotgan paytda ~ Sahifa qayta yangilanib, so'rov takrorlanganda
+2.10 ~ Yo'q, server faqat shu maqsadda yasalgan maxsus kompyuter ~ Faqat unga Linux operatsion tizimi o'rnatilgan bo'lsagina ~ Faqat internetdan uzilgan holatda, lokal rejimda ishlaganda
+2.11 ~ Mijozning interneti uzilib, sahifalar umuman ochilmay qolgan ~ Foydalanuvchi brauzeri eskirib, yangilanishi talab qilinayotgan ~ Sayt domenining muddati tugab, boshqa egaga o'tib ketayotgan
+3.1 ~ Saytga kirishda parol o'rnida xizmat qiladi ~ Yuborilayotgan faylni siqib, hajmini kamaytiradi ~ Brauzerda rasm qayerda chizilishini belgilaydi
+3.10 ~ Bu public IP: dunyoning istalgan joyidan ko'rinadi ~ Bu port raqami: qaysi dastur ishlashini bildiradi ~ Bu domen nomi: DNS orqali boshqa manzilga aylanadi
+3.11 ~ Server joylashgan davlatni bildiruvchi hududiy kod ~ IP manzilning to'rtinchi qismidan keyingi davomi ~ So'raladigan faylning kilobaytlardagi taxminiy hajmi
+4.3 ~ Server doim yoqilgan turadi va hech qachon o'chmaydi ~ Protokol faqat matnni uzatadi, fayllarni uzata olmaydi ~ So'rov va javoblar yo'lda avtomatik ravishda shifrlanadi
+4.8 ~ Brauzer oynasi yopilmaguncha ulanish uzilmay ochiq turadi ~ Foydalanuvchining IP manzili doim bir xil bo'lib qolaveradi ~ Server so'rov vaqtiga qarab kimligingizni o'zi taxmin qiladi
+4.11 ~ Faqat tayyor HTML fayl va boshqa hech narsa ~ Faqat mijoz IP manzili va port raqami ~ So'rov metodi, yo'li va query parametrlari
+5.9 ~ Path (resurs yo'li) ~ Fragment (bo'lak) ~ Hostname (xost nomi)
+5.10 ~ Serverga yo'l va query bilan birga yuboriladi ~ Server qaysi port raqamida ishlashini bildiradi ~ So'rov qaysi protokolda yuborilishini belgilaydi
+6.6 ~ So'rov tanasi shifrlangan yuboriladi ~ So'rov hech qachon xato qaytarmaydi ~ Usul faqat HTTPS orqali ruxsat etiladi
+6.8 ~ Brauzer sahifani tezroq chizishi va xotirani tejashi uchun ~ Server ortiqcha yuklanib, butunlay o'chib qolmasligi uchun ~ Tugma bosilgandan keyin CSS stillari buzilib ketmasligi uchun
+6.11 ~ PUT faqat yangi resurs yaratadi, PATCH esa mavjud resursni o'chiradi ~ Farqi yo'q: ikkalasi ham resursni bir xil tarzda to'liq almashtirib yozadi ~ PUT matnli ma'lumot uchun, PATCH esa faqat fayl va rasm yuklash uchun
+7.4 ~ Server tomonidagi xato (server o'chgan) ~ So'rov muvaffaqiyatli bajarilgan holatlar ~ Resurs boshqa manzilga doimiy ko'chirilgan
+7.5 ~ Ikkalasi bir xil: server so'rovni bajarishdan sababsiz bosh tortgani bildiriladi ~ 401: kimligingiz ma'lum, lekin ruxsat yo'q; 403: so'ralgan sahifa serverda topilmadi ~ 401: serverning ichki xatosi; 403: mijoz noto'g'ri formatda so'rov yuborgan holat
+7.8 ~ Reject bo'ladi va catch blokiga tushadi ~ Pending holatida abadiy kutib qolaveradi ~ So'rov muvaffaqiyatli bo'lguncha takrorlanadi
+8.8 ~ Server qaysi dasturlash tilida yozilganini ~ Cookie brauzerda qancha vaqt saqlanishini ~ Mijoz yuborayotgan tana qaysi formatdaligini
+8.10 ~ Domen nomi: so'rov borishi kerak sayt ~ Cookie nomi: brauzer saqlagan yozuv nomi ~ Fayl yo'li: serverdan so'ralayotgan resurs
+8.11 ~ Faqat serverda, brauzer uni ko'ra olmaydi ~ Routerda, tarmoqdagi hamma qurilma uchun ~ DNS serverda, domen yozuvi bilan birga
+9.1 ~ Sayt sahifalari foydalanuvchiga ancha tezroq ochilishi uchun ~ Foydalanuvchi parollarini begonalardan himoya qilish uchun ~ Server yuboradigan rasm va fayllarni avtomatik siqish uchun
+9.7 ~ Chapdan o'ngga (subdomen → nom → TLD) ~ Avval asosiy nom, keyin qolgan qismlar ~ Faqat oxirgi nuqtagacha bo'lgan qismi
+9.8 ~ Yangi IP manzilni topib, yodlab olishadi ~ Sayt ilovasini qaytadan o'rnatib olishadi ~ Brauzerni so'nggi versiyaga yangilashadi
+9.11 ~ Domen avtomatik ravishda cheksiz muddatga uzayib qoladi ~ Sayt ishlayveradi, faqat sahifalar sekinroq ochiladi ~ Domen o'z kuchida qoladi, faqat IP manzil almashadi
+10.1 ~ Sayt trafigini HTTPS bilan shifrlaydi ~ Server javobidagi fayllarni siqib beradi ~ Foydalanuvchi parollarini saqlab turadi
+10.11 ~ CNAME yozuvi IP manzilni qidirishni butunlay bekor qilib, tezlashtiradi ~ CNAME yozuvi saytga kirayotganlarning parollarini avtomatik himoya qiladi ~ CNAME yozuvi qo'shimcha domen uchun yillik to'lovni butunlay yo'q qiladi
+10.12 ~ DNS serverdagi asl yozuvlar o'chib, faqat mijozdagi nusxa ishlab qoladi ~ Domen uchun so'rovlar kamaygani sababli uning yillik narxi ham arzonlashadi ~ Sayt har bir tashrifda serverda qaytadan yig'iladi va yangilanishlar darhol ko'rinadi
+11.1 ~ Sotib olingan domen nomini boshqa nomga ulab beradigan qayta yo'naltirish xizmati ~ Sayt sahifalarini tezroq ochish uchun brauzerga o'rnatiladigan maxsus kengaytma ~ Sayt kodini yozish va xatolarini topishga yordam beradigan onlayn kod muharriri
+11.2 ~ Ikkalasi bitta xizmatning ikki xil nomi ~ Hosting — manzil, domen — shu yerdagi bino ~ Ikkalasi ham brauzer ichida saqlanadi
+11.7 ~ Maxfiy hisoblanadi, qiymatini faqat server biladi ~ Faqat dev rejimida ishlaydi, productionda yo'qoladi ~ Brauzer ularni shifrlab saqlaydi, o'qib bo'lmaydi
+11.8 ~ Lokal dev serverni ishga tushiradi ~ Loyiha kutubxonalarini o'rnatib beradi ~ Tayyor saytni serverga o'zi joylaydi
+11.9 ~ Rasmlar va matndan iborat, kamdan-kam yangilanadigan portfolio sayt ~ Oldindan yozilgan sahifalardan iborat dasturiy hujjatlar to'plami sayti ~ Bir sahifali reklama (landing) sayti, formasi tashqi xizmatga yuboriladi
+11.10 ~ Loyiha uchun yangi domen sotib olib, uni serverga avtomatik ulash uchun ~ Serverdagi DNS yozuvlarini yangi versiyaga moslab qayta yozib chiqish uchun ~ Foydalanuvchilarning brauzer keshini masofadan turib tozalab chiqish uchun
+11.11 ~ Kodni yetkazishdan oldin xatolarini topib tuzatadi ~ Sayt domenini va hostingini bepul qilib beradi ~ Sahifani foydalanuvchi o'rniga brauzerda chizadi
+12.3 ~ Sahifa ko'rinishini belgilovchi CSS fayllari to'plami ~ Sayt manzilini saqlaydigan serverdagi nomlar ro'yxati ~ Brauzerning foydalanuvchi o'zgartiradigan sozlamalari
+12.7 ~ Har bir elementning rangi, soyasi va shaffoflik darajasi ~ Sahifa so'ralgan serverning IP manzili va port raqami ~ Brauzerda saqlangan cookie fayllarning muddati va hajmi
+12.8 ~ Har bir brauzer sahifani ochishdan oldin alohida parol so'raydi ~ Faqat sahifa yuklanish tezligi brauzerlarda har xil bo'lgani uchun ~ Server har bir brauzer uchun alohida domen bo'lishini talab qiladi
+12.9 ~ Avval paint bajariladi, keyin HTML o'qilib, DOM daraxti quriladi ~ Avval CSS bajariladi, keyin JavaScript, eng oxirida HTML o'qiladi ~ Avval layout hisoblanadi, keyin DOM va CSSOM daraxtlari tuziladi
+12.10 ~ Domen nomlarini IP manzilga aylantiruvchi daraxtsimon tizim ~ Sahifa elementlarining ko'rinishini belgilovchi CSS qoidalari ~ Serverda sayt fayllari saqlanadigan papkalarning ierarxiyasi
+12.11 ~ JavaScript kodi bajarilganda foydalanuvchining IP manzili o'zgaradi ~ Katta fayl yuklanganda DNS keshi o'chib, domen qaytadan qidiriladi ~ U faqat serverda bajariladi va natijasi har safar qayta yuboriladi
+13.2 ~ Sahifadagi barcha rasm va shriftlar parallel yuklab olinadi ~ Sahifadagi JavaScript bajarilib, interfeys quriladi ~ Brauzerdagi eski cookie va kesh to'liq tozalab tashlanadi
+13.5 ~ Sahifaga IP manzil berib, uni tarmoqqa ulab qo'yadi ~ Domen nomini tekshirib, DNS yozuvini yangilab chiqadi ~ Yuklangan fayllarni siqib, diskka saqlab qo'yadi
+13.6 ~ Frontend kutubxonasi almashtiriladi ~ Server qayta ishga tushiriladi ~ Taxmin bo'yicha kod soddalashtiriladi
+13.7 ~ Faqat sayt turgan web-serverning o'zida ~ Hech qayerda, har safar qaytadan so'raladi ~ Faqat sahifaning CSS va JS fayllarida
+13.10 ~ Sahifaning dizayni va ranglar sxemasini ~ Saqlanadigan cookie fayllarning hajmini ~ Sahifada qaysi HTML teglari borligini
+13.11 ~ Loyihadagi hamma kodni zamonaviyroq freymvorkda qaytadan yozib chiqish ~ Domen va hostingni tezroq ishlaydigan boshqa kompaniyaga o'tkazib yuborish ~ Sababni taxmin qilib, sahifadagi katta ko'ringan rasmlarni o'chirib tashlash
+13.12 ~ Sahifa ekranda to'liq chizilib bo'lguncha o'tgan umumiy vaqtni ~ Serverdan birinchi bo'lib keladigan faylning baytlardagi hajmini ~ Domenni IP manzilga aylantirishda yuborilgan DNS so'rovlari sonini

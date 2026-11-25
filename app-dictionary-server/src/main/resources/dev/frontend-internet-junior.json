@@ -14,6 +14,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Internet — dunyodagi kompyuter tarmoqlarini bir-biriga ulovchi infratuzilma (asosiy qurilma va aloqa yo'llari). Web esa shu infratuzilma ustida ishlaydigan xizmat: bir-biriga havola bilan bog'langan sahifalar. Frontend (foydalanuvchi ko'radigan qism) dasturchi aynan web uchun yozadi, lekin tagida internet qanday ishlashini bilmasa, xatolarni tushuntira olmaydi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -25,12 +30,30 @@
        "text": "internet ustida ishlaydigan xizmat: saytlar, havolalar va ularni uzatuvchi HTTP protokoli."
       },
       {
-       "term": "Router",
+       "term": "Router (yo'naltirgich)",
        "text": "paketni olib, manziliga qarab keyingi tarmoqqa uzatadigan qurilma."
       },
       {
        "term": "Paket (packet)",
        "text": "tarmoqda uzatiladigan kichik ma'lumot bo'lagi; ichida jo'natuvchi va qabul qiluvchi manzili yoziladi."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Sayt ochilmayotganda",
+       "text": "Muammo internetda (aloqa yo'q) mi yoki web serverida (sayt ishlamayapti) mi — ajratib olasiz."
+      },
+      {
+       "term": "Tezlikni tahlil qilganda",
+       "text": "Ma'lumot paketlarga bo'linib bir nechta router orqali o'tishini bilsangiz, kechikish qayerdan kelishini tushunasiz."
+      },
+      {
+       "term": "Suhbatda tushuntirganda",
+       "text": "Junior intervyuda «internet va web farqi» eng ko'p so'raladigan savollardan."
       }
      ]
     },
@@ -85,6 +108,30 @@
        "text": "Do'stingizga 50 MB video yuborsangiz, u bir bo'lak bo'lib emas, minglab kichik paketga bo'linib ketadi va qabul qiluvchi telefonda qayta yig'iladi. Yo'lda bitta paket yo'qolsa, faqat o'shani qayta yuborish yetarli."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Internet — yo'l, web — shu yo'lda yuradigan transport turlaridan biri. Pochta (email) ham shu yo'ldan yuradi, lekin web emas."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Internet va web — bir narsa.",
+       "Web — internet ustidagi xizmatlardan biri.",
+       "Email va onlayn o'yin ham internetdan foydalanadi."
+      ],
+      [
+       "Ma'lumot bitta butun bo'lib uchadi.",
+       "Ma'lumot paketlarga bo'linadi va qayta yig'iladi.",
+       "Har bir paket boshqa yo'ldan ketishi mumkin."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -107,9 +154,9 @@
     "prompt": "Internet deb nimaga aytiladi?",
     "options": [
      "Millionlab tarmoqlarni bir-biriga ulaydigan katta tarmoq",
-     "Faqat saytlar to'plami",
-     "Google'ning serverlari",
-     "Brauzer dasturi"
+     "Dunyodagi barcha saytlar va sahifalarning umumiy to'plami",
+     "Google kompaniyasining butun dunyodagi serverlar tizimi",
+     "Sahifalarni ochib ko'rsatadigan brauzer dasturlari tizimi"
     ],
     "answer": "Millionlab tarmoqlarni bir-biriga ulaydigan katta tarmoq",
     "explain": "Internet — tarmoqlar tarmog'i (network of networks)."
@@ -120,9 +167,9 @@
     "prompt": "Quyidagilardan qaysi biri web xizmatiga kiradi?",
     "options": [
      "Sayt ochish (HTTP orqali)",
-     "Email yuborish",
-     "Video qo'ng'iroq",
-     "Onlayn o'yin"
+     "Email yuborish (SMTP orqali)",
+     "Fayl yuborish (FTP orqali)",
+     "Onlayn o'yin (UDP orqali)"
     ],
     "answer": "Sayt ochish (HTTP orqali)",
     "explain": "Web — saytlar va HTTP. Email, o'yin va video qo'ng'iroq internetdan foydalanadi, lekin web emas."
@@ -138,7 +185,7 @@
      "Cookie"
     ],
     "answer": "Router",
-    "explain": "Router paketni keyingi to'g'ri tugunga uzatadi, butun yo'lni bilmaydi."
+    "explain": "Router (yo'naltirgich) paketni keyingi to'g'ri tugunga uzatadi, butun yo'lni bilmaydi."
    },
    {
     "id": "4",
@@ -170,9 +217,9 @@
     "prompt": "\"Bulut\" (cloud) aslida nima?",
     "options": [
      "Boshqa birovning data markazidagi haqiqiy kompyuterlar",
-     "Havodagi maxsus tarmoq",
-     "Brauzerning ichki xotirasi",
-     "Sun'iy yo'ldosh"
+     "Havo orqali ishlaydigan maxsus simsiz saqlash tarmog'i",
+     "Brauzer ichidagi cheksiz hajmli yashirin xotira bo'limi",
+     "Ma'lumotni sun'iy yo'ldoshda saqlaydigan kosmik tizim"
     ],
     "answer": "Boshqa birovning data markazidagi haqiqiy kompyuterlar",
     "explain": "Bulut — boshqalarning data markazidagi serverlar."
@@ -183,9 +230,9 @@
     "prompt": "Uyingizdagi Wi-Fi tarmog'i nima?",
     "options": [
      "Internetni tashkil etuvchi kichik tarmoqlardan biri",
-     "Butun internet",
-     "Web-sayt",
-     "Server"
+     "Butun internetning o'zi, faqat uy ichida joylashgan nusxasi",
+     "Uy qurilmalariga sahifa tarqatadigan alohida web-sayt",
+     "Barcha qurilmalaringiz uchun ishlaydigan web-server"
     ],
     "answer": "Internetni tashkil etuvchi kichik tarmoqlardan biri",
     "explain": "Internet shunday kichik va katta tarmoqlarning birikmasidir."
@@ -196,9 +243,9 @@
     "prompt": "Web va internet haqida qaysi gap to'g'ri?",
     "options": [
      "Web — internet ustida ishlaydigan xizmat",
-     "Web va internet bir xil narsa",
-     "Internet — web ning bir qismi",
-     "Web — kabellar va routerlar"
+     "Web va internet bir xil narsaning ikki nomi",
+     "Internet — web tarkibidagi xizmatlardan biri",
+     "Web — kabel va routerlardan iborat tarmoq"
     ],
     "answer": "Web — internet ustida ishlaydigan xizmat",
     "explain": "Internet — infratuzilma, web — shu infratuzilmadagi xizmat."
@@ -222,9 +269,9 @@
     "prompt": "Do'stingiz Telegram orqali video yubordi. Qaysi javob eng aniq?",
     "options": [
      "Internet ishlatildi, lekin brauzerdagi web sayt ochilmadi",
-     "Web ishlatildi, chunki ma'lumot yuborildi",
-     "Internet ishlatilmadi, chunki bu ilova",
-     "Faqat Wi-Fi ishlatildi, internet emas"
+     "Web ishlatildi, chunki har qanday ma'lumot yuborilishi web hisoblanadi",
+     "Internet ishlatilmadi, chunki Telegram brauzersiz alohida ilova sifatida ishlaydi",
+     "Faqat Wi-Fi ishlatildi, chunki video qo'shni qurilmaga to'g'ridan-to'g'ri o'tdi"
     ],
     "answer": "Internet ishlatildi, lekin brauzerdagi web sayt ochilmadi",
     "explain": "Ilova ham internet orqali ishlaydi, lekin web (HTTP orqali saytlar) bu yerda shart emas."
@@ -240,7 +287,7 @@
      "Sayt dizayniga"
     ],
     "answer": "Paketdagi qabul qiluvchi manzilga",
-    "explain": "Router faqat manzilga qarab keyingi tugunni tanlaydi, mazmun uning ishi emas."
+    "explain": "Router (yo'naltirgich) faqat manzilga qarab keyingi tugunni tanlaydi, mazmun uning ishi emas."
    }
   ]
  },
@@ -259,6 +306,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Client-server (mijoz-server) — webning asosiy modeli: bir tomon so'raydi (mijoz), ikkinchi tomon javob beradi (server). Mijoz odatda brauzer yoki mobil ilova, server (xizmat ko'rsatuvchi kompyuter) esa doim yoqilgan va so'rov kutib turgan dastur. Bu rollar kompyuterning turiga emas, suhbatdagi vazifasiga bog'liq."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -266,7 +318,7 @@
        "text": "so'rov yuboradigan dastur. Frontendda ko'pincha brauzer."
       },
       {
-       "term": "Server",
+       "term": "Server (xizmat ko'rsatuvchi kompyuter)",
        "text": "tarmoqqa ulangan, so'rovlarni kutib turgan va javob qaytaradigan dastur."
       },
       {
@@ -276,6 +328,24 @@
       {
        "term": "Javob (response)",
        "text": "serverning so'rovga qaytargan natijasi."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Frontend va backendni ajratishda",
+       "text": "Brauzerda ishlaydigan kod — mijoz tomoni, ma'lumotlar bazasi bilan ishlaydigan kod — server tomoni."
+      },
+      {
+       "term": "Lokal ishlab chiqishda",
+       "text": "npm run dev kompyuteringizda server ochadi, brauzer esa unga mijoz bo'lib ulanadi."
+      },
+      {
+       "term": "Xavfsizlik haqida o'ylaganda",
+       "text": "Mijozdagi kodni foydalanuvchi ko'ra oladi va o'zgartira oladi, shuning uchun tekshiruv serverda ham bo'lishi shart."
       }
      ]
     },
@@ -319,6 +389,30 @@
        "text": "Bankomat ham mijoz: u bank serveriga \"balans qancha?\" deb so'raydi. Bank serveri javob beradi. Bankomatning o'zida pul hisobi saqlanmaydi."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Kim birinchi gapirsa — o'sha mijoz. Oddiy HTTP da server hech qachon suhbatni o'zi boshlamaydi."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Maxfiy kalitni frontend kodiga yozish.",
+       "Maxfiy kalit faqat serverda saqlanadi.",
+       "Brauzerdagi har narsani ko'rish mumkin."
+      ],
+      [
+       "Server — bu albatta katta maxsus kompyuter.",
+       "Server — so'rov kutuvchi dastur.",
+       "Oddiy noutbuk ham server bo'la oladi."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -341,12 +435,12 @@
     "prompt": "Client-server modelida so'rovni kim yuboradi?",
     "options": [
      "Mijoz (client)",
-     "Server",
-     "Router",
-     "DNS"
+     "Server (host)",
+     "Router (shlyuz)",
+     "DNS (resolver)"
     ],
     "answer": "Mijoz (client)",
-    "explain": "So'rovni mijoz yuboradi, server javob qaytaradi."
+    "explain": "So'rovni mijoz yuboradi, server (xizmat ko'rsatuvchi kompyuter) javob qaytaradi."
    },
    {
     "id": "2",
@@ -367,12 +461,12 @@
     "prompt": "Server nima?",
     "options": [
      "Tarmoqqa ulangan, so'rovlarni kutib turgan dastur",
-     "Faqat maxsus qimmat kompyuter",
-     "Brauzerning bir qismi",
-     "Internet kabeli"
+     "Faqat maxsus xonada turadigan qimmat va kuchli kompyuter",
+     "Brauzer ichida sahifalarni chizib beradigan alohida qism",
+     "Mijozlarni internetga ulab turadigan asosiy tarmoq kabeli"
     ],
     "answer": "Tarmoqqa ulangan, so'rovlarni kutib turgan dastur",
-    "explain": "Server — sehr emas, oddiy dastur."
+    "explain": "Server (xizmat ko'rsatuvchi kompyuter) — sehr emas, oddiy dastur."
    },
    {
     "id": "4",
@@ -411,7 +505,7 @@
      "javob qaytaradi"
     ],
     "answer": "Mijoz so'rov yuboradi server javob qaytaradi",
-    "explain": "Avval mijoz so'raydi, keyin server javob beradi."
+    "explain": "Avval mijoz so'raydi, keyin server (xizmat ko'rsatuvchi kompyuter) javob beradi."
    },
    {
     "id": "7",
@@ -419,9 +513,9 @@
     "prompt": "Server o'zidan-o'zi mijozga HTTP javob yuboradimi?",
     "options": [
      "Yo'q, avval so'rov bo'lishi kerak",
-     "Ha, istalgan paytda",
-     "Faqat kechasi",
-     "Faqat Wi-Fi bilan"
+     "Ha, istalgan paytda o'zi yubora oladi",
+     "Ha, agar mijoz sahifani yopmagan bo'lsa",
+     "Ha, lekin faqat Wi-Fi orqali ulanganda"
     ],
     "answer": "Yo'q, avval so'rov bo'lishi kerak",
     "explain": "HTTP da avval so'rov, keyin javob."
@@ -445,12 +539,12 @@
     "prompt": "Qaysi holatda brauzer SERVER vazifasini bajaradi?",
     "options": [
      "Odatda hech qachon: brauzer mijoz bo'ladi",
-     "Sayt ochilganda",
-     "Rasm yuklanganda",
-     "Sahifa yangilanganda"
+     "Foydalanuvchi og'ir sayt ochgan har qanday holatda",
+     "Sahifaga rasm va videolar yuklanayotgan paytda",
+     "Sahifa qayta yangilanib, so'rov takrorlanganda"
     ],
     "answer": "Odatda hech qachon: brauzer mijoz bo'ladi",
-    "explain": "Brauzer so'rov yuboradi (mijoz). Javob beradigan tomon — server."
+    "explain": "Brauzer so'rov yuboradi (mijoz). Javob beradigan tomon — server (xizmat ko'rsatuvchi kompyuter)."
    },
    {
     "id": "10",
@@ -458,12 +552,12 @@
     "prompt": "Bitta kompyuter ham mijoz, ham server bo'la oladimi?",
     "options": [
      "Ha, rol dasturga qarab belgilanadi, qurilmaga emas",
-     "Yo'q, server faqat maxsus katta kompyuter",
-     "Faqat Linux bo'lsa",
-     "Faqat internetsiz holatda"
+     "Yo'q, server faqat shu maqsadda yasalgan maxsus kompyuter",
+     "Faqat unga Linux operatsion tizimi o'rnatilgan bo'lsagina",
+     "Faqat internetdan uzilgan holatda, lokal rejimda ishlaganda"
     ],
     "answer": "Ha, rol dasturga qarab belgilanadi, qurilmaga emas",
-    "explain": "Server — dastur roli. Noutbukingizda ham server ishga tushirib qo'yish mumkin."
+    "explain": "Server (xizmat ko'rsatuvchi kompyuter) — dastur roli. Noutbukingizda ham server ishga tushirib qo'yish mumkin."
    },
    {
     "id": "11",
@@ -471,12 +565,12 @@
     "prompt": "\"Server qulab tushdi\" degani nimani anglatadi?",
     "options": [
      "So'rovlarga javob beradigan dastur yoki mashina ishlamay qoldi",
-     "Mijozning interneti uzildi",
-     "Brauzer yangilandi",
-     "Domen muddati tugadi"
+     "Mijozning interneti uzilib, sahifalar umuman ochilmay qolgan",
+     "Foydalanuvchi brauzeri eskirib, yangilanishi talab qilinayotgan",
+     "Sayt domenining muddati tugab, boshqa egaga o'tib ketayotgan"
     ],
     "answer": "So'rovlarga javob beradigan dastur yoki mashina ishlamay qoldi",
-    "explain": "Server javob bermasa, boshqa mijozlar ham saytni ocholmaydi."
+    "explain": "Server (xizmat ko'rsatuvchi kompyuter) javob bermasa, boshqa mijozlar ham saytni ocholmaydi."
    }
   ]
  },
@@ -495,6 +589,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "IP address (tarmoq manzili) kompyuterni tarmoqda topish uchun, port (dastur eshigi raqami) esa shu kompyuterdagi aniq dasturni topish uchun kerak. Ikkalasi birga «qaysi uyning qaysi eshigi» degan to'liq manzilni beradi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -502,7 +601,7 @@
        "text": "tarmoqdagi har bir qurilmaning noyob manzili. Paket qaysi qurilmaga borishini shu belgilaydi."
       },
       {
-       "term": "Port",
+       "term": "Port (dastur eshigi raqami)",
        "text": "bitta kompyuterdagi qaysi dastur javob berishini ko'rsatadigan raqam (0 dan 65535 gacha)."
       },
       {
@@ -515,7 +614,25 @@
       },
       {
        "term": "NAT",
-       "text": "ichki manzillarni bitta public IP orqali internetga chiqaradigan router mexanizmi."
+       "text": "ichki manzillarni bitta public IP orqali internetga chiqaradigan router (yo'naltirgich) mexanizmi."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Lokal serverga kirishda",
+       "text": "localhost:5173 — bu kompyuterning o'zi, 5173-eshikdagi dastur."
+      },
+      {
+       "term": "Ikki dastur to'qnashganda",
+       "text": "«Port is already in use» xatosi: bu eshikni boshqa dastur egallab turibdi."
+      },
+      {
+       "term": "Telefonda sinab ko'rishda",
+       "text": "Kompyuteringizning ichki IP manzili orqali bir xil Wi-Fi dagi telefondan ochasiz."
       }
      ]
     },
@@ -611,6 +728,30 @@
        "text": "Telefon, noutbuk va televizor uyda har xil ichki IP ga ega, lekin internetga routerning bitta public IP si bilan chiqadi, xuddi butun oila bitta uy telefoni raqamidan qo'ng'iroq qilgandek."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "IP — uy manzili, port — xonadon raqami. 80 — HTTP, 443 — HTTPS (brauzer ularni yozmasa ham biladi)."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "localhost havolasini do'stga yuborish.",
+       "localhost faqat o'z kompyuteringizni bildiradi.",
+       "Tashqariga ochish uchun deploy kerak."
+      ],
+      [
+       "Ichki 192.168.x.x manzil internetdan ko'rinadi.",
+       "Ichki manzil faqat lokal tarmoqda ishlaydi.",
+       "Tashqariga router NAT orqali chiqaradi."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -633,9 +774,9 @@
     "prompt": "IP manzil nima uchun kerak?",
     "options": [
      "Paket qaysi qurilmaga borishini belgilaydi",
-     "Saytga parol qo'yadi",
-     "Faylni siqadi",
-     "Rasmni chizadi"
+     "Saytga kirishda parol o'rnida xizmat qiladi",
+     "Yuborilayotgan faylni siqib, hajmini kamaytiradi",
+     "Brauzerda rasm qayerda chizilishini belgilaydi"
     ],
     "answer": "Paket qaysi qurilmaga borishini belgilaydi",
     "explain": "IP manzil — tarmoqdagi qurilma manzili."
@@ -704,7 +845,7 @@
      "CDN"
     ],
     "answer": "NAT",
-    "explain": "NAT ichki manzillarni umumiy public IP ga o'giradi."
+    "explain": "NAT ichki manzillarni umumiy public (ochiq) IP ga o'giradi."
    },
    {
     "id": "8",
@@ -717,7 +858,7 @@
      "Pochta markasi"
     ],
     "answer": "Xonadon raqami",
-    "explain": "Port shu kompyuterdagi dasturni aniqlaydi."
+    "explain": "Port (dastur eshigi raqami) shu kompyuterdagi dasturni aniqlaydi."
    },
    {
     "id": "9",
@@ -738,9 +879,9 @@
     "prompt": "192.168.0.15 manzili haqida to'g'ri gap qaysi?",
     "options": [
      "Bu private IP: faqat ichki tarmoqda ishlaydi",
-     "Bu public IP: butun dunyodan ko'rinadi",
-     "Bu port raqami",
-     "Bu domen nomi"
+     "Bu public IP: dunyoning istalgan joyidan ko'rinadi",
+     "Bu port raqami: qaysi dastur ishlashini bildiradi",
+     "Bu domen nomi: DNS orqali boshqa manzilga aylanadi"
     ],
     "answer": "Bu private IP: faqat ichki tarmoqda ishlaydi",
     "explain": "192.168.x.x, 10.x.x.x va 172.16–31.x.x doiralari private (ichki) manzillardir."
@@ -751,12 +892,12 @@
     "prompt": "localhost:5173 manzilidagi 5173 nima?",
     "options": [
      "Port: qaysi dastur javob berishini bildiradi",
-     "Server joylashgan davlat kodi",
-     "IP manzilning oxirgi qismi",
-     "Fayl hajmi"
+     "Server joylashgan davlatni bildiruvchi hududiy kod",
+     "IP manzilning to'rtinchi qismidan keyingi davomi",
+     "So'raladigan faylning kilobaytlardagi taxminiy hajmi"
     ],
     "answer": "Port: qaysi dastur javob berishini bildiradi",
-    "explain": "Port — kompyuter ichidagi dastur eshigi. Vite odatda 5173 portda ishlaydi."
+    "explain": "Port (dastur eshigi raqami) — kompyuter ichidagi dastur eshigi. Vite odatda 5173 portda ishlaydi."
    },
    {
     "id": "12",
@@ -788,6 +929,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "HTTP — mijoz va server (xizmat ko'rsatuvchi kompyuter) gaplashadigan matnli protocol (aloqa qoidalari). Har suhbat ikki xabardan iborat: so'rov (usul, manzil, sarlavhalar, tana) va javob (status kodi, sarlavhalar, tana). HTTP stateless (holatni eslamaydigan): server oldingi so'rovni o'zi eslab qolmaydi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -795,22 +941,40 @@
        "text": "brauzer va server o'rtasida ma'lumot almashish qoidalari to'plami (HyperText Transfer Protocol)."
       },
       {
-       "term": "Stateless",
+       "term": "Stateless (holatni eslamaydigan)",
        "text": "server oldingi so'rovni avtomatik eslab qolmaydi: har so'rov mustaqil."
       },
       {
-       "term": "Header",
+       "term": "Header (sarlavha ma'lumoti)",
        "text": "so'rov yoki javob haqidagi qo'shimcha ma'lumot (Nom: qiymat)."
       },
       {
-       "term": "Body",
+       "term": "Body (asosiy tana)",
        "text": "so'rov yoki javobning asosiy mazmuni, masalan JSON yoki HTML."
       }
      ]
     },
     {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "API bilan ishlaganda",
+       "text": "fetch (tarmoqdan so'rash funksiyasi) yozganda aslida HTTP so'rov tuzasiz: usul, header va body ni tanlaysiz."
+      },
+      {
+       "term": "Xatoni izlaganda",
+       "text": "DevTools → Network bo'limida so'rov va javobni to'liq ko'rasiz."
+      },
+      {
+       "term": "Login tizimida",
+       "text": "Stateless bo'lgani uchun foydalanuvchini har so'rovda cookie (brauzerdagi kichik ma'lumot) yoki token (ruxsat kaliti) orqali tanitish kerak."
+      }
+     ]
+    },
+    {
      "heading": "HTTP nima",
-     "text": "HTTP (HyperText Transfer Protocol) — brauzer va server orasidagi muloqot qoidalari. Naqsh oddiy: mijoz request yuboradi, server response qaytaradi."
+     "text": "HTTP (HyperText Transfer Protocol) — brauzer va server orasidagi muloqot qoidalari. Naqsh oddiy: mijoz request (so'rov) yuboradi, server response (javob) qaytaradi."
     },
     {
      "heading": "So'rov (request) ko'rinishi",
@@ -858,6 +1022,30 @@
        "text": "Restoranda ofitsiantga yozma buyurtma berasiz: nima (metod), qaysi stol (yo'l), izoh (header) va qo'shimcha talablar (body). Oshxona esa chek (javob) qaytaradi: tayyor, tugagan yoki xato."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Har so'rov — yangi tanishuv. Server sizni faqat so'rov bilan birga yuborgan «guvohnoma» orqali taniydi."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Server avvalgi so'rovni eslab qoladi deb o'ylash.",
+       "Har so'rovda kerakli ma'lumotni qayta yuborish.",
+       "HTTP stateless."
+      ],
+      [
+       "HTTPS — boshqa protokol.",
+       "HTTPS — o'sha HTTP, faqat shifrlangan kanal (TLS) ichida.",
+       "So'rov tuzilishi bir xil."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -886,7 +1074,7 @@
      "HyperText Terminal Page"
     ],
     "answer": "HyperText Transfer Protocol",
-    "explain": "HyperText Transfer Protocol."
+    "explain": "HyperText Transfer Protocol (aloqa qoidalari)."
    },
    {
     "id": "2",
@@ -899,7 +1087,7 @@
      "Faqat brauzer ishlaydi"
     ],
     "answer": "Mijoz so'rov yuboradi, server javob qaytaradi",
-    "explain": "Request → response."
+    "explain": "Request (so'rov) → response (javob)."
    },
    {
     "id": "3",
@@ -907,9 +1095,9 @@
     "prompt": "\"HTTP stateless\" nimani anglatadi?",
     "options": [
      "Server oldingi so'rovni avtomatik eslab qolmaydi",
-     "Server hech qachon o'chmaydi",
-     "Protokol faqat matn yuboradi",
-     "So'rovlar shifrlanadi"
+     "Server doim yoqilgan turadi va hech qachon o'chmaydi",
+     "Protokol faqat matnni uzatadi, fayllarni uzata olmaydi",
+     "So'rov va javoblar yo'lda avtomatik ravishda shifrlanadi"
     ],
     "answer": "Server oldingi so'rovni avtomatik eslab qolmaydi",
     "explain": "Har so'rov mustaqil, shuning uchun kimlik har safar yuboriladi."
@@ -969,12 +1157,12 @@
     "prompt": "Server kimligingizni har so'rovda eslamasa, foydalanuvchi holati qanday saqlanadi?",
     "options": [
      "Cookie yoki token orqali har so'rovda yuboriladi",
-     "Brauzer o'chirilmaydi",
-     "IP manzil o'zgarmaydi",
-     "Server o'zi taxmin qiladi"
+     "Brauzer oynasi yopilmaguncha ulanish uzilmay ochiq turadi",
+     "Foydalanuvchining IP manzili doim bir xil bo'lib qolaveradi",
+     "Server so'rov vaqtiga qarab kimligingizni o'zi taxmin qiladi"
     ],
     "answer": "Cookie yoki token orqali har so'rovda yuboriladi",
-    "explain": "Stateless protokolda kimlik har so'rov bilan birga keladi."
+    "explain": "Stateless (holatni eslamaydigan) protokolda kimlik har so'rov bilan birga keladi."
    },
    {
     "id": "9",
@@ -987,7 +1175,7 @@
      "Brauzer serverga avval kirganini aytmaydi"
     ],
     "answer": "Har so'rovda cookie yoki token yuboriladi",
-    "explain": "Server oldingini eslamaydi. Shuning uchun kimligini ko'rsatuvchi cookie yoki token qayta-qayta yuboriladi."
+    "explain": "Server (xizmat ko'rsatuvchi kompyuter) oldingini eslamaydi. Shuning uchun kimligini ko'rsatuvchi cookie (brauzerdagi kichik ma'lumot) yoki token (ruxsat kaliti) qayta-qayta yuboriladi."
    },
    {
     "id": "10",
@@ -1008,12 +1196,12 @@
     "prompt": "Javob (response) ichida odatda nima bo'ladi?",
     "options": [
      "Status kodi, headerlar va body",
-     "Faqat HTML fayl",
-     "Faqat IP manzil",
-     "Metod va yo'l"
+     "Faqat tayyor HTML fayl va boshqa hech narsa",
+     "Faqat mijoz IP manzili va port raqami",
+     "So'rov metodi, yo'li va query parametrlari"
     ],
     "answer": "Status kodi, headerlar va body",
-    "explain": "Javob: status qatori, headerlar va (ko'pincha) body."
+    "explain": "Javob: status qatori, headerlar va (ko'pincha) body (asosiy tana)."
    }
   ]
  },
@@ -1032,6 +1220,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "URL — internetdagi resursning to'liq manzili. U bir nechta qismdan tuziladi va har qismning o'z vazifasi bor: qaysi protokol, qaysi server (xizmat ko'rsatuvchi kompyuter), qaysi port (dastur eshigi raqami), qaysi sahifa, qanday parametrlar va sahifaning qaysi joyi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -1039,20 +1232,38 @@
        "text": "internetdagi resursning to'liq manzili: protokol, domen, port, yo'l va parametrlar."
       },
       {
-       "term": "Hostname",
+       "term": "Hostname (xost nomi)",
        "text": "qaysi serverga murojaat qilinayotgani (domen), masalan shop.example.com."
       },
       {
-       "term": "Pathname",
+       "term": "Pathname (yo'l)",
        "text": "server ichidagi resurs yo'li, masalan /cart."
       },
       {
-       "term": "Query",
+       "term": "Query (so'rov parametrlari)",
        "text": "? dan keyingi qo'shimcha parametrlar, masalan ?id=7&sort=new."
       },
       {
-       "term": "Fragment",
+       "term": "Fragment (sahifa ichidagi bo'lak)",
        "text": "# dan keyingi qism: sahifa ichidagi joy. Serverga yuborilmaydi."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Routing yozganda",
+       "text": "React Router (yo'naltirgich) va shunga o'xshash vositalar pathname ga qarab sahifa tanlaydi."
+      },
+      {
+       "term": "Filtr va qidiruvda",
+       "text": "?page=2&sort=price kabi query parametrlar holatni havolada saqlaydi."
+      },
+      {
+       "term": "Havolani tahlil qilishda",
+       "text": "new URL(manzil) obyektidan hostname, pathname, searchParams ni o'qiysiz."
       }
      ]
     },
@@ -1131,10 +1342,34 @@
        "text": "Fragment kitobdagi xatcho'pga o'xshaydi: kitob (sahifa) hammaga bir xil yuboriladi, xatcho'p esa faqat sizning brauzeringizga qaysi joyga o'tishni aytadi."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Tartib: protokol → domen → port → yo'l → ?so'rov → #bo'lak. # dan keyingi qism serverga yuborilmaydi."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Maxfiy ma'lumotni query ga qo'yish.",
+       "Parol va tokenni header yoki body da yuborish.",
+       "URL tarixda va server jurnalida qoladi."
+      ],
+      [
+       "Bo'sh joyli qiymatni to'g'ridan-to'g'ri ulash.",
+       "encodeURIComponent yoki URLSearchParams ishlatish.",
+       "Maxsus belgilar kodlanishi shart."
+      ]
+     ]
     }
    ],
    "recap": [
-    "URL: protocol, hostname, port, pathname, query, fragment.",
+    "URL: protocol (aloqa qoidalari), hostname, port, pathname, query, fragment.",
     "Query ? bilan boshlanadi, fragment # bilan.",
     "Fragment serverga yuborilmaydi.",
     "URL ni qo'lda kesmang, URL klassidan foydalaning."
@@ -1153,14 +1388,14 @@
     "kind": "FILL",
     "prompt": "https://shop.example.com:8443/cart?id=7#total manzilida port raqami nechta?",
     "answer": "8443",
-    "explain": "Port — domendan keyin ikki nuqtadan keyingi raqam."
+    "explain": "Port (dastur eshigi raqami) — domendan keyin ikki nuqtadan keyingi raqam."
    },
    {
     "id": "2",
     "kind": "FILL",
     "prompt": "Shu manzilda pathname qaysi? (masalan /abc ko'rinishida yozing)",
     "answer": "/cart",
-    "explain": "Pathname — porttan keyingi yo'l: /cart.",
+    "explain": "Pathname (yo'l) — porttan keyingi yo'l: /cart.",
     "alsoAccept": [
      "/cart"
     ]
@@ -1170,7 +1405,7 @@
     "kind": "FILL",
     "prompt": "Shu manzilda hostname nima?",
     "answer": "shop.example.com",
-    "explain": "Hostname — protokoldan keyingi domen qismi."
+    "explain": "Hostname (xost nomi) — protokoldan keyingi domen qismi."
    },
    {
     "id": "4",
@@ -1183,7 +1418,7 @@
      ":8443"
     ],
     "answer": "?id=7",
-    "explain": "Query ? bilan boshlanadi."
+    "explain": "Query (so'rov parametrlari) ? bilan boshlanadi."
    },
    {
     "id": "5",
@@ -1196,7 +1431,7 @@
      "Hostname"
     ],
     "answer": "Fragment (#total)",
-    "explain": "Fragment faqat brauzerda ishlaydi."
+    "explain": "Fragment (sahifa ichidagi bo'lak) faqat brauzerda ishlaydi."
    },
    {
     "id": "6",
@@ -1222,7 +1457,7 @@
      "undefined"
     ],
     "answer": "'1'",
-    "explain": "searchParams query parametrlarini o'qiydi."
+    "explain": "searchParams query (so'rov parametrlari) parametrlarini o'qiydi."
    },
    {
     "id": "8",
@@ -1235,7 +1470,7 @@
      "Ikki nuqta (:)"
     ],
     "answer": "Savol belgisi (?)",
-    "explain": "Query ? dan boshlanadi, parametrlar & bilan ajratiladi."
+    "explain": "Query (so'rov parametrlari) ? dan boshlanadi, parametrlar & bilan ajratiladi."
    },
    {
     "id": "9",
@@ -1243,12 +1478,12 @@
     "prompt": "https://shop.uz:8443/cart?id=7#top manzilida id=7 qaysi qism?",
     "options": [
      "Query (so'rov parametri)",
-     "Path",
-     "Fragment",
-     "Hostname"
+     "Path (resurs yo'li)",
+     "Fragment (bo'lak)",
+     "Hostname (xost nomi)"
     ],
     "answer": "Query (so'rov parametri)",
-    "explain": "? dan keyin query boshlanadi. # dan keyin fragment."
+    "explain": "? dan keyin query (so'rov parametrlari) boshlanadi. # dan keyin fragment (sahifa ichidagi bo'lak)."
    },
    {
     "id": "10",
@@ -1256,12 +1491,12 @@
     "prompt": "Fragment (#top) haqida to'g'ri gap qaysi?",
     "options": [
      "Serverga yuborilmaydi, faqat brauzer ishlatadi",
-     "Serverga yo'l bilan birga yuboriladi",
-     "Port raqamini bildiradi",
-     "Protokolni bildiradi"
+     "Serverga yo'l va query bilan birga yuboriladi",
+     "Server qaysi port raqamida ishlashini bildiradi",
+     "So'rov qaysi protokolda yuborilishini belgilaydi"
     ],
     "answer": "Serverga yuborilmaydi, faqat brauzer ishlatadi",
-    "explain": "Fragment faqat brauzerda sahifa ichidagi joyga o'tish uchun xizmat qiladi."
+    "explain": "Fragment (sahifa ichidagi bo'lak) faqat brauzerda sahifa ichidagi joyga o'tish uchun xizmat qiladi."
    },
    {
     "id": "11",
@@ -1274,7 +1509,7 @@
      "https"
     ],
     "answer": "example.com",
-    "explain": "Hostname — protokoldan keyingi, yo'ldan oldingi qism."
+    "explain": "Hostname (xost nomi) — protokoldan keyingi, yo'ldan oldingi qism."
    }
   ]
  },
@@ -1293,6 +1528,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "HTTP method (so'rov usuli) server (xizmat ko'rsatuvchi kompyuter) bilan NIMA qilmoqchi ekaningizni bildiradi: o'qish, yaratish, yangilash yoki o'chirish. To'g'ri usul tanlansa, API tushunarli va xavfsiz bo'ladi, brauzer hamda proksilar ham to'g'ri ishlaydi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -1310,6 +1550,28 @@
       {
        "term": "REST API",
        "text": "resurslar bilan HTTP metodlari orqali ishlaydigan server interfeysi: GET /users, POST /users, DELETE /users/42."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Ma'lumot olishda",
+       "text": "GET — hech narsani o'zgartirmaydi, keshlanishi mumkin."
+      },
+      {
+       "term": "Yangi yozuv yaratishda",
+       "text": "POST — har chaqiruvda yangi natija yaratishi mumkin."
+      },
+      {
+       "term": "Yangilashda",
+       "text": "PUT — to'liq almashtiradi, PATCH — faqat ko'rsatilgan maydonlarni o'zgartiradi."
+      },
+      {
+       "term": "O'chirishda",
+       "text": "DELETE — takrorlansa ham natija bir xil: yozuv yo'q."
       }
      ]
     },
@@ -1379,7 +1641,7 @@
      "heading": "Ikki muhim atama",
      "bullets": [
       "Safe — serverdagi holatni o'zgartirmaydi (GET).",
-      "Idempotent — bir marta yoki o'n marta yuborish bir xil yakuniy natija beradi."
+      "Idempotent (takrorlansa ham natijasi o'zgarmaydigan) — bir marta yoki o'n marta yuborish bir xil yakuniy natija beradi."
      ]
     },
     {
@@ -1406,6 +1668,30 @@
        "title": "DELETE xavfsiz takrorlanadi",
        "text": "Chatdagi xabarni o'chirish tugmasini ikki marta bossangiz ham, xabar bir marta o'chadi. Yakuniy natija bir xil: bu idempotentlik."
       }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Safe — hech narsani o'zgartirmaydi (GET). Idempotent — ikki marta bossangiz ham natija bir xil (GET, PUT, DELETE). POST esa ikki marta bosilsa ikkita buyurtma yaratishi mumkin."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "O'chirish uchun GET ishlatish.",
+       "DELETE ishlatish.",
+       "GET havolalarini bot va brauzer o'zi ochib yuborishi mumkin."
+      ],
+      [
+       "«Yuborish» tugmasini bloklamay POST jo'natish.",
+       "So'rov ketayotganda tugmani o'chirib qo'yish.",
+       "Ikki marta bosish dublikat yaratadi."
+      ]
      ]
     }
    ],
@@ -1494,9 +1780,9 @@
     "prompt": "\"Safe\" metod nimani anglatadi?",
     "options": [
      "Serverdagi holatni o'zgartirmaydi",
-     "Shifrlangan yuboriladi",
-     "Hech qachon xato bermaydi",
-     "Faqat HTTPS da ishlaydi"
+     "So'rov tanasi shifrlangan yuboriladi",
+     "So'rov hech qachon xato qaytarmaydi",
+     "Usul faqat HTTPS orqali ruxsat etiladi"
     ],
     "answer": "Serverdagi holatni o'zgartirmaydi",
     "explain": "Safe — o'qish uchun, holat o'zgarmaydi."
@@ -1520,12 +1806,12 @@
     "prompt": "To'lov tugmasini bosgandan keyin uni disabled qilish nega muhim?",
     "options": [
      "POST qayta yuborilsa ikki marta to'lov bo'lishi mumkin",
-     "Brauzer tez ishlashi uchun",
-     "Server o'chib qolmasligi uchun",
-     "CSS xato bermasligi uchun"
+     "Brauzer sahifani tezroq chizishi va xotirani tejashi uchun",
+     "Server ortiqcha yuklanib, butunlay o'chib qolmasligi uchun",
+     "Tugma bosilgandan keyin CSS stillari buzilib ketmasligi uchun"
     ],
     "answer": "POST qayta yuborilsa ikki marta to'lov bo'lishi mumkin",
-    "explain": "POST idempotent emas, takroriy yuborish xavfli."
+    "explain": "POST idempotent (takrorlansa ham natijasi o'zgarmaydigan) emas, takroriy yuborish xavfli."
    },
    {
     "id": "9",
@@ -1538,7 +1824,7 @@
      "PATCH"
     ],
     "answer": "HEAD",
-    "explain": "HEAD — GET ga o'xshaydi, lekin body yo'q."
+    "explain": "HEAD — GET ga o'xshaydi, lekin body (asosiy tana) yo'q."
    },
    {
     "id": "10",
@@ -1559,9 +1845,9 @@
     "prompt": "PUT va PATCH farqi nimada?",
     "options": [
      "PUT resursni to'liq almashtiradi, PATCH uning bir qismini o'zgartiradi",
-     "PUT yaratadi, PATCH o'chiradi",
-     "Farqi yo'q",
-     "PATCH faqat rasm yuklaydi"
+     "PUT faqat yangi resurs yaratadi, PATCH esa mavjud resursni o'chiradi",
+     "Farqi yo'q: ikkalasi ham resursni bir xil tarzda to'liq almashtirib yozadi",
+     "PUT matnli ma'lumot uchun, PATCH esa faqat fayl va rasm yuklash uchun"
     ],
     "answer": "PUT resursni to'liq almashtiradi, PATCH uning bir qismini o'zgartiradi",
     "explain": "Profilda faqat telefon o'zgarsa PATCH, butun profil almashsa PUT."
@@ -1596,6 +1882,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Status code (javob holati raqami) so'rov natijasini bir qarashda aytadi. Birinchi raqam guruhni bildiradi: 2xx — muvaffaqiyat, 3xx — boshqa manzilga yo'naltirish, 4xx — mijoz xatosi, 5xx — server (xizmat ko'rsatuvchi kompyuter) xatosi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -1617,6 +1908,24 @@
       {
        "term": "5xx",
        "text": "server xatosi: so'rov to'g'ri, lekin server uddalay olmadi."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "fetch natijasini tekshirishda",
+       "text": "response.ok faqat 200–299 oralig'ida true bo'ladi."
+      },
+      {
+       "term": "Foydalanuvchiga xabar berishda",
+       "text": "401 — qayta login, 403 — ruxsat yo'q, 404 — topilmadi, 500 — birozdan keyin urinib ko'ring."
+      },
+      {
+       "term": "Xatoni kimdan izlashni bilishda",
+       "text": "4xx bo'lsa so'rovingizni, 5xx bo'lsa server jurnalini tekshirasiz."
       }
      ]
     },
@@ -1716,7 +2025,7 @@
     },
     {
      "heading": "Tuzoq: fetch va status kodlari",
-     "text": "fetch faqat tarmoq xatosida reject bo'ladi. Server 404 yoki 500 qaytarsa ham promise fulfilled bo'ladi. Shuning uchun res.ok ni har doim tekshiring.",
+     "text": "fetch (tarmoqdan so'rash funksiyasi) faqat tarmoq xatosida reject bo'ladi. Server 404 yoki 500 qaytarsa ham promise (va'da obyekti) fulfilled bo'ladi. Shuning uchun res.ok ni har doim tekshiring.",
      "code": {
       "lang": "js",
       "text": "const res = await fetch('/api/users/1');\nif (!res.ok) throw new Error(`HTTP ${res.status}`);\nconst user = await res.json();"
@@ -1740,6 +2049,30 @@
        "title": "404 va 500",
        "text": "Do'kon manzili noto'g'ri yozilgan: 404 (bunday do'kon yo'q). Do'kon bor, lekin ichkarida elektr o'chgan: 500 (server ichida nosozlik)."
       }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "401 — «Kimsan?», 403 — «Taniyman, lekin mumkin emas», 404 — «Bunday narsa yo'q»."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "fetch 404 da o'zi xato tashlaydi deb o'ylash.",
+       "if (!response.ok) bilan tekshirish.",
+       "fetch faqat tarmoq xatosida reject bo'ladi."
+      ],
+      [
+       "Xatoda ham 200 qaytarib, ichiga error yozish.",
+       "Mos 4xx yoki 5xx kodini qaytarish.",
+       "Mijoz va monitoring chalg'iydi."
+      ]
      ]
     }
    ],
@@ -1794,7 +2127,7 @@
      "Yo'naltirish"
     ],
     "answer": "Server xatosi",
-    "explain": "5xx — server ichidagi muammo."
+    "explain": "5xx — server (xizmat ko'rsatuvchi kompyuter) ichidagi muammo."
    },
    {
     "id": "4",
@@ -1802,9 +2135,9 @@
     "prompt": "4xx kodlari nimani bildiradi?",
     "options": [
      "Mijoz tomonidagi xato (so'rov noto'g'ri)",
-     "Server o'chgan",
-     "Hammasi joyida",
-     "Doimiy ko'chirish"
+     "Server tomonidagi xato (server o'chgan)",
+     "So'rov muvaffaqiyatli bajarilgan holatlar",
+     "Resurs boshqa manzilga doimiy ko'chirilgan"
     ],
     "answer": "Mijoz tomonidagi xato (so'rov noto'g'ri)",
     "explain": "4xx — so'rovda muammo bor."
@@ -1815,9 +2148,9 @@
     "prompt": "401 va 403 farqi qaysi?",
     "options": [
      "401: kimligingiz noma'lum; 403: kimligingiz ma'lum, lekin ruxsat yo'q",
-     "Ikkalasi bir xil",
-     "401: ruxsat yo'q; 403: sahifa topilmadi",
-     "401: server xatosi; 403: mijoz xatosi"
+     "Ikkalasi bir xil: server so'rovni bajarishdan sababsiz bosh tortgani bildiriladi",
+     "401: kimligingiz ma'lum, lekin ruxsat yo'q; 403: so'ralgan sahifa serverda topilmadi",
+     "401: serverning ichki xatosi; 403: mijoz noto'g'ri formatda so'rov yuborgan holat"
     ],
     "answer": "401: kimligingiz noma'lum; 403: kimligingiz ma'lum, lekin ruxsat yo'q",
     "explain": "401 — autentifikatsiya kerak, 403 — ruxsat yo'q."
@@ -1854,12 +2187,12 @@
     "prompt": "fetch('/api/x') serverdan 404 oldi. Promise nima bo'ladi?",
     "options": [
      "Fulfilled bo'ladi, res.ok esa false",
-     "Reject bo'ladi",
-     "Hech qachon tugamaydi",
-     "Avtomatik qayta yuboriladi"
+     "Reject bo'ladi va catch blokiga tushadi",
+     "Pending holatida abadiy kutib qolaveradi",
+     "So'rov muvaffaqiyatli bo'lguncha takrorlanadi"
     ],
     "answer": "Fulfilled bo'ladi, res.ok esa false",
-    "explain": "fetch faqat tarmoq xatosida reject bo'ladi."
+    "explain": "fetch (tarmoqdan so'rash funksiyasi) faqat tarmoq xatosida reject bo'ladi."
    },
    {
     "id": "9",
@@ -1896,7 +2229,7 @@
      "301"
     ],
     "answer": "500",
-    "explain": "5xx — server tomoni xatosi. 4xx — mijoz tomoni."
+    "explain": "5xx — server (xizmat ko'rsatuvchi kompyuter) tomoni xatosi. 4xx — mijoz tomoni."
    },
    {
     "id": "12",
@@ -1909,7 +2242,7 @@
      "302"
     ],
     "answer": "201",
-    "explain": "201 Created — POST dan keyin yangi resurs yaratilganini bildiradi. 200 — oddiy OK, 204 — body yo'q."
+    "explain": "201 Created — POST dan keyin yangi resurs yaratilganini bildiradi. 200 — oddiy OK, 204 — body (asosiy tana) yo'q."
    }
   ]
  },
@@ -1928,6 +2261,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Header — so'rov yoki javob bilan birga yuboriladigan qo'shimcha ma'lumot (nom: qiymat juftligi). Body (asosiy tana) xatning o'zi bo'lsa, header konvertdagi yozuv: tarkib turi, tili, kimligi, keshlash qoidasi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -1939,12 +2277,34 @@
        "text": "body qanday formatda ekanini bildiradi, masalan application/json yoki text/html."
       },
       {
-       "term": "Authorization",
-       "text": "mijozning kimligini tasdiqlovchi token yoki parolni yuboradigan header."
+       "term": "Authorization (ruxsatni tekshirish)",
+       "text": "mijozning kimligini tasdiqlovchi token (ruxsat kaliti) yoki parolni yuboradigan header."
       },
       {
-       "term": "Cookie",
-       "text": "server brauzerga yozib qo'ygan kichik ma'lumot, brauzer uni keyingi so'rovlarda qaytaradi."
+       "term": "Cookie (brauzerdagi kichik ma'lumot)",
+       "text": "server (xizmat ko'rsatuvchi kompyuter) brauzerga yozib qo'ygan kichik ma'lumot, brauzer uni keyingi so'rovlarda qaytaradi."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "JSON yuborishda",
+       "text": "Content-Type: application/json — server tanani to'g'ri o'qiydi."
+      },
+      {
+       "term": "Himoyalangan API da",
+       "text": "Authorization: Bearer token — kimligingizni bildiradi."
+      },
+      {
+       "term": "Keshni boshqarishda",
+       "text": "Cache-Control javobni qancha saqlash mumkinligini aytadi."
+      },
+      {
+       "term": "CORS xatosini tuzatishda",
+       "text": "Access-Control-Allow-Origin ni SERVER qo'yadi."
       }
      ]
     },
@@ -2034,6 +2394,30 @@
        "text": "Authorization header — bank ofisiga pasport bilan kirish. Pasportni har safar ko'rsatasiz, chunki bank sizni avtomatik eslab qolmaydi."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Header nomlari katta-kichik harfga sezgir emas: content-type va Content-Type bir xil."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "CORS xatosini frontend header bilan tuzatishga urinish.",
+       "Ruxsat headerini serverga qo'shish.",
+       "Bu javob headeri, uni mijoz bera olmaydi."
+      ],
+      [
+       "Content-Type siz JSON.stringify yuborish.",
+       "Content-Type ni aniq ko'rsatish.",
+       "Server tanani oddiy matn deb o'qishi mumkin."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -2088,7 +2472,7 @@
      "Accept"
     ],
     "answer": "Set-Cookie",
-    "explain": "Server Set-Cookie yuboradi."
+    "explain": "Server (xizmat ko'rsatuvchi kompyuter) Set-Cookie yuboradi."
    },
    {
     "id": "4",
@@ -2101,7 +2485,7 @@
      "Server"
     ],
     "answer": "Cookie",
-    "explain": "Brauzer Cookie header'i bilan qaytaradi."
+    "explain": "Brauzer Cookie (brauzerdagi kichik ma'lumot) header'i (sarlavha ma'lumoti) bilan qaytaradi."
    },
    {
     "id": "5",
@@ -2114,7 +2498,7 @@
      "Location"
     ],
     "answer": "Authorization",
-    "explain": "Authorization: Bearer ..."
+    "explain": "Authorization (ruxsatni tekshirish): Bearer ..."
    },
    {
     "id": "6",
@@ -2148,9 +2532,9 @@
     "prompt": "Accept header'i nimani bildiradi?",
     "options": [
      "Mijoz qaysi formatda javob kutayotganini",
-     "Server qaysi tilda yozilgani",
-     "Cookie muddati",
-     "Parolni"
+     "Server qaysi dasturlash tilida yozilganini",
+     "Cookie brauzerda qancha vaqt saqlanishini",
+     "Mijoz yuborayotgan tana qaysi formatdaligini"
     ],
     "answer": "Mijoz qaysi formatda javob kutayotganini",
     "explain": "Accept — kutilayotgan javob formati."
@@ -2166,7 +2550,7 @@
      "Foydalanuvchi tilini"
     ],
     "answer": "Body JSON formatda ekanini",
-    "explain": "Content-Type body formatini aytadi, shunda qabul qiluvchi uni to'g'ri o'qiydi."
+    "explain": "Content-Type body (asosiy tana) formatini aytadi, shunda qabul qiluvchi uni to'g'ri o'qiydi."
    },
    {
     "id": "10",
@@ -2174,12 +2558,12 @@
     "prompt": "Authorization: Bearer abc123 headerida abc123 nima?",
     "options": [
      "Token: kimligingizni tasdiqlovchi belgi",
-     "Domen nomi",
-     "Cookie nomi",
-     "Fayl yo'li"
+     "Domen nomi: so'rov borishi kerak sayt",
+     "Cookie nomi: brauzer saqlagan yozuv nomi",
+     "Fayl yo'li: serverdan so'ralayotgan resurs"
     ],
     "answer": "Token: kimligingizni tasdiqlovchi belgi",
-    "explain": "Bearer token yuborilib, server foydalanuvchini tanib oladi."
+    "explain": "Bearer token (ruxsat kaliti) yuborilib, server (xizmat ko'rsatuvchi kompyuter) foydalanuvchini tanib oladi."
    },
    {
     "id": "11",
@@ -2187,12 +2571,12 @@
     "prompt": "Cookie qayerda saqlanadi?",
     "options": [
      "Brauzerda, har so'rovda serverga qaytariladi",
-     "Faqat serverda",
-     "Routerda",
-     "DNS serverda"
+     "Faqat serverda, brauzer uni ko'ra olmaydi",
+     "Routerda, tarmoqdagi hamma qurilma uchun",
+     "DNS serverda, domen yozuvi bilan birga"
     ],
     "answer": "Brauzerda, har so'rovda serverga qaytariladi",
-    "explain": "Server brauzerga Set-Cookie bilan beradi, brauzer keyin Cookie headerida qaytaradi."
+    "explain": "Server (xizmat ko'rsatuvchi kompyuter) brauzerga Set-Cookie bilan beradi, brauzer keyin Cookie (brauzerdagi kichik ma'lumot) headerida qaytaradi."
    }
   ]
  },
@@ -2207,9 +2591,14 @@
    "analogy": {
     "icon": "📒",
     "title": "Telefon kontaktlari",
-    "text": "Telefoningizda do'stlaringiz raqamini yodlamaysiz, ismini saqlaysiz. Domen ham shunday: 142.250.74.46 o'rniga google.com. Server IP manzili o'zgarsa ham, foydalanuvchi uchun manzil o'zgarmaydi."
+    "text": "Telefoningizda do'stlaringiz raqamini yodlamaysiz, ismini saqlaysiz. Domen ham shunday: 142.250.74.46 o'rniga google.com. Server (xizmat ko'rsatuvchi kompyuter) IP manzili o'zgarsa ham, foydalanuvchi uchun manzil o'zgarmaydi."
    },
    "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Domain (domen nomi) — raqamli IP manzil o'rniga odam eslab qoladigan nom. U o'ngdan chapga o'qiladi: avval TLD (.uz, .com), keyin asosiy nom, keyin subdomain (api., www.)."
+    },
     {
      "heading": "Asosiy ta'riflar",
      "defs": [
@@ -2226,12 +2615,30 @@
        "text": "domen egasi o'zi yaratadigan qism, masalan api.example.com."
       },
       {
-       "term": "Registrar",
+       "term": "Registrar (domen ro'yxatga oluvchi)",
        "text": "domen sotadigan kompaniya (Namecheap, Cloudflare va boshqalar)."
       },
       {
-       "term": "Registrant",
+       "term": "Registrant (domen egasi)",
        "text": "domenni ijaraga olgan shaxs yoki tashkilot, ya'ni domen egasi."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Loyihani ommaga chiqarishda",
+       "text": "Registrar (domen sotuvchi) dan nom ijaraga olasiz."
+      },
+      {
+       "term": "Xizmatlarni ajratishda",
+       "text": "api.site.uz, admin.site.uz kabi subdomenlar alohida serverlarga yo'naltiriladi."
+      },
+      {
+       "term": "Cookie va CORS da",
+       "text": "Subdomen boshqa bo'lsa, brauzer uni boshqa origin (manba) deb hisoblaydi."
       }
      ]
     },
@@ -2296,6 +2703,30 @@
        "text": "Domen sotib olinmaydi, ijaraga olinadi. To'lovni unutsangiz, boshqa odam o'sha nomni olib qo'yishi mumkin, xuddi muddati tugagan ijara shartnomasi kabi."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Domen sotib olinmaydi, ijaraga olinadi: muddati tugasa va to'lamasangiz, uni boshqa odam olishi mumkin."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Domen sotib olsam sayt o'zi paydo bo'ladi.",
+       "Domendan tashqari hosting va DNS sozlash kerak.",
+       "Domen — faqat nom."
+      ],
+      [
+       "www.site.uz va site.uz doim bir xil ishlaydi.",
+       "Ikkalasi uchun DNS yozuvi yoki redirect sozlash.",
+       "Aslida ular alohida nomlar."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -2318,9 +2749,9 @@
     "prompt": "Domen nomi nima uchun kerak?",
     "options": [
      "IP manzil o'rniga odam eslab qoladigan nom bo'lishi uchun",
-     "Saytni tezlashtirish uchun",
-     "Parolni himoya qilish uchun",
-     "Rasmlarni siqish uchun"
+     "Sayt sahifalari foydalanuvchiga ancha tezroq ochilishi uchun",
+     "Foydalanuvchi parollarini begonalardan himoya qilish uchun",
+     "Server yuboradigan rasm va fayllarni avtomatik siqish uchun"
     ],
     "answer": "IP manzil o'rniga odam eslab qoladigan nom bo'lishi uchun",
     "explain": "Domen odam uchun qulay nom."
@@ -2375,7 +2806,7 @@
      "Serverning o'zidan avtomatik"
     ],
     "answer": "Registrar (masalan, Namecheap)",
-    "explain": "Registrar — domen sotadigan kompaniya."
+    "explain": "Registrar (domen ro'yxatga oluvchi) — domen sotadigan kompaniya."
    },
    {
     "id": "6",
@@ -2396,9 +2827,9 @@
     "prompt": "Domen o'qish tartibi qaysi?",
     "options": [
      "O'ngdan chapga (TLD → nom → subdomen)",
-     "Chapdan o'ngga",
-     "Tasodifiy",
-     "Faqat oxirgi nuqtagacha"
+     "Chapdan o'ngga (subdomen → nom → TLD)",
+     "Avval asosiy nom, keyin qolgan qismlar",
+     "Faqat oxirgi nuqtagacha bo'lgan qismi"
     ],
     "answer": "O'ngdan chapga (TLD → nom → subdomen)",
     "explain": "blog.shop.example.com: com → example → shop → blog."
@@ -2409,9 +2840,9 @@
     "prompt": "Server IP manzili o'zgarsa, foydalanuvchilar nima qiladi?",
     "options": [
      "Hech narsa: domen o'sha-o'sha qoladi",
-     "Yangi IP ni eslab qolishadi",
-     "Saytni qayta o'rnatishadi",
-     "Brauzerni yangilashadi"
+     "Yangi IP manzilni topib, yodlab olishadi",
+     "Sayt ilovasini qaytadan o'rnatib olishadi",
+     "Brauzerni so'nggi versiyaga yangilashadi"
     ],
     "answer": "Hech narsa: domen o'sha-o'sha qoladi",
     "explain": "Domen IP o'zgarishini foydalanuvchidan yashiradi."
@@ -2448,9 +2879,9 @@
     "prompt": "Domen muddati tugasa nima bo'lishi mumkin?",
     "options": [
      "Boshqa kishi uni ro'yxatdan o'tkazib olishi mumkin",
-     "Domen avtomatik cheksiz uzayadi",
-     "Sayt faqat tezlashadi",
-     "Faqat IP manzil o'zgaradi"
+     "Domen avtomatik ravishda cheksiz muddatga uzayib qoladi",
+     "Sayt ishlayveradi, faqat sahifalar sekinroq ochiladi",
+     "Domen o'z kuchida qoladi, faqat IP manzil almashadi"
     ],
     "answer": "Boshqa kishi uni ro'yxatdan o'tkazib olishi mumkin",
     "explain": "Domen ijaraga olinadi. To'lov to'xtasa, u bo'shab qolishi mumkin."
@@ -2472,6 +2903,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "DNS (domen nomlari tizimi) — domen nomini IP manzilga aylantiruvchi dunyo bo'ylab tarqalgan «telefon daftari». Yozuv turlari har xil savolga javob beradi: A — qaysi IPv4, CNAME — qaysi boshqa nomga qarang, TXT — qo'shimcha matn."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -2479,8 +2915,8 @@
        "text": "domen nomini IP manzilga aylantiradigan tarqatilgan tizim (Domain Name System)."
       },
       {
-       "term": "Resolver",
-       "text": "mijoz nomidan DNS javobini qidiradigan server, masalan 1.1.1.1 yoki 8.8.8.8."
+       "term": "Resolver (nomni manzilga aylantiruvchi)",
+       "text": "mijoz nomidan DNS javobini qidiradigan server (xizmat ko'rsatuvchi kompyuter), masalan 1.1.1.1 yoki 8.8.8.8."
       },
       {
        "term": "A yozuvi",
@@ -2493,6 +2929,24 @@
       {
        "term": "TXT yozuvi",
        "text": "domen haqida matnli ma'lumot saqlaydi, masalan egalikni tasdiqlash uchun."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Domenni serverga ulashda",
+       "text": "A yozuvi qo'yib, server IP manzilini ko'rsatasiz."
+      },
+      {
+       "term": "Platformaga ulashda",
+       "text": "CNAME bilan o'z nomingizni platforma bergan nomga yo'naltirasiz."
+      },
+      {
+       "term": "Egalikni isbotlashda",
+       "text": "Email va boshqa xizmatlar TXT yozuvi qo'shishni so'raydi."
       }
      ]
     },
@@ -2572,6 +3026,30 @@
        "text": "CNAME — do'konning yangi filiali: www.example.uz ga kelganlar example.netlify.app ga yo'naltiriladi, xuddi eshikdagi \"Yangi manzil: ...\" yozuvi kabi."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "DNS o'zgarishi darhol ko'rinmaydi: eski javob TTL (saqlash muddati) tugaguncha keshda turadi."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "CNAME ga IP manzil yozish.",
+       "IP uchun A (yoki AAAA) yozuvi.",
+       "CNAME faqat boshqa nomni ko'rsatadi."
+      ],
+      [
+       "Yozuvni o'zgartirib, bir daqiqada ishlamasa qayta-qayta o'zgartirish.",
+       "TTL muddatini kutish va nslookup bilan tekshirish.",
+       "Kesh sababli eski javob turadi."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -2594,9 +3072,9 @@
     "prompt": "DNS nima qiladi?",
     "options": [
      "Domen nomini IP manzilga aylantiradi",
-     "Saytni shifrlaydi",
-     "Rasmlarni siqadi",
-     "Parolni saqlaydi"
+     "Sayt trafigini HTTPS bilan shifrlaydi",
+     "Server javobidagi fayllarni siqib beradi",
+     "Foydalanuvchi parollarini saqlab turadi"
     ],
     "answer": "Domen nomini IP manzilga aylantiradi",
     "explain": "DNS — internetning telefon kitobi."
@@ -2678,7 +3156,7 @@
      "Authoritative server"
     ],
     "answer": "Brauzer keshi Resolver Root server TLD server Authoritative server",
-    "explain": "Avval kesh, keyin resolver, root → TLD → authoritative."
+    "explain": "Avval kesh, keyin resolver (nomni manzilga aylantiruvchi), root → TLD → authoritative."
    },
    {
     "id": "8",
@@ -2725,12 +3203,12 @@
     "prompt": "Nega www.site.uz ni CNAME bilan boshqa domenga yo'naltirish qulay?",
     "options": [
      "Manzil o'zgarsa, faqat nishon domenni o'zgartirish yetadi",
-     "CNAME IP manzilni tezlashtiradi",
-     "CNAME parolni himoya qiladi",
-     "CNAME domenni bepul qiladi"
+     "CNAME yozuvi IP manzilni qidirishni butunlay bekor qilib, tezlashtiradi",
+     "CNAME yozuvi saytga kirayotganlarning parollarini avtomatik himoya qiladi",
+     "CNAME yozuvi qo'shimcha domen uchun yillik to'lovni butunlay yo'q qiladi"
     ],
     "answer": "Manzil o'zgarsa, faqat nishon domenni o'zgartirish yetadi",
-    "explain": "CNAME nomdan nomga ishora qiladi. IP almashsa, hosting tomoni yangilaydi."
+    "explain": "CNAME nomdan nomga ishora qiladi. IP almashsa, hosting (saytni serverda saqlash xizmati) tomoni yangilaydi."
    },
    {
     "id": "12",
@@ -2738,9 +3216,9 @@
     "prompt": "DNS javobi keshlanganda nima bo'ladi?",
     "options": [
      "Keyingi so'rovlar tezroq javob oladi, lekin yangi o'zgarish kech ko'rinishi mumkin",
-     "DNS yozuvlari butunlay o'chadi",
-     "Domen narxi tushadi",
-     "Sayt har safar qayta quriladi"
+     "DNS serverdagi asl yozuvlar o'chib, faqat mijozdagi nusxa ishlab qoladi",
+     "Domen uchun so'rovlar kamaygani sababli uning yillik narxi ham arzonlashadi",
+     "Sayt har bir tashrifda serverda qaytadan yig'iladi va yangilanishlar darhol ko'rinadi"
     ],
     "answer": "Keyingi so'rovlar tezroq javob oladi, lekin yangi o'zgarish kech ko'rinishi mumkin",
     "explain": "TTL tugaguncha eski javob ishlatiladi. Shu sababli DNS o'zgarishi tarqalishi vaqt oladi."
@@ -2762,27 +3240,50 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Hosting (saytni serverda saqlash xizmati) — saytingiz fayllari va dasturi doim yoqilgan serverda turadigan xizmat. Deploy (serverga joylash) — kodni o'sha yerga chiqarish jarayoni: odatda build (yig'ish) qilinadi, keyin natija serverga ko'chiriladi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
-       "term": "Hosting",
+       "term": "Hosting (saytni serverda saqlash xizmati)",
        "text": "sayt fayllari yoki dasturi joylashgan va internetdan doimiy kirish mumkin bo'lgan kompyuter xizmati."
       },
       {
-       "term": "Deploy",
+       "term": "Deploy (serverga joylash)",
        "text": "tayyor saytni hostingga joylab, foydalanuvchilar uchun ochish jarayoni."
       },
       {
-       "term": "Build",
+       "term": "Build (yig'ish)",
        "text": "kodni production uchun tayyor fayllarga (html, js, css) aylantirish."
       },
       {
-       "term": "Static hosting",
+       "term": "Static hosting (tayyor fayllar xostingi)",
        "text": "faqat tayyor fayllar beradigan hosting; serverda kod ishlamaydi."
       },
       {
-       "term": "CDN",
+       "term": "CDN (tarkib yetkazish tarmog'i)",
        "text": "dunyo bo'ylab joylashgan, fayllarni foydalanuvchiga yaqin joydan beradigan serverlar tarmog'i."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Statik saytda",
+       "text": "HTML, CSS, JS fayllar CDN dan tarqatiladi — arzon va tez."
+      },
+      {
+       "term": "Server kodi bor loyihada",
+       "text": "Doim ishlab turadigan server (xizmat ko'rsatuvchi kompyuter) yoki konteyner kerak."
+      },
+      {
+       "term": "Jamoada ishlaganda",
+       "text": "main ga push qilinganda avtomatik deploy (CI/CD) sozlanadi."
       }
      ]
     },
@@ -2868,7 +3369,7 @@
     {
      "callout": {
       "kind": "warn",
-      "text": "Frontend env o'zgaruvchilari maxfiy emas: VITE_API_URL kabilar build vaqtida JS fayliga yoziladi, har kim ko'ra oladi. Maxfiy kalitlarni frontend kodiga qo'ymang."
+      "text": "Frontend (foydalanuvchi ko'radigan qism) env o'zgaruvchilari maxfiy emas: VITE_API_URL kabilar build vaqtida JS fayliga yoziladi, har kim ko'ra oladi. Maxfiy kalitlarni frontend kodiga qo'ymang."
      }
     },
     {
@@ -2889,6 +3390,30 @@
        "title": "Serverless",
        "text": "Taksi kabi: mashina sotib olmaysiz, faqat borgan masofangiz uchun to'laysiz. Kod faqat so'rov kelganda ishlaydi va faqat ishlagan vaqt uchun hisoblanadi."
       }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Kompyuteringizda ishlashi yetarli emas: boshqalar ko'rishi uchun build + hosting + domen kerak."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "node_modules va .env ni serverga ko'chirish.",
+       "Faqat kerakli fayllar; maxfiy qiymatlar server sozlamasida.",
+       "Maxfiy ma'lumot oshkor bo'ladi."
+      ],
+      [
+       "src papkasini to'g'ridan-to'g'ri joylash.",
+       "Avval npm run build, keyin dist/ ni joylash.",
+       "Brauzer manba kodni o'qiy olmasligi mumkin."
+      ]
      ]
     }
    ],
@@ -2913,12 +3438,12 @@
     "prompt": "Hosting nima?",
     "options": [
      "Sayt fayllari turadigan va internetdan kirish mumkin bo'lgan kompyuter xizmati",
-     "Domen nomining boshqa nomi",
-     "Brauzer kengaytmasi",
-     "Kod muharriri"
+     "Sotib olingan domen nomini boshqa nomga ulab beradigan qayta yo'naltirish xizmati",
+     "Sayt sahifalarini tezroq ochish uchun brauzerga o'rnatiladigan maxsus kengaytma",
+     "Sayt kodini yozish va xatolarini topishga yordam beradigan onlayn kod muharriri"
     ],
     "answer": "Sayt fayllari turadigan va internetdan kirish mumkin bo'lgan kompyuter xizmati",
-    "explain": "Hosting — saytingiz uyi."
+    "explain": "Hosting (saytni serverda saqlash xizmati) — saytingiz uyi."
    },
    {
     "id": "2",
@@ -2926,12 +3451,12 @@
     "prompt": "Domen va hosting munosabati qaysi?",
     "options": [
      "Domen — manzil, hosting — shu manzildagi bino",
-     "Ikkalasi bir xil",
-     "Hosting — manzil, domen — bino",
-     "Ikkalasi ham brauzer ichida"
+     "Ikkalasi bitta xizmatning ikki xil nomi",
+     "Hosting — manzil, domen — shu yerdagi bino",
+     "Ikkalasi ham brauzer ichida saqlanadi"
     ],
     "answer": "Domen — manzil, hosting — shu manzildagi bino",
-    "explain": "Domen nomni, hosting fayllarni beradi."
+    "explain": "Domen nomni, hosting (saytni serverda saqlash xizmati) fayllarni beradi."
    },
    {
     "id": "3",
@@ -2944,7 +3469,7 @@
      "Faqat telefon ilovaga"
     ],
     "answer": "Static hosting yoki CDN",
-    "explain": "SPA build natijasi — statik fayllar."
+    "explain": "SPA build (yig'ish) natijasi — statik fayllar."
    },
    {
     "id": "4",
@@ -2970,7 +3495,7 @@
      "Brauzer keshi"
     ],
     "answer": "VPS yoki PaaS",
-    "explain": "Doimiy ishlaydigan server kerak."
+    "explain": "Doimiy ishlaydigan server (xizmat ko'rsatuvchi kompyuter) kerak."
    },
    {
     "id": "6",
@@ -2983,7 +3508,7 @@
      "production"
     ],
     "answer": "Git'ga push CI testlar build production",
-    "explain": "Push → CI → build → production."
+    "explain": "Push → CI → build (yig'ish) → production."
    },
    {
     "id": "7",
@@ -2991,12 +3516,12 @@
     "prompt": "VITE_API_URL kabi o'zgaruvchilar haqida qaysi gap to'g'ri?",
     "options": [
      "Build vaqtida JS ga yoziladi va har kim ko'ra oladi",
-     "Maxfiy, faqat server biladi",
-     "Faqat dev rejimida ko'rinadi",
-     "Brauzer ularni shifrlaydi"
+     "Maxfiy hisoblanadi, qiymatini faqat server biladi",
+     "Faqat dev rejimida ishlaydi, productionda yo'qoladi",
+     "Brauzer ularni shifrlab saqlaydi, o'qib bo'lmaydi"
     ],
     "answer": "Build vaqtida JS ga yoziladi va har kim ko'ra oladi",
-    "explain": "Frontend env maxfiy emas."
+    "explain": "Frontend (foydalanuvchi ko'radigan qism) env maxfiy emas."
    },
    {
     "id": "8",
@@ -3004,12 +3529,12 @@
     "prompt": "npm run build nima qiladi?",
     "options": [
      "Production uchun tayyor fayllarni yaratadi",
-     "Serverni o'chiradi",
-     "Domen sotib oladi",
-     "DNS ni yangilaydi"
+     "Lokal dev serverni ishga tushiradi",
+     "Loyiha kutubxonalarini o'rnatib beradi",
+     "Tayyor saytni serverga o'zi joylaydi"
     ],
     "answer": "Production uchun tayyor fayllarni yaratadi",
-    "explain": "Build dist papkasini yaratadi."
+    "explain": "Build (yig'ish) dist papkasini yaratadi."
    },
    {
     "id": "9",
@@ -3017,12 +3542,12 @@
     "prompt": "Static hostingga qaysi sayt mos EMAS?",
     "options": [
      "Har foydalanuvchi uchun serverda bazadan hisoblanadigan sahifalar",
-     "Portfolio sayt",
-     "Hujjatlar sayti",
-     "Landing page"
+     "Rasmlar va matndan iborat, kamdan-kam yangilanadigan portfolio sayt",
+     "Oldindan yozilgan sahifalardan iborat dasturiy hujjatlar to'plami sayti",
+     "Bir sahifali reklama (landing) sayti, formasi tashqi xizmatga yuboriladi"
     ],
     "answer": "Har foydalanuvchi uchun serverda bazadan hisoblanadigan sahifalar",
-    "explain": "Static hosting tayyor fayllarni beradi. Serverda kod ishlatish kerak bo'lsa, boshqa hosting kerak."
+    "explain": "Static hosting (tayyor fayllar xostingi) tayyor fayllarni beradi. Serverda kod ishlatish kerak bo'lsa, boshqa hosting (saytni serverda saqlash xizmati) kerak."
    },
    {
     "id": "10",
@@ -3030,12 +3555,12 @@
     "prompt": "Deploy oldidan build nima uchun kerak?",
     "options": [
      "Kodni production uchun optimallashtirilgan fayllarga aylantirish uchun",
-     "Domenni sotib olish uchun",
-     "DNS yozuvini o'zgartirish uchun",
-     "Brauzer keshini o'chirish uchun"
+     "Loyiha uchun yangi domen sotib olib, uni serverga avtomatik ulash uchun",
+     "Serverdagi DNS yozuvlarini yangi versiyaga moslab qayta yozib chiqish uchun",
+     "Foydalanuvchilarning brauzer keshini masofadan turib tozalab chiqish uchun"
     ],
     "answer": "Kodni production uchun optimallashtirilgan fayllarga aylantirish uchun",
-    "explain": "Masalan, npm run build kodni siqadi va dist papkasini yaratadi."
+    "explain": "Masalan, npm run build (yig'ish) kodni siqadi va dist papkasini yaratadi."
    },
    {
     "id": "11",
@@ -3043,9 +3568,9 @@
     "prompt": "CDN nima uchun foydali?",
     "options": [
      "Fayllar foydalanuvchiga yaqin serverdan yetkaziladi",
-     "U kodni xatosiz qiladi",
-     "U domenni bepul qiladi",
-     "U brauzer o'rniga ishlaydi"
+     "Kodni yetkazishdan oldin xatolarini topib tuzatadi",
+     "Sayt domenini va hostingini bepul qilib beradi",
+     "Sahifani foydalanuvchi o'rniga brauzerda chizadi"
     ],
     "answer": "Fayllar foydalanuvchiga yaqin serverdan yetkaziladi",
     "explain": "Yaqin joydan olingan fayl kam kechikish bilan yuklanadi."
@@ -3067,6 +3592,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Brauzer — HTML, CSS va JavaScript ni olib, ekranga chizadigan dastur. U HTML dan DOM daraxtini, CSS dan CSSOM daraxtini quradi, ikkalasini birlashtirib joylashuvni hisoblaydi va piksellarni chizadi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -3082,12 +3612,30 @@
        "text": "CSS qoidalarining xotiradagi modeli."
       },
       {
-       "term": "Rendering engine",
+       "term": "Rendering engine (chizish dvigateli)",
        "text": "HTML va CSS ni piksellarga aylantiradigan brauzer qismi (Blink, Gecko, WebKit)."
       },
       {
-       "term": "JavaScript engine",
+       "term": "JavaScript engine (JavaScript dvigateli)",
        "text": "JS kodni bajaradigan brauzer qismi (V8, SpiderMonkey, JavaScriptCore)."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Sahifa sekin ochilganda",
+       "text": "Qaysi fayl chizishni to'xtatib turganini (render-blocking) topasiz."
+      },
+      {
+       "term": "Script joylashtirishda",
+       "text": "defer yoki type=\"module\" HTML o'qilishini to'xtatmaydi."
+      },
+      {
+       "term": "Animatsiyada",
+       "text": "O'lchamni o'zgartirish qayta joylashtirishni chaqiradi, transform (shaklini o'zgartirish) esa yengilroq."
       }
      ]
     },
@@ -3119,7 +3667,7 @@
      }
     },
     {
-     "text": "Rendering engine HTML va CSS ni piksellarga aylantiradi, JavaScript engine esa JS kodni bajaradi. Bir xil kod har xil engine da farqli ishlashi mumkin, shuning uchun turli brauzerda sinash kerak."
+     "text": "Rendering engine HTML va CSS ni piksellarga aylantiradi, JavaScript engine esa JS kodni bajaradi. Bir xil kod har xil engine (dvigatel) da farqli ishlashi mumkin, shuning uchun turli brauzerda sinash kerak."
     },
     {
      "heading": "Sahifa qanday quriladi",
@@ -3136,7 +3684,7 @@
      "bullets": [
       "DOM — sahifa tuzilishining xotiradagi daraxt modeli.",
       "CSSOM — CSS qoidalarining xotiradagi modeli.",
-      "Layout — har elementning o'lchami va joyi hisoblanadi.",
+      "Layout (joylashuv) — har elementning o'lchami va joyi hisoblanadi.",
       "Paint — ranglar, matn, soyalar chiziladi."
      ]
     },
@@ -3154,6 +3702,30 @@
        "text": "Avval masalliqlar tayyorlanadi (DOM va CSSOM), keyin qaysi taom qayerga qo'yilishi hal qilinadi (layout), so'ng taom bezaladi (paint) va oxirida tovoqlar stolga olib chiqiladi (composite)."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Zanjir: HTML → DOM, CSS → CSSOM, keyin render (ekranga chizish) tree → layout → paint → composite."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Katta scriptni head ga defer'siz qo'yish.",
+       "defer qo'shish yoki type=\"module\".",
+       "Parser script yuklanguncha to'xtaydi."
+      ],
+      [
+       "DOM — bu HTML faylning o'zi.",
+       "DOM — HTML dan qurilgan, JS o'zgartira oladigan obyektlar daraxti.",
+       "DevTools DOM ni ko'rsatadi, fayl matnini emas."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -3165,7 +3737,7 @@
   "practice": [
    {
     "title": "Elements panelini oching",
-    "text": "Istalgan saytda F12 → Elements. DOM daraxtini ko'ring, bir elementni tanlab rangini o'zgartiring. Bu CSSOM ni jonli o'zgartirishdir."
+    "text": "Istalgan saytda F12 → Elements (sahifa unsuri). DOM daraxtini ko'ring, bir elementni tanlab rangini o'zgartiring. Bu CSSOM ni jonli o'zgartirishdir."
    }
   ],
   "items": [
@@ -3201,12 +3773,12 @@
     "prompt": "DOM nima?",
     "options": [
      "Sahifa tuzilishining xotiradagi daraxt modeli",
-     "CSS fayli",
-     "Server nomi",
-     "Brauzer sozlamasi"
+     "Sahifa ko'rinishini belgilovchi CSS fayllari to'plami",
+     "Sayt manzilini saqlaydigan serverdagi nomlar ro'yxati",
+     "Brauzerning foydalanuvchi o'zgartiradigan sozlamalari"
     ],
     "answer": "Sahifa tuzilishining xotiradagi daraxt modeli",
-    "explain": "DOM — Document Object Model."
+    "explain": "DOM — Document Object (obyekt) Model."
    },
    {
     "id": "4",
@@ -3246,7 +3818,7 @@
      "Composite"
     ],
     "answer": "DOM va CSSOM Render tree Layout Paint Composite",
-    "explain": "Parsing → render tree → layout → paint → composite."
+    "explain": "Parsing → render (ekranga chizish) tree → layout (joylashuv) → paint → composite."
    },
    {
     "id": "7",
@@ -3254,12 +3826,12 @@
     "prompt": "Layout bosqichida nima hisoblanadi?",
     "options": [
      "Har bir elementning aniq o'lchami va joylashuvi",
-     "Ranglar",
-     "IP manzil",
-     "Cookie muddati"
+     "Har bir elementning rangi, soyasi va shaffoflik darajasi",
+     "Sahifa so'ralgan serverning IP manzili va port raqami",
+     "Brauzerda saqlangan cookie fayllarning muddati va hajmi"
     ],
     "answer": "Har bir elementning aniq o'lchami va joylashuvi",
-    "explain": "Layout — o'lcham va joy."
+    "explain": "Layout (joylashuv) — o'lcham va joy."
    },
    {
     "id": "8",
@@ -3267,9 +3839,9 @@
     "prompt": "Nega turli brauzerlarda sinash kerak?",
     "options": [
      "Bir xil kod har xil engine da farqli ishlashi mumkin",
-     "Brauzerlar parolni so'raydi",
-     "Faqat tezlik uchun",
-     "Server buni talab qiladi"
+     "Har bir brauzer sahifani ochishdan oldin alohida parol so'raydi",
+     "Faqat sahifa yuklanish tezligi brauzerlarda har xil bo'lgani uchun",
+     "Server har bir brauzer uchun alohida domen bo'lishini talab qiladi"
     ],
     "answer": "Bir xil kod har xil engine da farqli ishlashi mumkin",
     "explain": "Cross-browser testlar shu uchun."
@@ -3280,12 +3852,12 @@
     "prompt": "Brauzer sahifani qurishda qaysi tartib to'g'ri?",
     "options": [
      "HTML dan DOM, CSS dan CSSOM, keyin layout va paint",
-     "Avval paint, keyin HTML o'qiladi",
-     "Avval CSS, keyin JavaScript, oxirida HTML",
-     "Avval layout, keyin DOM"
+     "Avval paint bajariladi, keyin HTML o'qilib, DOM daraxti quriladi",
+     "Avval CSS bajariladi, keyin JavaScript, eng oxirida HTML o'qiladi",
+     "Avval layout hisoblanadi, keyin DOM va CSSOM daraxtlari tuziladi"
     ],
     "answer": "HTML dan DOM, CSS dan CSSOM, keyin layout va paint",
-    "explain": "DOM va CSSOM birlashib render daraxtini beradi, so'ng joylashuv va chizish bo'ladi."
+    "explain": "DOM va CSSOM birlashib render (ekranga chizish) daraxtini beradi, so'ng joylashuv va chizish bo'ladi."
    },
    {
     "id": "10",
@@ -3293,12 +3865,12 @@
     "prompt": "DOM nima?",
     "options": [
      "HTML dan xotirada hosil bo'lgan sahifa daraxti",
-     "Domen nomi tizimi (DNS)",
-     "CSS fayl",
-     "Server papkasi"
+     "Domen nomlarini IP manzilga aylantiruvchi daraxtsimon tizim",
+     "Sahifa elementlarining ko'rinishini belgilovchi CSS qoidalari",
+     "Serverda sayt fayllari saqlanadigan papkalarning ierarxiyasi"
     ],
     "answer": "HTML dan xotirada hosil bo'lgan sahifa daraxti",
-    "explain": "DOM — Document Object Model. JavaScript uni o'zgartira oladi."
+    "explain": "DOM — Document Object (obyekt) Model. JavaScript uni o'zgartira oladi."
    },
    {
     "id": "11",
@@ -3306,9 +3878,9 @@
     "prompt": "Nega katta JavaScript fayl sahifani sekinlashtirishi mumkin?",
     "options": [
      "Brauzer uni yuklab, o'qib, bajarishi kerak, bu vaqt oladi",
-     "JavaScript IP manzilni o'zgartiradi",
-     "U DNS ni o'chirib qo'yadi",
-     "U faqat serverda ishlaydi"
+     "JavaScript kodi bajarilganda foydalanuvchining IP manzili o'zgaradi",
+     "Katta fayl yuklanganda DNS keshi o'chib, domen qaytadan qidiriladi",
+     "U faqat serverda bajariladi va natijasi har safar qayta yuboriladi"
     ],
     "answer": "Brauzer uni yuklab, o'qib, bajarishi kerak, bu vaqt oladi",
     "explain": "Yuklash va ishlatish ikkalasi ham vaqt talab qiladi, ayniqsa sekin telefonda."
@@ -3330,6 +3902,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "«URL yozib Enter bosganda nima bo'ladi» — butun modulni birlashtiruvchi savol: URL tahlili → DNS → TCP va TLS ulanishi → HTTP so'rov → javob → HTML o'qish → qo'shimcha fayllar → chizish → JavaScript ishga tushishi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -3337,16 +3914,34 @@
        "text": "so'rov yuborilgandan birinchi javob bayti kelguncha o'tgan vaqt (Time To First Byte)."
       },
       {
-       "term": "Handshake",
+       "term": "Handshake (qo'l berib ulanish)",
        "text": "ma'lumot uzatishdan oldin ikki tomonning ulanish haqida kelishuvi (TCP va TLS da bo'ladi)."
       },
       {
-       "term": "Render",
+       "term": "Render (ekranga chizish)",
        "text": "brauzerning HTML va CSS dan ekrandagi tasvirni qurish jarayoni."
       },
       {
-       "term": "Hydration",
+       "term": "Hydration (tayyor HTML ni jonlantirish)",
        "text": "serverda tayyorlangan HTML ga brauzerda JavaScript ni ulab, sahifani interaktiv qilish."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Intervyuda",
+       "text": "Bu — eng mashhur savol; bosqichlarni tartib bilan aytish kutiladi."
+      },
+      {
+       "term": "Tezlikni yaxshilashda",
+       "text": "Qaysi bosqich uzoqligini aniqlab, aynan o'shani tuzatasiz (DNS, TTFB, render)."
+      },
+      {
+       "term": "Muammoni lokalizatsiya qilishda",
+       "text": "«Server (xizmat ko'rsatuvchi kompyuter) topilmadi» — DNS, «ulanmadi» — tarmoq yoki port (dastur eshigi raqami), «500» — server kodi."
       }
      ]
     },
@@ -3369,10 +3964,10 @@
       "URL tahlili: brauzer matn qidiruvmi yoki manzilmi aniqlaydi.",
       "DNS: domen IP ga aylanadi (kesh, resolver, root → TLD → authoritative).",
       "Ulanish: TCP va TLS handshake o'rnatiladi.",
-      "HTTP so'rov: cookie va header'lar bilan GET yuboriladi.",
-      "Server javobi: statik fayl yoki backend javobi qaytadi.",
+      "HTTP so'rov: cookie (brauzerdagi kichik ma'lumot) va header'lar (sarlavha ma'lumoti) bilan GET yuboriladi.",
+      "Server javobi: statik fayl yoki backend (server qismi) javobi qaytadi.",
       "Parsing: HTML o'qiladi, DOM va CSSOM quriladi.",
-      "Render: layout, paint, composite.",
+      "Render: layout (joylashuv), paint, composite.",
       "JavaScript: skriptlar bajariladi, React ilova ishga tushadi.",
       "Keyingi ishlar: API so'rovlari va foydalanuvchi harakatlari."
      ]
@@ -3380,7 +3975,7 @@
     {
      "callout": {
       "kind": "tip",
-      "text": "Har bir qadamda kesh bor: DNS, HTTP, CDN. Sekinlikni taxmin qilmang, Network panelida o'lchang."
+      "text": "Har bir qadamda kesh bor: DNS, HTTP, CDN (tarkib yetkazish tarmog'i). Sekinlikni taxmin qilmang, Network panelida o'lchang."
      }
     },
     {
@@ -3397,6 +3992,30 @@
        "text": "Shifokor taxmin qilmaydi, tahlil topshiradi. Frontendchi ham: \"sayt sekin\" desa, avval Network panelida o'lchaydi: DNS sekinmi, server javob kechikdimi yoki fayl katta."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Qisqacha: Nom → Manzil → Ulanish → So'rov → Javob → Chizish."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Brauzer avval HTTP so'rov yuboradi, keyin DNS qidiradi.",
+       "Avval DNS orqali IP topiladi, keyin ulanish va so'rov.",
+       "Manzilsiz so'rov yuborib bo'lmaydi."
+      ],
+      [
+       "Bitta so'rov bilan butun sahifa keladi.",
+       "HTML kelgach, CSS, JS va rasmlar uchun alohida so'rovlar ketadi.",
+       "Network bo'limida o'nlab so'rov ko'rinadi."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -3408,7 +4027,7 @@
   "practice": [
    {
     "title": "Network panelida kuzating",
-    "text": "F12 → Network. \"Disable cache\" ni yoqib sahifani yangilang. Eng katta 5 ta resurs, birinchi so'rov vaqti (TTFB) va ishlatilgan protokolni (h2 yoki h3) yozib oling."
+    "text": "F12 → Network. \"Disable cache (vaqtinchalik xotira)\" ni yoqib sahifani yangilang. Eng katta 5 ta resurs, birinchi so'rov vaqti (TTFB) va ishlatilgan protokolni (h2 yoki h3) yozib oling."
    },
    {
     "title": "Zanjirni o'z so'zingiz bilan ayting",
@@ -3428,7 +4047,7 @@
      "Render"
     ],
     "answer": "DNS Ulanish HTTP so'rov Server javobi Render",
-    "explain": "DNS → ulanish → so'rov → javob → render."
+    "explain": "DNS → ulanish → so'rov → javob → render (ekranga chizish)."
    },
    {
     "id": "2",
@@ -3436,9 +4055,9 @@
     "prompt": "URL yozilganda birinchi bo'lib nima qilinadi?",
     "options": [
      "URL tahlil qilinadi va IP topish uchun DNS ishlaydi",
-     "Rasmlar yuklanadi",
-     "JavaScript bajariladi",
-     "Cookie o'chiriladi"
+     "Sahifadagi barcha rasm va shriftlar parallel yuklab olinadi",
+     "Sahifadagi JavaScript bajarilib, interfeys quriladi",
+     "Brauzerdagi eski cookie va kesh to'liq tozalab tashlanadi"
     ],
     "answer": "URL tahlil qilinadi va IP topish uchun DNS ishlaydi",
     "explain": "Avval manzil aniqlanadi, keyin IP topiladi."
@@ -3454,7 +4073,7 @@
      "CSS va JS"
     ],
     "answer": "TCP va TLS",
-    "explain": "TCP, keyin TLS handshake."
+    "explain": "TCP, keyin TLS handshake (qo'l berib ulanish)."
    },
    {
     "id": "4",
@@ -3475,9 +4094,9 @@
     "prompt": "JavaScript qadami nima qiladi?",
     "options": [
      "Skriptlarni bajaradi, React ilova ishga tushadi",
-     "IP manzil beradi",
-     "Domen sotadi",
-     "Faylni siqadi"
+     "Sahifaga IP manzil berib, uni tarmoqqa ulab qo'yadi",
+     "Domen nomini tekshirib, DNS yozuvini yangilab chiqadi",
+     "Yuklangan fayllarni siqib, diskka saqlab qo'yadi"
     ],
     "answer": "Skriptlarni bajaradi, React ilova ishga tushadi",
     "explain": "JS sahifani interaktiv qiladi."
@@ -3488,9 +4107,9 @@
     "prompt": "Sahifa sekin ochilsa, avval nima qilinadi?",
     "options": [
      "Network paneli bilan o'lchanadi",
-     "React ni almashtirish",
-     "Serverni o'chirish",
-     "Taxmin bilan optimizatsiya"
+     "Frontend kutubxonasi almashtiriladi",
+     "Server qayta ishga tushiriladi",
+     "Taxmin bo'yicha kod soddalashtiriladi"
     ],
     "answer": "Network paneli bilan o'lchanadi",
     "explain": "Avval o'lchang, keyin tuzating."
@@ -3501,9 +4120,9 @@
     "prompt": "DNS javobi qayerda keshlanishi mumkin?",
     "options": [
      "Brauzer, OS va resolver keshlarida",
-     "Faqat serverda",
-     "Hech qayerda",
-     "Faqat CSS faylida"
+     "Faqat sayt turgan web-serverning o'zida",
+     "Hech qayerda, har safar qaytadan so'raladi",
+     "Faqat sahifaning CSS va JS fayllarida"
     ],
     "answer": "Brauzer, OS va resolver keshlarida",
     "explain": "DNS bir necha joyda keshlanadi."
@@ -3532,7 +4151,7 @@
      "Domen ro'yxatdan o'tkazish"
     ],
     "answer": "Parsing va render",
-    "explain": "Javobdan keyin parsing va render."
+    "explain": "Javobdan keyin parsing va render (ekranga chizish)."
    },
    {
     "id": "10",
@@ -3540,9 +4159,9 @@
     "prompt": "Brauzer manzil yozilgach, serverga ulanishdan OLDIN nimani aniqlaydi?",
     "options": [
      "Domenning IP manzilini (DNS orqali)",
-     "Sahifa dizaynini",
-     "Cookie hajmini",
-     "HTML teglarini"
+     "Sahifaning dizayni va ranglar sxemasini",
+     "Saqlanadigan cookie fayllarning hajmini",
+     "Sahifada qaysi HTML teglari borligini"
     ],
     "answer": "Domenning IP manzilini (DNS orqali)",
     "explain": "Avval DNS orqali IP topiladi, so'ng ulanish o'rnatiladi."
@@ -3553,12 +4172,12 @@
     "prompt": "Sayt sekin ochilyapti. Birinchi navbatda nima qilish to'g'ri?",
     "options": [
      "Network panelida qaysi bosqich uzoq davom etayotganini o'lchash",
-     "Hamma kodni qayta yozish",
-     "Domenni o'zgartirish",
-     "Taxmin bilan rasmlarni o'chirish"
+     "Loyihadagi hamma kodni zamonaviyroq freymvorkda qaytadan yozib chiqish",
+     "Domen va hostingni tezroq ishlaydigan boshqa kompaniyaga o'tkazib yuborish",
+     "Sababni taxmin qilib, sahifadagi katta ko'ringan rasmlarni o'chirib tashlash"
     ],
     "answer": "Network panelida qaysi bosqich uzoq davom etayotganini o'lchash",
-    "explain": "Avval o'lchash: DNS, server javobi yoki fayl hajmi qaysi biri sekin."
+    "explain": "Avval o'lchash: DNS, server (xizmat ko'rsatuvchi kompyuter) javobi yoki fayl hajmi qaysi biri sekin."
    },
    {
     "id": "12",
@@ -3566,12 +4185,12 @@
     "prompt": "TTFB nimani o'lchaydi?",
     "options": [
      "So'rovdan birinchi javob bayti kelguncha o'tgan vaqtni",
-     "Sahifa to'liq chizilgan vaqtni",
-     "Faylning hajmini",
-     "DNS yozuvi sonini"
+     "Sahifa ekranda to'liq chizilib bo'lguncha o'tgan umumiy vaqtni",
+     "Serverdan birinchi bo'lib keladigan faylning baytlardagi hajmini",
+     "Domenni IP manzilga aylantirishda yuborilgan DNS so'rovlari sonini"
     ],
     "answer": "So'rovdan birinchi javob bayti kelguncha o'tgan vaqtni",
-    "explain": "TTFB — Time To First Byte. Server va tarmoq tezligini ko'rsatadi."
+    "explain": "TTFB — Time To First Byte. Server (xizmat ko'rsatuvchi kompyuter) va tarmoq tezligini ko'rsatadi."
    }
   ]
  }

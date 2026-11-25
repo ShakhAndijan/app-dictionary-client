@@ -1,0 +1,177 @@
+1.4 ~ Har qanday rejimda ham xatosiz ishlab, x o'zgaruvchisi faqat shu blok ichida 5 bo'lib qoladi ~ Har qanday rejimda ham kod o'qilayotgan paytning o'zida SyntaxError chiqib, hech narsa bajarilmaydi ~ Qiymat berish e'tiborsiz qoldiriladi va x o'qilganda har ikki rejimda ham undefined chiqib turadi
+1.5 ~ Butun dasturni ishga tushirishdan oldin to'liq kompilyatsiya qilib, tayyor .exe faylini yaratadi ~ Kodning har bir qatorini har safar qaytadan talqin qilib, hech qachon mashina kodiga o'tkazmaydi ~ JavaScript kodini brauzer tushunadigan boshqa tilga oldindan tarjima qilib, serverda saqlab qo'yadi
+1.6 ~ Dvigatel argument tipi mos emasligi uchun TypeError tashlaydi ~ Hech narsa o'zgarmaydi: tayyor mashina kodi satrlarni ham qo'shadi ~ Satrlar avtomatik songa aylantirilib, tezkor kod ishlayveradi
+1.7 ~ Brauzer uzoq sikllarni xavfli deb hisoblab, oynani ataylab muzlatib qo'yadi ~ Sikl har aylanishda xotirani to'ldirib, chizishga joy qoldirmay tashlaydi ~ Sikl davomida setTimeout va hodisalar butunlay o'chirilib, qayta yoqilmaydi
+1.9 ~ Faqat Node.js muhitida modul o'zgaruvchilarini saqlash uchun alohida yangi obyekt kerak bo'lgani uchun ~ Barcha global o'zgaruvchilarni bir joydan o'chirib, xotirani tozalash imkonini berish uchun kiritilgan ~ Skript boshida yozib qo'yilsa, butun faylda strict mode avtomatik yoqilishi uchun mo'ljallangan
+1.10 ~ Google yaratgan va Chrome ga asos bo'lgan brauzer nomi ~ Sahifa elementlarini boshqaradigan JavaScript kutubxonasi ~ Chrome da CSS ni o'qib, sahifani chizadigan rendering dvigateli
+1.11 ~ Statik tipli, ishga tushishdan oldin tekshiriladigan, faqat talqin qilinadigan til ~ Ko'p oqimli, dastur to'liq kompilyatsiya qilingandan keyingina bajariladigan til ~ Faqat brauzer ichida ishlaydigan, serverda bajarib bo'lmaydigan skript tili
+2.12 ~ 2n: number avtomatik bigint ga aylantiriladi ~ 2: bigint avtomatik number ga aylantirib olinadi ~ NaN: ikki xil tipni qo'shish natijasi son emas
+2.13 ~ ReferenceError (kod to'xtaydi) ~ 'object' (null kabi hisoblanadi) ~ null (qiymat hali berilmagan)
+3.3 ~ [] (yangi bo'sh massiv) ~ 0 (bo'sh massivlar soni) ~ NaN (son bo'lmagan qiymat)
+4.8 ~ 'bcd' (o'rin almashadi) ~ 'efab' (aylanib o'tadi) ~ TypeError chiqadi
+4.13 ~ a == b (yumshoq solishtirish ishlatiladi) ~ a.equals(b) (maxsus solishtirish metodi) ~ Number(a) === Number(b) bilan solishtirish
+6.4 ~ 'salom' chiqadi, chunki sayHi ko'tariladi ~ ReferenceError: sayHi is not defined ~ undefined chiqadi, xato bo'lmaydi
+6.6 ~ Arrow funksiyaning o'ziga uzatilgan argumentlar ro'yxati ~ Har doim bo'sh massiv, chunki arrow argument yig'maydi ~ Har doim undefined, hatto tashqarida funksiya bo'lsa ham
+6.12 ~ Funksiya ichidan tashqaridagi hech qanday ma'lumotni o'zgartirib bo'lmaydi ~ x tashqarida const kabi himoyalangan bo'lib, funksiyaga faqat o'qishga berilgan ~ Brauzer parametr nomi bir xil bo'lganda o'zgartirishni xato qilib tashlab yuboradi
+7.2 ~ Cheksiz ishlab, brauzer yopilguncha davom etadi ~ undefined chiqadi, rekursiya o'zi to'xtab qoladi ~ SyntaxError: to'xtash sharti yo'q funksiya yaroqsiz
+7.4 ~ Nomi bor, qiymati undefined ~ TDZ ichida, o'qib bo'lmaydi ~ Hali mavjud emas, keyin yaratiladi
+7.6 ~ Stekda, funksiya qavati bilan birga ~ Faqat global muhit obyektining ichida ~ Brauzer keshida, diskka yozilgan holda
+7.8 ~ undefined chiqadi ~ 1 chiqadi (tashqidan) ~ null chiqadi
+7.9 ~ Chaqirilgan qatorning o'zida darhol qo'shiladi ~ Stekning eng pastiga joriy kod ishlayotganda qo'yiladi ~ Stekka tushmaydi, alohida parallel oqimda bajariladi
+7.10 ~ Faqat shu funksiyada e'lon qilingan o'zgaruvchilar ro'yxati ~ Faqat funksiya nomi va u qaytaradigan qiymatning o'rni ~ DOM daraxti va unga bog'langan barcha hodisa tinglovchilari
+8.3 ~ 2 chiqadi ~ undefined chiqadi ~ null chiqadi
+8.6 ~ ReferenceError chiqib, kod shu yerda to'xtaydi ~ undefined chiqadi, qiymat berish bekor qilinadi ~ Hech narsa chiqmaydi, qator jimgina o'tkaziladi
+8.7 ~ Butun funksiya ichida ~ Global scope da ham ~ try blokida ham ko'rinadi
+8.8 ~ Global → ichkariga → joriy scope ~ Tasodifiy tartibda, birinchi topilgani ~ Faqat joriy scope, tashqariga chiqmaydi
+8.9 ~ SyntaxError chiqadi, chunki bitta nomni ikki marta e'lon qilib bo'lmaydi ~ x doim undefined bo'lib qoladi, chunki var parametr qiymatini o'chirib yuboradi ~ Ikkita mustaqil x paydo bo'lib, ichkisi tashqi parametrni vaqtincha yopib turadi
+8.10 ~ 7 chiqadi: let parametrni yopib qo'yadi ~ undefined: let qiymatsiz qayta e'lon qilinadi ~ Xatosiz ishlaydi va x yangi qiymatni oladi
+9.2 ~ undefined chiqadi ~ 5 chiqadi (ko'tarilib) ~ null chiqadi
+9.4 ~ 'tashqi' chiqadi ~ undefined chiqadi ~ 'ichki' chiqadi
+9.5 ~ 'salom' satrini konsolga chiqaradi ~ ReferenceError: hello is not defined ~ undefined chiqarib, davom etadi
+9.8 ~ Muammosiz ishlaydi ~ TypeError: A funksiya emas ~ undefined qaytaradi
+9.10 ~ U atigi bir soniya davom etib, o'zi tugaydi ~ U taymerlar ishga tushgan paytda paydo bo'ladi ~ U faqat asinxron kod bajarilayotganda mavjud
+9.12 ~ Dvigatel kod qatorlarini haqiqatan ham fayl boshiga jismonan ko'chirib yozadi ~ Faqat var e'lonlari ko'tariladi, funksiya va let e'lonlari umuman ko'tarilmaydi ~ Faqat funksiyalar ko'tariladi, o'zgaruvchilarning nomi esa oldindan qayd etilmaydi
+10.8 ~ Har qanday closure yaratilgan zahoti xotira sizadi, chunki dvigatel uni umuman tozalay olmaydi ~ Hech qachon: closure ushlagan qiymatlar tashqi funksiya tugashi bilan majburan o'chirib tashlanadi ~ Faqat arrow funksiyalarda, chunki oddiy funksiyalar tashqi o'zgaruvchilarni umuman ushlab qolmaydi
+10.9 ~ Har bir chaqiruvda barcha argumentlarni massivga yig'adi ~ Argumentlarni obyekt xususiyatlari sifatida saqlab qaytaradi ~ Qiymatni global o'zgaruvchiga yozib, hech narsa qaytarmaydi
+10.11 ~ setTimeout callback i atrofidagi funksiyada e'lon qilingan o'zgaruvchini kechikib o'qiydigan holat ~ Tashqi funksiya ichidagi sanoqchini saqlab, har chaqiruvda oshiradigan counter factory qaytargan funksiya ~ Tugma bosilganda tashqi funksiyada e'lon qilingan o'zgaruvchini o'zgartiradigan event handler funksiyasi
+10.12 ~ Funksiya chaqirilgan joyning o'zgaruvchilarini ko'ra boshlaydi ~ Boshqa joydan chaqirilsa, faqat global scope ni ko'ra oladi ~ Har bir yangi chaqiruv joyida closure qaytadan quriladi
+11.2 ~ 'Ali' qaytadi, this saqlanadi ~ undefined qaytadi, xato bo'lmaydi ~ '' (bo'sh satr) qaytib chiqadi
+11.5 ~ undefined (this yo'qoladi) ~ TypeError chiqadi (this yo'q) ~ 'timer' (taymer nomi chiqadi)
+11.7 ~ Global obyekt (window) ~ F funksiyasining o'zi ~ undefined (strict kabi)
+11.8 ~ Har doim user obyekti bo'ladi ~ Doim hi funksiyasining o'zi ~ Doim null qiymati bo'ladi
+11.9 ~ Farqi yo'q: ikkalasi ham argumentlarni faqat massiv ko'rinishida oladi ~ call this ni o'zgartira olmaydi, apply esa uni yangi obyektga bog'laydi ~ apply faqat obyekt metodlarida, call esa faqat oddiy funksiyalarda ishlaydi
+11.10 ~ Oddiy konstruktor kabi ishlaydi ~ this global obyektga bog'lanadi ~ undefined qaytaradi, xato bermaydi
+11.12 ~ setTimeout(user.hi, 0, 0, 0) ~ const f = user.hi; setTimeout(f) ~ setTimeout(user.hi(), 0)
+12.6 ~ ['id'] (kalit ko'rinadi) ~ ['1'] (qiymat qaytadi) ~ TypeError chiqadi
+12.11 ~ Xususiyatni tashqaridan umuman o'qib bo'lmaydigan qilish uchun ~ Obyektni muzlatib, yangi xususiyat qo'shishni taqiqlash uchun ~ Xususiyatga murojaatni oddiy maydondan tezroq qilish uchun
+13.1 ~ false (o'zgaradi) ~ undefined bo'ladi ~ TypeError chiqadi
+13.7 ~ p.constructor aynan Person funksiyasiga tengmi, shu ~ p obyektida Person dagi barcha maydonlar bormi, shu ~ typeof p natijasi 'Person' satrini qaytaradimi, shu
+13.8 ~ Metod konstruktor ichidagiga qaraganda bir necha barobar tez chaqiriladi ~ Metod tashqaridan ko'rinmaydigan private metodga aylanib himoyalanadi ~ Metodni namunasiz, Person.hi() ko'rinishida chaqirish imkoni paydo bo'ladi
+13.9 ~ Farqi yo'q: ikkalasi ham butun prototype zanjirini bir xil tekshiradi ~ Birinchisi prototype zanjirini ham, ikkinchisi faqat o'z xususiyatini tekshiradi ~ Birinchisi faqat massivlar uchun, ikkinchisi esa faqat oddiy obyektlar uchun
+13.12 ~ Ular bir xil narsaning ikki nomi: har qanday obyektda prototype xususiyati [[Prototype]] ga teng bo'ladi ~ [[Prototype]] faqat funksiyalarda bo'ladi, prototype esa har bir oddiy obyektning meros manbaini ko'rsatadi ~ prototype faqat oddiy obyektlarda bo'ladi va funksiya new bilan chaqirilganda undan nusxa ko'chirib olinadi
+14.1 ~ Xatosiz ishlaydi va nom maydoni yoziladi ~ undefined chiqadi, chunki this hali bo'sh ~ SyntaxError: constructor ichida this mumkin emas
+14.2 ~ 'Rex ovoz chiqardi' (hov siz) ~ 'hov' (faqat bola metodi) ~ TypeError: super mavjud emas
+14.4 ~ Muammosiz ishlaydi ~ TypeError: A funksiya emas ~ undefined qaytaradi
+14.7 ~ Class ichida e'lon qilingan metodlar this kalit so'zini umuman qo'llamaydi ~ Class kodi strict rejimda bo'lmagani uchun this global obyektga o'tib ketadi ~ Metodlar muzlatilgan bo'lgani sababli ularga this bog'lab bo'lmay qoladi
+14.8 ~ Bitta funksiya prototype da turib, xotira sezilarli tejaladi ~ Metod chaqirilishi oddiy metoddan bir necha barobar tezlashadi ~ Metodni namuna yaratmasdan class nomidan chaqirsa bo'ladi
+14.11 ~ SyntaxError chiqadi, chunki konstruktor majburiy ~ Obyekt yaratiladi, lekin ota konstruktori chaqirilmaydi ~ Argumentlar tashlab yuborilib, ota bo'sh chaqiriladi
+15.10 ~ Asl massivning o'zi saralanib, o'sha havola qaytadi ~ TypeError chiqadi, chunki sonlarni bunday saralab bo'lmaydi ~ undefined qaytadi, asl massiv esa saralanib o'zgaradi
+16.2 ~ U butun son emas, kasr son qaytaradi ~ U tashqaridagi massivlarni o'zgartirib yuboradi ~ U asinxron ishlaydi va promise qaytaradi
+16.7 ~ Har bir o'zgarish joyida bajarilgani uchun dastur doim tezroq ishlaydi ~ Yoziladigan kod hajmi ikki barobar qisqarib, funksiyalar kerak bo'lmaydi ~ Ma'lumot o'zgarganda serverga avtomatik so'rov yuborilib, sinxronlanadi
+16.9 ~ Funksiya bajarilishi bir necha barobar tezlashishini ta'minlaydi ~ Funksiyani avtomatik asinxron qilib, promise qaytarishga o'tkazadi ~ Argumentlarni xotirada saqlamasdan, xotira sarfini kamaytiradi
+16.10 ~ Funksiyaning hisoblangan qiymatni return orqali chaqiruvchiga qaytarishi ~ Funksiyaning kerakli ma'lumotni parametr sifatida qabul qilib olishi ~ Funksiya ichida yangi lokal o'zgaruvchi yaratib, unda hisoblab turish
+16.11 ~ Sof funksiya sekin ishlagani uchun kesh foyda beradi ~ Sof funksiya asinxron bo'lib, natija navbatda saqlanadi ~ Sof funksiya global holatni o'qib, uni yangilab turadi
+16.12 ~ sort metodi katta massivda sekin ishlaydi ~ Funksiya arrow ko'rinishida yozilgan ~ Funksiya hech qanday qiymat qaytarmaydi
+17.6 ~ Yozuv saqlanadi va map qaytadi ~ undefined qaytib, yozuv tashlanadi ~ null qaytadi, xato esa chiqmaydi
+17.7 ~ Bu metodlar hali standartga kiritilmagan, keyinroq qo'shilishi kutilmoqda ~ Tashqi kod kalit obyektlarni ko'rib qolmasligi uchun parol talab qilinadi ~ Ular juda sekin ishlagani sababli dvigatel ularni ataylab o'chirib qo'ygan
+17.8 ~ Map yozuvlari qisqaroq sintaksis bilan yoziladi va obyektdan har doim kam joy oladi ~ Map JSON.stringify da barcha kalitlari bilan to'g'ridan-to'g'ri matnga aylanib beradi ~ Map ning prototype zanjiri borligi uchun tayyor kalitlarni meros qilib olish mumkin
+17.12 ~ Map (nom → ma'lumot satri) ~ Massiv (indeks → obyekt) ~ JSON satri (kalit → qiymat)
+18.5 ~ [['a', 1]] juftlik massivi ~ ['a'] kalitlar massivi ~ [1] qiymatlar massivi
+18.7 ~ Faqat navbatdagi qiymat ~ [qiymat, indeks] massivi ~ Hal bo'lmagan Promise
+18.8 ~ length xususiyati va 0 dan boshlanuvchi raqamli kalitlar ~ map va forEach metodlarini obyektning o'ziga qo'shib qo'yish ~ toString metodi massiv ko'rinishidagi satrni qaytarishi
+18.9 ~ throw() metodi xato bilan ~ next() yana bir marta oxirgi ~ Hech qanday metod chaqirilmaydi
+18.10 ~ Massiv ([]) ~ Map obyekti ~ Satr (String)
+18.11 ~ Symbol qiymatining o'zini songa aylantirib olish imkonini berish uchun ~ Oddiy obyektni for...of bilan aylanib chiqsa bo'ladigan qilish uchun ~ Obyektni JSON.stringify da qanday yozilishini belgilab qo'yish uchun
+18.12 ~ Barcha satr va symbol kalitlarni birga ~ Prototype zanjiridagi symbol larni ~ Faqat satr ko'rinishidagi kalitlarni
+19.4 ~ Ha, birinchi yield gacha darhol bajariladi ~ Ha, butun tanasi oxirigacha bajariladi ~ Faqat yield siz yozilgan birinchi qatori
+19.7 ~ { value: 7, done: true } yana ~ { value: 2, done: false } davomi ~ TypeError: generator yopilgan
+19.9 ~ Generatorni xatosiz tugatib, done: true qaytaradi ~ Xato e'tiborsiz qolib, generator davom etaveradi ~ Joriy yield ni tashlab, keyingisiga sakrab o'tadi
+19.10 ~ Unda faqat for...of ishlaydi, next() yo'q ~ Unda faqat next() ishlaydi, for...of yo'q ~ Uni bir nechta marta boshidan aylansa bo'ladi
+19.11 ~ Oddiy for siklini parallel oqimlarda ishlatib, sezilarli tezlashtirish uchun ~ Katta massivlarni xotiraga to'liq yuklab, keyin birdaniga saralash uchun ~ Funksiya ichidagi barcha xatolarni try/catch siz avtomatik ushlash uchun
+20.2 ~ try, finally, catch ~ try, catch qatori ~ catch, try, finally
+20.7 ~ Yo'q: faqat Error nusxasini tashlash mumkin, aks holda SyntaxError ~ Ha, lekin catch bloki satrni ushlay olmaydi va u tepaga o'tib ketadi ~ Ha, va dvigatel satrni avtomatik Error ga aylantirib, stack qo'shadi
+20.11 ~ null.x ni o'qishga urinish ~ JSON.parse('{') chaqiruvi ~ new Array(-1) yaratish
+20.12 ~ try bloki ichida chiqqan xatoni ushlab, uning matnini o'qib olish uchun ~ Ushlangan xatoni avtomatik ravishda chaqiruvchiga qayta ko'tarib yuborish uchun ~ Blok ichidagi sinxron kodni navbat bilan asinxron bajarilishga o'tkazish uchun
+21.7 ~ Brauzer 0 qiymatini xato deb hisoblab, uni o'rniga bir soniya qo'yib yuboradi ~ Taymerlar alohida oqimda ishlab, natijani faqat sahifa yangilanganda qaytaradi ~ Standartga ko'ra callback har doim kamida 100 ms kutgandan keyingina chaqiriladi
+21.8 ~ Hech narsaga: brauzer orada chizib turadi ~ Dvigatel 1000 qadamdan keyin to'xtatadi ~ Darhol call stack overflow xatosini beradi
+21.11 ~ Darhol, 0 ms o'tishi bilan ~ Sikl o'rtasida, uni uzib ~ Hech qachon bajarilmaydi
+21.12 ~ Har bir microtask bajarilishidan oldin alohida ~ Faqat setTimeout callback i ichida chaqirilganda ~ Call stack da sinxron kod ishlayotgan paytda
+22.6 ~ a funksiyasining ichida chiqqan xatonigina ushlaydi ~ Oldingi qadamning ham, a ning ham xatosini ushlaydi ~ Hech birini: xato faqat catch orqali ushlanadi
+22.7 ~ Faqat zanjirda xato chiqqan holatdagina bajariladi ~ Bajarilib, zanjir qiymatini o'z return qiymatiga almashtiradi ~ Zanjirni yakunlab, undan keyingi then larni to'xtatadi
+22.9 ~ Callbacklar ketma-ket ishlagani uchun dastur juda sekinlashadi ~ Zamonaviy brauzerlar ichma-ich callback larni qo'llab-quvvatlamaydi ~ Har bir ichki daraja xotiradan alohida oqim ajratib, uni to'ldiradi
+22.10 ~ Hech narsa bo'lmaydi: xato jimgina o'chirib yuboriladi ~ Brauzer sahifani darhol yopib, qaytadan yuklab beradi ~ Dvigatel xatoni o'zi ushlab, promise ni fulfilled qiladi
+22.11 ~ Faqat new Promise bilan yaratilgan haqiqiy obyekt ~ then so'zi bilan tugaydigan nomga ega bo'lgan funksiya ~ Promise lardan tuzilgan massiv, uni all qabul qiladi
+22.12 ~ then chaqirilgandagina ~ Keyingi macrotask ichida ~ Faqat await yozilganda
+23.2 ~ ['a', Error('x')] massivi bilan ~ ['a'] bilan, xato tashlab yuborilib ~ 30 ms kutib, keyin fulfilled
+23.3 ~ ['a', Error] — qiymat va xato obyektlari o'z tartibida oddiy massiv bo'lib qaytadi ~ Error('x') bilan rad etiladi, chunki kamida bitta promise muvaffaqiyatsiz tugagan ~ [{ ok: true, data: 'a' }, { ok: false, error: Error }] ko'rinishidagi massiv
+23.6 ~ Birinchi xato: Error('x') bilan ~ undefined bilan fulfilled bo'ladi ~ [] (bo'sh massiv) bilan fulfilled
+23.7 ~ Abadiy pending bo'lib qoladi ~ TypeError bilan rad etiladi ~ undefined bilan fulfilled
+23.9 ~ Ularning barchasi dvigatel tomonidan avtomatik bekor qilinib, to'xtatiladi ~ Ular ham darhol xuddi shu xato bilan rad etilgan holatga o'tkaziladi ~ Ular boshidan qayta ishga tushirilib, yangi all ga qo'shib yuboriladi
+23.10 ~ Promise.all(...) ~ Promise.race(...) ~ Promise.any(...)
+23.11 ~ Promise.all([asosiy, timeoutPromise]) — ikkalasi tugaguncha kutib ~ Promise.any([asosiy]) — vaqt tugasa, brauzer o'zi rad etib beradi ~ setTimeout(() => asosiy, 3000) — natijani 3 soniya ichida qaytaradi
+24.1 ~ 1 sonining o'zini, o'ramsiz ~ undefined qiymatini ~ { value: 1 } ko'rinishidagi obyektni
+24.2 ~ Dasturni butunlay to'xtatadi ~ Xato jimgina yo'qotib yuboriladi ~ undefined qaytarib, davom etadi
+24.7 ~ Xato baribir shu funksiyadagi catch blokida ushlanib, 'ushlandi' matni qaytariladi ~ Xato yo'qolib, funksiya chaqiruvchiga undefined bilan fulfilled promise qaytaradi ~ return promise ni kutib, xato bo'lsa ham 'ok' qiymati bilan yakunlanib ketadi
+24.9 ~ for ichida await fetch(url) yozish ~ forEach(async u => await fetch(u)) ~ Har birini setTimeout bilan boshlash
+24.10 ~ Darhol, keyingi qator kabi sinxron ~ Keyingi macrotask navbati kelganda ~ Sahifa qayta chizilgandan keyingina
+24.11 ~ Yo'q, await faqat async funksiyada ~ Faqat Node.js ning CommonJS faylida ~ Faqat class ning static blokida
+25.1 ~ Rejected, catch ga tushadi ~ Pending holatida qolib ketadi ~ Sinxron xato tashlab yuboradi
+25.2 ~ 404 status bilan fulfilled ~ Pending holatida abadiy qoladi ~ res.ok = false bilan fulfilled
+25.4 ~ Matn ikki marta bir xil qaytadi ~ Ikkinchi o'qishda undefined chiqadi ~ Ikkinchi o'qishda null qaytariladi
+25.6 ~ fetch(url, { timeout: 3000, retry: false }) ~ setTimeout(() => fetch(url), 3000) chaqirish ~ fetch(url).timeout(3000).catch(onError) zanjiri
+25.8 ~ body: data obyektini to'g'ridan-to'g'ri berib, header yozmaslik ~ body: JSON.parse(data) va Content-Type: text/plain berib yuborish ~ json: data maydonini berib, qolganini fetch ga o'ziga qoldirish
+25.9 ~ Serverda: u boshqa origin dan kelgan so'rovni qabul qilolmay yiqiladi ~ Faqat Node.js da: u manbalar orasidagi so'rovlarni taqiqlab qo'yadi ~ DNS da: boshqa domen nomi IP manzilga aylantirilmay qolishi sababli
+25.10 ~ Ha, controller.reset() chaqirilgach signal yana toza holatga qaytadi ~ Ha, keyingi fetch ga berilishi bilan signal o'zi avtomatik tiklanadi ~ Faqat bir marta qayta ishlatsa bo'ladi, undan keyin u xato beradi
+25.11 ~ cookies: 'always' ~ withCredentials: 1 ~ mode: 'with-cookie'
+25.12 ~ catch bloki 500 ni avtomatik ushlashiga tayanish ~ Javobni muvaffaqiyatli deb qabul qilib, davom etish ~ Javob 200 bo'lguncha to'xtovsiz qayta fetch qilish
+26.3 ~ Yangilanadi: jonli bog'lanish ~ TypeError: count o'qiladigan ~ undefined bo'lib qoladi
+26.8 ~ ESM kodi brauzerda CommonJS ga qaraganda ancha tez bajarilgani uchun ~ CommonJS modullari xavfsiz emas va ularni bundler o'qishdan bosh tortadi ~ ESM fayllari doim hajman kichik bo'lib, ortiqcha kod yozishga yo'l qo'ymaydi
+26.9 ~ Modullar bir-birini cheksiz yuklab, dastur albatta stack overflow bilan qulaydi ~ Dvigatel aylanani ko'rishi bilan import qatorining o'zida SyntaxError beradi ~ Hech qanday xavf yo'q: ikkala modul ham doim to'liq tayyor holda uzatiladi
+26.11 ~ <script type="esm"> ~ <script async defer> ~ <module src="...">
+27.3 ~ innerHTML matnni juda sekin qo'yib, sahifani sezilarli darajada qotiradi ~ Brauzer foydalanuvchi matnini rad etib, element mazmunini bo'shatib qo'yadi ~ Matndagi o', g' kabi belgilar buzilib, noto'g'ri ko'rinib qolishi mumkin
+27.4 ~ Tugunning nusxasi qo'shiladi ~ HierarchyRequestError beradi ~ Hech qanday o'zgarish bo'lmaydi
+27.5 ~ Farqi yo'q: ikkalasi ham faqat element tugunlarini bir xil tartibda beradi ~ children matn va izohlarni ham beradi, childNodes esa faqat elementlarni beradi ~ children barcha avlodlarni chuqur beradi, childNodes esa faqat birinchi bolani
+27.7 ~ Bir vaqtning o'zida juda ko'p DOM tugunini yaratib, brauzer xotirasini to'ldirib yuborish holati ~ Bir-biriga zid CSS qoidalari sababli brauzerning joylashuvni qayta-qayta noto'g'ri hisoblab chiqishi ~ Olib tashlangan tugunlarga havola qolib ketib, xotiraning asta-sekin to'lib borishi va sekinlashish
+27.9 ~ Har birini alohida document ga append qilish ~ Har aylanishda ul.innerHTML += '<li>' yozish ~ setInterval bilan bittadan navbatma-navbat qo'shish
+27.10 ~ Qalin yozilgan x ~ Hech narsa ko'rinmaydi ~ HTML parse xatosi
+27.11 ~ getElementById ro'yxat qaytaradi, querySelector esa bitta element ~ querySelector id bo'yicha qidira olmaydi va doim null qaytarib beradi ~ Ikkalasi ham jonli ro'yxat qaytarib, element o'zgarsa yangilanadi
+27.12 ~ Ha: NodeList haqiqiy massiv bo'lgani uchun map, filter, reduce hammasi ishlaydi ~ Faqat querySelectorAll qaytargan statik ro'yxatda map to'g'ridan-to'g'ri ishlaydi ~ Faqat childNodes kabi jonli ro'yxatda map ni bevosita chaqirsa bo'ladi
+27.13 ~ Har chaqirilganda class ni qayta qo'shib boraveradi ~ Elementdagi barcha class larni olib tashlab yuboradi ~ Mavjud class nomini yangi 'on' nomiga almashtiradi
+28.2 ~ Avval tugma, keyin ota ishlaydi ~ Tartib har safar tasodifiy bo'ladi ~ Faqat ota ishlaydi, tugmaniki yo'q
+28.3 ~ target = list (tinglovchi turgan), currentTarget = li ~ Ikkalasi ham bosilgan li elementini ko'rsatadi ~ Ikkalasi ham tinglovchi qo'yilgan list ni ko'rsatadi
+28.4 ~ Hodisa brauzerda bir necha barobar tezroq yetib boradi ~ Har bir element uchun alohida tinglovchi avtomatik yaratiladi ~ Bubbling bo'lmaydigan hodisalar ham otaga yetib keladi
+28.5 ~ e.target.parent('li') ~ e.currentTarget.li ~ document.find('li')
+28.6 ~ Hodisaning ota elementlarga ko'tarilishini to'xtatadi, standart harakat esa bajarilaveradi ~ Elementdagi shu hodisa uchun yozilgan barcha tinglovchilarni butunlay o'chirib tashlaydi ~ Hodisani butunlay bekor qilib, uni na tinglovchilar, na brauzer ko'ra oladigan qiladi
+28.7 ~ Brauzerning standart harakatini (havola, forma) to'xtatadi ~ Shu elementdagi tinglovchini keyingi safar uchun o'chiradi ~ Hodisani keyingi macrotask gacha kechiktirib turadi, xolos
+28.8 ~ removeEventListener zamonaviy brauzerlarda ishlamaydigan eskirgan metod ~ Hodisa nomi kichik harf bilan yozilishi o'rniga katta harf bilan berilishi kerak ~ Tinglovchini faqat u kamida bir marta ishlagandan keyin olib tashlash mumkin
+28.9 ~ Ha, oddiy click kabi ko'tariladi ~ Faqat capture: false bo'lsa ko'tariladi ~ Faqat input va textarea da ko'tariladi
+28.10 ~ Tinglovchi faqat bir marta ishlab, keyin brauzer uni avtomatik o'chirib tashlashi uchun ~ Hodisaning ota elementlarga ko'tarilishini tinglovchi yozmasdan oldindan to'xtatib qo'yish uchun ~ Tinglovchini alohida oqimda ishlatib, u ushlab turgan xotirani tezroq bo'shatib olish uchun
+28.11 ~ Ikki marta ketma-ket ishlaydi ~ InvalidStateError xatosi beradi ~ Ikkalasi ham bir-birini bekor qiladi
+29.2 ~ Qidiruv inputi — throttle; scroll — debounce ~ Qidiruv ham, scroll ham faqat debounce bilan ~ Qidiruv ham, scroll ham faqat throttle bilan
+29.3 ~ Ha, brauzer vaqtni aniq kafolatlaydi ~ Faqat faol tabda aniq 100 ms da ishlaydi ~ Faqat Node.js da aniq 100 ms kafolatlanadi
+29.5 ~ Brauzer 10 marta takrorlagach, o'zi to'xtatib qo'yadi ~ Komponent yo'qolishi bilan interval xato berib o'chadi ~ Callback faqat birinchi marta ishlab, keyin kutib turadi
+29.6 ~ U setInterval ga qaraganda sezilarli darajada tezroq bajariladi va navbatni chetlab o'tadi ~ U brauzer yuklamasidan qat'i nazar millisekundgacha aniq vaqtda chaqirilishini kafolatlaydi ~ U taymer yaratmasdan ishlaydi, shuning uchun uni clearTimeout bilan tozalash shart bo'lmaydi
+29.9 ~ Farqi yo'q: ikkalasi ham seriyaning o'rtasida bir marta bajarishni bildiradi xolos ~ leading — tinchlikdan keyin oxirgisini, trailing — birinchi chaqiruvda darhol bajarish ~ leading — har chaqiruvda bajarish, trailing — belgilangan oraliqda bir marta bajarish
+29.10 ~ setTimeout avval, keyin then ~ Tartib har safar tasodifiy ~ Ikkalasi bir vaqtda parallel
+29.11 ~ Faol tabdagidek aniq, hech qanday o'zgarishsiz ~ Butunlay o'chiriladi va keyin qayta tiklanmaydi ~ Resurs bo'shagani uchun odatdagidan tezlashadi
+29.12 ~ Doim debounce chaqirilgan obyektning o'zi bo'lib qoladi, hech narsa yo'qolmaydi ~ Doim window obyekti bo'ladi, chunki taymer ichidagi har qanday funksiya shunday ishlaydi ~ Dvigatel this ni oxirgi argumentdan olib, uni funksiyaga o'zi avtomatik bog'lab qo'yadi
+30.1 ~ Ha, user ga null berilishi yetarli ~ Faqat strict rejimda o'chiriladi ~ Ha, admin ham avtomatik null bo'ladi
+30.2 ~ Aylana tufayli xotirada abadiy qoladi ~ TypeError chiqadi, aylana taqiqlangan ~ Faqat qo'lda delete qilinsa o'chadi
+30.3 ~ Funksiya ichida e'lon qilinib, hech qayerga uzatilmagan const o = {} obyekti ~ Funksiya tugashi bilan uning barcha lokal o'zgaruvchilari stekdan olib tashlanishi ~ for siklida har aylanishda let bilan yangi i o'zgaruvchisi yaratilib turishi
+30.4 ~ Hech qanday: tinglovchi o'zi tozalanadi ~ Faqat hodisalar tezroq kela boshlaydi ~ Har safar konsolga xato chiqib turadi
+30.5 ~ obj obyektining o'zini barcha xususiyatlari bilan xotiradan butunlay o'chirib tashlaydi ~ Boshqa joyda havola bo'lsa ham, qiymat egallagan xotirani shu zahoti majburan bo'shatadi ~ Hech narsa qilmaydi: obyekt xususiyatlarini faqat null berish orqali o'chirish mumkin
+30.6 ~ display: none bilan yashirilgan, lekin DOM daraxtida o'z joyida turgan element ~ Ichida na matn, na bola elementi bo'lmagan, bo'sh holda sahifada qolgan element ~ cloneNode bilan yaratilgan va asl nusxasidan mustaqil holda sahifaga qo'shilgan tugun
+30.7 ~ U lokaldan sekinroq o'qiladi, xolos ~ U birinchi o'qilishida xato beradi ~ U faqat Node.js da muammo tug'diradi
+30.8 ~ console.log bilan qiymat chiqarish ~ DevTools → Network → Waterfall ~ Lighthouse dagi SEO hisoboti
+30.9 ~ Qidiruv oddiy Map dagidan bir necha barobar tezroq bajarilgani uchun yaxshi ~ Unga oddiy Map ga qaraganda ancha ko'p yozuv sig'adi va hajmi cheklanmaydi ~ Uni JSON ga aylantirib, sahifa yangilanganda ham keshni saqlab qolsa bo'ladi
+30.10 ~ Massivni const bilan e'lon qilish ~ Massivni Object.freeze qilish ~ Yozishni async funksiyaga o'tkazish
+30.11 ~ Closure ichida var ishlatib, let dan voz kechish ~ Tashqi funksiyani arrow ko'rinishida qayta yozish ~ Ichki funksiyani darhol async qilib belgilab qo'yish
+30.12 ~ Faqat sahifadagi DOM elementlari va ularga bog'langan tinglovchilar ~ Faqat uzunligi noldan katta bo'lgan massivlar va Map to'plamlari ~ Kodda obyekt literali ko'rinishida yozilgan barcha qiymatlar to'plami
+31.1 ~ '<b>x</b>' (birinchi teg) ~ '<b>' (ochuvchi teg) ~ null (mos kelmaydi)
+31.11 ~ Faqat butun matnning boshi va oxiriga mos keladi ~ Har bir SO'Z boshi va oxiriga mos kela boshlaydi ~ Qator uzilishi belgisining o'zini qidirib topadi
+31.12 ~ Juda ko'p mos natija topilganda regex dvigateli xotirasining to'lib, dastur qulashi ~ Qavslar noto'g'ri yopilgan naqshda dvigatelning sintaksis xatosi berib to'xtashi ~ g bayrog'i bilan lastIndex qayta nollanmagani sabab qidiruvning orqaga qaytib ketishi
+32.6 ~ Farqi yo'q: ikkalasi ham UTC bo'yicha yarim tun ~ Birinchisi lokal vaqt, ikkinchisi UTC deb o'qiladi ~ Ikkalasi ham Invalid Date qaytaradi, format xato
+32.8 ~ Joriy vaqtni ko'rsatuvchi Date obyekti ~ 1970-yildan beri o'tgan sekundlar sonini ~ Joriy sananing ISO formatidagi satrini
+32.11 ~ Foydalanuvchi qurilmasidagi lokal vaqtni, formatlangan matn ko'rinishida ~ Faqat soat va daqiqani, sanani esa alohida ustunda lokal tartibda saqlash ~ Har bir foydalanuvchi mintaqasi bo'yicha alohida nusxada, o'girmasdan
+32.12 ~ Farqi yo'q: ikkalasi ham harflarni nemis alifbosi tartibida bir xil joylashtiradi ~ Oddiy sort tilga mos tartib beradi, Collator esa belgilarni kod raqami bo'yicha qo'yadi ~ Oddiy sort lotindan boshqa harf uchrasa xato beradi, Collator esa uni tashlab ketadi
+32.13 ~ Matn yaroqsiz JSON bo'lganda chiqadigan xatoni ushlab, standart qiymat qaytarib berish ~ Natijaviy obyektni konsolga chiroyli, bo'sh joylar bilan formatlab chiqarishni sozlash ~ Obyekt kalitlarini parse tugashidan oldin alifbo tartibida saralab joylashtirib chiqish
+33.1 ~ Emitter klassining on() obuna metodida ~ Proxy obyektining get trap ida, o'qishda ~ Decorator qaytargan o'rovchi funksiyada
+33.3 ~ Hech narsa: tinglovchi o'zi avtomatik o'chib ketadi ~ Keyingi emit chaqirilganda dastur xato berib to'xtaydi ~ Hodisalar kam tinglovchiga yetib, ancha tezlashadi
+33.4 ~ Modul ichidagi static class dan ~ Eksportlar Object.freeze qilinganidan ~ Import qiymatni Proxy ga o'raganidan
+33.5 ~ Har murojaatda sekin yaratilib, tezlik pasayadi ~ U faqat Node.js da ishlaydi, brauzerda esa yo'q ~ Har bir foydalanish joyida xotiradan nusxa oladi
+33.7 ~ Faqat xususiyat o'qilayotganini ushlab, qiymatni yashirish uchun ~ Obyektni to'liq muzlatib, unga yozishni butunlay taqiqlash uchun ~ Obyekt prototype ini ish paytida boshqasiga almashtirib turish uchun
+33.8 ~ Keraksiz obyektlarni xotiradan o'chirib berish ~ Mavjud obyektdan chuqur nusxa olib berish usulini ~ Obyektdagi o'zgarishlarni tinglab, xabar berishni
+33.9 ~ Har bir loyiha boshida, kelajakda kerak bo'lishi mumkin deb hammasini ~ Faqat katta jamoada ishlaganda, yakka dasturchiga esa u foyda bermaydi ~ Hech qachon: zamonaviy JavaScript da andozalar butunlay eskirib bo'lgan
+33.10 ~ JavaScript da class mexanizmi yo'q, shuning uchun andozalarni to'liq yozib bo'lmaydi ~ Dvigatel obyektga yo'naltirilgan andozalarni sekin bajaradi va ulardan qochishni talab qiladi ~ Brauzer xavfsizlik cheklovlari interfeys va abstrakt klass yaratishga ruxsat bermaydi
+33.11 ~ Farqi yo'q: ikkalasida ham nashr qiluvchi obunachilar ro'yxatini o'zi saqlab, bevosita chaqiradi ~ Pub/Sub faqat asinxron tarmoq orqali ishlaydi, Observer esa faqat bitta faylning ichida ishlaydi ~ Observer faqat DOM hodisalari uchun, Pub/Sub esa faqat server tomonidagi xabarlar uchun mo'ljallangan
+33.12 ~ Faqat Proxy: store har bir o'qish va yozishni trap orqali ushlab turadi ~ Faqat Factory: store har bir o'zgarishda yangi obyekt yasab beradi xolos ~ Decorator va Adapter: store komponentlarni o'rab, interfeysini moslaydi

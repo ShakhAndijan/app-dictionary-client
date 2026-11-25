@@ -29,4 +29,6 @@ h.L.forEach((l) => {
   h.L.forEach((l) => { if (labs[l.order]) { l.labs = labs[l.order]; if (l.labs.length < 10) console.warn(`${l.code} has only ${l.labs.length} labs`); } });
   fs.writeFileSync('E:/frontend/app-dictionary/app-dictionary-server/src/main/resources/dev/frontend-git-junior.json', JSON.stringify(h.L, null, 1));
   console.log('lessons', h.L.length, 'items', items, 'labs', checked);
+  // richer theory blocks and Uzbek meanings of English terms
+  require('./add-dev-theory.cjs')('git');
 })().catch((e) => { console.error(e.message); process.exit(1); });

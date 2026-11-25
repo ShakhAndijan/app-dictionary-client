@@ -14,6 +14,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "HTML (HyperText Markup Language — gipermatnni belgilash tili) sahifaning tuzilishi va MA'NOSINI belgilaydi. Semantic (ma'noli) teg qismning nima ekanini aytadi: header (sarlavha ma'lumoti) — bosh qism, nav — menyu, main — asosiy tarkib, article — mustaqil maqola. Brauzer, qidiruv tizimi va ekran o'quvchi shu ma'noga tayanadi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -29,8 +34,26 @@
        "text": "sahifa haqida ma'lumot beruvchi teg: kodlash, ko'rinish oynasi, tavsif."
       },
       {
-       "term": "Viewport",
+       "term": "Viewport (ko'rinadigan oyna)",
        "text": "mobil qurilmada sahifa ko'rinadigan oyna kengligi."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Har yangi sahifada",
+       "text": "DOCTYPE, html lang, meta (sahifa haqidagi ma'lumot) charset va viewport — majburiy skelet."
+      },
+      {
+       "term": "Sahifani bo'laklashda",
+       "text": "div o'rniga mos semantik teg tanlaysiz."
+      },
+      {
+       "term": "Hamma foydalana olishi uchun",
+       "text": "Ekran o'quvchi sarlavhalar va bo'limlar bo'yicha sakrab yuradi."
       }
      ]
     },
@@ -104,7 +127,7 @@
     },
     {
      "heading": "Sarlavhalar tartibi",
-     "text": "h1 dan h6 gacha sarlavhalar sahifa tuzilmasini beradi: h1 asosiy mavzu, h2 uning bo'limlari, h3 ichki bo'limlar. Darajalarni sakrab o'tmang (h2 dan keyin h4 emas). Screen reader foydalanuvchilari sahifani aynan sarlavhalar ro'yxati orqali kezib chiqadi."
+     "text": "h1 dan h6 gacha sarlavhalar sahifa tuzilmasini beradi: h1 asosiy mavzu, h2 uning bo'limlari, h3 ichki bo'limlar. Darajalarni sakrab o'tmang (h2 dan keyin h4 emas). Screen reader (ekranni o'qib beruvchi dastur) foydalanuvchilari sahifani aynan sarlavhalar ro'yxati orqali kezib chiqadi."
     },
     {
      "callout": {
@@ -126,11 +149,35 @@
        "text": "Binoda kirish (header), yo'laklar (nav), asosiy zal (main) va chiqish (footer) bor. div esa \"nomsiz xona\": yo'lboshchi tablichkasi yo'q, ko'zi ojiz mehmon adashadi."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Savol bering: «Bu qism NIMA?» — javobga mos teg bor bo'lsa, o'shani ishlating. div va span — mos teg topilmaganda."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Hamma narsani div bilan yozish.",
+       "header, nav, main, section, article, footer.",
+       "Ma'no yo'qoladi, accessibility buziladi."
+      ],
+      [
+       "Katta ko'rinsin deb h1 ni bir necha joyda ishlatish.",
+       "Sarlavha darajasi tartib bilan; o'lcham CSS bilan.",
+       "Sarlavhalar — mundarija."
+      ]
+     ]
     }
    ],
    "recap": [
     "doctype brauzerni standart rejimga o'tkazadi.",
-    "head — sahifa haqida, body — ko'rinadigan mazmun.",
+    "head — sahifa haqida, body (asosiy tana) — ko'rinadigan mazmun.",
     "Ma'noga mos semantik element div dan afzal.",
     "Sarlavhalar h1 dan boshlab, sakramasdan ketma-ket."
    ]
@@ -138,7 +185,7 @@
   "practice": [
    {
     "title": "Blog sahifasi",
-    "text": "Faqat semantik teglar bilan blog sahifasini yozing: header, nav, main (ichida article va aside) va footer. div ishlatmang. Keyin brauzer DevTools'da Accessibility panelini ochib, tuzilmaga qarang."
+    "text": "Faqat semantik teglar bilan blog sahifasini yozing: header, nav, main (ichida article va aside) va footer. div ishlatmang. Keyin brauzer DevTools'da Accessibility (hamma foydalana olishi) panelini ochib, tuzilmaga qarang."
    },
    {
     "title": "Sarlavhalar xaritasi",
@@ -152,9 +199,9 @@
     "prompt": "<!DOCTYPE html> qatori nima uchun kerak?",
     "options": [
      "Brauzerni standart rejimda ishlashga o'tkazadi",
-     "Sahifa sarlavhasini belgilaydi",
-     "JavaScript ni yoqadi",
-     "Sahifani serverga yuboradi"
+     "Sahifaning brauzer tabidagi sarlavhasini belgilaydi",
+     "Sahifadagi JavaScript kodlarining ishlashini yoqadi",
+     "Sahifani serverga yuborishga tayyorlab, belgilab qo'yadi"
     ],
     "answer": "Brauzerni standart rejimda ishlashga o'tkazadi",
     "explain": "DOCTYPE bo'lmasa brauzer eski quirks rejimiga o'tib, sahifa kutilmagan ko'rinishi mumkin."
@@ -170,7 +217,7 @@
      "<nav>"
     ],
     "answer": "<head>",
-    "explain": "head — hujjat ma'lumoti. header esa sahifada ko'rinadigan bosh qism. Ikkalasini aralashtirmang."
+    "explain": "head — hujjat ma'lumoti. header (sarlavha ma'lumoti) esa sahifada ko'rinadigan bosh qism. Ikkalasini aralashtirmang."
    },
    {
     "id": "3",
@@ -178,9 +225,9 @@
     "prompt": "<meta charset=\"UTF-8\"> nimani ta'minlaydi?",
     "options": [
      "o', g', emoji kabi belgilar to'g'ri ko'rinishini",
-     "Sahifa tezroq yuklanishini",
-     "Rasmlar siqilishini",
-     "Sahifa mobilga moslashishini"
+     "Sahifa va undagi shriftlar tezroq yuklanishini",
+     "Sahifadagi rasmlar avtomatik siqib berilishini",
+     "Sahifa mobil ekran kengligiga moslashib turishini"
     ],
     "answer": "o', g', emoji kabi belgilar to'g'ri ko'rinishini",
     "explain": "Kodlash noto'g'ri bo'lsa, harflar o'rniga \"?\" yoki belgilar aralashmasi chiqadi."
@@ -191,9 +238,9 @@
     "prompt": "viewport meta tegi nima qiladi?",
     "options": [
      "Mobilda sahifa kengligini qurilma kengligiga moslaydi",
-     "Rasmlarni avtomatik kichraytiradi",
-     "Sahifa fon rangini beradi",
-     "Katta ekranda sahifani kattalashtiradi"
+     "Sahifadagi barcha rasmlarni ekranga qarab avtomatik kichraytiradi",
+     "Mobil brauzerda sahifaning fon rangini va mavzusini belgilab beradi",
+     "Katta monitorda sahifa matnini ikki baravar kattalashtirib ko'rsatadi"
     ],
     "answer": "Mobilda sahifa kengligini qurilma kengligiga moslaydi",
     "explain": "Usiz mobil brauzer sahifani kompyuter kengligida chizib, kichraytirib ko'rsatadi."
@@ -209,7 +256,7 @@
      "<section>"
     ],
     "answer": "<nav>",
-    "explain": "nav asosiy navigatsiyani bildiradi. Header ichida bo'lishi mumkin, lekin o'zi nav emas."
+    "explain": "nav asosiy navigatsiyani bildiradi. Header (sarlavha ma'lumoti) ichida bo'lishi mumkin, lekin o'zi nav emas."
    },
    {
     "id": "6",
@@ -230,12 +277,12 @@
     "prompt": "Matn kichikroq ko'rinsin deb h2 o'rniga h4 yozish to'g'rimi?",
     "options": [
      "Yo'q: ko'rinish CSS bilan beriladi, daraja esa tuzilmani bildiradi",
-     "Ha, h4 kichikroq chiqadi",
-     "Ha, qidiruv tizimi baribir tushunadi",
-     "Faqat mobilda to'g'ri"
+     "Ha: h4 kichikroq chiqadi va boshqa hech narsaga ta'sir qilmaydi",
+     "Ha: qidiruv tizimi va ekran o'quvchi darajalarga e'tibor bermaydi",
+     "Faqat mobilda to'g'ri, chunki u yerda h2 ekranga sig'may qoladi"
     ],
     "answer": "Yo'q: ko'rinish CSS bilan beriladi, daraja esa tuzilmani bildiradi",
-    "explain": "Darajani sakrab o'tish screen reader foydalanuvchisini adashtiradi."
+    "explain": "Darajani sakrab o'tish screen reader (ekranni o'qib beruvchi dastur) foydalanuvchisini adashtiradi."
    },
    {
     "id": "8",
@@ -268,7 +315,7 @@
     "kind": "FILL",
     "prompt": "Sahifa tilini bildiruvchi atribut nomi qanday? (html tegida, bitta so'z)",
     "answer": "lang",
-    "explain": "<html lang=\"uz\"> screen reader va tarjimon uchun muhim.",
+    "explain": "<html lang=\"uz\"> screen reader (ekranni o'qib beruvchi dastur) va tarjimon uchun muhim.",
     "alsoAccept": [
      "lang"
     ]
@@ -285,7 +332,7 @@
      "<body>"
     ],
     "answer": "<!DOCTYPE html> <html lang=\"uz\"> <head> <title> <body>",
-    "explain": "doctype, so'ng html, uning ichida head (title shu yerda), keyin body."
+    "explain": "doctype, so'ng html, uning ichida head (title shu yerda), keyin body (asosiy tana)."
    }
   ]
  },
@@ -304,11 +351,16 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Matn teglari so'zlarga ma'no beradi (strong — muhim, em — urg'u), a tegi sahifalarni bog'laydi, ro'yxat teglari esa bir turdagi narsalarni guruhlaydi: ul — tartibsiz, ol — tartibli, dl — atama va izoh."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
        "term": "Havola (hyperlink)",
-       "text": "bosilganda boshqa sahifa yoki sahifa ichidagi joyga o'tkazadigan element."
+       "text": "bosilganda boshqa sahifa yoki sahifa ichidagi joyga o'tkazadigan element (sahifa unsuri)."
       },
       {
        "term": "Atribut",
@@ -321,6 +373,28 @@
       {
        "term": "Iqtibos",
        "text": "boshqa manbadan olingan matn: uzun bo'lsa blockquote, qisqa bo'lsa q."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Navigatsiya menyusida",
+       "text": "nav ichida ul va li, har birida a."
+      },
+      {
+       "term": "Qadamli ko'rsatmada",
+       "text": "ol — tartib muhim bo'lganda."
+      },
+      {
+       "term": "Sahifa ichida sakrashda",
+       "text": "href=\"#bolim\" va id=\"bolim\"."
+      },
+      {
+       "term": "Tashqi havolada",
+       "text": "target=\"_blank\" bilan rel=\"noopener\"."
       }
      ]
     },
@@ -425,6 +499,30 @@
        "text": "\"Bo'sh oshqozonga ichmang\" gapi qalin yoziladi, chunki bu ko'rinish emas, muhim ogohlantirish. Shuning uchun strong, b emas."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Havola — boshqa joyga OLIB BORADI, tugma — ish BAJARADI. Shuning uchun a va button ni almashtirmang."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "<a href=\"#\" onclick=\"save()\">Saqlash</a>",
+       "<button type=\"button\">Saqlash</button>",
+       "Bu amal, havola emas."
+      ],
+      [
+       "Havola matni: «bu yerga bosing».",
+       "Matn qayerga olib borishini aytsin: «Narxlar jadvali».",
+       "Ekran o'quvchi havolalarni alohida o'qiydi."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -451,9 +549,9 @@
     "prompt": "Ikki paragrafni ajratish uchun <br><br> yozish to'g'rimi?",
     "options": [
      "Yo'q: har paragraf uchun <p> ishlatiladi, br faqat she'r yoki manzil kabi qator uzishda",
-     "Ha, vizual natija bir xil bo'lgani uchun to'g'ri",
-     "Ha, p dan tezroq ishlaydi",
-     "Faqat mobil uchun"
+     "Ha: vizual natija aynan bir xil bo'lgani uchun semantikaning farqi yo'q",
+     "Ha: br teglari p ga qaraganda tezroq chiziladi va kodni ham qisqartiradi",
+     "Faqat mobil versiyada to'g'ri, kompyuterda esa div bilan ajratish shart"
     ],
     "answer": "Yo'q: har paragraf uchun <p> ishlatiladi, br faqat she'r yoki manzil kabi qator uzishda",
     "explain": "p ma'noni bildiradi, br esa faqat qator uzadi."
@@ -464,9 +562,9 @@
     "prompt": "Muhim ogohlantirishni qaysi teg bilan belgilash to'g'ri?",
     "options": [
      "<strong>",
-     "<b>",
-     "<i>",
-     "<u>"
+     "<em>",
+     "<mark>",
+     "<small>"
     ],
     "answer": "<strong>",
     "explain": "strong ma'no (muhimlik) beradi. b esa shunchaki qalin ko'rsatadi."
@@ -477,9 +575,9 @@
     "prompt": "target=\"_blank\" bilan birga rel=\"noopener\" nima uchun yoziladi?",
     "options": [
      "Yangi sahifa eski sahifani window.opener orqali boshqarib qo'ymasligi uchun",
-     "Havola tezroq ochilishi uchun",
-     "Havola qidiruvdan yashirilishi uchun",
-     "Yangi tab bloklanishi uchun"
+     "Yangi tabdagi sahifa brauzer keshidan olinib, ancha tezroq ochilishi uchun",
+     "Qidiruv tizimi bu havolani hisobga olmasligi va unga ergashib o'tmasligi uchun",
+     "Brauzerning qalqib chiquvchi oynalar bloklagichi yangi tabni to'smasligi uchun"
     ],
     "answer": "Yangi sahifa eski sahifani window.opener orqali boshqarib qo'ymasligi uchun",
     "explain": "Yangi brauzerlar buni o'zi qiladi, lekin aniq yozish xavfsiz odat."
@@ -490,9 +588,9 @@
     "prompt": "rel=\"nofollow\" nimani bildiradi?",
     "options": [
      "Qidiruv tizimiga bu havolaga ishonch ko'rsatmaslikni",
-     "Havola yangi tabda ochilishini",
-     "Sahifa eski sahifani boshqarolmasligini",
-     "Havola o'chirilganini"
+     "Havola doim yangi tabda ochilishi kerakligini",
+     "Ochilgan sahifa eski oynani boshqara olmasligini",
+     "Havola manzili foydalanuvchidan yashirilishini"
     ],
     "answer": "Qidiruv tizimiga bu havolaga ishonch ko'rsatmaslikni",
     "explain": "nofollow reklama yoki ishonchsiz havolalar uchun. noopener bilan adashtirmang."
@@ -516,9 +614,9 @@
     "prompt": "<dl>, <dt>, <dd> qanday ma'lumot uchun?",
     "options": [
      "Atama va uning ta'rifi juftlari (lug'at)",
-     "Jadval qatorlari",
-     "Menyu bandlari",
-     "Sahifa bo'limlari"
+     "Qator va ustunli jadval ma'lumotlari uchun",
+     "Saytning asosiy navigatsiya menyusi uchun",
+     "Maqolaning bo'lim va kichik bo'limlari uchun"
     ],
     "answer": "Atama va uning ta'rifi juftlari (lug'at)",
     "explain": "dt — atama, dd — ta'rif."
@@ -529,9 +627,9 @@
     "prompt": "<blockquote> va <q> farqi nimada?",
     "options": [
      "blockquote uzun blok iqtibos, q qator ichidagi qisqa iqtibos",
-     "Farqi yo'q",
-     "q faqat rasm uchun",
-     "blockquote kodga oid"
+     "Farqi yo'q: ikkalasi ham matnni bir xil qiyshiq qilib ko'rsatadi",
+     "blockquote sarlavhalar uchun, q esa savol matnlari uchun ishlatiladi",
+     "blockquote dastur kodi uchun, q esa klaviatura buyruqlari uchun kerak"
     ],
     "answer": "blockquote uzun blok iqtibos, q qator ichidagi qisqa iqtibos",
     "explain": "q brauzerda qo'shtirnoqni o'zi qo'shadi."
@@ -542,9 +640,9 @@
     "prompt": "<figure> va <figcaption> nimaga xizmat qiladi?",
     "options": [
      "Rasm (yoki kod, diagramma) va uning sarlavhasini bitta birlik qiladi",
-     "Rasmni siqadi",
-     "Rasm uchun alt matn yozadi",
-     "Rasmni markazga qo'yadi"
+     "Katta rasmni brauzerda siqib, yuklanishini ancha tezlashtirib beradi",
+     "Rasm ko'rinmay qolganda chiqadigan alt matnning o'rnini to'liq bosadi",
+     "Rasm va undan keyingi matnni sahifa markaziga avtomatik joylashtiradi"
     ],
     "answer": "Rasm (yoki kod, diagramma) va uning sarlavhasini bitta birlik qiladi",
     "explain": "figcaption figure bilan bog'langan sarlavha."
@@ -555,12 +653,12 @@
     "prompt": "href=\"#about\" bosilganda nima bo'ladi?",
     "options": [
      "id=\"about\" bo'lgan elementga sahifa ichida o'tiladi",
-     "about.html ochiladi",
-     "Yangi tab ochiladi",
-     "Sahifa yangilanadi va yuqoriga qaytadi"
+     "about.html nomli alohida fayl serverdan ochiladi",
+     "id=\"about\" bo'lgan element yangi tabda ochiladi",
+     "Sahifa serverdan qayta yuklanib, yuqoriga qaytadi"
     ],
     "answer": "id=\"about\" bo'lgan elementga sahifa ichida o'tiladi",
-    "explain": "# dan keyin id yoziladi. Bu fragment: serverga yuborilmaydi."
+    "explain": "# dan keyin id yoziladi. Bu fragment (sahifa ichidagi bo'lak): serverga yuborilmaydi."
    },
    {
     "id": "10",
@@ -568,9 +666,9 @@
     "prompt": "\"Bu yerni bosing\" havola matni nega yomon?",
     "options": [
      "Screen reader havolalar ro'yxatida ma'nosiz eshitiladi",
-     "Havola ishlamaydi",
-     "Qidiruv tizimi uni bloklaydi",
-     "Brauzer uni qizil qiladi"
+     "Bunday matnli havola mobil brauzerlarda bosilmay qoladi",
+     "Qidiruv tizimlari bunday havolali sahifani bloklab qo'yadi",
+     "Brauzer bunday havolani xavfli deb ogohlantirish beradi"
     ],
     "answer": "Screen reader havolalar ro'yxatida ma'nosiz eshitiladi",
     "explain": "Havola matni o'zi bilan ma'noni olib yurishi kerak."
@@ -580,7 +678,7 @@
     "kind": "FILL",
     "prompt": "Havola yaratadigan elementning nomi nima? (bitta harf)",
     "answer": "a",
-    "explain": "<a href=\"...\"> — anchor.",
+    "explain": "<a href=\"...\"> — anchor (langar, ichki havola).",
     "alsoAccept": [
      "a"
     ]
@@ -616,14 +714,19 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Form (to'ldiriladigan shakl) foydalanuvchidan ma'lumot yig'ib, serverga yuboradi. Har maydonning name atributi yuboriladigan kalit nomi, label (maydon yorlig'i) esa foydalanuvchi ko'radigan va ekran o'quvchi o'qiydigan izohdir."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
        "term": "Forma (form)",
-       "text": "foydalanuvchi ma'lumotini yig'ib, serverga yuboradigan element."
+       "text": "foydalanuvchi ma'lumotini yig'ib, serverga yuboradigan element (sahifa unsuri)."
       },
       {
-       "term": "Label",
+       "term": "Label (maydon yorlig'i)",
        "text": "maydonga nom beruvchi element; bosilganda maydonga fokus beradi."
       },
       {
@@ -631,8 +734,30 @@
        "text": "formani yuborishda qiymat uchun kalit vazifasini o'taydi."
       },
       {
-       "term": "Fieldset",
+       "term": "Fieldset (maydonlar guruhi)",
        "text": "bog'liq maydonlarni guruhlaydigan element, legend esa guruh nomi."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Login va ro'yxatdan o'tishda",
+       "text": "type=\"email\", type=\"password\" mos klaviatura va tekshiruv beradi."
+      },
+      {
+       "term": "Qidiruvda",
+       "text": "method=\"get\" — natija havolasini ulashsa bo'ladi."
+      },
+      {
+       "term": "Ma'lumot yaratishda",
+       "text": "method=\"post\" — qiymatlar so'rov tanasida ketadi."
+      },
+      {
+       "term": "Maydonlarni guruhlashda",
+       "text": "fieldset va legend."
       }
      ]
     },
@@ -703,12 +828,12 @@
     },
     {
      "heading": "GET va POST",
-     "text": "GET qiymatlarni URL ga qo'yadi (?q=olma), shuning uchun qidiruv uchun mos, lekin parol uchun yaramaydi. POST qiymatlarni so'rov body'sida yuboradi."
+     "text": "GET qiymatlarni URL ga qo'yadi (?q=olma), shuning uchun qidiruv uchun mos, lekin parol uchun yaramaydi. POST qiymatlarni so'rov body'sida (asosiy tana) yuboradi."
     },
     {
      "callout": {
       "kind": "tip",
-      "text": "Forma ichidagi button type bermasangiz, u submit bo'ladi. Boshqa vazifa uchun type=\"button\" yozing."
+      "text": "Forma ichidagi button type bermasangiz, u submit (yuborish) bo'ladi. Boshqa vazifa uchun type=\"button\" yozing."
      }
     },
     {
@@ -717,7 +842,7 @@
       {
        "icon": "🏦",
        "title": "Bank anketasi",
-       "text": "Anketada \"Ism\" maydoni yonidagi yozuv — label, maydonning o'zi — input. Xodim anketani qabul qilganda \"Ism: Aziz\" kabi juftlarni o'qiydi. name aynan shu \"Ism\" yorlig'i."
+       "text": "Anketada \"Ism\" maydoni yonidagi yozuv — label, maydonning o'zi — input (kiritish maydoni). Xodim anketani qabul qilganda \"Ism: Aziz\" kabi juftlarni o'qiydi. name aynan shu \"Ism\" yorlig'i."
       },
       {
        "icon": "🎚️",
@@ -729,6 +854,30 @@
        "title": "Pochta xati va ochiq xat",
        "text": "GET — ochiq otkritka: matnni hamma ko'radi (URL da). POST — yopiq konvert: ma'lumot ichida. Parolni otkritkaga yozmaysiz."
       }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "name yo'q maydon serverga YUBORILMAYDI. label for va input id mos bo'lsin — yozuvni bossangiz maydon faollashadi."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "placeholder ni label o'rniga ishlatish.",
+       "Alohida label qo'yish.",
+       "Yoza boshlaganda placeholder yo'qoladi."
+      ],
+      [
+       "Forma ichidagi tugmaga type bermaslik va faqat ochish/yopish kutish.",
+       "type=\"button\" yozish.",
+       "Standart turi submit — forma yuboriladi."
+      ]
      ]
     }
    ],
@@ -761,7 +910,7 @@
      "form da action bo'lishi"
     ],
     "answer": "input da id=\"email\" bo'lishi",
-    "explain": "for qiymati input id siga teng bo'lishi shart. name esa boshqa maqsad uchun."
+    "explain": "for qiymati input (kiritish maydoni) id siga teng bo'lishi shart. name esa boshqa maqsad uchun."
    },
    {
     "id": "2",
@@ -769,12 +918,12 @@
     "prompt": "placeholder label o'rnini bosa oladimi?",
     "options": [
      "Yo'q: yozishni boshlaganda yo'qoladi va screen reader uchun yetarli emas",
-     "Ha, ikkalasi bir xil",
-     "Ha, agar rangi to'q bo'lsa",
-     "Faqat mobilda"
+     "Ha: ikkalasi ham maydonga nom beradi va ekran o'quvchi ularni bir xil o'qiydi",
+     "Ha, agar placeholder rangi to'q va kontrasti yetarli qilib CSS da sozlangan bo'lsa",
+     "Faqat mobil ekranda bosa oladi, chunki u yerda alohida label uchun joy yetmaydi"
     ],
     "answer": "Yo'q: yozishni boshlaganda yo'qoladi va screen reader uchun yetarli emas",
-    "explain": "placeholder maslahat, label esa maydonning nomi."
+    "explain": "placeholder (o'rin egallovchi matn) maslahat, label (maydon yorlig'i) esa maydonning nomi."
    },
    {
     "id": "3",
@@ -782,12 +931,12 @@
     "prompt": "id va name farqi nima?",
     "options": [
      "id sahifada noyob belgi (label, CSS, JS), name esa yuboriladigan kalit",
-     "Ikkalasi bir xil",
-     "id serverga yuboriladi, name esa yuborilmaydi",
-     "name CSS uchun, id server uchun"
+     "Ikkalasi bir xil vazifani bajaradi, bittasini yozsangiz forma yuboriladi",
+     "id serverga yuboriladigan kalit, name esa faqat label bilan bog'lash uchun",
+     "name faqat CSS selektorlari uchun, id esa server qabul qiladigan kalit nomi"
     ],
     "answer": "id sahifada noyob belgi (label, CSS, JS), name esa yuboriladigan kalit",
-    "explain": "Server qiymatni name orqali oladi."
+    "explain": "Server (xizmat ko'rsatuvchi kompyuter) qiymatni name orqali oladi."
    },
    {
     "id": "4",
@@ -795,9 +944,9 @@
     "prompt": "name atributi yo'q input yuborilganda nima bo'ladi?",
     "options": [
      "Uning qiymati serverga yuborilmaydi",
-     "id bo'yicha yuboriladi",
-     "Xato beradi",
-     "Bo'sh qiymat bilan yuboriladi"
+     "Qiymati id atributi nomi bilan yuboriladi",
+     "Brauzer xato berib, formani yubormaydi",
+     "Qiymati nomsiz bo'sh satr sifatida ketadi"
     ],
     "answer": "Uning qiymati serverga yuborilmaydi",
     "explain": "name bo'lmasa maydon formaga qo'shilmaydi."
@@ -813,7 +962,7 @@
      "required yoziladi"
     ],
     "answer": "Hammasiga bir xil name beriladi",
-    "explain": "Radio guruhini name belgilaydi, fieldset esa faqat vizual va ma'noviy guruh."
+    "explain": "Radio guruhini name belgilaydi, fieldset (maydonlar guruhi) esa faqat vizual va ma'noviy guruh."
    },
    {
     "id": "6",
@@ -839,7 +988,7 @@
      "Sahifa yangilanadi, lekin yuborilmaydi"
     ],
     "answer": "Forma yuboriladi (submit)",
-    "explain": "Standart type submit. Boshqa vazifa uchun type=\"button\"."
+    "explain": "Standart type submit (yuborish). Boshqa vazifa uchun type=\"button\"."
    },
    {
     "id": "8",
@@ -847,9 +996,9 @@
     "prompt": "Qidiruv formasi uchun qaysi method ma'qul?",
     "options": [
      "GET: qidiruv so'zi URL da qoladi va havola sifatida ulashish mumkin",
-     "POST, chunki xavfsizroq",
-     "PUT",
-     "DELETE"
+     "POST: qidiruv so'zi yashirin ketadi va natijani keshlab bo'lmaydi, bu xavfsizroq",
+     "PUT: qidiruv natijasi serverda yangilanadi va keyingi safar tayyor holda keladi",
+     "DELETE: oldingi qidiruv tarixi o'chirilib, har safar toza natija qaytarib beriladi"
     ],
     "answer": "GET: qidiruv so'zi URL da qoladi va havola sifatida ulashish mumkin",
     "explain": "Qidiruv ma'lumot o'qish, shuning uchun GET."
@@ -860,9 +1009,9 @@
     "prompt": "Parol POST bilan yuborilsa xavfsiz bo'ladimi?",
     "options": [
      "Yo'q: baribir HTTPS kerak, aks holda yo'lda o'qilishi mumkin",
-     "Ha, POST hamma narsani shifrlaydi",
-     "Ha, type=password shifrlaydi",
-     "Faqat Chrome da"
+     "Ha: POST so'rovi tanani avtomatik shifrlab, yo'lda o'qib bo'lmas qiladi",
+     "Ha: type=\"password\" maydoni qiymatni yuborishdan oldin shifrlab beradi",
+     "Faqat zamonaviy brauzerlarda xavfsiz, ular parolni o'zlari xeshlab yuboradi"
     ],
     "answer": "Yo'q: baribir HTTPS kerak, aks holda yo'lda o'qilishi mumkin",
     "explain": "type=password faqat ekranda yashiradi."
@@ -873,12 +1022,12 @@
     "prompt": "<fieldset> va <legend> nima uchun?",
     "options": [
      "Bog'liq maydonlarni guruhlab, guruhga nom berish uchun",
-     "Maydonlarni rangli qilish uchun",
-     "Formani tekshirish uchun",
-     "Yuborish manzilini belgilash uchun"
+     "Maydonlarga umumiy rang va ramka berib, chiroyli ko'rsatish uchun",
+     "Guruhdagi maydonlarni yuborishdan oldin birga tekshirish uchun",
+     "Guruhdagi qiymatlar qaysi manzilga yuborilishini belgilash uchun"
     ],
     "answer": "Bog'liq maydonlarni guruhlab, guruhga nom berish uchun",
-    "explain": "Ayniqsa radio guruhlari uchun screen reader savolni o'qib beradi."
+    "explain": "Ayniqsa radio guruhlari uchun screen reader (ekranni o'qib beruvchi dastur) savolni o'qib beradi."
    },
    {
     "id": "11",
@@ -921,6 +1070,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Validation (tekshirish) — ma'lumot yuborilishidan oldin to'g'riligini tekshirish. HTML buni tayyor atributlar bilan qiladi: required (majburiy), type, minlength, max, pattern (andoza). Murakkab qoida uchun Constraint Validation API bor."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -928,7 +1082,7 @@
        "text": "kiritilgan ma'lumot qoidalarga mos ekanini tekshirish."
       },
       {
-       "term": "Pattern",
+       "term": "Pattern (andoza)",
        "text": "matn mos kelishi kerak bo'lgan regular expression (naqsh)."
       },
       {
@@ -936,8 +1090,30 @@
        "text": "brauzerda tekshiruv holatini JavaScript orqali o'qish va xabarni o'zgartirish imkoni."
       },
       {
-       "term": "Autocomplete",
+       "term": "Autocomplete (avtomatik to'ldirish)",
        "text": "brauzerga maydonda qanday ma'lumot kutilayotganini aytib, avto to'ldirishga yordam beruvchi atribut."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Majburiy maydonda",
+       "text": "required."
+      },
+      {
+       "term": "Format talab qilinganda",
+       "text": "pattern (andoza) va tushunarli izoh."
+      },
+      {
+       "term": "Maxsus qoida bo'lsa",
+       "text": "setCustomValidity bilan o'z xabaringizni berasiz."
+      },
+      {
+       "term": "Qulaylik uchun",
+       "text": "autocomplete brauzerga mos qiymatni taklif qildiradi."
       }
      ]
     },
@@ -1017,7 +1193,7 @@
     {
      "callout": {
       "kind": "warn",
-      "text": "Brauzer validatsiyasi faqat qulaylik. Foydalanuvchi uni o'chirib qo'yishi mumkin, shuning uchun server tekshiruvi har doim shart."
+      "text": "Brauzer validatsiyasi faqat qulaylik. Foydalanuvchi uni o'chirib qo'yishi mumkin, shuning uchun server (xizmat ko'rsatuvchi kompyuter) tekshiruvi har doim shart."
      }
     },
     {
@@ -1036,8 +1212,32 @@
       {
        "icon": "☎️",
        "title": "Telefon raqami",
-       "text": "+998 90 123 45 67 ni number maydoniga yozsangiz, \"+\" va bo'shliqlar o'tmaydi, strelka bilan raqam o'zgarib ketadi. Shuning uchun tel."
+       "text": "+998 90 123 45 67 ni number (son) maydoniga yozsangiz, \"+\" va bo'shliqlar o'tmaydi, strelka bilan raqam o'zgarib ketadi. Shuning uchun tel."
       }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Mijoz tekshiruvi — QULAYLIK uchun, server tekshiruvi — XAVFSIZLIK uchun. Ikkalasi ham kerak."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Faqat brauzer tekshiruviga ishonish.",
+       "Serverda ham to'liq tekshirish.",
+       "So'rovni brauzersiz ham yuborsa bo'ladi."
+      ],
+      [
+       "setCustomValidity xabarini tozalamaslik.",
+       "Qiymat to'g'rilanganda setCustomValidity('').",
+       "Aks holda maydon doim yaroqsiz."
+      ]
      ]
     }
    ],
@@ -1065,12 +1265,12 @@
     "prompt": "required atributi nimani ta'minlaydi?",
     "options": [
      "Maydon bo'sh bo'lsa, forma yuborilmaydi",
-     "Maydon avtomatik to'ldiriladi",
-     "Maydon yashiriladi",
-     "Serverga alohida so'rov ketadi"
+     "Maydon saqlangan qiymat bilan avtomatik to'ladi",
+     "Maydon qiymati yuborishdan oldin shifrlanib ketadi",
+     "Maydon bo'sh bo'lsa, server xato javob qaytaradi"
     ],
     "answer": "Maydon bo'sh bo'lsa, forma yuborilmaydi",
-    "explain": "required — eng oddiy tekshiruv."
+    "explain": "required (majburiy) — eng oddiy tekshiruv."
    },
    {
     "id": "2",
@@ -1078,9 +1278,9 @@
     "prompt": "minlength va min farqi nima?",
     "options": [
      "minlength matn uzunligi uchun, min raqam yoki sana qiymati uchun",
-     "Ikkalasi bir xil",
-     "min matn uchun, minlength raqam uchun",
-     "minlength faqat parol uchun"
+     "Ikkalasi bir xil ishlaydi, faqat eski brauzerlarda nomlanishi boshqacha",
+     "min matn uzunligini, minlength esa raqamning eng kichik qiymatini belgilaydi",
+     "minlength faqat parol maydonida, min esa qolgan barcha maydonlarda ishlaydi"
     ],
     "answer": "minlength matn uzunligi uchun, min raqam yoki sana qiymati uchun",
     "explain": "Raqam uchun min/max, matn uchun minlength/maxlength."
@@ -1096,7 +1296,7 @@
      "4 dan katta raqam"
     ],
     "answer": "Aynan 4 ta raqam",
-    "explain": "pattern regex orqali tekshiradi."
+    "explain": "pattern (andoza) regex orqali tekshiradi."
    },
    {
     "id": "4",
@@ -1104,9 +1304,9 @@
     "prompt": "novalidate atributi nima qiladi?",
     "options": [
      "Brauzerning o'z tekshiruvini o'chiradi",
-     "Formani yuborishni taqiqlaydi",
-     "Server tekshiruvini o'chiradi",
-     "Faqat required ni o'chiradi"
+     "Formani serverga yuborishni butunlay taqiqlaydi",
+     "Server tomonidagi tekshiruvlarni o'chirib qo'yadi",
+     "Faqat required ni o'chiradi, qolgani ishlayveradi"
     ],
     "answer": "Brauzerning o'z tekshiruvini o'chiradi",
     "explain": "Maxsus tekshiruvni o'zingiz boshqarsangiz ishlatiladi."
@@ -1117,9 +1317,9 @@
     "prompt": "input.setCustomValidity('') chaqirilsa nima bo'ladi?",
     "options": [
      "Maxsus xato tozalanadi, maydon yana to'g'ri hisoblanadi",
-     "Maydon xato bo'lib qoladi",
-     "Maydon tozalanadi",
-     "Forma yuboriladi"
+     "Maydon bo'sh xabar bilan baribir xato holatida qolaveradi",
+     "Maydonga kiritilgan qiymat tozalanib, bo'shab qoladi",
+     "Forma tekshiruvsiz darhol serverga yuborib qo'yiladi"
     ],
     "answer": "Maxsus xato tozalanadi, maydon yana to'g'ri hisoblanadi",
     "explain": "Bo'sh satr xatoni olib tashlaydi. Tozalamasangiz forma doim yuborilmaydi."
@@ -1130,9 +1330,9 @@
     "prompt": "form.checkValidity() nima qaytaradi?",
     "options": [
      "true yoki false: forma to'g'rimi",
-     "Xato matnini",
-     "Maydonlar sonini",
-     "Server javobini"
+     "Birinchi xato maydonning xabar matnini",
+     "Xato to'ldirilgan maydonlarning sonini",
+     "Serverdan kelgan tekshiruv javobini"
     ],
     "answer": "true yoki false: forma to'g'rimi",
     "explain": "reportValidity esa tekshirib, xabarni ham ko'rsatadi."
@@ -1143,9 +1343,9 @@
     "prompt": "Brauzer validatsiyasi bo'lsa, serverda tekshirish kerakmi?",
     "options": [
      "Ha: foydalanuvchi brauzer tekshiruvini chetlab o'tishi mumkin",
-     "Yo'q, brauzer yetarli",
-     "Faqat parol uchun kerak",
-     "Faqat mobilda kerak"
+     "Yo'q: brauzer tekshiruvi o'tgan ma'lumotni qayta ko'rish ortiqcha ish",
+     "Faqat parol va to'lov maydonlari uchun kerak, qolganlari shart emas",
+     "Faqat mobil ilovadan kelgan so'rovlar uchun kerak, brauzerniki uchun emas"
     ],
     "answer": "Ha: foydalanuvchi brauzer tekshiruvini chetlab o'tishi mumkin",
     "explain": "HTML tekshiruvi qulaylik, himoya emas."
@@ -1156,9 +1356,9 @@
     "prompt": "autocomplete=\"one-time-code\" nima uchun?",
     "options": [
      "SMS orqali kelgan kodni avtomatik taklif qilish uchun",
-     "Parolni saqlash uchun",
-     "Maydonni yashirish uchun",
-     "Kodni shifrlash uchun"
+     "Foydalanuvchining parolini brauzerda bir marta saqlash uchun",
+     "Maydondagi kodni nuqtalar ortiga yashirib ko'rsatish uchun",
+     "Kiritilgan kodni yuborishdan oldin brauzerda shifrlash uchun"
     ],
     "answer": "SMS orqali kelgan kodni avtomatik taklif qilish uchun",
     "explain": "Maydon turini brauzerga to'g'ri aytish foydalanuvchiga qulay."
@@ -1169,12 +1369,12 @@
     "prompt": "inputmode=\"numeric\" nimani o'zgartiradi?",
     "options": [
      "Mobilda raqamli klaviatura chiqadi, lekin qiymat tekshirilmaydi",
-     "Faqat raqam kiritishni majburlaydi",
-     "Maydonni number turiga aylantiradi",
-     "Qiymatni avto raqamga o'giradi"
+     "Maydonga raqamdan boshqa belgi kiritishni brauzer darajasida taqiqlaydi",
+     "Maydonni type=\"number\" ga aylantirib, o'q tugmachalarini ham qo'shadi",
+     "Kiritilgan matnni yuborishdan oldin avtomatik ravishda songa aylantiradi"
     ],
     "answer": "Mobilda raqamli klaviatura chiqadi, lekin qiymat tekshirilmaydi",
-    "explain": "Tekshiruv uchun pattern yoki type kerak."
+    "explain": "Tekshiruv uchun pattern (andoza) yoki type kerak."
    },
    {
     "id": "10",
@@ -1182,9 +1382,9 @@
     "prompt": "Telefon raqami uchun type=\"number\" nega yomon?",
     "options": [
      "Boshidagi nol va + belgisi yo'qoladi, scroll qiymatni o'zgartiradi",
-     "Telefon raqamlari juda uzun",
-     "number faqat kompyuterda ishlaydi",
-     "number uchun label kerak emas"
+     "Telefon raqamlari number turi sig'dira oladigan eng katta sondan uzun bo'ladi",
+     "number turi faqat kompyuter klaviaturasida ishlaydi, telefonda maydon ochilmaydi",
+     "number maydoniga label bog'lab bo'lmaydi va ekran o'quvchi uni o'tkazib yuboradi"
     ],
     "answer": "Boshidagi nol va + belgisi yo'qoladi, scroll qiymatni o'zgartiradi",
     "explain": "type=\"tel\" bilan inputmode ishlating."
@@ -1229,11 +1429,16 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Table (jadval) ikki o'lchovli ma'lumot uchun: qatorlar va ustunlar. Media teglari (img, picture, video) rasm va videoni joylaydi, ekranga mos variantni tanlaydi va yuklanishni tejaydi."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
        "term": "alt matni",
-       "text": "rasm ko'rinmaganda yoki screen reader uchun uning o'rniga o'qiladigan tavsif."
+       "text": "rasm ko'rinmaganda yoki screen reader (ekranni o'qib beruvchi dastur) uchun uning o'rniga o'qiladigan tavsif."
       },
       {
        "term": "srcset",
@@ -1241,11 +1446,33 @@
       },
       {
        "term": "picture",
-       "text": "turli format yoki ekranga mos manbalardan birini tanlatadigan o'rama element."
+       "text": "turli format yoki ekranga mos manbalardan birini tanlatadigan o'rama element (sahifa unsuri)."
       },
       {
-       "term": "Lazy loading",
+       "term": "Lazy loading (kerak bo'lganda yuklash)",
        "text": "ekranga yaqinlashguncha rasmni yuklamaslik usuli."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Narxlar va hisobotda",
+       "text": "table, thead, th va scope (ko'rinish sohasi)."
+      },
+      {
+       "term": "Har xil ekranda",
+       "text": "srcset va sizes — mos o'lchamdagi rasm."
+      },
+      {
+       "term": "Boshqa format yoki kadr kerak bo'lsa",
+       "text": "picture va source."
+      },
+      {
+       "term": "Pastdagi rasmlarda",
+       "text": "loading=\"lazy\"."
       }
      ]
     },
@@ -1331,6 +1558,30 @@
        "text": "Vitrina uchun kichik, ombor uchun katta quti: srcset ham kerakli o'lchamni beradi. Telefonga 4K rasm yuborish — bir dona sovunni yuk mashinasida olib borishdek."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "alt savoli: «Rasm ko'rinmasa, o'rniga nima deyman?» Bezak rasm bo'lsa alt=\"\"."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Sahifa joylashuvini jadval bilan qilish.",
+       "Joylashuv uchun Flexbox yoki Grid.",
+       "Jadval — faqat ma'lumot uchun."
+      ],
+      [
+       "Rasmga width va height bermaslik.",
+       "O'lchamlarni ko'rsatish.",
+       "Rasm yuklanganda sahifa sakraydi."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -1357,12 +1608,12 @@
     "prompt": "Sahifa joylashuvini (ustun-ustun chiqarish) jadval bilan qilish to'g'rimi?",
     "options": [
      "Yo'q: jadval ma'lumot uchun, joylashuv CSS (flex, grid) bilan qilinadi",
-     "Ha, jadval eng ishonchli",
-     "Ha, mobilda ham yaxshi ishlaydi",
-     "Faqat email uchun yo'q"
+     "Ha: jadval barcha brauzerlarda bir xil ko'ringani uchun eng ishonchli yechim",
+     "Ha: jadval ustunlari mobil ekranda o'z-o'zidan pastga tushib, yaxshi moslashadi",
+     "Faqat email xatlarida emas, oddiy sahifalarda joylashuv uchun tavsiya etiladi"
     ],
     "answer": "Yo'q: jadval ma'lumot uchun, joylashuv CSS (flex, grid) bilan qilinadi",
-    "explain": "Layout uchun jadval screen reader va responsive ishini buzadi."
+    "explain": "Layout (joylashuv) uchun jadval screen reader (ekranni o'qib beruvchi dastur) va responsive (ekranga moslashuvchan) ishini buzadi."
    },
    {
     "id": "2",
@@ -1375,7 +1626,7 @@
      "Jadval nomini"
     ],
     "answer": "Bu katak ustun sarlavhasi ekanini",
-    "explain": "scope screen readerga sarlavha qaysi yo'nalishga tegishli ekanini aytadi."
+    "explain": "scope (ko'rinish sohasi) screen readerga sarlavha qaysi yo'nalishga tegishli ekanini aytadi."
    },
    {
     "id": "3",
@@ -1388,7 +1639,7 @@
      "Ustun kengligi"
     ],
     "answer": "Jadvalning nomi (sarlavhasi)",
-    "explain": "caption table ichida birinchi element bo'ladi."
+    "explain": "caption table ichida birinchi element (sahifa unsuri) bo'ladi."
    },
    {
     "id": "4",
@@ -1414,7 +1665,7 @@
      "alt=\"bezak\""
     ],
     "answer": "alt=\"\" (bo'sh)",
-    "explain": "Bo'sh alt screen reader o'tkazib yuborishini bildiradi. Atributni butunlay tashlab ketish esa fayl nomini o'qitadi."
+    "explain": "Bo'sh alt screen reader (ekranni o'qib beruvchi dastur) o'tkazib yuborishini bildiradi. Atributni butunlay tashlab ketish esa fayl nomini o'qitadi."
    },
    {
     "id": "6",
@@ -1422,9 +1673,9 @@
     "prompt": "img da width va height berishdan maqsad nima?",
     "options": [
      "Rasm yuklanguncha joy zahiralanadi, sahifa sakramaydi",
-     "Rasm sifatini oshiradi",
-     "Rasm tezroq yuklanadi",
-     "Rasm markazga tushadi"
+     "Rasm sifati o'lchamga qarab avtomatik oshiriladi",
+     "Rasm fayli kichrayib, ancha tezroq yuklab olinadi",
+     "Rasm o'zi turgan blokning markaziga joylashib oladi"
     ],
     "answer": "Rasm yuklanguncha joy zahiralanadi, sahifa sakramaydi",
     "explain": "Bu CLS (kutilmagan sakrash) ni kamaytiradi."
@@ -1435,9 +1686,9 @@
     "prompt": "srcset va sizes birgalikda nima beradi?",
     "options": [
      "Brauzer ekran kengligiga mos rasm variantini tanlaydi",
-     "Rasm formatini o'zgartiradi",
-     "Rasmni animatsiya qiladi",
-     "Rasm uchun alt yozadi"
+     "Brauzer rasm formatini o'zi boshqa formatga o'giradi",
+     "Bir nechta rasm navbatma-navbat animatsiya bo'lib chiqadi",
+     "Ekran o'quvchi uchun har o'lchamga alohida alt beriladi"
     ],
     "answer": "Brauzer ekran kengligiga mos rasm variantini tanlaydi",
     "explain": "srcset — variantlar, sizes — rasm sahifada qancha joy olishi."
@@ -1448,9 +1699,9 @@
     "prompt": "<picture> qachon kerak?",
     "options": [
      "Brauzer qo'llasa AVIF/WebP, aks holda JPG berish uchun",
-     "Rasmga ramka qo'yish uchun",
-     "Rasmni orqa fon qilish uchun",
-     "Rasmni siqish uchun"
+     "Rasm atrofiga ramka va uning ostiga izoh qo'yish uchun",
+     "Rasmni blokning orqa foni qilib to'liq yoyib berish uchun",
+     "Katta rasmni brauzerning o'zida siqib ko'rsatish uchun"
     ],
     "answer": "Brauzer qo'llasa AVIF/WebP, aks holda JPG berish uchun",
     "explain": "Oxirgi img — majburiy zaxira (fallback)."
@@ -1461,9 +1712,9 @@
     "prompt": "Brauzerlar autoplay ni odatda qachon ruxsat qiladi?",
     "options": [
      "Video ovozsiz (muted) bo'lganda",
-     "Har doim",
-     "Hech qachon",
-     "Faqat controls bo'lsa"
+     "Har qanday video uchun doim",
+     "Faqat HTTPS saytlarda",
+     "Faqat controls qo'yilganda"
     ],
     "answer": "Video ovozsiz (muted) bo'lganda",
     "explain": "Foydalanuvchini kutilmagan ovozdan himoya qilish uchun."
@@ -1474,9 +1725,9 @@
     "prompt": "loading=\"lazy\" ni qaysi rasmga qo'ymaslik kerak?",
     "options": [
      "Birinchi ekrandagi katta (hero) rasmga",
-     "Sahifa pastidagi rasmlarga",
-     "Galereyadagi rasmlarga",
-     "Footer dagi rasmlarga"
+     "Sahifaning pastki qismidagi rasmlarga",
+     "Ko'p sahifali galereyadagi rasmlarga",
+     "Footer ichidagi hamkorlar logotiplariga"
     ],
     "answer": "Birinchi ekrandagi katta (hero) rasmga",
     "explain": "Hero rasm tez yuklanishi kerak, aks holda sahifa sekin ko'rinadi."
@@ -1492,7 +1743,7 @@
      "<figcaption>"
     ],
     "answer": "<track>",
-    "explain": "track kind=\"subtitles\" bilan."
+    "explain": "track (ustun yoki qator yo'li) kind=\"subtitles\" bilan."
    },
    {
     "id": "12",
@@ -1521,6 +1772,11 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Zamonaviy HTML ko'p interaktiv narsani JavaScriptsiz yoki kam kod bilan beradi: details — ochiladigan bo'lim, dialog — modal (ustida ochiladigan oyna) oyna, popover (qalqib chiquvchi oyna) — qalqib chiquvchi oyna, template (qolip) — qayta ishlatiladigan qolip."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
@@ -1528,16 +1784,38 @@
        "text": "ochiq turganda orqadagi sahifa bilan ishlashni to'xtatadigan oyna."
       },
       {
-       "term": "Popover",
+       "term": "Popover (qalqib chiquvchi oyna)",
        "text": "tugma bosilganda ochiladigan, tashqariga bosilganda yopiladigan engil oyna."
       },
       {
-       "term": "Template",
+       "term": "Template (qolip)",
        "text": "sahifada ko'rinmaydigan va JS yordamida nusxalanadigan HTML andoza."
       },
       {
-       "term": "Sandbox",
+       "term": "Sandbox (cheklangan xavfsiz muhit)",
        "text": "iframe ichidagi kodga ruxsatlarni cheklaydigan atribut."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Ko'p so'raladigan savollarda",
+       "text": "details va summary."
+      },
+      {
+       "term": "Tasdiqlash oynasida",
+       "text": "dialog va showModal() — fokus va Esc o'zi boshqariladi."
+      },
+      {
+       "term": "Menyu va maslahat oynasida",
+       "text": "popover atributi."
+      },
+      {
+       "term": "Begona tarkibni ko'rsatishda",
+       "text": "iframe va sandbox (cheklangan muhit)."
       }
      ]
     },
@@ -1552,7 +1830,7 @@
      "bullets": [
       "showModal() — modal ochadi: orqa fon bloklanadi, Esc yopadi, fokus ichida qoladi.",
       "show() — modalsiz ochadi.",
-      "form method=\"dialog\" bosilganda dialogni yopadi va tugma value sini returnValue ga yozadi.",
+      "form (to'ldiriladigan shakl) method=\"dialog\" bosilganda dialogni yopadi va tugma value (qiymat) sini returnValue ga yozadi.",
       "Orqa fonni ::backdrop bilan bezaysiz."
      ]
     },
@@ -1624,6 +1902,30 @@
        "text": "template — shirinlik qolipi: o'zi pishirilmaydi, lekin kerak bo'lganda undan istalgancha nusxa olinadi."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Avval tayyor HTML element (sahifa unsuri) bor-yo'qligini tekshiring: u klaviatura va ekran o'quvchini o'zi qo'llab-quvvatlaydi."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Modalni oddiy div bilan yasash.",
+       "dialog va showModal().",
+       "Fokus boshqaruvi va Esc qo'lda yozilishi kerak bo'ladi."
+      ],
+      [
+       "sandbox ga allow-scripts va allow-same-origin ni birga berish.",
+       "Faqat zarur ruxsatni berish.",
+       "Ichki sahifa cheklovni olib tashlay oladi."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -1650,12 +1952,12 @@
     "prompt": "dialog.showModal() va show() farqi nima?",
     "options": [
      "showModal() orqa fonni bloklaydi va Esc bilan yopiladi, show() esa modalsiz",
-     "Farqi yo'q",
-     "show() modalni ochadi, showModal() yopadi",
-     "showModal() faqat mobilda"
+     "Farqi yo'q: ikkalasi ham oynani bir xil ochadi, faqat nomi bilan farq qiladi",
+     "show() orqa fonni bloklab ochadi, showModal() esa uni bloklamasdan ko'rsatadi",
+     "showModal() faqat telefon ekranida, show() esa kompyuter ekranida ishlatiladi"
     ],
     "answer": "showModal() orqa fonni bloklaydi va Esc bilan yopiladi, show() esa modalsiz",
-    "explain": "Modal dialog 'top layer' da turadi va fokusni ichida ushlaydi."
+    "explain": "Modal (ustida ochiladigan oyna) dialog 'top layer' da turadi va fokusni ichida ushlaydi."
    },
    {
     "id": "2",
@@ -1663,9 +1965,9 @@
     "prompt": "div bilan yasalgan modal qaysi imkoniyatlarni o'zi bermaydi?",
     "options": [
      "Fokusni ichida ushlash, Esc bilan yopish, ma'noviy rol",
-     "Rang berishni",
-     "Matn yozishni",
-     "Havola qo'yishni"
+     "Fon rangi, soya va burchaklarni yumaloqlash imkonini",
+     "Ichiga sarlavha, matn va tugmalar joylash imkonini",
+     "Ochilganda silliq animatsiya bilan chiqish imkonini"
     ],
     "answer": "Fokusni ichida ushlash, Esc bilan yopish, ma'noviy rol",
     "explain": "dialog bularni tayyor beradi."
@@ -1676,12 +1978,12 @@
     "prompt": "<form method=\"dialog\"> ichidagi tugma bosilsa nima bo'ladi?",
     "options": [
      "Dialog yopiladi va tugma qiymati returnValue ga yoziladi",
-     "Sahifa serverga yuboriladi",
-     "Sahifa yangilanadi",
-     "Hech narsa bo'lmaydi"
+     "Forma ma'lumotlari serverga yuborilib, sahifa qayta ochiladi",
+     "Sahifa yangilanadi va dialog yana ochiq holatda ko'rsatiladi",
+     "Hech narsa bo'lmaydi, chunki dialog method emas, faqat JS bilan yopiladi"
     ],
     "answer": "Dialog yopiladi va tugma qiymati returnValue ga yoziladi",
-    "explain": "Server so'rovisiz dialog natijasini olish uchun qulay."
+    "explain": "Server (xizmat ko'rsatuvchi kompyuter) so'rovisiz dialog natijasini olish uchun qulay."
    },
    {
     "id": "4",
@@ -1689,9 +1991,9 @@
     "prompt": "details/summary ni nima uchun ishlatamiz?",
     "options": [
      "JavaScript siz ochiladigan va yopiladigan blok yasash uchun",
-     "Jadval yasash uchun",
-     "Rasm yuklash uchun",
-     "Havola yasash uchun"
+     "Sarlavha qatori bosilganda saralanadigan jadval yasash uchun",
+     "Rasmni bosganda yuklab oladigan galereya bloki yasash uchun",
+     "Bosilganda boshqa sahifaga olib o'tadigan havola yasash uchun"
     ],
     "answer": "JavaScript siz ochiladigan va yopiladigan blok yasash uchun",
     "explain": "FAQ uchun ideal."
@@ -1702,9 +2004,9 @@
     "prompt": "summary elementi bo'lmasa <details> da nima ko'rinadi?",
     "options": [
      "Brauzer standart \"Details\" sarlavhasini qo'yadi",
-     "Hech narsa ko'rinmaydi",
-     "Matn yashirin qoladi",
-     "Xato chiqadi"
+     "Hech narsa ko'rinmaydi va blokni ochib bo'lmaydi",
+     "Ichidagi barcha matn doim ochiq holda turib qoladi",
+     "Brauzer xato chiqarib, blokni sahifadan o'chiradi"
     ],
     "answer": "Brauzer standart \"Details\" sarlavhasini qo'yadi",
     "explain": "Doimo aniq summary yozing."
@@ -1728,12 +2030,12 @@
     "prompt": "popover atributli element qanday ochiladi?",
     "options": [
      "popovertarget li tugma orqali, JavaScript siz",
-     "Faqat CSS hover bilan",
-     "Faqat fetch bilan",
-     "Faqat dialog ichida"
+     "Faqat CSS dagi :hover holati yozilganda ochiladi",
+     "Faqat serverga fetch so'rovi yuborilgandan keyin",
+     "Faqat dialog elementi ichiga joylashtirilganda"
     ],
     "answer": "popovertarget li tugma orqali, JavaScript siz",
-    "explain": "Odatiy (auto) popover tashqarini bosganda yopiladi."
+    "explain": "Odatiy (auto) popover (qalqib chiquvchi oyna) tashqarini bosganda yopiladi."
    },
    {
     "id": "8",
@@ -1741,12 +2043,12 @@
     "prompt": "<template> ichidagi HTML nima bo'ladi?",
     "options": [
      "Sahifada ko'rinmaydi, JS orqali klonlab ishlatiladi",
-     "Oddiy ko'rinadi",
-     "Server tomonida chiqariladi",
-     "Faqat bosilganda ko'rinadi"
+     "Sahifada oddiy HTML kabi darhol chizilib ko'rinadi",
+     "Server tomonida bajarilib, brauzerga yuborilmaydi",
+     "Faqat foydalanuvchi ustiga bosganda ochilib ko'rinadi"
     ],
     "answer": "Sahifada ko'rinmaydi, JS orqali klonlab ishlatiladi",
-    "explain": "template kontenti render qilinmaydi."
+    "explain": "template (qolip) kontenti render (ekranga chizish) qilinmaydi."
    },
    {
     "id": "9",
@@ -1754,9 +2056,9 @@
     "prompt": "iframe sandbox atributi qanday ishlaydi?",
     "options": [
      "Bo'sh sandbox hamma narsani cheklaydi, ruxsatlar alohida qo'shiladi",
-     "Faqat rasmni cheklaydi",
-     "Iframe ni tezlashtiradi",
-     "Iframe ni yashiradi"
+     "Bo'sh sandbox hech narsani cheklamaydi, taqiqlar alohida-alohida qo'shiladi",
+     "Faqat iframe ichidagi rasm va videolar yuklanishini cheklab qo'yadi xolos",
+     "iframe ni alohida protsessda tezroq ishlatadi, ruxsatlarga ta'sir qilmaydi"
     ],
     "answer": "Bo'sh sandbox hamma narsani cheklaydi, ruxsatlar alohida qo'shiladi",
     "explain": "Masalan sandbox=\"allow-scripts\" faqat skriptga ruxsat beradi."
@@ -1767,9 +2069,9 @@
     "prompt": "Nega ba'zi saytlar iframe ichida ochilmaydi?",
     "options": [
      "Server X-Frame-Options yoki CSP frame-ancestors bilan taqiqlagan",
-     "Brauzer iframe ni qo'llamaydi",
-     "Sayt juda katta",
-     "Iframe faqat bitta bo'ladi"
+     "Foydalanuvchi brauzeri iframe elementini butunlay qo'llab-quvvatlamaydi",
+     "Saytning hajmi iframe uchun ruxsat etilgan chegaradan katta bo'lib ketgan",
+     "Bir sahifada faqat bitta iframe ishlashiga brauzer ruxsat berishi sabab"
     ],
     "answer": "Server X-Frame-Options yoki CSP frame-ancestors bilan taqiqlagan",
     "explain": "Bu clickjacking dan himoya."
@@ -1779,7 +2081,7 @@
     "kind": "FILL",
     "prompt": "Dialogni modal ochuvchi metod nomi? (showModal)",
     "answer": "showModal",
-    "explain": "dialog.showModal() modal ochadi.",
+    "explain": "dialog.showModal() modal (ustida ochiladigan oyna) ochadi.",
     "alsoAccept": [
      "showModal"
     ]
@@ -1814,10 +2116,15 @@
    },
    "sections": [
     {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "SEO (qidiruv tizimlari uchun optimallashtirish) — sahifaning qidiruvda topilishi va to'g'ri ko'rinishi uchun qilinadigan ishlar. Asosiysi: aniq title, meta (sahifa haqidagi ma'lumot) description, semantik tuzilma, canonical (asosiy nusxa) manzil va tuzilgan ma'lumot."
+    },
+    {
      "heading": "Asosiy ta'riflar",
      "defs": [
       {
-       "term": "SEO",
+       "term": "SEO (qidiruv tizimlari uchun optimallashtirish)",
        "text": "sayt qidiruv tizimlarida to'g'ri topilishi va tushunilishi uchun qilinadigan ishlar (Search Engine Optimization)."
       },
       {
@@ -1825,7 +2132,7 @@
        "text": "bir xil mazmunning bir nechta manzili orasidagi asosiy manzil."
       },
       {
-       "term": "Open Graph",
+       "term": "Open Graph (ijtimoiy tarmoq ko'rinishi belgilari)",
        "text": "havola ulashilganda ijtimoiy tarmoqda ko'rinadigan sarlavha, tavsif va rasmni belgilovchi teglar."
       },
       {
@@ -1833,8 +2140,30 @@
        "text": "qidiruv tizimi sahifani o'z bazasiga qo'shishi."
       },
       {
-       "term": "Structured data",
+       "term": "Structured data (tuzilgan ma'lumot)",
        "text": "mazmunni mashinaga tushunarli formatda (JSON-LD, schema.org) berish."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Har sahifada",
+       "text": "Noyob title va description."
+      },
+      {
+       "term": "Ijtimoiy tarmoqda ulashishda",
+       "text": "Open Graph teglari rasm va sarlavhani belgilaydi."
+      },
+      {
+       "term": "Bir tarkib ikki manzilda bo'lsa",
+       "text": "link rel=\"canonical\"."
+      },
+      {
+       "term": "Boyitilgan natija uchun",
+       "text": "JSON-LD ko'rinishidagi structured data."
       }
      ]
     },
@@ -1921,6 +2250,30 @@
        "text": "robots.txt — eshikdagi yozuv: halol botlar kirmaydi. Lekin yozuv sahifa borligini yashirmaydi. Yashirish uchun noindex kerak."
       }
      ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Qidiruv roboti — ko'zi ko'rmaydigan o'quvchi: matn, sarlavha va havolalarga tayanadi."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Hamma sahifada bir xil title.",
+       "Har sahifaga mazmuniga mos title.",
+       "Robot sahifalarni farqlay olmaydi."
+      ],
+      [
+       "robots.txt bilan sahifani natijadan o'chirishga urinish.",
+       "meta robots noindex ishlatish.",
+       "robots.txt faqat kirib o'qishni cheklaydi."
+      ]
+     ]
     }
    ],
    "recap": [
@@ -1947,9 +2300,9 @@
     "prompt": "<title> nima uchun muhim?",
     "options": [
      "Qidiruv natijasida sarlavha bo'lib chiqadi va brauzer tabida ko'rinadi",
-     "Faqat rasmlarni yuklaydi",
-     "Sahifa rangini belgilaydi",
-     "Faqat serverga yuboriladi"
+     "Sahifadagi eng katta ko'rinadigan sarlavha sifatida matn ustida chiqadi",
+     "Sahifaning asosiy rangi va ikonkasini brauzer uchun belgilab beradi",
+     "Faqat serverga yuboriladi va foydalanuvchiga hech qayerda ko'rsatilmaydi"
     ],
     "answer": "Qidiruv natijasida sarlavha bo'lib chiqadi va brauzer tabida ko'rinadi",
     "explain": "Har sahifada noyob va tavsifli title yozing."
@@ -1960,9 +2313,9 @@
     "prompt": "meta description reytingga ta'sir qiladimi?",
     "options": [
      "To'g'ridan-to'g'ri yo'q, lekin natijada bosishlar sonini oshirishi mumkin",
-     "Ha, eng muhim omil",
-     "Yo'q, umuman ko'rinmaydi",
-     "Faqat mobil natijada ta'sir qiladi"
+     "Ha: u reytingning eng muhim omili va kalit so'zlar soniga qarab hisoblanadi",
+     "Yo'q: u qidiruv natijasida ham, ulashilganda ham umuman ko'rsatilmaydi",
+     "Ha, lekin faqat mobil qidiruv natijalarida, kompyuternikida hisobga olinmaydi"
     ],
     "answer": "To'g'ridan-to'g'ri yo'q, lekin natijada bosishlar sonini oshirishi mumkin",
     "explain": "Description — qidiruv natijasidagi tavsif matni."
@@ -1973,9 +2326,9 @@
     "prompt": "canonical nima qiladi?",
     "options": [
      "Bir xil mazmunli bir necha URL orasidan asosiysini ko'rsatadi",
-     "Sahifani o'chiradi",
-     "Sahifani tezlashtiradi",
-     "Sahifani parol bilan himoyalaydi"
+     "Takroriy sahifani qidiruv indeksidan ham, serverdan ham o'chiradi",
+     "Sahifaning keshlangan nusxasini berib, ochilishini tezlashtiradi",
+     "Sahifa mazmunini nusxa ko'chirishdan parol bilan himoyalab qo'yadi"
     ],
     "answer": "Bir xil mazmunli bir necha URL orasidan asosiysini ko'rsatadi",
     "explain": "Masalan ?utm= bilan kelgan manzillar uchun."
@@ -1986,12 +2339,12 @@
     "prompt": "og:image nimani belgilaydi?",
     "options": [
      "Havola ulashilganda ko'rinadigan rasm",
-     "Sayt ikonkasini",
-     "Sahifa fonini",
-     "Qidiruvdagi rasmlarni"
+     "Brauzer tabida chiqadigan sayt ikonkasini",
+     "Sahifa orqa foniga qo'yiladigan rasmni",
+     "Qidiruvning rasmlar bo'limidagi tartibni"
     ],
     "answer": "Havola ulashilganda ko'rinadigan rasm",
-    "explain": "Open Graph teglari ijtimoiy tarmoqlar uchun."
+    "explain": "Open Graph (ijtimoiy tarmoq ko'rinishi belgilari) teglari ijtimoiy tarmoqlar uchun."
    },
    {
     "id": "5",
@@ -1999,9 +2352,9 @@
     "prompt": "robots.txt dagi Disallow sahifa indeksdan chiqishini kafolatlaydimi?",
     "options": [
      "Yo'q: bu faqat botlarning kirishini cheklaydi, sahifani chiqarish uchun noindex kerak",
-     "Ha, har doim",
-     "Ha, faqat Google uchun",
-     "Yo'q, u umuman ishlamaydi"
+     "Ha: Disallow qo'yilgan sahifa barcha qidiruv tizimlari indeksidan darhol o'chadi",
+     "Ha, lekin faqat Google uchun: boshqa qidiruv tizimlari bu faylni umuman o'qimaydi",
+     "Yo'q: u botlarga hech qanday ta'sir qilmaydi, faqat dasturchilar uchun eslatma"
     ],
     "answer": "Yo'q: bu faqat botlarning kirishini cheklaydi, sahifani chiqarish uchun noindex kerak",
     "explain": "Boshqa saytlar havola bergan bo'lsa, manzil baribir natijada chiqishi mumkin."
@@ -2012,9 +2365,9 @@
     "prompt": "sitemap.xml nima?",
     "options": [
      "Indekslash uchun sahifalar manzillari ro'yxati",
-     "Sayt xaritasi rasmi",
-     "Server sozlamalari fayli",
-     "CSS fayl"
+     "Sayt tuzilishini ko'rsatuvchi grafik xarita",
+     "Server yo'naltirish qoidalari yozilgan fayl",
+     "Botlarga taqiqlangan sahifalar ro'yxati"
     ],
     "answer": "Indekslash uchun sahifalar manzillari ro'yxati",
     "explain": "Botga yangi va muhim sahifalarni topishda yordam beradi."
@@ -2025,9 +2378,9 @@
     "prompt": "JSON-LD nima uchun?",
     "options": [
      "Sahifa mazmunini mashinaga tushunarli (schema.org) formatda berish uchun",
-     "Sahifa dizayni uchun",
-     "Rasm yuklash uchun",
-     "Server so'rovlarini kuzatish uchun"
+     "Sahifadagi bloklarning dizayni va joylashuvini JSON bilan belgilash uchun",
+     "Katta rasm va videolarni qismlarga bo'lib, kechiktirib yuklash uchun",
+     "Foydalanuvchining sahifadagi harakatlarini kuzatib, serverga yuborish uchun"
     ],
     "answer": "Sahifa mazmunini mashinaga tushunarli (schema.org) formatda berish uchun",
     "explain": "Natijada boy ko'rinish (rating, narx) chiqishi mumkin."
@@ -2038,9 +2391,9 @@
     "prompt": "noindex qo'yilgan sahifani sitemap.xml ga qo'shish to'g'rimi?",
     "options": [
      "Yo'q: bu ziddiyat, sitemapda faqat indekslanishi kerak sahifalar bo'ladi",
-     "Ha, har doim",
-     "Ha, tezroq o'chiriladi",
-     "Farqi yo'q"
+     "Ha: sitemapda saytning indekslanmaydigan sahifalari ham albatta turishi shart",
+     "Ha: shunday qilinsa bot sahifani tezroq topib, uni indeksga qo'shib qo'yadi",
+     "Farqi yo'q: qidiruv tizimlari sitemap va noindex ni umuman solishtirmaydi"
     ],
     "answer": "Yo'q: bu ziddiyat, sitemapda faqat indekslanishi kerak sahifalar bo'ladi",
     "explain": "Sitemap — \"mana bularni indekslang\" degan taklif."
@@ -2051,9 +2404,9 @@
     "prompt": "Title uzunligi taxminan qancha bo'lgani ma'qul?",
     "options": [
      "Taxminan 50–60 belgi",
-     "500 belgi",
-     "5 belgi",
-     "Cheklov yo'q"
+     "500–600 belgi atrofida",
+     "5–10 belgidan oshmasin",
+     "Uzunlikning ahamiyati yo'q"
     ],
     "answer": "Taxminan 50–60 belgi",
     "explain": "Uzunroq title natijada kesilib qoladi."
@@ -2064,9 +2417,9 @@
     "prompt": "Lighthouse SEO ball 100 degani nimani anglatadi?",
     "options": [
      "Texnik asoslar to'g'ri, lekin mazmun sifati baholanmagan",
-     "Sayt birinchi o'rinda chiqadi",
-     "Reyting kafolatlangan",
-     "Barcha ijtimoiy teglar bor"
+     "Sayt kalit so'zlar bo'yicha qidiruvda birinchi o'rinda chiqadi",
+     "Sahifa mazmuni sifatli va reytingi kafolatlangan hisoblanadi",
+     "Barcha ijtimoiy tarmoq teglari va rasmlari to'liq sozlangan"
     ],
     "answer": "Texnik asoslar to'g'ri, lekin mazmun sifati baholanmagan",
     "explain": "Avtomatik tekshiruv faqat texnik qismni ko'radi."
@@ -2087,12 +2440,12 @@
     "prompt": "canonical qanday teg bilan yoziladi?",
     "options": [
      "<link rel=\"canonical\" href=\"...\">",
-     "<meta name=\"canonical\">",
-     "<a rel=\"canonical\">",
-     "<canonical>"
+     "<meta name=\"canonical\" content=\"...\">",
+     "<a rel=\"canonical\" href=\"...\">",
+     "<canonical href=\"...\">"
     ],
     "answer": "<link rel=\"canonical\" href=\"...\">",
-    "explain": "Bu link, meta emas va head ichida turadi."
+    "explain": "Bu link, meta (sahifa haqidagi ma'lumot) emas va head ichida turadi."
    }
   ]
  }

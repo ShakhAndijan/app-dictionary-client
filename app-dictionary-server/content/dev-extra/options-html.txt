@@ -1,0 +1,54 @@
+1.1 ~ Sahifaning brauzer tabidagi sarlavhasini belgilaydi ~ Sahifadagi JavaScript kodlarining ishlashini yoqadi ~ Sahifani serverga yuborishga tayyorlab, belgilab qo'yadi
+1.3 ~ Sahifa va undagi shriftlar tezroq yuklanishini ~ Sahifadagi rasmlar avtomatik siqib berilishini ~ Sahifa mobil ekran kengligiga moslashib turishini
+1.4 ~ Sahifadagi barcha rasmlarni ekranga qarab avtomatik kichraytiradi ~ Mobil brauzerda sahifaning fon rangini va mavzusini belgilab beradi ~ Katta monitorda sahifa matnini ikki baravar kattalashtirib ko'rsatadi
+1.7 ~ Ha: h4 kichikroq chiqadi va boshqa hech narsaga ta'sir qilmaydi ~ Ha: qidiruv tizimi va ekran o'quvchi darajalarga e'tibor bermaydi ~ Faqat mobilda to'g'ri, chunki u yerda h2 ekranga sig'may qoladi
+2.1 ~ Ha: vizual natija aynan bir xil bo'lgani uchun semantikaning farqi yo'q ~ Ha: br teglari p ga qaraganda tezroq chiziladi va kodni ham qisqartiradi ~ Faqat mobil versiyada to'g'ri, kompyuterda esa div bilan ajratish shart
+2.2 ~ <em> ~ <mark> ~ <small>
+2.3 ~ Yangi tabdagi sahifa brauzer keshidan olinib, ancha tezroq ochilishi uchun ~ Qidiruv tizimi bu havolani hisobga olmasligi va unga ergashib o'tmasligi uchun ~ Brauzerning qalqib chiquvchi oynalar bloklagichi yangi tabni to'smasligi uchun
+2.4 ~ Havola doim yangi tabda ochilishi kerakligini ~ Ochilgan sahifa eski oynani boshqara olmasligini ~ Havola manzili foydalanuvchidan yashirilishini
+2.6 ~ Qator va ustunli jadval ma'lumotlari uchun ~ Saytning asosiy navigatsiya menyusi uchun ~ Maqolaning bo'lim va kichik bo'limlari uchun
+2.7 ~ Farqi yo'q: ikkalasi ham matnni bir xil qiyshiq qilib ko'rsatadi ~ blockquote sarlavhalar uchun, q esa savol matnlari uchun ishlatiladi ~ blockquote dastur kodi uchun, q esa klaviatura buyruqlari uchun kerak
+2.8 ~ Katta rasmni brauzerda siqib, yuklanishini ancha tezlashtirib beradi ~ Rasm ko'rinmay qolganda chiqadigan alt matnning o'rnini to'liq bosadi ~ Rasm va undan keyingi matnni sahifa markaziga avtomatik joylashtiradi
+2.9 ~ about.html nomli alohida fayl serverdan ochiladi ~ id="about" bo'lgan element yangi tabda ochiladi ~ Sahifa serverdan qayta yuklanib, yuqoriga qaytadi
+2.10 ~ Bunday matnli havola mobil brauzerlarda bosilmay qoladi ~ Qidiruv tizimlari bunday havolali sahifani bloklab qo'yadi ~ Brauzer bunday havolani xavfli deb ogohlantirish beradi
+3.2 ~ Ha: ikkalasi ham maydonga nom beradi va ekran o'quvchi ularni bir xil o'qiydi ~ Ha, agar placeholder rangi to'q va kontrasti yetarli qilib CSS da sozlangan bo'lsa ~ Faqat mobil ekranda bosa oladi, chunki u yerda alohida label uchun joy yetmaydi
+3.3 ~ Ikkalasi bir xil vazifani bajaradi, bittasini yozsangiz forma yuboriladi ~ id serverga yuboriladigan kalit, name esa faqat label bilan bog'lash uchun ~ name faqat CSS selektorlari uchun, id esa server qabul qiladigan kalit nomi
+3.4 ~ Qiymati id atributi nomi bilan yuboriladi ~ Brauzer xato berib, formani yubormaydi ~ Qiymati nomsiz bo'sh satr sifatida ketadi
+3.8 ~ POST: qidiruv so'zi yashirin ketadi va natijani keshlab bo'lmaydi, bu xavfsizroq ~ PUT: qidiruv natijasi serverda yangilanadi va keyingi safar tayyor holda keladi ~ DELETE: oldingi qidiruv tarixi o'chirilib, har safar toza natija qaytarib beriladi
+3.9 ~ Ha: POST so'rovi tanani avtomatik shifrlab, yo'lda o'qib bo'lmas qiladi ~ Ha: type="password" maydoni qiymatni yuborishdan oldin shifrlab beradi ~ Faqat zamonaviy brauzerlarda xavfsiz, ular parolni o'zlari xeshlab yuboradi
+3.10 ~ Maydonlarga umumiy rang va ramka berib, chiroyli ko'rsatish uchun ~ Guruhdagi maydonlarni yuborishdan oldin birga tekshirish uchun ~ Guruhdagi qiymatlar qaysi manzilga yuborilishini belgilash uchun
+4.1 ~ Maydon saqlangan qiymat bilan avtomatik to'ladi ~ Maydon qiymati yuborishdan oldin shifrlanib ketadi ~ Maydon bo'sh bo'lsa, server xato javob qaytaradi
+4.2 ~ Ikkalasi bir xil ishlaydi, faqat eski brauzerlarda nomlanishi boshqacha ~ min matn uzunligini, minlength esa raqamning eng kichik qiymatini belgilaydi ~ minlength faqat parol maydonida, min esa qolgan barcha maydonlarda ishlaydi
+4.4 ~ Formani serverga yuborishni butunlay taqiqlaydi ~ Server tomonidagi tekshiruvlarni o'chirib qo'yadi ~ Faqat required ni o'chiradi, qolgani ishlayveradi
+4.5 ~ Maydon bo'sh xabar bilan baribir xato holatida qolaveradi ~ Maydonga kiritilgan qiymat tozalanib, bo'shab qoladi ~ Forma tekshiruvsiz darhol serverga yuborib qo'yiladi
+4.6 ~ Birinchi xato maydonning xabar matnini ~ Xato to'ldirilgan maydonlarning sonini ~ Serverdan kelgan tekshiruv javobini
+4.7 ~ Yo'q: brauzer tekshiruvi o'tgan ma'lumotni qayta ko'rish ortiqcha ish ~ Faqat parol va to'lov maydonlari uchun kerak, qolganlari shart emas ~ Faqat mobil ilovadan kelgan so'rovlar uchun kerak, brauzerniki uchun emas
+4.8 ~ Foydalanuvchining parolini brauzerda bir marta saqlash uchun ~ Maydondagi kodni nuqtalar ortiga yashirib ko'rsatish uchun ~ Kiritilgan kodni yuborishdan oldin brauzerda shifrlash uchun
+4.9 ~ Maydonga raqamdan boshqa belgi kiritishni brauzer darajasida taqiqlaydi ~ Maydonni type="number" ga aylantirib, o'q tugmachalarini ham qo'shadi ~ Kiritilgan matnni yuborishdan oldin avtomatik ravishda songa aylantiradi
+4.10 ~ Telefon raqamlari number turi sig'dira oladigan eng katta sondan uzun bo'ladi ~ number turi faqat kompyuter klaviaturasida ishlaydi, telefonda maydon ochilmaydi ~ number maydoniga label bog'lab bo'lmaydi va ekran o'quvchi uni o'tkazib yuboradi
+5.1 ~ Ha: jadval barcha brauzerlarda bir xil ko'ringani uchun eng ishonchli yechim ~ Ha: jadval ustunlari mobil ekranda o'z-o'zidan pastga tushib, yaxshi moslashadi ~ Faqat email xatlarida emas, oddiy sahifalarda joylashuv uchun tavsiya etiladi
+5.6 ~ Rasm sifati o'lchamga qarab avtomatik oshiriladi ~ Rasm fayli kichrayib, ancha tezroq yuklab olinadi ~ Rasm o'zi turgan blokning markaziga joylashib oladi
+5.7 ~ Brauzer rasm formatini o'zi boshqa formatga o'giradi ~ Bir nechta rasm navbatma-navbat animatsiya bo'lib chiqadi ~ Ekran o'quvchi uchun har o'lchamga alohida alt beriladi
+5.8 ~ Rasm atrofiga ramka va uning ostiga izoh qo'yish uchun ~ Rasmni blokning orqa foni qilib to'liq yoyib berish uchun ~ Katta rasmni brauzerning o'zida siqib ko'rsatish uchun
+5.9 ~ Har qanday video uchun doim ~ Faqat HTTPS saytlarda ~ Faqat controls qo'yilganda
+5.10 ~ Sahifaning pastki qismidagi rasmlarga ~ Ko'p sahifali galereyadagi rasmlarga ~ Footer ichidagi hamkorlar logotiplariga
+6.1 ~ Farqi yo'q: ikkalasi ham oynani bir xil ochadi, faqat nomi bilan farq qiladi ~ show() orqa fonni bloklab ochadi, showModal() esa uni bloklamasdan ko'rsatadi ~ showModal() faqat telefon ekranida, show() esa kompyuter ekranida ishlatiladi
+6.2 ~ Fon rangi, soya va burchaklarni yumaloqlash imkonini ~ Ichiga sarlavha, matn va tugmalar joylash imkonini ~ Ochilganda silliq animatsiya bilan chiqish imkonini
+6.3 ~ Forma ma'lumotlari serverga yuborilib, sahifa qayta ochiladi ~ Sahifa yangilanadi va dialog yana ochiq holatda ko'rsatiladi ~ Hech narsa bo'lmaydi, chunki dialog method emas, faqat JS bilan yopiladi
+6.4 ~ Sarlavha qatori bosilganda saralanadigan jadval yasash uchun ~ Rasmni bosganda yuklab oladigan galereya bloki yasash uchun ~ Bosilganda boshqa sahifaga olib o'tadigan havola yasash uchun
+6.5 ~ Hech narsa ko'rinmaydi va blokni ochib bo'lmaydi ~ Ichidagi barcha matn doim ochiq holda turib qoladi ~ Brauzer xato chiqarib, blokni sahifadan o'chiradi
+6.7 ~ Faqat CSS dagi :hover holati yozilganda ochiladi ~ Faqat serverga fetch so'rovi yuborilgandan keyin ~ Faqat dialog elementi ichiga joylashtirilganda
+6.8 ~ Sahifada oddiy HTML kabi darhol chizilib ko'rinadi ~ Server tomonida bajarilib, brauzerga yuborilmaydi ~ Faqat foydalanuvchi ustiga bosganda ochilib ko'rinadi
+6.9 ~ Bo'sh sandbox hech narsani cheklamaydi, taqiqlar alohida-alohida qo'shiladi ~ Faqat iframe ichidagi rasm va videolar yuklanishini cheklab qo'yadi xolos ~ iframe ni alohida protsessda tezroq ishlatadi, ruxsatlarga ta'sir qilmaydi
+6.10 ~ Foydalanuvchi brauzeri iframe elementini butunlay qo'llab-quvvatlamaydi ~ Saytning hajmi iframe uchun ruxsat etilgan chegaradan katta bo'lib ketgan ~ Bir sahifada faqat bitta iframe ishlashiga brauzer ruxsat berishi sabab
+7.1 ~ Sahifadagi eng katta ko'rinadigan sarlavha sifatida matn ustida chiqadi ~ Sahifaning asosiy rangi va ikonkasini brauzer uchun belgilab beradi ~ Faqat serverga yuboriladi va foydalanuvchiga hech qayerda ko'rsatilmaydi
+7.2 ~ Ha: u reytingning eng muhim omili va kalit so'zlar soniga qarab hisoblanadi ~ Yo'q: u qidiruv natijasida ham, ulashilganda ham umuman ko'rsatilmaydi ~ Ha, lekin faqat mobil qidiruv natijalarida, kompyuternikida hisobga olinmaydi
+7.3 ~ Takroriy sahifani qidiruv indeksidan ham, serverdan ham o'chiradi ~ Sahifaning keshlangan nusxasini berib, ochilishini tezlashtiradi ~ Sahifa mazmunini nusxa ko'chirishdan parol bilan himoyalab qo'yadi
+7.4 ~ Brauzer tabida chiqadigan sayt ikonkasini ~ Sahifa orqa foniga qo'yiladigan rasmni ~ Qidiruvning rasmlar bo'limidagi tartibni
+7.5 ~ Ha: Disallow qo'yilgan sahifa barcha qidiruv tizimlari indeksidan darhol o'chadi ~ Ha, lekin faqat Google uchun: boshqa qidiruv tizimlari bu faylni umuman o'qimaydi ~ Yo'q: u botlarga hech qanday ta'sir qilmaydi, faqat dasturchilar uchun eslatma
+7.6 ~ Sayt tuzilishini ko'rsatuvchi grafik xarita ~ Server yo'naltirish qoidalari yozilgan fayl ~ Botlarga taqiqlangan sahifalar ro'yxati
+7.7 ~ Sahifadagi bloklarning dizayni va joylashuvini JSON bilan belgilash uchun ~ Katta rasm va videolarni qismlarga bo'lib, kechiktirib yuklash uchun ~ Foydalanuvchining sahifadagi harakatlarini kuzatib, serverga yuborish uchun
+7.8 ~ Ha: sitemapda saytning indekslanmaydigan sahifalari ham albatta turishi shart ~ Ha: shunday qilinsa bot sahifani tezroq topib, uni indeksga qo'shib qo'yadi ~ Farqi yo'q: qidiruv tizimlari sitemap va noindex ni umuman solishtirmaydi
+7.9 ~ 500–600 belgi atrofida ~ 5–10 belgidan oshmasin ~ Uzunlikning ahamiyati yo'q
+7.10 ~ Sayt kalit so'zlar bo'yicha qidiruvda birinchi o'rinda chiqadi ~ Sahifa mazmuni sifatli va reytingi kafolatlangan hisoblanadi ~ Barcha ijtimoiy tarmoq teglari va rasmlari to'liq sozlangan
+7.12 ~ <meta name="canonical" content="..."> ~ <a rel="canonical" href="..."> ~ <canonical href="...">

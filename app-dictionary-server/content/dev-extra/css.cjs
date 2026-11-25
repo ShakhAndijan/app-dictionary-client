@@ -1,0 +1,142 @@
+// Extra theory for the CSS module, keyed by lesson order.
+const E = (what, uses, tip, mistakes) => ({ what, uses, tip, mistakes });
+module.exports = {
+  1: E(
+    "Selector (tanlovchi) — CSS qoidasi QAYSI elementlarga tegishli ekanini aytadigan andoza. Qoida ikki qismdan iborat: selector va figurali qavs ichidagi e'lonlar. Selector qancha aniq bo'lsa, shuncha kam keraksiz element tanlanadi.",
+    [['Komponent bezashda', 'Class selector — eng ishonchli va qayta ishlatiladigan usul.'], ["Tuzilishga qarab tanlashda", 'Kombinatorlar: probel, >, +, ~.'], ["Holatga qarab bezashda", ':hover, :focus-visible, :checked.'], ['Qo\'shimcha bezakda', '::before va ::after.']],
+    "Selectorni o'ngdan chapga o'qing: .menu > li a — «li ichidagi a, u li esa .menu ning bevosita bolasi».",
+    [["id bilan hamma narsani bezash.", "Class ishlatish.", "id aniqligi juda baland, keyin bosib yozish qiyin."], ["div p va div > p bir xil deb o'ylash.", "Probel — barcha avlodlar, > — faqat bevosita bola.", "Ichma-ich tuzilmada natija boshqa."]],
+  ),
+  2: E(
+    "Cascade (qoidalar ustunligi tartibi) — bitta elementga bir nechta qoida tegsa, qaysi biri g'olib bo'lishini hal qiladigan mexanizm. Tartib: muhimlik va manba, qatlam, specificity (aniqlik darajasi), keyin yozilish tartibi.",
+    [['«Nega stilim ishlamayapti» degan holatda', "DevTools da ustidan chizilgan qoidani va uni yengan selectorni ko'rasiz."], ['Kutubxona stilini o\'zgartirishda', "!important o'rniga teng yoki yuqori aniqlik yoxud cascade layer."], ['Katta loyihada', "Past va bir xil aniqlikdagi class selectorlar saqlanadi."]],
+    "Aniqlikni uch xonali son deb sanang: (id, class va holat, teg). (0,1,0) har qanday miqdordagi tegdan kuchli.",
+    [["Muammoni !important bilan yopish.", "Nima uchun yutqazayotganini topib, selectorni tartibga solish.", "Keyingi o'zgartirish yana !important talab qiladi."], ["11 ta class bitta id dan kuchli deb o'ylash.", "id ustuni class ustunidan doim ustun.", "Xonalar bir-biriga o'tmaydi."]],
+  ),
+  3: E(
+    "Inheritance (meros olish) — ba'zi xususiyatlar (color, font, line-height) ota elementdan bolalarga o'z-o'zidan o'tadi, boshqalari (margin, border, background) o'tmaydi. @layer esa qoidalarni qatlamlarga ajratib, ustunlikni oldindan belgilaydi.",
+    [['Umumiy shrift va rang berishda', 'body ga bir marta yozasiz.'], ['Tugma va input shriftida', 'font: inherit.'], ["Tartibli arxitekturada", '@layer reset, base, components, utilities.'], ['Qiymatni qaytarishda', 'inherit, initial, unset, revert.']],
+    "Matnga oid xususiyatlar odatda meros bo'ladi, qutiga oid xususiyatlar bo'lmaydi.",
+    [["Formada shrift o'zi meros bo'ladi deb kutish.", "button, input uchun font: inherit.", "Brauzer ularga o'z shriftini beradi."], ["Qatlamsiz stil qatlamdagidan kuchsiz deb o'ylash.", "Qatlamsiz (unlayered) oddiy stil qatlamlardan ustun.", "Shuning uchun hamma narsani qatlamga soling yoki tartibni biling."]],
+  ),
+  4: E(
+    "Box model (quti modeli) — har bir element to'rtburchak quti: content, padding (ichki bo'shliq), border (chegara) va margin (tashqi bo'shliq). box-sizing width nimani o'lchashini belgilaydi.",
+    [['O\'lcham hisoblashda', "box-sizing: border-box bilan width padding va borderni o'z ichiga oladi."], ["Elementlar orasini ochishda", 'margin yoki gap.'], ["Ichidagi matnni chetdan uzoqlashtirishda", 'padding.'], ["Fokusni ko'rsatishda", 'outline joy egallamaydi.']],
+    "padding — qutining ICHIDA (fon bilan bo'yaladi), margin — TASHQARIDA (doim shaffof).",
+    [["width: 100% va padding berib, sahifa toshib ketishi.", "box-sizing: border-box.", "content-box da padding ustiga qo'shiladi."], ["Ikki vertikal margin qo'shiladi deb hisoblash.", "Kattasi qoladi (margin collapse).", "Flex va grid ichida collapse yo'q."]],
+  ),
+  5: E(
+    "CSS birliklari absolyut (px) va nisbiy (%, em, rem, vw, vh) bo'ladi. Nisbiy birlik boshqa qiymatga qarab hisoblanadi, shuning uchun dizayn ekran va foydalanuvchi sozlamasiga moslashadi. calc, min, max, clamp qiymatlarni hisoblaydi.",
+    [['Shrift o\'lchamida', 'rem — foydalanuvchi sozlamasini hurmat qiladi.'], ['Komponent ichki bo\'shlig\'ida', 'em — shriftga mutanosib o\'sadi.'], ['Ekran balandligida', 'dvh telefonda brauzer panelini hisobga oladi.'], ['Silliq o\'sadigan sarlavhada', 'clamp(min, afzal, max).']],
+    "rem — ildizga (html) qarab, em — element yoki otasining shriftiga qarab.",
+    [["Hamma shriftni px da qotirish.", "rem ishlatish.", "Foydalanuvchi shriftni kattalashtira olmasligi mumkin."], ["calc(100%-20px) yozish.", "calc(100% - 20px).", "+ va - atrofida probel shart."]],
+  ),
+  6: E(
+    "display xususiyati element qanday joylashishini belgilaydi. Normal flow (odatiy oqim) da block elementlar ustma-ust, inline elementlar matn kabi yonma-yon turadi. BFC — o'z ichki joylashuvi mustaqil bo'lgan hudud.",
+    [["Havolaga o'lcham berishda", 'display: inline-block yoki block.'], ['Float va collapse muammosida', 'display: flow-root yangi BFC ochadi.'], ["Yashirishda", 'display: none — joy ham qolmaydi; visibility: hidden — joy qoladi.']],
+    "inline element width va height ni eshitmaydi. block esa butun qatorni egallaydi.",
+    [["span ga width berib, ishlamasligidan hayron bo'lish.", "inline-block yoki block qilish.", "inline o'lchamni qabul qilmaydi."], ["Yashirin matnni display: none bilan faqat ko'rishdan yashirish.", "Ekran o'quvchiga qolishi kerak bo'lsa, maxsus visually-hidden class.", "display: none hammadan yashiradi."]],
+  ),
+  7: E(
+    "CSS da ranglar nom, hex, rgb, hsl va oklch ko'rinishida beriladi. Alfa kanal shaffoflikni boshqaradi. Fon qatlamlari rang, rasm va gradient (rang o'tishi) dan tuziladi.",
+    [['Mavzu ranglarida', 'hsl yoki oklch bilan yorqinlikni oson o\'zgartirasiz.'], ['Yarim shaffof qoplamada', 'rgb(0 0 0 / 50%).'], ['Rasm ustidagi matnda', 'Rasm ustiga qoraytiruvchi gradient qo\'yasiz.'], ['O\'qilishni tekshirishda', 'Matn va fon kontrasti kamida 4.5:1.']],
+    "opacity butun elementni (matni bilan) shaffof qiladi, alfa rang esa faqat o'sha rangni.",
+    [["Fonni xira qilish uchun opacity ishlatish.", "background ga alfali rang berish.", "Aks holda matn ham xiralashadi."], ["Ma'noni faqat rang bilan bildirish.", "Rangga belgi yoki matn qo'shish.", "Rang ko'rishi cheklanganlar farqlay olmaydi."]],
+  ),
+  8: E(
+    "Typography (matn bezagi) — shrift oilasi, o'lchami, qalinligi, qator balandligi va uzunligi. Maqsad — o'qish qulayligi. Font stack zaxira shriftlar ro'yxati: birinchisi yuklanmasa, keyingisi ishlaydi.",
+    [['Asosiy matnda', 'line-height: 1.5 atrofida va 60–75 belgilik qator.'], ['O\'z shriftingizda', '@font-face va font-display: swap.'], ["Bir necha qalinlikda", "variable font — bitta fayl."], ['Uzun matnni kesishda', 'overflow, white-space, text-overflow birga.']],
+    "line-height ga birliksiz son bering (1.5): bolalar o'z shriftiga qarab hisoblaydi.",
+    [["Font stack oxirida umumiy oilani unutish.", "…, sans-serif bilan tugatish.", "Shrift yuklanmasa kutilmagan shrift chiqadi."], ["line-height: 24px ni butun sahifaga berish.", "line-height: 1.5.", "Katta sarlavhada qatorlar ustma-ust tushadi."]],
+  ),
+  9: E(
+    "Flexbox — elementlarni BIR O'LCHOV bo'ylab (qator yoki ustun) joylash tizimi. Konteynerda main axis (bosh o'q) va unga tik cross axis (ko'ndalang o'q) bor; tekislash shu o'qlarga nisbatan ishlaydi.",
+    [['Navigatsiya qatorida', 'display: flex va gap.'], ['Markazlashda', 'justify-content: center va align-items: center.'], ['Tugmani oxiriga surishda', 'margin-left: auto.'], ['Sig\'masa pastga tushirishda', 'flex-wrap: wrap.']],
+    "justify — bosh o'q bo'yicha, align — ko'ndalang o'q bo'yicha. flex-direction o'zgarsa, o'qlar ham aylanadi.",
+    [["column yo'nalishida gorizontal markaz uchun justify-content ishlatish.", "align-items: center.", "Ustunda bosh o'q — vertikal."], ["Oraliq uchun oxirgi elementdan margin olib tashlash.", "gap ishlatish.", "gap faqat orasiga qo'yadi."]],
+  ),
+  10: E(
+    "flex-grow, flex-shrink va flex-basis elementning bo'sh joyni qanday olishi va yetishmaganda qanday siqilishini belgilaydi. flex-basis — boshlang'ich o'lcham, grow — ortiqcha joydan ulush, shrink — yetishmovchilikdan ulush.",
+    [["Teng ustunlarda", 'flex: 1 (basis 0 dan boshlab teng bo\'linadi).'], ["Yon panel va asosiy qismda", 'Panel flex: 0 0 240px, asosiy flex: 1.'], ["Uzun matn toshib ketsa", 'min-width: 0.']],
+    "flex: grow shrink basis. flex: 1 = 1 1 0%, flex: auto = 1 1 auto, flex: none = 0 0 auto.",
+    [["flex-grow: 2 element ikki baravar keng bo'ladi deb o'ylash.", "U BO'SH JOYDAN ikki ulush oladi.", "Boshlang'ich o'lcham ham hisobga kiradi."], ["Matnli flex element siqilmayapti.", "min-width: 0 berish.", "Standart min-width: auto tarkibdan kichrayishga yo'l qo'ymaydi."]],
+  ),
+  11: E(
+    "Grid — IKKI O'LCHOVLI joylash tizimi: ustunlar va qatorlar bir vaqtda boshqariladi. fr birligi bo'sh joyning ulushini bildiradi. Chiziqlar raqamlangan, element chiziqdan chiziqqa joylashadi.",
+    [["Kartochkalar to'rida", 'repeat(auto-fit, minmax(220px, 1fr)).'], ['Sahifa skeletida', 'Yon panel va tarkib ustunlari.'], ["Elementni bir necha ustunga cho'zishda", 'grid-column: 1 / -1.']],
+    "Bir yo'nalish — Flexbox, ikki yo'nalish birga — Grid.",
+    [["3 ustun uchun 33.33% va gap berish.", "repeat(3, 1fr) va gap.", "Foizga gap qo'shilib toshib ketadi."], ["Ustunlar soni va chiziqlar sonini chalkashtirish.", "3 ustunda 4 ta chiziq bor.", "grid-column: 1 / 4 butun qatorni oladi."]],
+  ),
+  12: E(
+    "grid-template-areas joylashuvni nomlar bilan «chizib» beradi: har qator qo'shtirnoq ichida, har so'z bitta katak. Elementlarga grid-area bilan nom beriladi. place-items va place-content tekislashni qisqartiradi.",
+    [['Sahifa maketida', 'header, sidebar, main, footer nomlari.'], ['Mobil moslashuvda', 'Media query ichida faqat areas ni qayta yozasiz.'], ['Katak ichida markazlashda', 'place-items: center.']],
+    "Areas — maketning matnli rasmi: kodga qarab dizaynni ko'rasiz.",
+    [["L shaklidagi hudud yasash.", "Hudud doim to'g'ri to'rtburchak bo'lsin.", "Aks holda butun qoida bekor bo'ladi."], ["Qatorlarda katak soni har xil.", "Har qatorda bir xil son; bo'sh joy uchun nuqta.", "Noto'g'ri yozilsa grid ishlamaydi."]],
+  ),
+  13: E(
+    "Subgrid ichki elementga ota grid chiziqlarini meros qilib beradi, shunda turli kartochkalarning sarlavha, matn va tugmalari bir chiziqda turadi. Implicit grid (yashirin to'r) esa e'lon qilinmagan qator va ustunlarni brauzer o'zi yaratganida paydo bo'ladi.",
+    [["Kartochka ichini tekislashda", 'grid-template-rows: subgrid.'], ["Noma'lum sonli qatorlarda", 'grid-auto-rows.'], ["Bo'sh kataklarni to'ldirishda", 'grid-auto-flow: dense.']],
+    "subgrid — «o'z chizig'imni chizmayman, otamnikidan foydalanaman».",
+    [["Subgrid elementga span bermaslik.", "grid-row: span 3 kabi nechta trek olishini aytish.", "Aks holda bitta katakka siqiladi."], ["dense ni tartib muhim joyda ishlatish.", "Faqat tartib ahamiyatsiz bo'lsa.", "Ko'rinish tartibi HTML tartibidan farqlanadi."]],
+  ),
+  14: E(
+    "position elementni odatiy oqimdan chiqarish yoki siljitish usuli: relative — o'z joyiga nisbatan, absolute — eng yaqin joylashtirilgan otasiga nisbatan, fixed — oynaga nisbatan, sticky — aylantirilganda yopishib turadi.",
+    [["Burchakdagi belgida", 'Ota relative, belgi absolute.'], ['Doim ko\'rinadigan tugmada', 'fixed.'], ["Jadval sarlavhasida", 'sticky va top: 0.'], ["To'liq qoplashda", 'inset: 0.']],
+    "absolute «langar» qidiradi: static bo'lmagan eng yaqin otani. Topmasa — sahifaning boshiga bog'lanadi.",
+    [["Otaga position: relative bermaslik.", "Otaga relative qo'shish.", "Bola sahifa burchagiga uchib ketadi."], ["sticky ishlamayapti.", "top berilganini va otalarda overflow: hidden yo'qligini tekshirish.", "Chegara bo'lmasa yoki scroll konteyner boshqa bo'lsa yopishmaydi."]],
+  ),
+  15: E(
+    "Stacking context (qatlamlar konteksti) — elementlarning ustma-ust tartibi hisoblanadigan mustaqil guruh. z-index faqat bitta kontekst ichida solishtiriladi. Uni position + z-index, opacity < 1, transform, isolation kabi xususiyatlar ochadi.",
+    [['Modal va menyu ustuvorligida', "Kontekstlar tuzilishini tekshirasiz."], ['Komponentni ajratishda', 'isolation: isolate.'], ["Tartibli z-index uchun", "O'zgaruvchilar: dropdown, modal, toast."]],
+    "Bola otasining «qavati»dan chiqa olmaydi: ota pastda bo'lsa, z-index: 9999 ham yordam bermaydi.",
+    [["Muammoni z-index: 999999 bilan hal qilish.", "Qaysi ota yangi kontekst ochganini topish.", "Solishtirish boshqa darajada ketyapti."], ["static elementga z-index berish.", "position berish (flex va grid bolalarida kerak emas).", "Aks holda z-index e'tiborsiz qoladi."]],
+  ),
+  16: E(
+    "overflow tarkib qutiga sig'maganda nima bo'lishini boshqaradi: visible, hidden, auto, scroll. Scroll konteyner o'z ichida aylanadi. Scroll snap aylantirishni elementlar chegarasiga «yopishtiradi».",
+    [['Uzun ro\'yxatda', 'Balandlik va overflow-y: auto.'], ['Karusel yasashda', 'scroll-snap-type va scroll-snap-align.'], ["Sakrashning oldini olishda", 'scrollbar-gutter: stable.'], ["Orqa sahifa siljimasligi uchun", 'overscroll-behavior: contain.']],
+    "auto — kerak bo'lsa aylantirgich, scroll — doim aylantirgich.",
+    [["Toshishni overflow: hidden bilan yashirib qo'yish.", "Sababini (qattiq o'lcham, min-width) tuzatish.", "Tarkib kesilib, yetib bo'lmay qoladi."], ["Balandliksiz elementga overflow-y: auto.", "height yoki max-height berish.", "Chegara bo'lmasa aylantirish ham yo'q."]],
+  ),
+  17: E(
+    "Responsive (ekranga moslashuvchan) dizayn bitta kod bilan telefon, planshet va kompyuterda qulay ko'rinish beradi. Asosiy vositalar: viewport meta, moslashuvchan o'lchamlar va media query.",
+    [['Mobile-first yozishda', 'Avval telefon stili, keyin min-width so\'rovlari.'], ["Rasmlarda", 'max-width: 100% va height: auto.'], ['Foydalanuvchi sozlamasida', 'prefers-color-scheme va prefers-reduced-motion.']],
+    "Breakpoint ni qurilma modeliga emas, dizayn «sinadigan» joyga qo'ying.",
+    [["meta viewport ni unutish.", "width=device-width, initial-scale=1 qo'shish.", "Telefon sahifani kichraytirib ko'rsatadi."], ["width: 1200px kabi qotirilgan kenglik.", "max-width va foiz yoki grid.", "Kichik ekranda gorizontal aylantirish paydo bo'ladi."]],
+  ),
+  18: E(
+    "Container query komponentni ekran emas, OTA KONTEYNER o'lchamiga qarab o'zgartiradi. Ota container-type bilan belgilanadi, keyin @container so'rovi yoziladi. cqw — konteyner kengligining ulushi.",
+    [['Bitta kartochka turli joyda ishlatilganda', 'Tor panelda ustun, keng joyda qator bo\'ladi.'], ['Dizayn tizimida', "Komponent atrofiga mustaqil moslashadi."]],
+    "Media query — «ekran qanday?», container query — «menga qancha joy berishdi?».",
+    [["Elementning o'zini so'rashga urinish.", "Otaga container-type berib, bolani o'zgartirish.", "So'rov faqat avlodlarga qo'llanadi."], ["container-type: size ni balandliksiz berish.", "Odatda inline-size yetarli.", "size balandlikni tarkibdan ajratadi — quti yassilanadi."]],
+  ),
+  19: E(
+    "Custom property (CSS o'zgaruvchisi) — --nom ko'rinishidagi qiymat, var(--nom) bilan o'qiladi. U cascade va meros qoidalariga bo'ysunadi, ish paytida o'zgaradi va JavaScriptdan boshqariladi.",
+    [['Mavzu (yorug\' va qorong\'i) da', 'Ranglarni :root va [data-theme] da qayta belgilaysiz.'], ["Komponent sozlamasida", 'Bitta o\'zgaruvchi bilan variant yaratasiz.'], ["Zaxira qiymatda", 'var(--gap, 8px).']],
+    "CSS o'zgaruvchisi «tirik»: elementda qayta belgilasangiz, faqat o'sha daraxtga ta'sir qiladi.",
+    [["Media query shartida var() ishlatish.", "Shartda aniq qiymat yozish.", "@media ichida o'zgaruvchi ishlamaydi."], ["Nom registrini aralashtirish.", "--Gap va --gap — boshqa o'zgaruvchilar.", "Registr farqlanadi."]],
+  ),
+  20: E(
+    "Zamonaviy selectorlar ko'p ishni JavaScriptsiz qiladi: :has() — ichida nimadir borligiga qarab tanlash, :is() va :where() — ro'yxatni qisqartirish, :focus-within — ichida fokus bor ota; nesting esa qoidalarni ichma-ich yozish.",
+    [['Rasmi bor kartochkani boshqacha bezashda', '.card:has(img).'], ["Past aniqlikli asos stilda", ':where() — aniqligi nol.'], ['Formani ajratib ko\'rsatishda', ':focus-within.'], ['Kodni guruhlashda', 'Nesting va &.']],
+    ":is() ichidagi eng kuchli selectorning aniqligini oladi, :where() esa doim nol.",
+    [["Juda chuqur nesting.", "2–3 darajadan oshirmaslik.", "Selector uzayib, bosib yozish qiyinlashadi."], ["& ni tushirib, holat yozish.", "&:hover.", "& bo'lmasa avlod selectori deb tushuniladi."]],
+  ),
+  21: E(
+    "transform elementni joyidan siljitadi, aylantiradi va kattalashtiradi, lekin atrofdagi joylashuvga ta'sir qilmaydi. transition xususiyat o'zgarishini vaqt davomida silliq qiladi.",
+    [['Tugma ustiga borilganda', 'transform: translateY(-2px) va transition.'], ['Markazlashda', 'translate(-50%, -50%).'], ['Silliq va yengil harakatda', 'Faqat transform va opacity.']],
+    "transition ni boshlang'ich holatga yozing — shunda borishda ham, qaytishda ham silliq bo'ladi.",
+    [["transition: all berish.", "Kerakli xususiyatlarni sanash.", "Kutilmagan o'zgarishlar ham animatsiyalanadi."], ["width yoki top ni animatsiya qilish.", "transform ishlatish.", "Har kadrda qayta joylashtirish — qotadi."]],
+  ),
+  22: E(
+    "Animation @keyframes (harakat kadrlari) yordamida foydalanuvchi aralashuvisiz ham ishlaydigan, bir necha bosqichli harakat yaratadi. Davomiylik, takrorlanish, yo'nalish va tugagach holat alohida boshqariladi.",
+    [['Yuklanish belgisida', 'infinite va linear.'], ["Paydo bo'lishda", 'animation-fill-mode: both.'], ['Kadrma-kadr harakatda', 'steps().'], ['Oldinga-orqaga', 'alternate.']],
+    "transition — A dan B ga (sabab bo'lganda), animation — o'z ssenariysi bo'yicha.",
+    [["Tugagach element boshiga sakraydi.", "animation-fill-mode: forwards.", "Standart holatda oxirgi kadr saqlanmaydi."], ["Harakatni sevmaydigan foydalanuvchini hisobga olmaslik.", "prefers-reduced-motion da o'chirish yoki yumshatish.", "Ba'zilarda bosh aylanishi chaqiradi."]],
+  ),
+  23: E(
+    "CSS arxitekturasi — loyiha o'sganda stillar bir-birini buzmasligi uchun kelishilgan tartib. Mashhur yondashuvlar: BEM nomlash, utility-first (mayda yordamchi classlar), CSS Modules va design token.",
+    [['Jamoada ishlaganda', 'Bitta nomlash qoidasi.'], ["To'qnashuvni oldini olishda", 'CSS Modules class nomini noyob qiladi.'], ["Dizayn birligida", 'Rang, oraliq va shrift — tokenlar.']],
+    "Yaxshi arxitektura belgisi: yangi stil qo'shish eskisini sindirmaydi va !important kerak bo'lmaydi.",
+    [["Chuqur zanjirli selectorlar: .page .box ul li a.", "Bitta class: .menu__link.", "Aniqlik oshib, qayta ishlatib bo'lmaydi."], ["Rang qiymatini har joyda qayta yozish.", "O'zgaruvchi (token) ishlatish.", "Mavzu o'zgartirish imkonsiz bo'ladi."]],
+  ),
+};

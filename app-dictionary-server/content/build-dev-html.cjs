@@ -348,3 +348,6 @@ const out = path.join(__dirname, '..', 'src', 'main', 'resources', 'dev', 'front
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify(L, null, 1));
 console.log(`wrote ${L.length} lessons, ${L.reduce((a, l) => a + l.items.length, 0)} items -> ${out}`);
+
+// richer theory blocks and Uzbek meanings of English terms
+require('./add-dev-theory.cjs')('html');
