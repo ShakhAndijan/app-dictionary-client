@@ -65,7 +65,7 @@ function Kind({ kind }: { kind: string }) {
 
 const SEPARATORS = /(\s\+\s|,\s|\s;\s|\s≠\s|\s↔\s|\s+yoki\s+)/;
 const chipTone = (part: string) =>
-  /^(S|boshqa S|ega)$/.test(part) ? ' subj' : /\b(V1|V2|V3|V-ing|Present|Past)\b/.test(part) ? ' verb' : '';
+  /^(S|boshqa S|ega)$/.test(part) ? ' subj' : /\b(V1|V2|V3|V-s|V-ed|V-ing|Present|Past)\b/.test(part) ? ' verb' : '';
 
 /** "S + have + V3" as coloured blocks; a trailing "(word list)" goes on its own line. */
 function Formula({ text }: { text: string }) {
@@ -92,6 +92,20 @@ function Formula({ text }: { text: string }) {
     </div>
   );
 }
+
+/** What the symbols in the formulas mean; only the ones this topic actually uses. */
+const SYMBOLS: [RegExp, string][] = [
+  [/\bS\b/, 'S — ega (kim, nima)'],
+  [/\bV1\b/, "V1 — fe'lning asosiy shakli (go)"],
+  [/\bV-s\b/, "V-s — he, she, it uchun (goes)"],
+  [/\bV2\b/, "V2 — o'tgan zamon (went)"],
+  [/\bV3\b/, "V3 — uchinchi shakl (gone)"],
+  [/\bV-ing\b/, '-ing shakli (going)'],
+];
+const legend = (forms: TheoryData['forms']) => {
+  const all = forms.map((f) => f[1]).join(' | ');
+  return SYMBOLS.filter(([re]) => re.test(all)).map(([, text]) => text);
+};
 
 /** Grammar explanation shown before the exercises: definition, uses, formulas, signal words, rules, examples, mistakes. */
 export default function Theory({ data }: { data: TheoryData }) {
@@ -135,6 +149,8 @@ export default function Theory({ data }: { data: TheoryData }) {
           </section>
         ))}
       </div>
+
+      {legend(data.forms).length > 0 && <p className="th-legend">{legend(data.forms).join(' · ')}</p>}
 
       {data.signals && data.signals.length > 0 && (
         <>

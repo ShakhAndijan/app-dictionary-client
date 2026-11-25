@@ -95,7 +95,7 @@ function Formula({ text }: { text: string }) {
           );
         }
         const subject = /^(S|boshqa S|ega)$/.test(part);
-        const verb = /\b(V1|V2|V3|V-ing|Present|Past)\b/.test(part);
+        const verb = /\b(V1|V2|V3|V-s|V-ed|V-ing|Present|Past)\b/.test(part);
         return (
           <View key={i} style={[styles.chip, subject && styles.chipSubj, verb && styles.chipVerb]}>
             <Text style={[styles.chipText, subject && styles.chipSubjText, verb && styles.chipVerbText]}>{part}</Text>
@@ -115,6 +115,20 @@ function Sample({ text }: { text: string }) {
     </Pressable>
   );
 }
+
+/** What the symbols in the formulas mean; only the ones this topic actually uses. */
+const SYMBOLS: [RegExp, string][] = [
+  [/\bS\b/, 'S — ega (kim, nima)'],
+  [/\bV1\b/, "V1 — fe'lning asosiy shakli (go)"],
+  [/\bV-s\b/, "V-s — he, she, it uchun (goes)"],
+  [/\bV2\b/, "V2 — o'tgan zamon (went)"],
+  [/\bV3\b/, "V3 — uchinchi shakl (gone)"],
+  [/\bV-ing\b/, '-ing shakli (going)'],
+];
+const legend = (forms: TheoryData['forms']) => {
+  const all = forms.map((f) => f[1]).join(' | ');
+  return SYMBOLS.filter(([re]) => re.test(all)).map(([, text]) => text);
+};
 
 /** Grammar explanation shown before the exercises: definition, uses, formulas, signal words, rules, examples, mistakes. */
 export default function TheoryView({ data }: { data: TheoryData }) {
@@ -155,6 +169,8 @@ export default function TheoryView({ data }: { data: TheoryData }) {
           ))}
         </View>
       ))}
+
+      {legend(data.forms).length > 0 ? <Text style={styles.legend}>{legend(data.forms).join(' · ')}</Text> : null}
 
       {data.signals && data.signals.length > 0 ? (
         <>
@@ -244,6 +260,7 @@ const styles = themed(() =>
     hint: { width: '100%', color: colors.textMuted, fontSize: 13 },
     sayRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
     example: { color: colors.text, fontSize: 14.5, fontStyle: 'italic', flex: 1, lineHeight: 20 },
+    legend: { color: colors.textMuted, fontSize: 12.5, lineHeight: 19 },
     signals: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
     signal: { backgroundColor: colors.indigoBg, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6 },
     signalText: { color: colors.indigoText, fontSize: 13.5, fontWeight: '600' },
