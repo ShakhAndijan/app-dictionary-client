@@ -55,7 +55,8 @@ public record LearnItem(String id, String kind, String prompt, List<String> opti
         // Typed answers: spellings that are equally right when the task leaves the choice open.
         boolean gender = genderNeutralPrompt();
         boolean polarity = PolarityVariants.neutralPrompt(prompt);
-        if (!gender && !polarity) return false;
+        boolean synonyms = SynonymVariants.appliesTo(prompt);
+        if (!gender && !polarity && !synonyms) return false;
         String hint = PolarityVariants.hint(prompt);
         java.util.List<String> known = new java.util.ArrayList<>();
         known.add(normalize(answer));
@@ -71,6 +72,8 @@ public record LearnItem(String id, String kind, String prompt, List<String> opti
                 }
             }
             if (forms.contains(g)) return true;
+            // "I like reading books" / "I love reading books", only where the sentence stays grammatical.
+            if (synonyms && forms.stream().anyMatch(f -> SynonymVariants.of(f).contains(g))) return true;
         }
         return false;
     }
