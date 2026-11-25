@@ -4,10 +4,11 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { adminApi, Announcement, AnnouncementSeverity, AdminUserDetail, AuditEntry, errorMessage } from '../api';
 import { Button, Confirm, Spinner } from '../ui';
 import { ago, day, Failed, nf } from './Admin';
+import { ActivityChart, ActivityDetails, AreaCards } from './Activity';
 
 /* ------------------------------------------------------------ user page */
 
-type Tab = 'words' | 'history' | 'week' | 'achievements';
+type Tab = 'stats' | 'words' | 'history' | 'week' | 'achievements';
 
 const FORMAT_LABEL: Record<string, string> = {
   TYPED: 'Yozma',
@@ -28,7 +29,7 @@ export function AdminUserPage() {
   const [deleteAsk, setDeleteAsk] = useState(false);
   const [d, setD] = useState<AdminUserDetail | null>(null);
   const [error, setError] = useState('');
-  const [tab, setTab] = useState<Tab>('words');
+  const [tab, setTab] = useState<Tab>('stats');
   const [roleAsk, setRoleAsk] = useState(false);
   const [busy, setBusy] = useState(false);
   const [actionError, setActionError] = useState('');
@@ -120,7 +121,7 @@ export function AdminUserPage() {
         <div className="ad-stat rise"><div className="eyebrow">Daraja</div><div className="ad-stat-val">{d.level}</div><div className="ad-stat-hint">{d.levelTitle}</div></div>
         <div className="ad-stat rise"><div className="eyebrow">XP</div><div className="ad-stat-val">{nf.format(u.totalXp)}</div></div>
         <div className="ad-stat rise"><div className="eyebrow">So'zlar</div><div className="ad-stat-val">{u.wordCount}</div></div>
-        <div className="ad-stat rise"><div className="eyebrow">Javoblar</div><div className="ad-stat-val">{nf.format(u.reviewCount)}</div><div className="ad-stat-hint">{pct === null ? '—' : `${pct}% to'g'ri`}</div></div>
+        <div className="ad-stat rise"><div className="eyebrow">So'z javoblari</div><div className="ad-stat-val">{nf.format(u.reviewCount)}</div><div className="ad-stat-hint">{pct === null ? '—' : `${pct}% to'g'ri`}</div></div>
         <div className="ad-stat rise"><div className="eyebrow">Yutuqlar</div><div className="ad-stat-val">{d.achievements.length}<small>/{d.totalAchievements}</small></div></div>
       </div>
 
@@ -129,12 +130,28 @@ export function AdminUserPage() {
       </div>
 
       <div className="tabs ad-tabs" role="tablist">
-        {([['words', "So'zlar"], ['history', 'Mashq tarixi'], ['week', 'Haftalik grafik'], ['achievements', 'Yutuqlar']] as [Tab, string][]).map(([k, label]) => (
+        {([['stats', 'Statistika'], ['words', "So'zlar"], ['history', 'Mashq tarixi'], ['week', "So'zlar haftasi"], ['achievements', 'Yutuqlar']] as [Tab, string][]).map(([k, label]) => (
           <button key={k} className={`tab ${tab === k ? 'on' : ''}`} onClick={() => setTab(k)}>{label}</button>
         ))}
       </div>
 
-      <section className="b ad-card">
+      {tab === 'stats' && (
+        <div className="act-admin">
+          <div className="act-totals">
+            <span><b>{d.activity.streak}</b> kun ketma-ket</span>
+            <span><b>{d.activity.bestStreak}</b> kun eng uzun ketma-ketlik</span>
+            <span><b>{d.activity.activeDays}</b> kun jami faol</span>
+          </div>
+          <AreaCards report={d.activity} />
+          <section className="b act-box">
+            <h3>So'nggi {d.activity.days} kunlik faollik</h3>
+            <ActivityChart series={d.activity.series} />
+          </section>
+          <ActivityDetails report={d.activity} />
+        </div>
+      )}
+
+      {tab !== 'stats' && <section className="b ad-card">
         {tab === 'words' &&
           (d.words.length === 0 ? (
             <div className="muted center" style={{ padding: 24 }}>So'z qo'shilmagan.</div>
@@ -220,7 +237,7 @@ export function AdminUserPage() {
               ))}
             </div>
           ))}
-      </section>
+      </section>}
 
       {deleteAsk && (
         <Confirm

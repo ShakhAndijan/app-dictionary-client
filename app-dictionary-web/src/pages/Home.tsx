@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { DailyStats, Progress, progressApi, reviewApi, ReviewSummary, statsApi, StatsSummary, Word, wordsApi } from '../api';
+import { ActivityReport, Progress, progressApi, reviewApi, ReviewSummary, statsApi, Word, wordsApi } from '../api';
 import { useAuth } from '../auth';
 import { Spinner } from '../ui';
 import { speakEnglish } from '../util';
+import { ActivityChart, AreaCards } from './Activity';
 
 function greeting(): string {
   const h = new Date().getHours();
@@ -91,8 +92,8 @@ export default function HomePage() {
   const { user } = useAuth();
   const [progress, setProgress] = useState<Progress | null>(null);
   const [review, setReview] = useState<ReviewSummary | null>(null);
-  const [stats, setStats] = useState<StatsSummary | null>(null);
-  const [daily, setDaily] = useState<DailyStats[]>([]);
+  const [activity, setActivity] = useState<ActivityReport | null>(null);
+  const [days, setDays] = useState(14);
   const [words, setWords] = useState<Word[] | null>(null);
   const [flip, setFlip] = useState(false);
   const [pick, setPick] = useState(0);
@@ -100,10 +101,12 @@ export default function HomePage() {
   useEffect(() => {
     progressApi.get().then(setProgress).catch(() => undefined);
     reviewApi.summary().then(setReview).catch(() => undefined);
-    statsApi.summary().then(setStats).catch(() => undefined);
-    statsApi.daily().then(setDaily).catch(() => undefined);
     wordsApi.list().then(setWords).catch(() => setWords([]));
   }, []);
+
+  useEffect(() => {
+    statsApi.activity(days).then(setActivity).catch(() => undefined);
+  }, [days]);
 
   const spotlight = useMemo(() => {
     if (!words || words.length === 0) return null;
@@ -122,10 +125,11 @@ export default function HomePage() {
   const goal = review?.dailyGoal ?? user.dailyGoal;
   const done = review?.todayDone ?? 0;
   const reached = done >= goal && goal > 0;
-  const streak = stats?.currentStreak ?? 0;
+  const streak = activity?.streak ?? 0;
   const now = new Date();
 
-  const activeDays = new Set(daily.filter((d) => d.quizzesTaken > 0 || d.wordsAdded > 0).map((d) => d.date.slice(0, 10)));
+  // A day counts when anything was done in any of the three areas.
+  const activeDays = new Set((activity?.series ?? []).filter((d) => d.words + d.english + d.dev > 0).map((d) => d.date));
   if (done > 0) activeDays.add(isoDay(now));
   const week = Array.from({ length: 7 }, (_, i) => {
     const d = new Date(now);
@@ -246,8 +250,29 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          <div className="lvl-sub">Eng yaxshisi: {stats?.bestStreak ?? 0} kun</div>
+          <div className="lvl-sub">Eng yaxshisi: {activity?.bestStreak ?? 0} kun</div>
         </section>
+
+        {/* all three areas */}
+        {activity && (
+          <section className="b-activity rise" style={{ ['--d' as string]: '0.3s' }}>
+            <div className="act-head">
+              <h2>Mening statistikam</h2>
+              <div className="tabs" role="tablist">
+                {[7, 14, 30].map((n) => (
+                  <button key={n} role="tab" aria-selected={days === n} className={`tab ${days === n ? 'on' : ''}`} onClick={() => setDays(n)}>
+                    {n} kun
+                  </button>
+                ))}
+              </div>
+            </div>
+            <AreaCards report={activity} links />
+            <div className="b act-box">
+              <h3>Kunlik faollik</h3>
+              <ActivityChart series={activity.series} />
+            </div>
+          </section>
+        )}
 
         {/* word spotlight */}
         <section className="b b-word rise" style={{ ['--d' as string]: '0.33s' }}>

@@ -4,6 +4,8 @@ import com.example.dictionary.dto.DailyStatsResponse;
 import com.example.dictionary.dto.MonthlyStatsResponse;
 import com.example.dictionary.dto.StatsSummaryResponse;
 import com.example.dictionary.dto.WeeklyReportResponse;
+import com.example.dictionary.dto.ActivityDtos;
+import com.example.dictionary.service.ActivityService;
 import com.example.dictionary.service.StatsService;
 import com.example.dictionary.service.WeeklyReportService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,7 +30,11 @@ public class StatsController {
     private final StatsService statsService;
     private final WeeklyReportService weeklyReportService;
 
-    public StatsController(StatsService statsService, WeeklyReportService weeklyReportService) {
+    private final ActivityService activityService;
+
+    public StatsController(StatsService statsService, WeeklyReportService weeklyReportService,
+                           ActivityService activityService) {
+        this.activityService = activityService;
         this.statsService = statsService;
         this.weeklyReportService = weeklyReportService;
     }
@@ -58,6 +64,15 @@ public class StatsController {
     public ResponseEntity<WeeklyReportResponse> weekly(@AuthenticationPrincipal UserDetails principal,
                                                        @RequestParam(defaultValue = "0") int weeksBack) {
         return ResponseEntity.ok(weeklyReportService.report(principal.getUsername(), weeksBack));
+    }
+
+    @Operation(summary = "Activity in every area",
+            description = "Words, English course and programming course together: totals, a per-day series for the last "
+                    + "`days` days (7-90), hours of the day, recent results and the streak across all areas.")
+    @GetMapping("/activity")
+    public ResponseEntity<ActivityDtos.Report> activity(@AuthenticationPrincipal UserDetails principal,
+                                                        @RequestParam(defaultValue = "30") int days) {
+        return ResponseEntity.ok(activityService.report(principal.getUsername(), days));
     }
 
     @Operation(summary = "Stats summary",

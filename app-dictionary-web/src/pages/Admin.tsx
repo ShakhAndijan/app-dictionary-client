@@ -4,6 +4,7 @@ import { adminApi, AdminInsights, AdminOverview, AdminUser, errorMessage } from 
 import { useAuth } from '../auth';
 import { useTheme } from '../theme';
 import { Button, Confirm, Field, Modal, Spinner } from '../ui';
+import { ActivityChart, AREAS } from './Activity';
 
 export const nf = new Intl.NumberFormat('uz-UZ');
 
@@ -210,6 +211,31 @@ export function AdminStatsPage() {
         <Chart series={o.series} />
       </section>
 
+      <section className="b ad-card act-box rise" style={{ ['--d' as string]: '0.37s' }}>
+        <div className="eyebrow">Yo'nalishlar bo'yicha, so'nggi {days} kun</div>
+        <div className="act-cards">
+          {AREAS.map((a) => {
+            const u = o.areas.find((x) => x.area === a.code);
+            return (
+              <div key={a.key} className={`act-card ${a.key}`}>
+                <header>
+                  <span className="act-ico" aria-hidden="true">{a.icon}</span>
+                  <b>{a.label}</b>
+                </header>
+                <div className="act-figure">
+                  <strong>{nf.format(u?.users ?? 0)}</strong>
+                  <span>faol foydalanuvchi</span>
+                </div>
+                <div className="act-sub">
+                  {u && u.answers ? `${nf.format(u.answers)} javob, ${Math.round((u.correct / u.answers) * 100)}% to'g'ri` : "Javob yo'q"}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <ActivityChart series={o.series} />
+      </section>
+
       {(ins || users) && <Insights ins={ins} users={users} />}
     </>
   );
@@ -278,7 +304,7 @@ function Insights({ ins, users }: { ins: AdminInsights | null; users: AdminUser[
         <>
           <section className="b ad-card rise" style={{ ['--d' as string]: '0.5s' }}>
             <div className="eyebrow">Eng faol foydalanuvchilar (XP bo'yicha)</div>
-            <UserList items={top} right={(u) => `${nf.format(u.totalXp)} XP`} sub={(u) => `${u.reviewCount} javob · ${u.wordCount} so'z`} />
+            <UserList items={top} right={(u) => `${nf.format(u.totalXp)} XP`} sub={(u) => `so'z ${u.reviewCount} · ingliz ${u.englishAnswers} · kod ${u.devAnswers + u.labsDone}`} />
           </section>
           <section className="b ad-card rise" style={{ ['--d' as string]: '0.55s' }}>
             <div className="eyebrow">So'nggi ro'yxatdan o'tganlar</div>
@@ -310,7 +336,7 @@ function UserList({ items, right, sub }: { items: AdminUser[]; right: (u: AdminU
 
 /* ------------------------------------------------------------ users */
 
-type SortKey = 'recent' | 'created' | 'words' | 'reviews' | 'xp' | 'accuracy';
+type SortKey = 'recent' | 'created' | 'words' | 'reviews' | 'english' | 'dev' | 'xp' | 'accuracy';
 
 export function AdminUsersPage() {
   const nav = useNavigate();
@@ -340,6 +366,8 @@ export function AdminUsersPage() {
       created: (a, b) => time(b.createdAt) - time(a.createdAt),
       words: (a, b) => b.wordCount - a.wordCount,
       reviews: (a, b) => b.reviewCount - a.reviewCount,
+      english: (a, b) => b.englishAnswers - a.englishAnswers,
+      dev: (a, b) => b.devAnswers + b.labsDone - (a.devAnswers + a.labsDone),
       xp: (a, b) => b.totalXp - a.totalXp,
       accuracy: (a, b) => acc(b) - acc(a),
     };
@@ -373,6 +401,8 @@ export function AdminUsersPage() {
             <option value="created">Yangi ro'yxatdan o'tgan</option>
             <option value="words">Ko'p so'z</option>
             <option value="reviews">Ko'p javob</option>
+            <option value="english">Ingliz tilida faol</option>
+            <option value="dev">Dasturlashda faol</option>
             <option value="xp">Ko'p XP</option>
             <option value="accuracy">Aniqlik</option>
           </select>
@@ -387,8 +417,9 @@ export function AdminUsersPage() {
                 <tr>
                   <th>Foydalanuvchi</th>
                   <th className="num">So'z</th>
-                  <th className="num">Javob</th>
-                  <th className="num">Aniqlik</th>
+                  <th className="num">So'z javobi</th>
+                  <th className="num">Ingliz tili</th>
+                  <th className="num">Dasturlash</th>
                   <th className="num">XP</th>
                   <th>Ro'yxatdan o'tgan</th>
                   <th>Oxirgi faollik</th>
@@ -416,8 +447,9 @@ export function AdminUsersPage() {
                         </div>
                       </td>
                       <td className="num">{u.wordCount}</td>
-                      <td className="num">{u.reviewCount}</td>
-                      <td className="num">{pct === null ? '—' : `${pct}%`}</td>
+                      <td className="num" title="Javoblar soni va aniqlik">{u.reviewCount}{pct === null ? '' : ` (${pct}%)`}</td>
+                      <td className="num">{u.englishAnswers}</td>
+                      <td className="num" title={`${u.devAnswers} javob, ${u.labsDone} laboratoriya`}>{u.devAnswers + u.labsDone}</td>
                       <td className="num">{u.totalXp}</td>
                       <td className="muted">{day(u.createdAt)}</td>
                       <td>

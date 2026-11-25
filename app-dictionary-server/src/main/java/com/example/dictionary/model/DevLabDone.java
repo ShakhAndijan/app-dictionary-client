@@ -53,4 +53,5 @@ public class DevLabDone {
 
     public String getLessonCode() { return lessonCode; }
     public String getLabId() { return labId; }
+    public Instant getCreatedAt() { return createdAt; }
 }

@@ -16,8 +16,12 @@ public final class AdminDtos {
     private AdminDtos() {
     }
 
-    /** One day of the signup / activity chart. */
-    public record DayPoint(LocalDate date, int newUsers, int activeUsers) {
+    /** One day of the signup / activity chart; the last three count answers of each study area. */
+    public record DayPoint(LocalDate date, int newUsers, int activeUsers, int words, int english, int dev) {
+    }
+
+    /** One study area over the chosen period ({@code area} is WORDS, ENGLISH or DEV). */
+    public record AreaUsage(String area, long users, long answers, long correct) {
     }
 
     public record OverviewResponse(
@@ -32,7 +36,8 @@ public final class AdminDtos {
             long totalReviews,
             int accuracyPercent,
             long totalQuizSessions,
-            List<DayPoint> series
+            List<DayPoint> series,
+            List<AreaUsage> areas
     ) {
     }
 
@@ -82,7 +87,10 @@ public final class AdminDtos {
             long reviewCount,
             long correctCount,
             long totalXp,
-            boolean blocked
+            boolean blocked,
+            long englishAnswers,
+            long devAnswers,
+            long labsDone
     ) {
     }
 
@@ -102,7 +110,8 @@ public final class AdminDtos {
             List<ReviewEntry> recentReviews,
             WeeklyReportResponse weekly,
             List<AchievementEntry> achievements,
-            int totalAchievements
+            int totalAchievements,
+            ActivityDtos.Report activity
     ) {
     }
 

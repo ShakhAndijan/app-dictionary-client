@@ -3,6 +3,7 @@ package com.example.dictionary.service;
 import com.example.dictionary.dto.AdminDtos.AchievementEntry;
 import com.example.dictionary.dto.AdminDtos.AnnouncementRequest;
 import com.example.dictionary.dto.AdminDtos.AnnouncementResponse;
+import com.example.dictionary.dto.AdminDtos.AreaUsage;
 import com.example.dictionary.dto.AdminDtos.AuditEntry;
 import com.example.dictionary.dto.AdminDtos.DayPoint;
 import com.example.dictionary.dto.AdminDtos.FormatUsage;
@@ -73,6 +74,10 @@ public class AdminService {
     private final jakarta.persistence.EntityManager entityManager;
     private final WordService wordService;
     private final WeeklyReportService weeklyReportService;
+    private final ActivityService activityService;
+    private final com.example.dictionary.repository.LearnResultRepository learnResultRepository;
+    private final com.example.dictionary.repository.DevResultRepository devResultRepository;
+    private final com.example.dictionary.repository.DevLabDoneRepository devLabDoneRepository;
 
     public AdminService(UserRepository userRepository,
                         WordRepository wordRepository,
@@ -90,7 +95,15 @@ public class AdminService {
                         com.example.dictionary.repository.RefreshTokenRepository refreshTokenRepository,
                         jakarta.persistence.EntityManager entityManager,
                         WordService wordService,
-                        WeeklyReportService weeklyReportService) {
+                        WeeklyReportService weeklyReportService,
+                        ActivityService activityService,
+                        com.example.dictionary.repository.LearnResultRepository learnResultRepository,
+                        com.example.dictionary.repository.DevResultRepository devResultRepository,
+                        com.example.dictionary.repository.DevLabDoneRepository devLabDoneRepository) {
+        this.activityService = activityService;
+        this.learnResultRepository = learnResultRepository;
+        this.devResultRepository = devResultRepository;
+        this.devLabDoneRepository = devLabDoneRepository;
         this.userRepository = userRepository;
         this.wordRepository = wordRepository;
         this.reviewLogRepository = reviewLogRepository;
@@ -129,12 +142,23 @@ public class AdminService {
         // Which days each user answered something (long enough to cover the 30-day totals and the chart).
         Instant from = today.minusDays(Math.max(30, days) - 1L).atStartOfDay(zone).toInstant();
         Map<Long, Set<LocalDate>> activeDays = new HashMap<>();
-        for (Object[] row : reviewLogRepository.answersSince(from)) {
-            Long owner = (Long) row[0];
-            if (ids.contains(owner)) {
-                activeDays.computeIfAbsent(owner, k -> new HashSet<>())
-                        .add(((Instant) row[1]).atZone(zone).toLocalDate());
-            }
+        LocalDate chartFrom = today.minusDays(days - 1L);
+        AreaCounter words = new AreaCounter("WORDS", ids, activeDays, chartFrom, zone);
+        AreaCounter english = new AreaCounter("ENGLISH", ids, activeDays, chartFrom, zone);
+        AreaCounter dev = new AreaCounter("DEV", ids, activeDays, chartFrom, zone);
+        for (Object[] row : reviewLogRepository.gradedAnswersSince(from)) {
+            words.add((Long) row[0], (Instant) row[1], 1, (Boolean) row[2] ? 1 : 0, 1);
+        }
+        for (Object[] row : learnResultRepository.allAnswers()) {
+            int total = ((Number) row[2]).intValue();
+            english.add((Long) row[0], (Instant) row[1], total, ((Number) row[3]).intValue(), total);
+        }
+        for (Object[] row : devResultRepository.allAnswers()) {
+            int total = ((Number) row[2]).intValue();
+            dev.add((Long) row[0], (Instant) row[1], total, ((Number) row[3]).intValue(), total);
+        }
+        for (Object[] row : devLabDoneRepository.allSolved()) {
+            dev.add((Long) row[0], (Instant) row[1], 0, 0, 1);
         }
 
         long newToday = 0;
@@ -169,7 +193,8 @@ public class AdminService {
         List<DayPoint> series = new ArrayList<>();
         for (int i = days - 1; i >= 0; i--) {
             LocalDate d = today.minusDays(i);
-            series.add(new DayPoint(d, signups.getOrDefault(d, 0), activePerDay.getOrDefault(d, 0)));
+            series.add(new DayPoint(d, signups.getOrDefault(d, 0), activePerDay.getOrDefault(d, 0),
+                    words.perDay.getOrDefault(d, 0), english.perDay.getOrDefault(d, 0), dev.perDay.getOrDefault(d, 0)));
         }
 
         long totalReviews = 0;
@@ -189,7 +214,8 @@ public class AdminService {
         int accuracy = totalReviews == 0 ? 0 : (int) Math.round(totalCorrect * 100.0 / totalReviews);
 
         return new OverviewResponse(users.size(), newToday, new7, new30, activeToday, active7, active30,
-                totalWords, totalReviews, accuracy, quizSessionRepository.count(), series);
+                totalWords, totalReviews, accuracy, quizSessionRepository.count(), series,
+                List.of(words.usage(), english.usage(), dev.usage()));
     }
 
     /** Format usage over the period, retention of old signups and the words that are answered wrongly most. */
@@ -209,6 +235,7 @@ public class AdminService {
         for (Object[] row : reviewLogRepository.statsByOwner()) {
             lastActive.put((Long) row[0], (Instant) row[3]);
         }
+        courseTotals().forEach((id, t) -> lastActive.merge(id, t.lastAt, AdminService::latest));
         Instant now = Instant.now();
         List<RetentionPoint> retention = new ArrayList<>();
         for (int n : new int[] {1, 7, 30}) {
@@ -258,8 +285,11 @@ public class AdminService {
             xp.put((Long) row[0], ((Number) row[1]).longValue());
         }
 
+        Map<Long, CourseTotals> courses = courseTotals();
+
         List<UserRow> rows = new ArrayList<>();
         for (AppUser u : userRepository.findAll()) {
+            CourseTotals course = courses.getOrDefault(u.getId(), new CourseTotals());
             Object[] r = reviews.get(u.getId());
             rows.add(new UserRow(
                     u.getId(),
@@ -271,17 +301,84 @@ public class AdminService {
                     u.getRole().name(),
                     u.getCreatedAt(),
                     u.getLastLoginAt(),
-                    r == null ? null : (Instant) r[3],
+                    latest(r == null ? null : (Instant) r[3], course.lastAt),
                     words.getOrDefault(u.getId(), 0L),
                     r == null ? 0 : (Long) r[1],
                     r == null ? 0 : ((Number) r[2]).longValue(),
                     xp.getOrDefault(u.getId(), 0L),
-                    u.isBlocked()));
+                    u.isBlocked(),
+                    course.english,
+                    course.dev,
+                    course.labs));
         }
         rows.sort(Comparator.comparing(
                 (UserRow r) -> latest(r.lastActiveAt(), r.lastLoginAt()),
                 Comparator.nullsLast(Comparator.reverseOrder())));
         return rows;
+    }
+
+    /** One user's answers in the two courses. */
+    private static final class CourseTotals {
+        long english;
+        long dev;
+        long labs;
+        Instant lastAt;
+    }
+
+    private Map<Long, CourseTotals> courseTotals() {
+        Map<Long, CourseTotals> totals = new HashMap<>();
+        for (Object[] row : learnResultRepository.allAnswers()) {
+            CourseTotals t = totals.computeIfAbsent((Long) row[0], k -> new CourseTotals());
+            t.english += ((Number) row[2]).longValue();
+            t.lastAt = latest(t.lastAt, (Instant) row[1]);
+        }
+        for (Object[] row : devResultRepository.allAnswers()) {
+            CourseTotals t = totals.computeIfAbsent((Long) row[0], k -> new CourseTotals());
+            t.dev += ((Number) row[2]).longValue();
+            t.lastAt = latest(t.lastAt, (Instant) row[1]);
+        }
+        for (Object[] row : devLabDoneRepository.allSolved()) {
+            CourseTotals t = totals.computeIfAbsent((Long) row[0], k -> new CourseTotals());
+            t.labs++;
+            t.lastAt = latest(t.lastAt, (Instant) row[1]);
+        }
+        return totals;
+    }
+
+    /** Collects one study area's figures for the overview; only regular accounts are counted. */
+    private static final class AreaCounter {
+        private final String area;
+        private final Set<Long> ids;
+        private final Map<Long, Set<LocalDate>> activeDays;
+        private final LocalDate from;
+        private final ZoneId zone;
+        private final Set<Long> users = new HashSet<>();
+        private final Map<LocalDate, Integer> perDay = new HashMap<>();
+        private long answers;
+        private long correct;
+
+        AreaCounter(String area, Set<Long> ids, Map<Long, Set<LocalDate>> activeDays, LocalDate from, ZoneId zone) {
+            this.area = area;
+            this.ids = ids;
+            this.activeDays = activeDays;
+            this.from = from;
+            this.zone = zone;
+        }
+
+        void add(Long owner, Instant at, int answered, int right, int weight) {
+            if (!ids.contains(owner)) return;
+            LocalDate day = at.atZone(zone).toLocalDate();
+            activeDays.computeIfAbsent(owner, k -> new HashSet<>()).add(day);
+            if (day.isBefore(from)) return;
+            users.add(owner);
+            answers += answered;
+            correct += right;
+            perDay.merge(day, weight, Integer::sum);
+        }
+
+        AreaUsage usage() {
+            return new AreaUsage(area, users.size(), answers, correct);
+        }
     }
 
     private UserRow row(Long id) {
@@ -314,7 +411,8 @@ public class AdminService {
         long totalXp = xpEventRepository.totalXp(username);
         int level = Levels.levelFor(totalXp);
         return new UserDetail(row(id), level, Levels.titleFor(level), wordService.listWords(username), reviews,
-                weeklyReportService.report(username, 0), achievements, Achievement.values().length);
+                weeklyReportService.report(username, 0), achievements, Achievement.values().length,
+                activityService.report(username, 30));
     }
 
     /** Renames a regular account; admin accounts are not editable here. Returns the refreshed row. */

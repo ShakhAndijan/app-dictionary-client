@@ -428,6 +428,19 @@ function SpeakBox({ phrase, value, setValue, locked }: { phrase: string; value: 
   );
 }
 
+/**
+ * Writing tasks arrive as "Instruction: sentence (note)". Pull the three apart, so the instruction
+ * is not read as part of the sentence the learner works on.
+ */
+function splitTask(item: Exercise): { task: string; text: string; note: string } | null {
+  if (item.kind !== 'FILL') return null;
+  const m = item.prompt.match(/^([^:?«"]{3,60}):\s+([\s\S]+)$/);
+  if (!m) return null;
+  const note = m[2].match(/^([\s\S]*\S)\s*\(([^()]*)\)\.?$/);
+  const text = (note ? note[1] : m[2]).replace(/\s*->\s*/g, '\n→ ');
+  return { task: m[1], text, note: note ? note[2] : '' };
+}
+
 export function ExerciseCard({ item, instant, last, onDone, onChecked }: {
   item: Exercise;
   /** Returns feedback right away (lessons). Without it (exam) the answer is only collected. */
@@ -488,29 +501,43 @@ export function ExerciseCard({ item, instant, last, onDone, onChecked }: {
     ORDER: 'Gapni to\'g\'ri tartibga soling',
     SPEAK: 'Ovoz chiqarib ayting',
   };
-  const blank = item.kind === 'CHOICE' || item.kind === 'FILL' ? item.prompt.split('___') : null;
+  const parts = splitTask(item);
+  const translate = parts?.task === 'Inglizchaga tarjima qiling';
+  const shown = parts ? parts.text : item.prompt;
+  const blank = item.kind === 'CHOICE' || item.kind === 'FILL' ? shown.split('___') : null;
   const showBlank = blank && blank.length > 1;
   const slotState = feedback ? (feedback.correct ? 'good' : 'bad') : value ? 'filled' : '';
 
   return (
     <section className={`ex2 ${feedback ? (feedback.correct ? 'good' : 'bad') : ''}`}>
       {(item.passage || item.audioText) && <Context passage={item.passage ?? null} audioText={item.audioText ?? null} />}
-      <span className="ex2-tag">{heading[item.kind]}</span>
+      {parts ? (
+        <div className="ex2-task">
+          <span className="ex2-task-ico" aria-hidden="true">{translate ? '⇄' : '✎'}</span>
+          <div>
+            <b>{parts.task}</b>
+            <small>{translate ? "O'zbekchadan inglizchaga" : 'Quyidagi gap bilan ishlang'}</small>
+          </div>
+        </div>
+      ) : (
+        <span className="ex2-tag">{heading[item.kind]}</span>
+      )}
 
       {item.kind === 'ORDER' ? (
         <h3 className="ex2-prompt small">{item.prompt === "Gapni to'g'ri tartibga soling" ? 'Quyidagi so\'zlardan gap tuzing' : item.prompt}</h3>
-      ) : showBlank ? (
-        <h3 className="ex2-prompt">
-          {blank!.map((part, i) => (
-            <span key={i}>
-              {part}
-              {i < blank!.length - 1 && <span className={`ex2-slot ${slotState}`}>{value || ' '}</span>}
-            </span>
-          ))}
-        </h3>
       ) : (
-        <h3 className={`ex2-prompt ${item.kind === 'SPEAK' ? 'speak' : ''}`}>{item.prompt}</h3>
+        <h3 className={`ex2-prompt ${item.kind === 'SPEAK' ? 'speak' : ''} ${parts ? 'source' : ''}`} lang={translate ? 'uz' : undefined}>
+          {showBlank
+            ? blank!.map((part, i) => (
+                <span key={i}>
+                  {part}
+                  {i < blank!.length - 1 && <span className={`ex2-slot ${slotState}`}>{value || ' '}</span>}
+                </span>
+              ))
+            : shown}
+        </h3>
       )}
+      {parts?.note && <p className="ex2-note"><b>Shart:</b> {parts.note}</p>}
 
       {item.kind === 'CHOICE' && (
         <div className="ex2-options">
@@ -540,7 +567,8 @@ export function ExerciseCard({ item, instant, last, onDone, onChecked }: {
           autoFocus
           autoComplete="off"
           spellCheck={false}
-          placeholder="Javobni yozing…"
+          aria-label="Javobingiz"
+          placeholder={translate ? 'Inglizcha tarjimasini yozing…' : 'Javobni yozing…'}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && (locked ? onDone(answer) : submit())}
         />
@@ -583,7 +611,7 @@ export function ExerciseCard({ item, instant, last, onDone, onChecked }: {
           </>
         ) : (
           <>
-            <span className="ex2-hint">{item.kind === 'CHOICE' ? '1–3 tugmalari bilan tanlang · Enter' : 'Enter — tekshirish'}</span>
+            <span className="ex2-hint">{item.kind === 'CHOICE' && <><kbd>1</kbd>–<kbd>3</kbd> tanlash, </>}<kbd>Enter</kbd> tekshirish</span>
             <button className="ex2-go" disabled={!answer || busy} onClick={submit}>{busy ? '…' : instant ? 'Tekshirish' : last ? 'Tugatish' : 'Keyingi'}</button>
           </>
         )}

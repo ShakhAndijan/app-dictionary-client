@@ -413,7 +413,45 @@ export const quizApi = {
   finish: (sessionId: number) => d(http.post<QuizSummary>(`/quiz/${sessionId}/finish`)),
 };
 
+export interface ActivityArea {
+  answered: number;
+  correct: number;
+  accuracy: number;
+  periodAnswered: number;
+  periodCorrect: number;
+  previousAnswered: number;
+  activeDays: number;
+  lastAt: string | null;
+}
+
+export interface ActivityDay {
+  date: string;
+  words: number;
+  english: number;
+  dev: number;
+}
+
+export interface ActivityReport {
+  days: number;
+  words: { answers: ActivityArea; total: number; newCount: number; learning: number; mastered: number; due: number; quizzes: number; addedInPeriod: number };
+  english: {
+    answers: ActivityArea; level: string | null; lessonsPassed: number; lessonsTotal: number; exams: number; examsPassed: number;
+    sentences: number; sentenceScore: number; skills: { skill: string; lessonsPassed: number; lessonsTotal: number; percent: number | null }[];
+  };
+  dev: {
+    answers: ActivityArea; level: string | null; lessonsPassed: number; lessonsTotal: number; exams: number; examsPassed: number;
+    labsDone: number; labsTotal: number; modules: { key: string; passed: number; lessons: number }[];
+  };
+  series: ActivityDay[];
+  hours: number[];
+  recent: { at: string; area: 'ENGLISH' | 'DEV'; kind: 'LESSON' | 'EXAM' | 'LAB'; title: string; percent: number | null; passed: boolean }[];
+  streak: number;
+  bestStreak: number;
+  activeDays: number;
+}
+
 export const statsApi = {
+  activity: (days = 30) => d(http.get<ActivityReport>('/stats/activity', { params: { days } })),
   daily: () => d(http.get<DailyStats[]>('/stats/daily')),
   monthly: () => d(http.get<MonthlyStats[]>('/stats/monthly')),
   summary: () => d(http.get<StatsSummary>('/stats/summary')),
@@ -432,7 +470,8 @@ export interface AdminOverview {
   totalReviews: number;
   accuracyPercent: number;
   totalQuizSessions: number;
-  series: { date: string; newUsers: number; activeUsers: number }[];
+  series: { date: string; newUsers: number; activeUsers: number; words: number; english: number; dev: number }[];
+  areas: { area: 'WORDS' | 'ENGLISH' | 'DEV'; users: number; answers: number; correct: number }[];
 }
 
 export interface AdminUser {
@@ -451,6 +490,9 @@ export interface AdminUser {
   correctCount: number;
   totalXp: number;
   blocked: boolean;
+  englishAnswers: number;
+  devAnswers: number;
+  labsDone: number;
 }
 
 export interface AdminInsights {
@@ -469,6 +511,7 @@ export interface AdminUserDetail {
   weekly: WeeklyReport;
   achievements: { code: string; title: string; description: string; icon: string; tier: AchievementTier; unlockedAt: string }[];
   totalAchievements: number;
+  activity: ActivityReport;
 }
 
 export type AnnouncementSeverity = 'INFO' | 'WARNING' | 'CRITICAL';

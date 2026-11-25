@@ -31,6 +31,10 @@ public interface ReviewLogRepository extends JpaRepository<ReviewLog, Long> {
     @Query("select l.owner.id, l.answeredAt from ReviewLog l where l.answeredAt >= :from")
     List<Object[]> answersSince(@Param("from") Instant from);
 
+    /** Answers since {@code from} as {owner id, answeredAt, correct}. */
+    @Query("select l.owner.id, l.answeredAt, l.correct from ReviewLog l where l.answeredAt >= :from")
+    List<Object[]> gradedAnswersSince(@Param("from") Instant from);
+
     /** Per answer format since {@code from}: {format, answers, correct answers}. */
     @Query("select l.answerFormat, count(l), sum(case when l.correct = true then 1 else 0 end) "
             + "from ReviewLog l where l.answeredAt >= :from group by l.answerFormat")
