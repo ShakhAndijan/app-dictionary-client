@@ -5493,6 +5493,42 @@ i.bad,
   body:has(.ls-bar) .lw-tab { bottom: calc(166px + env(safe-area-inset-bottom)); }
 }
 @media (prefers-reduced-motion: reduce) { .ap.playing .ap-bars .now i { animation: none; } }
+/* reading: the text stays beside its questions; narrow screens switch between the two with tabs */
+.container:has(.ls.rd) { max-width: 1180px; }
+.ls.rd { max-width: none; width: 100%;grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; column-gap: 20px; }
+.rd-tabs { display: none; }
+.rd-text { grid-column: 1; grid-row: 1 / span 2; position: sticky; top: 76px; display: flex; flex-direction: column; max-height: calc(100vh - 92px); border-radius: 24px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
+.rd-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px 14px 24px; border-bottom: 1px solid var(--border); }
+.rd-head b { display: block; font-size: 17px; font-weight: 800; }
+.rd-head small { color: var(--muted); font-size: 13px; }
+.rd-size { display: flex; gap: 2px; padding: 3px; border-radius: 999px; background: color-mix(in srgb, var(--text) 7%, transparent); }
+.rd-size button { min-width: 40px; padding: 6px 8px; border: 0; border-radius: 999px; background: none; color: var(--text); font: inherit; font-size: 13px; font-weight: 800; cursor: pointer; }
+.rd-size button:hover:not(:disabled) { background: color-mix(in srgb, var(--primary) 24%, transparent); }
+.rd-size button:disabled { opacity: 0.35; cursor: default; }
+.rd-body { min-height: 0; overflow-y: auto; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--text) 28%, transparent) transparent;padding: 20px 24px 24px; font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif; line-height: 1.8; }
+.rd-body p { max-width: 66ch; margin: 0 0 1em; white-space: pre-line; }
+.rd-body p:last-of-type { margin-bottom: 0; }
+.rd-more { display: none; }
+.rd .ls-list, .rd .ls-bar { grid-column: 2; }
+.rd .ls-opts { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+.rd .ls-opt { min-height: 46px; }
+.rd .ls-prompt { font-size: 17px; }
+@media (max-width: 960px) {
+  .ls.rd { max-width: 760px; grid-template-columns: minmax(0, 1fr); }
+  .rd-tabs { position: sticky; top: 76px; z-index: 5; display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow); }
+  .rd-tabs button { padding: 10px; border: 0; border-radius: 999px; background: none; color: var(--muted); font: inherit; font-size: 14px; font-weight: 800; cursor: pointer; }
+  .rd-tabs button.on { background: var(--primary); color: #fff; }
+  .rd-text { grid-column: 1; grid-row: auto; position: static; max-height: none; }
+  .rd-body { overflow: visible; }
+  .rd-more { display: block; width: 100%; margin-top: 20px; padding: 14px; border: 0; border-radius: 14px; background: color-mix(in srgb, var(--primary) 16%, transparent); color: var(--text); font: inherit; font-size: 15px; font-weight: 800; cursor: pointer; }
+  .rd .ls-list, .rd .ls-bar { grid-column: 1; }
+  .rd.on-text .ls-list, .rd.on-text .ls-bar, .rd.on-questions .rd-text { display: none; }
+}
+@media (max-width: 760px) {
+  .rd-tabs { top: 8px; }
+  .rd-head { padding: 12px 12px 12px 16px; }
+  .rd-body { padding: 16px; line-height: 1.7; }
+}
 
 /* ---- lesson road, compact version ---- */
 .lr-road2 { width: 340px; }

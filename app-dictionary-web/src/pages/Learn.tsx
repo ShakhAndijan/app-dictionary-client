@@ -776,26 +776,69 @@ function barHeight(sentence: string, k: number, b: number): number {
   return 22 + ((code * (b + 3) + k * 17) % 79);
 }
 
-/** Consecutive items that share the same audio form one listening page. */
-function listeningGroups(items: LearnItemView[]): LearnItemView[][] | null {
+/** Consecutive items that share the same audio (listening) or text (reading) form one page. */
+function pageGroups(lesson: LearnLessonDetail): LearnItemView[][] | null {
+  const source = (i: LearnItemView) => (lesson.skill === 'READING' ? i.passage : i.audioText);
+  const items = lesson.items;
   if (items.length === 0) return null;
-  if (items.some((i) => !i.audioText || (i.kind !== 'CHOICE' && i.kind !== 'FILL'))) return null;
+  if (items.some((i) => !source(i) || (i.kind !== 'CHOICE' && i.kind !== 'FILL'))) return null;
   const groups: LearnItemView[][] = [];
   for (const it of items) {
     const g = groups[groups.length - 1];
-    if (g && g[0].audioText === it.audioText) g.push(it);
+    if (g && source(g[0]) === source(it)) g.push(it);
     else groups.push([it]);
   }
   return groups;
 }
 
-function ListeningPage({ lesson, onFinish, onExit, error }: {
+const TEXT_SIZES = [15, 17, 19, 21];
+
+/** The text of a reading page, with its length and a letter size the learner can change. */
+function ReadingText({ text, number, onQuestions }: { text: string; number: number; onQuestions: () => void }) {
+  const [size, setSize] = useState(() => {
+    try {
+      const n = Number(localStorage.getItem('reading_size') ?? 1);
+      return TEXT_SIZES[n] ? n : 1;
+    } catch {
+      return 1;
+    }
+  });
+  const change = (n: number) => {
+    setSize(n);
+    try { localStorage.setItem('reading_size', String(n)); } catch { /* ignore */ }
+  };
+  const words = text.split(/\s+/).filter(Boolean).length;
+
+  return (
+    <article className="rd-text">
+      <header className="rd-head">
+        <div>
+          <b>Matn {number}</b>
+          <small>{words} ta so'z, taxminan {Math.max(1, Math.round(words / 100))} daqiqa</small>
+        </div>
+        <div className="rd-size" role="group" aria-label="Harf o'lchami">
+          <button onClick={() => change(size - 1)} disabled={size === 0} aria-label="Harfni kichraytirish">A−</button>
+          <button onClick={() => change(size + 1)} disabled={size === TEXT_SIZES.length - 1} aria-label="Harfni kattalashtirish">A+</button>
+        </div>
+      </header>
+      <div className="rd-body" lang="en" style={{ fontSize: TEXT_SIZES[size] }}>
+        {text.split(/\n\s*\n/).map((p, i) => <p key={i}>{p}</p>)}
+        <button className="rd-more" onClick={onQuestions}>Savollarga o'tish</button>
+      </div>
+    </article>
+  );
+}
+
+function GroupPage({ lesson, onFinish, onExit, error }: {
   lesson: LearnLessonDetail;
   onFinish: (answers: { itemId: string; answer: string }[]) => void;
   onExit: () => void;
   error: string;
 }) {
-  const groups = useMemo(() => listeningGroups(lesson.items)!, [lesson]);
+  const groups = useMemo(() => pageGroups(lesson)!, [lesson]);
+  const reading = lesson.skill === 'READING';
+  // Narrow screens show the text and the questions as two tabs.
+  const [tab, setTab] = useState<'text' | 'questions'>('text');
   const m = SKILL_META[lesson.skill];
   const [gi, setGi] = useState(0);
   const [values, setValues] = useState<Record<string, string>>({});
@@ -833,6 +876,12 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
     setCollected(all);
     setFeedback(null);
     setGi(gi + 1);
+    setTab('text');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const openTab = (t: 'text' | 'questions') => {
+    setTab(t);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -849,14 +898,24 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
       <Steps total={groups.length} index={gi} marks={marks} />
       {(error || problem) && <Notice>{error || problem}</Notice>}
 
-      <div className="ls">
-        <div className="ls-audio" key={`a${gi}`}>
-          <div className="ls-audio-head">
-            <b>Audio {gi + 1}</b>
-            <small>Avval tinglang, keyin {group.length} ta savolga javob bering</small>
+      <div className={reading ? `ls rd on-${tab}` : 'ls'}>
+        {reading ? (
+          <>
+            <div className="rd-tabs" role="group" aria-label="Ko'rinish">
+              <button className={tab === 'text' ? 'on' : ''} aria-pressed={tab === 'text'} onClick={() => openTab('text')}>Matn</button>
+              <button className={tab === 'questions' ? 'on' : ''} aria-pressed={tab === 'questions'} onClick={() => openTab('questions')}>Savollar ({group.length})</button>
+            </div>
+            <ReadingText key={`t${gi}`} text={group[0].passage!} number={gi + 1} onQuestions={() => openTab('questions')} />
+          </>
+        ) : (
+          <div className="ls-audio" key={`a${gi}`}>
+            <div className="ls-audio-head">
+              <b>Audio {gi + 1}</b>
+              <small>Avval tinglang, keyin {group.length} ta savolga javob bering</small>
+            </div>
+            <AudioPlayer text={group[0].audioText!} />
           </div>
-          <AudioPlayer text={group[0].audioText!} />
-        </div>
+        )}
 
         <ol className="ls-list">
           {group.map((it, n) => {
@@ -930,7 +989,7 @@ function ListeningPage({ lesson, onFinish, onExit, error }: {
                 <b>{correctCount} / {group.length} to'g'ri</b>
                 <small>Xatolarni ko'rib chiqing, so'ng davom eting</small>
               </div>
-              <button className="ex2-go" onClick={next}>{last ? 'Natija' : `Keyingi ${groups[gi + 1].length} ta`} →</button>
+              <button className="ex2-go" onClick={next}>{last ? 'Natija' : reading ? 'Keyingi matn' : `Keyingi ${groups[gi + 1].length} ta`} →</button>
             </>
           ) : (
             <>
@@ -1008,8 +1067,8 @@ function LessonBody() {
     await finishWith(next);
   };
 
-  if (stage === 'play' && listeningGroups(lesson.items)) {
-    return <ListeningPage lesson={lesson} onFinish={finishWith} onExit={exit} error={error} />;
+  if (stage === 'play' && pageGroups(lesson)) {
+    return <GroupPage lesson={lesson} onFinish={finishWith} onExit={exit} error={error} />;
   }
 
   if (stage === 'intro') {
