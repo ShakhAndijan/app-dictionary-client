@@ -6120,3 +6120,77 @@ a.act-card:hover { transform: translateY(-2px); border-color: var(--act); }
   .act-cols { gap: 1px; }
   .act-rows li { grid-template-columns: 80px minmax(30px, 1fr) auto; }
 }
+
+/* ---------- weekly report: the whole week first, then each direction ---------- */
+.container:has(.wk) { max-width: 1080px; }
+.wk { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
+.wk-top { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
+.wk-top .st-back { margin-bottom: 0; }
+.wk-switch { margin-left: auto; display: flex; align-items: center; gap: 6px; padding: 5px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); }
+.wk-switch > div { display: grid; min-width: 136px; text-align: center; line-height: 1.25; }
+.wk-switch b { font-size: 14px; }
+.wk-switch small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.wk-switch button { width: 36px; height: 36px; border: 0; border-radius: 50%; background: color-mix(in srgb, var(--text) 7%, transparent); color: var(--text); font-size: 20px; line-height: 1; cursor: pointer; }
+.wk-switch button:hover:not(:disabled) { background: color-mix(in srgb, var(--primary) 26%, transparent); }
+.wk-switch button:disabled { opacity: 0.3; cursor: default; }
+.wk-hero, .wk-chart, .wk-dir { min-width: 0; padding: 22px; border-radius: 24px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow); }
+.wk-hero { display: grid; gap: 20px; border-color: color-mix(in srgb, var(--primary) 34%, var(--border)); background: linear-gradient(150deg, color-mix(in srgb, var(--primary) 18%, var(--surface)), var(--surface) 58%); }
+.wk-hero h2 { margin: 0; font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif; font-size: clamp(22px, 3.4vw, 30px); line-height: 1.25; }
+.wk-totals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.wk-totals > div { display: grid; align-content: start; gap: 2px; }
+.wk-totals span { font-size: 13px; color: var(--muted); }
+.wk-totals strong { font-size: clamp(28px, 4.6vw, 42px); line-height: 1.1; }
+.wk-totals small, .wk-main small { font-size: 0.5em; font-weight: 700; color: var(--muted); }
+.wk .wk-change { font-size: 12px; font-weight: 800; color: var(--muted); }
+.wk .wk-change.up { color: var(--green-text); }
+.wk .wk-change.down { color: var(--danger); }
+.wk-days { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.wk-days li { display: grid; justify-items: center; gap: 3px; padding: 10px 2px; border-radius: 14px; border: 1px dashed var(--border); color: var(--muted); }
+.wk-days li.on { border: 1px solid transparent; background: color-mix(in srgb, var(--text) 7%, transparent); color: var(--text); }
+.wk-days small { font-size: 11px; font-weight: 700; color: var(--muted); }
+.wk-days b { font-size: 17px; font-variant-numeric: tabular-nums; }
+.wk-days span { display: flex; gap: 3px; height: 8px; }
+.wk-days i { width: 8px; height: 8px; border-radius: 50%; background: var(--act); }
+.wk-chart { display: grid; gap: 12px; }
+.wk-chart p { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+.wk-chart h2, .wk-dir h2 { margin: 0; font-size: 18px; }
+.wk-dirs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.wk-dir { display: grid; gap: 16px; padding: 18px; border-top: 3px solid var(--act); }
+.wk-dir header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.wk-dir header .wk-change { margin-left: auto; }
+.wk-dir-ico { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; background: color-mix(in srgb, var(--act) 18%, transparent); font-size: 18px; }
+.wk-main { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.wk-main > div { display: grid; }
+.wk-main strong { font-size: 28px; line-height: 1.15; }
+.wk-main span { font-size: 12px; color: var(--muted); }
+.wk-spark { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; }
+.wk-spark > span { display: grid; justify-items: center; gap: 4px; }
+.wk-spark > span > span { display: flex; align-items: flex-end; justify-content: center; width: 100%; height: 56px; }
+.wk-spark i { display: block; width: min(100%, 18px); border-radius: 4px 4px 0 0; background: var(--act); }
+.wk-spark i.none { background: var(--track); border-radius: 2px; }
+.wk-spark small { font-size: 10px; color: var(--muted); }
+.wk-facts { list-style: none; margin: 0; padding: 0; display: grid; }
+.wk-facts li { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+.wk-facts li span::first-letter { text-transform: uppercase; }
+.wk-facts b { color: var(--text); font-variant-numeric: tabular-nums; }
+.wk-parts { display: grid; gap: 10px; }
+.wk-parts h3 { margin: 0; font-size: 14px; }
+.wk-part { display: grid; gap: 5px; font-size: 13px; }
+.wk-part > div:first-child { display: flex; align-items: baseline; gap: 8px; }
+.wk-part em { margin-left: auto; font-style: normal; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.wk-part b { min-width: 38px; text-align: right; font-variant-numeric: tabular-nums; }
+.wk-part.idle { color: var(--muted); }
+.wk-meter { height: 6px; border-radius: 99px; background: var(--track); overflow: hidden; }
+.wk-meter i { display: block; height: 100%; border-radius: inherit; background: var(--act); }
+.wk-empty { display: grid; gap: 12px; justify-items: start; }
+.wk-empty p { margin: 0; font-size: 14px; color: var(--muted); }
+.wk-empty a { padding: 10px 16px; border-radius: 12px; background: color-mix(in srgb, var(--act) 18%, transparent); color: var(--text); font-size: 14px; font-weight: 800; text-decoration: none; }
+@media (max-width: 900px) {
+  .wk-dirs { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .wk-switch { margin-left: 0; width: 100%; justify-content: space-between; }
+  .wk-hero, .wk-chart { padding: 16px; }
+  .wk-totals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wk-days { gap: 3px; }
+}

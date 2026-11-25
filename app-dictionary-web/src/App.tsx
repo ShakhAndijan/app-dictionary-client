@@ -18,7 +18,8 @@ import StudyPage from './pages/Study';
 import ProfilePage from './pages/Profile';
 import { AchievementsPage, ChangePasswordPage, EditProfilePage, SettingsPage } from './pages/ProfilePages';
 import { GroupDetailPage, GroupsPage } from './pages/Groups';
-import { StatsPage, WeeklyPage } from './pages/Stats';
+import { StatsPage } from './pages/Stats';
+import { WeeklyPage } from './pages/Weekly';
 import { ExamPage, LearnPage, LearnStatsPage, LessonPage } from './pages/Learn';
 
 const ico = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;

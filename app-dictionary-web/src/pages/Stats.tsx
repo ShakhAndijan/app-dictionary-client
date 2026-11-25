@@ -11,10 +11,8 @@ import {
   StatsSummary,
   Word,
   wordsApi,
-  WeeklyReport,
-  WeeklyTotals,
 } from '../api';
-import { Button, Card, PageHeader, ProgressBar, Spinner } from '../ui';
+import { Button, Card, ProgressBar, Spinner } from '../ui';
 import { shortDate } from '../util';
 import { EnglishStats } from './Learn';
 import { DevStats } from './Dev';
@@ -332,123 +330,6 @@ function WordsStats({ tabs }: { tabs: ReactNode }) {
         )}
       </section>
     </div>
-  );
-}
-
-/* ------------------------------------------------------------ weekly */
-
-function Delta({ now, before, suffix = '' }: { now: number; before: number; suffix?: string }) {
-  const diff = Math.round((now - before) * 10) / 10;
-  if (diff === 0) return <div className="muted" style={{ fontSize: 12 }}>o'zgarmagan</div>;
-  const up = diff > 0;
-  return (
-    <div className="tile-hint" style={{ color: up ? 'var(--secondary)' : 'var(--danger)' }}>
-      {up ? '▲' : '▼'} {Math.abs(diff)}
-      {suffix}
-    </div>
-  );
-}
-
-function verdict(t: WeeklyTotals, p: WeeklyTotals): string {
-  if (t.answers === 0 && t.wordsAdded === 0) return "Bu hafta hali faollik yo'q. Bugun boshlang!";
-  if (t.answers > p.answers && t.accuracyPercent >= p.accuracyPercent) return "Ajoyib hafta: ko'proq va aniqroq!";
-  if (t.answers > p.answers) return "O'tgan haftadan ko'proq mashq qildingiz.";
-  if (t.accuracyPercent > p.accuracyPercent) return 'Aniqlik oshdi, davom eting!';
-  return 'Barqaror davom eting, har kun bir oz.';
-}
-
-const WEEKDAYS = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
-
-export function WeeklyPage() {
-  const nav = useNavigate();
-  const [weeksBack, setWeeksBack] = useState(0);
-  const [report, setReport] = useState<WeeklyReport | null>(null);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    setReport(null);
-    setError('');
-    statsApi
-      .weekly(weeksBack)
-      .then(setReport)
-      .catch((e) => setError(errorMessage(e, "Hisobotni yuklab bo'lmadi")));
-  }, [weeksBack]);
-
-  const nav2 = (
-    <div className="row mb" style={{ justifyContent: 'space-between' }}>
-      <button className="icon-btn" onClick={() => setWeeksBack(weeksBack + 1)} aria-label="Oldingi hafta">‹</button>
-      <div className="center">
-        <b>{weeksBack === 0 ? 'Shu hafta' : weeksBack === 1 ? "O'tgan hafta" : `${weeksBack} hafta oldin`}</b>
-        {report && <div className="muted" style={{ fontSize: 12 }}>{shortDate(report.weekStart)} – {shortDate(report.weekEnd)}</div>}
-      </div>
-      <button className="icon-btn" disabled={weeksBack === 0} style={{ opacity: weeksBack === 0 ? 0.3 : 1 }} onClick={() => setWeeksBack(weeksBack - 1)} aria-label="Keyingi hafta">›</button>
-    </div>
-  );
-
-  if (!report) {
-    return (
-      <>
-        <PageHeader title="Haftalik hisobot" back={() => nav('/profile')} />
-        {nav2}
-        {error ? <p className="muted center">{error}</p> : <Spinner />}
-      </>
-    );
-  }
-
-  const t = report.totals;
-  const p = report.previous;
-  const maxAnswers = Math.max(1, ...report.days.map((d) => d.answers));
-  const tiles: { label: string; value: string; now: number; before: number; suffix?: string }[] = [
-    { label: 'Javoblar', value: String(t.answers), now: t.answers, before: p.answers },
-    { label: 'Aniqlik', value: `${t.accuracyPercent}%`, now: t.accuracyPercent, before: p.accuracyPercent, suffix: '%' },
-    { label: 'XP', value: String(t.xp), now: t.xp, before: p.xp },
-    { label: "Yangi so'zlar", value: String(t.wordsAdded), now: t.wordsAdded, before: p.wordsAdded },
-    { label: "Mashq qilingan so'z", value: String(t.wordsPracticed), now: t.wordsPracticed, before: p.wordsPracticed },
-    { label: 'Maqsad kunlari', value: String(t.goalDays), now: t.goalDays, before: p.goalDays },
-  ];
-
-  return (
-    <>
-      <PageHeader title="Haftalik hisobot" back={() => nav('/profile')} />
-      {nav2}
-      <Card className="mb">
-        <b>{verdict(t, p)}</b>
-        <div className="muted" style={{ fontSize: 13, marginTop: 4 }}>
-          {t.activeDays} / 7 kun faol · maqsad {t.goalDays} kun bajarildi
-        </div>
-      </Card>
-      <div className="grid">
-        {tiles.map((x) => (
-          <div key={x.label} className="tile">
-            <div className="tile-value">{x.value}</div>
-            <div className="tile-label">{x.label}</div>
-            <Delta now={x.now} before={x.before} suffix={x.suffix} />
-          </div>
-        ))}
-      </div>
-      <p className="muted" style={{ fontSize: 12 }}>Yashil/qizil belgi o'tgan haftaga nisbatan farqni ko'rsatadi.</p>
-
-      <Card className="mb">
-        <b>Kunlar bo'yicha javoblar</b>
-        <div className="chart">
-          {report.days.map((d, i) => {
-            const best = d.date === report.bestDay;
-            const h = d.answers === 0 ? 3 : Math.max(6, Math.round((d.answers / maxAnswers) * 100));
-            return (
-              <div key={d.date} className="chart-col">
-                <div className="chart-val">{d.answers > 0 ? d.answers : ''}</div>
-                <div
-                  className="chart-bar"
-                  style={{ height: `${h}%`, background: best ? 'var(--secondary)' : d.answers ? 'var(--primary)' : 'var(--border)' }}
-                />
-                <div className="chart-lbl" style={best ? { color: 'var(--secondary)', fontWeight: 800 } : undefined}>{WEEKDAYS[i]}</div>
-              </div>
-            );
-          })}
-        </div>
-        {report.bestDay && <p className="center muted" style={{ fontSize: 13 }}>Eng faol kun: {shortDate(report.bestDay)}</p>}
-      </Card>
-    </>
   );
 }
 

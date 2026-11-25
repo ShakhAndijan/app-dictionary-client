@@ -1,9 +1,21 @@
 package com.example.dictionary.service;
 
 import com.example.dictionary.dto.WeeklyReportResponse;
+import com.example.dictionary.dto.WeeklyReportResponse.Course;
+import com.example.dictionary.dto.WeeklyReportResponse.CourseDay;
+import com.example.dictionary.dto.WeeklyReportResponse.CoursePrevious;
+import com.example.dictionary.dto.WeeklyReportResponse.Part;
 import com.example.dictionary.dto.WeeklyReportResponse.Day;
 import com.example.dictionary.dto.WeeklyReportResponse.Totals;
 import com.example.dictionary.model.AppUser;
+import com.example.dictionary.model.DevLabDone;
+import com.example.dictionary.model.DevLesson;
+import com.example.dictionary.model.DevResult;
+import com.example.dictionary.model.LearnResult;
+import com.example.dictionary.repository.DevLabDoneRepository;
+import com.example.dictionary.repository.DevLessonRepository;
+import com.example.dictionary.repository.DevResultRepository;
+import com.example.dictionary.repository.LearnResultRepository;
 import com.example.dictionary.repository.ReviewLogRepository;
 import com.example.dictionary.repository.UserRepository;
 import com.example.dictionary.repository.WordRepository;
@@ -21,6 +33,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,14 +48,24 @@ public class WeeklyReportService {
     private final XpEventRepository xpRepository;
     private final WordRepository wordRepository;
     private final UserRepository userRepository;
+    private final LearnResultRepository learnResults;
+    private final DevResultRepository devResults;
+    private final DevLabDoneRepository devLabs;
+    private final DevLessonRepository devLessons;
     private final ZoneId zone = ZoneId.systemDefault();
 
     public WeeklyReportService(ReviewLogRepository logRepository, XpEventRepository xpRepository,
-                               WordRepository wordRepository, UserRepository userRepository) {
+                               WordRepository wordRepository, UserRepository userRepository,
+                               LearnResultRepository learnResults, DevResultRepository devResults,
+                               DevLabDoneRepository devLabs, DevLessonRepository devLessons) {
         this.logRepository = logRepository;
         this.xpRepository = xpRepository;
         this.wordRepository = wordRepository;
         this.userRepository = userRepository;
+        this.learnResults = learnResults;
+        this.devResults = devResults;
+        this.devLabs = devLabs;
+        this.devLessons = devLessons;
     }
 
     /** @param weeksBack 0 for the current week, 1 for last week, and so on */
@@ -67,7 +90,114 @@ public class WeeklyReportService {
                 bestDay = d.date();
             }
         }
-        return new WeeklyReportResponse(start, start.plusDays(6), back == 0, totals, previous, days, bestDay);
+        return new WeeklyReportResponse(start, start.plusDays(6), back == 0, totals, previous, days, bestDay,
+                english(username, start), programming(username, start));
+    }
+
+    /** One finished lesson or exam section; {@code lesson} is false for exams. */
+    private record Entry(LocalDate date, String part, int answers, int correct, boolean lesson, boolean passed) {
+    }
+
+    private Course english(String username, LocalDate start) {
+        List<Entry> entries = new ArrayList<>();
+        for (LearnResult r : learnResults.findByOwnerUsernameAndCreatedAtGreaterThanEqual(username, at(start.minusWeeks(1)))) {
+            entries.add(new Entry(dateOf(r.getCreatedAt()), r.getSkill(), r.getTotal(), r.getCorrect(),
+                    LearnResult.LESSON.equals(r.getKind()), r.isPassed()));
+        }
+        return course(start, entries, List.of());
+    }
+
+    private Course programming(String username, LocalDate start) {
+        Instant from = at(start.minusWeeks(1));
+        Map<String, String> modules = new HashMap<>();
+        List<Entry> entries = new ArrayList<>();
+        for (DevResult r : devResults.findByOwnerUsernameAndCreatedAtGreaterThanEqual(username, from)) {
+            String module = r.getLessonCode() == null ? "exam" : modules.computeIfAbsent(r.getLessonCode(),
+                    code -> devLessons.findByCode(code).map(DevLesson::getModuleKey).orElse("other"));
+            entries.add(new Entry(dateOf(r.getCreatedAt()), module, r.getTotal(), r.getCorrect(),
+                    DevResult.LESSON.equals(r.getKind()), r.isPassed()));
+        }
+        List<LocalDate> labs = devLabs.findByOwnerUsername(username).stream()
+                .map(DevLabDone::getCreatedAt)
+                .filter(t -> !t.isBefore(from))
+                .map(this::dateOf)
+                .toList();
+        return course(start, entries, labs);
+    }
+
+    /** Sums the entries of the week from {@code start}; the week before it only feeds {@code previous}. */
+    private static Course course(LocalDate start, List<Entry> entries, List<LocalDate> labDates) {
+        int[] answers = new int[7];
+        int[] correct = new int[7];
+        int[] lessons = new int[7];
+        int[] labs = new int[7];
+        int prevAnswers = 0;
+        int prevCorrect = 0;
+        int prevLessons = 0;
+        int prevLabs = 0;
+        int passed = 0;
+        // {answers, correct, lessons} per skill or module
+        Map<String, int[]> parts = new LinkedHashMap<>();
+
+        for (Entry e : entries) {
+            int i = index(start, e.date());
+            if (i >= 0 && i < 7) {
+                answers[i] += e.answers();
+                correct[i] += e.correct();
+                int[] part = parts.computeIfAbsent(e.part(), k -> new int[3]);
+                part[0] += e.answers();
+                part[1] += e.correct();
+                if (e.lesson()) {
+                    lessons[i]++;
+                    part[2]++;
+                    if (e.passed()) {
+                        passed++;
+                    }
+                }
+            } else if (i >= -7 && i < 0) {
+                prevAnswers += e.answers();
+                prevCorrect += e.correct();
+                if (e.lesson()) {
+                    prevLessons++;
+                }
+            }
+        }
+        for (LocalDate date : labDates) {
+            int i = index(start, date);
+            if (i >= 0 && i < 7) {
+                labs[i]++;
+            } else if (i >= -7 && i < 0) {
+                prevLabs++;
+            }
+        }
+
+        List<CourseDay> days = new ArrayList<>();
+        int active = 0;
+        int totalAnswers = 0;
+        int totalCorrect = 0;
+        int totalLessons = 0;
+        int totalLabs = 0;
+        for (int i = 0; i < 7; i++) {
+            days.add(new CourseDay(start.plusDays(i), answers[i], correct[i], lessons[i], labs[i]));
+            totalAnswers += answers[i];
+            totalCorrect += correct[i];
+            totalLessons += lessons[i];
+            totalLabs += labs[i];
+            if (answers[i] > 0 || labs[i] > 0) {
+                active++;
+            }
+        }
+        List<Part> list = parts.entrySet().stream()
+                .map(p -> new Part(p.getKey(), p.getValue()[0], p.getValue()[1],
+                        accuracy(p.getValue()[1], p.getValue()[0]), p.getValue()[2]))
+                .toList();
+        return new Course(totalAnswers, totalCorrect, accuracy(totalCorrect, totalAnswers), totalLessons, passed,
+                totalLabs, active, new CoursePrevious(prevAnswers, accuracy(prevCorrect, prevAnswers), prevLessons, prevLabs),
+                days, list);
+    }
+
+    private static double accuracy(int correct, int answers) {
+        return answers == 0 ? 0.0 : Math.round(correct * 1000.0 / answers) / 10.0;
     }
 
     private Instant at(LocalDate date) {
@@ -138,7 +268,6 @@ public class WeeklyReportService {
             }
         }
         int goalDays = (int) wordsPerDay.values().stream().filter(s -> s.size() >= dailyGoal).count();
-        double accuracy = answers == 0 ? 0.0 : Math.round(correct * 1000.0 / answers) / 10.0;
-        return new Totals(answers, correct, accuracy, words, practiced.size(), xp, active, goalDays);
+        return new Totals(answers, correct, accuracy(correct, answers), words, practiced.size(), xp, active, goalDays);
     }
 }

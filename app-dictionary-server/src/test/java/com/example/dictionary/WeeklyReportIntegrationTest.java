@@ -1,6 +1,13 @@
 package com.example.dictionary;
 
 import com.example.dictionary.repository.QuizSessionRepository;
+import com.example.dictionary.model.AppUser;
+import com.example.dictionary.model.DevLabDone;
+import com.example.dictionary.model.DevResult;
+import com.example.dictionary.model.LearnResult;
+import com.example.dictionary.repository.DevLabDoneRepository;
+import com.example.dictionary.repository.DevResultRepository;
+import com.example.dictionary.repository.LearnResultRepository;
 import com.example.dictionary.repository.UserRepository;
 import com.example.dictionary.repository.WordRepository;
 import com.jayway.jsonpath.JsonPath;
@@ -42,9 +49,21 @@ class WeeklyReportIntegrationTest {
     @Autowired
     private QuizSessionRepository quizSessionRepository;
 
+    @Autowired
+    private LearnResultRepository learnResultRepository;
+
+    @Autowired
+    private DevResultRepository devResultRepository;
+
+    @Autowired
+    private DevLabDoneRepository devLabDoneRepository;
+
     @BeforeEach
     @AfterEach
     void clean() {
+        learnResultRepository.deleteAll();
+        devResultRepository.deleteAll();
+        devLabDoneRepository.deleteAll();
         quizSessionRepository.deleteAll();
         wordRepository.deleteAll();
         userRepository.deleteAll();
@@ -101,6 +120,35 @@ class WeeklyReportIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.currentWeek").value(false))
                 .andExpect(jsonPath("$.totals.answers").value(0));
+    }
+
+    @Test
+    void coursesAreReportedByDirection() throws Exception {
+        String auth = register();
+        AppUser ivan = userRepository.findByUsername("ivan").orElseThrow();
+        learnResultRepository.save(new LearnResult(ivan, LearnResult.LESSON, "A1", "READING", "a1-reading-1", 8, 10, true));
+        learnResultRepository.save(new LearnResult(ivan, LearnResult.LESSON, "A1", "WRITING", "a1-writing-1", 2, 10, false));
+        devResultRepository.save(new DevResult(ivan, DevResult.LESSON, "JUNIOR", "fe-css-jr-01", 9, 10, true));
+        devLabDoneRepository.save(new DevLabDone(ivan, "fe-css-jr-01", "1"));
+
+        mockMvc.perform(get("/api/stats/weekly").header("Authorization", auth))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.english.answers").value(20))
+                .andExpect(jsonPath("$.english.correct").value(10))
+                .andExpect(jsonPath("$.english.accuracyPercent").value(50.0))
+                .andExpect(jsonPath("$.english.lessons").value(2))
+                .andExpect(jsonPath("$.english.passed").value(1))
+                .andExpect(jsonPath("$.english.activeDays").value(1))
+                .andExpect(jsonPath("$.english.days.length()").value(7))
+                .andExpect(jsonPath("$.english.parts.length()").value(2))
+                .andExpect(jsonPath("$.programming.answers").value(10))
+                .andExpect(jsonPath("$.programming.labs").value(1))
+                .andExpect(jsonPath("$.programming.parts[0].key").value("css"))
+                .andExpect(jsonPath("$.programming.previous.answers").value(0));
+
+        mockMvc.perform(get("/api/stats/weekly?weeksBack=1").header("Authorization", auth))
+                .andExpect(jsonPath("$.english.answers").value(0))
+                .andExpect(jsonPath("$.programming.labs").value(0));
     }
 
     private int firstWordId(String auth) throws Exception {

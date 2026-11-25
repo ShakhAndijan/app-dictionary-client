@@ -111,6 +111,23 @@ export interface WeeklyReport {
   previous: WeeklyTotals;
   days: WeeklyDay[];
   bestDay: string | null;
+  english: WeeklyCourse;
+  programming: WeeklyCourse;
+}
+
+/** A week in the English or the programming course. */
+export interface WeeklyCourse {
+  answers: number;
+  correct: number;
+  accuracyPercent: number;
+  lessons: number;
+  passed: number;
+  labs: number;
+  activeDays: number;
+  previous: { answers: number; accuracyPercent: number; lessons: number; labs: number };
+  days: { date: string; answers: number; correct: number; lessons: number; labs: number }[];
+  /** Skills (English) or modules (programming) practised this week. */
+  parts: { key: string; answers: number; correct: number; accuracyPercent: number; lessons: number }[];
 }
 
 export type AchievementTier = 'BRONZE' | 'SILVER' | 'GOLD';
