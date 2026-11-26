@@ -1,0 +1,3994 @@
+[
+ {
+  "code": "fe-internet-md-01",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 1,
+  "title": "Paketlar, TCP va UDP, latency",
+  "intro": "Ma'lumot qanday bo'linib ketadi, TCP va UDP farqi, three-way handshake, RTT va ulanish narxini hisoblash.",
+  "theory": {
+   "analogy": {
+    "icon": "🚚",
+    "title": "Yo'l kengligi va uzunligi",
+    "text": "Yo'lni to'rt qatorli qilsangiz ko'proq mashina sig'adi (bandwidth), lekin Toshkentdan Buxorogacha masofa qisqarmaydi (latency). Sahifa esa ko'plab mayda qatnovlardan iborat."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Internetda ma'lumot paket (kichik bo'lak) larga bo'linib yuboriladi. TCP (ishonchli uzatish protokoli) yetib borishi va tartibni kafolatlaydi, UDP (kafolatsiz uzatish protokoli) esa shunchaki yuboradi. Sahifa tezligiga ko'pincha kanal kengligi emas, latency (kechikish) ta'sir qiladi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Latency (kechikish)",
+       "text": "Xabar manzilga borishi uchun ketadigan vaqt."
+      },
+      {
+       "term": "RTT (Round Trip Time — borib-qaytish vaqti)",
+       "text": "So'rov borib, javob qaytguncha o'tgan vaqt."
+      },
+      {
+       "term": "Bandwidth (o'tkazuvchanlik)",
+       "text": "Vaqt birligida o'tadigan ma'lumot miqdori."
+      },
+      {
+       "term": "Three-way handshake (uch bosqichli salomlashish)",
+       "text": "TCP ulanishini ochish: SYN → SYN-ACK → ACK."
+      },
+      {
+       "term": "Hop (sakrash)",
+       "text": "Paketning bir routerdan keyingisiga o'tishi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Sayt \"sekin\" deyilganda",
+       "text": "Muammo hajmdami yoki kechikishdami, ajratasiz."
+      },
+      {
+       "term": "CDN yoki server joyini tanlashda",
+       "text": "Foydalanuvchiga yaqinlik RTT ni kamaytiradi."
+      },
+      {
+       "term": "Real vaqt funksiyasini loyihalashda",
+       "text": "Video uchun yo'qotishga chidamli, chat uchun ishonchli uzatish."
+      }
+     ]
+    },
+    {
+     "heading": "TCP va UDP",
+     "table": {
+      "head": [
+       "",
+       "TCP",
+       "UDP"
+      ],
+      "rows": [
+       [
+        "Ulanish",
+        "avval handshake",
+        "ulanishsiz"
+       ],
+       [
+        "Yetkazish va tartib",
+        "kafolatlanadi",
+        "kafolat yo'q"
+       ],
+       [
+        "Yo'qolgan paket",
+        "qayta yuboriladi",
+        "qayta yuborilmaydi"
+       ],
+       [
+        "Ishlatilishi",
+        "HTTP/1.1, HTTP/2, email",
+        "DNS, video qo'ng'iroq, QUIC (HTTP/3)"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Yangi HTTPS ulanish narxi (RTT = 100 ms)",
+     "table": {
+      "head": [
+       "Qadam",
+       "Vaqt"
+      ],
+      "rows": [
+       [
+        "DNS (keshda bo'lmasa)",
+        "~100 ms"
+       ],
+       [
+        "TCP handshake",
+        "~100 ms"
+       ],
+       [
+        "TLS 1.3 handshake",
+        "~100 ms"
+       ],
+       [
+        "HTTP so'rov va birinchi bayt",
+        "~100 ms"
+       ]
+      ]
+     },
+     "text": "Jami ~400 ms — server hali hisoblashga vaqt sarflamasdan. TLS 1.2 da yana bir RTT qo'shiladi."
+    },
+    {
+     "heading": "Terminalda sinash",
+     "code": {
+      "lang": "bash",
+      "text": "ping google.com        # RTT\ntracert google.com     # paket yo'li (Windows)\nnslookup google.com    # domenning IP manzili\ncurl -I https://example.com   # javob header'lari"
+     }
+    },
+    {
+     "heading": "Slow start",
+     "callout": {
+      "kind": "info",
+      "text": "TCP ulanish boshida ehtiyotkor: birinchi borishda taxminan 14 KB yuboradi va tezlikni asta oshiradi. Shuning uchun muhim HTML va CSS kichik bo'lsa, birinchi chizilish tezlashadi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📞",
+       "title": "Video qo'ng'iroq",
+       "text": "Yarim soniya oldingi kadrni qayta yuborishdan ma'no yo'q — UDP asosidagi uzatish mos."
+      },
+      {
+       "icon": "🌍",
+       "title": "Uzoqdagi server",
+       "text": "100 Mbit/s tarif bilan ham Amerikadagi serverga har so'rov 200 ms atrofida borib keladi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Tezlikni yaxshilashda ikki savol: nechta borib-qaytish bor va har biri qancha masofaga?"
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "\"Tarifni oshirsak sayt tezlashadi\".",
+       "RTT soni va masofasini kamaytirish.",
+       "Mayda so'rovlar bandwidth ga emas, latency ga bog'liq."
+      ],
+      [
+       "UDP ni \"yomon protokol\" deb hisoblash.",
+       "Vazifaga qarab tanlash.",
+       "DNS va HTTP/3 aynan UDP ustida."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Ma'lumot paketlarga bo'linadi va tartibsiz kelishi mumkin.",
+    "TCP kafolat beradi, UDP tezroq va yengil.",
+    "Yangi HTTPS ulanish bir necha RTT turadi.",
+    "Ulanishni qayta ishlatish va CDN kechikishni kamaytiradi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "RTT ni solishtiring",
+    "text": "ping bilan yaqin (.uz) va uzoq mamlakatdagi saytning kechikishini o'lchab solishtiring."
+   },
+   {
+    "title": "Yo'lni kuzating",
+    "text": "tracert bilan bitta saytgacha nechta hop borligini sanang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "RTT 150 ms. DNS keshda yo'q, TCP + TLS 1.3. Birinchi bayt kamida qachon keladi (server vaqti hisobsiz)?",
+    "options": [
+     "600 ms",
+     "150 ms",
+     "300 ms",
+     "450 ms"
+    ],
+    "answer": "600 ms",
+    "explain": "DNS, TCP, TLS va so'rov — 4 ta RTT: 4 × 150 = 600 ms."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Shu holatda ulanish allaqachon ochiq (qayta ishlatilyapti). Keyingi so'rovning birinchi bayti taxminan qachon?",
+    "options": [
+     "150 ms",
+     "600 ms",
+     "450 ms",
+     "0 ms"
+    ],
+    "answer": "150 ms",
+    "explain": "Faqat so'rov-javob: 1 RTT."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "TCP handshake tartibi qaysi?",
+    "options": [
+     "SYN, SYN-ACK, ACK",
+     "ACK, SYN, SYN-ACK",
+     "SYN, ACK, FIN-ACK",
+     "HELLO, OK, DONE"
+    ],
+    "answer": "SYN, SYN-ACK, ACK",
+    "explain": "Mijoz SYN, server SYN-ACK, mijoz ACK yuboradi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "TCP da yo'ldagi bitta paket yo'qolsa nima bo'ladi?",
+    "options": [
+     "U qayta yuboriladi",
+     "Ulanish darhol uziladi",
+     "Ma'lumot kamchil beriladi",
+     "Barcha fayl boshidan ketadi"
+    ],
+    "answer": "U qayta yuboriladi",
+    "explain": "Faqat yo'qolgan qism qayta yuboriladi va tartib tiklanadi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Onlayn o'yindagi qahramon joylashuvi uchun UDP nega qulay?",
+    "options": [
+     "Eskirgan paketni kutib turmaydi",
+     "Paketlar hech qachon yo'qolmaydi",
+     "Ma'lumot avtomatik shifrlanadi",
+     "Tartib qat'iy saqlab beriladi"
+    ],
+    "answer": "Eskirgan paketni kutib turmaydi",
+    "explain": "Yangi joylashuv eskisini almashtiradi, qayta yuborish faqat kechiktiradi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Sahifa 80 ta mayda fayldan iborat va server uzoqda. Eng ko'p foyda beradigan chora qaysi?",
+    "options": [
+     "Fayllarni CDN dan tarqatish",
+     "Tarif tezligini ikki baravar qilish",
+     "Server diskini kattalashtirish",
+     "Rasmlarga alt matn yozish"
+    ],
+    "answer": "Fayllarni CDN dan tarqatish",
+    "explain": "CDN foydalanuvchiga yaqin, RTT ning o'zi kamayadi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "tracert buyrug'i nimani ko'rsatadi?",
+    "options": [
+     "Paket o'tadigan routerlarni",
+     "Domen egasining ismini",
+     "Serverdagi ochiq fayllarni",
+     "Brauzer keshidagi yozuvlarni"
+    ],
+    "answer": "Paket o'tadigan routerlarni",
+    "explain": "Har bir qator — bitta hop."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Nega katta fayl bitta bo'lakda emas, paketlarda yuboriladi?",
+    "options": [
+     "Yo'qolgan qismini alohida yuborish uchun",
+     "Fayl hajmini kichraytirib berish uchun",
+     "Har paketga alohida domen berish uchun",
+     "Serverga so'rovsiz yuborish uchun"
+    ],
+    "answer": "Yo'qolgan qismini alohida yuborish uchun",
+    "explain": "Bundan tashqari kanal boshqalar bilan navbatma-navbat bo'lishiladi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "TCP slow start frontendga qanday ta'sir qiladi?",
+    "options": [
+     "Boshlang'ich fayllar kichik bo'lgani ma'qul",
+     "Birinchi so'rov server tomonidan rad etiladi",
+     "Rasmlar HTML dan oldin keladi",
+     "Har sahifa ikki marta yuklanadi"
+    ],
+    "answer": "Boshlang'ich fayllar kichik bo'lgani ma'qul",
+    "explain": "Birinchi borishda cheklangan hajm (~14 KB) ketadi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "So'rov borib, javob qaytguncha o'tgan vaqtning 3 harfli qisqartmasi:",
+    "answer": "RTT",
+    "explain": "Round Trip Time.",
+    "alsoAccept": [
+     "rtt"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "HTTP/3 asosidagi QUIC protokoli TCP emas, qaysi protokol ustida ishlaydi?",
+    "answer": "UDP",
+    "explain": "QUIC UDP ustida, ishonchlilikni o'zi ta'minlaydi.",
+    "alsoAccept": [
+     "udp"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Yangi HTTPS ulanishi qadamlarini tartiblang:",
+    "words": [
+     "DNS",
+     "TCP handshake",
+     "TLS handshake",
+     "HTTP so'rov"
+    ],
+    "answer": "DNS TCP handshake TLS handshake HTTP so'rov",
+    "explain": "Avval IP topiladi, keyin ulanish, shifrlash va so'rov."
+   }
+  ]
+ },
+ {
+  "code": "fe-internet-md-02",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 2,
+  "title": "Cookie va holatni saqlash",
+  "intro": "Stateless HTTP, Set-Cookie atributlari: HttpOnly, Secure, SameSite, Max-Age, Domain; sessiya va token.",
+  "theory": {
+   "analogy": {
+    "icon": "🎫",
+    "title": "Garderob raqami",
+    "text": "Palto garderobda (server), sizda faqat raqam (cookie). Raqamni ko'rsatsangiz, kimligingiz ma'lum bo'ladi. Raqamni o'g'irlatsangiz, paltoni boshqa odam oladi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "HTTP stateless (holatsiz): server oldingi so'rovni eslamaydi. Cookie — server Set-Cookie bilan beradigan, brauzer esa keyingi so'rovlarda o'zi qaytaradigan kichik yozuv. Login holati shu yo'l bilan saqlanadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Session cookie (sessiya cookie si)",
+       "text": "Max-Age va Expires yo'q cookie; brauzer sessiyasi tugaguncha yashaydi."
+      },
+      {
+       "term": "HttpOnly",
+       "text": "JavaScript cookie ni o'qiy olmaydi."
+      },
+      {
+       "term": "Secure",
+       "text": "Cookie faqat HTTPS orqali yuboriladi."
+      },
+      {
+       "term": "SameSite",
+       "text": "Boshqa saytdan boshlangan so'rovda cookie yuborilishini cheklaydi."
+      },
+      {
+       "term": "CSRF (Cross-Site Request Forgery — soxta so'rov)",
+       "text": "Begona sayt sizning cookie ngiz bilan so'rov yuborishi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Login qilingan holatni saqlashda",
+       "text": "HttpOnly, Secure, SameSite li sessiya cookie."
+      },
+      {
+       "term": "Logout da",
+       "text": "Server Max-Age=0 bilan cookie ni o'chiradi."
+      },
+      {
+       "term": "Subdomenlar orasida",
+       "text": "Domain atributi bilan ulashasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Misol",
+     "code": {
+      "lang": "http",
+      "text": "HTTP/1.1 200 OK\nSet-Cookie: session=abc123; Path=/; Max-Age=3600; HttpOnly; Secure; SameSite=Lax\n\n---- keyingi so'rov ----\nGET /me HTTP/1.1\nCookie: session=abc123"
+     }
+    },
+    {
+     "heading": "SameSite qiymatlari",
+     "table": {
+      "head": [
+       "Qiymat",
+       "Boshqa saytdan boshlangan so'rovda"
+      ],
+      "rows": [
+       [
+        "Strict",
+        "yuborilmaydi"
+       ],
+       [
+        "Lax",
+        "faqat havola orqali o'tishda (top-level GET) yuboriladi"
+       ],
+       [
+        "None",
+        "yuboriladi; Secure majburiy"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Domain va muddat",
+     "bullets": [
+      "Domain yozilmasa, cookie faqat o'sha hostga tegishli.",
+      "Domain=example.com bo'lsa, subdomenlarga ham yuboriladi.",
+      "Max-Age soniyada; 0 — o'chirish.",
+      "Cookie hajmi taxminan 4 KB va har mos so'rovda yuboriladi."
+     ]
+    },
+    {
+     "heading": "fetch va cookie",
+     "code": {
+      "lang": "js",
+      "text": "// Boshqa origin dagi API ga cookie yuborish uchun:\nfetch('https://api.example.com/me', { credentials: 'include' });\n// Server: Access-Control-Allow-Credentials: true\n//         Access-Control-Allow-Origin: https://app.example.com  (* EMAS)"
+     }
+    },
+    {
+     "heading": "Token qayerda?",
+     "callout": {
+      "kind": "warn",
+      "text": "localStorage dagi tokenni har qanday XSS skripti o'qiy oladi. HttpOnly cookie ni o'qib bo'lmaydi, lekin u avtomatik yuborilgani uchun CSRF himoyasi kerak."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🚪",
+       "title": "Har safar login",
+       "text": "Cookie da Max-Age yo'q — brauzer yopilganda sessiya yo'qolishi mumkin."
+      },
+      {
+       "icon": "🪤",
+       "title": "Begona saytdagi tugma",
+       "text": "SameSite bo'lmasa, soxta forma bankka sizning nomingizdan so'rov yuborishi mumkin."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Sessiya cookie si uchun standart to'plam: HttpOnly; Secure; SameSite=Lax."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Maxfiy tokenni localStorage da saqlash va xavfni o'ylamaslik.",
+       "HttpOnly cookie va CSRF himoyasi.",
+       "XSS bo'lsa token o'g'irlanadi."
+      ],
+      [
+       "SameSite=None ni Secure siz yozish.",
+       "SameSite=None; Secure.",
+       "Brauzer bunday cookie ni rad etadi."
+      ],
+      [
+       "credentials ni unutish.",
+       "credentials: 'include'.",
+       "Boshqa origin ga cookie standart holatda ketmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "HTTP holatsiz, cookie holatni olib yuradi.",
+    "HttpOnly — XSS dan o'qishga qarshi, Secure — faqat HTTPS.",
+    "SameSite CSRF ga qarshi.",
+    "Cross-origin cookie uchun credentials va CORS ruxsati kerak."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Application paneli",
+    "text": "DevTools → Application → Cookies da biror saytning cookie atributlarini o'qing."
+   },
+   {
+    "title": "document.cookie",
+    "text": "Konsolda document.cookie ni chiqaring va HttpOnly cookie lar ro'yxatda yo'qligini solishtiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolda document.cookie nimani ko'rsatadi?",
+    "options": [
+     "theme=dark",
+     "session=abc; theme=dark",
+     "session=abc",
+     "bo'sh satr"
+    ],
+    "answer": "theme=dark",
+    "explain": "HttpOnly cookie JavaScript ga ko'rinmaydi.",
+    "passage": "Set-Cookie: session=abc; HttpOnly\nSet-Cookie: theme=dark"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Set-Cookie da Max-Age ham, Expires ham yo'q. Bu cookie qancha yashaydi?",
+    "options": [
+     "Brauzer sessiyasi tugaguncha",
+     "Roppa-rosa 24 soat",
+     "Server qayta ishga tushguncha",
+     "Foydalanuvchi o'chirguncha abadiy"
+    ],
+    "answer": "Brauzer sessiyasi tugaguncha",
+    "explain": "Bunday cookie — sessiya cookie si."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "SameSite=Strict cookie bor. Foydalanuvchi boshqa saytdagi havola orqali saytingizga o'tdi. Birinchi so'rovda cookie ketadimi?",
+    "options": [
+     "Yo'q, yuborilmaydi",
+     "Ha, chunki bu GET",
+     "Ha, HTTPS bo'lsa",
+     "Faqat ikkinchi marta bosilsa"
+    ],
+    "answer": "Yo'q, yuborilmaydi",
+    "explain": "Strict boshqa saytdan boshlangan navigatsiyada ham cookie yubormaydi; shu sahifa ichidagi keyingi so'rovlarda ketadi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "SameSite=Lax cookie. Begona sayt yashirin forma bilan saytingizga POST yubordi. Nima bo'ladi?",
+    "options": [
+     "Cookie so'rovga qo'shilmaydi",
+     "Cookie odatdagidek qo'shiladi",
+     "Brauzer so'rovni o'chiradi",
+     "Cookie qiymati bo'sh ketadi"
+    ],
+    "answer": "Cookie so'rovga qo'shilmaydi",
+    "explain": "Lax faqat top-level GET navigatsiyada yuboradi; cross-site POST da yo'q."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "SameSite=None cookie ishlashi uchun yana qaysi atribut majburiy?",
+    "options": [
+     "Secure",
+     "HttpOnly",
+     "Domain",
+     "Max-Age"
+    ],
+    "answer": "Secure",
+    "explain": "None faqat Secure bilan qabul qilinadi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "app.example.com va api.example.com ikkalasiga ham cookie ketishi kerak. Qaysi atribut?",
+    "options": [
+     "Domain=example.com",
+     "Path=/api",
+     "Domain=app.example.com",
+     "SameSite=Strict"
+    ],
+    "answer": "Domain=example.com",
+    "explain": "Domain ota domen bo'lsa, subdomenlarga ham yuboriladi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Foydalanuvchi logout qildi. Server cookie ni brauzerdan qanday o'chiradi?",
+    "options": [
+     "Max-Age=0 bilan qayta yuboradi",
+     "Cookie header ni javobga yozmaydi",
+     "401 status kodi qaytaradi",
+     "localStorage.clear() yuboradi"
+    ],
+    "answer": "Max-Age=0 bilan qayta yuboradi",
+    "explain": "Bir xil nom, Path va Domain bilan muddati o'tgan cookie yuboriladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi so'rovda cookie ketmayapti (API boshqa origin da). Nima yetishmaydi?",
+    "options": [
+     "credentials: 'include'",
+     "mode: 'no-cors' qiymati",
+     "cache: 'no-store' qiymati",
+     "method: 'OPTIONS'"
+    ],
+    "answer": "credentials: 'include'",
+    "explain": "fetch ning standart credentials qiymati same-origin.",
+    "passage": "fetch('https://api.shop.uz/me');"
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "HttpOnly cookie qaysi hujumdan to'g'ridan-to'g'ri himoya qilmaydi?",
+    "options": [
+     "CSRF",
+     "XSS orqali o'qish",
+     "document.cookie bilan o'qish",
+     "Skript orqali nusxalash"
+    ],
+    "answer": "CSRF",
+    "explain": "Cookie avtomatik yuboriladi, shuning uchun CSRF ga SameSite yoki token kerak."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Cookie faqat HTTPS orqali yuborilishini belgilaydigan atribut:",
+    "answer": "Secure",
+    "explain": "Secure atributi.",
+    "alsoAccept": [
+     "secure"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Server cookie o'rnatadigan javob header i:",
+    "answer": "Set-Cookie",
+    "explain": "Brauzer esa Cookie header i bilan qaytaradi.",
+    "alsoAccept": [
+     "set-cookie"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Har bir so'rov mustaqil, server oldingisini eslamaydi — bunday protokol: ... (inglizcha)",
+    "answer": "stateless",
+    "explain": "HTTP — stateless protokol.",
+    "alsoAccept": [
+     "Stateless"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-internet-md-03",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 3,
+  "title": "HTTP kesh",
+  "intro": "Cache-Control direktivalari, ETag va 304, CDN keshi va deploy dan keyin eski kod muammosi.",
+  "theory": {
+   "analogy": {
+    "icon": "🥛",
+    "title": "Muzlatgichdagi sut",
+    "text": "max-age — yaroqlilik muddati: tugamaguncha do'konga bormaysiz. Muddat tugagach, \"yangisi chiqdimi?\" deb so'raysiz (ETag): o'zgarmagan bo'lsa, eskisini ishlataverasiz (304)."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Eng tez so'rov — umuman yuborilmagan so'rov. Cache (kesh — qayta ishlatish uchun saqlangan nusxa) aynan shuni beradi. Server Cache-Control header i bilan javobni qancha va kim saqlashi mumkinligini aytadi. Muddati o'tgan nusxani ETag (versiya belgisi) bilan arzon tekshirsa bo'ladi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "max-age",
+       "text": "Nusxa necha soniya \"yangi\" hisoblanadi."
+      },
+      {
+       "term": "ETag (resurs versiyasi belgisi)",
+       "text": "Server beradigan identifikator; brauzer If-None-Match bilan qaytaradi."
+      },
+      {
+       "term": "304 Not Modified",
+       "text": "O'zgarmagan: body yuborilmaydi, eski nusxa ishlatiladi."
+      },
+      {
+       "term": "Content hash (mazmun xeshi)",
+       "text": "Fayl nomiga qo'shiladigan, mazmun o'zgarsa o'zgaradigan belgi: app-a3f9.js."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Build fayllarini sozlashda",
+       "text": "Xeshli fayl — uzoq kesh, index.html — har safar tekshirish."
+      },
+      {
+       "term": "Shaxsiy ma'lumotli API da",
+       "text": "private yoki no-store."
+      },
+      {
+       "term": "\"Yangiladim, o'zgarmadi\" shikoyatida",
+       "text": "Cache-Control va CDN keshini tekshirasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Direktivalar",
+     "table": {
+      "head": [
+       "Direktiva",
+       "Ma'nosi"
+      ],
+      "rows": [
+       [
+        "max-age=3600",
+        "1 soat so'ramasdan ishlat"
+       ],
+       [
+        "no-cache",
+        "saqla, lekin har safar serverda tekshir"
+       ],
+       [
+        "no-store",
+        "umuman saqlama"
+       ],
+       [
+        "private",
+        "faqat brauzer saqlasin, CDN emas"
+       ],
+       [
+        "public",
+        "umumiy kesh ham saqlasa bo'ladi"
+       ],
+       [
+        "s-maxage=600",
+        "umumiy kesh (CDN) uchun muddat"
+       ],
+       [
+        "immutable",
+        "o'zgarmaydi, qayta tekshirma"
+       ],
+       [
+        "stale-while-revalidate=60",
+        "eskisini ber, fonda yangila"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "ETag bilan tekshirish",
+     "code": {
+      "lang": "http",
+      "text": "HTTP/1.1 200 OK\nETag: \"v7\"\nCache-Control: no-cache\n\n---- keyingi safar ----\nGET /style.css\nIf-None-Match: \"v7\"\n\nHTTP/1.1 304 Not Modified   (body yo'q)"
+     }
+    },
+    {
+     "heading": "Deploy strategiyasi",
+     "table": {
+      "head": [
+       "Fayl",
+       "Header"
+      ],
+      "rows": [
+       [
+        "assets/app-a3f9.js",
+        "public, max-age=31536000, immutable"
+       ],
+       [
+        "index.html",
+        "no-cache"
+       ],
+       [
+        "shaxsiy API javobi",
+        "private, no-store"
+       ]
+      ]
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "no-cache \"keshlama\" degani EMAS. Umuman saqlamaslik uchun no-store."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🕰️",
+       "title": "Eski sayt ko'rinyapti",
+       "text": "index.html bir hafta keshlangan: foydalanuvchi eski JS fayllarga havola oladi."
+      },
+      {
+       "icon": "🏦",
+       "title": "Birovning ma'lumoti",
+       "text": "Shaxsiy javob public keshlansa, CDN uni boshqa odamga berishi mumkin."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Nomida xesh bor faylni abadiy keshlang; unga yo'l ko'rsatadigan HTML ni har safar tekshiring."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "index.html ga max-age=31536000.",
+       "no-cache.",
+       "Yangi versiya foydalanuvchiga yetmaydi."
+      ],
+      [
+       "no-cache ni \"saqlanmaydi\" deb tushunish.",
+       "Kerak bo'lsa no-store.",
+       "no-cache saqlaydi, faqat tekshiradi."
+      ],
+      [
+       "Xeshsiz app.js ga uzoq muddat.",
+       "Nomga mazmun xeshi qo'shish.",
+       "Brauzer o'zgarganini bilmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "max-age davomida so'rov umuman ketmaydi.",
+    "no-cache — tekshir, no-store — saqlama.",
+    "ETag + If-None-Match → 304.",
+    "Xeshli assetlar uzoq, HTML esa qisqa keshlanadi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Network da kuzating",
+    "text": "Sahifani ikki marta yangilab, Size ustunida (disk cache), (memory cache) va 304 larni toping."
+   },
+   {
+    "title": "Header larni o'qing",
+    "text": "curl -I bilan o'zingiz ishlatadigan saytning HTML va JS fayli Cache-Control qiymatini solishtiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Javob: Cache-Control: max-age=600. 5 daqiqadan keyin shu fayl yana kerak bo'ldi. Brauzer nima qiladi?",
+    "options": [
+     "So'rovsiz keshdan oladi",
+     "If-None-Match bilan tekshiradi",
+     "Faylni to'liq qayta yuklaydi",
+     "304 kelguncha kutib turadi"
+    ],
+    "answer": "So'rovsiz keshdan oladi",
+    "explain": "600 soniya hali tugamagan."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Cache-Control: no-cache haqida qaysi gap to'g'ri?",
+    "options": [
+     "Saqlaydi, ishlatishdan oldin tekshiradi",
+     "Brauzer javobni umuman saqlamaydi",
+     "Faqat CDN saqlashiga ruxsat bermaydi",
+     "Bir kun davomida so'ramay ishlatadi"
+    ],
+    "answer": "Saqlaydi, ishlatishdan oldin tekshiradi",
+    "explain": "Umuman saqlamaslik — no-store."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Server 304 qaytardi. Brauzer kontentni qayerdan oladi?",
+    "options": [
+     "O'z keshidagi nusxadan",
+     "304 javobining body sidan",
+     "CDN dan qayta yuklab oladi",
+     "Hech qayerdan, sahifa bo'sh"
+    ],
+    "answer": "O'z keshidagi nusxadan",
+    "explain": "304 body siz keladi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Brauzer ETag qiymatini keyingi so'rovda qaysi header bilan yuboradi?",
+    "options": [
+     "If-None-Match",
+     "If-Modified-Since",
+     "ETag-Request",
+     "Cache-Control"
+    ],
+    "answer": "If-None-Match",
+    "explain": "If-Modified-Since esa Last-Modified uchun."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Vite build: assets/index-Bq3x.js. Eng to'g'ri header qaysi?",
+    "options": [
+     "max-age=31536000, immutable",
+     "no-store, must-revalidate",
+     "max-age=0, private",
+     "no-cache, max-age=60"
+    ],
+    "answer": "max-age=31536000, immutable",
+    "explain": "Mazmun o'zgarsa nom ham o'zgaradi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Deploy dan keyin ba'zi foydalanuvchilar eski interfeysni ko'ryapti. Eng ehtimoliy sabab?",
+    "options": [
+     "index.html uzoq muddatga keshlangan",
+     "JS fayl nomida mazmun xeshi borligi",
+     "Server 200 status qaytargani",
+     "Rasmlarga lazy qo'yilgani"
+    ],
+    "answer": "index.html uzoq muddatga keshlangan",
+    "explain": "Eski HTML eski fayllarga ishora qiladi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Foydalanuvchining balans ma'lumotini qaytaradigan API uchun qaysi biri xavfsiz?",
+    "options": [
+     "private, no-store",
+     "public, max-age=300",
+     "s-maxage=300, public",
+     "max-age=31536000"
+    ],
+    "answer": "private, no-store",
+    "explain": "Maxfiy javob umumiy keshga tushmasligi kerak."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Cache-Control: max-age=60, s-maxage=600. CDN javobni necha soniya yangi deb hisoblaydi?",
+    "options": [
+     "600",
+     "60",
+     "660",
+     "0"
+    ],
+    "answer": "600",
+    "explain": "s-maxage umumiy keshlar uchun max-age dan ustun."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "stale-while-revalidate nima beradi?",
+    "options": [
+     "Eskisini darhol berib, fonda yangilaydi",
+     "Eskirgan nusxani butunlay o'chiradi",
+     "Yangisi kelguncha sahifani to'xtatadi",
+     "Faqat offline holatda keshni yoqadi"
+    ],
+    "answer": "Eskisini darhol berib, fonda yangilaydi",
+    "explain": "Foydalanuvchi kutmaydi, keyingi safar yangisi tayyor."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Javobni umuman saqlamaslik direktivasi:",
+    "answer": "no-store",
+    "explain": "Cache-Control: no-store.",
+    "alsoAccept": [
+     "No-Store"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "O'zgarmagan resurs uchun status kodi (son):",
+    "answer": "304",
+    "explain": "304 Not Modified."
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "CDN dagi eski nusxani majburan tozalash amali (inglizcha):",
+    "answer": "purge",
+    "explain": "Purge — keshni tozalash.",
+    "alsoAccept": [
+     "Purge",
+     "invalidate"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-internet-md-04",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 4,
+  "title": "HTTPS va TLS",
+  "intro": "HTTPS nimani kafolatlaydi, TLS handshake, sertifikat va CA, mixed content va HSTS.",
+  "theory": {
+   "analogy": {
+    "icon": "📨",
+    "title": "Muhrlangan konvert",
+    "text": "Oddiy HTTP — ochiq otkritka: pochtadagi har kim o'qiydi. HTTPS — muhrli konvert va pasport tekshiruvi: ochib bo'lmaydi va kimga ketayotgani tasdiqlangan."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "HTTPS — TLS (Transport Layer Security — transport qatlami himoyasi) bilan o'ralgan HTTP. U uch narsani beradi: maxfiylik (yo'lda o'qib bo'lmaydi), yaxlitlik (o'zgartirilsa seziladi) va autentifikatsiya (server haqiqatan o'sha domen ekani sertifikat bilan tasdiqlanadi)."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Certificate (sertifikat)",
+       "text": "Domen kimga tegishli ekanini va ochiq kalitni tasdiqlovchi hujjat."
+      },
+      {
+       "term": "CA (Certificate Authority — sertifikat markazi)",
+       "text": "Sertifikat beradigan ishonchli tashkilot, masalan Let's Encrypt."
+      },
+      {
+       "term": "Symmetric key (umumiy kalit)",
+       "text": "Handshake dan keyin ikki tomon ma'lumotni shifrlaydigan tez kalit."
+      },
+      {
+       "term": "HSTS",
+       "text": "Brauzerga saytga faqat HTTPS bilan kirishni buyuradigan header."
+      },
+      {
+       "term": "Mixed content (aralash kontent)",
+       "text": "HTTPS sahifada HTTP orqali so'ralgan resurs."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Deploy da",
+       "text": "Sertifikat o'rnatish va avtomatik yangilanishini tekshirish."
+      },
+      {
+       "term": "\"Ulanish xavfsiz emas\" xatosida",
+       "text": "Muddat, domen mosligi va zanjirni tekshirasiz."
+      },
+      {
+       "term": "Zamonaviy API larda",
+       "text": "Geolocation, Service Worker va boshqalar secure context talab qiladi."
+      }
+     ]
+    },
+    {
+     "heading": "TLS handshake (soddalashtirilgan)",
+     "flow": [
+      "Mijoz: qo'llaydigan algoritmlar",
+      "Server: sertifikat",
+      "Brauzer: tekshiradi",
+      "Umumiy kalit",
+      "Shifrlangan HTTP"
+     ]
+    },
+    {
+     "heading": "Brauzer sertifikatda nimani tekshiradi",
+     "bullets": [
+      "Ishonchli CA gacha zanjir bor.",
+      "Muddati o'tmagan.",
+      "Domen sertifikatdagi nomga mos.",
+      "Bekor qilinmagan."
+     ]
+    },
+    {
+     "heading": "HTTP dan HTTPS ga",
+     "code": {
+      "lang": "nginx",
+      "text": "server {\n  listen 80;\n  return 301 https://$host$request_uri;\n}\n\n# HTTPS javobida:\nadd_header Strict-Transport-Security \"max-age=31536000\" always;"
+     },
+     "callout": {
+      "kind": "info",
+      "text": "TLS 1.3 handshake 1 RTT, TLS 1.2 esa 2 RTT oladi."
+     }
+    },
+    {
+     "heading": "Qulf belgisi",
+     "callout": {
+      "kind": "warn",
+      "text": "Qulf \"sayt halol\" degani emas, faqat ulanish shifrlangan degani. Fishing sayti ham HTTPS bo'ladi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "☕",
+       "title": "Kafedagi Wi-Fi",
+       "text": "HTTPS siz parol shu tarmoqdagi boshqa odamga ko'rinishi mumkin."
+      },
+      {
+       "icon": "⏳",
+       "title": "Birdan ochilmay qolgan sayt",
+       "text": "Sertifikat muddati tugagan — avtomatik yangilash sozlanmagan."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Hamma narsani HTTPS qiling: HTML, API, rasm, shrift. Bitta http:// manzil ham muammo."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Sertifikat xatosini \"baribir o'tish\" bilan yechish.",
+       "Sababni tuzatish.",
+       "O'rtadagi odam hujumi shunday ko'rinadi."
+      ],
+      [
+       "HTTPS sahifada http:// skript ulash.",
+       "https:// manzil.",
+       "Brauzer bunday skriptni bloklaydi."
+      ],
+      [
+       "Qulfni ishonch belgisi deb bilish.",
+       "Domen nomini diqqat bilan o'qish.",
+       "Sertifikatni soxta sayt ham oladi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "HTTPS: maxfiylik, yaxlitlik, autentifikatsiya.",
+    "Sertifikatni CA beradi va brauzer tekshiradi.",
+    "Ma'lumot tez simmetrik kalit bilan shifrlanadi.",
+    "HSTS va 301 foydalanuvchini HTTPS ga olib o'tadi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Sertifikatni oching",
+    "text": "Brauzerda qulf belgisidan sertifikatni ochib, kim bergani va qachon tugashini toping."
+   },
+   {
+    "title": "Redirect ni ko'ring",
+    "text": "curl -I http://example.com bilan HTTP dan HTTPS ga yo'naltirish bor-yo'qligini tekshiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "HTTPS quyidagilardan qaysi birini kafolatlamaydi?",
+    "options": [
+     "Sayt egasining halolligini",
+     "Yo'lda o'qib bo'lmasligini",
+     "O'zgartirilsa sezilishini",
+     "Domen sertifikatga mosligini"
+    ],
+    "answer": "Sayt egasining halolligini",
+    "explain": "Fishing sayti ham sertifikat olishi mumkin."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Umumiy Wi-Fi dagi kuzatuvchi HTTPS so'rovda nimani odatda ko'ra oladi?",
+    "options": [
+     "Qaysi serverga ulanilayotganini",
+     "URL dagi query parametrlarini",
+     "So'rovdagi cookie qiymatlarini",
+     "Yuborilgan forma ma'lumotini"
+    ],
+    "answer": "Qaysi serverga ulanilayotganini",
+    "explain": "IP va ko'pincha domen nomi ko'rinadi; yo'l, header va body shifrlangan."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Sertifikat www.shop.uz uchun, foydalanuvchi api.boshqa.uz ga shu sertifikat bilan ulandi. Natija?",
+    "options": [
+     "Brauzer ogohlantirish beradi",
+     "Ulanish shifrsiz davom etadi",
+     "Sertifikat o'zi moslashadi",
+     "Faqat cookie bloklanadi"
+    ],
+    "answer": "Brauzer ogohlantirish beradi",
+    "explain": "Domen sertifikatdagi nomlarga mos kelishi shart."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "HTTPS sahifada <script src=\"http://cdn.uz/a.js\"> bor. Nima bo'ladi?",
+    "options": [
+     "Skript bloklanadi yoki HTTPS ga o'tkaziladi",
+     "Skript odatdagidek HTTP orqali ishlaydi",
+     "Butun sahifa HTTP rejimiga qaytib ketadi",
+     "Skript faqat o'qish rejimida ishlaydi"
+    ],
+    "answer": "Skript bloklanadi yoki HTTPS ga o'tkaziladi",
+    "explain": "Aktiv mixed content bajarilishiga yo'l qo'yilmaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Ma'lumotning asosiy qismi qaysi usulda shifrlanadi?",
+    "options": [
+     "Kelishilgan simmetrik kalit bilan",
+     "Sertifikatdagi ochiq kalit bilan",
+     "Domen nomidan olingan xesh bilan",
+     "Foydalanuvchi paroli bilan"
+    ],
+    "answer": "Kelishilgan simmetrik kalit bilan",
+    "explain": "Asimmetrik kriptografiya kimlikni tasdiqlash va kelishuv uchun."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "HSTS header i nima qiladi?",
+    "options": [
+     "Brauzer keyin faqat HTTPS bilan kiradi",
+     "Server cookie larini avtomatik shifrlaydi",
+     "Sertifikatni har kuni yangilab turadi",
+     "HTTP so'rovlarni serverda log qiladi"
+    ],
+    "answer": "Brauzer keyin faqat HTTPS bilan kiradi",
+    "explain": "Brauzer http:// ni o'zi https:// ga aylantiradi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "TLS 1.3 handshake TLS 1.2 ga nisbatan nima beradi?",
+    "options": [
+     "Bir borib-qaytish tejaladi",
+     "Sertifikat talab qilinmaydi",
+     "TCP handshake yo'qoladi",
+     "Fayllar siqilib yuboriladi"
+    ],
+    "answer": "Bir borib-qaytish tejaladi",
+    "explain": "1 RTT vs 2 RTT."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "HTTP so'rovlarni doimiy HTTPS ga yo'naltirish uchun qaysi status kodi mos?",
+    "options": [
+     "301",
+     "302",
+     "404",
+     "200"
+    ],
+    "answer": "301",
+    "explain": "301 (yoki 308) — doimiy ko'chirilgan."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Quyidagilardan qaysi biri localhost dan tashqarida HTTPS (secure context) talab qiladi?",
+    "options": [
+     "Service Worker ro'yxatga olish",
+     "querySelector bilan qidirish",
+     "localStorage ga satr yozish",
+     "CSS animatsiyasini ishlatish"
+    ],
+    "answer": "Service Worker ro'yxatga olish",
+    "explain": "Kuchli imkoniyatlar faqat xavfsiz kontekstda."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Bepul sertifikat beradigan mashhur CA: Let's ...",
+    "answer": "Encrypt",
+    "explain": "Let's Encrypt.",
+    "alsoAccept": [
+     "encrypt",
+     "Let's Encrypt"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "HTTPS ning standart porti (son):",
+    "answer": "443",
+    "explain": "HTTP — 80, HTTPS — 443."
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "TLS ulanish qadamlarini tartiblang:",
+    "words": [
+     "algoritmlar taklifi",
+     "sertifikat",
+     "tekshiruv",
+     "shifrlangan ma'lumot"
+    ],
+    "answer": "algoritmlar taklifi sertifikat tekshiruv shifrlangan ma'lumot",
+    "explain": "Sertifikat tekshirilgach shifrlangan almashinuv boshlanadi."
+   }
+  ]
+ },
+ {
+  "code": "fe-internet-md-05",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 5,
+  "title": "CORS va Same-Origin Policy",
+  "intro": "Origin nima, preflight qachon ketadi, credentials va yulduzcha, xatoni qayerda tuzatish.",
+  "theory": {
+   "analogy": {
+    "icon": "🛃",
+    "title": "Mehmonlar ro'yxati",
+    "text": "Qorovul (brauzer) javobni faqat uy egasi (server) ro'yxatga yozgan mehmonga beradi. Ro'yxatni mehmon o'zi to'ldira olmaydi — uni faqat uy egasi o'zgartiradi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Same-Origin Policy (bir xil manba qoidasi) bo'yicha bir origin dagi skript boshqa origin javobini o'qiy olmaydi. CORS (Cross-Origin Resource Sharing — manbalararo ulashish) server o'z header lari bilan shu cheklovdan istisno berishidir. Origin — protokol, host va port uchligi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Origin (manba)",
+       "text": "Protokol + host + port."
+      },
+      {
+       "term": "Preflight (oldindan so'rov)",
+       "text": "Asosiy so'rovdan oldin ketadigan OPTIONS so'rovi."
+      },
+      {
+       "term": "Access-Control-Allow-Origin",
+       "text": "Qaysi origin javobni o'qiy olishini aytadi."
+      },
+      {
+       "term": "Opaque response (ko'rinmas javob)",
+       "text": "no-cors rejimidagi, ichini o'qib bo'lmaydigan javob."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Frontend va API alohida domenda",
+       "text": "Serverda aniq origin ga ruxsat."
+      },
+      {
+       "term": "Mahalliy ishlab chiqishda",
+       "text": "Vite proxy orqali bir origin dan so'rash."
+      },
+      {
+       "term": "\"Postman da ishlaydi, brauzerda yo'q\" holatida",
+       "text": "CORS header larini tekshirasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Bir xil originmi?",
+     "table": {
+      "head": [
+       "https://a.com bilan",
+       "Natija"
+      ],
+      "rows": [
+       [
+        "https://a.com/x",
+        "bir xil"
+       ],
+       [
+        "http://a.com",
+        "boshqa (protokol)"
+       ],
+       [
+        "https://api.a.com",
+        "boshqa (host)"
+       ],
+       [
+        "https://a.com:8443",
+        "boshqa (port)"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Qachon preflight ketadi",
+     "bullets": [
+      "Metod PUT, PATCH yoki DELETE.",
+      "Authorization yoki o'zingizning header ingiz bor.",
+      "Content-Type: application/json.",
+      "Oddiy GET va urlencoded POST preflight siz ketadi."
+     ]
+    },
+    {
+     "heading": "Server javobi",
+     "code": {
+      "lang": "http",
+      "text": "OPTIONS /orders        ← preflight\nOrigin: https://app.shop.uz\nAccess-Control-Request-Method: PUT\n\nHTTP/1.1 204 No Content\nAccess-Control-Allow-Origin: https://app.shop.uz\nAccess-Control-Allow-Methods: GET, PUT\nAccess-Control-Allow-Headers: Content-Type, Authorization\nAccess-Control-Allow-Credentials: true\nAccess-Control-Max-Age: 600\nVary: Origin"
+     }
+    },
+    {
+     "heading": "Mahalliy proxy",
+     "code": {
+      "lang": "js",
+      "text": "// vite.config.js\nexport default {\n  server: { proxy: { '/api': { target: 'http://localhost:8080', changeOrigin: true } } },\n};"
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "CORS serverni himoya qilmaydi va frontendda \"o'chirib\" bo'lmaydi. Yechim server sozlamasida."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔴",
+       "title": "Konsoldagi qizil xato",
+       "text": "\"blocked by CORS policy\": so'rov ketgan bo'lishi mumkin, lekin javob skriptga berilmagan."
+      },
+      {
+       "icon": "⭐",
+       "title": "Yulduzcha va cookie",
+       "text": "Allow-Origin: * bilan credentials li so'rov ishlamaydi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "CORS xatosida Network panelidan OPTIONS va asosiy so'rovni alohida oching: qaysi header yetishmayotganini ko'rasiz."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "mode: 'no-cors' bilan \"tuzatish\".",
+       "Serverda ruxsat berish.",
+       "Javob o'qib bo'lmaydigan bo'lib qoladi."
+      ],
+      [
+       "credentials bilan Allow-Origin: *.",
+       "Aniq origin yozish.",
+       "Brauzer rad etadi."
+      ],
+      [
+       "Brauzer kengaytmasi bilan CORS ni o'chirish.",
+       "Proxy yoki server sozlamasi.",
+       "Foydalanuvchilarda bu kengaytma yo'q."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Origin = protokol + host + port.",
+    "Nostandart so'rovdan oldin OPTIONS ketadi.",
+    "Credentials uchun aniq origin va Allow-Credentials.",
+    "CORS brauzer cheklovi; curl ga ta'sir qilmaydi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Xatoni yarating",
+    "text": "Boshqa portdagi API dan fetch qilib CORS xatosini oling, keyin serverda ruxsat bering."
+   },
+   {
+    "title": "Preflight ni toping",
+    "text": "Content-Type: application/json bilan POST yuborib, Network da OPTIONS so'rovini ko'ring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "http://localhost:5173 va http://localhost:8080 bir origin mi?",
+    "options": [
+     "Yo'q, portlari boshqa",
+     "Ha, host bir xil",
+     "Ha, ikkalasi localhost",
+     "Faqat dev rejimida bir xil"
+    ],
+    "answer": "Yo'q, portlari boshqa",
+    "explain": "Port ham origin ning qismi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Qaysi so'rov preflight siz ketadi?",
+    "options": [
+     "Header qo'shilmagan GET",
+     "DELETE so'rovi",
+     "Authorization li GET",
+     "JSON body li POST"
+    ],
+    "answer": "Header qo'shilmagan GET",
+    "explain": "Qolgan uchtasi \"oddiy\" shartiga kirmaydi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Preflight javobida ruxsat yo'q. Asosiy PUT so'rovi nima bo'ladi?",
+    "options": [
+     "Umuman yuborilmaydi",
+     "Yuboriladi, javob yashiriladi",
+     "GET ga aylantirib yuboriladi",
+     "Ikki marta qayta yuboriladi"
+    ],
+    "answer": "Umuman yuborilmaydi",
+    "explain": "Brauzer preflight dan o'tmagan so'rovni jo'natmaydi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Oddiy (preflight siz) POST da server Allow-Origin bermadi. Qaysi gap to'g'ri?",
+    "options": [
+     "Server so'rovni olgan bo'lishi mumkin",
+     "So'rov serverga umuman yetib bormaydi",
+     "Javob o'qiladi, faqat status yashiriladi",
+     "Brauzer so'rovni avtomatik bekor qiladi"
+    ],
+    "answer": "Server so'rovni olgan bo'lishi mumkin",
+    "explain": "CORS javobni o'qishni to'sadi, yuborishni emas."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Server: Access-Control-Allow-Origin: *. So'rov credentials: 'include' bilan. Natija?",
+    "options": [
+     "Brauzer javobni bloklaydi",
+     "Cookie bilan muvaffaqiyatli ishlaydi",
+     "Cookie siz muvaffaqiyatli ishlaydi",
+     "Server 401 status qaytaradi"
+    ],
+    "answer": "Brauzer javobni bloklaydi",
+    "explain": "Credentials bilan yulduzcha ruxsat etilmaydi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Postman da so'rov ishlaydi, brauzerda CORS xatosi. Nega?",
+    "options": [
+     "CORS ni faqat brauzer qo'llaydi",
+     "Postman boshqa DNS ishlatadi",
+     "Brauzer faqat GET yubora oladi",
+     "Postman HTTPS ni o'tkazib yuboradi"
+    ],
+    "answer": "CORS ni faqat brauzer qo'llaydi",
+    "explain": "Same-Origin Policy brauzer himoyasi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "mode: 'no-cors' qo'yilsa nima bo'ladi?",
+    "options": [
+     "Javob ichini o'qib bo'lmaydi",
+     "CORS to'liq o'chib, JSON keladi",
+     "Server header lari qo'shib beriladi",
+     "Preflight ikki marta yuboriladi"
+    ],
+    "answer": "Javob ichini o'qib bo'lmaydi",
+    "explain": "Opaque javob: status 0, body yo'q."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Xatoni to'g'ri tuzatish joyi qayer?",
+    "options": [
+     "API server sozlamasi",
+     "React komponenti ichidagi fetch",
+     "Brauzer kengaytmasi",
+     "index.html dagi meta teg"
+    ],
+    "answer": "API server sozlamasi",
+    "explain": "Ruxsatni javob header lari bilan server beradi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Access-Control-Max-Age nima uchun?",
+    "options": [
+     "Preflight natijasini keshlash",
+     "Cookie muddatini belgilash",
+     "So'rov kutish vaqtini cheklash",
+     "Javob body sini keshlash"
+    ],
+    "answer": "Preflight natijasini keshlash",
+    "explain": "Shu vaqt ichida OPTIONS qayta yuborilmaydi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Preflight so'rovining HTTP metodi:",
+    "answer": "OPTIONS",
+    "explain": "Brauzer avval OPTIONS yuboradi.",
+    "alsoAccept": [
+     "options"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Origin uch qismdan iborat: protokol, host va ...",
+    "answer": "port",
+    "explain": "Masalan https, a.com, 443.",
+    "alsoAccept": [
+     "Port"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Javobni o'qishga ruxsat beradigan asosiy header: Access-Control-Allow-...",
+    "answer": "Origin",
+    "explain": "Access-Control-Allow-Origin.",
+    "alsoAccept": [
+     "origin",
+     "Access-Control-Allow-Origin"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-internet-md-06",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 6,
+  "title": "DNS sozlash: yozuvlar, TTL, subdomen",
+  "intro": "Domen qanday topiladi, A, AAAA, CNAME, TXT, MX yozuvlari, apex cheklovi, TTL va tekshirish buyruqlari.",
+  "theory": {
+   "analogy": {
+    "icon": "📇",
+    "title": "Telefon daftari",
+    "text": "Siz ismni bilasiz, daftar raqamni beradi. Do'stlar raqamni eslab qoladi (kesh): raqam o'zgarsa, eski yozuvi bor odam biroz vaqt eskisiga qo'ng'iroq qiladi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "DNS (Domain Name System — domen nomlari tizimi) nomni IP manzilga aylantiradi. Domen egasi record (yozuv) lar qo'shadi, TTL (yashash muddati) esa javob keshda qancha turishini belgilaydi. Subdomen (ichki domen) uchun alohida domen sotib olish shart emas."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "A / AAAA",
+       "text": "Nomni IPv4 / IPv6 manzilga bog'laydi."
+      },
+      {
+       "term": "CNAME",
+       "text": "Nomni boshqa nomga bog'laydi."
+      },
+      {
+       "term": "Apex (ildiz domen)",
+       "text": "Subdomensiz domen: example.uz."
+      },
+      {
+       "term": "TTL (Time To Live — yashash muddati)",
+       "text": "Javob keshda necha soniya saqlanadi."
+      },
+      {
+       "term": "Recursive resolver (qidiruvchi server)",
+       "text": "Sizning nomingizdan javobni qidirib topadigan DNS server."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Domenni hostingga ulashda",
+       "text": "A yoki CNAME yozuvi qo'shasiz."
+      },
+      {
+       "term": "Domen egaligini tasdiqlashda",
+       "text": "Xizmat bergan TXT yozuvini qo'shasiz."
+      },
+      {
+       "term": "Serverni almashtirishda",
+       "text": "TTL ni oldindan tushirasiz."
+      }
+     ]
+    },
+    {
+     "heading": "So'rov yo'li",
+     "flow": [
+      "Brauzer va OS keshi",
+      "Resolver",
+      "Root",
+      "TLD (.uz)",
+      "Authoritative"
+     ]
+    },
+    {
+     "heading": "Yozuvlar",
+     "table": {
+      "head": [
+       "Tur",
+       "Misol"
+      ],
+      "rows": [
+       [
+        "A",
+        "example.uz → 203.0.113.10"
+       ],
+       [
+        "AAAA",
+        "example.uz → 2001:db8::1"
+       ],
+       [
+        "CNAME",
+        "www → loyiha.netlify.app"
+       ],
+       [
+        "MX",
+        "pochta serveri"
+       ],
+       [
+        "TXT",
+        "egalikni tasdiqlash, SPF"
+       ],
+       [
+        "NS",
+        "domenning nom serverlari"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Muhim cheklov",
+     "callout": {
+      "kind": "warn",
+      "text": "Apex domenga (example.uz) odatda oddiy CNAME qo'yib bo'lmaydi: u yerda NS kabi boshqa yozuvlar bor. Provayderlar ALIAS yoki CNAME flattening beradi."
+     }
+    },
+    {
+     "heading": "Tekshirish",
+     "code": {
+      "lang": "bash",
+      "text": "nslookup example.uz\nnslookup -type=TXT example.uz\nipconfig /flushdns          # Windows DNS keshini tozalash\ndig example.uz A +short     # macOS / Linux"
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🕐",
+       "title": "\"DNS hali tarqalmadi\"",
+       "text": "Aslida hech narsa tarqatilmaydi: eski javob keshlarda TTL tugaguncha yashaydi."
+      },
+      {
+       "icon": "🧪",
+       "title": "test.example.uz",
+       "text": "Bitta A yoki CNAME yozuvi bilan bepul sinov manzili."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Ko'chirishdan oldin TTL ni 300 ga tushiring va eski TTL muddati o'tishini kuting."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "CNAME ga IP manzil yozish.",
+       "IP uchun A yoki AAAA.",
+       "CNAME faqat nomga ishora qiladi."
+      ],
+      [
+       "TTL ni o'zgartirish bilan bir vaqtda IP ni almashtirish.",
+       "Avval TTL, keyin kutish, keyin IP.",
+       "Keshlarda eski katta TTL bilan javob turibdi."
+      ],
+      [
+       "Ishlatilmagan subdomen yozuvini qoldirish.",
+       "O'chirib tashlash.",
+       "Boshqa odam xizmatdagi nomni egallashi mumkin."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "DNS nomni IP ga aylantiradi va har qatlamda keshlaydi.",
+    "A/AAAA — IP, CNAME — nom.",
+    "Apex da oddiy CNAME yo'q.",
+    "TTL o'zgarish qanchalik tez ko'rinishini belgilaydi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Yozuvlarni ko'ring",
+    "text": "nslookup bilan bir domenning A, MX va TXT yozuvlarini toping."
+   },
+   {
+    "title": "Subdomen rejasi",
+    "text": "Loyihangiz uchun app., api. va docs. subdomenlari qaysi yozuv bilan qayerga ishora qilishini yozib chiqing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "www.shop.uz ni shop.netlify.app ga bog'lash uchun qaysi yozuv?",
+    "options": [
+     "CNAME",
+     "A",
+     "MX",
+     "TXT"
+    ],
+    "answer": "CNAME",
+    "explain": "Nomdan nomga — CNAME."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Hosting sizga 203.0.113.7 manzilini berdi. shop.uz uchun qaysi yozuv?",
+    "options": [
+     "A",
+     "CNAME",
+     "AAAA",
+     "NS"
+    ],
+    "answer": "A",
+    "explain": "IPv4 — A yozuvi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "api.shop.uz yaratish uchun nima kerak?",
+    "options": [
+     "DNS da yangi yozuv qo'shish",
+     "Yangi domen sotib olish",
+     "Registry dan ruxsat olish",
+     "Yangi TLD ro'yxatdan o'tkazish"
+    ],
+    "answer": "DNS da yangi yozuv qo'shish",
+    "explain": "Subdomenni domen egasi o'zi yaratadi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "TTL 86400 edi, IP almashtirildi. Eng yomon holatda eski IP qancha vaqt ko'rinishi mumkin?",
+    "options": [
+     "24 soatgacha",
+     "5 daqiqagacha",
+     "1 soatgacha",
+     "Darhol yo'qoladi"
+    ],
+    "answer": "24 soatgacha",
+    "explain": "86400 soniya = 24 soat."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Nima uchun apex domenga oddiy CNAME qo'yilmaydi?",
+    "options": [
+     "U yerda boshqa yozuvlar ham bo'lishi shart",
+     "Apex domen IP manzilni qabul qilmaydi",
+     "CNAME faqat .com domenida ishlaydi",
+     "Brauzer apex domenni ochib bera olmaydi"
+    ],
+    "answer": "U yerda boshqa yozuvlar ham bo'lishi shart",
+    "explain": "CNAME o'sha nomda boshqa yozuvlar bilan birga turolmaydi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Pochta xizmati domenga qaysi yozuvni so'raydi (xat qabul qilish uchun)?",
+    "options": [
+     "MX",
+     "A",
+     "CNAME",
+     "AAAA"
+    ],
+    "answer": "MX",
+    "explain": "MX — mail exchanger."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Qidiruv xizmati \"domen sizniki ekanini tasdiqlang\" dedi. Odatda nima qo'shiladi?",
+    "options": [
+     "TXT yozuvi",
+     "NS yozuvi",
+     "A yozuvi",
+     "MX yozuvi"
+    ],
+    "answer": "TXT yozuvi",
+    "explain": "Xizmat bergan satr TXT sifatida yoziladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Resolver keshida javob yo'q. Root server undan keyin kimni so'rashni aytadi?",
+    "options": [
+     "TLD serverini",
+     "Authoritative serverni",
+     "Brauzer keshini",
+     "Hosting panelini"
+    ],
+    "answer": "TLD serverini",
+    "explain": "Root → TLD → authoritative."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "DNS ni o'zgartirdingiz, lekin faqat sizning kompyuteringizda eski IP chiqyapti. Birinchi qadam?",
+    "options": [
+     "Mahalliy DNS keshini tozalash",
+     "Serverni qayta o'rnatish",
+     "Domenni boshqatdan sotib olish",
+     "SSL sertifikatni o'chirish"
+    ],
+    "answer": "Mahalliy DNS keshini tozalash",
+    "explain": "ipconfig /flushdns va brauzer keshi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "IPv6 manzil yozuvining turi:",
+    "answer": "AAAA",
+    "explain": "AAAA — nom → IPv6.",
+    "alsoAccept": [
+     "aaaa"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Javob keshda qancha saqlanishini belgilaydigan qiymat (3 harf):",
+    "answer": "TTL",
+    "explain": "Time To Live.",
+    "alsoAccept": [
+     "ttl"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "DNS qidiruv zanjirini tartiblang:",
+    "words": [
+     "resolver",
+     "root",
+     "TLD",
+     "authoritative"
+    ],
+    "answer": "resolver root TLD authoritative",
+    "explain": "Yakuniy javobni authoritative server beradi."
+   }
+  ]
+ },
+ {
+  "code": "fe-internet-md-07",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 7,
+  "title": "Hosting: static, SSR va CDN",
+  "intro": "CSR, SSG va SSR farqi, CDN hit va miss, SPA fallback, muhit o'zgaruvchilari va rollback.",
+  "theory": {
+   "analogy": {
+    "icon": "🍱",
+    "title": "Tayyor taom va buyurtma",
+    "text": "Static — vitrinadagi tayyor taom: darhol beriladi. SSR — buyurtmaga pishirish: har kimga moslab, lekin kutish bilan. CDN — shahar bo'ylab filiallar."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Hosting tanlovi bitta savoldan boshlanadi: har so'rovda serverda kod ishlashi kerakmi? Yo'q bo'lsa — static hosting va CDN (Content Delivery Network — kontent yetkazish tarmog'i). Ha bo'lsa — SSR (server tomonda chizish) uchun ishlaydigan server kerak."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "CSR (mijozda chizish)",
+       "text": "Server bo'sh HTML beradi, sahifani JavaScript yig'adi."
+      },
+      {
+       "term": "SSG (oldindan yaratish)",
+       "text": "HTML build paytida tayyorlanadi."
+      },
+      {
+       "term": "SSR (serverda chizish)",
+       "text": "HTML har so'rovda serverda yaratiladi."
+      },
+      {
+       "term": "Cache hit / miss (keshda bor / yo'q)",
+       "text": "CDN nuqtasida nusxa bor yoki origin dan olinadi."
+      },
+      {
+       "term": "Rollback (ortga qaytarish)",
+       "text": "Ishlamay qolgan versiyadan avvalgisiga qaytish."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Loyihani chiqarishda",
+       "text": "SPA, SSG yoki SSR ga qarab xizmat tanlaysiz."
+      },
+      {
+       "term": "Sahifani yangilaganda 404 chiqsa",
+       "text": "SPA fallback sozlaysiz."
+      },
+      {
+       "term": "Kalitlarni saqlashda",
+       "text": "Maxfiy narsa frontendga yozilmaydi."
+      }
+     ]
+    },
+    {
+     "heading": "Chizish usullari",
+     "table": {
+      "head": [
+       "Usul",
+       "HTML qachon",
+       "Mos joyi"
+      ],
+      "rows": [
+       [
+        "CSR",
+        "brauzerda",
+        "login ortidagi panel"
+       ],
+       [
+        "SSG",
+        "build paytida",
+        "blog, hujjat, landing"
+       ],
+       [
+        "SSR",
+        "har so'rovda",
+        "shaxsiy yoki tez o'zgaradigan ochiq sahifa"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "SPA fallback va kesh (nginx)",
+     "code": {
+      "lang": "nginx",
+      "text": "root /var/www/app/dist;\n\nlocation /assets/ {\n  add_header Cache-Control \"public, max-age=31536000, immutable\";\n}\n\nlocation / {\n  add_header Cache-Control \"no-cache\";\n  try_files $uri /index.html;\n}"
+     }
+    },
+    {
+     "heading": "Muhit o'zgaruvchilari",
+     "callout": {
+      "kind": "warn",
+      "text": "VITE_API_KEY kabi o'zgaruvchi build paytida JS fayliga yoziladi va hamma o'qiy oladi. Maxfiy kalit faqat serverda turadi."
+     }
+    },
+    {
+     "heading": "Deploy zanjiri",
+     "flow": [
+      "push",
+      "test va lint",
+      "build",
+      "preview",
+      "production"
+     ]
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔄",
+       "title": "Yangilasam 404",
+       "text": "/profile fayli diskda yo'q — server index.html qaytarishi kerak."
+      },
+      {
+       "icon": "🌐",
+       "title": "Uzoq foydalanuvchi",
+       "text": "CDN fayllarni uning yaqinidagi nuqtadan beradi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Avval eng soddasini tanlang: static yetarli bo'lsa, server ko'tarmang."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Maxfiy kalitni VITE_ o'zgaruvchisiga yozish.",
+       "Kalitni backendda saqlash.",
+       "Build ichidan o'qib olinadi."
+      ],
+      [
+       "SPA uchun fallback siz deploy.",
+       "try_files yoki rewrite.",
+       "Ichki manzil to'g'ridan-to'g'ri ochilmaydi."
+      ],
+      [
+       "Rollback rejasiz chiqarish.",
+       "Eski build ni saqlash.",
+       "Xato chiqsa tez qaytib bo'lmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "SPA va SSG — static hosting; SSR — server kerak.",
+    "CDN latency va origin yukini kamaytiradi.",
+    "SPA da noma'lum yo'llar index.html ga qaytadi.",
+    "Frontenddagi har narsa ochiq."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Build ichini ko'ring",
+    "text": "npm run build dan keyin dist papkasida VITE_ qiymatini qidirib toping."
+   },
+   {
+    "title": "Hosting tanlang",
+    "text": "Blog, admin panel va internet-do'kon uchun rendering usuli va hosting turini asoslab yozing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Vite + React SPA ni chiqarish uchun minimal nima yetarli?",
+    "options": [
+     "Static hosting",
+     "Doimiy Node serveri",
+     "Ma'lumotlar bazasi serveri",
+     "Har so'rovda serverless funksiya"
+    ],
+    "answer": "Static hosting",
+    "explain": "Build natijasi — oddiy html, js, css."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "/orders sahifasi ichki havola bilan ochiladi, lekin yangilansa 404. Sabab?",
+    "options": [
+     "Serverda fallback sozlanmagan",
+     "JS fayllar keshlanib qolgan",
+     "DNS yozuvi eskirib qolgan",
+     "HTTPS sertifikat tugagan"
+    ],
+    "answer": "Serverda fallback sozlanmagan",
+    "explain": "Server orders nomli faylni qidiryapti."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "CDN nuqtasida fayl yo'q bo'lib, u origin dan olindi. Bu nima?",
+    "options": [
+     "Cache miss",
+     "Cache hit",
+     "Purge",
+     "Rollback"
+    ],
+    "answer": "Cache miss",
+    "explain": "Keyingi so'rovlar hit bo'ladi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi kodda qanday xavf bor?",
+    "options": [
+     "Maxfiy kalit brauzerga chiqib ketadi",
+     "O'zgaruvchi build da yo'qolib qoladi",
+     "fetch muhit o'zgaruvchisini o'qimaydi",
+     "Kalit faqat dev rejimida ishlaydi"
+    ],
+    "answer": "Maxfiy kalit brauzerga chiqib ketadi",
+    "explain": "VITE_ bilan boshlangan qiymatlar bundle ichiga yoziladi.",
+    "passage": "fetch('https://pay.uz/charge', {\n  headers: { Authorization: import.meta.env.VITE_SECRET_KEY },\n});"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Hujjatlar sayti kamdan-kam o'zgaradi va SEO muhim. Eng mos usul?",
+    "options": [
+     "SSG",
+     "CSR",
+     "SSR",
+     "WebSocket"
+    ],
+    "answer": "SSG",
+    "explain": "Build paytida tayyor HTML: tez va arzon."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Har foydalanuvchiga har so'rovda yangi ma'lumotli ochiq sahifa va SEO kerak. Qaysi usul?",
+    "options": [
+     "SSR",
+     "SSG",
+     "CSR",
+     "Static CDN"
+    ],
+    "answer": "SSR",
+    "explain": "HTML so'rov paytida yaratiladi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "CDN ning asosiy foydasi nima?",
+    "options": [
+     "Fayl yaqin nuqtadan beriladi",
+     "Kod xatolari avtomatik tuzaladi",
+     "Ma'lumotlar bazasi tezlashadi",
+     "Domen narxi arzonlashadi"
+    ],
+    "answer": "Fayl yaqin nuqtadan beriladi",
+    "explain": "Latency kamayadi, origin yengillashadi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Yangi versiya xato chiqdi. Eng tez yechim?",
+    "options": [
+     "Oldingi versiyaga rollback",
+     "Domenni boshqa serverga ko'chirish",
+     "Foydalanuvchidan keshni tozalashni so'rash",
+     "TTL ni nolga tushirish"
+    ],
+    "answer": "Oldingi versiyaga rollback",
+    "explain": "Avval xizmatni tiklab, keyin xatoni tinch tuzatiladi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "PR (pull request) uchun alohida vaqtinchalik manzil nima deyiladi?",
+    "options": [
+     "Preview deploy",
+     "Production",
+     "Origin server",
+     "Edge cache"
+    ],
+    "answer": "Preview deploy",
+    "explain": "Merge dan oldin natijani ko'rish uchun."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "HTML har so'rovda serverda yaratiladigan usul qisqartmasi:",
+    "answer": "SSR",
+    "explain": "Server-Side Rendering.",
+    "alsoAccept": [
+     "ssr"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "nginx da fayl topilmasa index.html ga qaytaradigan direktiva:",
+    "answer": "try_files",
+    "explain": "try_files $uri /index.html;",
+    "alsoAccept": [
+     "try_files $uri /index.html"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Deploy zanjirini tartiblang:",
+    "words": [
+     "push",
+     "test",
+     "build",
+     "production"
+    ],
+    "answer": "push test build production",
+    "explain": "Test o'tgach build qilinadi va chiqariladi."
+   }
+  ]
+ },
+ {
+  "code": "fe-internet-md-08",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 8,
+  "title": "Critical rendering path",
+  "intro": "DOM, CSSOM, render tree, layout, paint, composite; nima render va parserni to'sadi.",
+  "theory": {
+   "analogy": {
+    "icon": "🎬",
+    "title": "Sahna tayyorlash",
+    "text": "Avval ssenariy (DOM) va kostyum ro'yxati (CSSOM), keyin kim sahnada (render tree), qayerda turadi (layout), bo'yash (paint) va qatlamlarni birlashtirish (composite)."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Critical rendering path (muhim chizish yo'li) — brauzer baytlardan piksellargacha bosib o'tadigan qadamlar. Qaysi o'zgarish qaysi qadamni qayta ishga tushirishini bilsangiz, sekin sahifa va tutilib qoladigan animatsiya sababini topasiz."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "CSSOM",
+       "text": "CSS qoidalarining obyekt modeli."
+      },
+      {
+       "term": "Render tree (chizish daraxti)",
+       "text": "Ekranda ko'rinadigan elementlar va uslublari."
+      },
+      {
+       "term": "Layout / reflow (joylashuv hisobi)",
+       "text": "O'lcham va koordinatalarni hisoblash."
+      },
+      {
+       "term": "Paint (bo'yash)",
+       "text": "Rang, matn va soyalarni chizish buyruqlari."
+      },
+      {
+       "term": "Composite (qatlam yig'ish)",
+       "text": "Qatlamlarni ekranda birlashtirish."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Birinchi chizilish kech bo'lsa",
+       "text": "Render ni to'sayotgan CSS va skriptlarni kamaytirasiz."
+      },
+      {
+       "term": "Animatsiya tutilsa",
+       "text": "left/top o'rniga transform."
+      },
+      {
+       "term": "Sikl sekin ishlasa",
+       "text": "DOM o'qish va yozishni ajratasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Qadamlar",
+     "flow": [
+      "HTML → DOM",
+      "CSS → CSSOM",
+      "Render tree",
+      "Layout",
+      "Paint",
+      "Composite"
+     ]
+    },
+    {
+     "heading": "Nima to'sadi",
+     "bullets": [
+      "CSS — render-blocking: usulsiz sahifa chizilmaydi.",
+      "Oddiy script — parser-blocking.",
+      "media=\"print\" li stil ekranni chizishni to'smaydi.",
+      "Preload scanner parser kutayotganda ham resurslarni oldindan so'raydi."
+     ]
+    },
+    {
+     "heading": "O'zgarish narxi",
+     "table": {
+      "head": [
+       "O'zgarish",
+       "Qayta ishlanadi"
+      ],
+      "rows": [
+       [
+        "width, top, font-size",
+        "layout + paint + composite"
+       ],
+       [
+        "color, box-shadow",
+        "paint + composite"
+       ],
+       [
+        "transform, opacity",
+        "odatda faqat composite"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Layout thrashing",
+     "code": {
+      "lang": "js",
+      "text": "// ❌ har qadamda majburiy layout\nfor (const el of items) el.style.width = box.offsetWidth + 'px';\n\n// ✅ bir marta o'qib, keyin yozish\nconst w = box.offsetWidth;\nfor (const el of items) el.style.width = w + 'px';"
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "⬜",
+       "title": "Oq ekran",
+       "text": "Katta CSS yoki head dagi skript birinchi chizilishni kechiktiryapti."
+      },
+      {
+       "icon": "🐢",
+       "title": "Tutilgan animatsiya",
+       "text": "left bilan har kadrda layout hisoblanyapti."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Kritik resurslar kam va kichik bo'lsa, foydalanuvchi mazmunni tezroq ko'radi."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Animatsiyada left/top.",
+       "transform: translate.",
+       "Layout har kadrda takrorlanadi."
+      ],
+      [
+       "display:none va visibility:hidden ni bir xil deb o'ylash.",
+       "Farqini bilib tanlash.",
+       "visibility:hidden joy egallaydi."
+      ],
+      [
+       "Siklda o'qib-yozishni aralashtirish.",
+       "Avval o'qish, keyin yozish.",
+       "Majburiy layout takrorlanadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "DOM + CSSOM → render tree → layout → paint → composite.",
+    "CSS render ni, oddiy skript parser ni to'sadi.",
+    "transform va opacity eng arzon.",
+    "O'qish va yozishni guruhlang."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Performance yozuvi",
+    "text": "DevTools → Performance da left va transform animatsiyasini yozib, Layout bloklarini solishtiring."
+   },
+   {
+    "title": "Rendering paneli",
+    "text": "Paint flashing ni yoqib, qaysi joylar qayta bo'yalayotganini kuzating."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi elementlardan qaysi biri render tree ga KIRMAYDI?",
+    "options": [
+     "display: none li element",
+     "visibility: hidden li element",
+     "opacity: 0 li element",
+     "Ekrandan tashqaridagi element"
+    ],
+    "answer": "display: none li element",
+    "explain": "display:none umuman chizilmaydi va joy olmaydi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Faqat color o'zgardi. Qaysi qadam kerak EMAS?",
+    "options": [
+     "Layout",
+     "Paint",
+     "Composite",
+     "Hammasi kerak"
+    ],
+    "answer": "Layout",
+    "explain": "Rang o'lcham va joylashuvga ta'sir qilmaydi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Silliq harakat uchun qaysi biri eng mos?",
+    "options": [
+     "transform: translateX()",
+     "left qiymatini o'zgartirish",
+     "margin-left o'zgartirish",
+     "width o'zgartirish"
+    ],
+    "answer": "transform: translateX()",
+    "explain": "transform odatda faqat composite qadamida ishlaydi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Nega CSS render-blocking hisoblanadi?",
+    "options": [
+     "Uslubsiz sahifa chizilmasligi uchun",
+     "CSS HTML parsingni to'xtatgani uchun",
+     "CSS JavaScript dan katta bo'lgani uchun",
+     "CSS faqat server tomonda ishlagani uchun"
+    ],
+    "answer": "Uslubsiz sahifa chizilmasligi uchun",
+    "explain": "Brauzer CSSOM tayyor bo'lmaguncha chizmaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "<link rel=\"stylesheet\" href=\"p.css\" media=\"print\"> ekrandagi birinchi chizilishni to'sadimi?",
+    "options": [
+     "Yo'q, ekranga tegishli emas",
+     "Ha, har qanday CSS to'sadi",
+     "Ha, chop etish tugaguncha",
+     "Faqat mobil qurilmada to'sadi"
+    ],
+    "answer": "Yo'q, ekranga tegishli emas",
+    "explain": "Mos kelmaydigan media li stil render ni to'smaydi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi kod nega sekin?",
+    "options": [
+     "Har qadamda layout majburlanadi",
+     "for...of sikli DOM da sekin",
+     "style.width faqat o'qiladi",
+     "offsetWidth serverga so'raydi"
+    ],
+    "answer": "Har qadamda layout majburlanadi",
+    "explain": "Yozilgandan keyin o'qish brauzerni qayta hisoblashga majbur qiladi.",
+    "passage": "for (const el of items) {\n  el.style.width = box.offsetWidth + 'px';\n}"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Preload scanner nima qiladi?",
+    "options": [
+     "Parser kutayotganda resurslarni oldindan so'raydi",
+     "Ishlatilmagan CSS qoidalarini oldindan o'chiradi",
+     "Skriptlarni alohida tartibda bajarib chiqadi",
+     "Sahifani offline holatda saqlab qo'yadi"
+    ],
+    "answer": "Parser kutayotganda resurslarni oldindan so'raydi",
+    "explain": "Shuning uchun HTML da yozilgan resurs tezroq topiladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "JS bilan yaratiladigan rasm HTML dagi <img> ga nisbatan nega kech yuklanadi?",
+    "options": [
+     "Preload scanner uni ko'ra olmaydi",
+     "JS rasmlari doim siqilmaydi",
+     "Brauzer ularga kesh bermaydi",
+     "Ular faqat load dan keyin chiziladi"
+    ],
+    "answer": "Preload scanner uni ko'ra olmaydi",
+    "explain": "Rasm manzili skript bajarilgachgina ma'lum bo'ladi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Main thread (asosiy oqim) da 300 ms li hisob-kitob ishlayapti. Foydalanuvchi tugma bosdi. Nima bo'ladi?",
+    "options": [
+     "Javob hisob tugagach keladi",
+     "Tugma darhol ishlayveradi",
+     "Brauzer hisobni bekor qiladi",
+     "Bosish boshqa oqimda bajariladi"
+    ],
+    "answer": "Javob hisob tugagach keladi",
+    "explain": "JS, layout va hodisalar bitta oqimda navbat bilan."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "CSS dan quriladigan obyekt model qisqartmasi:",
+    "answer": "CSSOM",
+    "explain": "CSS Object Model.",
+    "alsoAccept": [
+     "cssom"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "O'lcham va joylashuvni qayta hisoblash (inglizcha, bir so'z):",
+    "answer": "reflow",
+    "explain": "Reflow yoki layout.",
+    "alsoAccept": [
+     "layout",
+     "Reflow",
+     "Layout"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Chizish qadamlarini tartiblang:",
+    "words": [
+     "render tree",
+     "layout",
+     "paint",
+     "composite"
+    ],
+    "answer": "render tree layout paint composite",
+    "explain": "Daraxt, joylashuv, bo'yash, qatlam yig'ish."
+   }
+  ]
+ },
+ {
+  "code": "fe-internet-md-09",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 9,
+  "title": "DevTools Network: sekinlik sababini topish",
+  "intro": "Waterfall, Timing bosqichlari, TTFB, Size ustuni, throttling, Core Web Vitals va fetch xatolari.",
+  "theory": {
+   "analogy": {
+    "icon": "🩺",
+    "title": "Tashxis",
+    "text": "Shifokor dori yozishdan oldin tahlil oladi. Network paneli — sahifaning tahlili: og'riq qayerdaligini raqam bilan ko'rsatadi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Network paneli har bir so'rov qancha kutgani, qancha hajm olgani va nega sekinligini ko'rsatadi. Middle dasturchi \"sekin\" degan shikoyatni taxmin bilan emas, o'lchov bilan tekshiradi: muammo ulanishdami, serverdami yoki fayl hajmidami."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Waterfall (sharshara grafigi)",
+       "text": "So'rovlar vaqt bo'yicha qanday ketma-ketlikda ketgani."
+      },
+      {
+       "term": "TTFB (Time To First Byte — birinchi baytgacha vaqt)",
+       "text": "So'rovdan javobning birinchi bayti kelguncha o'tgan vaqt."
+      },
+      {
+       "term": "Content Download (yuklab olish)",
+       "text": "Javob body sini olish vaqti."
+      },
+      {
+       "term": "Throttling (sekinlashtirish)",
+       "text": "Sekin tarmoq yoki protsessorni taqlid qilish."
+      },
+      {
+       "term": "Core Web Vitals",
+       "text": "LCP (≤2.5 s), INP (≤200 ms), CLS (≤0.1)."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Sahifa sekin ochilsa",
+       "text": "Waterfall dan eng uzun zanjirni topasiz."
+      },
+      {
+       "term": "API xatosida",
+       "text": "Status, header va javob body sini o'qiysiz."
+      },
+      {
+       "term": "Mobil foydalanuvchini tekshirishda",
+       "text": "Throttling yoqasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Timing bosqichlari",
+     "table": {
+      "head": [
+       "Bosqich",
+       "Uzun bo'lsa nimani anglatadi"
+      ],
+      "rows": [
+       [
+        "Queueing / Stalled",
+        "so'rov navbatda: ulanishlar band yoki ustuvorlik past"
+       ],
+       [
+        "DNS Lookup",
+        "DNS sekin"
+       ],
+       [
+        "Initial connection / SSL",
+        "server uzoq, ulanish qimmat"
+       ],
+       [
+        "Waiting (TTFB)",
+        "server sekin hisoblayapti yoki uzoq"
+       ],
+       [
+        "Content Download",
+        "javob katta yoki tarmoq sekin"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Foydali sozlamalar",
+     "bullets": [
+      "Disable cache — faqat DevTools ochiq turganda ishlaydi.",
+      "Preserve log — sahifa almashsa ham yozuv qoladi.",
+      "Size ustunida (memory cache) yoki (disk cache) — tarmoqqa chiqilmagan.",
+      "Copy as cURL — so'rovni terminalda takrorlash."
+     ]
+    },
+    {
+     "heading": "fetch va status",
+     "code": {
+      "lang": "js",
+      "text": "const res = await fetch('/api/user'); // 404 da ham reject BO'LMAYDI\nif (!res.ok) throw new Error('HTTP ' + res.status);\nconst data = await res.json();"
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "fetch faqat tarmoq (yoki CORS) xatosida reject bo'ladi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "⏱️",
+       "title": "2 soniya kutish",
+       "text": "TTFB 1.8 s — rasmni siqish yordam bermaydi, server tomonini tuzatish kerak."
+      },
+      {
+       "icon": "📦",
+       "title": "5 MB rasm",
+       "text": "Download uzun — o'lcham va format muammosi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Optimallashtirishdan oldin o'lchang, keyin yana o'lchab natijani solishtiring."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Faqat o'z tez internetida sinash.",
+       "Throttling bilan sinash.",
+       "Foydalanuvchi tarmog'i boshqacha."
+      ],
+      [
+       "res.ok ni tekshirmaslik.",
+       "Status ni tekshirib xato tashlash.",
+       "404 javob ham muvaffaqiyatli promise."
+      ],
+      [
+       "Keshli o'lchovni birinchi tashrif deb o'ylash.",
+       "Disable cache bilan o'lchash.",
+       "Kesh natijani yaxshilab ko'rsatadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Waterfall zanjirni, Timing bosqichni ko'rsatadi.",
+    "TTFB — server va masofa, Download — hajm.",
+    "fetch 4xx/5xx da reject bo'lmaydi.",
+    "LCP, INP, CLS — foydalanuvchi tajribasi o'lchovlari."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Eng sekin so'rov",
+    "text": "Bir saytda Network ni Time bo'yicha tartiblab, eng sekin so'rovning Timing bo'limini tahlil qiling."
+   },
+   {
+    "title": "Slow 4G",
+    "text": "Throttling ni yoqib sahifani oching va birinchi mazmun qachon chiqishini kuzating."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Timing: Waiting (TTFB) 2.4 s, Content Download 20 ms. Muammo qayerda?",
+    "options": [
+     "Server javobni kech beryapti",
+     "Javob fayli juda ham katta",
+     "Brauzer chizishi sekin",
+     "Rasm formati noto'g'ri"
+    ],
+    "answer": "Server javobni kech beryapti",
+    "explain": "Yuklash tez, birinchi bayt kech."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "TTFB 80 ms, Content Download 6 s. Birinchi nima tekshiriladi?",
+    "options": [
+     "Javob hajmi va siqilishi",
+     "Ma'lumotlar bazasi so'rovi",
+     "DNS yozuvining TTL i",
+     "TLS sertifikat muddati"
+    ],
+    "answer": "Javob hajmi va siqilishi",
+    "explain": "Server tez, lekin ko'p bayt kelyapti."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Size ustunida \"(disk cache)\" yozilgan. Bu nima?",
+    "options": [
+     "So'rov tarmoqqa chiqmagan",
+     "Server 304 javob qaytargan",
+     "Fayl diskka yozilmay qolgan",
+     "CDN dan qayta yuklab olingan"
+    ],
+    "answer": "So'rov tarmoqqa chiqmagan",
+    "explain": "304 bo'lsa status 304 ko'rinardi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Server 500 qaytardi. Quyidagi kodda qaysi biri ishlaydi?",
+    "options": [
+     "then bloki",
+     "catch bloki",
+     "Ikkalasi ham",
+     "Hech biri ishlamaydi"
+    ],
+    "answer": "then bloki",
+    "explain": "fetch HTTP xato statusida reject bo'lmaydi.",
+    "passage": "fetch('/api')\n  .then(() => console.log('then'))\n  .catch(() => console.log('catch'));"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Login dan keyin sahifa almashib, so'rov yozuvi yo'qolib qolyapti. Qaysi belgi yoqiladi?",
+    "options": [
+     "Preserve log",
+     "Disable cache",
+     "Offline",
+     "Big request rows"
+    ],
+    "answer": "Preserve log",
+    "explain": "Preserve log yozuvlarni saqlab qoladi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "LCP ning \"yaxshi\" chegarasi qaysi?",
+    "options": [
+     "2.5 soniyagacha",
+     "200 millisoniyagacha",
+     "10 soniyagacha",
+     "0.1 soniyagacha"
+    ],
+    "answer": "2.5 soniyagacha",
+    "explain": "200 ms — INP, 0.1 — CLS."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Tugma bosilgandan keyin javob 800 ms kechikyapti. Qaysi metrika yomon?",
+    "options": [
+     "INP",
+     "LCP",
+     "CLS",
+     "TTFB"
+    ],
+    "answer": "INP",
+    "explain": "INP — interaksiyaga javob tezligi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Rasm yuklangach matn pastga sakrab ketadi. Qaysi metrika?",
+    "options": [
+     "CLS",
+     "INP",
+     "LCP",
+     "RTT"
+    ],
+    "answer": "CLS",
+    "explain": "CLS maket siljishini o'lchaydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Bir xil API so'rovini backend dasturchiga takrorlab berishning eng aniq yo'li?",
+    "options": [
+     "Copy as cURL",
+     "Ekran rasmini yuborish",
+     "URL ni og'zaki aytish",
+     "Disable cache yoqish"
+    ],
+    "answer": "Copy as cURL",
+    "explain": "cURL buyrug'ida metod, header va body bor."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Birinchi bayt kelguncha vaqt qisqartmasi:",
+    "answer": "TTFB",
+    "explain": "Time To First Byte.",
+    "alsoAccept": [
+     "ttfb"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Javob muvaffaqiyatli (200–299) ekanini bildiradigan Response property si:",
+    "answer": "ok",
+    "explain": "res.ok.",
+    "alsoAccept": [
+     "res.ok",
+     "response.ok"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "CLS ning yaxshi chegarasi (son):",
+    "answer": "0.1",
+    "explain": "CLS ≤ 0.1.",
+    "alsoAccept": [
+     "0,1",
+     ".1"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-internet-md-10",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 10,
+  "title": "HTTP versiyalari va siqish",
+  "intro": "HTTP/1.1, HTTP/2 va HTTP/3 farqi, head-of-line blocking, Brotli va gzip.",
+  "theory": {
+   "analogy": {
+    "icon": "🏪",
+    "title": "Kassadagi navbat",
+    "text": "HTTP/1.1 — har kassada bittadan mijoz, kassalar soni cheklangan. HTTP/2 — bitta kassa hamma buyurtmani bo'laklab parallel xizmat qiladi. Siqish — xaridni ixcham qadoqlash."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "HTTP ning mazmuni (metod, status, header) o'zgarmagan, lekin uni tashish usuli o'zgargan. Yangi versiyalar bitta ulanishda ko'p so'rovni parallel olib yuradi. Compression (siqish) esa matnli fayllarni yo'lda bir necha baravar kichraytiradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Multiplexing (birlashtirib uzatish)",
+       "text": "Bitta ulanishda bir nechta so'rov va javobning aralash oqishi."
+      },
+      {
+       "term": "Head-of-line blocking (navbat boshi to'sig'i)",
+       "text": "Oldindagisi tiqilib, orqadagilarni ushlab qolishi."
+      },
+      {
+       "term": "QUIC",
+       "text": "UDP ustidagi, shifrlashi o'z ichida bo'lgan transport; HTTP/3 shunda ishlaydi."
+      },
+      {
+       "term": "Content-Encoding",
+       "text": "Javob qaysi usulda siqilganini aytadigan header."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Server yoki CDN sozlashda",
+       "text": "HTTP/2 yoki 3 va br/gzip yoqilganini tekshirasiz."
+      },
+      {
+       "term": "Eski maslahatlarni baholashda",
+       "text": "Domen sharding va hamma narsani bitta faylga yig'ish HTTP/2 da kam foydali."
+      },
+      {
+       "term": "Fayl katta ko'ringanda",
+       "text": "Transferred va Resource hajmini solishtirasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Versiyalar",
+     "table": {
+      "head": [
+       "",
+       "HTTP/1.1",
+       "HTTP/2",
+       "HTTP/3"
+      ],
+      "rows": [
+       [
+        "Transport",
+        "TCP",
+        "TCP",
+        "QUIC (UDP)"
+       ],
+       [
+        "Format",
+        "matn",
+        "binar",
+        "binar"
+       ],
+       [
+        "Parallellik",
+        "domenga ~6 ulanish",
+        "bitta ulanishda ko'p oqim",
+        "mustaqil oqimlar"
+       ],
+       [
+        "Paket yo'qolsa",
+        "o'sha ulanish kutadi",
+        "barcha oqim kutadi",
+        "faqat o'sha oqim kutadi"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Siqish",
+     "code": {
+      "lang": "http",
+      "text": "GET /app.js\nAccept-Encoding: zstd, br, gzip\n\nHTTP/1.1 200 OK\nContent-Encoding: br\nVary: Accept-Encoding"
+     },
+     "text": "Brauzer qo'llaydigan usullarini aytadi, server birini tanlaydi, brauzer o'zi ochadi."
+    },
+    {
+     "heading": "Nimani siqish kerak",
+     "bullets": [
+      "HTML, CSS, JS, JSON, SVG — ha, katta foyda.",
+      "JPEG, WebP, MP4, WOFF2 — allaqachon siqilgan, qayta siqish deyarli foydasiz."
+     ]
+    },
+    {
+     "heading": "Qaysi versiyani ko'rish",
+     "callout": {
+      "kind": "tip",
+      "text": "Network panelida Protocol ustunini yoqing: http/1.1, h2 yoki h3."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🧱",
+       "title": "Navbatdagi so'rovlar",
+       "text": "HTTP/1.1 da 30 ta fayl: bir qismi Queueing holatida kutadi."
+      },
+      {
+       "icon": "🚆",
+       "title": "Metroda internet",
+       "text": "HTTP/3 Wi-Fi dan mobil tarmoqqa o'tishda ulanishni saqlab qolishi mumkin."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Avval server tomonda siqish va HTTP/2 yoqilganini tekshiring: bu kod yozmasdan olinadigan tezlik."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Rasmlarni gzip bilan \"kichraytirish\".",
+       "Mos format va o'lcham tanlash.",
+       "Rasm formati allaqachon siqilgan."
+      ],
+      [
+       "HTTP/2 hamma sekinlikni hal qiladi deb o'ylash.",
+       "Avval o'lchash.",
+       "Katta fayl va sekin server o'zgarmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "HTTP/2: binar, multiplexing, header siqish.",
+    "HTTP/3: QUIC, TCP navbat to'sig'isiz.",
+    "br va gzip matnli fayllar uchun.",
+    "Protocol ustuni versiyani ko'rsatadi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Protocol ustuni",
+    "text": "Network da Protocol ustunini yoqib, uch xil saytning HTTP versiyasini yozib oling."
+   },
+   {
+    "title": "Siqish foydasi",
+    "text": "Bitta JS faylning transferred va resource hajmini solishtiring, nisbatni hisoblang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "HTTP/2 ning HTTP/1.1 dan asosiy farqi qaysi?",
+    "options": [
+     "Bitta ulanishda parallel oqimlar",
+     "Metodlar o'rniga yangi buyruqlar",
+     "Status kodlarining bekor qilinishi",
+     "TCP o'rniga UDP ishlatilishi"
+    ],
+    "answer": "Bitta ulanishda parallel oqimlar",
+    "explain": "UDP — HTTP/3 da."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "HTTP/3 qaysi transport ustida ishlaydi?",
+    "options": [
+     "QUIC (UDP)",
+     "TCP + TLS",
+     "WebSocket",
+     "SMTP"
+    ],
+    "answer": "QUIC (UDP)",
+    "explain": "QUIC UDP ustida."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "HTTP/2 da bitta TCP paket yo'qoldi. Nima bo'ladi?",
+    "options": [
+     "Barcha oqimlar uni kutib turadi",
+     "Faqat bitta so'rov bekor bo'ladi",
+     "Ulanish HTTP/1.1 ga o'tib ketadi",
+     "Qolgan oqimlar to'xtamay davom etadi"
+    ],
+    "answer": "Barcha oqimlar uni kutib turadi",
+    "explain": "TCP tartibni saqlaydi — transport darajasidagi head-of-line blocking."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi javobda brauzer nima qiladi?",
+    "options": [
+     "O'zi ochib, JS ga oddiy matn beradi",
+     "Faylni .br kengaytmada yuklab oladi",
+     "Dasturchi kodida ochishni talab qiladi",
+     "Javobni xato deb hisoblab, rad etadi"
+    ],
+    "answer": "O'zi ochib, JS ga oddiy matn beradi",
+    "explain": "Ochish brauzer ichida avtomatik.",
+    "passage": "Content-Encoding: br\nContent-Type: text/javascript"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Qaysi faylni siqishdan eng kam foyda bor?",
+    "options": [
+     "photo.webp",
+     "bundle.js",
+     "data.json",
+     "styles.css"
+    ],
+    "answer": "photo.webp",
+    "explain": "WebP allaqachon siqilgan."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Brauzer qaysi siqish usullarini tushunishini qaysi header bilan aytadi?",
+    "options": [
+     "Accept-Encoding",
+     "Content-Encoding",
+     "Content-Type",
+     "Accept-Language"
+    ],
+    "answer": "Accept-Encoding",
+    "explain": "Content-Encoding — serverning javobi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "DevTools: transferred 90 kB, resource 400 kB. Bu nimani anglatadi?",
+    "options": [
+     "Javob siqib yuborilgan",
+     "Fayl yarmi yo'qolgan",
+     "310 kB xato qaytgan",
+     "Kesh to'lib qolgan"
+    ],
+    "answer": "Javob siqib yuborilgan",
+    "explain": "Tarmoqda 90 kB o'tdi, ochilgach 400 kB."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Siqilgan 400 kB li JS haqida qaysi gap to'g'ri?",
+    "options": [
+     "Brauzer baribir 400 kB ni bajaradi",
+     "Brauzer faqat siqilgan qismni o'qiydi",
+     "Parse vaqti ham xuddi shuncha kamayadi",
+     "Fayl xotirada siqilgan holda ishlaydi"
+    ],
+    "answer": "Brauzer baribir 400 kB ni bajaradi",
+    "explain": "Siqish yuklashni tezlashtiradi, parse va bajarishni emas."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Eski \"domain sharding\" (resurslarni ko'p domenga bo'lish) HTTP/2 da nega zararli bo'lishi mumkin?",
+    "options": [
+     "Ortiqcha ulanishlar ochiladi",
+     "Cookie lar butunlay o'chadi",
+     "Fayllar siqilmay qoladi",
+     "Preflight ikki marta ketadi"
+    ],
+    "answer": "Ortiqcha ulanishlar ochiladi",
+    "explain": "Har domen — yangi DNS, TCP va TLS."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Bitta ulanishda ko'p so'rovni aralash uzatish (inglizcha):",
+    "answer": "multiplexing",
+    "explain": "Multiplexing.",
+    "alsoAccept": [
+     "Multiplexing"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Brotli siqishining Content-Encoding dagi qisqa nomi:",
+    "answer": "br",
+    "explain": "Content-Encoding: br.",
+    "alsoAccept": [
+     "BR"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Versiyalarni eskidan yangiga tartiblang:",
+    "words": [
+     "HTTP/1.0",
+     "HTTP/1.1",
+     "HTTP/2",
+     "HTTP/3"
+    ],
+    "answer": "HTTP/1.0 HTTP/1.1 HTTP/2 HTTP/3",
+    "explain": "Har biri oldingisining cheklovini yumshatadi."
+   }
+  ]
+ },
+ {
+  "code": "fe-internet-md-11",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 11,
+  "title": "Idempotentlik, qayta urinish va real vaqt",
+  "intro": "Safe va idempotent metodlar, 401/403/409/429/503, retry va backoff; polling, SSE, WebSocket.",
+  "theory": {
+   "analogy": {
+    "icon": "🛗",
+    "title": "Lift tugmasi",
+    "text": "Lift tugmasini besh marta bossangiz ham bitta lift keladi (idempotent). Do'konda \"yana bitta bering\"ni besh marta aytsangiz, beshta olasiz (idempotent emas)."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Tarmoq ishonchsiz: javob yo'qolsa, so'rov bajarilgan-bajarilmaganini bilmaysiz. Idempotent (takrorlansa ham natija o'zgarmaydigan) amalni qayta yuborish xavfsiz. Server yangilikni o'zi yetkazishi kerak bo'lsa, polling, SSE yoki WebSocket tanlanadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Safe method (xavfsiz metod)",
+       "text": "Serverdagi ma'lumotni o'zgartirishga mo'ljallanmagan: GET, HEAD."
+      },
+      {
+       "term": "Idempotent",
+       "text": "Bir marta yoki bir necha marta yuborish natijasi bir xil: GET, PUT, DELETE."
+      },
+      {
+       "term": "Exponential backoff (ortib boruvchi kutish)",
+       "text": "Qayta urinishlar orasini 1, 2, 4 s qilib uzaytirish."
+      },
+      {
+       "term": "SSE (Server-Sent Events)",
+       "text": "Serverdan mijozga bir tomonlama oqim."
+      },
+      {
+       "term": "WebSocket",
+       "text": "Doimiy ikki tomonlama ulanish."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "To'lov va buyurtmada",
+       "text": "Ikki marta bosish va takroriy so'rovdan himoya."
+      },
+      {
+       "term": "API xatosini qayta ishlashda",
+       "text": "Statusga qarab: login, ruxsat, kutib qayta urinish."
+      },
+      {
+       "term": "Jonli yangilanishda",
+       "text": "Yo'nalish va chastotaga qarab usul tanlanadi."
+      }
+     ]
+    },
+    {
+     "heading": "Metodlar",
+     "table": {
+      "head": [
+       "Metod",
+       "Safe",
+       "Idempotent"
+      ],
+      "rows": [
+       [
+        "GET",
+        "ha",
+        "ha"
+       ],
+       [
+        "PUT",
+        "yo'q",
+        "ha"
+       ],
+       [
+        "DELETE",
+        "yo'q",
+        "ha"
+       ],
+       [
+        "POST",
+        "yo'q",
+        "yo'q"
+       ],
+       [
+        "PATCH",
+        "yo'q",
+        "kafolatlanmagan"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Muhim status kodlari",
+     "table": {
+      "head": [
+       "Kod",
+       "Frontend nima qiladi"
+      ],
+      "rows": [
+       [
+        "401",
+        "qayta login yoki token yangilash"
+       ],
+       [
+        "403",
+        "ruxsat yo'qligini ko'rsatish"
+       ],
+       [
+        "409",
+        "ziddiyatni tushuntirish"
+       ],
+       [
+        "422",
+        "forma xatolarini ko'rsatish"
+       ],
+       [
+        "429",
+        "Retry-After ni kutish"
+       ],
+       [
+        "503",
+        "keyinroq qayta urinish"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Takrorlanmas buyurtma",
+     "code": {
+      "lang": "js",
+      "text": "const key = crypto.randomUUID(); // bitta buyurtma uchun bitta kalit\nawait fetch('/orders', {\n  method: 'POST',\n  headers: { 'Idempotency-Key': key, 'Content-Type': 'application/json' },\n  body: JSON.stringify(order),\n});"
+     }
+    },
+    {
+     "heading": "Real vaqt usullari",
+     "table": {
+      "head": [
+       "Usul",
+       "Yo'nalish",
+       "Qachon"
+      ],
+      "rows": [
+       [
+        "Polling",
+        "mijoz qayta-qayta so'raydi",
+        "kamdan-kam o'zgarish"
+       ],
+       [
+        "SSE",
+        "server → mijoz",
+        "xabarnoma, progress"
+       ],
+       [
+        "WebSocket",
+        "ikki tomon",
+        "chat, o'yin"
+       ],
+       [
+        "WebRTC",
+        "foydalanuvchidan foydalanuvchiga",
+        "video qo'ng'iroq"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "💳",
+       "title": "Ikki marta yechilgan pul",
+       "text": "Javob kechikdi, tugma yana bosildi, ikkinchi POST yangi to'lov yaratdi."
+      },
+      {
+       "icon": "📊",
+       "title": "Yuklash jarayoni",
+       "text": "Server faqat foizni yuboradi — SSE yetarli."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Qayta urinishdan oldin so'rang: bu amal ikki marta bajarilsa nima bo'ladi?"
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Har xatoda darhol cheksiz retry.",
+       "Cheklangan urinish va backoff.",
+       "Qiynalayotgan serverni battar yuklaydi."
+      ],
+      [
+       "4xx xatoni ham qayta yuboraverish.",
+       "So'rovni tuzatish.",
+       "Noto'g'ri so'rov o'zgarmasa, natija ham o'zgarmaydi."
+      ],
+      [
+       "Faqat tugmani o'chirishga tayanish.",
+       "Server tomonda idempotency kaliti ham.",
+       "Tarmoq qayta yuborishi yoki sahifa yangilanishi mumkin."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "GET, PUT, DELETE idempotent; POST emas.",
+    "401 — kim ekaning noma'lum, 403 — ruxsat yo'q.",
+    "429 va 503 da kutib, backoff bilan.",
+    "Bir tomonlama — SSE, ikki tomonlama — WebSocket."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Retry funksiyasi",
+    "text": "fetch ni 3 marta, 1-2-4 soniya oraliq bilan qayta uradigan funksiya yozing; 4xx da to'xtasin."
+   },
+   {
+    "title": "Usul tanlang",
+    "text": "Valyuta kursi, chat va fayl qayta ishlash progressi uchun usul tanlab, sababini yozing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Qaysi metod idempotent emas?",
+    "options": [
+     "POST",
+     "GET",
+     "PUT",
+     "DELETE"
+    ],
+    "answer": "POST",
+    "explain": "Har POST yangi resurs yaratishi mumkin."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "DELETE /cart/5 birinchi marta 204, ikkinchi marta 404 qaytardi. DELETE idempotentmi?",
+    "options": [
+     "Ha, server holati bir xil",
+     "Yo'q, status kodi o'zgardi",
+     "Yo'q, ikkinchi so'rov xato",
+     "Faqat 204 qaytsa bo'ladi"
+    ],
+    "answer": "Ha, server holati bir xil",
+    "explain": "Idempotentlik server holatiga ta'sir haqida, javob kodi haqida emas."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Token muddati tugagan. Odatda qaysi status keladi?",
+    "options": [
+     "401",
+     "403",
+     "404",
+     "409"
+    ],
+    "answer": "401",
+    "explain": "401 — autentifikatsiya kerak."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Oddiy foydalanuvchi admin API sini chaqirdi (login qilingan). Status?",
+    "options": [
+     "403",
+     "401",
+     "429",
+     "503"
+    ],
+    "answer": "403",
+    "explain": "Kimligi ma'lum, ruxsati yo'q."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Javob: 429, Retry-After: 30. Mijoz nima qilishi kerak?",
+    "options": [
+     "30 soniya kutib, qayta urinish",
+     "Darhol 30 marta qayta yuborish",
+     "Foydalanuvchini logout qilish",
+     "So'rov metodini GET qilish"
+    ],
+    "answer": "30 soniya kutib, qayta urinish",
+    "explain": "429 — juda ko'p so'rov."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "To'lov POST ida tarmoq uzildi va javob kelmadi. Eng xavfsiz yechim?",
+    "options": [
+     "O'sha Idempotency-Key bilan qayta yuborish",
+     "Yangi kalit yaratib, darhol qayta yuborish",
+     "So'rovni GET metodiga almashtirib yuborish",
+     "To'lov bo'lmagan deb ekranda xabar berish"
+    ],
+    "answer": "O'sha Idempotency-Key bilan qayta yuborish",
+    "explain": "Server bir xil kalitni ikkinchi marta bajarmaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Server vaqti-vaqti bilan faqat bildirishnoma yuboradi, mijoz javob yubormaydi. Eng sodda mos usul?",
+    "options": [
+     "SSE",
+     "WebSocket",
+     "WebRTC",
+     "Preflight"
+    ],
+    "answer": "SSE",
+    "explain": "Bir tomonlama oqim, oddiy HTTP ustida."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Ikki tomonlama, tez-tez xabarli chat uchun qaysi biri mos?",
+    "options": [
+     "WebSocket",
+     "SSE",
+     "Soatlik polling",
+     "301 redirect"
+    ],
+    "answer": "WebSocket",
+    "explain": "Doimiy ikki tomonlama kanal."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "1 000 mijoz har 1 soniyada polling qilyapti, ma'lumot soatda bir o'zgaradi. Muammo?",
+    "options": [
+     "Deyarli hamma so'rov behuda",
+     "Server javob bera olmasligi shart",
+     "CORS xatosi albatta chiqadi",
+     "Cookie hajmi o'sib boraveradi"
+    ],
+    "answer": "Deyarli hamma so'rov behuda",
+    "explain": "Soniyasiga 1 000 ta bo'sh so'rov."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Takrorlansa ham natija o'zgarmaydigan amal xususiyati (inglizcha):",
+    "answer": "idempotent",
+    "explain": "Idempotent.",
+    "alsoAccept": [
+     "Idempotent",
+     "idempotency"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Juda ko'p so'rov yuborildi degan status kodi (son):",
+    "answer": "429",
+    "explain": "429 Too Many Requests."
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Qayta urinishlar orasini 1, 2, 4 soniya qilib uzaytirish: exponential ...",
+    "answer": "backoff",
+    "explain": "Exponential backoff.",
+    "alsoAccept": [
+     "Backoff"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-internet-md-12",
+  "level": "MIDDLE",
+  "module": "internet",
+  "order": 12,
+  "title": "Brauzer xotirasi, dvigatellar va sandbox",
+  "intro": "cookie, localStorage, sessionStorage, IndexedDB, Cache API; Blink, Gecko, WebKit; ruxsatlar va secure context.",
+  "theory": {
+   "analogy": {
+    "icon": "🗄️",
+    "title": "Idoradagi saqlash joylari",
+    "text": "Cho'ntakdagi guvohnoma (cookie, har eshikda ko'rsatiladi), stoldagi daftar (localStorage), qoralama qog'oz (sessionStorage), katta arxiv (IndexedDB)."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Brauzer saytga ma'lumot saqlash uchun bir nechta joy beradi va har biri o'z vazifasiga mos. Saytlar sandbox (ajratilgan muhit) ichida ishlaydi: bir sayt boshqasining ma'lumotiga va kompyuteringiz fayllariga o'zi kira olmaydi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "localStorage",
+       "text": "Origin bo'yicha, muddatsiz, sinxron satr xotirasi."
+      },
+      {
+       "term": "sessionStorage",
+       "text": "Faqat shu tab uchun, tab yopilguncha."
+      },
+      {
+       "term": "IndexedDB",
+       "text": "Katta, strukturali ma'lumot uchun asinxron baza."
+      },
+      {
+       "term": "Cache API",
+       "text": "So'rov-javob juftlarini saqlash; Service Worker bilan offline."
+      },
+      {
+       "term": "Rendering engine (chizish dvigateli)",
+       "text": "Blink (Chrome, Edge), Gecko (Firefox), WebKit (Safari)."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Sozlama va qoralama saqlashda",
+       "text": "Muddat va hajmga qarab joy tanlaysiz."
+      },
+      {
+       "term": "Offline ishlashda",
+       "text": "Cache API va IndexedDB."
+      },
+      {
+       "term": "\"Safari da buzilyapti\" holatida",
+       "text": "Dvigatel farqini va qo'llab-quvvatlashni tekshirasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Qaysi biri qachon",
+     "table": {
+      "head": [
+       "Joy",
+       "Hajm",
+       "Serverga ketadimi",
+       "Misol"
+      ],
+      "rows": [
+       [
+        "Cookie",
+        "~4 KB",
+        "ha, o'zi",
+        "sessiya"
+       ],
+       [
+        "localStorage",
+        "bir necha MB",
+        "yo'q",
+        "til, mavzu"
+       ],
+       [
+        "sessionStorage",
+        "bir necha MB",
+        "yo'q",
+        "tabdagi forma qadami"
+       ],
+       [
+        "IndexedDB",
+        "katta",
+        "yo'q",
+        "offline xabarlar"
+       ],
+       [
+        "Cache API",
+        "katta",
+        "yo'q",
+        "fayl va javoblar"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Faqat satr",
+     "code": {
+      "lang": "js",
+      "text": "localStorage.setItem('cart', JSON.stringify([1, 2]));\nconst cart = JSON.parse(localStorage.getItem('cart') ?? '[]');"
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "Xotira o'chirilishi, to'lishi yoki bloklanishi mumkin: o'qish va yozishni xatoga tayyorlang."
+     }
+    },
+    {
+     "heading": "Ko'p jarayonli tuzilish",
+     "bullets": [
+      "Har sayt odatda alohida jarayonda: bittasi qulasa, qolganlari ishlaydi.",
+      "JavaScript dvigatellari: V8, SpiderMonkey, JavaScriptCore.",
+      "Kamera, mikrofon, joylashuv — foydalanuvchi ruxsati bilan.",
+      "Kuchli imkoniyatlar secure context talab qiladi (HTTPS yoki localhost)."
+     ]
+    },
+    {
+     "heading": "Qo'llab-quvvatlash",
+     "code": {
+      "lang": "js",
+      "text": "if ('geolocation' in navigator) {\n  // imkoniyat bor — ishlatamiz\n}"
+     },
+     "text": "Brauzer nomini emas, imkoniyat borligini tekshiring (feature detection)."
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🛒",
+       "title": "Savat saqlanib qoldi",
+       "text": "localStorage: brauzer yopilib ochilsa ham turadi."
+      },
+      {
+       "icon": "🪟",
+       "title": "Ikkinchi tabda bo'sh",
+       "text": "sessionStorage har tabda alohida."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Serverga kerak bo'lmagan ma'lumotni cookie ga yozmang: u har so'rovda ortiqcha yuk bo'ladi."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "localStorage ga obyektni to'g'ridan-to'g'ri yozish.",
+       "JSON.stringify / JSON.parse.",
+       "\"[object Object]\" saqlanadi."
+      ],
+      [
+       "Katta ro'yxatni localStorage da saqlash.",
+       "IndexedDB.",
+       "Sinxron o'qish asosiy oqimni to'sadi."
+      ],
+      [
+       "userAgent ga qarab imkoniyatni taxmin qilish.",
+       "Feature detection.",
+       "Satr ishonchsiz va o'zgaradi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Cookie serverga ketadi, Web Storage ketmaydi.",
+    "sessionStorage — tab umri.",
+    "IndexedDB va Cache API — katta va offline ma'lumot.",
+    "Sandbox, ruxsatlar va secure context himoya qiladi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Application paneli",
+    "text": "Biror sayt Local Storage, Session Storage va IndexedDB da nima saqlayotganini ko'ring."
+   },
+   {
+    "title": "Xavfsiz o'qish",
+    "text": "localStorage dan o'qishda xato va buzilgan JSON ga chidamli funksiya yozing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi kod nimani chiqaradi?",
+    "options": [
+     "\"[object Object]\"",
+     "\"{theme:dark}\"",
+     "obyektning o'zi",
+     "null qiymat"
+    ],
+    "answer": "\"[object Object]\"",
+    "explain": "Qiymat satrga aylantiriladi.",
+    "passage": "localStorage.setItem('u', { theme: 'dark' });\nconsole.log(localStorage.getItem('u'));"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Ma'lumot faqat shu tab yopilguncha yashashi kerak. Qaysi joy?",
+    "options": [
+     "sessionStorage",
+     "localStorage",
+     "IndexedDB",
+     "Cache API"
+    ],
+    "answer": "sessionStorage",
+    "explain": "Tab umri bilan cheklangan."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Offline ishlaydigan ilovada minglab xabarni saqlash uchun?",
+    "options": [
+     "IndexedDB",
+     "Cookie",
+     "sessionStorage",
+     "URL query"
+    ],
+    "answer": "IndexedDB",
+    "explain": "Katta, asinxron va strukturali."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Qaysi biri har mos HTTP so'rovda serverga avtomatik yuboriladi?",
+    "options": [
+     "Cookie",
+     "localStorage",
+     "sessionStorage",
+     "IndexedDB"
+    ],
+    "answer": "Cookie",
+    "explain": "Shuning uchun cookie kichik bo'lishi kerak."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "http://a.uz da yozilgan localStorage ni https://a.uz ko'radimi?",
+    "options": [
+     "Yo'q, origin boshqa",
+     "Ha, domen bir xil",
+     "Ha, faqat o'qiy oladi",
+     "Faqat bitta tab ichida"
+    ],
+    "answer": "Yo'q, origin boshqa",
+    "explain": "Protokol ham origin qismi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Safari qaysi chizish dvigatelida ishlaydi?",
+    "options": [
+     "WebKit",
+     "Blink",
+     "Gecko",
+     "V8"
+    ],
+    "answer": "WebKit",
+    "explain": "V8 — JavaScript dvigateli."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Sayt foydalanuvchi kompyuteridagi ixtiyoriy faylni o'zi o'qiy oladimi?",
+    "options": [
+     "Yo'q, sandbox ichida ishlaydi",
+     "Ha, HTTPS bo'lsa o'qiydi",
+     "Ha, localStorage orqali o'qiydi",
+     "Ha, agar cookie ruxsati bo'lsa"
+    ],
+    "answer": "Yo'q, sandbox ichida ishlaydi",
+    "explain": "Fayl faqat foydalanuvchi o'zi tanlasa beriladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Imkoniyatni ishlatishdan oldin eng to'g'ri tekshiruv?",
+    "options": [
+     "'share' in navigator",
+     "navigator.userAgent.includes('Chrome')",
+     "window.innerWidth > 768",
+     "location.protocol === 'file:'"
+    ],
+    "answer": "'share' in navigator",
+    "explain": "Feature detection brauzer nomiga bog'liq emas."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "localStorage ning katta hajmda yomon tomoni nima?",
+    "options": [
+     "Sinxron: asosiy oqimni to'sadi",
+     "Ma'lumot serverga ketib qoladi",
+     "Har yangilashda o'chib ketadi",
+     "Faqat sonlarni saqlay oladi"
+    ],
+    "answer": "Sinxron: asosiy oqimni to'sadi",
+    "explain": "O'qish va yozish tugamaguncha JS kutadi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Service Worker bilan so'rov-javoblarni saqlaydigan API: ... API",
+    "answer": "Cache",
+    "explain": "Cache API.",
+    "alsoAccept": [
+     "cache",
+     "Cache API"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Chrome va Edge ning chizish dvigateli:",
+    "answer": "Blink",
+    "explain": "Blink.",
+    "alsoAccept": [
+     "blink"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "localStorage ga obyekt yozishdan oldin chaqiriladigan metod: JSON.…",
+    "answer": "stringify",
+    "explain": "JSON.stringify.",
+    "alsoAccept": [
+     "JSON.stringify",
+     "stringify()",
+     "JSON.stringify()"
+    ]
+   }
+  ]
+ }
+]
