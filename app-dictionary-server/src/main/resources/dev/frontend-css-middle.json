@@ -1,0 +1,3816 @@
+[
+ {
+  "code": "fe-css-md-01",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 1,
+  "title": "Specificity hisoblash va ziddiyatlar",
+  "intro": "(ID, class, type) hisobi, :is, :not, :has va :where qiymati, inline uslub va !important.",
+  "theory": {
+   "analogy": {
+    "icon": "🏅",
+    "title": "Medallar jadvali",
+    "text": "Oltin (ID), kumush (class), bronza (type). Bitta oltin yuzta kumushdan ustun: raqamlar chapdan o'ngga solishtiriladi, qo'shib yuborilmaydi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Bir elementga bir xossa uchun bir nechta qoida to'qnashsa, cascade (qoidalar sharsharasi) g'olibni tanlaydi: avval kelib chiqish va muhimlik, keyin specificity (aniqlik darajasi), oxirida yozilish tartibi. Middle dasturchi \"nega ishlamayapti\" savoliga !important bilan emas, hisob bilan javob beradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Specificity (aniqlik darajasi)",
+       "text": "Selektorning uch xonali og'irligi: (ID, class, type)."
+      },
+      {
+       "term": "Pseudo-class (soxta sinf)",
+       "text": "Holat selektori: :hover. Class kabi hisoblanadi."
+      },
+      {
+       "term": "Pseudo-element (soxta element)",
+       "text": "::before kabi qism. Type kabi hisoblanadi."
+      },
+      {
+       "term": "!important",
+       "text": "Qoidani alohida, yuqori cascade bosqichiga olib chiqadi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Uslub qo'llanmasa",
+       "text": "DevTools da chizib tashlangan qoida va g'olibni solishtirasiz."
+      },
+      {
+       "term": "Kutubxona uslubini o'zgartirishda",
+       "text": "Kerakli kuchdagi eng sodda selektorni tanlaysiz."
+      },
+      {
+       "term": "Reset yozishda",
+       "text": ":where bilan nol og'irlik berasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Hisob jadvali",
+     "table": {
+      "head": [
+       "Selektor",
+       "Qiymat"
+      ],
+      "rows": [
+       [
+        "*",
+        "(0,0,0)"
+       ],
+       [
+        "li::marker",
+        "(0,0,2)"
+       ],
+       [
+        ".nav a:hover",
+        "(0,2,1)"
+       ],
+       [
+        "[type=\"text\"]",
+        "(0,1,0)"
+       ],
+       [
+        "#main .card p",
+        "(1,1,1)"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Funksional pseudo-class lar",
+     "bullets": [
+      ":is(), :not(), :has() — ichidagi eng kuchli argument qiymatini oladi.",
+      ":where() — har doim (0,0,0).",
+      "Kombinatorlar (probel, >, +, ~) hisobga kirmaydi."
+     ]
+    },
+    {
+     "heading": "Misol",
+     "code": {
+      "lang": "css",
+      "text": ":is(#app, .x) p { color: red; }    /* (1,0,1) */\n:where(#app) p  { color: blue; }   /* (0,0,1) */\np               { color: green; }  /* (0,0,1) */"
+     }
+    },
+    {
+     "heading": "Yuqori bosqichlar",
+     "callout": {
+      "kind": "warn",
+      "text": "style=\"\" hamma selektordan kuchli; uni faqat !important yengadi. !important qo'yish ziddiyatni yo'qotmaydi, keyingi bosqichga ko'chiradi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔧",
+       "title": "Tugma rangi o'zgarmayapti",
+       "text": ".btn qoidangizni #sidebar button (1,0,1) yengyapti."
+      },
+      {
+       "icon": "⚔️",
+       "title": "!important urushi",
+       "text": "Biri qo'ydi, ikkinchisi ham qo'ydi — endi yana specificity solishtiriladi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Selektorlarni past va bir xil kuchda ushlang: asosan bitta class."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "11 ta class bitta ID ni yengadi deb o'ylash.",
+       "ID xonasi alohida.",
+       "Xonalar bir-biriga o'tmaydi."
+      ],
+      [
+       "HTML dagi class tartibiga qarash.",
+       "CSS dagi yozilish tartibiga qarash.",
+       "class=\"b a\" va \"a b\" farq qilmaydi."
+      ],
+      [
+       "Har muammoni !important bilan yopish.",
+       "Sababni DevTools da topish.",
+       "Kod boshqarib bo'lmas holga keladi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "(ID, class, type) chapdan solishtiriladi.",
+    "Teng bo'lsa, CSS da keyingisi yutadi.",
+    ":where nol, :is/:not/:has eng kuchli argument.",
+    "Inline va !important alohida bosqich."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Qo'lda hisoblang",
+    "text": "Loyihangizdagi 5 ta selektorning qiymatini yozib, DevTools bilan tekshiring."
+   },
+   {
+    "title": "!important ni olib tashlang",
+    "text": "Bitta !important li joyni selektorni to'g'rilash orqali yeching."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Paragraf rangi qanday bo'ladi? HTML: <div id=\"box\"><p class=\"text\">A</p></div>",
+    "options": [
+     "red",
+     "blue",
+     "green",
+     "black"
+    ],
+    "answer": "red",
+    "explain": "#box p = (1,0,1), .text = (0,1,0). ID xonasi yutadi.",
+    "passage": "#box p { color: red; }\n.text  { color: blue; }\np      { color: green; }"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Paragraf rangi? HTML: <p id=\"a\" class=\"b\">x</p>",
+    "options": [
+     "blue",
+     "red",
+     "black",
+     "purple"
+    ],
+    "answer": "blue",
+    "explain": ":where nol beradi: (0,0,1) < .b (0,1,0).",
+    "passage": ":where(#a) { color: red; }\n.b         { color: blue; }"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Paragraf rangi? HTML: <div class=\"x\"><p>x</p></div>",
+    "options": [
+     "red",
+     "blue",
+     "black",
+     "green"
+    ],
+    "answer": "red",
+    "explain": ":is eng kuchli argumentni oladi: #y tufayli (1,0,1), garchi mos kelgani .x bo'lsa ham.",
+    "passage": ":is(.x, #y) p { color: red; }\n.x p          { color: blue; }"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "`ul li.active > a:hover` ning qiymati?",
+    "options": [
+     "(0,2,3)",
+     "(0,1,3)",
+     "(0,2,2)",
+     "(0,3,2)"
+    ],
+    "answer": "(0,2,3)",
+    "explain": "class va pseudo-class: .active, :hover = 2; type: ul, li, a = 3."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "`a:not(.external)::after` qiymati?",
+    "options": [
+     "(0,1,2)",
+     "(0,2,1)",
+     "(0,1,1)",
+     "(0,0,2)"
+    ],
+    "answer": "(0,1,2)",
+    "explain": ":not argumenti .external (0,1,0); a va ::after — 2 ta type."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Tugma rangi? HTML: <button class=\"b a\">x</button>",
+    "options": [
+     "green",
+     "red",
+     "black",
+     "blue"
+    ],
+    "answer": "green",
+    "explain": "Kuch teng: CSS da keyin yozilgan .b yutadi; HTML tartibi ahamiyatsiz.",
+    "passage": ".a { color: red; }\n.b { color: green; }"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Element rangi? HTML: <p id=\"t\" style=\"color: red\">x</p>",
+    "options": [
+     "blue",
+     "red",
+     "black",
+     "green"
+    ],
+    "answer": "blue",
+    "explain": "!important inline oddiy uslubni ham yengadi.",
+    "passage": "#t { color: green; }\np  { color: blue !important; }"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Ikkala qoidada !important. Paragraf (<p class=\"c\" id=\"d\">) rangi?",
+    "options": [
+     "red",
+     "blue",
+     "black",
+     "green"
+    ],
+    "answer": "red",
+    "explain": "Muhimlik teng, yana specificity: #d yutadi.",
+    "passage": "#d { color: red !important; }\n.c { color: blue !important; }"
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Reset kutubxonasi foydalanuvchi oson bosib ketishi uchun selektorni nimaga o'raydi?",
+    "options": [
+     ":where()",
+     ":is()",
+     ":not()",
+     ":has()"
+    ],
+    "answer": ":where()",
+    "explain": ":where og'irligi nol."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "`#nav .item a` ning class xonasidagi son:",
+    "answer": "1",
+    "explain": "(1,1,1)."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Selektor kuchi nol bo'ladigan universal selektor belgisi:",
+    "answer": "*",
+    "explain": "* (0,0,0)."
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Kuchsizdan kuchliga tartiblang:",
+    "words": [
+     "p",
+     ".card",
+     "#main",
+     "style=\"\""
+    ],
+    "answer": "p .card #main style=\"\"",
+    "explain": "type < class < ID < inline."
+   }
+  ]
+ },
+ {
+  "code": "fe-css-md-02",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 2,
+  "title": "Inheritance va qiymatlarning hisoblanishi",
+  "intro": "Meros bo'ladigan xossalar, inherit, initial, unset, revert, em va line-height merosi, var() xatosi.",
+  "theory": {
+   "analogy": {
+    "icon": "👨‍👧",
+    "title": "Oiladan o'tadigan belgi",
+    "text": "Ko'z rangi (color, font) bolaga o'tadi, ammo otaning uyi devorlari (margin, border) bolaga ko'chmaydi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Inheritance (meros) — ba'zi xossalarning qiymati ota elementdan bolaga o'tishi. Brauzer qiymatni bosqichma-bosqich hisoblaydi: yozilgan → computed (hisoblangan) → used (ishlatilgan). Bolaga aynan computed qiymat o'tadi, va ko'p kutilmagan natijalar shundan chiqadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "inherit",
+       "text": "Ota qiymatini ol."
+      },
+      {
+       "term": "initial",
+       "text": "Spetsifikatsiyadagi boshlang'ich qiymat."
+      },
+      {
+       "term": "unset",
+       "text": "Meros xossada inherit, boshqasida initial."
+      },
+      {
+       "term": "revert",
+       "text": "Brauzer standart uslubiga qaytar."
+      },
+      {
+       "term": "Computed value (hisoblangan qiymat)",
+       "text": "Nisbiy birliklar imkon qadar aniqlangan qiymat."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Butun sahifa shriftini berishda",
+       "text": "body ga bir marta, form elementlariga font: inherit."
+      },
+      {
+       "term": "Uchinchi tomon uslubini bekor qilishda",
+       "text": "revert yoki unset."
+      },
+      {
+       "term": "Ichma-ich o'lcham buzilsa",
+       "text": "em merosini tekshirasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Nima meros bo'ladi",
+     "table": {
+      "head": [
+       "Meros bo'ladi",
+       "Bo'lmaydi"
+      ],
+      "rows": [
+       [
+        "color, font-*",
+        "margin, padding"
+       ],
+       [
+        "line-height, text-align",
+        "border, background"
+       ],
+       [
+        "visibility, cursor",
+        "width, height, display"
+       ],
+       [
+        "custom property (--x)",
+        "position"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "em ko'payishi",
+     "code": {
+      "lang": "css",
+      "text": "html { font-size: 16px; }\n.a { font-size: 1.5em; }   /* 24px */\n.a .a { }                  /* 36px: yana 1.5 marta */"
+     }
+    },
+    {
+     "heading": "line-height",
+     "code": {
+      "lang": "css",
+      "text": "body { font-size: 20px; line-height: 1.5; }  /* bolaga 1.5 (koeffitsient) */\nbody { font-size: 20px; line-height: 1.5em; } /* bolaga 30px (tayyor son) */"
+     },
+     "callout": {
+      "kind": "tip",
+      "text": "line-height ni birliksiz yozing."
+     }
+    },
+    {
+     "heading": "var() yaroqsiz bo'lsa",
+     "callout": {
+      "kind": "warn",
+      "text": "var() natijasi xossaga mos kelmasa, brauzer oldingi qoidaga qaytmaydi: xossa unset kabi ishlaydi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔤",
+       "title": "Tugmada boshqa shrift",
+       "text": "button shriftni meros olmaydi — font: inherit kerak."
+      },
+      {
+       "icon": "📏",
+       "title": "Menyu ichida menyu kattalashdi",
+       "text": "font-size em da yozilgan va har qavatda ko'paygan."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "DevTools → Computed panelida yakuniy qiymat va u qayerdan kelganini ko'ring."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "display: initial bilan \"avvalgi holat\"ni kutish.",
+       "display: revert.",
+       "initial qiymati inline."
+      ],
+      [
+       "line-height: 24px ni body ga yozish.",
+       "line-height: 1.5.",
+       "Katta sarlavhada qatorlar ustma-ust tushadi."
+      ],
+      [
+       "margin bolaga o'tadi deb o'ylash.",
+       "Kerak bo'lsa inherit yozish.",
+       "Layout xossalari meros bo'lmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Matn xossalari meros bo'ladi, layout xossalari yo'q.",
+    "initial va revert bir xil emas.",
+    "Bolaga computed qiymat o'tadi.",
+    "Birliksiz line-height — koeffitsient."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Computed ni o'qing",
+    "text": "Bitta paragrafning color qiymati qaysi ajdoddan kelganini toping."
+   },
+   {
+    "title": "em tuzog'i",
+    "text": "Uch qavatli em ro'yxat yasab, har qavatdagi piksel o'lchamini oldindan hisoblang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Ichki .item ning shrift o'lchami? (html 16px, ikkala div ham class=\"item\", biri ikkinchisi ichida)",
+    "options": [
+     "36px",
+     "24px",
+     "32px",
+     "48px"
+    ],
+    "answer": "36px",
+    "explain": "16 × 1.5 = 24, keyin 24 × 1.5 = 36.",
+    "passage": ".item { font-size: 1.5em; }"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Xuddi shu holatda 1.5rem yozilsa ichki element necha px?",
+    "options": [
+     "24px",
+     "36px",
+     "16px",
+     "48px"
+    ],
+    "answer": "24px",
+    "explain": "rem faqat html ga nisbatan.",
+    "passage": ".item { font-size: 1.5rem; }"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "h2 qator balandligi necha px?",
+    "options": [
+     "30px",
+     "60px",
+     "20px",
+     "40px"
+    ],
+    "answer": "30px",
+    "explain": "em qiymat otada hisoblanib (20 × 1.5), tayyor 30px meros bo'ladi.",
+    "passage": "body { font-size: 20px; line-height: 1.5em; }\nh2   { font-size: 40px; }"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Endi h2 qator balandligi necha px?",
+    "options": [
+     "60px",
+     "30px",
+     "40px",
+     "20px"
+    ],
+    "answer": "60px",
+    "explain": "Birliksiz koeffitsient: 40 × 1.5.",
+    "passage": "body { font-size: 20px; line-height: 1.5; }\nh2   { font-size: 40px; }"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "div uchun display: initial natijasi?",
+    "options": [
+     "inline",
+     "block",
+     "none",
+     "flow-root"
+    ],
+    "answer": "inline",
+    "explain": "initial spetsifikatsiya qiymati, brauzer uslubi emas."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "div uchun display: revert natijasi?",
+    "options": [
+     "block",
+     "inline",
+     "none",
+     "contents"
+    ],
+    "answer": "block",
+    "explain": "revert brauzer standart uslubiga qaytaradi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Havola ichidagi matn ota rangini olishi uchun?",
+    "options": [
+     "a { color: inherit; }",
+     "a { color: initial; }",
+     "a { color: auto; }",
+     "a { color: none; }"
+    ],
+    "answer": "a { color: inherit; }",
+    "explain": "Brauzer a ga o'z rangini bergan, inherit uni almashtiradi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "border: 1px solid li ota ichidagi bola chegara oladimi?",
+    "options": [
+     "Yo'q, border meros bo'lmaydi",
+     "Ha, hamma xossa meros bo'ladi",
+     "Faqat border rangi o'tadi",
+     "Faqat blok bolalar oladi"
+    ],
+    "answer": "Yo'q, border meros bo'lmaydi",
+    "explain": "Layout va bezak xossalari meros bo'lmaydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Paragraf rangi qanday bo'ladi? (body color: green)",
+    "options": [
+     "green",
+     "red",
+     "black",
+     "10px"
+    ],
+    "answer": "green",
+    "explain": "var() natijasi rang emas — color unset bo'ladi va otadan meros oladi; red ga qaytmaydi.",
+    "passage": ":root { --c: 10px; }\np { color: red; }\np { color: var(--c); }"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Meros xossada inherit, boshqasida initial bo'ladigan kalit so'z:",
+    "answer": "unset",
+    "explain": "unset.",
+    "alsoAccept": [
+     "Unset"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "input otaning shriftini olishi uchun: font: ...",
+    "answer": "inherit",
+    "explain": "font: inherit.",
+    "alsoAccept": [
+     "inherit;"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "--gap: 8px; margin: var(--space, 4px) — --space aniqlanmagan bo'lsa margin necha? (px bilan)",
+    "answer": "4px",
+    "explain": "Fallback ishlaydi.",
+    "alsoAccept": [
+     "4 px",
+     "4"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-css-md-03",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 3,
+  "title": "Box model tuzoqlari",
+  "intro": "box-sizing hisobi, margin collapse, foizli padding, overflow va logical properties.",
+  "theory": {
+   "analogy": {
+    "icon": "📦",
+    "title": "Qadoqlangan sovg'a",
+    "text": "Sovg'a (content), yumshoq qog'oz (padding), quti devori (border), qutilar orasidagi joy (margin)."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Har element to'rt qatlamli quti: content, padding, border, margin. Muammolar odatda uch joyda: width nimani o'lchashi (box-sizing), vertikal margin larning birlashishi va foiz nimaga nisbatan hisoblanishi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "content-box",
+       "text": "width faqat kontent kengligi."
+      },
+      {
+       "term": "border-box",
+       "text": "width padding va border bilan birga."
+      },
+      {
+       "term": "Margin collapse (chetlar birlashishi)",
+       "text": "Vertikal margin lardan faqat kattasi qoladi."
+      },
+      {
+       "term": "Logical properties (mantiqiy xossalar)",
+       "text": "Matn yo'nalishiga moslashadigan: margin-inline-start."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Gorizontal scroll chiqsa",
+       "text": "width + padding yig'indisini tekshirasiz."
+      },
+      {
+       "term": "Kutilmagan bo'shliq bo'lsa",
+       "text": "Margin collapse ni tekshirasiz."
+      },
+      {
+       "term": "RTL tillar uchun",
+       "text": "left/right o'rniga inline xossalari."
+      }
+     ]
+    },
+    {
+     "heading": "Hisob",
+     "table": {
+      "head": [
+       "width: 200px; padding: 20px; border: 5px",
+       "Ko'rinadigan kenglik"
+      ],
+      "rows": [
+       [
+        "content-box",
+        "200 + 40 + 10 = 250px"
+       ],
+       [
+        "border-box",
+        "200px (kontent 150px)"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Margin collapse qoidalari",
+     "bullets": [
+      "Faqat vertikal va oddiy block oqimida.",
+      "Flex va grid bolalarida bo'lmaydi.",
+      "Ota va birinchi bola margin-top i ham birlashadi.",
+      "display: flow-root, padding yoki border buni to'xtatadi."
+     ]
+    },
+    {
+     "heading": "Foizli padding",
+     "code": {
+      "lang": "css",
+      "text": ".parent { width: 400px; }\n.child  { padding-top: 50%; }  /* 200px — ota KENGLIGIDAN */"
+     }
+    },
+    {
+     "heading": "Overflow",
+     "table": {
+      "head": [
+       "Qiymat",
+       "Xatti-harakat"
+      ],
+      "rows": [
+       [
+        "visible",
+        "tashqariga chiqadi"
+       ],
+       [
+        "hidden",
+        "kesadi, kod bilan scroll mumkin"
+       ],
+       [
+        "clip",
+        "kesadi, scroll yo'q"
+       ],
+       [
+        "auto",
+        "kerak bo'lsa scrollbar"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "↔️",
+       "title": "Sahifa yonga suriladi",
+       "text": "width: 100% va padding content-box da."
+      },
+      {
+       "icon": "⬇️",
+       "title": "Sarlavha otani pastga itardi",
+       "text": "Bolaning margin-top i ota bilan birlashgan."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Elementlar orasidagi masofa uchun flex yoki grid dagi gap — collapse va ortiqcha chet bo'lmaydi."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Ikki blok margin i qo'shiladi deb hisoblash.",
+       "Kattasi qolishini bilish.",
+       "30 va 20 → 30."
+      ],
+      [
+       "padding-top: 50% ni balandlikdan deb o'ylash.",
+       "Ota kengligidan hisoblash.",
+       "Vertikal foiz ham kenglikdan."
+      ],
+      [
+       "Inline span ga width berish.",
+       "inline-block yoki block.",
+       "Inline element o'lcham olmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "border-box hisobni soddalashtiradi.",
+    "Vertikal margin lar birlashadi, flex va grid da yo'q.",
+    "Foizli padding/margin ota kengligidan.",
+    "inline element width va height olmaydi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Box model paneli",
+    "text": "DevTools da element qutisining to'rt qatlamini va yakuniy kengligini tekshiring."
+   },
+   {
+    "title": "Collapse ni yarating",
+    "text": "Ikki blok orasida margin birlashishini ko'rsatib, flow-root bilan ota holatini tuzating."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Element ko'rinadigan kengligi?",
+    "options": [
+     "250px",
+     "200px",
+     "240px",
+     "210px"
+    ],
+    "answer": "250px",
+    "explain": "200 + 2×20 + 2×5.",
+    "passage": "width: 200px; padding: 20px; border: 5px solid;\nbox-sizing: content-box;"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "border-box da kontent kengligi necha?",
+    "options": [
+     "150px",
+     "200px",
+     "160px",
+     "190px"
+    ],
+    "answer": "150px",
+    "explain": "200 − 40 − 10.",
+    "passage": "width: 200px; padding: 20px; border: 5px solid;\nbox-sizing: border-box;"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Ikki blok orasidagi masofa?",
+    "options": [
+     "30px",
+     "50px",
+     "20px",
+     "10px"
+    ],
+    "answer": "30px",
+    "explain": "Vertikal margin lar birlashadi: kattasi.",
+    "passage": ".a { margin-bottom: 30px; }\n.b { margin-top: 20px; }   /* ota: oddiy blok */"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Shu ikki element flex-direction: column konteynerida. Masofa?",
+    "options": [
+     "50px",
+     "30px",
+     "20px",
+     "0px"
+    ],
+    "answer": "50px",
+    "explain": "Flex da collapse yo'q.",
+    "passage": ".a { margin-bottom: 30px; }\n.b { margin-top: 20px; }"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Bolaning padding-top i necha px?",
+    "options": [
+     "200px",
+     "50px",
+     "100px",
+     "25px"
+    ],
+    "answer": "200px",
+    "explain": "Foiz ota kengligidan: 400 × 50%.",
+    "passage": ".parent { width: 400px; height: 100px; }\n.child  { padding-top: 50%; }"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Bolaning margin-top i ota tashqarisiga \"chiqib ketyapti\". Eng toza yechim?",
+    "options": [
+     "Otaga display: flow-root",
+     "Bolaga z-index: 1 berish",
+     "Otaga position: static",
+     "Bolaga float: none yozish"
+    ],
+    "answer": "Otaga display: flow-root",
+    "explain": "flow-root yangi BFC yaratadi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "span ga width: 200px berildi, ta'sir yo'q. Nega?",
+    "options": [
+     "Inline element o'lcham olmaydi",
+     "span ga CSS umuman qo'llanmaydi",
+     "width faqat div da yozilishi shart",
+     "Qiymat px da yozilmasligi kerak"
+    ],
+    "answer": "Inline element o'lcham olmaydi",
+    "explain": "display: inline-block yoki block kerak."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "overflow: hidden va clip farqi?",
+    "options": [
+     "clip da kod bilan ham scroll bo'lmaydi",
+     "hidden kontentni tashqariga chiqaradi",
+     "clip doim scrollbar ko'rsatib turadi",
+     "hidden faqat vertikal yo'nalishda ishlaydi"
+    ],
+    "answer": "clip da kod bilan ham scroll bo'lmaydi",
+    "explain": "hidden elementni dasturiy scroll qilsa bo'ladi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Arab tilidagi sahifada ham \"matn boshidagi tomon\"ga joy berish uchun?",
+    "options": [
+     "margin-inline-start",
+     "margin-left",
+     "margin-block-start",
+     "margin-top"
+    ],
+    "answer": "margin-inline-start",
+    "explain": "inline-start matn yo'nalishiga qarab chap yoki o'ng."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "padding va border width ichiga kiradigan box-sizing qiymati:",
+    "answer": "border-box",
+    "explain": "border-box.",
+    "alsoAccept": [
+     "Border-box"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Uch qator: overflow: hidden; white-space: nowrap; text-overflow: ...",
+    "answer": "ellipsis",
+    "explain": "Bir qatorli kesish.",
+    "alsoAccept": [
+     "ellipsis;"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Quti qatlamlarini ichkaridan tashqariga tartiblang:",
+    "words": [
+     "content",
+     "padding",
+     "border",
+     "margin"
+    ],
+    "answer": "content padding border margin",
+    "explain": "Kontent markazda, margin eng tashqarida."
+   }
+  ]
+ },
+ {
+  "code": "fe-css-md-04",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 4,
+  "title": "Flexbox: o'lcham hisoblari",
+  "intro": "flex-grow, shrink, basis qanday hisoblanadi, flex: 1 va auto farqi, min-width: 0 va margin: auto.",
+  "theory": {
+   "analogy": {
+    "icon": "🍰",
+    "title": "Tortni bo'lish",
+    "text": "Avval har kimga kafolatlangan bo'lak (basis), qolgani ulushga qarab (grow). Tort yetmasa, har kimdan kamaytiriladi (shrink)."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Flex o'lchami uch qadamda chiqadi: har element flex-basis (boshlang'ich o'lcham) oladi, keyin bo'sh joy grow ulushlariga qarab tarqatiladi yoki yetmayotgan joy shrink va basis ga qarab ayiriladi, oxirida min/max cheklovlari qo'llanadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "flex-basis",
+       "text": "Taqsimlashdan oldingi asosiy o'q o'lchami."
+      },
+      {
+       "term": "flex-grow",
+       "text": "Ortiqcha bo'sh joydan olinadigan ulush."
+      },
+      {
+       "term": "flex-shrink",
+       "text": "Joy yetmaganda kichrayish ulushi."
+      },
+      {
+       "term": "flex: 1",
+       "text": "1 1 0% — kontentga qaramay teng bo'lish."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Teng ustunlarda",
+       "text": "flex: 1."
+      },
+      {
+       "term": "Qat'iy yon panelda",
+       "text": "flex: 0 0 240px."
+      },
+      {
+       "term": "Matn kesilmay, sahifani kengaytirsa",
+       "text": "min-width: 0."
+      }
+     ]
+    },
+    {
+     "heading": "Qisqa yozuvlar",
+     "table": {
+      "head": [
+       "Yozuv",
+       "To'liq"
+      ],
+      "rows": [
+       [
+        "flex: 1",
+        "1 1 0%"
+       ],
+       [
+        "flex: auto",
+        "1 1 auto"
+       ],
+       [
+        "flex: none",
+        "0 0 auto"
+       ],
+       [
+        "standart",
+        "0 1 auto"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Grow hisobi",
+     "code": {
+      "lang": "text",
+      "text": "Konteyner 600px, basis: 100 va 100, grow: 1 va 3\nbo'sh joy = 600 - 200 = 400\nA = 100 + 400 * 1/4 = 200\nB = 100 + 400 * 3/4 = 400"
+     }
+    },
+    {
+     "heading": "min-width tuzog'i",
+     "code": {
+      "lang": "css",
+      "text": ".content { flex: 1; min-width: 0; }   /* uzun so'z endi kengaytirmaydi */"
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "Flex elementning min-width standarti auto: u kontentdan kichraymaydi."
+     }
+    },
+    {
+     "heading": "margin: auto",
+     "text": "Flex ichida auto margin bo'sh joyni o'ziga oladi: oxirgi tugmani o'ngga surish uchun margin-left: auto yetarli."
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🧾",
+       "title": "Ellipsis ishlamayapti",
+       "text": "Matnli bolaga min-width: 0 yetishmaydi."
+      },
+      {
+       "icon": "📌",
+       "title": "Footer pastda tursin",
+       "text": "Ustun flex, main ga flex: 1."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "justify-content — asosiy o'q, align-items — ko'ndalang o'q. flex-direction o'qlarni almashtiradi."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "flex: 1 va flex-grow: 1 bir xil deb o'ylash.",
+       "basis farqini bilish.",
+       "flex-grow: 1 da basis auto qoladi."
+      ],
+      [
+       "column da justify-content ni gorizontal deb kutish.",
+       "Asosiy o'q vertikal ekanini eslash.",
+       "O'qlar almashgan."
+      ],
+      [
+       "order bilan mantiqiy tartibni o'zgartirish.",
+       "HTML tartibini o'zgartirish.",
+       "Klaviatura DOM bo'yicha yuradi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Avval basis, keyin grow yoki shrink.",
+    "flex: 1 teng, flex: auto kontentga qarab.",
+    "min-width: auto uzun kontentda muammo.",
+    "auto margin bo'sh joyni yutadi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Oldindan hisoblang",
+    "text": "Uch elementli konteyner uchun kengliklarni qog'ozda hisoblab, brauzerda tekshiring."
+   },
+   {
+    "title": "Ellipsis",
+    "text": "Avatar va uzun ism qatorida ismni uch nuqta bilan kesing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "B elementining kengligi?",
+    "options": [
+     "400px",
+     "300px",
+     "450px",
+     "500px"
+    ],
+    "answer": "400px",
+    "explain": "Bo'sh joy 400, B ulushi 3/4 = 300, basis bilan 400.",
+    "passage": ".box { display: flex; width: 600px; }\n.a { flex: 1 1 100px; }\n.b { flex: 3 1 100px; }"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Har bir element kengligi? (kontent qisqa)",
+    "options": [
+     "200px",
+     "100px",
+     "600px",
+     "150px"
+    ],
+    "answer": "200px",
+    "explain": "basis 0%, grow teng: 600 / 3.",
+    "passage": ".box { display: flex; width: 600px; }\n.box > * { flex: 1; }   /* 3 ta bola */"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "A ning kengligi?",
+    "options": [
+     "150px",
+     "200px",
+     "100px",
+     "250px"
+    ],
+    "answer": "150px",
+    "explain": "Jami basis 400px, joy 300px: yetishmagan 100px teng basis va shrink sababli 50px dan ayiriladi.",
+    "passage": ".box { display: flex; width: 300px; }\n.a, .b { flex: 0 1 200px; }"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Joy yetmayapti (konteyner 300px). B ning kengligi?",
+    "options": [
+     "200px",
+     "150px",
+     "100px",
+     "250px"
+    ],
+    "answer": "200px",
+    "explain": "B shrink 0 — qisqarmaydi; yetishmagan 100px hammasi A dan olinadi.",
+    "passage": ".box { display: flex; width: 300px; }\n.a { flex: 0 1 200px; }\n.b { flex: 0 0 200px; }"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "flex: auto qaysi to'liq yozuvga teng?",
+    "options": [
+     "1 1 auto",
+     "1 1 0%",
+     "0 0 auto",
+     "0 1 auto"
+    ],
+    "answer": "1 1 auto",
+    "explain": "auto: kontentdan boshlab o'sadi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "flex: 1 li bola ichidagi uzun URL sahifani kengaytirib yubordi. Yechim?",
+    "options": [
+     "min-width: 0",
+     "max-width: auto",
+     "flex-shrink: 0",
+     "width: max-content"
+    ],
+    "answer": "min-width: 0",
+    "explain": "Standart min-width: auto kontentdan kichraytirmaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "flex-direction: column konteynerida bolalarni gorizontal markazlash uchun?",
+    "options": [
+     "align-items: center",
+     "justify-content: center",
+     "text-align: justify",
+     "flex-wrap: center"
+    ],
+    "answer": "align-items: center",
+    "explain": "Ustunda ko'ndalang o'q gorizontal."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Header da faqat oxirgi tugmani o'ng chekkaga surishning eng qisqa yo'li?",
+    "options": [
+     "Tugmaga margin-left: auto",
+     "Konteynerga text-align: right",
+     "Tugmaga justify-self: end",
+     "Tugmaga float: right berish"
+    ],
+    "answer": "Tugmaga margin-left: auto",
+    "explain": "auto margin bo'sh joyni yutadi; flex da justify-self va float ishlamaydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "order: -1 berilgan tugma haqida qaysi gap to'g'ri?",
+    "options": [
+     "Tab tartibi DOM bo'yicha qoladi",
+     "DOM dagi joyi ham o'zgarib ketadi",
+     "Ekran o'qigich uni o'tkazib yuboradi",
+     "U konteynerdan tashqariga chiqadi"
+    ],
+    "answer": "Tab tartibi DOM bo'yicha qoladi",
+    "explain": "order faqat vizual."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "flex: none qisqa yozuvining flex-grow qiymati:",
+    "answer": "0",
+    "explain": "0 0 auto."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Flex elementlari keyingi qatorga o'tishi uchun: flex-wrap: ...",
+    "answer": "wrap",
+    "explain": "flex-wrap: wrap.",
+    "alsoAccept": [
+     "wrap;"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Flex o'lchami hisoblanish tartibi:",
+    "words": [
+     "basis",
+     "bo'sh joyni aniqlash",
+     "grow yoki shrink",
+     "min/max cheklovi"
+    ],
+    "answer": "basis bo'sh joyni aniqlash grow yoki shrink min/max cheklovi",
+    "explain": "Boshlang'ich o'lchamdan yakuniy o'lchamga."
+   }
+  ]
+ },
+ {
+  "code": "fe-css-md-05",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 5,
+  "title": "Grid: chiziqlar, areas, auto-fit",
+  "intro": "fr hisobi, grid chiziqlari, span, grid-template-areas, auto-fit va auto-fill, 1fr tuzog'i.",
+  "theory": {
+   "analogy": {
+    "icon": "🪟",
+    "title": "Kataklangan daftar",
+    "text": "Avval chiziqlar tortiladi, keyin har rasm qaysi kataklarni egallashi aytiladi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Grid ikki o'lchamli layout (joylashuv tizimi): avval ustun va qatorlar chiziladi, keyin elementlar ularga joylanadi. Chiziq raqamlari, nomlangan hududlar va repeat/minmax bilan ko'p hollarda media query siz ham moslashuvchan sahifa chiqadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "fr",
+       "text": "Qolgan bo'sh joyning ulushi."
+      },
+      {
+       "term": "Grid line (to'r chizig'i)",
+       "text": "Trek chegarasi; 1 dan, oxiridan -1 dan sanaladi."
+      },
+      {
+       "term": "Implicit grid (yashirin to'r)",
+       "text": "Brauzer o'zi qo'shgan qator va ustunlar."
+      },
+      {
+       "term": "auto-fit / auto-fill",
+       "text": "Sig'adigancha trek; fit bo'shlarini yig'adi, fill saqlaydi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Sahifa karkasida",
+       "text": "grid-template-areas."
+      },
+      {
+       "term": "Kartochkalar to'plamida",
+       "text": "repeat(auto-fit, minmax())."
+      },
+      {
+       "term": "Qator va ustun bo'ylab bir tekislashda",
+       "text": "Grid, flex emas."
+      }
+     ]
+    },
+    {
+     "heading": "fr hisobi",
+     "code": {
+      "lang": "text",
+      "text": "width 640px; columns: 100px 1fr 2fr; gap 20px\nbo'sh = 640 - 100 - 2*20 = 500\n1fr = 500/3 ≈ 166.7px, 2fr ≈ 333.3px"
+     }
+    },
+    {
+     "heading": "Joylash",
+     "code": {
+      "lang": "css",
+      "text": ".hero { grid-column: 1 / -1; }      /* butun kenglik */\n.side { grid-row: 2 / span 2; }    /* 2-chiziqdan 2 qator */"
+     }
+    },
+    {
+     "heading": "Areas",
+     "code": {
+      "lang": "css",
+      "text": ".page {\n  display: grid;\n  grid-template-columns: 240px 1fr;\n  grid-template-areas: \"head head\" \"nav main\";\n}\nheader { grid-area: head; }"
+     }
+    },
+    {
+     "heading": "Moslashuvchan kartochkalar",
+     "code": {
+      "lang": "css",
+      "text": ".cards {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));\n  gap: 16px;\n}"
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "1fr aslida minmax(auto, 1fr): uzun kontent ustunni kengaytiradi. Teng ustun uchun minmax(0, 1fr)."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🗞️",
+       "title": "Gazeta sahifasi",
+       "text": "Sarlavha butun kenglikni, ustunlar esa bir qismini egallaydi."
+      },
+      {
+       "icon": "🛍️",
+       "title": "Mahsulotlar ro'yxati",
+       "text": "Ekran kengligiga qarab 1, 2 yoki 4 ustun."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "DevTools da grid belgisini yoqing: chiziq raqamlari va areas ko'rinadi."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Chiziqni ustun raqami bilan adashtirish.",
+       "3 ustunda 4 chiziq borligini bilish.",
+       "1 / 3 ikki ustunni egallaydi."
+      ],
+      [
+       "areas qatorlarida har xil katak soni yozish.",
+       "Hamma qatorda teng son.",
+       "Aks holda butun qoida yaroqsiz."
+      ],
+      [
+       "Uzun kod bilan 1fr 1fr teng bo'ladi deb kutish.",
+       "minmax(0, 1fr).",
+       "auto minimum kontentdan kichraymaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "fr — qolgan joy ulushi, gap oldin ayiriladi.",
+    "-1 oxirgi chiziq.",
+    "auto-fit bo'sh treklarni yig'adi.",
+    "Grid — ikki o'lcham, flex — bir o'lcham."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Sahifa karkasi",
+    "text": "areas bilan header, nav, main, footer yasang va tor ekranda bitta ustunga o'tkazing."
+   },
+   {
+    "title": "fit va fill",
+    "text": "Ikkita kartochka bilan auto-fit va auto-fill farqini ko'ring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Ustun kengliklari?",
+    "options": [
+     "100px 230px 230px",
+     "100px 250px 250px",
+     "100px 200px 200px",
+     "200px 200px 200px"
+    ],
+    "answer": "100px 230px 230px",
+    "explain": "600 − 100 − 2×20 = 460, ikkiga: 230.",
+    "passage": "width: 600px; gap: 20px;\ngrid-template-columns: 100px 1fr 1fr;"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "grid-template-columns: repeat(3, 1fr) da nechta vertikal chiziq bor?",
+    "options": [
+     "4",
+     "3",
+     "2",
+     "6"
+    ],
+    "answer": "4",
+    "explain": "Treklar soni + 1."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "grid-column: 1 / 3 element nechta ustunni egallaydi?",
+    "options": [
+     "2",
+     "3",
+     "1",
+     "4"
+    ],
+    "answer": "2",
+    "explain": "1-chiziqdan 3-chiziqqacha ikki trek."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Ustunlar soni qancha bo'lsa ham butun kenglikni egallash uchun?",
+    "options": [
+     "grid-column: 1 / -1",
+     "grid-column: 0 / 100",
+     "grid-column: all",
+     "grid-column: span auto"
+    ],
+    "answer": "grid-column: 1 / -1",
+    "explain": "-1 oxirgi aniq chiziq."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "900px konteyner, 2 ta element, gap yo'q. Har biri necha px?",
+    "options": [
+     "450px",
+     "200px",
+     "225px",
+     "300px"
+    ],
+    "answer": "450px",
+    "explain": "auto-fit bo'sh treklarni yig'ib, elementlarni cho'zadi.",
+    "passage": "grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Xuddi shu holatda auto-fill. Har biri necha px?",
+    "options": [
+     "225px",
+     "450px",
+     "200px",
+     "300px"
+    ],
+    "answer": "225px",
+    "explain": "900 ga 4 trek sig'adi va bo'shlari saqlanadi.",
+    "passage": "grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "minmax(min(250px, 100%), 1fr) dagi min() nima uchun?",
+    "options": [
+     "Tor ekranda toshib chiqmaslik uchun",
+     "Ustunlar sonini ikkitada ushlab turish uchun",
+     "Qator balandligini bir xil qilish uchun",
+     "gap qiymatini avtomatik hisoblash uchun"
+    ],
+    "answer": "Tor ekranda toshib chiqmaslik uchun",
+    "explain": "Konteyner 250px dan tor bo'lsa, trek 100% bo'ladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi areas nega ishlamaydi?",
+    "options": [
+     "Qatorlarda kataklar soni har xil",
+     "Nomlarni qo'shtirnoqsiz yozish kerak",
+     "header so'zi band qilingan so'z",
+     "areas faqat uch ustunda ishlaydi"
+    ],
+    "answer": "Qatorlarda kataklar soni har xil",
+    "explain": "Har satrda bir xil sondagi katak bo'lishi shart.",
+    "passage": "grid-template-areas:\n  \"header header\"\n  \"main\";"
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Elementlar explicit qatorlardan ko'p. Qo'shimcha qatorlar balandligini nima belgilaydi?",
+    "options": [
+     "grid-auto-rows",
+     "grid-template-rows",
+     "grid-auto-columns",
+     "align-content"
+    ],
+    "answer": "grid-auto-rows",
+    "explain": "Implicit qatorlar uchun."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Bo'sh joy ulushini bildiradigan grid birligi:",
+    "answer": "fr",
+    "explain": "fr.",
+    "alsoAccept": [
+     "FR"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Bolani grid ichida ikki o'qda markazlashning qisqa xossasi: place-...: center (konteynerga yoziladi)",
+    "answer": "items",
+    "explain": "place-items: center.",
+    "alsoAccept": [
+     "place-items"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Kengliklarni hisoblash tartibi:",
+    "words": [
+     "qat'iy treklar",
+     "gap",
+     "qolgan joy",
+     "fr ulushlari"
+    ],
+    "answer": "qat'iy treklar gap qolgan joy fr ulushlari",
+    "explain": "Avval qat'iylar va gap ayiriladi."
+   }
+  ]
+ },
+ {
+  "code": "fe-css-md-06",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 6,
+  "title": "Position, containing block va z-index",
+  "intro": "relative, absolute, fixed, sticky, containing block, sticky nega ishlamaydi, stacking asoslari.",
+  "theory": {
+   "analogy": {
+    "icon": "📌",
+    "title": "Doskaga qadalgan qog'ozlar",
+    "text": "Qog'oz qaysi doskaga qadalgan bo'lsa, o'rni shu doskadan o'lchanadi. Pastdagi doskadagi qog'oz yuqoridagi doska ustiga chiqolmaydi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "position elementning oqimdagi joyi va koordinatalar nimaga nisbatan olinishini belgilaydi. Containing block (tayanch quti) — top, left va foizlar hisoblanadigan quti. z-index esa faqat bitta stacking context (ustma-ustlik konteksti) ichida solishtiriladi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "static",
+       "text": "Standart: top/left va z-index ta'sir qilmaydi."
+      },
+      {
+       "term": "relative",
+       "text": "Joyi saqlanadi, o'ziga nisbatan siljiydi."
+      },
+      {
+       "term": "absolute",
+       "text": "Oqimdan chiqadi, eng yaqin positioned ajdodga nisbatan."
+      },
+      {
+       "term": "sticky",
+       "text": "Chegaraga yetguncha oqimda, keyin yopishadi."
+      },
+      {
+       "term": "Stacking context (ustma-ustlik konteksti)",
+       "text": "Ichidagi z-index lar o'zaro solishtiriladigan qatlam."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Kartochka burchagidagi belgi",
+       "text": "Otaga relative, belgiga absolute."
+      },
+      {
+       "term": "Yopishqoq sarlavha",
+       "text": "position: sticky; top: 0."
+      },
+      {
+       "term": "Modal pastda qolib ketsa",
+       "text": "Ajdodlardagi kontekstni topasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Badge",
+     "code": {
+      "lang": "css",
+      "text": ".card  { position: relative; }\n.badge { position: absolute; top: 8px; right: 8px; }\n.overlay { position: absolute; inset: 0; }"
+     }
+    },
+    {
+     "heading": "sticky ishlamasa",
+     "bullets": [
+      "top (yoki boshqa chegara) yozilmagan.",
+      "Ajdodda overflow: hidden, auto yoki scroll bor.",
+      "Ota element bola bilan bir xil balandlikda."
+     ]
+    },
+    {
+     "heading": "Kontekst yaratuvchilar",
+     "bullets": [
+      "position + z-index (auto emas).",
+      "opacity < 1.",
+      "transform, filter.",
+      "position: fixed va sticky.",
+      "isolation: isolate."
+     ]
+    },
+    {
+     "heading": "fixed tuzog'i",
+     "callout": {
+      "kind": "warn",
+      "text": "Ajdodda transform yoki filter bo'lsa, fixed bola viewport ga emas, o'sha ajdodga nisbatan joylashadi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🪤",
+       "title": "z-index: 9999 ham yordam bermadi",
+       "text": "Ota konteksti qo'shnisidan past."
+      },
+      {
+       "icon": "📍",
+       "title": "Belgi sahifa burchagiga uchib ketdi",
+       "text": "Otaga position: relative unutilgan."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "z-index uchun kichik shkala tuting (--z-dropdown: 10, --z-modal: 100), tasodifiy 9999 emas."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "static elementga z-index yozish.",
+       "position berish.",
+       "static da ta'sir qilmaydi."
+      ],
+      [
+       "sticky ni top siz qoldirish.",
+       "top: 0.",
+       "Qayerda yopishishi noma'lum."
+      ],
+      [
+       "Muammoni kattaroq son bilan yechish.",
+       "Kontekstni topish.",
+       "Son kontekstdan chiqmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "absolute eng yaqin positioned ajdodga tayanadi.",
+    "fixed ni transform li ajdod o'zgartiradi.",
+    "sticky chegara va scroll joyini talab qiladi.",
+    "z-index kontekst ichida ishlaydi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Sticky sarlavha",
+    "text": "Jadval sarlavhasini yopishtiring, keyin otaga overflow: hidden qo'yib nima bo'lishini ko'ring."
+   },
+   {
+    "title": "Kontekst ovi",
+    "text": "Biror ochiladigan menyu uchun qaysi ajdodlar stacking context yaratayotganini toping."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": ".badge qayerga joylashadi? (.card da position yozilmagan, boshqa positioned ajdod yo'q)",
+    "options": [
+     "Sahifaning boshlang'ich qutisiga nisbatan",
+     "Kartochka qutisining o'ng yuqori burchagiga",
+     "Oldingi qo'shni elementga nisbatan",
+     "Hech qayerga, top ta'sir qilmaydi"
+    ],
+    "answer": "Sahifaning boshlang'ich qutisiga nisbatan",
+    "explain": "Initial containing block tayanch bo'ladi.",
+    "passage": ".badge { position: absolute; top: 0; right: 0; }"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "position: relative; top: 20px — keyingi element nima qiladi?",
+    "options": [
+     "Joyidan qimirlamaydi",
+     "20px pastga suriladi",
+     "20px yuqoriga chiqadi",
+     "Elementning o'rnini egallaydi"
+    ],
+    "answer": "Joyidan qimirlamaydi",
+    "explain": "relative da asl joy saqlanadi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Ustda qaysi element ko'rinadi? (ikkalasi bir joyda)",
+    "options": [
+     ".b",
+     ".child",
+     ".a",
+     "DOM dagi birinchisi"
+    ],
+    "answer": ".b",
+    "explain": "child ning 999 qiymati .a konteksti (1) ichida qoladi, .b = 2.",
+    "passage": ".a     { position: relative; z-index: 1; }\n.child { position: absolute; z-index: 999; }  /* .a ichida */\n.b     { position: relative; z-index: 2; }"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "static elementga z-index: 10 berildi. Natija?",
+    "options": [
+     "Hech narsa o'zgarmaydi",
+     "Hammadan ustga chiqadi",
+     "Yangi kontekst yaratadi",
+     "Element yo'qolib qoladi"
+    ],
+    "answer": "Hech narsa o'zgarmaydi",
+    "explain": "z-index positioned (va flex/grid) elementlarda ishlaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "sticky sarlavha yopishmayapti, top: 0 bor. Yana qaysi sabab ehtimoliy?",
+    "options": [
+     "Ajdodda overflow: hidden bor",
+     "Sarlavhada background yozilgan",
+     "Sahifada box-sizing border-box",
+     "Elementga class bilan uslub berilgan"
+    ],
+    "answer": "Ajdodda overflow: hidden bor",
+    "explain": "Bunday ajdod scroll konteyneriga aylanadi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "transform: translateZ(0) li ota ichida position: fixed modal. U nimaga nisbatan joylashadi?",
+    "options": [
+     "O'sha otaga nisbatan",
+     "Viewport ga nisbatan",
+     "body elementiga nisbatan",
+     "Oldingi qo'shniga nisbatan"
+    ],
+    "answer": "O'sha otaga nisbatan",
+    "explain": "transform containing block yaratadi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Quyidagilardan qaysi biri stacking context YARATMAYDI?",
+    "options": [
+     "position: relative (z-index siz)",
+     "opacity: 0.9 qiymati berilgan element",
+     "transform: scale(1)",
+     "isolation: isolate"
+    ],
+    "answer": "position: relative (z-index siz)",
+    "explain": "relative z-index: auto bilan kontekst yaratmaydi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Komponent ichidagi z-index larni tashqaridan ajratishning eng toza usuli?",
+    "options": [
+     "isolation: isolate",
+     "opacity: 0.99",
+     "transform: scale(1)",
+     "z-index: 9999"
+    ],
+    "answer": "isolation: isolate",
+    "explain": "Faqat kontekst yaratadi, ko'rinishga tegmaydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "inset: 0 nimaga teng?",
+    "options": [
+     "top, right, bottom, left: 0",
+     "margin va padding: 0 qiymati",
+     "width va height: 0 qiymati",
+     "z-index va order: 0 qiymati"
+    ],
+    "answer": "top, right, bottom, left: 0",
+    "explain": "To'rt tomonning qisqa yozuvi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Yopishqoq element uchun position qiymati:",
+    "answer": "sticky",
+    "explain": "position: sticky.",
+    "alsoAccept": [
+     "Sticky"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Bola absolute bo'lishi uchun otaga odatda yoziladigan position qiymati:",
+    "answer": "relative",
+    "explain": "position: relative.",
+    "alsoAccept": [
+     "Relative"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Viewport ga qotirilgan element uchun position qiymati:",
+    "answer": "fixed",
+    "explain": "position: fixed.",
+    "alsoAccept": [
+     "Fixed"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-css-md-07",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 7,
+  "title": "Mobile-first responsive",
+  "intro": "viewport meta, min-width bosqichlari, breakpoint tanlash, hover, pointer va prefers-* so'rovlari.",
+  "theory": {
+   "analogy": {
+    "icon": "🧳",
+    "title": "Kichik chamadondan boshlash",
+    "text": "Avval eng zarurini joylaysiz, katta chamadon bo'lsa qo'shimchasini solasiz. Teskarisi — ortiqchasini chiqarib tashlash qiyinroq."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Mobile-first (avval mobil) usulida asosiy uslub kichik ekran uchun yoziladi, kattaroq ekranlar uchun min-width so'rovlari bilan qo'shiladi. Responsive faqat ekran eni emas: foydalanuvchi sozlamalari va kirish usuli (barmoq yoki sichqoncha) ham hisobga olinadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Breakpoint (o'zgarish nuqtasi)",
+       "text": "Layout o'zgaradigan kenglik."
+      },
+      {
+       "term": "Media query (muhit so'rovi)",
+       "text": "Shart bajarilsa ishlaydigan CSS bloki."
+      },
+      {
+       "term": "pointer: coarse",
+       "text": "Aniqligi past ko'rsatkich: barmoq."
+      },
+      {
+       "term": "prefers-reduced-motion",
+       "text": "Foydalanuvchi harakatni kamaytirishni so'ragan."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Yangi sahifa verstkasida",
+       "text": "Bitta ustundan boshlaysiz."
+      },
+      {
+       "term": "Hover telefonda yopishsa",
+       "text": "@media (hover: hover)."
+      },
+      {
+       "term": "Chop etishda",
+       "text": "@media print."
+      }
+     ]
+    },
+    {
+     "heading": "Majburiy meta",
+     "code": {
+      "lang": "html",
+      "text": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+     }
+    },
+    {
+     "heading": "Mobile-first",
+     "code": {
+      "lang": "css",
+      "text": ".grid { display: grid; gap: 16px; }\n\n@media (width >= 700px) { .grid { grid-template-columns: 1fr 1fr; } }\n@media (width >= 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }"
+     }
+    },
+    {
+     "heading": "Foydalanuvchi sozlamalari",
+     "table": {
+      "head": [
+       "So'rov",
+       "Nimani bildiradi"
+      ],
+      "rows": [
+       [
+        "prefers-color-scheme",
+        "yorug' yoki qorong'i"
+       ],
+       [
+        "prefers-reduced-motion",
+        "harakat kamaytirilsin"
+       ],
+       [
+        "hover: hover",
+        "haqiqiy hover bor"
+       ],
+       [
+        "pointer: coarse",
+        "barmoq bilan bosiladi"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Breakpoint qoidasi",
+     "callout": {
+      "kind": "tip",
+      "text": "Qurilma ro'yxatiga emas, kontent qayerda buzila boshlashiga qarang."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📱",
+       "title": "Telefonda mayda sahifa",
+       "text": "viewport meta yo'q."
+      },
+      {
+       "icon": "👆",
+       "title": "Barmoq bilan bosib bo'lmaydi",
+       "text": "pointer: coarse da tugmani kattalashtiring."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Oynani sekin toraytirib-kengaytiring: breakpoint o'zi ko'rinadi."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "user-scalable=no qo'yish.",
+       "Zoom ga ruxsat berish.",
+       "Ko'rishi zaif foydalanuvchi kattalashtira olmaydi."
+      ],
+      [
+       "min-width so'rovlarini kattadan kichikka yozish.",
+       "Kichikdan kattaga.",
+       "Keyingi qoida oldingisini bosib ketadi."
+      ],
+      [
+       "Muhim amalni faqat hover ga bog'lash.",
+       "Bosish va fokus bilan ham ochish.",
+       "Sensorli ekranda hover yo'q."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Asos — mobil, qo'shimcha — min-width.",
+    "viewport meta shart.",
+    "Breakpoint kontentga qarab.",
+    "hover, pointer, prefers-* ni hisobga oling."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Uch bosqich",
+    "text": "Kartochkalar ro'yxatini 1, 2 va 3 ustunli qilib mobile-first yozing."
+   },
+   {
+    "title": "Rendering paneli",
+    "text": "DevTools da prefers-color-scheme va reduced-motion ni taqlid qilib sahifani tekshiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Oyna 900px. .box rangi?",
+    "options": [
+     "blue",
+     "red",
+     "green",
+     "black"
+    ],
+    "answer": "blue",
+    "explain": "700 bajarildi, 1100 yo'q.",
+    "passage": ".box { color: red; }\n@media (min-width: 700px)  { .box { color: blue; } }\n@media (min-width: 1100px) { .box { color: green; } }"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Oyna 1200px. .box rangi?",
+    "options": [
+     "blue",
+     "green",
+     "red",
+     "black"
+    ],
+    "answer": "blue",
+    "explain": "Ikkala shart bajariladi, keyin yozilgan blue yutadi — tartib teskari yozilgan.",
+    "passage": "@media (min-width: 1100px) { .box { color: green; } }\n@media (min-width: 700px)  { .box { color: blue; } }"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "(width >= 700px) qaysi biriga teng?",
+    "options": [
+     "(min-width: 700px)",
+     "(max-width: 700px)",
+     "(min-device-width: 700em)",
+     "(width: 700px)"
+    ],
+    "answer": "(min-width: 700px)",
+    "explain": "Range sintaksisi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "viewport meta yo'q sahifa telefonda qanday ko'rinadi?",
+    "options": [
+     "Kichraytirilgan desktop sahifa kabi",
+     "Faqat mobil uslublar bilan ochiladi",
+     "Umuman ochilmay, bo'sh qoladi",
+     "Gorizontal holatga majburan o'tadi"
+    ],
+    "answer": "Kichraytirilgan desktop sahifa kabi",
+    "explain": "Brauzer keng virtual viewport oladi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Hover soyasi faqat haqiqiy hover bor qurilmada ishlashi uchun?",
+    "options": [
+     "@media (hover: hover)",
+     "@media (pointer: coarse)",
+     "@media (orientation: portrait)",
+     "@media screen and (hover: none)"
+    ],
+    "answer": "@media (hover: hover)",
+    "explain": "Sensorli ekranda hover yopishib qolmaydi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Barmoq bilan boshqariladigan qurilmani aniqlaydigan so'rov?",
+    "options": [
+     "pointer: coarse",
+     "pointer: fine",
+     "hover: hover",
+     "resolution: 2dppx"
+    ],
+    "answer": "pointer: coarse",
+    "explain": "coarse — dag'al ko'rsatkich."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Media query ning specificity ga ta'siri?",
+    "options": [
+     "Hech qanday ta'sir qilmaydi",
+     "Class kabi bir ball qo'shadi",
+     "ID kabi bir ball qo'shadi",
+     "Qoidani !important qiladi"
+    ],
+    "answer": "Hech qanday ta'sir qilmaydi",
+    "explain": "Faqat shart; ichidagi selektor kuchi o'zgarmaydi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi holatda 800px oynada rang?",
+    "options": [
+     "red",
+     "blue",
+     "black",
+     "green"
+    ],
+    "answer": "red",
+    "explain": "Specificity: .card.big (0,2,0) media ichidagi .card dan kuchli.",
+    "passage": ".card.big { color: red; }\n@media (min-width: 700px) { .card { color: blue; } }"
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Breakpoint ni nimaga qarab tanlash to'g'ri?",
+    "options": [
+     "Kontent buzila boshlagan kenglikka",
+     "Eng yangi telefon modelining eniga",
+     "Dizayner monitorining o'lchamiga",
+     "Har 100px da bittadan qilib"
+    ],
+    "answer": "Kontent buzila boshlagan kenglikka",
+    "explain": "Qurilmalar ro'yxati o'zgarib turadi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Harakatni kamaytirish so'rovi: prefers-reduced-...",
+    "answer": "motion",
+    "explain": "prefers-reduced-motion.",
+    "alsoAccept": [
+     "motion: reduce"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Qorong'i temani aniqlash: prefers-color-...",
+    "answer": "scheme",
+    "explain": "prefers-color-scheme.",
+    "alsoAccept": [
+     "scheme: dark"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Chop etish uchun media turi: @media ...",
+    "answer": "print",
+    "explain": "@media print.",
+    "alsoAccept": [
+     "Print"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-css-md-08",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 8,
+  "title": "Ravon o'lchamlar: clamp, min, max",
+  "intro": "rem, em, vw, ch va dvh; calc, min, max, clamp hisoblari; intrinsic layout va aspect-ratio.",
+  "theory": {
+   "analogy": {
+    "icon": "🎚️",
+    "title": "Chegarali regulyator",
+    "text": "Ovoz xonaga qarab o'zgaradi, lekin juda past ham, juda baland ham bo'lmaydi — bu clamp(min, ideal, max)."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Har ekran uchun alohida qiymat yozish o'rniga o'lchamni oraliq bilan berish mumkin. min(), max() va clamp() qiymatni sharoitga qarab tanlaydi. Intrinsic layout (ichki o'lchamga tayangan joylashuv) esa kontent va bo'sh joyga o'zi moslashadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "rem",
+       "text": "html shrift o'lchamiga nisbatan."
+      },
+      {
+       "term": "ch",
+       "text": "\"0\" belgisi kengligi; qator uzunligi uchun qulay."
+      },
+      {
+       "term": "dvh",
+       "text": "Mobil panel o'zgarishiga moslashadigan viewport balandligi."
+      },
+      {
+       "term": "clamp(min, ideal, max)",
+       "text": "Ideal qiymatni oraliqda ushlaydi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Sarlavha o'lchamida",
+       "text": "clamp bilan ravon o'sish."
+      },
+      {
+       "term": "Maqola kengligida",
+       "text": "min(100% - 32px, 70ch)."
+      },
+      {
+       "term": "Rasm joyini oldindan ajratishda",
+       "text": "aspect-ratio."
+      }
+     ]
+    },
+    {
+     "heading": "Hisoblash",
+     "table": {
+      "head": [
+       "Yozuv",
+       "Natija"
+      ],
+      "rows": [
+       [
+        "min(500px, 100%) — ota 300px",
+        "300px"
+       ],
+       [
+        "max(16px, 2vw) — oyna 400px",
+        "16px"
+       ],
+       [
+        "clamp(200px, 50%, 400px) — ota 1000px",
+        "400px"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Amaliy qoliplar",
+     "code": {
+      "lang": "css",
+      "text": ".article { width: min(100% - 32px, 70ch); margin-inline: auto; }\nh1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem); }\n.screen { min-height: 100dvh; }\nimg { max-width: 100%; height: auto; }"
+     }
+    },
+    {
+     "heading": "calc yozilishi",
+     "callout": {
+      "kind": "warn",
+      "text": "+ va - atrofida probel shart: calc(100% - 20px)."
+     }
+    },
+    {
+     "heading": "Nega rem",
+     "text": "Foydalanuvchi brauzer shriftini kattalashtirsa, rem bilan yozilgan matn ham kattalashadi, px — yo'q. Shrift formulasida faqat vw qoldirmang."
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📲",
+       "title": "Telefonda tagi kesildi",
+       "text": "100vh o'rniga 100dvh."
+      },
+      {
+       "icon": "📖",
+       "title": "Qator juda uzun",
+       "text": "max-width: 65ch."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "min() — yuqori chegara kabi, max() — pastki chegara kabi ishlaydi."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "calc(100%-20px) yozish.",
+       "calc(100% - 20px).",
+       "Probelsiz yozuv yaroqsiz."
+      ],
+      [
+       "font-size: 4vw.",
+       "clamp() va rem qo'shish.",
+       "Zoom ga javob bermaydi, chegarasi yo'q."
+      ],
+      [
+       "Rasmga qat'iy width va height berib cho'zish.",
+       "aspect-ratio yoki object-fit.",
+       "Proporsiya buziladi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "rem foydalanuvchi sozlamasiga mos.",
+    "min yuqori, max pastki chegara.",
+    "clamp uchalasini birlashtiradi.",
+    "aspect-ratio sakrashni kamaytiradi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Ravon sarlavha",
+    "text": "360px va 1440px oynada h1 o'lchamini o'lchab, clamp chegaralarini tekshiring."
+   },
+   {
+    "title": "Media query siz",
+    "text": "Bitta bo'limni faqat min, clamp va flex-wrap bilan moslashtiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Ota 300px. width: min(500px, 100%) natijasi?",
+    "options": [
+     "300px",
+     "500px",
+     "100px",
+     "800px"
+    ],
+    "answer": "300px",
+    "explain": "Eng kichigi tanlanadi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Ota 1000px. width: clamp(200px, 50%, 400px)?",
+    "options": [
+     "400px",
+     "500px",
+     "200px",
+     "1000px"
+    ],
+    "answer": "400px",
+    "explain": "Ideal 500 maksimaldan oshdi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Ota 300px. width: clamp(200px, 50%, 400px)?",
+    "options": [
+     "200px",
+     "150px",
+     "300px",
+     "400px"
+    ],
+    "answer": "200px",
+    "explain": "Ideal 150 minimaldan kichik."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Oyna eni 400px. padding: max(16px, 2vw)?",
+    "options": [
+     "16px",
+     "8px",
+     "24px",
+     "32px"
+    ],
+    "answer": "16px",
+    "explain": "2vw = 8px; kattasi 16px."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "html font-size 20px. 2.5rem necha px?",
+    "options": [
+     "50px",
+     "40px",
+     "45px",
+     "25px"
+    ],
+    "answer": "50px",
+    "explain": "2.5 × 20."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi qoida nega ishlamaydi?",
+    "options": [
+     "Minus atrofida probel yo'q",
+     "calc foizni qo'llab-quvvatlamaydi",
+     "width da calc ishlatib bo'lmaydi",
+     "px va foizni birga ayirib bo'lmaydi"
+    ],
+    "answer": "Minus atrofida probel yo'q",
+    "explain": "Brauzer -20px ni alohida qiymat deb o'qiydi.",
+    "passage": "width: calc(100%-20px);"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Foydalanuvchi brauzerda asosiy shriftni kattalashtirdi. Qaysi matn o'zgarmay qoladi?",
+    "options": [
+     "font-size: 16px",
+     "font-size: 1rem",
+     "font-size: 1.2em",
+     "font-size: 100%"
+    ],
+    "answer": "font-size: 16px",
+    "explain": "px sozlamaga bog'lanmagan."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Telefonda panel ochilib-yopiladi, blok doim ko'rinadigan balandlikka moslashsin. Qaysi birlik?",
+    "options": [
+     "100dvh",
+     "100vh",
+     "100lvh",
+     "100vw"
+    ],
+    "answer": "100dvh",
+    "explain": "dvh joriy holatga moslashadi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Matn qatori o'qishga qulay bo'lishi uchun eng mos cheklov?",
+    "options": [
+     "max-width: 65ch",
+     "max-width: 100vw",
+     "min-width: 120ch",
+     "height: 65ch"
+    ],
+    "answer": "max-width: 65ch",
+    "explain": "45–75 belgi qulay."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Rasm yuklanmasdan nisbatli joy ajratadigan xossa:",
+    "answer": "aspect-ratio",
+    "explain": "aspect-ratio: 16 / 9.",
+    "alsoAccept": [
+     "aspect-ratio: 16 / 9"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Rasmni qutiga proporsiyani buzmay, kesib to'ldirish: object-fit: ...",
+    "answer": "cover",
+    "explain": "object-fit: cover.",
+    "alsoAccept": [
+     "cover;"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "clamp argumentlari tartibi:",
+    "words": [
+     "minimum",
+     "ideal",
+     "maksimum"
+    ],
+    "answer": "minimum ideal maksimum",
+    "explain": "clamp(min, ideal, max)."
+   }
+  ]
+ },
+ {
+  "code": "fe-css-md-09",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 9,
+  "title": "Transform va transition",
+  "intro": "translate, scale, rotate, tartib ta'siri, transition vaqtlari, timing funksiyalari va tuzoqlar.",
+  "theory": {
+   "analogy": {
+    "icon": "🪞",
+    "title": "Ko'zgudagi aks",
+    "text": "Aksni siljitsangiz, xonadagi mebel joyida qoladi. transform ham elementning \"aksini\" siljitadi, joyi o'zgarmaydi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "transform elementni layout ga tegmasdan vizual o'zgartiradi: qo'shnilar joyidan qimirlamaydi. transition (o'tish) esa ikki holat orasini vaqt davomida silliq bog'laydi. Ikkalasi birga arzon va sezgir interfeys beradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "translate",
+       "text": "Siljitish; foiz elementning o'z o'lchamidan."
+      },
+      {
+       "term": "transform-origin",
+       "text": "O'zgarish markazi."
+      },
+      {
+       "term": "transition-duration",
+       "text": "O'tish davomiyligi."
+      },
+      {
+       "term": "Timing function (tezlik egri chizig'i)",
+       "text": "ease-out, ease-in, linear."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Hover va bosish javobida",
+       "text": "100–200 ms li o'tish."
+      },
+      {
+       "term": "Panel ochilishida",
+       "text": "left o'rniga translateX."
+      },
+      {
+       "term": "Markazlashda",
+       "text": "translate(-50%, -50%)."
+      }
+     ]
+    },
+    {
+     "heading": "Yozuv",
+     "code": {
+      "lang": "css",
+      "text": ".button {\n  transition: background-color 150ms ease, transform 150ms ease-out 50ms;\n  /*          xossa             davomiylik  egri chiziq  kechikish */\n}\n.button:hover { transform: translateY(-2px) scale(1.02); }"
+     }
+    },
+    {
+     "heading": "Tartib muhim",
+     "text": "transform funksiyalari koordinata tizimini ketma-ket o'zgartiradi: rotate keyin translate va translate keyin rotate turli natija beradi."
+    },
+    {
+     "heading": "Transition ishlamaydigan holatlar",
+     "bullets": [
+      "display: none dan chiqqan element (boshlang'ich holat yo'q).",
+      "height: auto ga o'tish.",
+      "transition faqat :hover ichida yozilsa, qaytishda silliq bo'lmaydi."
+     ]
+    },
+    {
+     "heading": "all dan qoching",
+     "callout": {
+      "kind": "warn",
+      "text": "transition: all rejada bo'lmagan xossalarni ham animatsiya qiladi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🖱️",
+       "title": "Kartochka ko'tariladi",
+       "text": "translateY qo'shnilarni siljitmaydi."
+      },
+      {
+       "icon": "🚪",
+       "title": "Kirish tez, qaytish keskin",
+       "text": "transition asosiy holatga yozilmagan."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Kiruvchi element uchun ease-out, chiquvchi uchun ease-in tabiiy ko'rinadi."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "transition ni faqat :hover ga yozish.",
+       "Asosiy qoidaga yozish.",
+       "Hover ketganda o'tish yo'qoladi."
+      ],
+      [
+       "display ni oddiy transition qilish.",
+       "opacity va visibility.",
+       "display silliq o'zgarmaydi."
+      ],
+      [
+       "Ikkinchi transform birinchisiga qo'shiladi deb o'ylash.",
+       "Bitta qatorda yozish.",
+       "Keyingi qiymat butunlay almashtiradi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "transform layout ni o'zgartirmaydi.",
+    "Funksiyalar tartibi natijaga ta'sir qiladi.",
+    "transition asosiy holatda yoziladi.",
+    "Aniq xossalarni sanang."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Tugma javobi",
+    "text": "Hover va active holatli tugma yasang, 150 ms o'tish bilan."
+   },
+   {
+    "title": "Yon panel",
+    "text": "Panelni translateX bilan ochib-yoping."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Element 200px keng. transform: translateX(50%) necha px suradi?",
+    "options": [
+     "100px",
+     "50px",
+     "200px",
+     "ota enining yarmi"
+    ],
+    "answer": "100px",
+    "explain": "Foiz elementning o'z o'lchamidan."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "scale(2) qilingan kartochkaning qo'shnilari nima qiladi?",
+    "options": [
+     "Joyida qoladi, ustiga chiqilishi mumkin",
+     "Ikki baravar joy ochib, pastga suriladi",
+     "Kichrayib bo'sh joy ochib beradi",
+     "Keyingi qatorga avtomatik o'tadi"
+    ],
+    "answer": "Joyida qoladi, ustiga chiqilishi mumkin",
+    "explain": "transform layout ga ta'sir qilmaydi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Hover da element qancha suriladi va kattalashadimi?",
+    "options": [
+     "Faqat kattalashadi, surilmaydi",
+     "Suriladi va kattalashadi ham",
+     "Faqat suriladi, kattalashmaydi",
+     "Hech qanday o'zgarish bo'lmaydi"
+    ],
+    "answer": "Faqat kattalashadi, surilmaydi",
+    "explain": "transform qiymati to'liq almashadi.",
+    "passage": ".card       { transform: translateY(-4px); }\n.card:hover { transform: scale(1.1); }"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Kursor ketganda rang nima bo'ladi?",
+    "options": [
+     "Darhol eski rangga qaytadi",
+     "300 ms da silliq qaytadi",
+     "Yangi rangda qolib ketadi",
+     "600 ms da silliq qaytadi"
+    ],
+    "answer": "Darhol eski rangga qaytadi",
+    "explain": "transition faqat hover holatida mavjud.",
+    "passage": ".btn       { background: blue; }\n.btn:hover { background: red; transition: background 300ms; }"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "transition: opacity 200ms ease-in 100ms — 100ms nima?",
+    "options": [
+     "Boshlanishdan oldingi kechikish",
+     "O'tishning umumiy davomiyligi",
+     "Tugagandan keyingi kutish vaqti",
+     "Har bir kadr orasidagi vaqt"
+    ],
+    "answer": "Boshlanishdan oldingi kechikish",
+    "explain": "Ikkinchi vaqt qiymati — delay."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Menyu display: none dan block ga o'tganda opacity transition ishlamaydi. Sabab?",
+    "options": [
+     "Boshlang'ich holat chizilmagan edi",
+     "opacity ni animatsiya qilib bo'lmaydi",
+     "transition faqat hover da ishlaydi",
+     "block elementga o'tish berilmaydi"
+    ],
+    "answer": "Boshlang'ich holat chizilmagan edi",
+    "explain": "@starting-style yoki visibility bilan yechiladi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Silliq ochiladigan panel uchun qaysi biri arzonroq?",
+    "options": [
+     "transform",
+     "left",
+     "width",
+     "margin-left"
+    ],
+    "answer": "transform",
+    "explain": "Layout qayta hisoblanmaydi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Element burchagi atrofida aylanishi uchun qaysi xossa o'zgartiriladi?",
+    "options": [
+     "transform-origin",
+     "transform-style",
+     "perspective-origin",
+     "object-position"
+    ],
+    "answer": "transform-origin",
+    "explain": "Standart markaz — 50% 50%."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Tezlik boshida sekin emas, oxirida sekinlashadigan egri chiziq?",
+    "options": [
+     "ease-out",
+     "ease-in",
+     "linear",
+     "step-start"
+    ],
+    "answer": "ease-out",
+    "explain": "Kiruvchi elementlarga mos."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Aylantirish funksiyasi: ...(45deg)",
+    "answer": "rotate",
+    "explain": "rotate(45deg).",
+    "alsoAccept": [
+     "rotate()"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "O'tish tugaganda JS da ishlaydigan hodisa:",
+    "answer": "transitionend",
+    "explain": "transitionend.",
+    "alsoAccept": [
+     "transitionEnd"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "transition qisqa yozuvidagi tartib:",
+    "words": [
+     "property",
+     "duration",
+     "timing-function",
+     "delay"
+    ],
+    "answer": "property duration timing-function delay",
+    "explain": "Xossa, davomiylik, egri chiziq, kechikish."
+   }
+  ]
+ },
+ {
+  "code": "fe-css-md-10",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 10,
+  "title": "@keyframes animatsiya va unumdorlik",
+  "intro": "animation xossalari, fill-mode, iteration, direction, arzon xossalar va reduced motion.",
+  "theory": {
+   "analogy": {
+    "icon": "🎞️",
+    "title": "Multfilm kadrlari",
+    "text": "Siz asosiy kadrlarni chizasiz (0%, 50%, 100%), oradagilarni brauzer o'zi to'ldiradi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "@keyframes bir nechta bosqichli, o'zi boshlanadigan va takrorlana oladigan animatsiya beradi. Silliqlik uchun asosan transform va opacity o'zgartiriladi: ular layout va paint ni qayta ishga tushirmasdan bajarilishi mumkin."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "@keyframes",
+       "text": "Animatsiya bosqichlari."
+      },
+      {
+       "term": "animation-fill-mode",
+       "text": "Boshlanishdan oldin va tugagandan keyin qaysi holat saqlanishi."
+      },
+      {
+       "term": "animation-direction",
+       "text": "normal, reverse, alternate."
+      },
+      {
+       "term": "60 FPS",
+       "text": "Sekundiga 60 kadr: bir kadrga ~16 ms."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Yuklanish ko'rsatkichida",
+       "text": "Cheksiz aylanish yoki pulse."
+      },
+      {
+       "term": "Xabar paydo bo'lishida",
+       "text": "forwards bilan bir martalik animatsiya."
+      },
+      {
+       "term": "Foydalanuvchi harakatni xohlamasa",
+       "text": "reduced-motion da o'chirasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Yozuv",
+     "code": {
+      "lang": "css",
+      "text": "@keyframes pulse {\n  0%, 100% { opacity: 1; }\n  50%      { opacity: 0.4; }\n}\n.skeleton { animation: pulse 1.5s ease-in-out infinite; }"
+     }
+    },
+    {
+     "heading": "Xossalar",
+     "table": {
+      "head": [
+       "Xossa",
+       "Vazifasi"
+      ],
+      "rows": [
+       [
+        "iteration-count",
+        "takrorlar soni yoki infinite"
+       ],
+       [
+        "fill-mode: forwards",
+        "oxirgi holatda qoladi"
+       ],
+       [
+        "fill-mode: backwards",
+        "kechikishda birinchi kadr qo'llanadi"
+       ],
+       [
+        "direction: alternate",
+        "oldinga va orqaga"
+       ],
+       [
+        "play-state",
+        "running yoki paused"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Narx",
+     "table": {
+      "head": [
+       "O'zgarish",
+       "Qadamlar"
+      ],
+      "rows": [
+       [
+        "width, top, margin",
+        "layout + paint + composite"
+       ],
+       [
+        "color, box-shadow",
+        "paint + composite"
+       ],
+       [
+        "transform, opacity",
+        "composite"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Reduced motion",
+     "code": {
+      "lang": "css",
+      "text": "@media (prefers-reduced-motion: reduce) {\n  .hero { animation: none; }\n}"
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "↩️",
+       "title": "Animatsiya tugab, orqaga sakradi",
+       "text": "forwards yozilmagan."
+      },
+      {
+       "icon": "🤢",
+       "title": "Bosh aylanadigan parallax",
+       "text": "reduced motion hisobga olinmagan."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Avval Performance panelida o'lchang; will-change ni hamma narsaga yozmang."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "width ni cheksiz animatsiya qilish.",
+       "transform: scaleX.",
+       "Har kadrda layout."
+      ],
+      [
+       "will-change: transform ni barcha elementga.",
+       "Faqat aniq muammoga.",
+       "Har qatlam xotira oladi."
+      ],
+      [
+       "Muhim ma'lumotni faqat animatsiya bilan berish.",
+       "Matn yoki belgi ham qo'shish.",
+       "Animatsiya o'chirilgan bo'lishi mumkin."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "keyframes ko'p bosqichli va takrorlanuvchi.",
+    "forwards oxirgi holatni saqlaydi.",
+    "transform va opacity eng arzon.",
+    "Reduced motion ni hurmat qiling."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Spinner",
+    "text": "Faqat transform bilan aylanuvchi yuklanish belgisi yasang."
+   },
+   {
+    "title": "Toast",
+    "text": "Pastdan chiqib, joyida qoladigan xabar animatsiyasini yozing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Animatsiya tugagach element qayerda turadi?",
+    "options": [
+     "Boshlang'ich joyiga qaytadi",
+     "200px siljigan holda qoladi",
+     "Ekrandan butunlay yo'qoladi",
+     "Yarim yo'lda, 100px da turadi"
+    ],
+    "answer": "Boshlang'ich joyiga qaytadi",
+    "explain": "fill-mode standart none.",
+    "passage": "@keyframes go { to { transform: translateX(200px); } }\n.box { animation: go 1s; }"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Oxirgi holatda qolishi uchun nima qo'shiladi?",
+    "options": [
+     "forwards",
+     "backwards",
+     "alternate",
+     "infinite"
+    ],
+    "answer": "forwards",
+    "explain": "animation-fill-mode: forwards."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "animation: move 2s ease 1s 3 — element harakati jami qachon tugaydi?",
+    "options": [
+     "7 soniyada",
+     "6 soniyada",
+     "9 soniyada",
+     "3 soniyada"
+    ],
+    "answer": "7 soniyada",
+    "explain": "1s kechikish bir marta + 3 × 2s."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "alternate va 2 marta takrorda element yakunda qayerda?",
+    "options": [
+     "Boshlang'ich holatda",
+     "Oxirgi kadr holatida",
+     "O'rtadagi kadr holatida",
+     "Ekrandan tashqarida"
+    ],
+    "answer": "Boshlang'ich holatda",
+    "explain": "Birinchisi oldinga, ikkinchisi orqaga."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Qaysi animatsiya har kadrda layout talab qiladi?",
+    "options": [
+     "width",
+     "opacity",
+     "transform: scale",
+     "transform: rotate"
+    ],
+    "answer": "width",
+    "explain": "width atrofdagilarga ta'sir qiladi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "60 FPS uchun bir kadrga taxminan qancha vaqt bor?",
+    "options": [
+     "16 ms",
+     "60 ms",
+     "6 ms",
+     "100 ms"
+    ],
+    "answer": "16 ms",
+    "explain": "1000 / 60."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "will-change ni har elementga yozishning zarari?",
+    "options": [
+     "Ortiqcha qatlamlar xotira oladi",
+     "Animatsiyalar butunlay o'chadi",
+     "CSS fayli yuklanmay qoladi",
+     "Selektor kuchi oshib ketadi"
+    ],
+    "answer": "Ortiqcha qatlamlar xotira oladi",
+    "explain": "Faqat o'lchangan muammoda ishlating."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Foydalanuvchi harakatni kamaytirishni yoqqan. Eng to'g'ri yondashuv?",
+    "options": [
+     "Harakatni o'chirish yoki soddalashtirish",
+     "Animatsiyani ikki baravar tezlashtirish",
+     "Sozlamani e'tiborsiz qoldirib o'ynatish",
+     "Butun sahifadagi kontentni yashirish"
+    ],
+    "answer": "Harakatni o'chirish yoki soddalashtirish",
+    "explain": "prefers-reduced-motion: reduce."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "JS 200 ms hisoblayapti. Qaysi animatsiya silliq davom etishi ehtimoli yuqori?",
+    "options": [
+     "transform animatsiyasi",
+     "left animatsiyasi",
+     "height animatsiyasi",
+     "JS bilan setInterval"
+    ],
+    "answer": "transform animatsiyasi",
+    "explain": "Compositor oqimida bajarilishi mumkin."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Cheksiz takrorlash qiymati:",
+    "answer": "infinite",
+    "explain": "animation-iteration-count: infinite.",
+    "alsoAccept": [
+     "Infinite"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Animatsiya bosqichlarini e'lon qiladigan at-rule:",
+    "answer": "@keyframes",
+    "explain": "@keyframes.",
+    "alsoAccept": [
+     "keyframes"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Animatsiyani to'xtatib turish: animation-play-state: ...",
+    "answer": "paused",
+    "explain": "paused.",
+    "alsoAccept": [
+     "paused;"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-css-md-11",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 11,
+  "title": "CSS arxitekturasi: BEM, Modules, utility",
+  "intro": "Global nomlar muammosi, BEM nomlash, CSS Modules, Tailwind, CSS-in-JS va tanlov mezonlari.",
+  "theory": {
+   "analogy": {
+    "icon": "🏢",
+    "title": "Katta binodagi eshiklar",
+    "text": "\"1-xona\" hamma qavatda bo'lsa chalkashadi. BEM — to'liq manzil yozish, CSS Modules — har qavatga avtomatik noyob raqam."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "CSS global: bitta .title butun loyihaga ta'sir qiladi. Arxitektura uch muammoni yechadi: nomlar to'qnashmasin, specificity o'sib ketmasin va uslubni qo'rqmasdan o'chirib bo'lsin. Turli yondashuvlar buni turlicha beradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "BEM (Block, Element, Modifier)",
+       "text": "card, card__title, card--featured."
+      },
+      {
+       "term": "CSS Modules",
+       "text": "Build paytida class nomlarini noyob qiladi."
+      },
+      {
+       "term": "Utility-first",
+       "text": "Kichik tayyor klasslarni birlashtirish (Tailwind)."
+      },
+      {
+       "term": "CSS-in-JS",
+       "text": "Uslubni JavaScript ichida yozish."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Oddiy ko'p sahifali saytda",
+       "text": "BEM — vosita shart emas."
+      },
+      {
+       "term": "React komponentlarida",
+       "text": "CSS Modules yoki Tailwind."
+      },
+      {
+       "term": "Dinamik qiymatda",
+       "text": "Custom property orqali uzatish."
+      }
+     ]
+    },
+    {
+     "heading": "BEM",
+     "code": {
+      "lang": "css",
+      "text": ".card { }\n.card__title { }\n.card--featured { }"
+     }
+    },
+    {
+     "heading": "CSS Modules",
+     "code": {
+      "lang": "jsx",
+      "text": "import styles from './Button.module.css';\n\n<button className={`${styles.button} ${primary ? styles.primary : ''}`}>OK</button>"
+     }
+    },
+    {
+     "heading": "Taqqoslash",
+     "table": {
+      "head": [
+       "Yondashuv",
+       "Afzalligi",
+       "Kamchiligi"
+      ],
+      "rows": [
+       [
+        "BEM",
+        "vositasiz",
+        "intizomga bog'liq"
+       ],
+       [
+        "CSS Modules",
+        "lokal nom",
+        "dinamika uchun var kerak"
+       ],
+       [
+        "Tailwind",
+        "tez va izchil",
+        "uzun class ro'yxati"
+       ],
+       [
+        "Runtime CSS-in-JS",
+        "dinamik uslub",
+        "ishlash vaqtidagi narx"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Tailwind tuzog'i",
+     "callout": {
+      "kind": "warn",
+      "text": "Class nomi kodda to'liq yozilgan bo'lishi kerak: `bg-${color}-500` ko'rinishida yig'ilgan nom build ga kirmaydi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "💥",
+       "title": "Bir sahifani tuzatdim, boshqasi buzildi",
+       "text": "Umumiy .title nomi."
+      },
+      {
+       "icon": "🧹",
+       "title": "O'chirishga qo'rqiladigan 5000 qator",
+       "text": "Uslub komponentga bog'lanmagan."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "\"Eng yaxshisi\" yo'q: jamoa, loyiha va mavjud kodga qarab tanlang va bittasiga izchil rioya qiling."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       ".card .header .title kabi chuqur selektorlar.",
+       ".card__title.",
+       "Kuch oshadi va HTML tuzilishiga bog'lanadi."
+      ],
+      [
+       "Tailwind class ini qismlardan yig'ish.",
+       "To'liq nomlar xaritasi.",
+       "Skaner topa olmaydi."
+      ],
+      [
+       "Har dinamik qiymatga yangi class.",
+       "style orqali custom property.",
+       "Cheksiz variantlar kerak bo'lib qoladi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Muammo — global nom va o'suvchi specificity.",
+    "BEM kelishuv, Modules avtomatika.",
+    "Utility-first da komponent takrorni yechadi.",
+    "Dinamik qiymat — custom property."
+   ]
+  },
+  "practice": [
+   {
+    "title": "BEM ga o'tkazing",
+    "text": "Ichma-ich selektorli bitta kartochkani BEM nomlari bilan qayta yozing."
+   },
+   {
+    "title": "Modules sinovi",
+    "text": "Ikki komponentda bir xil .title yozib, build dagi yakuniy nomlarni ko'ring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "BEM da \"card blokining sarlavha elementi\" qanday yoziladi?",
+    "options": [
+     ".card__title",
+     ".card--title",
+     ".card .title",
+     ".card-title__"
+    ],
+    "answer": ".card__title",
+    "explain": "Element — ikki pastki chiziq."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "BEM da .card--featured nimani bildiradi?",
+    "options": [
+     "Blokning varianti (modifier)",
+     "Blok ichidagi bola element",
+     "Butunlay boshqa mustaqil blok",
+     "Faqat hover paytidagi holat"
+    ],
+    "answer": "Blokning varianti (modifier)",
+    "explain": "Ikki chiziqcha — modifier."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "CSS Modules da ikki faylda ham .title bor. Natija?",
+    "options": [
+     "Har biri noyob nom oladi",
+     "Keyingi fayl oldingisini bosadi",
+     "Build xato berib to'xtab qoladi",
+     "Ikkalasi bitta qoidaga birlashadi"
+    ],
+    "answer": "Har biri noyob nom oladi",
+    "explain": "Nom fayl bo'yicha lokal."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi Tailwind kodi nega uslub bermasligi mumkin?",
+    "options": [
+     "To'liq class nomi kodda yo'q",
+     "Tailwind da fon rangi mavjud emas",
+     "className ga o'zgaruvchi yozib bo'lmaydi",
+     "500 qiymati faqat matnga tegishli"
+    ],
+    "answer": "To'liq class nomi kodda yo'q",
+    "explain": "Skaner qismlardan yig'ilgan nomni ko'rmaydi.",
+    "passage": "const color = \"red\";\n<div className={`bg-${color}-500`} />"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Progress eni 0–100% oralig'ida ixtiyoriy. Eng toza yechim?",
+    "options": [
+     "style bilan custom property berish",
+     "Har foiz uchun alohida class yozish",
+     "!important li klasslar yaratish",
+     "Har o'zgarishda CSS faylni qayta yuklash"
+    ],
+    "answer": "style bilan custom property berish",
+    "explain": "Qiymat o'zgaruvchi orqali, uslub CSS da qoladi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Utility-first ning asosiy kamchiligi?",
+    "options": [
+     "HTML da class ro'yxati uzayadi",
+     "Class nomlari doim to'qnashadi",
+     "Media query yozib bo'lmaydi",
+     "CSS fayli cheksiz o'saveradi"
+    ],
+    "answer": "HTML da class ro'yxati uzayadi",
+    "explain": "Takrorni komponentga ajratib kamaytiriladi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Runtime CSS-in-JS ning asosiy narxi?",
+    "options": [
+     "Brauzerda uslub yaratish vaqti",
+     "Nomlar to'qnashuvining ko'payishi",
+     "Dinamik uslub bera olmaslik",
+     "Komponentga bog'lab bo'lmaslik"
+    ],
+    "answer": "Brauzerda uslub yaratish vaqti",
+    "explain": "JS bajarilib, uslub yaratiladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "`#page .sidebar ul li a` selektorining asosiy muammosi?",
+    "options": [
+     "Kuchli va tuzilishga bog'liq",
+     "Brauzer uni o'qiy olmaydi",
+     "Faqat mobil ekranda ishlaydi",
+     "Meros xossalarni o'chiradi"
+    ],
+    "answer": "Kuchli va tuzilishga bog'liq",
+    "explain": "Bosib o'tish uchun yanada kuchli selektor kerak bo'ladi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Reset uslublari komponentlarga xalaqit bermasligi uchun nima yordam beradi?",
+    "options": [
+     ":where() yoki @layer",
+     "!important va ID lar",
+     "inline style atributi",
+     "Har qoidani ikki marta yozish"
+    ],
+    "answer": ":where() yoki @layer",
+    "explain": "Past ustuvorlik beriladi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "BEM qisqartmasidagi uchinchi so'z (inglizcha):",
+    "answer": "Modifier",
+    "explain": "Block, Element, Modifier.",
+    "alsoAccept": [
+     "modifier"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "CSS Modules fayl nomi odatda: Button.....css",
+    "answer": "module",
+    "explain": "Button.module.css.",
+    "alsoAccept": [
+     ".module",
+     "module."
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Dizayn qarorining nomlangan qiymati (masalan --color-action): design ...",
+    "answer": "token",
+    "explain": "Design token.",
+    "alsoAccept": [
+     "Token",
+     "tokens"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-css-md-12",
+  "level": "MIDDLE",
+  "module": "css",
+  "order": 12,
+  "title": "Critical CSS va yuklanish tezligi",
+  "intro": "CSS render-blocking, @import zanjiri, critical CSS, media atributi, Coverage va font-display.",
+  "theory": {
+   "analogy": {
+    "icon": "🍽️",
+    "title": "Avval birinchi taom",
+    "text": "Hamma taom tayyor bo'lishini kutmasdan, birinchisini dasturxonga qo'yasiz — mehmon kutib qolmaydi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Brauzer CSS ni olmaguncha sahifani chizmaydi, shuning uchun uning hajmi va so'rovlar zanjiri birinchi ko'rinishga to'g'ridan-to'g'ri ta'sir qiladi. Critical CSS — birinchi ekran uchun kerakli kichik uslubni oldin yetkazish."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Render-blocking (chizishni to'suvchi)",
+       "text": "Yuklanmaguncha sahifa chizilmaydigan resurs."
+      },
+      {
+       "term": "Critical CSS",
+       "text": "Birinchi ekran uchun kerakli, <head> ga inline qilingan uslub."
+      },
+      {
+       "term": "FCP / LCP",
+       "text": "Birinchi va eng katta kontent chizilgan vaqt."
+      },
+      {
+       "term": "font-display",
+       "text": "Shrift yuklanayotganda matn qanday ko'rinishi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Sahifa uzoq oq tursa",
+       "text": "CSS hajmi va zanjirini tekshirasiz."
+      },
+      {
+       "term": "Katta framework ulanganda",
+       "text": "Coverage bilan ishlatilmaganini topasiz."
+      },
+      {
+       "term": "Matn ko'rinmay tursa",
+       "text": "font-display: swap."
+      }
+     ]
+    },
+    {
+     "heading": "@import o'rniga link",
+     "code": {
+      "lang": "html",
+      "text": "<!-- ❌ a.css ichida @import \"b.css\"; — ketma-ket yuklanadi -->\n<!-- ✅ parallel -->\n<link rel=\"stylesheet\" href=\"a.css\">\n<link rel=\"stylesheet\" href=\"b.css\">"
+     }
+    },
+    {
+     "heading": "Media bo'yicha ajratish",
+     "code": {
+      "lang": "html",
+      "text": "<link rel=\"stylesheet\" href=\"print.css\" media=\"print\">\n<link rel=\"stylesheet\" href=\"wide.css\" media=\"(min-width: 1000px)\">"
+     },
+     "text": "Mos kelmaydigan media li fayl chizishni to'smaydi (baribir yuklanadi)."
+    },
+    {
+     "heading": "Shrift",
+     "table": {
+      "head": [
+       "font-display",
+       "Xatti-harakat"
+      ],
+      "rows": [
+       [
+        "swap",
+        "darhol zaxira, keyin almashadi"
+       ],
+       [
+        "optional",
+        "kechiksa zaxira qoladi"
+       ],
+       [
+        "block",
+        "matn biroz ko'rinmaydi"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Asboblar",
+     "bullets": [
+      "DevTools → Coverage: ishlatilmagan CSS.",
+      "Network: render-blocking fayllar.",
+      "Lighthouse: taklif va o'lchovlar."
+     ],
+     "callout": {
+      "kind": "tip",
+      "text": "Avval o'lchang. Selektor tezligi kamdan-kam asosiy muammo."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "⬜",
+       "title": "3 soniya oq ekran",
+       "text": "Katta CSS va ketma-ket @import."
+      },
+      {
+       "icon": "👻",
+       "title": "Matn paydo bo'lmay turdi",
+       "text": "Shrift kutilyapti."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Birinchi ekranga kerak bo'lmagan uslubni kechiktiring, kerakligini kichraytiring."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Hamma CSS ni inline qilish.",
+       "Faqat critical qismini.",
+       "Kesh ishlamaydi va HTML shishadi."
+      ],
+      [
+       "CSS ichida @import zanjiri.",
+       "link yoki build da birlashtirish.",
+       "Har bosqich yangi borib-qaytish."
+      ],
+      [
+       "Ishlatilmagan kutubxonani to'liq ulash.",
+       "Kerakli qismini olish.",
+       "Ortiqcha bayt chizishni kechiktiradi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "CSS render-blocking resurs.",
+    "@import ketma-ketlik yaratadi.",
+    "Critical CSS birinchi chizilishni tezlashtiradi.",
+    "font-display matn ko'rinishini boshqaradi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Coverage",
+    "text": "Bir saytda Coverage ni ishga tushirib, CSS ning necha foizi ishlatilganini yozing."
+   },
+   {
+    "title": "Zanjirni toping",
+    "text": "Network waterfall da CSS ichidan boshlangan so'rovlarni qidiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "CSS render-blocking degani nima?",
+    "options": [
+     "CSS kelmaguncha sahifa chizilmaydi",
+     "CSS kelguncha HTML yuklab olinmaydi",
+     "CSS rasmlarni yuklashni taqiqlaydi",
+     "CSS server javobini kechiktiradi"
+    ],
+    "answer": "CSS kelmaguncha sahifa chizilmaydi",
+    "explain": "CSSOM tayyor bo'lishi kerak."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "a.css ichida @import url('b.css'). Yuklanish qanday boradi?",
+    "options": [
+     "a kelgach, keyin b so'raladi",
+     "Ikkalasi bir vaqtda so'raladi",
+     "b birinchi bo'lib so'raladi",
+     "b faqat bosilganda yuklanadi"
+    ],
+    "answer": "a kelgach, keyin b so'raladi",
+    "explain": "Import fayl o'qilgandan keyin topiladi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "RTT 200 ms. @import zanjiridagi uchinchi fayl kamida nechta qo'shimcha navbatdan keyin keladi (1-faylga nisbatan)?",
+    "options": [
+     "2",
+     "0",
+     "1",
+     "3"
+    ],
+    "answer": "2",
+    "explain": "2-fayl 1-faylni, 3-fayl 2-faylni kutadi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "<link rel=\"stylesheet\" href=\"print.css\" media=\"print\"> haqida to'g'ri gap?",
+    "options": [
+     "Yuklanadi, ekran chizishini to'smaydi",
+     "Chop etilmaguncha umuman yuklanmaydi",
+     "Ekran chizilishini to'liq to'sadi",
+     "Faqat tugma bosilganda yuklanadi"
+    ],
+    "answer": "Yuklanadi, ekran chizishini to'smaydi",
+    "explain": "Past ustuvorlikda olinadi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Critical CSS qayerga qo'yiladi?",
+    "options": [
+     "head ichidagi style ga",
+     "body oxiridagi script ga",
+     "Alohida @import fayliga",
+     "Rasmlarning alt matniga"
+    ],
+    "answer": "head ichidagi style ga",
+    "explain": "Qo'shimcha so'rovsiz darhol mavjud bo'ladi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Butun 300 kB CSS ni inline qilishning zarari?",
+    "options": [
+     "Har sahifada qayta yuklanadi",
+     "Selektorlar ishlamay qoladi",
+     "Media query lar o'chib ketadi",
+     "Specificity ikki baravar oshadi"
+    ],
+    "answer": "Har sahifada qayta yuklanadi",
+    "explain": "Alohida fayl kabi keshlanmaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Ishlatilmagan CSS ulushini qaysi DevTools paneli ko'rsatadi?",
+    "options": [
+     "Coverage",
+     "Console",
+     "Sources",
+     "Application"
+    ],
+    "answer": "Coverage",
+    "explain": "Coverage."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Matn darhol zaxira shriftda ko'rinsin. Qiymat?",
+    "options": [
+     "swap",
+     "block",
+     "auto",
+     "none"
+    ],
+    "answer": "swap",
+    "explain": "font-display: swap."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Shrift almashganda maket sakrashini eng kam qiladigan qiymat?",
+    "options": [
+     "optional",
+     "swap",
+     "block",
+     "fallback"
+    ],
+    "answer": "optional",
+    "explain": "Kechiksa almashtirilmaydi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Birinchi kontent chizilgan vaqt qisqartmasi:",
+    "answer": "FCP",
+    "explain": "First Contentful Paint.",
+    "alsoAccept": [
+     "fcp"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Shrift uchun eng siqilgan zamonaviy format:",
+    "answer": "WOFF2",
+    "explain": "WOFF2.",
+    "alsoAccept": [
+     "woff2"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Birinchi chizilish bosqichlari:",
+    "words": [
+     "HTML olinadi",
+     "CSS olinadi",
+     "render tree",
+     "paint"
+    ],
+    "answer": "HTML olinadi CSS olinadi render tree paint",
+    "explain": "CSSOM bo'lmasa chizilmaydi."
+   }
+  ]
+ }
+]

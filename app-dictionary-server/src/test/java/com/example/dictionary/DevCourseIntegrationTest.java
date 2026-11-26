@@ -147,6 +147,6 @@ class DevCourseIntegrationTest {
                 .andExpect(jsonPath("$.newLevel").value("MIDDLE"));
         mockMvc.perform(get("/api/dev/overview").header("Authorization", auth))
                 .andExpect(jsonPath("$.level").value("MIDDLE"))
-                .andExpect(jsonPath("$.total").value(24));
+                .andExpect(jsonPath("$.total").value(36));
     }
 }
