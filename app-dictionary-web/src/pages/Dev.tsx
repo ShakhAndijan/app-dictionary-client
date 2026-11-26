@@ -70,7 +70,7 @@ const LEVEL_META: Record<DevLevel, { title: string; icon: string; tone: string; 
     tone: '#6366f1',
     tone2: '#a855f7',
     about: "Amaliyotga o'tasiz: sabab-oqibatni ko'rib, muammolarni o'zingiz hal qilasiz.",
-    goals: ['Kesh, cookie, CORS, HTTPS', 'Sekinlik sababini topish', 'Deploy va sozlash'],
+    goals: ["To'g'ri va qulay interfeys yozish", 'Sabab-oqibatni tushuntirish', 'Muammoni topib tuzatish'],
   },
   SENIOR: {
     title: 'Senior',

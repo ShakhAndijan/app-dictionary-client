@@ -54,7 +54,8 @@ class DevCourseIntegrationTest {
                 .andExpect(jsonPath("$.level").doesNotExist())
                 .andExpect(jsonPath("$.levels.length()").value(3))
                 .andExpect(jsonPath("$.levels[0].ready").value(true))
-                .andExpect(jsonPath("$.levels[1].ready").value(false));
+                .andExpect(jsonPath("$.levels[1].ready").value(true))
+                .andExpect(jsonPath("$.levels[2].ready").value(false));
         mockMvc.perform(put("/api/dev/level").header("Authorization", auth).contentType(MediaType.APPLICATION_JSON)
                         .content("{\"level\":\"EXPERT\"}"))
                 .andExpect(status().isBadRequest());
@@ -146,6 +147,6 @@ class DevCourseIntegrationTest {
                 .andExpect(jsonPath("$.newLevel").value("MIDDLE"));
         mockMvc.perform(get("/api/dev/overview").header("Authorization", auth))
                 .andExpect(jsonPath("$.level").value("MIDDLE"))
-                .andExpect(jsonPath("$.total").value(0));
+                .andExpect(jsonPath("$.total").value(12));
     }
 }

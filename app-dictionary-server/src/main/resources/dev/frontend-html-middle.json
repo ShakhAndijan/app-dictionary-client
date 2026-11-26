@@ -1,0 +1,3911 @@
+[
+ {
+  "code": "fe-html-md-01",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 1,
+  "title": "Semantik arxitektura va landmarklar",
+  "intro": "Sahifani ma'noli qismlarga ajratish: landmarklar, sarlavhalar daraxti, section / article / div tanlovi va to'g'ri jadval.",
+  "theory": {
+   "analogy": {
+    "icon": "🏢",
+    "title": "Bino ko'rsatkichlari",
+    "text": "Katta binoda \"Chiqish\", \"Qabulxona\", \"Lift\" yozuvlari bo'lmasa, har bir eshikni ochib ko'rishga to'g'ri keladi. Landmark ham shunday ko'rsatkich: ekran o'qish dasturi foydalanuvchisi \"asosiy qismga\" yoki \"navigatsiyaga\" bir tugma bilan o'tadi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Middle dasturchi tegni ko'rinishiga qarab emas, vazifasiga qarab tanlaydi. Semantic (ma'noli) teg brauzerga, qidiruv tizimiga va screen reader (ekran o'qish dasturi) ga qism nima ekanini aytadi. Natija: landmark (mo'ljal) lar paydo bo'ladi va foydalanuvchi sahifa bo'ylab sakrab yura oladi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Landmark (mo'ljal)",
+       "text": "Sahifaning katta qismini bildiruvchi rol: banner, navigation, main, complementary, contentinfo, search, region."
+      },
+      {
+       "term": "Accessible name (element nomi)",
+       "text": "Ekran o'qish dasturi element uchun aytadigan nom. nav va section ga aria-label yoki aria-labelledby bilan beriladi."
+      },
+      {
+       "term": "Heading outline (sarlavhalar daraxti)",
+       "text": "h1–h6 darajalaridan hosil bo'ladigan mundarija."
+      },
+      {
+       "term": "Content model (tarkib qoidasi)",
+       "text": "Element ichiga nima qo'yish mumkinligini belgilovchi qoida."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Yangi sahifa maketini boshlashda",
+       "text": "Avval landmarklar va sarlavhalar daraxtini chizasiz, keyin stil."
+      },
+      {
+       "term": "Code review (kod ko'rigi) da",
+       "text": "Hamma narsa div bo'lib qolgan joylarni semantik teglarga almashtirasiz."
+      },
+      {
+       "term": "Test yozishda",
+       "text": "getByRole faqat to'g'ri rol va nom bo'lsa elementni topadi."
+      }
+     ]
+    },
+    {
+     "heading": "Teg va landmark roli",
+     "table": {
+      "head": [
+       "Teg",
+       "Landmark roli",
+       "Shart"
+      ],
+      "rows": [
+       [
+        "header",
+        "banner",
+        "faqat article/section/aside/nav/main ichida BO'LMASA"
+       ],
+       [
+        "footer",
+        "contentinfo",
+        "xuddi shu shart"
+       ],
+       [
+        "nav",
+        "navigation",
+        "doim"
+       ],
+       [
+        "main",
+        "main",
+        "ko'rinadigani bitta"
+       ],
+       [
+        "aside",
+        "complementary",
+        "yondosh mazmun"
+       ],
+       [
+        "section",
+        "region",
+        "faqat nomi (aria-label / labelledby) bo'lsa"
+       ],
+       [
+        "form",
+        "form",
+        "faqat nomi bo'lsa"
+       ],
+       [
+        "search",
+        "search",
+        "qidiruv yoki filtr"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Ikkita nav: nom bering",
+     "code": {
+      "lang": "html",
+      "text": "<header>\n  <nav aria-label=\"Asosiy\">...</nav>\n</header>\n<main>\n  <nav aria-label=\"Sahifa mundarijasi\">...</nav>\n  <section aria-labelledby=\"rev-title\">\n    <h2 id=\"rev-title\">Sharhlar</h2>\n    <article>\n      <h3>Zo'r noutbuk</h3>\n      <footer>Ali, 12-noyabr</footer>\n    </article>\n  </section>\n</main>"
+     }
+    },
+    {
+     "heading": "section, article yoki div?",
+     "bullets": [
+      "Alohida olinganda ham ma'noli va boshqa joyga ko'chirsa bo'ladi (post, sharh, mahsulot kartasi): article.",
+      "Sarlavhaga loyiq mavzuli bo'lim: section.",
+      "Faqat CSS yoki JS uchun o'rash: div. div yomon emas, u ma'nosiz konteyner."
+     ]
+    },
+    {
+     "heading": "To'g'ri jadval",
+     "code": {
+      "lang": "html",
+      "text": "<table>\n  <caption>Oktyabr sotuvlari</caption>\n  <thead>\n    <tr><th scope=\"col\">Mahsulot</th><th scope=\"col\">Soni</th></tr>\n  </thead>\n  <tbody>\n    <tr><th scope=\"row\">Noutbuk</th><td>12</td></tr>\n  </tbody>\n</table>"
+     },
+     "callout": {
+      "kind": "info",
+      "text": "caption — jadval nomi, th — sarlavha katagi, scope — sarlavha ustungami (col) yoki qatorgami (row) tegishli ekanini aytadi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🗞️",
+       "title": "Yangiliklar sayti",
+       "text": "Har bir yangilik article, \"O'qishni tavsiya etamiz\" bloki aside, bo'limlar section."
+      },
+      {
+       "icon": "🛒",
+       "title": "Do'kon filtri",
+       "text": "Filtr formasi search ichida, mahsulot kartalari article."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Avval so'rang: \"Bu qism nima?\" Javobga mos teg bo'lsa, o'shani yozing. Sarlavha darajasi tuzilish uchun, o'lcham CSS uchun."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Har bir o'ramni <section> qilish.",
+       "Sarlavhasiz o'ram uchun div.",
+       "Keraksiz section hech narsa bermaydi va tuzilishni xiralashtiradi."
+      ],
+      [
+       "<main> ni header ichiga qo'yish.",
+       "main alohida, header va footer yonida.",
+       "main sahifaning asosiy mazmuni."
+      ],
+      [
+       "Jadvalni sahifa maketi uchun ishlatish.",
+       "Maket uchun CSS Grid yoki Flexbox.",
+       "Ekran o'qish dasturi uni ma'lumot jadvali deb o'qiydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "header/footer faqat body darajasida banner/contentinfo bo'ladi.",
+    "section nomi bo'lsagina region landmarkiga aylanadi.",
+    "Bir xil turdagi bir nechta landmarkka alohida nom beriladi.",
+    "Sarlavhalar darajasi sakramaydi; jadvalda caption, th va scope bor."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Landmarklarni tekshiring",
+    "text": "Ixtiyoriy saytda F12 → Elements → Accessibility panelida header, nav, main qanday rol olganini ko'ring."
+   },
+   {
+    "title": "Maketni qayta yozing",
+    "text": "Faqat div dan iborat sahifa yozing, keyin uni header, nav, main, article, aside, footer bilan qayta tuzing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi kodda ichki <footer> qanday landmark rolini oladi?",
+    "options": [
+     "Landmark olmaydi",
+     "contentinfo",
+     "complementary",
+     "banner"
+    ],
+    "answer": "Landmark olmaydi",
+    "explain": "footer article ichida bo'lsa, u shu maqolaning oxiri xolos. contentinfo faqat sahifa darajasidagi footer ga beriladi.",
+    "passage": "<body>\n  <article>\n    <h2>Post</h2>\n    <footer>Muallif: Ali</footer>\n  </article>\n</body>"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "<section> qachon ekran o'qish dasturida region landmarki bo'lib ko'rinadi?",
+    "options": [
+     "Unga accessible name berilganda",
+     "Ichida kamida ikkita paragraf bo'lganda",
+     "main ichida joylashganda doim",
+     "Unga id atributi yozilganda"
+    ],
+    "answer": "Unga accessible name berilganda",
+    "explain": "Nom aria-label yoki aria-labelledby bilan beriladi. Nomsiz section landmark hisoblanmaydi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Sahifada asosiy menyu va maqola mundarijasi bor, ikkalasi ham <nav>. Eng to'g'ri yechim qaysi?",
+    "options": [
+     "Har biriga alohida aria-label berish",
+     "Ikkinchisini <div> ga almashtirish",
+     "Ikkalasini bitta <nav> ga birlashtirish",
+     "Birinchisiga role=\"main\" qo'shish"
+    ],
+    "answer": "Har biriga alohida aria-label berish",
+    "explain": "Aks holda foydalanuvchi ro'yxatda ikkita bir xil \"navigation\" ko'radi va farqlay olmaydi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Internet-do'konda har bir mahsulot kartasi uchun qaysi teg eng mos?",
+    "options": [
+     "<article>",
+     "<aside>",
+     "<section>",
+     "<figure>"
+    ],
+    "answer": "<article>",
+    "explain": "Karta alohida olinganda ham to'liq ma'noga ega va boshqa joyda qayta ishlatiladi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Ushbu belgilashdagi asosiy muammo nima?",
+    "options": [
+     "Sarlavha darajasi sakragan",
+     "main ichida h1 bo'lishi mumkin emas",
+     "section ichida h4 umuman taqiqlangan",
+     "p dan keyin sarlavha kelishi mumkin emas"
+    ],
+    "answer": "Sarlavha darajasi sakragan",
+    "explain": "h1 dan keyin h2 kutiladi. Sarlavhalar bo'yicha yuradigan foydalanuvchi o'rtada bo'lim yo'qolgan deb o'ylaydi.",
+    "passage": "<main>\n  <h1>Kurs</h1>\n  <section>\n    <h4>Dars rejasi</h4>\n    <p>...</p>\n  </section>\n</main>"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Jadvalning birinchi ustunidagi mahsulot nomi o'z qatoriga sarlavha. To'g'ri yozuv qaysi?",
+    "options": [
+     "<th scope=\"row\">Noutbuk</th>",
+     "<th scope=\"col\">Noutbuk</th>",
+     "<td scope=\"row\">Noutbuk</td>",
+     "<td class=\"th\">Noutbuk</td>"
+    ],
+    "answer": "<th scope=\"row\">Noutbuk</th>",
+    "explain": "scope=\"row\" shu qatordagi kataklar sarlavhasi ekanini bildiradi, ekran o'qish dasturi katak bilan birga o'qiydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Qaysi gap NOTO'G'RI?",
+    "options": [
+     "Sahifada <header> faqat bir marta yozilishi mumkin",
+     "<footer> bir sahifada bir necha marta bo'lishi mumkin",
+     "<article> ichida o'z <header> qismi bo'lishi mumkin",
+     "Ko'rinadigan <main> sahifada bitta bo'ladi"
+    ],
+    "answer": "Sahifada <header> faqat bir marta yozilishi mumkin",
+    "explain": "header har bir article yoki section da bo'lishi mumkin; faqat sahifa darajasidagisi banner roli oladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Testda screen.getByRole('region', { name: 'Sharhlar' }) elementni topmayapti. Kod: <section><h2>Sharhlar</h2></section>. Tuzatish qaysi?",
+    "options": [
+     "section ga aria-labelledby bilan h2 id sini bog'lash",
+     "h2 ni h1 ga almashtirish",
+     "section ga class=\"region\" yozish",
+     "h2 ga role=\"region\" va aria-level=\"2\" atributlarini qo'shish"
+    ],
+    "answer": "section ga aria-labelledby bilan h2 id sini bog'lash",
+    "explain": "Ichidagi sarlavha o'zi section ga nom bermaydi; bog'lanishni aniq ko'rsatish kerak."
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Jadvalning nomini beradigan teg qaysi? (faqat teg nomini yozing)",
+    "answer": "caption",
+    "explain": "caption table ning birinchi bolasi bo'ladi va jadval nomi sifatida o'qiladi.",
+    "alsoAccept": [
+     "<caption>"
+    ]
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Filtr va qidiruv qismi uchun search landmarkini beradigan HTML teg nomi:",
+    "answer": "search",
+    "explain": "<search> — qidiruv yoki filtr boshqaruvlarini o'raydigan teg.",
+    "alsoAccept": [
+     "<search>"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Sahifa darajasidagi <header> oladigan landmark roli (inglizcha):",
+    "answer": "banner",
+    "explain": "body darajasidagi header — banner, footer — contentinfo."
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Hujjat tuzilishini yuqoridan pastga tartiblang:",
+    "words": [
+     "<header>",
+     "<nav>",
+     "</header>",
+     "<main>",
+     "</main>",
+     "<footer>"
+    ],
+    "answer": "<header> <nav> </header> <main> </main> <footer>",
+    "explain": "Odatda nav header ichida turadi, keyin main, oxirida footer."
+   }
+  ]
+ },
+ {
+  "code": "fe-html-md-02",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 2,
+  "title": "Parser, content model va atributlar",
+  "intro": "Brauzer xato HTML ni qanday \"tuzatadi\", nimani nima ichiga qo'yish mumkin, boolean va data-* atributlari qanday ishlaydi.",
+  "theory": {
+   "analogy": {
+    "icon": "📮",
+    "title": "Tirishqoq pochtachi",
+    "text": "Manzil xato yozilgan xatni pochtachi qaytarmaydi, o'zicha taxmin qilib yetkazadi. Ko'pincha to'g'ri chiqadi, lekin ba'zan boshqa eshikka tashlab ketadi — va siz nima bo'lganini bilmaysiz."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "HTML parser (tahlil qiluvchi) xato ko'rsatmaydi: u spetsifikatsiya qoidasi bo'yicha DOM (hujjat obyekt modeli) daraxtini o'zi tuzatadi. Shu sababli siz yozgan kod va brauzerdagi DOM boshqacha bo'lishi mumkin. Bu CSS buglari va React dagi hydration (serverdan kelgan HTML ni jonlantirish) xatolarining yashirin sababi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Void element (ichi bo'sh element)",
+       "text": "Kontenti va yopuvchi tegi yo'q: img, input, br, hr, meta, link, source, track."
+      },
+      {
+       "term": "Boolean attribute (mantiqiy atribut)",
+       "text": "Mavjudligining o'zi \"ha\" degani: disabled, checked, required, readonly, multiple."
+      },
+      {
+       "term": "Standards / quirks mode (standart / eski rejim)",
+       "text": "DOCTYPE bo'lsa standart rejim, bo'lmasa brauzer eski xatolarni taqlid qiladi."
+      },
+      {
+       "term": "data-* (o'z atributingiz)",
+       "text": "Elementga ma'lumot biriktirish; JavaScript da dataset orqali o'qiladi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Bug qidirishda",
+       "text": "Elements panelida real DOM ni ko'rib, kod bilan solishtirasiz."
+      },
+      {
+       "term": "SSR (server tomonda chizish) da",
+       "text": "Noto'g'ri ichma-ich joylash hydration xatosini beradi."
+      },
+      {
+       "term": "JS bilan bog'lashda",
+       "text": "data-id kabi atributlar orqali elementdan ma'lumot olasiz."
+      }
+     ]
+    },
+    {
+     "heading": "Parser tuzatadigan holatlar",
+     "code": {
+      "lang": "html",
+      "text": "<p><div>Matn</div></p>\n<!-- DOM: <p></p><div>Matn</div><p></p> -->\n\n<table><tr><td>1</td></tr></table>\n<!-- DOM: <table><tbody><tr>... -->\n\n<div />Salom\n<!-- \"/\" e'tiborsiz: div OCHIQ qoladi, Salom uning ichida -->"
+     }
+    },
+    {
+     "heading": "Ichma-ich joylash qoidalari",
+     "bullets": [
+      "p ichiga blok element (div, ul, h2, table) qo'yilmaydi.",
+      "a va button ichiga boshqa interaktiv element qo'yilmaydi.",
+      "ul va ol ning bevosita bolasi li bo'ladi.",
+      "a ichiga blok element qo'yish mumkin (ota element ruxsat bersa): butun kartani havola qilish yaroqli.",
+      "form ichiga form qo'yilmaydi."
+     ]
+    },
+    {
+     "heading": "Atribut va property farqi",
+     "code": {
+      "lang": "js",
+      "text": "// <input id=\"q\" value=\"a\" disabled=\"false\">\nq.disabled;                 // true — qiymatga qaralmaydi\nq.value = 'b';\nq.value;                    // \"b\"  (property: hozirgi holat)\nq.getAttribute('value');    // \"a\"  (atribut: boshlang'ich qiymat)\n\n// <li data-product-id=\"42\" data-in-stock=\"false\">\nli.dataset.productId;       // \"42\" — doim satr\nli.dataset.inStock;         // \"false\" — bu ham satr!"
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🧩",
+       "title": "Next.js xatosi",
+       "text": "<p> ichiga <div> chiqaradigan komponent \"Hydration failed\" beradi, chunki brauzer DOM ni o'zgartirgan."
+      },
+      {
+       "icon": "🎛️",
+       "title": "Yoqilmayotgan tugma",
+       "text": "disabled=\"false\" yozilgan tugma baribir o'chiq: atributni butunlay olib tashlash kerak."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Shubha bo'lsa, kodni emas, Elements panelidagi DOM ni tekshiring — brauzer aynan shu bilan ishlaydi."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "disabled=\"false\" bilan tugmani yoqish.",
+       "button.disabled = false yoki atributni olib tashlash.",
+       "Boolean atributda qiymat o'qilmaydi."
+      ],
+      [
+       "<div /> ni o'zi yopiladi deb o'ylash.",
+       "<div></div> yozish.",
+       "Void bo'lmagan elementda \"/\" e'tiborsiz qoldiriladi."
+      ],
+      [
+       "dataset qiymatini son deb qo'shish.",
+       "Number(el.dataset.price) bilan o'girish.",
+       "dataset doim satr qaytaradi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Parser xatoni jim tuzatadi va DOM kodingizdan farq qilishi mumkin.",
+    "p ichida blok element, a/button ichida interaktiv element bo'lmaydi.",
+    "Boolean atributning qiymati ahamiyatsiz.",
+    "Atribut — boshlang'ich holat, property — hozirgi holat; dataset — satr."
+   ]
+  },
+  "practice": [
+   {
+    "title": "DOM ni solishtiring",
+    "text": "<p><ul><li>a</li></ul></p> yozing va Elements panelida brauzer nima yasaganini ko'ring."
+   },
+   {
+    "title": "dataset bilan ishlang",
+    "text": "Uchta tugmaga data-price bering va bosilganda jami summani sonlar sifatida hisoblang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Brauzer quyidagi koddan qanday DOM yasaydi?",
+    "options": [
+     "<p></p><div>Salom</div><p></p>",
+     "<p><div><p>Salom</p></div></p>",
+     "<div><p>Salom</p></div>",
+     "<div>Salom</div>"
+    ],
+    "answer": "<p></p><div>Salom</div><p></p>",
+    "explain": "div boshlanishi bilan p yopiladi; ortib qolgan </p> esa yana bitta bo'sh p yaratadi.",
+    "passage": "<p><div>Salom</div></p>"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolda nima chiqadi?",
+    "options": [
+     "true",
+     "false",
+     "\"false\"",
+     "undefined"
+    ],
+    "answer": "true",
+    "explain": "disabled boolean atribut: yozilganining o'zi true, qiymati o'qilmaydi.",
+    "passage": "<button id=\"b\" disabled=\"false\">Yuborish</button>\n<script>\n  console.log(b.disabled);\n</script>"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolda nima chiqadi?",
+    "options": [
+     "105",
+     "15",
+     "NaN",
+     "TypeError"
+    ],
+    "answer": "105",
+    "explain": "dataset satr qaytaradi: \"10\" + 5 birlashtirish bo'lib \"105\" chiqadi.",
+    "passage": "<li id=\"x\" data-price=\"10\">...</li>\n<script>\n  console.log(x.dataset.price + 5);\n</script>"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Foydalanuvchi maydonga \"Vali\" deb yozdi. input.getAttribute('value') nima qaytaradi? (kod: <input value=\"Ali\">)",
+    "options": [
+     "\"Ali\"",
+     "\"Vali\"",
+     "null",
+     "\"AliVali\""
+    ],
+    "answer": "\"Ali\"",
+    "explain": "Atribut boshlang'ich qiymatni saqlaydi; hozirgi qiymat input.value da."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "data-user-role=\"admin\" atributi JavaScript da qanday o'qiladi?",
+    "options": [
+     "el.dataset.userRole",
+     "el.dataset['user-role']",
+     "el.data.userRole",
+     "el.dataset.user_role"
+    ],
+    "answer": "el.dataset.userRole",
+    "explain": "Defisdan keyingi harf katta harfga aylanadi (camelCase)."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Quyidagilardan qaysi biri HTML qoidasiga zid?",
+    "options": [
+     "<a href=\"/p\"><button>Olish</button></a>",
+     "<a href=\"/p\"><div><h3>Nom</h3></div></a>",
+     "<ul><li><ul><li>a</li></ul></li></ul>",
+     "<label>Ism <input name=\"n\"></label>"
+    ],
+    "answer": "<a href=\"/p\"><button>Olish</button></a>",
+    "explain": "a ichida boshqa interaktiv element bo'lmaydi: fokus va bosish xatti-harakati chalkashadi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "CSS da \"table > tr\" selektori nega ishlamaydi? (HTML da tbody yozilmagan)",
+    "options": [
+     "Parser o'zi tbody qo'shadi",
+     "tr ga > operatori qo'llanmaydi",
+     "table bolalarini CSS ko'rmaydi",
+     "Selektorda td ham yozilishi shart"
+    ],
+    "answer": "Parser o'zi tbody qo'shadi",
+    "explain": "DOM da zanjir table > tbody > tr bo'ladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Sahifada <!DOCTYPE html> yozilmasa nima bo'ladi?",
+    "options": [
+     "Brauzer quirks mode da ishlaydi",
+     "Sahifa umuman ochilmaydi",
+     "CSS fayllari yuklanmaydi",
+     "JavaScript strict mode yoqiladi"
+    ],
+    "answer": "Brauzer quirks mode da ishlaydi",
+    "explain": "Quirks mode (eski rejim) da box model va o'lchamlar eski brauzerlardek hisoblanadi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi kodda \"Matn\" qaysi element ichida bo'ladi?",
+    "options": [
+     "span ichida",
+     "span dan tashqarida",
+     "body ning o'zida",
+     "Alohida p ichida"
+    ],
+    "answer": "span ichida",
+    "explain": "span void element emas, \"/\" e'tiborsiz — u ochiq qoladi va keyingi matnni o'z ichiga oladi.",
+    "passage": "<body>\n  <span class=\"icon\" />Matn\n</body>"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Bir elementga faqat bitta sahifada yagona identifikator beradigan global atribut:",
+    "answer": "id",
+    "explain": "id takrorlanmasligi kerak: label for, ARIA va # havolalar shunga tayanadi."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Kontenti va yopuvchi tegi bo'lmaydigan elementlar nima deb ataladi? (bitta inglizcha so'z) ... element",
+    "answer": "void",
+    "explain": "img, input, br, meta, link — void elementlar.",
+    "alsoAccept": [
+     "void element"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Matnda < belgisini teg bo'lib ketmasdan ko'rsatadigan entity:",
+    "answer": "&lt;",
+    "explain": "&lt; — less than, &gt; — greater than, &amp; — ampersand.",
+    "alsoAccept": [
+     "&#60;"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-html-md-03",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 3,
+  "title": "Skript va resurslarni yuklash",
+  "intro": "defer, async va module farqi, bajarilish tartibi, DOMContentLoaded va load, preload / preconnect / prefetch.",
+  "theory": {
+   "analogy": {
+    "icon": "👨‍🍳",
+    "title": "Oshxona",
+    "text": "Oddiy skript — oshpaz masalliq olib kelguncha hamma ishni to'xtatib turadi. defer — yordamchi olib keladi, oshpaz ovqatni tayyorlab bo'lgach ishlatadi. async — yordamchi kelishi bilan oshpazni bo'ladi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Oddiy <script> parser ni to'xtatadi: brauzer faylni yuklab, bajarib bo'lmaguncha HTML ni o'qishni davom ettirmaydi. defer (kechiktirish), async (asinxron) va type=\"module\" yuklashni parallel qiladi, lekin bajarilish vaqti va tartibi har xil. Resource hint (resurs maslahati) lar esa kerakli faylni oldindan topib beradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Parser-blocking (parserni to'xtatuvchi)",
+       "text": "HTML tahlilini vaqtincha to'xtatib turadigan resurs."
+      },
+      {
+       "term": "DOMContentLoaded",
+       "text": "HTML o'qib bo'lingan va defer/module skriptlar bajarilgan payt."
+      },
+      {
+       "term": "load",
+       "text": "Rasm, stil va boshqa barcha resurslar ham yuklangan payt."
+      },
+      {
+       "term": "Preload (oldindan yuklash)",
+       "text": "Shu sahifaga aniq kerak resursni yuqori ustuvorlikda yuklash."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Sahifa sekin ochilganda",
+       "text": "Parserni to'xtatayotgan skriptlarga defer qo'yasiz."
+      },
+      {
+       "term": "Analytics ulashda",
+       "text": "Mustaqil uchinchi tomon skriptiga async."
+      },
+      {
+       "term": "Shrift yoki asosiy rasm kech chiqsa",
+       "text": "preload bilan brauzerga erta xabar berasiz."
+      }
+     ]
+    },
+    {
+     "heading": "To'rt xil usul",
+     "table": {
+      "head": [
+       "Yozuv",
+       "Yuklash",
+       "Bajarilish",
+       "Tartib"
+      ],
+      "rows": [
+       [
+        "<script src>",
+        "parserni to'xtatadi",
+        "darhol",
+        "yozilgan tartibda"
+       ],
+       [
+        "defer",
+        "parallel",
+        "HTML tugagach, DOMContentLoaded dan oldin",
+        "yozilgan tartibda"
+       ],
+       [
+        "async",
+        "parallel",
+        "tayyor bo'lishi bilan",
+        "kafolat yo'q"
+       ],
+       [
+        "type=\"module\"",
+        "parallel",
+        "odatda defer kabi",
+        "yozilgan tartibda"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Nozik qoidalar",
+     "bullets": [
+      "defer va async faqat src li klassik skriptda ishlaydi; inline skriptda e'tiborsiz.",
+      "type=\"module\" inline bo'lsa ham kechiktiriladi va strict mode (qat'iy rejim) da ishlaydi.",
+      "document.createElement('script') bilan qo'shilgan skript odatiy holatda async kabi bajariladi; tartib kerak bo'lsa s.async = false.",
+      "Oddiy skript oldidan CSS yuklanayotgan bo'lsa, brauzer CSS ni kutadi."
+     ]
+    },
+    {
+     "heading": "Resource hints",
+     "code": {
+      "lang": "html",
+      "text": "<link rel=\"dns-prefetch\" href=\"https://stats.example.com\">\n<link rel=\"preconnect\" href=\"https://cdn.example.com\" crossorigin>\n<link rel=\"preload\" href=\"/fonts/inter.woff2\" as=\"font\" type=\"font/woff2\" crossorigin>\n<link rel=\"modulepreload\" href=\"/js/chart.js\">\n<link rel=\"prefetch\" href=\"/keyingi-sahifa.js\">"
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "preload da as atributi shart; shrift uchun crossorigin ham kerak, aks holda fayl ikki marta yuklanadi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📊",
+       "title": "Statistika skripti",
+       "text": "Sahifaga bog'liq emas — async."
+      },
+      {
+       "icon": "🧱",
+       "title": "Ilova va kutubxona",
+       "text": "lib.js dan keyin app.js kerak — ikkalasiga ham defer, tartib saqlanadi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Odatiy tanlov: defer yoki type=\"module\". async — faqat hech narsaga bog'liq bo'lmagan skript uchun."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Bog'liq ikki skriptga async qo'yish.",
+       "Ikkalasiga defer.",
+       "async da qaysi biri oldin bajarilishi noma'lum."
+      ],
+      [
+       "Inline skriptga defer yozish.",
+       "Kodni faylga chiqaring yoki type=\"module\".",
+       "Inline klassik skriptda defer ishlamaydi."
+      ],
+      [
+       "Hamma resursga preload qo'yish.",
+       "Faqat 1–2 ta haqiqatan kritik faylga.",
+       "Ortiqcha preload muhimlari bilan raqobat qiladi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Oddiy skript parserni to'xtatadi.",
+    "defer — tartib saqlanadi, DOM tayyor; async — tartib yo'q.",
+    "module odatiy holatda kechiktirilgan va strict.",
+    "preload — shu sahifa uchun, prefetch — keyingi sahifa uchun."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Tartibni kuzating",
+    "text": "Uch faylga console.log yozib, ularni oddiy, defer va async bilan ulang va konsoldagi tartibni bir necha marta yangilab solishtiring."
+   },
+   {
+    "title": "Network panelida preload",
+    "text": "Shriftga preload qo'shib, Network panelida u qachon yuklanishni boshlaganini oldin va keyin solishtiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "a.js katta, b.js kichik fayl. Qaysi biri birinchi bajariladi?",
+    "options": [
+     "Doim a.js",
+     "Doim b.js",
+     "Qaysi biri oldin yuklansa",
+     "Brauzer tasodifiy tanlaydi"
+    ],
+    "answer": "Doim a.js",
+    "explain": "defer skriptlar yozilgan tartibda bajariladi, hajmi ahamiyatsiz.",
+    "passage": "<script src=\"a.js\" defer></script>\n<script src=\"b.js\" defer></script>"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Shu kodda esa b.js a.js dan oldin bajarilishi mumkinmi?",
+    "options": [
+     "Ha, oldin yuklansa",
+     "Yo'q, tartib saqlanadi",
+     "Faqat Firefox brauzerida",
+     "Faqat HTTP/1.1 bo'lsa"
+    ],
+    "answer": "Ha, oldin yuklansa",
+    "explain": "async skript tayyor bo'lishi bilan bajariladi.",
+    "passage": "<script src=\"a.js\" async></script>\n<script src=\"b.js\" async></script>"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolda nima chiqadi?",
+    "options": [
+     "null",
+     "\"Salom\"",
+     "undefined",
+     "Hech narsa chiqmaydi"
+    ],
+    "answer": "null",
+    "explain": "Inline skriptda defer ishlamaydi: u darhol bajariladi, h1 esa hali o'qilmagan.",
+    "passage": "<head>\n  <script defer>\n    console.log(document.querySelector(\"h1\"));\n  </script>\n</head>\n<body><h1>Salom</h1></body>"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konsolda qanday tartib chiqadi? (m.js ichida console.log(\"M\"))",
+    "options": [
+     "I, M, D",
+     "M, I, D",
+     "I, D, M",
+     "D, I, M"
+    ],
+    "answer": "I, M, D",
+    "explain": "module kechiktiriladi: avval inline I, keyin modul M, so'ng DOMContentLoaded.",
+    "passage": "<script type=\"module\" src=\"m.js\"></script>\n<script>\n  document.addEventListener(\"DOMContentLoaded\", () => console.log(\"D\"));\n  console.log(\"I\");\n</script>"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "DOMContentLoaded va load hodisasining asosiy farqi nima?",
+    "options": [
+     "load rasmlar kabi resurslarni ham kutadi",
+     "load faqat modul skriptlarda ishlaydi",
+     "DOMContentLoaded rasmlardan keyin chiqadi",
+     "load HTML o'qilishidan oldin chiqadi"
+    ],
+    "answer": "load rasmlar kabi resurslarni ham kutadi",
+    "explain": "DOMContentLoaded — DOM tayyor; load — barcha resurslar yuklangan."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Boshqa domendagi API ga sahifa ochilishi bilan so'rov ketadi. Ulanishni (DNS, TCP, TLS) oldindan ochadigan hint qaysi?",
+    "options": [
+     "preconnect",
+     "prefetch",
+     "dns-prefetch",
+     "modulepreload"
+    ],
+    "answer": "preconnect",
+    "explain": "dns-prefetch faqat DNS ni, preconnect esa butun ulanishni tayyorlaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Shrift preload qilingan, lekin Network panelida ikki marta yuklanyapti. Eng ehtimoliy sabab?",
+    "options": [
+     "crossorigin atributi yozilmagan",
+     "rel=\"prefetch\" qo'shilmagan",
+     "Shriftga defer qo'yilmagan",
+     "Fayl woff2 formatida ekanligi"
+    ],
+    "answer": "crossorigin atributi yozilmagan",
+    "explain": "Shriftlar CORS rejimida so'raladi; preload ham shu rejimda bo'lmasa, brauzer uni qayta yuklaydi.",
+    "passage": "<link rel=\"preload\" href=\"/f.woff2\" as=\"font\">"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "JS bilan ikki skript qo'shildi va ular yozilgan tartibda bajarilishi kerak. Nima qilish kerak?",
+    "options": [
+     "Har birida s.async = false qilish",
+     "Har birida s.async = true qilish",
+     "Skriptlarni body boshiga qo'shish",
+     "src dan oldin s.type = 'text' berish"
+    ],
+    "answer": "Har birida s.async = false qilish",
+    "explain": "Dinamik skript odatiy holatda async; async=false tartibni saqlaydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Foydalanuvchi keyingi sahifaga o'tishi ehtimoli katta. Uning faylini past ustuvorlikda oldindan olish uchun?",
+    "options": [
+     "rel=\"prefetch\"",
+     "rel=\"preload\"",
+     "rel=\"preconnect\"",
+     "rel=\"stylesheet\""
+    ],
+    "answer": "rel=\"prefetch\"",
+    "explain": "prefetch — kelajakdagi navigatsiya uchun, preload — joriy sahifa uchun."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "preload da resurs turini ko'rsatadigan majburiy atribut nomi:",
+    "answer": "as",
+    "explain": "as=\"font\", as=\"image\", as=\"script\" — brauzer ustuvorlikni shundan biladi."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "ES modul skriptini ulash: <script type=\"...\">",
+    "answer": "module",
+    "explain": "type=\"module\" import/export ni yoqadi va skriptni kechiktiradi."
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "defer skriptli sahifada hodisalarni tartiblang:",
+    "words": [
+     "HTML o'qiladi",
+     "defer skript bajariladi",
+     "DOMContentLoaded",
+     "load"
+    ],
+    "answer": "HTML o'qiladi defer skript bajariladi DOMContentLoaded load",
+    "explain": "defer skriptlar DOMContentLoaded dan oldin, load esa barcha resurslardan keyin."
+   }
+  ]
+ },
+ {
+  "code": "fe-html-md-04",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 4,
+  "title": "Responsive rasmlar va media",
+  "intro": "alt qoidalari, width/height va CLS, lazy yuklash, srcset / sizes / picture, video subtitrlari va xavfsiz iframe.",
+  "theory": {
+   "analogy": {
+    "icon": "👕",
+    "title": "Kiyim o'lchami",
+    "text": "Do'konda hammaga bitta XXL kiyim berilmaydi: S, M, L bor. srcset ham rasmning bir necha o'lchami, brauzer esa xaridorga mosini tanlaydi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Rasm — sahifaning eng og'ir qismi. Middle dasturchi har bir ekranga mos o'lchamdagi faylni beradi (srcset), joyini oldindan ajratib sahifa sakrashining oldini oladi (width, height), pastdagi rasmlarni keyin yuklaydi (loading=\"lazy\") va alt matnini rasm vazifasiga qarab yozadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "CLS (Cumulative Layout Shift — maketning sakrashi)",
+       "text": "Yuklanish paytida elementlarning kutilmaganda siljishi."
+      },
+      {
+       "term": "LCP (Largest Contentful Paint — eng katta kontent chizilishi)",
+       "text": "Ekrandagi eng katta element (ko'pincha asosiy rasm) ko'ringan vaqt."
+      },
+      {
+       "term": "DPR (device pixel ratio — piksel zichligi)",
+       "text": "Bir CSS pikselga to'g'ri keladigan qurilma pikseli."
+      },
+      {
+       "term": "Art direction (kadrni boshqarish)",
+       "text": "Kichik ekranga boshqacha kesilgan rasm berish."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Bir rasm turli ekranda",
+       "text": "srcset + sizes."
+      },
+      {
+       "term": "Yangi format (AVIF/WebP) va zaxira",
+       "text": "picture + source type."
+      },
+      {
+       "term": "Telefonda boshqa kadr",
+       "text": "picture + source media."
+      },
+      {
+       "term": "Tashqi video yoki xarita",
+       "text": "iframe: title, loading=\"lazy\", sandbox."
+      }
+     ]
+    },
+    {
+     "heading": "srcset va sizes",
+     "code": {
+      "lang": "html",
+      "text": "<img src=\"hero-800.jpg\"\n     srcset=\"hero-400.jpg 400w, hero-800.jpg 800w, hero-1600.jpg 1600w\"\n     sizes=\"(max-width: 700px) 100vw, 50vw\"\n     width=\"1600\" height=\"900\"\n     alt=\"Toshkent kechasi\">"
+     },
+     "callout": {
+      "kind": "info",
+      "text": "Hisob: kerakli kenglik ≈ sizes bergan CSS kenglik × DPR. 400px ekran, DPR 2, 100vw → 800px → hero-800.jpg."
+     }
+    },
+    {
+     "heading": "picture",
+     "code": {
+      "lang": "html",
+      "text": "<picture>\n  <source media=\"(max-width: 600px)\" srcset=\"kvadrat.jpg\">\n  <source srcset=\"keng.avif\" type=\"image/avif\">\n  <source srcset=\"keng.webp\" type=\"image/webp\">\n  <img src=\"keng.jpg\" alt=\"Jamoamiz\" width=\"1200\" height=\"600\">\n</picture>"
+     },
+     "text": "Brauzer birinchi MOS source ni oladi, qolganini ko'rmaydi. img doim bo'lishi shart: alt va o'lcham unda."
+    },
+    {
+     "heading": "alt qoidalari",
+     "table": {
+      "head": [
+       "Rasm turi",
+       "alt"
+      ],
+      "rows": [
+       [
+        "Mazmunli rasm",
+        "nimani bildirsa o'sha"
+       ],
+       [
+        "Bezak",
+        "alt=\"\" (bo'sh)"
+       ],
+       [
+        "Havola yoki tugma ichidagi yagona ikonka",
+        "amal yoki manzil: \"Savatga o'tish\""
+       ],
+       [
+        "Diagramma",
+        "asosiy xulosa, to'liq ma'lumot yonida matnda"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Video va iframe",
+     "code": {
+      "lang": "html",
+      "text": "<video controls preload=\"metadata\" poster=\"kadr.jpg\">\n  <source src=\"dars.webm\" type=\"video/webm\">\n  <source src=\"dars.mp4\" type=\"video/mp4\">\n  <track kind=\"captions\" src=\"uz.vtt\" srclang=\"uz\" label=\"O'zbekcha\" default>\n</video>\n\n<iframe src=\"https://example.com/map\" title=\"Do'kon manzili\"\n        loading=\"lazy\" sandbox=\"allow-scripts\"></iframe>"
+     },
+     "bullets": [
+      "autoplay ko'p brauzerda faqat muted bilan ishlaydi.",
+      "sandbox bo'sh yozilsa hamma narsa taqiqlanadi, allow-* bilan ruxsat qo'shiladi."
+     ]
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📱",
+       "title": "Mobil trafik",
+       "text": "400px telefonga 4000px rasm yuborish — foydalanuvchi puli va vaqti isrofi."
+      },
+      {
+       "icon": "🦘",
+       "title": "Sakraydigan matn",
+       "text": "O'lchamsiz rasm kelganda o'qiyotgan matningiz pastga tushib ketadi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Birinchi ekrandagi asosiy rasm: lazy EMAS, fetchpriority=\"high\". Pastdagilar: loading=\"lazy\". Hammasida width va height."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "LCP rasmiga loading=\"lazy\".",
+       "fetchpriority=\"high\", lazy siz.",
+       "Asosiy rasm kech yuklanadi va LCP yomonlashadi."
+      ],
+      [
+       "Bezak rasmidan alt ni olib tashlash.",
+       "alt=\"\" yozish.",
+       "alt yo'q bo'lsa fayl nomi o'qilishi mumkin."
+      ],
+      [
+       "srcset w bilan sizes ni unutish.",
+       "sizes qo'shish.",
+       "sizes bo'lmasa brauzer 100vw deb hisoblaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "width/height — joyni oldindan ajratadi (CLS kamayadi).",
+    "srcset + sizes — o'lcham, picture — format yoki kadr.",
+    "alt rasm vazifasini aytadi; bezakda bo'sh.",
+    "iframe ga title, videoga captions (subtitr)."
+   ]
+  },
+  "practice": [
+   {
+    "title": "currentSrc ni tekshiring",
+    "text": "srcset li rasm yarating, ekran kengligini o'zgartirib (keshni o'chirgan holda) konsolda img.currentSrc qiymatini kuzating."
+   },
+   {
+    "title": "alt audit",
+    "text": "O'z loyihangizdagi har bir rasmni bezak, mazmunli yoki amal turiga ajratib, alt ni qayta yozing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Ekran 400px, DPR 2. Brauzer odatda qaysi faylni tanlaydi?",
+    "options": [
+     "b.jpg (800w)",
+     "a.jpg (400w)",
+     "c.jpg (1600w)",
+     "Uchalasini ham yuklaydi"
+    ],
+    "answer": "b.jpg (800w)",
+    "explain": "100vw = 400 CSS px, DPR 2 → 800 qurilma pikseli.",
+    "passage": "<img src=\"a.jpg\"\n     srcset=\"a.jpg 400w, b.jpg 800w, c.jpg 1600w\"\n     sizes=\"100vw\" alt=\"...\">"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "sizes=\"(max-width: 600px) 100vw, 33vw\". Ekran 1200px, DPR 1. Rasm uchun brauzer taxminan necha piksel kerak deb hisoblaydi?",
+    "options": [
+     "400",
+     "1200",
+     "600",
+     "100"
+    ],
+    "answer": "400",
+    "explain": "600px sharti bajarilmaydi, shuning uchun 33vw: 1200 × 0.33 ≈ 400."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "AVIF ni ham, WebP ni ham qo'llaydigan brauzer nimani yuklaydi?",
+    "options": [
+     "x.avif",
+     "x.webp",
+     "x.jpg",
+     "Eng kichik hajmlisini"
+    ],
+    "answer": "x.avif",
+    "explain": "picture da birinchi mos source olinadi — hajm solishtirilmaydi.",
+    "passage": "<picture>\n  <source srcset=\"x.avif\" type=\"image/avif\">\n  <source srcset=\"x.webp\" type=\"image/webp\">\n  <img src=\"x.jpg\" alt=\"\">\n</picture>"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Sahifa tepasidagi katta banner uchun qaysi yozuv to'g'ri?",
+    "options": [
+     "fetchpriority=\"high\"",
+     "loading=\"lazy\"",
+     "decoding=\"sync\" va lazy",
+     "rel=\"prefetch\""
+    ],
+    "answer": "fetchpriority=\"high\"",
+    "explain": "Banner — LCP elementi; uni kechiktirmasdan, ustuvorlik bilan yuklash kerak."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "<img> ga width va height atributlarini yozish asosan nimaga xizmat qiladi?",
+    "options": [
+     "Joyni oldindan ajratishga",
+     "Fayl hajmini kamaytirishga",
+     "Rasmni siqib yuklashga",
+     "Keshlash muddatini uzaytirishga"
+    ],
+    "answer": "Joyni oldindan ajratishga",
+    "explain": "Brauzer nisbatni biladi va rasm kelguncha joy qoldiradi — CLS kamayadi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Tugmada faqat savat ikonkasi (img) bor. Eng to'g'ri alt qaysi?",
+    "options": [
+     "alt=\"Savatga qo'shish\"",
+     "alt=\"\"",
+     "alt=\"savat ikonkasi rasmi\"",
+     "alt=\"cart.png\""
+    ],
+    "answer": "alt=\"Savatga qo'shish\"",
+    "explain": "Ikonka tugmaning yagona mazmuni, shuning uchun alt amalni aytadi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Video autoplay yozilgan, lekin o'zi boshlanmayapti. Eng ehtimoliy sabab?",
+    "options": [
+     "muted atributi yo'q",
+     "controls atributi yo'q",
+     "poster berilmagan",
+     "track qo'shilmagan"
+    ],
+    "answer": "muted atributi yo'q",
+    "explain": "Brauzerlar ovozli videoni foydalanuvchi harakatisiz boshlashga ruxsat bermaydi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "<iframe sandbox> (qiymatsiz) ichidagi sahifada skript ishlaydimi?",
+    "options": [
+     "Yo'q, skriptlar bloklanadi",
+     "Ha, sandbox faqat cookie ga ta'sir qiladi",
+     "Ha, faqat inline skriptlar",
+     "Faqat bir xil domendan bo'lsa"
+    ],
+    "answer": "Yo'q, skriptlar bloklanadi",
+    "explain": "Bo'sh sandbox hamma cheklovni yoqadi; skript uchun allow-scripts kerak."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Kar yoki ovozni o'chirib ko'radigan foydalanuvchi uchun videoga nima qo'shiladi?",
+    "options": [
+     "<track kind=\"captions\">",
+     "<source type=\"text/vtt\">",
+     "title atributida matn",
+     "aria-label=\"video\""
+    ],
+    "answer": "<track kind=\"captions\">",
+    "explain": "captions — nutq va muhim tovushlarning matni."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Ko'rinish chegarasidan pastdagi rasmni keyin yuklash: loading=\"...\"",
+    "answer": "lazy",
+    "explain": "loading=\"lazy\" rasm ekranga yaqinlashganda yuklaydi."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Kichik ekranga boshqa kadr berish uchun <img> ni o'raydigan teg nomi:",
+    "answer": "picture",
+    "explain": "picture ichida source media bilan art direction qilinadi.",
+    "alsoAccept": [
+     "<picture>"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "JavaScript da brauzer aslida tanlagan rasm manzilini beradigan img property si:",
+    "answer": "currentSrc",
+    "explain": "img.currentSrc — srcset dan tanlangan fayl.",
+    "alsoAccept": [
+     "currentsrc"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-html-md-05",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 5,
+  "title": "Forma yuborish va FormData",
+  "intro": "Yuborish mexanikasi, GET va POST, tugma turlari, requestSubmit, FormData qoidalari va fayl yuklash.",
+  "theory": {
+   "analogy": {
+    "icon": "📦",
+    "title": "Pochta posilkasi",
+    "text": "Posilkaga faqat yorlig'i (name) bor va yo'qotilmagan (disabled emas) narsalar solinadi. Yorliqsiz buyum uyda qoladi — serverga yetib bormaydi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Forma yuborilganda brauzer tekshiradi, submit hodisasini chiqaradi, name atributli maydonlardan name=value juftliklarini yig'adi va action manziliga method bilan jo'natadi. FormData (forma ma'lumoti) obyekti shu yig'ish qoidalarini JavaScript ga beradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Implicit submission (yashirin yuborish)",
+       "text": "Matn maydonida Enter bosilganda formaning birinchi submit tugmasi bosilgandek ishlashi."
+      },
+      {
+       "term": "FormData (forma ma'lumoti)",
+       "text": "Formadagi yuboriladigan juftliklar to'plami."
+      },
+      {
+       "term": "enctype (kodlash turi)",
+       "text": "POST tanasi qanday shaklda jo'natilishi: urlencoded yoki multipart/form-data."
+      },
+      {
+       "term": "Submitter (yuborgan tugma)",
+       "text": "Formani yuborishga sabab bo'lgan tugma."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Login, qidiruv, sozlamalar",
+       "text": "Brauzerning tayyor yuborish xatti-harakatidan foydalanasiz."
+      },
+      {
+       "term": "AJAX so'rovda",
+       "text": "fetch ga body: new FormData(form) berasiz."
+      },
+      {
+       "term": "Bir formada ikki amal",
+       "text": "formaction, formmethod, formnovalidate."
+      }
+     ]
+    },
+    {
+     "heading": "GET va POST",
+     "table": {
+      "head": [
+       "",
+       "GET",
+       "POST"
+      ],
+      "rows": [
+       [
+        "Ma'lumot qayerda",
+        "URL query da",
+        "so'rov tanasida"
+       ],
+       [
+        "Ulashsa bo'ladimi",
+        "ha",
+        "yo'q"
+       ],
+       [
+        "Qachon",
+        "qidiruv, filtr",
+        "yaratish, o'zgartirish, parol, fayl"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Tugma turlari",
+     "code": {
+      "lang": "html",
+      "text": "<form action=\"/order\" method=\"post\">\n  <input name=\"note\">\n  <button type=\"button\">Hisoblash</button>      <!-- yubormaydi -->\n  <button>Buyurtma</button>                     <!-- type yo'q = submit -->\n  <button formnovalidate formaction=\"/draft\">Qoralama</button>\n</form>"
+     },
+     "bullets": [
+      "form.submit() validatsiya qilmaydi va submit hodisasini chiqarmaydi.",
+      "form.requestSubmit() tugma bosilgandek ishlaydi.",
+      "Forma tashqarisidagi tugma form=\"id\" bilan ulanadi."
+     ]
+    },
+    {
+     "heading": "FormData qoidalari",
+     "bullets": [
+      "name yo'q maydon yuborilmaydi.",
+      "disabled maydon yuborilmaydi, readonly yuboriladi.",
+      "Belgilanmagan checkbox umuman yo'q; belgilangani value, u bo'lmasa \"on\".",
+      "Bir xil nomlilar uchun getAll(); Object.fromEntries oxirgisini qoldiradi.",
+      "Tugmaning name/value si new FormData(form) ga kirmaydi (submitter berilmasa)."
+     ]
+    },
+    {
+     "heading": "Fayl yuklash",
+     "code": {
+      "lang": "js",
+      "text": "// HTML: <form method=\"post\" enctype=\"multipart/form-data\">\nform.addEventListener('submit', async (e) => {\n  e.preventDefault();\n  await fetch('/api/upload', {\n    method: 'POST',\n    body: new FormData(form), // Content-Type ni QO'LDA YOZMANG\n  });\n});"
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "Content-Type ni qo'lda yozsangiz boundary (qismlar chegarasi) yo'qoladi va server faylni o'qiy olmaydi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔁",
+       "title": "Sahifa o'zi yangilanib ketdi",
+       "text": "Forma ichidagi \"Filtr\" tugmasida type=\"button\" yo'q edi."
+      },
+      {
+       "icon": "🔗",
+       "title": "Qidiruv havolasi",
+       "text": "method=\"get\" bo'lgani uchun /search?q=react ni do'stga yuborsa bo'ladi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Forma ichidagi har bir amal tugmasiga type=\"button\" yozing; yuboradigani bitta va aniq bo'lsin."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Parolni method=\"get\" bilan yuborish.",
+       "method=\"post\" va HTTPS.",
+       "URL tarixda va server loglarida qoladi."
+      ],
+      [
+       "Dasturiy yuborishda form.submit().",
+       "form.requestSubmit().",
+       "submit() tekshiruv va hodisani chetlab o'tadi."
+      ],
+      [
+       "submit o'rniga tugmaning click hodisasini tinglash.",
+       "form ning submit hodisasi.",
+       "Enter bilan yuborish ham ushlanadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Standart: type yozilmagan tugma — submit.",
+    "FormData name li va disabled bo'lmagan maydonlarni oladi.",
+    "Fayl uchun multipart/form-data.",
+    "Hodisani forma submit ida tinglang."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Network panelida ko'ring",
+    "text": "Bitta formani avval GET, keyin POST bilan yuborib, ma'lumot URL da yoki Payload bo'limida ekanini solishtiring."
+   },
+   {
+    "title": "FormData ni chop eting",
+    "text": "submit da [...new FormData(form)] ni konsolga chiqarib, disabled, readonly va checkbox maydonlarini sinang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Forma yuborilganda FormData da qaysi kalitlar bo'ladi?",
+    "options": [
+     "b va d",
+     "a, b va d",
+     "a, b, c va d",
+     "faqat d"
+    ],
+    "answer": "b va d",
+    "explain": "a disabled, c belgilanmagan checkbox. readonly (b) va hidden (d) yuboriladi.",
+    "passage": "<input name=\"a\" value=\"1\" disabled>\n<input name=\"b\" value=\"2\" readonly>\n<input name=\"c\" type=\"checkbox\">\n<input name=\"d\" type=\"hidden\" value=\"4\">"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolda nima chiqadi?",
+    "options": [
+     "\"css\"",
+     "\"js\"",
+     "\"js,css\"",
+     "[\"js\",\"css\"]"
+    ],
+    "answer": "\"css\"",
+    "explain": "Object.fromEntries bir xil kalitning oxirgi qiymatini qoldiradi.",
+    "passage": "<input type=\"checkbox\" name=\"tag\" value=\"js\" checked>\n<input type=\"checkbox\" name=\"tag\" value=\"css\" checked>\n<script>\n  const o = Object.fromEntries(new FormData(f));\n  console.log(o.tag);\n</script>"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "data.get('news') nima qaytaradi? (<input type=\"checkbox\" name=\"news\" checked>, value yozilmagan)",
+    "options": [
+     "\"on\"",
+     "true",
+     "\"checked\"",
+     "null"
+    ],
+    "answer": "\"on\"",
+    "explain": "value yo'q checkbox belgilansa, standart qiymat \"on\"."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "\"Ochish\" bosilganda nima bo'ladi?",
+    "options": [
+     "Forma yuboriladi",
+     "Faqat click hodisasi ishlaydi",
+     "Hech narsa bo'lmaydi",
+     "Maydonlar tozalanadi"
+    ],
+    "answer": "Forma yuboriladi",
+    "explain": "type yozilmagan tugma forma ichida submit hisoblanadi.",
+    "passage": "<form action=\"/save\">\n  <input name=\"q\">\n  <button onclick=\"openPanel()\">Ochish</button>\n</form>"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "JavaScript dan formani validatsiya va submit hodisasi bilan yuborish uchun?",
+    "options": [
+     "form.requestSubmit()",
+     "form.submit()",
+     "form.send()",
+     "form.dispatchEvent(new Event('send'))"
+    ],
+    "answer": "form.requestSubmit()",
+    "explain": "requestSubmit tugma bosilgandek ishlaydi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Fayl tanlangan, lekin serverga faqat fayl nomi bormoqda. Nima yetishmayapti?",
+    "options": [
+     "enctype=\"multipart/form-data\"",
+     "accept=\"multipart/form-data\"",
+     "method=\"get\"",
+     "multiple atributi"
+    ],
+    "answer": "enctype=\"multipart/form-data\"",
+    "explain": "Standart urlencoded kodlash faylning o'zini yubora olmaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi kodda server faylni o'qiy olmayapti. Sabab nima?",
+    "options": [
+     "Content-Type qo'lda yozilgan",
+     "FormData fetch bilan ishlamaydi",
+     "POST o'rniga PUT kerak",
+     "body JSON.stringify qilinmagan"
+    ],
+    "answer": "Content-Type qo'lda yozilgan",
+    "explain": "Brauzer boundary ni o'zi qo'shishi kerak; qo'lda yozilgan sarlavhada u yo'q.",
+    "passage": "fetch('/up', {\n  method: 'POST',\n  headers: { 'Content-Type': 'multipart/form-data' },\n  body: new FormData(form),\n});"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "\"Qoralama\" tugmasi bo'sh majburiy maydonlar bilan ham formani yuborishi kerak. Qaysi atribut?",
+    "options": [
+     "formnovalidate",
+     "novalidate-button",
+     "type=\"reset\"",
+     "formtarget"
+    ],
+    "answer": "formnovalidate",
+    "explain": "formnovalidate shu tugma orqali yuborilganda tekshiruvni o'chiradi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Qaysi holatda method=\"get\" to'g'ri tanlov?",
+    "options": [
+     "Mahsulot qidiruvi va filtr",
+     "Login va parol bilan hisobga kirish",
+     "Rasm yuklash",
+     "Hisobni o'chirish"
+    ],
+    "answer": "Mahsulot qidiruvi va filtr",
+    "explain": "GET faqat o'qish uchun; natija URL da saqlanadi va ulashiladi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Bir xil nomli barcha qiymatlarni massiv qilib beradigan FormData metodi:",
+    "answer": "getAll",
+    "explain": "data.getAll('tag') — [\"js\", \"css\"].",
+    "alsoAccept": [
+     "getAll()"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Forma tashqarisidagi tugmani id=\"pay\" formaga ulaydigan atribut nomi:",
+    "answer": "form",
+    "explain": "<button form=\"pay\">To'lash</button>."
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Foydalanuvchi yuborish tugmasini bosgandan keyingi tartib:",
+    "words": [
+     "validatsiya",
+     "submit hodisasi",
+     "juftliklar yig'iladi",
+     "so'rov yuboriladi"
+    ],
+    "answer": "validatsiya submit hodisasi juftliklar yig'iladi so'rov yuboriladi",
+    "explain": "Validatsiyadan o'tmasa submit hodisasi umuman chiqmaydi."
+   }
+  ]
+ },
+ {
+  "code": "fe-html-md-06",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 6,
+  "title": "Validatsiya va xatolarni ko'rsatish",
+  "intro": "required, pattern, min/max, :user-invalid, Constraint Validation API va xatoni hamma uchun tushunarli qilish.",
+  "theory": {
+   "analogy": {
+    "icon": "🛂",
+    "title": "Ikki nazorat",
+    "text": "Aeroportda kirishdagi tekshiruv navbatni tezlashtiradi (brauzer), lekin asosiy nazorat chegarada (server). Birinchisini chetlab o'tsa bo'ladi, ikkinchisini yo'q."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Constraint validation (cheklov tekshiruvi) — brauzerning o'zida bor forma tekshiruvi: atributlar qoidani beradi, validity obyekti qaysi qoida buzilganini aytadi, setCustomValidity esa o'z xatoingizni qo'shadi. Bu foydalanuvchi qulayligi uchun, xavfsizlik uchun emas: server hammasini qayta tekshiradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Constraint (cheklov)",
+       "text": "Maydon qiymatiga qo'yilgan talab."
+      },
+      {
+       "term": "validity (yaroqlilik obyekti)",
+       "text": "valueMissing, typeMismatch, patternMismatch kabi bayroqlar."
+      },
+      {
+       "term": "setCustomValidity",
+       "text": "O'z xato xabaringizni o'rnatadi; bo'sh satr bilan bekor qilinadi."
+      },
+      {
+       "term": "aria-invalid / aria-describedby",
+       "text": "Maydon xato ekanini va xato matni qayerdaligini bildiradi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Ro'yxatdan o'tishda",
+       "text": "Maydon ostida aniq xato matni ko'rsatasiz."
+      },
+      {
+       "term": "\"Bu login band\" kabi server xatosida",
+       "text": "setCustomValidity yoki aria-invalid bilan maydonga bog'laysiz."
+      },
+      {
+       "term": "O'z dizayningiz kerak bo'lsa",
+       "text": "novalidate + checkValidity."
+      }
+     ]
+    },
+    {
+     "heading": "validity bayroqlari",
+     "table": {
+      "head": [
+       "Bayroq",
+       "Qachon true"
+      ],
+      "rows": [
+       [
+        "valueMissing",
+        "required, qiymat bo'sh"
+       ],
+       [
+        "typeMismatch",
+        "email yoki url formati xato"
+       ],
+       [
+        "patternMismatch",
+        "pattern ga TO'LIQ mos emas"
+       ],
+       [
+        "tooShort / tooLong",
+        "uzunlik chegarasi (foydalanuvchi tahririda)"
+       ],
+       [
+        "rangeUnderflow / rangeOverflow",
+        "min / max buzilgan"
+       ],
+       [
+        "stepMismatch",
+        "step ga mos emas"
+       ],
+       [
+        "customError",
+        "setCustomValidity berilgan"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Nozik qoidalar",
+     "bullets": [
+      "pattern butun qiymatga mos kelishi kerak (^ va $ yozilgandek).",
+      "Bo'sh ixtiyoriy maydon pattern va minlength tekshiruvidan o'tadi.",
+      "disabled va readonly maydonlar tekshirilmaydi.",
+      ":invalid sahifa ochilishi bilan ishlaydi, :user-invalid foydalanuvchi maydon bilan ishlagandan keyin."
+     ]
+    },
+    {
+     "heading": "O'z xabaringiz",
+     "code": {
+      "lang": "js",
+      "text": "form.noValidate = true;\nform.addEventListener('submit', (e) => {\n  if (!form.checkValidity()) {\n    e.preventDefault();\n    const bad = form.querySelector(':invalid');\n    bad.setAttribute('aria-invalid', 'true');\n    errorBox.textContent = bad.validationMessage;\n    bad.focus();\n  }\n});\n\nlogin.setCustomValidity('Bu login band');\nlogin.addEventListener('input', () => login.setCustomValidity(''));"
+     }
+    },
+    {
+     "heading": "Tushunarli xato",
+     "code": {
+      "lang": "html",
+      "text": "<label for=\"email\">Email</label>\n<input id=\"email\" type=\"email\" aria-invalid=\"true\"\n       aria-describedby=\"email-err\">\n<p id=\"email-err\">Email noto'g'ri. Masalan: ali@example.com</p>"
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "Faqat qizil chegara yetarli emas: rangni ko'rmaydigan odam va ekran o'qish dasturi xatoni bilmay qoladi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "😤",
+       "title": "Sahifa ochilishi bilan qizil",
+       "text": ":invalid ishlatilgan — :user-invalid kerak."
+      },
+      {
+       "icon": "🧨",
+       "title": "curl bilan chetlab o'tish",
+       "text": "required faqat brauzerda; serverga bo'sh qiymat baribir kelishi mumkin."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Xato xabari ikki narsani aytsin: nima noto'g'ri va qanday tuzatish. Yuborilganda fokusni birinchi xato maydonga o'tkazing."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "setCustomValidity xabarini tozalamaslik.",
+       "input da setCustomValidity('').",
+       "Maydon abadiy xato bo'lib qoladi."
+      ],
+      [
+       "Har harfda xato ko'rsatish.",
+       "blur yoki submit da tekshirish.",
+       "Yozib bo'lmagan odamni urishmang."
+      ],
+      [
+       "Faqat client validatsiyaga ishonish.",
+       "Serverda ham tekshirish.",
+       "So'rovni qo'lda yuborish oson."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Atribut qoidani beradi, validity sababni aytadi.",
+    "pattern to'liq moslikni talab qiladi.",
+    "Custom xatoni bo'sh satr bilan tozalang.",
+    "Xato matn bilan va maydonga bog'langan bo'lsin."
+   ]
+  },
+  "practice": [
+   {
+    "title": "validity ni kuzating",
+    "text": "Maydonga turli qiymat yozib, konsolda input.validity obyektini ko'ring."
+   },
+   {
+    "title": "O'z xatolaringiz",
+    "text": "novalidate li ro'yxatdan o'tish formasi yozing: xato matni, aria-invalid, aria-describedby va birinchi xatoga fokus."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "pattern=\"[0-9]{3}\" li ixtiyoriy bo'lmagan maydonga \"1234\" yozildi. Holat qanday?",
+    "options": [
+     "Xato: patternMismatch",
+     "Yaroqli: ichida 3 raqam bor",
+     "Xato: rangeOverflow",
+     "Xato: valueMissing"
+    ],
+    "answer": "Xato: patternMismatch",
+    "explain": "pattern butun qiymatga qo'llanadi, qisman moslik hisoblanmaydi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "<input pattern=\"[a-z]+\"> bo'sh qoldirildi, required yo'q. Forma yuboriladimi?",
+    "options": [
+     "Ha, maydon yaroqli",
+     "Yo'q, patternMismatch",
+     "Yo'q, valueMissing",
+     "Faqat Enter bosilsa"
+    ],
+    "answer": "Ha, maydon yaroqli",
+    "explain": "Bo'sh qiymat pattern bilan tekshirilmaydi; majburiylik uchun required kerak."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolda nima chiqadi?",
+    "options": [
+     "false",
+     "true",
+     "undefined",
+     "\"Band\""
+    ],
+    "answer": "false",
+    "explain": "customError bor, shuning uchun checkValidity false qaytaradi.",
+    "passage": "input.value = 'ali';\ninput.setCustomValidity('Band');\nconsole.log(input.checkValidity());"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Foydalanuvchi loginni o'zgartirdi, lekin forma hali ham yuborilmayapti. Kodda faqat setCustomValidity('Bu login band') bor. Nima unutilgan?",
+    "options": [
+     "Xabarni bo'sh satr bilan tozalash",
+     "novalidate atributini qo'shish",
+     "reportValidity ni o'chirish",
+     "required ni olib tashlash"
+    ],
+    "answer": "Xabarni bo'sh satr bilan tozalash",
+    "explain": "Custom xato o'zi yo'qolmaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Maydon sahifa ochilishi bilan qizil bo'lmasligi, faqat foydalanuvchi ishlagach qizarishi kerak. Selektor?",
+    "options": [
+     "input:user-invalid",
+     "input:invalid",
+     "input:required:invalid",
+     "input[invalid]"
+    ],
+    "answer": "input:user-invalid",
+    "explain": ":invalid darhol ishlaydi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "<input type=\"text\" required disabled> bo'sh. form.checkValidity() natijasi? (boshqa maydon yo'q)",
+    "options": [
+     "true",
+     "false",
+     "undefined",
+     "Xatolik tashlaydi"
+    ],
+    "answer": "true",
+    "explain": "disabled maydon tekshiruvda qatnashmaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "novalidate qo'yilgan formada checkValidity() qanday ishlaydi?",
+    "options": [
+     "Qoidalarni avvalgidek tekshiradi",
+     "Doim true qaytaradi",
+     "Doim false qaytaradi",
+     "Faqat required maydonni tekshiradi"
+    ],
+    "answer": "Qoidalarni avvalgidek tekshiradi",
+    "explain": "novalidate faqat yuborishdagi avtomatik tekshiruv va pufakchani o'chiradi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "age maydoni: type=\"number\" min=\"18\". Qiymat \"15\". Qaysi bayroq true?",
+    "options": [
+     "rangeUnderflow",
+     "rangeOverflow",
+     "stepMismatch",
+     "tooShort"
+    ],
+    "answer": "rangeUnderflow",
+    "explain": "Qiymat pastki chegaradan kichik."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Xato matnini maydonga ekran o'qish dasturi uchun bog'laydigan juftlik qaysi?",
+    "options": [
+     "aria-invalid va aria-describedby",
+     "title va placeholder",
+     "role=\"error\" va data-error-text",
+     "aria-hidden va data-error"
+    ],
+    "answer": "aria-invalid va aria-describedby",
+    "explain": "aria-invalid holatni, aria-describedby matnni bog'laydi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Brauzer pufakchalarisiz o'zingiz tekshirish uchun formaga qo'yiladigan atribut:",
+    "answer": "novalidate",
+    "explain": "Qoidalar saqlanadi, standart xabar chiqmaydi."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Maydonning brauzer yaratgan xato matnini beradigan property:",
+    "answer": "validationMessage",
+    "explain": "input.validationMessage — foydalanuvchi tilidagi xabar.",
+    "alsoAccept": [
+     "validationmessage"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Pufakchani ko'rsatib tekshiradigan metod: ...Validity()",
+    "answer": "report",
+    "explain": "reportValidity() checkValidity() dan farqli ravishda xabarni ekranga chiqaradi.",
+    "alsoAccept": [
+     "reportValidity",
+     "reportValidity()"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-html-md-07",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 7,
+  "title": "Input turlari, autocomplete va mobil qulaylik",
+  "intro": "To'g'ri type, inputmode, autocomplete tokenlari, number tuzoqlari, fieldset va datalist.",
+  "theory": {
+   "analogy": {
+    "icon": "⌨️",
+    "title": "Mos asbob",
+    "text": "Usta har ish uchun boshqa kalit oladi. Telefon raqami uchun raqamli klaviatura, email uchun @ tugmasi bor klaviatura — foydalanuvchining barmog'i charchamaydi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "To'g'ri type va autocomplete (avtomatik to'ldirish) bepul foyda beradi: mos telefon klaviaturasi, format tekshiruvi, parol menejeri va manzilni bir bosishda to'ldirish. input.value esa turdan qat'i nazar doim satr qaytaradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "inputmode (kiritish rejimi)",
+       "text": "Faqat klaviatura turini tanlaydi, tekshiruv qo'shmaydi."
+      },
+      {
+       "term": "autocomplete token (to'ldirish belgisi)",
+       "text": "Maydon ma'nosi: email, current-password, one-time-code."
+      },
+      {
+       "term": "fieldset / legend",
+       "text": "Bog'liq maydonlar guruhi va uning nomi."
+      },
+      {
+       "term": "datalist (takliflar ro'yxati)",
+       "text": "Taklif beradi, lekin boshqa qiymat yozishga ruxsat beradi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Checkout (to'lov) sahifasida",
+       "text": "Manzil va karta tokenlari bilan to'ldirish tezlashadi."
+      },
+      {
+       "term": "SMS kod maydonida",
+       "text": "autocomplete=\"one-time-code\" va inputmode=\"numeric\"."
+      },
+      {
+       "term": "Radio guruhida",
+       "text": "fieldset + legend savolni aytadi."
+      }
+     ]
+    },
+    {
+     "heading": "autocomplete tokenlari",
+     "table": {
+      "head": [
+       "Token",
+       "Qayerda"
+      ],
+      "rows": [
+       [
+        "username, current-password",
+        "kirish formasi"
+       ],
+       [
+        "new-password",
+        "ro'yxatdan o'tish, parol almashtirish"
+       ],
+       [
+        "one-time-code",
+        "SMS / bir martalik kod"
+       ],
+       [
+        "name, email, tel",
+        "aloqa"
+       ],
+       [
+        "street-address, postal-code",
+        "manzil"
+       ],
+       [
+        "cc-number, cc-exp, cc-csc",
+        "to'lov kartasi"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "number tuzoqlari",
+     "bullets": [
+      "Karta raqami, pochta indeksi, pasport raqami son EMAS: type=\"text\" inputmode=\"numeric\".",
+      "type=\"number\" da o'q tugmalar bor, scroll qiymatni o'zgartirishi mumkin.",
+      "Noto'g'ri kiritilgan matnda value bo'sh satr bo'ladi.",
+      "Son kerak bo'lsa valueAsNumber."
+     ]
+    },
+    {
+     "heading": "Kod maydoni",
+     "code": {
+      "lang": "html",
+      "text": "<input name=\"code\" type=\"text\" inputmode=\"numeric\"\n       autocomplete=\"one-time-code\" enterkeyhint=\"done\"\n       maxlength=\"6\" pattern=\"[0-9]{6}\">"
+     }
+    },
+    {
+     "heading": "Guruh",
+     "code": {
+      "lang": "html",
+      "text": "<fieldset>\n  <legend>Yetkazib berish</legend>\n  <label><input type=\"radio\" name=\"d\" value=\"courier\" checked> Kuryer</label>\n  <label><input type=\"radio\" name=\"d\" value=\"pickup\"> Olib ketish</label>\n</fieldset>"
+     },
+     "callout": {
+      "kind": "info",
+      "text": "Radiolar bitta guruh bo'lishi uchun name bir xil bo'ladi. fieldset disabled ichidagi hamma maydonni o'chiradi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔐",
+       "title": "Parol menejeri",
+       "text": "current-password va new-password to'g'ri bo'lsa, menejer kerakli parolni taklif qiladi yoki yangisini yaratadi."
+      },
+      {
+       "icon": "📲",
+       "title": "SMS kod",
+       "text": "one-time-code bilan telefon kodni klaviatura ustida taklif qiladi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Har maydon uchun uch savol: type nima, klaviatura qanday, brauzer uni nima deb to'ldiradi (autocomplete)."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Telefon uchun type=\"number\".",
+       "type=\"tel\".",
+       "+ va boshidagi nollar buziladi."
+      ],
+      [
+       "placeholder ni label o'rniga.",
+       "label for.",
+       "Yozganda yo'qoladi va kontrasti past."
+      ],
+      [
+       "Parol maydonida autocomplete=\"off\".",
+       "current-password yoki new-password.",
+       "Parol menejeri zaif parolga majburlamaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "value doim satr; valueAsNumber va valueAsDate qulay.",
+    "inputmode klaviatura, type esa ma'no va tekshiruv.",
+    "autocomplete tokenlari to'ldirishni yoqadi.",
+    "Radio guruhi: bir xil name + fieldset/legend."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Telefonda sinang",
+    "text": "type=text, email, tel, url va inputmode=numeric maydonlarini telefonda ochib klaviaturalarni solishtiring."
+   },
+   {
+    "title": "Checkout formasi",
+    "text": "Ism, telefon, manzil va karta maydonlariga to'g'ri type va autocomplete bering."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolda nima chiqadi?",
+    "options": [
+     "\"251\"",
+     "26",
+     "\"26\"",
+     "NaN"
+    ],
+    "answer": "\"251\"",
+    "explain": "value satr: \"25\" + 1 = \"251\".",
+    "passage": "<input id=\"n\" type=\"number\" value=\"25\">\n<script>\n  console.log(n.value + 1);\n</script>"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Pochta indeksi \"010001\" uchun eng to'g'ri maydon qaysi?",
+    "options": [
+     "type=\"text\" inputmode=\"numeric\"",
+     "type=\"number\" inputmode=\"decimal\"",
+     "type=\"tel\" step=\"any\"",
+     "type=\"range\" min=\"0\""
+    ],
+    "answer": "type=\"text\" inputmode=\"numeric\"",
+    "explain": "Indeks identifikator: boshidagi nol saqlanishi kerak."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Parol almashtirish formasida yangi parol maydonining autocomplete qiymati?",
+    "options": [
+     "new-password",
+     "current-password",
+     "off",
+     "password"
+    ],
+    "answer": "new-password",
+    "explain": "new-password menejerga yangi kuchli parol taklif qilishni aytadi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "inputmode=\"numeric\" harf yozishni taqiqlaydimi?",
+    "options": [
+     "Yo'q, faqat klaviaturani tanlaydi",
+     "Ha, harflar umuman kiritilmaydi",
+     "Ha, forma yuborilmay qoladi",
+     "Faqat iPhone da taqiqlaydi"
+    ],
+    "answer": "Yo'q, faqat klaviaturani tanlaydi",
+    "explain": "Tekshiruv uchun pattern va server kerak."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Ikkala radio ham bir vaqtda tanlanyapti. Sabab?",
+    "options": [
+     "name qiymatlari har xil",
+     "fieldset yozilmagan",
+     "value atributi yo'q",
+     "label ichida joylashgan"
+    ],
+    "answer": "name qiymatlari har xil",
+    "explain": "Radio guruhi name bo'yicha hosil bo'ladi.",
+    "passage": "<input type=\"radio\" name=\"d1\" value=\"a\">\n<input type=\"radio\" name=\"d2\" value=\"b\">"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Foydalanuvchi ro'yxatdan tanlashi ham, o'z shahrini yozishi ham mumkin bo'lsin. Nima ishlatiladi?",
+    "options": [
+     "input + datalist",
+     "select + option",
+     "radio guruhi",
+     "select multiple"
+    ],
+    "answer": "input + datalist",
+    "explain": "select faqat tayyor variantlarni beradi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "number maydonga \"12a\" kabi yaroqsiz narsa kiritilsa input.value nima?",
+    "options": [
+     "bo'sh satr",
+     "\"12a\"",
+     "12",
+     "null qiymat"
+    ],
+    "answer": "bo'sh satr",
+    "explain": "Yaroqsiz son uchun value \"\" bo'ladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "<label> bilan input to'g'ri bog'langan variant qaysi?",
+    "options": [
+     "<label for=\"c\">Shahar</label><input id=\"c\">",
+     "<label id=\"c\">Shahar</label><input for=\"c\">",
+     "<label name=\"c\">Shahar</label><input name=\"c\">",
+     "<label>Shahar</label><input id=\"c\">"
+    ],
+    "answer": "<label for=\"c\">Shahar</label><input id=\"c\">",
+    "explain": "for label da, id input da turadi (yoki input label ichiga joylanadi)."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Barcha to'lov maydonlarini birdaniga o'chirishning eng qisqa yo'li?",
+    "options": [
+     "<fieldset disabled>",
+     "<form disabled>",
+     "<div inert-form>",
+     "<legend disabled>"
+    ],
+    "answer": "<fieldset disabled>",
+    "explain": "fieldset disabled ichidagi boshqaruvlarni o'chiradi; form da disabled atributi yo'q."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "SMS kodni telefon taklif qilishi uchun: autocomplete=\"...\"",
+    "answer": "one-time-code",
+    "explain": "one-time-code — bir martalik kod."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Mobil klaviaturadagi Enter tugmasi yozuvini o'zgartiradigan atribut:",
+    "answer": "enterkeyhint",
+    "explain": "next, send, search, done qiymatlarini oladi."
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "type=\"number\" qiymatini to'g'ridan-to'g'ri son qilib beradigan property:",
+    "answer": "valueAsNumber",
+    "explain": "input.valueAsNumber — satrni o'girib o'tirmaysiz.",
+    "alsoAccept": [
+     "valueasnumber"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-html-md-08",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 8,
+  "title": "Klaviatura, fokus va kontrast",
+  "intro": "WCAG tamoyillari, tabindex, fokus tartibi va ko'rinishi, skip link, kontrast va bosish maydoni.",
+  "theory": {
+   "analogy": {
+    "icon": "🔦",
+    "title": "Qorong'ida chiroq",
+    "text": "Fokus halqasi klaviatura foydalanuvchisining chirog'i. outline: none yozish — chiroqni o'chirib, \"yo'lni o'zing top\" deyish."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Accessibility (a11y — hamma foydalana olishi) ning eng amaliy sinovi: sichqonchani chetga qo'yib, sahifani faqat klaviatura bilan ishlata olasizmi va qayerda turganingizni ko'rasizmi. WCAG (veb-kontent qulayligi standarti) 2.2 da odatda AA darajasi maqsad qilinadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Focus (fokus)",
+       "text": "Klaviatura buyruqlari yo'naltirilgan element."
+      },
+      {
+       "term": "Tab order (Tab tartibi)",
+       "text": "Fokus elementlar bo'ylab yurish ketma-ketligi; odatda DOM tartibi."
+      },
+      {
+       "term": "Skip link (o'tib ketish havolasi)",
+       "text": "Menyuni sakrab asosiy mazmunga olib boradigan havola."
+      },
+      {
+       "term": "Contrast ratio (kontrast nisbati)",
+       "text": "Matn va fon yorqinligi farqi: 1:1 dan 21:1 gacha."
+      },
+      {
+       "term": "POUR",
+       "text": "Perceivable, Operable, Understandable, Robust — WCAG ning to'rt tamoyili."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Har bir yangi komponentda",
+       "text": "Tab, Shift+Tab, Enter, Space, Esc bilan sinaysiz."
+      },
+      {
+       "term": "Dizayn kelganda",
+       "text": "Kontrastni DevTools rang tanlagichida tekshirasiz."
+      },
+      {
+       "term": "Ikonka tugmalarda",
+       "text": "Bosish maydoni kamida 24×24 CSS piksel."
+      }
+     ]
+    },
+    {
+     "heading": "tabindex qiymatlari",
+     "table": {
+      "head": [
+       "Qiymat",
+       "Natija"
+      ],
+      "rows": [
+       [
+        "0",
+        "tabiiy tartibga qo'shadi"
+       ],
+       [
+        "-1",
+        "Tab yetmaydi, lekin element.focus() ishlaydi"
+       ],
+       [
+        "1 va yuqori",
+        "boshqalardan OLDIN keladi, tartibni buzadi — ishlatmang"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Klaviatura xatti-harakati",
+     "bullets": [
+      "a[href]: Enter. button: Enter va Space. checkbox: Space.",
+      "radio guruhi ichida o'q tugmalari, guruhga bitta Tab.",
+      "href siz <a> fokus olmaydi.",
+      "div onclick klaviaturada ishlamaydi: button ishlating."
+     ]
+    },
+    {
+     "heading": "Fokus ko'rinishi va skip link",
+     "code": {
+      "lang": "html",
+      "text": "<a class=\"skip\" href=\"#main\">Asosiy qismga o'tish</a>\n<header>...</header>\n<main id=\"main\" tabindex=\"-1\">...</main>\n\n<style>\n  button:focus-visible { outline: 3px solid #2f6fde; outline-offset: 2px; }\n  .skip { position: absolute; left: -999px; }\n  .skip:focus { left: 8px; top: 8px; }\n</style>"
+     }
+    },
+    {
+     "heading": "AA raqamlari",
+     "table": {
+      "head": [
+       "Talab",
+       "Qiymat"
+      ],
+      "rows": [
+       [
+        "Oddiy matn kontrasti",
+        "4.5:1"
+       ],
+       [
+        "Katta matn (24px yoki qalin ~19px)",
+        "3:1"
+       ],
+       [
+        "UI element va ikonka",
+        "3:1"
+       ],
+       [
+        "Bosish maydoni",
+        "kamida 24×24 px"
+       ],
+       [
+        "Kattalashtirish",
+        "200% da ishlashi kerak"
+       ]
+      ]
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "Ma'noni faqat rang bilan bermang: xato maydonida qizil rang bilan birga matn yoki belgi bo'lsin."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🖱️",
+       "title": "Singan sichqoncha",
+       "text": "Forma to'ldirib, buyurtma bera olasizmi? Yo'q bo'lsa, ko'p odam ham bera olmaydi."
+      },
+      {
+       "icon": "☀️",
+       "title": "Quyoshli ko'cha",
+       "text": "Och kulrang matn telefonda ko'rinmaydi — kontrast hammaga kerak."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Har bir ish oxirida 2 daqiqa: faqat Tab bilan sahifani aylaning."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "button:focus { outline: none }",
+       ":focus-visible bilan o'z uslubingiz.",
+       "Klaviatura foydalanuvchisi yo'qoladi."
+      ],
+      [
+       "Tartibni tabindex=\"1\", \"2\" bilan tuzatish.",
+       "DOM tartibini to'g'rilash.",
+       "Musbat tabindex hamma narsani chalkashtiradi."
+      ],
+      [
+       "CSS order bilan ko'rinishni almashtirish.",
+       "DOM ni ko'rinish tartibida yozish.",
+       "Fokus ekran bo'ylab sakraydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Hamma amal klaviaturada ishlashi kerak.",
+    "tabindex faqat 0 yoki -1.",
+    "Fokus doim ko'rinadi.",
+    "Matn 4.5:1, katta matn va UI 3:1."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Sichqonchasiz sinov",
+    "text": "Yaxshi bilgan saytingizda faqat klaviatura bilan ro'yxatdan o'tishga harakat qiling va to'siqlarni yozib boring."
+   },
+   {
+    "title": "Kontrastni o'lchang",
+    "text": "DevTools rang tanlagichida loyihangizdagi kulrang matnlarning nisbatini tekshiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Tab bosilganda fokus qaysi tartibda yuradi?",
+    "options": [
+     "C, A, B",
+     "A, B, C",
+     "C, B, A",
+     "A, C, B"
+    ],
+    "answer": "C, A, B",
+    "explain": "Musbat tabindex li element birinchi, keyin qolganlari DOM tartibida.",
+    "passage": "<button>A</button>\n<button>B</button>\n<button tabindex=\"1\">C</button>"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "tabindex=\"-1\" nima uchun ishlatiladi?",
+    "options": [
+     "Fokusni faqat JavaScript bilan berish",
+     "Elementni Tab tartibida oxiriga qo'yish",
+     "Elementni ekrandan butunlay yashirish",
+     "Elementni birinchi bo'lib fokuslash"
+    ],
+    "answer": "Fokusni faqat JavaScript bilan berish",
+    "explain": "Masalan, xato ro'yxati yoki main ga focus() qilish."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi \"tugma\" haqida qaysi gap to'g'ri?",
+    "options": [
+     "Klaviatura bilan ishlatib bo'lmaydi",
+     "Enter bilan ishlaydi, Space bilan yo'q",
+     "Brauzer unga button rolini beradi",
+     "Tab uni o'zi topadi"
+    ],
+    "answer": "Klaviatura bilan ishlatib bo'lmaydi",
+    "explain": "div fokus olmaydi va hech qanday rolga ega emas.",
+    "passage": "<div class=\"btn\" onclick=\"save()\">Saqlash</div>"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi elementlardan qaysi biri Tab bilan fokus OLMAYDI?",
+    "options": [
+     "<a>Batafsil</a>",
+     "<a href=\"/x\">Batafsil</a>",
+     "<button>Batafsil</button>",
+     "<input type=\"checkbox\">"
+    ],
+    "answer": "<a>Batafsil</a>",
+    "explain": "href siz a havola emas, fokuslanmaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "14px oddiy matn uchun AA kontrast talabi?",
+    "options": [
+     "4.5:1",
+     "3:1",
+     "2:1",
+     "7:1"
+    ],
+    "answer": "4.5:1",
+    "explain": "7:1 — AAA darajasi; 3:1 — katta matn."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Dizayner fokus halqasi sichqoncha bosilganda chiqmasligini so'radi, klaviaturada esa qolsin. Yechim?",
+    "options": [
+     ":focus-visible da uslub berish",
+     ":focus { outline: none } yozish",
+     "tabindex=\"-1\" qo'shish",
+     "mousedown da blur() qilish"
+    ],
+    "answer": ":focus-visible da uslub berish",
+    "explain": "Brauzer klaviatura fokusida :focus-visible ni yoqadi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Skip link bosilganda fokus asosiy qismga o'tishi uchun main ga nima qo'shish foydali?",
+    "options": [
+     "tabindex=\"-1\"",
+     "tabindex=\"1\"",
+     "autofocus",
+     "role=\"link\""
+    ],
+    "answer": "tabindex=\"-1\"",
+    "explain": "Shunda main dasturiy fokus ola oladi va keyingi Tab o'sha yerdan davom etadi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Elementlar CSS bilan o'ngdan chapga qayta joylashtirildi. Qanday muammo chiqadi?",
+    "options": [
+     "Tab tartibi ko'rinishga mos kelmaydi",
+     "Elementlar fokus olmay qoladi",
+     "Enter tugmasi ishlamay qoladi",
+     "Kontrast nisbati o'zidan o'zi pasayadi"
+    ],
+    "answer": "Tab tartibi ko'rinishga mos kelmaydi",
+    "explain": "Tab DOM tartibida yuradi, CSS order ga qaramaydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Radio guruhida (3 ta radio) variantlar orasida klaviaturada qanday yuriladi?",
+    "options": [
+     "O'q tugmalari bilan",
+     "Har biriga alohida Tab bilan",
+     "Enter tugmasi bilan",
+     "Page Up va Page Down bilan"
+    ],
+    "answer": "O'q tugmalari bilan",
+    "explain": "Guruhga Tab bilan kiriladi, ichida o'qlar ishlaydi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "WCAG 2.2 AA da bosish maydonining eng kichik tomoni necha CSS piksel? (son)",
+    "answer": "24",
+    "explain": "Kamida 24×24 CSS piksel."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "WCAG tamoyillarining qisqartmasi (4 harf):",
+    "answer": "POUR",
+    "explain": "Perceivable, Operable, Understandable, Robust.",
+    "alsoAccept": [
+     "pour"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "Hozir fokusdagi elementni beradigan property: document....",
+    "answer": "activeElement",
+    "explain": "document.activeElement — fokus qayerdaligini tekshirish.",
+    "alsoAccept": [
+     "activeelement",
+     "document.activeElement"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-html-md-09",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 9,
+  "title": "Accessible name va ARIA asoslari",
+  "intro": "Element nomi qanday hisoblanadi, ARIA qachon kerak va qachon zarar, aria-expanded va live region.",
+  "theory": {
+   "analogy": {
+    "icon": "🏷️",
+    "title": "Yorliq va mexanizm",
+    "text": "Qutiga \"tugma\" deb yorliq yopishtirsangiz, u bosiladigan bo'lib qolmaydi. role=\"button\" ham yorliq xolos: mexanizmini (fokus, Enter, Space) o'zingiz yasaysiz."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Brauzer DOM yonida accessibility tree (qulaylik daraxti) quradi va ekran o'qish dasturi shuni o'qiydi. Unda har elementning roli, nomi va holati bor. ARIA (Accessible Rich Internet Applications) atributlari faqat shu daraxtni o'zgartiradi — fokus va klaviatura xatti-harakatini qo'shmaydi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Role (rol)",
+       "text": "Element nima ekani: button, link, dialog, tab."
+      },
+      {
+       "term": "Accessible name (element nomi)",
+       "text": "aria-labelledby → aria-label → label/alt/legend/caption → ichki matn → title tartibida qidiriladi (soddalashtirilgan)."
+      },
+      {
+       "term": "State (holat)",
+       "text": "aria-expanded, aria-pressed, aria-checked, aria-invalid."
+      },
+      {
+       "term": "Live region (jonli hudud)",
+       "text": "Matni o'zgarsa, ekran o'qish dasturi o'zi e'lon qiladigan element."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Ikonka tugmada",
+       "text": "aria-label bilan nom."
+      },
+      {
+       "term": "Akkordeon va menyuda",
+       "text": "aria-expanded holatni aytadi."
+      },
+      {
+       "term": "\"Saqlandi\", \"3 ta natija\" kabi xabarda",
+       "text": "role=\"status\"."
+      }
+     ]
+    },
+    {
+     "heading": "ARIA qoidalari",
+     "bullets": [
+      "Tayyor HTML element bo'lsa, ARIA emas, o'shani ishlating.",
+      "Elementning tabiiy ma'nosini buzmang (<h2 role=\"tab\"> yomon).",
+      "ARIA li interaktiv element klaviaturada ishlashi shart.",
+      "Fokuslanadigan elementga aria-hidden=\"true\" qo'ymang.",
+      "Noto'g'ri ARIA — ARIA yo'qligidan yomon."
+     ]
+    },
+    {
+     "heading": "Eng ko'p kerak bo'ladigan naqshlar",
+     "code": {
+      "lang": "html",
+      "text": "<button type=\"button\" aria-label=\"Savatdan o'chirish\">\n  <svg aria-hidden=\"true\">...</svg>\n</button>\n\n<button type=\"button\" aria-expanded=\"false\" aria-controls=\"filters\">Filtrlar</button>\n<div id=\"filters\" hidden>...</div>\n\n<nav><a href=\"/narxlar\" aria-current=\"page\">Narxlar</a></nav>"
+     }
+    },
+    {
+     "heading": "Live region",
+     "table": {
+      "head": [
+       "Yozuv",
+       "Qachon o'qiydi",
+       "Misol"
+      ],
+      "rows": [
+       [
+        "role=\"status\" (polite)",
+        "hozirgi o'qishni tugatgach",
+        "Saqlandi, natija soni"
+       ],
+       [
+        "role=\"alert\" (assertive)",
+        "darhol, bo'lib",
+        "To'lov o'tmadi"
+       ]
+      ]
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "Live region sahifada OLDINDAN turishi kerak; matn keyin yoziladi. Matni bilan birga yaratilgan element ko'pincha e'lon qilinmaydi."
+     }
+    },
+    {
+     "heading": "Yashirish usullari",
+     "table": {
+      "head": [
+       "Usul",
+       "Ko'rinadi",
+       "Ekran o'qish dasturi o'qiydi"
+      ],
+      "rows": [
+       [
+        "display:none yoki hidden",
+        "yo'q",
+        "yo'q"
+       ],
+       [
+        "visibility:hidden",
+        "yo'q",
+        "yo'q"
+       ],
+       [
+        "opacity:0",
+        "yo'q",
+        "ha"
+       ],
+       [
+        "aria-hidden=\"true\"",
+        "ha",
+        "yo'q"
+       ],
+       [
+        ".sr-only klassi",
+        "yo'q",
+        "ha"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔔",
+       "title": "Jimgina saqlandi",
+       "text": "Ko'radigan odam yashil xabarni ko'radi, ko'ziojiz odam role=\"status\" bo'lmasa hech narsani bilmaydi."
+      },
+      {
+       "icon": "✖️",
+       "title": "\"Tugma, tugma, tugma\"",
+       "text": "Nomsiz uchta ikonka tugmasi ekran o'qish dasturida farqsiz eshitiladi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Birinchi ARIA qoidasi: ARIA yozishdan oldin oddiy HTML element yetmasligiga ishonch hosil qiling."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "<div role=\"button\"> yozib to'xtash.",
+       "<button> ishlatish.",
+       "Rol klaviaturani qo'shmaydi."
+      ],
+      [
+       "Ko'rinadigan matndan boshqa aria-label.",
+       "Nom ko'rinadigan matnni o'z ichiga olsin.",
+       "Ovoz bilan boshqaruvchi tugmani topolmaydi."
+      ],
+      [
+       "Hamma xabarga role=\"alert\".",
+       "Oddiy xabarga status.",
+       "alert o'qishni bo'lib, asabga tegadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "ARIA faqat daraxtni o'zgartiradi.",
+    "aria-labelledby ustun, keyin aria-label, keyin tabiiy manba.",
+    "Holat o'zgarsa atributni ham yangilang.",
+    "status — muloyim, alert — shoshilinch."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Daraxtni o'qing",
+    "text": "DevTools → Elements → Accessibility panelida o'z tugmalaringizning role va name qiymatini tekshiring."
+   },
+   {
+    "title": "Ekran o'qish dasturi",
+    "text": "NVDA yoki VoiceOver ni yoqib, ko'zingizni yumib login formasidan o'ting."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Bu tugmaning accessible name i nima?",
+    "options": [
+     "Yopish",
+     "×",
+     "Yopish ×",
+     "Nomi yo'q"
+    ],
+    "answer": "Yopish",
+    "explain": "aria-label ichki matndan ustun.",
+    "passage": "<button aria-label=\"Yopish\">×</button>"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Bu tugmaning nomi nima?",
+    "options": [
+     "Buyurtma",
+     "Yuborish",
+     "Tasdiqlash",
+     "Buyurtma Tasdiqlash"
+    ],
+    "answer": "Buyurtma",
+    "explain": "aria-labelledby aria-label dan ham, ichki matndan ham ustun.",
+    "passage": "<h2 id=\"t\">Buyurtma</h2>\n<button aria-labelledby=\"t\" aria-label=\"Tasdiqlash\">Yuborish</button>"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "<div role=\"button\">Saqlash</div> haqida qaysi gap to'g'ri?",
+    "options": [
+     "Fokus va Enter o'zi qo'shilmaydi",
+     "Space bilan bosiladi, Enter bilan yo'q",
+     "Tab tartibiga o'zi qo'shiladi",
+     "Forma ichida submit bo'ladi"
+    ],
+    "answer": "Fokus va Enter o'zi qo'shilmaydi",
+    "explain": "ARIA xatti-harakat bermaydi: tabindex va klaviatura hodisalarini qo'lda yozish kerak."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Akkordeon ochilganda sarlavha tugmasida nima yangilanishi kerak?",
+    "options": [
+     "aria-expanded=\"true\"",
+     "aria-hidden=\"false\"",
+     "aria-checked=\"true\"",
+     "aria-live=\"polite\""
+    ],
+    "answer": "aria-expanded=\"true\"",
+    "explain": "aria-expanded ochiq/yopiq holatini aytadi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Qidiruvdan keyin \"12 ta natija\" matni o'qilishini xohlaysiz. Qaysi yechim ishonchli?",
+    "options": [
+     "Oldindan turgan role=\"status\" ga matn yozish",
+     "Matnli yangi role=\"status\" elementni qo'shish",
+     "Natija soniga title atributi berish",
+     "alert() oynasini chiqarish"
+    ],
+    "answer": "Oldindan turgan role=\"status\" ga matn yozish",
+    "explain": "Live region avval DOM da bo'lib, keyin matni o'zgarsa e'lon qilinadi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "role=\"alert\" qaysi xabar uchun o'rinli?",
+    "options": [
+     "To'lov amalga oshmadi",
+     "Qoralama saqlandi",
+     "5 ta natija topildi",
+     "Salom, Ali"
+    ],
+    "answer": "To'lov amalga oshmadi",
+    "explain": "alert darhol bo'lib o'qiydi — faqat jiddiy holatda."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi kodning muammosi nima?",
+    "options": [
+     "Fokuslanadigan element daraxtdan yashirilgan",
+     "button ga type yozilsa, aria-hidden ishlamaydi",
+     "aria-hidden faqat div uchun",
+     "Tugma Tab tartibidan o'zi chiqadi"
+    ],
+    "answer": "Fokuslanadigan element daraxtdan yashirilgan",
+    "explain": "Klaviatura fokus oladi, lekin ekran o'qish dasturi hech narsa aytmaydi.",
+    "passage": "<button aria-hidden=\"true\">Menyu</button>"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Matn ko'rinmasin, lekin ekran o'qish dasturi o'qisin. Qaysi usul?",
+    "options": [
+     ".sr-only klassi",
+     "display: none",
+     "visibility: hidden",
+     "hidden atributi"
+    ],
+    "answer": ".sr-only klassi",
+    "explain": "Qolgan uchtasi elementni daraxtdan ham chiqaradi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Menyuda joriy sahifa havolasini belgilash uchun?",
+    "options": [
+     "aria-current=\"page\"",
+     "aria-selected=\"page\"",
+     "aria-active=\"true\"",
+     "role=\"current\""
+    ],
+    "answer": "aria-current=\"page\"",
+    "explain": "aria-current to'plamdagi joriy elementni bildiradi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Qo'shimcha izoh (xato yoki yordam matni) ni elementga bog'laydigan atribut:",
+    "answer": "aria-describedby",
+    "explain": "aria-describedby izoh elementining id sini oladi."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Dekorativ SVG ikonkani ekran o'qish dasturidan yashiradi: aria-hidden=\"...\"",
+    "answer": "true",
+    "explain": "aria-hidden=\"true\" daraxtdan olib tashlaydi."
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "role=\"status\" ning aria-live qiymati:",
+    "answer": "polite",
+    "explain": "status — polite, alert — assertive."
+   }
+  ]
+ },
+ {
+  "code": "fe-html-md-10",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 10,
+  "title": "Native interaktiv elementlar: dialog, popover, details",
+  "intro": "Kutubxonasiz modal, menyu va akkordeon; top layer, light dismiss, inert va hidden.",
+  "theory": {
+   "analogy": {
+    "icon": "🪟",
+    "title": "Tayyor deraza",
+    "text": "Derazani o'zingiz yasasangiz, tutqich, qulf va muhrni unutib qo'yasiz. Zavod derazasi (dialog) hammasi bilan keladi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Brauzer modal oyna, ochiluvchi menyu va akkordeonni o'zi bera oladi: dialog, popover va details. Ular fokus, Esc tugmasi va accessibility ni qo'lda yozishdan qutqaradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Modal (to'suvchi oyna)",
+       "text": "Ochiq turganda orqadagi sahifa bilan ishlab bo'lmaydigan oyna."
+      },
+      {
+       "term": "Top layer (eng ustki qatlam)",
+       "text": "Har qanday z-index dan yuqorida turadigan brauzer qatlami."
+      },
+      {
+       "term": "Light dismiss (yengil yopish)",
+       "text": "Tashqariga bosish yoki Esc bilan yopilish."
+      },
+      {
+       "term": "inert (harakatsiz)",
+       "text": "Element va ichidagilar bosilmaydi, fokus olmaydi, daraxtdan chiqadi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "\"O'chirasizmi?\" tasdiqlashida",
+       "text": "dialog + showModal()."
+      },
+      {
+       "term": "Foydalanuvchi menyusi, tooltip, toast da",
+       "text": "popover."
+      },
+      {
+       "term": "Savol-javob (FAQ) da",
+       "text": "details + summary."
+      }
+     ]
+    },
+    {
+     "heading": "dialog",
+     "code": {
+      "lang": "html",
+      "text": "<dialog id=\"confirm\" aria-labelledby=\"t\">\n  <h2 id=\"t\">Buyurtma o'chirilsinmi?</h2>\n  <form method=\"dialog\">\n    <button value=\"cancel\">Bekor qilish</button>\n    <button value=\"delete\">O'chirish</button>\n  </form>\n</dialog>\n<script>\n  confirm.showModal();\n  confirm.onclose = () => console.log(confirm.returnValue);\n</script>"
+     },
+     "bullets": [
+      "showModal(): top layer, orqa fon to'siladi, fokus ichkariga o'tadi, Esc yopadi, ::backdrop ishlaydi.",
+      "show() va qo'lda open atributi modal rejim BERMAYDI.",
+      "method=\"dialog\" serverga yubormaydi, oynani yopadi va tugma value sini returnValue ga yozadi."
+     ]
+    },
+    {
+     "heading": "popover",
+     "code": {
+      "lang": "html",
+      "text": "<button popovertarget=\"menu\">Menyu</button>\n<div id=\"menu\" popover>\n  <a href=\"/profil\">Profil</a>\n</div>"
+     }
+    },
+    {
+     "heading": "dialog va popover",
+     "table": {
+      "head": [
+       "Xususiyat",
+       "modal dialog",
+       "popover (auto)"
+      ],
+      "rows": [
+       [
+        "Orqa fon",
+        "bloklangan",
+        "ishlaydi"
+       ],
+       [
+        "Esc",
+        "yopadi",
+        "yopadi"
+       ],
+       [
+        "Tashqariga bosish",
+        "odatda yopmaydi",
+        "yopadi"
+       ],
+       [
+        "Boshqasi ochilsa",
+        "ustiga ochiladi",
+        "avvalgisi yopiladi"
+       ]
+      ]
+     },
+     "text": "popover=\"manual\" o'zi yopilmaydi — toast uchun qulay."
+    },
+    {
+     "heading": "details, inert, hidden",
+     "code": {
+      "lang": "html",
+      "text": "<details name=\"faq\" open>\n  <summary>Yetkazish qancha?</summary>\n  <p>2–3 kun.</p>\n</details>\n<details name=\"faq\">\n  <summary>Qaytarsa bo'ladimi?</summary>\n  <p>14 kun ichida.</p>\n</details>"
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "hidden atributi kuchsiz: CSS da display: flex yozilgan element hidden bo'lsa ham ko'rinib qoladi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🧱",
+       "title": "z-index urushi",
+       "text": "Qo'lda yasalgan modal header ostida qolib ketadi; top layer da bunday bo'lmaydi."
+      },
+      {
+       "icon": "📚",
+       "title": "FAQ",
+       "text": "Bir xil name li details lar bittadan ochiladi — JavaScript kerak emas."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Tanlov: javobni majburlash kerakmi — modal dialog; shunchaki qo'shimcha oynacha — popover; matnni yig'ish — details."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Modalni open atributi bilan ochish.",
+       "dialog.showModal().",
+       "open fokus va fonni boshqarmaydi."
+      ],
+      [
+       "Modalni div + z-index bilan yasash.",
+       "<dialog> ishlatish.",
+       "Fokus tuzog'i, Esc va daraxtni qo'lda yozishga to'g'ri keladi."
+      ],
+      [
+       "[hidden] ustidan display berib qo'yish.",
+       "[hidden] { display: none !important }.",
+       "Muallif CSS si brauzer uslubidan ustun."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "showModal — haqiqiy modal.",
+    "popover — light dismiss li qatlam.",
+    "details name — bittasi ochiq.",
+    "inert butun bo'lakni muzlatadi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Tasdiqlash oynasi",
+    "text": "dialog bilan o'chirishni tasdiqlash yozing, returnValue ga qarab amal bajaring va fokus qayerga qaytishini tekshiring."
+   },
+   {
+    "title": "JavaScript siz menyu",
+    "text": "popovertarget bilan menyu yasab, Esc va tashqariga bosishni sinang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Qaysi usul dialogni modal qilib ochadi?",
+    "options": [
+     "d.showModal()",
+     "d.show()",
+     "d.setAttribute('open', '')",
+     "d.open = true"
+    ],
+    "answer": "d.showModal()",
+    "explain": "Faqat showModal top layer va fon bloklashni beradi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "\"O'chirish\" bosilganda konsolda nima chiqadi?",
+    "options": [
+     "delete",
+     "cancel",
+     "O'chirish",
+     "true"
+    ],
+    "answer": "delete",
+    "explain": "method=\"dialog\" bosilgan tugmaning value sini returnValue ga yozadi.",
+    "passage": "<dialog id=\"d\">\n  <form method=\"dialog\">\n    <button value=\"cancel\">Bekor</button>\n    <button value=\"delete\">O'chirish</button>\n  </form>\n</dialog>\n<script>\n  d.onclose = () => console.log(d.returnValue);\n  d.showModal();\n</script>"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Modal dialogni z-index siz ham header ustida chiqishiga nima sabab?",
+    "options": [
+     "U top layer ga chiqadi",
+     "Uning z-index i cheksiz",
+     "U body oxiriga ko'chiriladi",
+     "Header vaqtincha yashiriladi"
+    ],
+    "answer": "U top layer ga chiqadi",
+    "explain": "Top layer oddiy stacking context lardan yuqorida."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Ikkita popover (auto) bor. Birinchisi ochiq turib ikkinchisi ochilsa?",
+    "options": [
+     "Birinchisi yopiladi",
+     "Ikkalasi ochiq qoladi",
+     "Ikkinchisi ochilmaydi",
+     "Xatolik chiqadi"
+    ],
+    "answer": "Birinchisi yopiladi",
+    "explain": "auto rejimda (ichma-ich bo'lmasa) bittasi ochiq turadi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Tashqariga bosilganda ham yopilmaydigan, faqat kod bilan yopiladigan toast uchun?",
+    "options": [
+     "popover=\"manual\"",
+     "popover=\"auto\"",
+     "popover=\"toast\"",
+     "dialog open modal"
+    ],
+    "answer": "popover=\"manual\"",
+    "explain": "manual light dismiss ni o'chiradi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Ikkinchi savol ochilganda birinchisi o'zi yopilishi uchun details larga nima beriladi?",
+    "options": [
+     "Bir xil name",
+     "Bir xil id",
+     "Bir xil class",
+     "open=\"single\""
+    ],
+    "answer": "Bir xil name",
+    "explain": "Bir xil name li details lar eksklyuziv guruh bo'ladi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Konsolda emas, ekranda nima bo'ladi?",
+    "options": [
+     "Element ko'rinib turadi",
+     "Element yashirin bo'ladi",
+     "Joyi qoladi, o'zi ko'rinmaydi",
+     "CSS e'tiborsiz qoladi"
+    ],
+    "answer": "Element ko'rinib turadi",
+    "explain": "Brauzerning [hidden] uslubi muallif CSS sidagi display bilan bosiladi.",
+    "passage": "<style>.row { display: flex; }</style>\n<div class=\"row\" hidden>Salom</div>"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Yon panel ochilganda orqadagi sahifaga na sichqoncha, na Tab yetmasin. Eng qisqa yechim?",
+    "options": [
+     "Orqa qismga inert qo'yish",
+     "Orqa qismga opacity: 0.5 berish",
+     "Orqa qismga aria-hidden qo'yish",
+     "body ga overflow: hidden berish"
+    ],
+    "answer": "Orqa qismga inert qo'yish",
+    "explain": "aria-hidden fokusni to'smaydi, inert esa hammasini to'sadi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "dialog.showModal() dan keyin dialog yopilganda fokus odatda qayerga boradi?",
+    "options": [
+     "Uni ochgan elementga",
+     "body ning boshiga",
+     "Sahifadagi birinchi havolaga",
+     "Dialog ichida qoladi"
+    ],
+    "answer": "Uni ochgan elementga",
+    "explain": "Brauzer avvalgi fokusni tiklaydi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Tugmani popover bilan JavaScript siz bog'laydigan atribut:",
+    "answer": "popovertarget",
+    "explain": "popovertarget=\"popover-id\"."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Modal dialog orqasidagi fonni bezaydigan pseudo-element: ::...",
+    "answer": "backdrop",
+    "explain": "dialog::backdrop { background: rgb(0 0 0 / 50%) }.",
+    "alsoAccept": [
+     "::backdrop"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "details ichida bosiladigan sarlavha tegi:",
+    "answer": "summary",
+    "explain": "summary klaviaturada ham ishlaydi.",
+    "alsoAccept": [
+     "<summary>"
+    ]
+   }
+  ]
+ },
+ {
+  "code": "fe-html-md-11",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 11,
+  "title": "SEO: canonical, indeks nazorati va ijtimoiy kartochka",
+  "intro": "crawl va index farqi, canonical, robots meta va robots.txt, Open Graph, hreflang va sitemap.",
+  "theory": {
+   "analogy": {
+    "icon": "📚",
+    "title": "Kutubxona katalogi",
+    "text": "Kutubxonachi kitobni topadi (crawl), kartotekaga yozadi (index) va so'rovga qarab beradi (rank). canonical — \"bu kitobning asl nusxasi manavi\" degan yozuv."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "SEO (Search Engine Optimization — qidiruv tizimiga moslash) da HTML ning vazifasi: bot sahifani topsin (crawl — aylanib o'qish), to'g'ri indeksga (index — qidiruv bazasi) kiritsin va to'g'ri ko'rsatsin. Havola ulashilganda chiqadigan kartochka esa Open Graph teglaridan olinadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "canonical (asosiy manzil)",
+       "text": "Bir xil mazmunli URL lar ichida qaysi biri asosiy ekanini taklif qiladi."
+      },
+      {
+       "term": "noindex",
+       "text": "Sahifani qidiruv natijasiga qo'shmaslik."
+      },
+      {
+       "term": "robots.txt",
+       "text": "Botga qaysi yo'llarni aylanmaslikni aytadigan fayl."
+      },
+      {
+       "term": "Open Graph",
+       "text": "Ijtimoiy tarmoq kartochkasi uchun og:title, og:image, og:url."
+      },
+      {
+       "term": "hreflang",
+       "text": "Sahifaning boshqa til variantini ko'rsatadi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "?utm_source li manzillarda",
+       "text": "canonical toza URL ni ko'rsatadi."
+      },
+      {
+       "term": "Admin va savat sahifasida",
+       "text": "noindex."
+      },
+      {
+       "term": "Telegram da chiroyli havola uchun",
+       "text": "Open Graph teglari."
+      }
+     ]
+    },
+    {
+     "heading": "Asosiy teglar",
+     "code": {
+      "lang": "html",
+      "text": "<title>Noutbuk X1 narxi — MyShop</title>\n<meta name=\"description\" content=\"16 GB xotira, bepul yetkazish.\">\n<link rel=\"canonical\" href=\"https://myshop.uz/laptops/x1\">\n<meta name=\"robots\" content=\"noindex, follow\">  <!-- faqat kerak sahifada -->\n\n<meta property=\"og:title\" content=\"Noutbuk X1\">\n<meta property=\"og:image\" content=\"https://myshop.uz/og/x1.jpg\">\n<meta property=\"og:url\" content=\"https://myshop.uz/laptops/x1\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">"
+     }
+    },
+    {
+     "heading": "robots.txt va noindex",
+     "table": {
+      "head": [
+       "Vosita",
+       "Nima qiladi"
+      ],
+      "rows": [
+       [
+        "robots.txt Disallow",
+        "aylanishni to'xtatadi, lekin URL indeksda qolishi mumkin"
+       ],
+       [
+        "meta robots noindex",
+        "indeksdan chiqaradi — bot sahifani O'QIY OLISHI kerak"
+       ]
+      ]
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "Disallow bilan yopilgan sahifadagi noindex ni bot ko'rmaydi. Indeksdan chiqarish uchun aylanishga ruxsat bering va noindex qo'ying."
+     }
+    },
+    {
+     "heading": "Ko'p til va bot",
+     "code": {
+      "lang": "html",
+      "text": "<html lang=\"uz\">\n<link rel=\"alternate\" hreflang=\"uz\" href=\"https://myshop.uz/uz/x1\">\n<link rel=\"alternate\" hreflang=\"ru\" href=\"https://myshop.uz/ru/x1\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://myshop.uz/x1\">"
+     },
+     "bullets": [
+      "Har til varianti o'zini ham, boshqalarni ham ko'rsatadi.",
+      "Bot onclick ni bosmaydi: havolalar haqiqiy <a href> bo'lsin.",
+      "Ko'p ijtimoiy botlar JavaScript bajarmaydi: og teglari server HTML ida bo'lsin.",
+      "sitemap.xml sahifalar ro'yxatini beradi."
+     ]
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🪞",
+       "title": "Bir mahsulot, to'rt manzil",
+       "text": "Filtr va utm parametrlari dublikat yaratadi — canonical bittaga yig'adi."
+      },
+      {
+       "icon": "🖼️",
+       "title": "Bo'sh kartochka",
+       "text": "React SPA da og teglari JS bilan qo'yilsa, Telegram ularni ko'rmaydi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "title har sahifada noyob va muhim so'z boshida bo'lsin; og:image — to'liq (absolute) URL."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Indeksdan chiqarish uchun faqat robots.txt.",
+       "noindex meta.",
+       "Disallow indeksni kafolatlamaydi."
+      ],
+      [
+       "Hamma sahifaga bosh sahifa canonical i.",
+       "Har sahifa o'z manzilini ko'rsatsin.",
+       "Boshqa sahifalar indeksdan tushib qolishi mumkin."
+      ],
+      [
+       "og:image=\"/og.jpg\".",
+       "https://... to'liq manzil.",
+       "Tashqi bot nisbiy yo'lni ocholmasligi mumkin."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "crawl → index → rank.",
+    "canonical — taklif, buyruq emas.",
+    "noindex ko'rinishi uchun sahifa ochiq bo'lishi kerak.",
+    "OG teglari server HTML ida va absolute URL bilan."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Kartochkani tekshiring",
+    "text": "Biror havolani o'zingizning Saqlangan xabarlaringizga tashlab, kartochka qaysi teglardan olinganini sahifa kodidan toping."
+   },
+   {
+    "title": "View source",
+    "text": "SPA va server renderli saytning \"View page source\" natijasini solishtiring: matn va meta teglar bormi?"
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "/x1?utm_source=tg manzili /x1 bilan bir xil mazmunda. Nima qo'yiladi?",
+    "options": [
+     "/x1 ga ishora qiluvchi canonical",
+     "utm li sahifaga robots.txt Disallow",
+     "Har ikkisiga noindex",
+     "utm li sahifaga yangi h1"
+    ],
+    "answer": "/x1 ga ishora qiluvchi canonical",
+    "explain": "canonical dublikatlarni asosiy manzilga yig'adi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Sahifa robots.txt da Disallow qilingan va ichida noindex bor, lekin natijada ko'rinyapti. Nega?",
+    "options": [
+     "Bot noindex ni o'qiy olmayapti",
+     "noindex faqat title bilan ishlaydi",
+     "Disallow noindex ni bekor qilib index qiladi",
+     "noindex faqat sitemap.xml ga yoziladi"
+    ],
+    "answer": "Bot noindex ni o'qiy olmayapti",
+    "explain": "Aylanish taqiqlangan sahifaning HTML i yuklanmaydi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "meta name=\"description\" haqida qaysi gap to'g'ri?",
+    "options": [
+     "Natijadagi matnga ta'sir qilishi mumkin",
+     "Reytingni to'g'ridan-to'g'ri ko'taradi",
+     "Sahifada foydalanuvchiga ko'rinadi",
+     "Yozilmasa sahifa indekslanmaydi"
+    ],
+    "answer": "Natijadagi matnga ta'sir qilishi mumkin",
+    "explain": "Google uni snippet sifatida olishi mumkin; bosish ehtimoliga ta'sir qiladi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Quyidagilardan qaysi birida bot ichki sahifaga o'ta oladi?",
+    "options": [
+     "<a href=\"/narx\">Narx</a>",
+     "<span onclick=\"go('/narx')\">Narx</span>",
+     "<button data-url=\"/narx\">Narx</button>",
+     "<a onclick=\"go('/narx')\">Narx</a>"
+    ],
+    "answer": "<a href=\"/narx\">Narx</a>",
+    "explain": "Bot href bo'yicha yuradi, hodisalarni bosmaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "React SPA da og:title useEffect bilan qo'yildi, Telegram kartochkasi bo'sh. Yechim?",
+    "options": [
+     "Teglarni serverdan HTML ichida berish",
+     "useEffect o'rniga useLayoutEffect yozish",
+     "og o'rniga data-og atributi",
+     "Teglarni body oxiriga ko'chirish"
+    ],
+    "answer": "Teglarni serverdan HTML ichida berish",
+    "explain": "Ko'p ijtimoiy botlar JavaScript ni bajarmaydi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Open Graph teglarida qaysi atribut ishlatiladi?",
+    "options": [
+     "property",
+     "name",
+     "rel",
+     "itemprop"
+    ],
+    "answer": "property",
+    "explain": "<meta property=\"og:title\" content=\"...\">; Twitter teglarida esa name."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "uz va ru sahifalar uchun hreflang qayerga yoziladi?",
+    "options": [
+     "Har ikkisiga ikkala havola ham",
+     "Faqat asosiy tildagi sahifaga",
+     "Har biriga faqat boshqasining havolasi",
+     "Faqat robots.txt fayliga"
+    ],
+    "answer": "Har ikkisiga ikkala havola ham",
+    "explain": "Har variant o'zini va boshqalarni ko'rsatadi, aks holda e'tiborga olinmasligi mumkin."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Mavjud bo'lmagan mahsulot sahifasi \"Topilmadi\" matni bilan 200 status qaytaryapti. Nima to'g'ri?",
+    "options": [
+     "404 status qaytarish",
+     "200 qoldirib title ni o'zgartirish",
+     "canonical ni bosh sahifaga berish",
+     "Sahifani sitemap ga qo'shish"
+    ],
+    "answer": "404 status qaytarish",
+    "explain": "Aks holda bot bo'sh sahifalarni haqiqiy deb indekslaydi (soft 404)."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "noindex, follow nimani anglatadi?",
+    "options": [
+     "Indeksga qo'shma, havolalardan yur",
+     "Indeksga qo'sh, havolalardan yurma",
+     "Na indeksla, na havolalardan yur",
+     "Faqat bir marta indeksla"
+    ],
+    "answer": "Indeksga qo'shma, havolalardan yur",
+    "explain": "noindex — natijada ko'rsatma; follow — havolalarni kuzat."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Sahifaning asosiy manzilini bildiradi: <link rel=\"...\">",
+    "answer": "canonical",
+    "explain": "rel=\"canonical\" href=\"to'liq URL\"."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Mos til topilmaganlar uchun hreflang qiymati:",
+    "answer": "x-default",
+    "explain": "x-default — standart variant."
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Qidiruv tizimi bosqichlarini tartiblang:",
+    "words": [
+     "crawl",
+     "index",
+     "rank"
+    ],
+    "answer": "crawl index rank",
+    "explain": "Avval topib o'qiydi, keyin bazaga yozadi, so'rovda tartiblaydi."
+   }
+  ]
+ },
+ {
+  "code": "fe-html-md-12",
+  "level": "MIDDLE",
+  "module": "html",
+  "order": 12,
+  "title": "HTML xavfsizligi: XSS, iframe va CSP",
+  "intro": "Foydalanuvchi matnini xavfsiz chiqarish, javascript: havolalari, rel=noopener, sandbox, CSP va hidden maydon.",
+  "theory": {
+   "analogy": {
+    "icon": "✉️",
+    "title": "Xatdagi buyruq",
+    "text": "Kotib kelgan xatni ovoz chiqarib o'qishi kerak (matn), ichidagi \"seyfni och\" degan gapni bajarishi emas (kod). innerHTML — xatdagi buyruqni bajaradigan kotib."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "XSS (Cross-Site Scripting — sahifaga begona skript kiritish) — foydalanuvchi kiritgan matn kod bo'lib bajarilishi. Asosiy qoida: ishonchsiz ma'lumotni HTML sifatida emas, matn sifatida chiqaring. Qolgan himoyalar (CSP, sandbox, SameSite) zararni kamaytiradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Escape (zararsizlantirish)",
+       "text": "< kabi belgilarni matn bo'lib qoladigan shaklga o'tkazish."
+      },
+      {
+       "term": "Sanitize (tozalash)",
+       "text": "Ruxsat etilgan teglardan boshqasini olib tashlash (masalan DOMPurify)."
+      },
+      {
+       "term": "CSP (Content Security Policy — kontent xavfsizligi siyosati)",
+       "text": "Server sarlavhasi: qaysi manbadan kod yuklash mumkin."
+      },
+      {
+       "term": "SRI (Subresource Integrity — resurs butunligi)",
+       "text": "integrity xeshi mos kelmasa fayl bajarilmaydi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Izoh va chat chiqarishda",
+       "text": "textContent yoki freymvorkning avtomatik escape i."
+      },
+      {
+       "term": "Foydalanuvchi bergan havolada",
+       "text": "protokolni allowlist bilan tekshirish."
+      },
+      {
+       "term": "Tashqi vidjet ulashda",
+       "text": "iframe sandbox va SRI."
+      }
+     ]
+    },
+    {
+     "heading": "Matn yoki HTML",
+     "code": {
+      "lang": "js",
+      "text": "const comment = '<img src=x onerror=\"steal()\">';\nel.textContent = comment; // matn: xavfsiz\nel.innerHTML = comment;   // HTML: onerror ISHLAYDI\n\n// innerHTML orqali qo'shilgan <script> bajarilmaydi,\n// lekin onerror, onload kabi atributlar bajariladi."
+     }
+    },
+    {
+     "heading": "Havolani tekshirish",
+     "code": {
+      "lang": "js",
+      "text": "function safeUrl(v) {\n  try {\n    const u = new URL(v, location.origin);\n    return ['http:', 'https:', 'mailto:'].includes(u.protocol) ? u.href : '#';\n  } catch {\n    return '#';\n  }\n}\nsafeUrl('javascript:alert(1)'); // '#'"
+     }
+    },
+    {
+     "heading": "Himoya qatlamlari",
+     "table": {
+      "head": [
+       "Vosita",
+       "Nimadan"
+      ],
+      "rows": [
+       [
+        "CSP script-src",
+        "begona va inline skript"
+       ],
+       [
+        "frame-ancestors (faqat header)",
+        "clickjacking (boshqa saytga joylab aldash)"
+       ],
+       [
+        "rel=\"noopener\"",
+        "yangi tab window.opener orqali boshqarishi"
+       ],
+       [
+        "sandbox",
+        "iframe ruxsatlarini cheklash"
+       ],
+       [
+        "SameSite cookie + token",
+        "CSRF (soxta so'rov)"
+       ]
+      ]
+     },
+     "callout": {
+      "kind": "warn",
+      "text": "input type=\"hidden\" hech narsani yashirmaydi: foydalanuvchi qiymatni o'zgartirib yuborishi mumkin. Narx va ruxsatni server hisoblaydi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🍪",
+       "title": "Izohdagi tuzoq",
+       "text": "Bitta zararli izoh uni ochgan har bir odamning nomidan so'rov yuborishi mumkin."
+      },
+      {
+       "icon": "💸",
+       "title": "1 so'mlik telefon",
+       "text": "Narx hidden maydonda yuborilib, serverda tekshirilmasa, xaridor uni o'zgartiradi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Ma'lumot qayerdan kelganiga qarang: foydalanuvchidan kelgan har narsa — shubhali."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "\"<script> ni olib tashladim, xavfsiz\".",
+       "textContent yoki ishonchli sanitizer.",
+       "Hodisa atributlari ham kod bajaradi."
+      ],
+      [
+       "Client tekshiruviga ishonish.",
+       "Serverda qayta tekshirish.",
+       "So'rovni DevTools siz ham yuborsa bo'ladi."
+      ],
+      [
+       "sandbox=\"allow-scripts allow-same-origin\" ni o'z domeningiz kontentiga berish.",
+       "Ikkalasidan birini olib tashlang yoki boshqa domendan bering.",
+       "Ichki skript sandbox atributini olib tashlay oladi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Ishonchsiz matn — textContent.",
+    "innerHTML da onerror bajariladi.",
+    "javascript: havolalarini bloklang.",
+    "hidden va client tekshiruvi — himoya emas."
+   ]
+  },
+  "practice": [
+   {
+    "title": "textContent va innerHTML",
+    "text": "Mahalliy sahifada <img src=x onerror=\"alert(1)\"> matnini ikkala usulda chiqarib farqni ko'ring."
+   },
+   {
+    "title": "CSP sarlavhalari",
+    "text": "Network panelida bir necha yirik saytning Content-Security-Policy sarlavhasini o'qing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Nima bo'ladi?",
+    "options": [
+     "alert ishlaydi",
+     "Matn ko'rinadi, kod ishlamaydi",
+     "Brauzer innerHTML ni rad etadi",
+     "Faqat bo'sh joy chiqadi"
+    ],
+    "answer": "alert ishlaydi",
+    "explain": "Rasm yuklanmaydi va onerror bajariladi.",
+    "passage": "el.innerHTML = '<img src=\"x\" onerror=\"alert(1)\">';"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Bu kodda alert chiqadimi?",
+    "options": [
+     "Yo'q, bu script bajarilmaydi",
+     "Ha, darhol chiqadi",
+     "Ha, sahifa qayta yangilangach",
+     "Faqat strict mode da"
+    ],
+    "answer": "Yo'q, bu script bajarilmaydi",
+    "explain": "innerHTML bilan qo'shilgan script ishga tushmaydi — lekin bu XSS yo'q degani emas.",
+    "passage": "el.innerHTML = '<script>alert(1)</scr' + 'ipt>';"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Foydalanuvchi ismini sahifaga chiqarishning xavfsiz yo'li?",
+    "options": [
+     "el.textContent = name",
+     "el.innerHTML = name",
+     "el.outerHTML = name",
+     "el.insertAdjacentHTML('beforeend', name)"
+    ],
+    "answer": "el.textContent = name",
+    "explain": "textContent hech narsani teg deb o'qimaydi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Profildagi \"veb-sayt\" maydonidan <a href> yasaladi. Asosiy xavf?",
+    "options": [
+     "javascript: manzili",
+     "Juda uzun domen nomi",
+     "http o'rniga https",
+     "Havolaning ko'k rangi"
+    ],
+    "answer": "javascript: manzili",
+    "explain": "javascript: bosilganda kod bajaradi; protokol allowlist qilinadi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "target=\"_blank\" havolada rel=\"noopener\" nimani to'sadi?",
+    "options": [
+     "window.opener orqali boshqarishni",
+     "Yangi sahifada cookie yuborishni",
+     "Yangi tabda skript ishlashini",
+     "Havolaning indekslanishini"
+    ],
+    "answer": "window.opener orqali boshqarishni",
+    "explain": "Zamonaviy brauzerlar buni o'zi qiladi, lekin aniq yozish yaxshi odat."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "noreferrer qo'shimcha nima qiladi?",
+    "options": [
+     "Referer manzilini yubormaydi",
+     "Havolani yangi tabda ochadi",
+     "Sahifani keshlamaydi",
+     "Cookie larni o'chiradi"
+    ],
+    "answer": "Referer manzilini yubormaydi",
+    "explain": "Tashqi sayt qayerdan kelinganini bilmaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Sahifangizni boshqa sayt iframe ga joylab aldamasligi uchun?",
+    "options": [
+     "CSP: frame-ancestors 'none'",
+     "meta robots noindex",
+     "iframe da sandbox yozish",
+     "CSP: img-src 'none'"
+    ],
+    "answer": "CSP: frame-ancestors 'none'",
+    "explain": "Bu direktiva faqat HTTP sarlavha orqali ishlaydi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "CDN dagi kutubxona fayli almashtirib qo'yilsa bajarilmasligi uchun?",
+    "options": [
+     "integrity atributi (SRI)",
+     "defer atributi",
+     "async atributi",
+     "referrerpolicy atributi"
+    ],
+    "answer": "integrity atributi (SRI)",
+    "explain": "Xesh mos kelmasa brauzer faylni rad etadi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi forma haqida qaysi gap to'g'ri?",
+    "options": [
+     "Narxni foydalanuvchi o'zgartira oladi",
+     "hidden qiymat shifrlab yuboriladi",
+     "Brauzer hidden qiymatni qulflab qo'yadi",
+     "POST bo'lgani uchun o'zgarmaydi"
+    ],
+    "answer": "Narxni foydalanuvchi o'zgartira oladi",
+    "explain": "Server narxni o'z bazasidan olishi kerak.",
+    "passage": "<form method=\"post\" action=\"/buy\">\n  <input type=\"hidden\" name=\"price\" value=\"900000\">\n  <button>Sotib olish</button>\n</form>"
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "HTML ni ruxsat etilgan teglargacha tozalaydigan mashhur kutubxona:",
+    "answer": "DOMPurify",
+    "explain": "HTML chiqarish shart bo'lsa, avval sanitize qiling.",
+    "alsoAccept": [
+     "dompurify"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Matnni teg sifatida o'qitmay yozadigan DOM property:",
+    "answer": "textContent",
+    "explain": "el.textContent — xavfsiz chiqarish.",
+    "alsoAccept": [
+     "textcontent",
+     "el.textContent"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "FILL",
+    "prompt": "iframe ruxsatlarini cheklaydigan atribut:",
+    "answer": "sandbox",
+    "explain": "sandbox bo'sh bo'lsa hamma cheklov yoqiladi."
+   }
+  ]
+ }
+]
