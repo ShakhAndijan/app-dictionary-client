@@ -1,0 +1,3894 @@
+[
+ {
+  "code": "fe-js-md-01",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 1,
+  "title": "Reference, nusxalash va immutability",
+  "intro": "Primitive va reference farqi, shallow va deep copy, structuredClone va holatni o'zgartirmasdan yangilash.",
+  "theory": {
+   "analogy": {
+    "icon": "🏠",
+    "title": "Manzil yozilgan qog'oz",
+    "text": "Obyekt — uy, o'zgaruvchi — uy manzili yozilgan qog'oz. Qog'ozdan nusxa olsangiz, uy ikkita bo'lib qolmaydi: ikkala qog'oz ham bitta uyga olib boradi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Primitive (oddiy) qiymat o'zgaruvchiga qiymatning o'zi sifatida yoziladi, obyekt esa reference (havola) orqali. Middle dasturchi har safar \"men yangi obyekt yaratdimmi yoki eskisiga ikkinchi nom berdimmi\" degan savolga aniq javob beradi: React holati, kesh va bug'larning katta qismi shunga bog'liq."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Reference (havola)",
+       "text": "Xotiradagi obyektga ko'rsatkich; o'zlashtirishda aynan u nusxalanadi."
+      },
+      {
+       "term": "Shallow copy (yuza nusxa)",
+       "text": "Faqat birinchi qavat yangi; ichki obyektlar umumiy qoladi."
+      },
+      {
+       "term": "Deep copy (chuqur nusxa)",
+       "text": "Barcha ichma-ich obyektlar ham yangidan yaratiladi."
+      },
+      {
+       "term": "Immutability (o'zgarmaslik)",
+       "text": "Mavjud qiymatni o'zgartirmay, yangi qiymat yasash."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "React holatini yangilashda",
+       "text": "O'zgargan yo'ldagi har bir obyektdan yangi nusxa yaratasiz."
+      },
+      {
+       "term": "Funksiyaga obyekt uzatishda",
+       "text": "Argumentni o'zgartirib qo'ymaslikni nazorat qilasiz."
+      },
+      {
+       "term": "Kesh va taqqoslashda",
+       "text": "Reference tengligi arzon \"o'zgardimi\" tekshiruvi bo'ladi."
+      }
+     ]
+    },
+    {
+     "heading": "Argument qanday uzatiladi",
+     "text": "JavaScript da argument doim qiymat bo'yicha uzatiladi. Obyektda bu qiymat — havola. Shuning uchun funksiya ichida xossani o'zgartirsangiz tashqarida ko'rinadi, parametrning o'ziga boshqa obyekt yozsangiz ko'rinmaydi.",
+     "code": {
+      "lang": "js",
+      "text": "function f(u) {\n  u.name = \"B\";        // tashqarida ko'rinadi\n  u = { name: \"C\" };   // faqat lokal nom o'zgaradi\n}"
+     }
+    },
+    {
+     "heading": "Nusxalash usullari",
+     "table": {
+      "head": [
+       "Usul",
+       "Chuqurlik",
+       "Cheklov"
+      ],
+      "rows": [
+       [
+        "{ ...obj }, [...arr]",
+        "yuza",
+        "prototip va getter saqlanmaydi"
+       ],
+       [
+        "Object.assign",
+        "yuza",
+        "setter larni chaqiradi"
+       ],
+       [
+        "structuredClone",
+        "chuqur",
+        "funksiya va DOM tugunini nusxalay olmaydi"
+       ],
+       [
+        "JSON.parse(JSON.stringify())",
+        "chuqur",
+        "Date satrga aylanadi, undefined yo'qoladi"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Immutable yangilash",
+     "code": {
+      "lang": "js",
+      "text": "const next = {\n  ...state,\n  user: { ...state.user, city: \"Buxoro\" }\n};\n// o'zgarmagan shoxlar eski havolada qoladi"
+     }
+    },
+    {
+     "heading": "const va freeze",
+     "callout": {
+      "kind": "warn",
+      "text": "const faqat qayta o'zlashtirishni taqiqlaydi, obyekt ichi o'zgaraveradi. Object.freeze ham yuza: ichki obyektlar muzlamaydi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🛒",
+       "title": "Savatcha yangilanmayapti",
+       "text": "items.push() dan keyin havola o'sha-o'sha, React o'zgarishni sezmaydi."
+      },
+      {
+       "icon": "📋",
+       "title": "Forma \"bekor qilish\"",
+       "text": "Yuza nusxa olingani uchun ichki manzil maydoni asl obyektda ham o'zgarib ketadi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Spread faqat bir qavatni nusxalaydi: nimani o'zgartirsangiz, o'sha yo'lni to'liq nusxalang."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "{...obj} ni chuqur nusxa deb o'ylash.",
+       "structuredClone yoki yo'l bo'ylab nusxalash.",
+       "Ichki obyekt umumiy qoladi."
+      ],
+      [
+       "[] === [] true deb kutish.",
+       "Mazmunni alohida solishtirish.",
+       "Ikki xil havola hech qachon teng emas."
+      ],
+      [
+       "const obyektni o'zgarmas deb bilish.",
+       "Kerak bo'lsa freeze yoki intizom.",
+       "const nomni bog'laydi, qiymatni emas."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Obyekt o'zgaruvchida havola sifatida turadi.",
+    "Spread va Object.assign yuza nusxa.",
+    "structuredClone chuqur, lekin funksiyasiz.",
+    "Immutable yangilash o'zgargan yo'lni nusxalaydi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Uch qavatli yangilash",
+    "text": "state.a.b.c qiymatini asl obyektga tegmasdan o'zgartiring va qaysi havolalar saqlanganini === bilan tekshiring."
+   },
+   {
+    "title": "Nusxa usullarini solishtiring",
+    "text": "Date, undefined va Map bor obyektni JSON va structuredClone bilan nusxalab, farqni yozing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "2 1",
+     "1 1",
+     "2 2",
+     "1 2"
+    ],
+    "answer": "2 1",
+    "explain": "{ ...a } yuza nusxa: n umumiy emas (b.top alohida), lekin inner obyekti umumiy. inner.x = 2 asl obyektda ham ko'rinadi, top esa yo'q.",
+    "passage": "const a = { top: 1, inner: { x: 1 } };\nconst b = { ...a };\nb.inner.x = 2;\nb.top = 2;\nconsole.log(a.inner.x, a.top);"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "B",
+     "A",
+     "C",
+     "undefined"
+    ],
+    "answer": "B",
+    "explain": "u.name = \"B\" umumiy obyektni o'zgartiradi; keyingi u = {...} faqat lokal parametrni boshqa obyektga bog'laydi.",
+    "passage": "function f(u) {\n  u.name = \"B\";\n  u = { name: \"C\" };\n}\nconst user = { name: \"A\" };\nf(user);\nconsole.log(user.name);"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "false true",
+     "true true",
+     "false false",
+     "true false"
+    ],
+    "answer": "false true",
+    "explain": "Ikki literal — ikki xil havola; c = a esa o'sha havolaning o'zi.",
+    "passage": "const a = [1];\nconst b = [1];\nconst c = a;\nconsole.log(a === b, a === c);"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "3",
+     "2",
+     "1",
+     "TypeError"
+    ],
+    "answer": "3",
+    "explain": "const havolani o'zgartirishni taqiqlaydi, massiv ichini emas.",
+    "passage": "const list = [1, 2];\nlist.push(3);\nconsole.log(list.length);"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "1 9",
+     "1 2",
+     "9 9",
+     "9 2"
+    ],
+    "answer": "1 9",
+    "explain": "freeze yuza: o.a o'zgarmaydi (strict bo'lmagan rejimda jim), ichki o.b.c esa o'zgaradi.",
+    "passage": "const o = Object.freeze({ a: 1, b: { c: 2 } });\no.a = 9;\no.b.c = 9;\nconsole.log(o.a, o.b.c);"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "string undefined",
+     "object undefined",
+     "string null",
+     "object function"
+    ],
+    "answer": "string undefined",
+    "explain": "JSON orqali Date satrga aylanadi, qiymati undefined bo'lgan xossa esa butunlay tushib qoladi.",
+    "passage": "const src = { at: new Date(0), skip: undefined };\nconst copy = JSON.parse(JSON.stringify(src));\nconsole.log(typeof copy.at, typeof copy.skip);"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "structuredClone qaysi qiymatda xato (DataCloneError) beradi?",
+    "options": [
+     "Metodli obyektda",
+     "Map ichidagi Set",
+     "Siklik havolali obyekt",
+     "Ichma-ich Date"
+    ],
+    "answer": "Metodli obyektda",
+    "explain": "Funksiyalar klonlanmaydi. Map, Set, Date va siklik havolalar muammosiz klonlanadi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "state.user.city ni immutable yangilashda qaysi biri to'g'ri?",
+    "options": [
+     "{ ...state, user: { ...state.user, city } }",
+     "{ ...state, city: city, user: state.user }",
+     "Object.assign(state.user, { city: city })",
+     "{ ...state.user, city: city, user: state }"
+    ],
+    "answer": "{ ...state, user: { ...state.user, city } }",
+    "explain": "Ildizdan o'zgargan joygacha har bir qavat yangi obyekt bo'lishi kerak."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Immutable yangilashda o'zgarmagan state.settings bilan nima bo'ladi?",
+    "options": [
+     "Eski havolasi qayta ishlatiladi",
+     "Chuqur nusxasi yangidan yaratiladi",
+     "undefined bo'lib qoladi",
+     "Avtomatik muzlatiladi"
+    ],
+    "answer": "Eski havolasi qayta ishlatiladi",
+    "explain": "Bu structural sharing: arzon va \"o'zgardimi\" ni havola bilan tekshirish mumkin."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Konsolga nima chiqadi?",
+    "answer": "1",
+    "explain": "map yangi massiv qaytaradi, lekin elementlar o'sha obyektlar; bu yerda esa yangi obyekt yaratilgani uchun asl qty 1 qoladi.",
+    "passage": "const items = [{ qty: 1 }];\nconst next = items.map((i) => ({ ...i, qty: i.qty + 1 }));\nconsole.log(items[0].qty);"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Barcha ichma-ich obyektlarni ham nusxalaydigan o'rnatilgan funksiya nomini yozing.",
+    "answer": "structuredClone",
+    "explain": "Brauzer va Node da mavjud global funksiya.",
+    "alsoAccept": [
+     "structuredClone()",
+     "structuredclone"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Immutable yangilash tartibini tuzing.",
+    "words": [
+     "Ildiz obyektdan nusxa ol",
+     "O'zgaradigan ichki qavatni nusxala",
+     "Yangi qiymatni yoz",
+     "Yangi ildizni qaytar"
+    ],
+    "answer": "Ildiz obyektdan nusxa ol O'zgaradigan ichki qavatni nusxala Yangi qiymatni yoz Yangi ildizni qaytar",
+    "explain": "Tashqaridan ichkariga nusxalanadi, asl obyektga tegilmaydi."
+   }
+  ]
+ },
+ {
+  "code": "fe-js-md-02",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 2,
+  "title": "Coercion va taqqoslash qoidalari",
+  "intro": "Yashirin tur o'zgarishi, ToPrimitive, == algoritmi, Object.is, ||, ?? va ?.",
+  "theory": {
+   "analogy": {
+    "icon": "💱",
+    "title": "Valyuta ayirboshlash shoxobchasi",
+    "text": "Ikki xil valyutani solishtirishdan oldin bittasiga o'tkaziladi. JavaScript ham == da qiymatlarni umumiy turga o'tkazadi — kurs jadvali esa spetsifikatsiyada yozilgan."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Coercion (tur o'zgarishi) — qiymatning bir turdan boshqasiga o'tishi. Yashirin coercion tasodifiy emas, aniq qoidalar bo'yicha ishlaydi. Middle dasturchi \"JS g'alati\" demaydi: + qachon qo'shadi, qachon ulaydi va == qaysi tomonni songa aylantirishini biladi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Coercion (tur o'zgarishi)",
+       "text": "Qiymatning boshqa turga aylantirilishi, aniq yoki yashirin."
+      },
+      {
+       "term": "ToPrimitive",
+       "text": "Obyektdan primitive olish: avval valueOf yoki toString."
+      },
+      {
+       "term": "Falsy qiymatlar",
+       "text": "false, 0, -0, 0n, \"\", null, undefined, NaN."
+      },
+      {
+       "term": "Nullish",
+       "text": "Faqat null va undefined."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Forma qiymatlari bilan",
+       "text": "input.value doim satr — songa o'zingiz o'tkazasiz."
+      },
+      {
+       "term": "Standart qiymat berishda",
+       "text": "0 va \"\" haqiqiy qiymat bo'lsa ?? tanlaysiz."
+      },
+      {
+       "term": "API javobini o'qishda",
+       "text": "?. bilan yo'q xossada yiqilmaysiz."
+      }
+     ]
+    },
+    {
+     "heading": "+ va boshqa arifmetika",
+     "bullets": [
+      "Binar + da bir tomon satr bo'lsa — ulash.",
+      "-, *, /, % doim songa o'tkazadi.",
+      "Hisob chapdan o'ngga: 1 + 2 + \"3\" avval 3 ni beradi.",
+      "[] satrga \"\", {} esa \"[object Object]\" bo'ladi."
+     ]
+    },
+    {
+     "heading": "== qisqacha algoritmi",
+     "table": {
+      "head": [
+       "Juftlik",
+       "Nima bo'ladi"
+      ],
+      "rows": [
+       [
+        "null == undefined",
+        "true, boshqa hech narsaga teng emas"
+       ],
+       [
+        "son == satr",
+        "satr songa"
+       ],
+       [
+        "boolean == x",
+        "boolean songa"
+       ],
+       [
+        "obyekt == primitive",
+        "obyekt ToPrimitive"
+       ],
+       [
+        "NaN == NaN",
+        "false"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Uch xil tenglik",
+     "code": {
+      "lang": "js",
+      "text": "NaN === NaN            // false\nObject.is(NaN, NaN)    // true\n0 === -0               // true\nObject.is(0, -0)       // false"
+     }
+    },
+    {
+     "heading": "|| va ??",
+     "callout": {
+      "kind": "info",
+      "text": "|| chap tomon falsy bo'lsa o'ngini oladi, ?? faqat nullish bo'lsa. ?? ni || yoki && bilan qavssiz aralashtirish sintaksis xatosi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🧾",
+       "title": "Chegirma 0% edi",
+       "text": "discount || 10 yozilgani uchun mijoz baribir 10% oldi."
+      },
+      {
+       "icon": "🔢",
+       "title": "\"5\" + 1",
+       "text": "Input dan kelgan miqdor qo'shilmay, \"51\" bo'lib ulanib ketdi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "=== ishlating, turni chegarada (input, URL, localStorage) aniq o'zgartiring."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "if (count) bilan 0 ni yo'qotish.",
+       "count !== undefined deb tekshirish.",
+       "0 falsy, lekin haqiqiy qiymat."
+      ],
+      [
+       "NaN ni === bilan tekshirish.",
+       "Number.isNaN.",
+       "NaN o'ziga ham teng emas."
+      ],
+      [
+       "parseInt va Number ni bir xil deb bilish.",
+       "Vazifaga mosini tanlash.",
+       "parseInt(\"12px\") = 12, Number esa NaN."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "+ satrni ko'rsa ulaydi, qolgan amallar songa o'tkazadi.",
+    "null faqat undefined ga == bo'ladi.",
+    "Object.is NaN va -0 ni to'g'ri ajratadi.",
+    "?? faqat null va undefined uchun."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Bashorat jadvali",
+    "text": "10 ta g'alati ifodani yozib, avval javobini taxmin qiling, keyin konsolda tekshiring."
+   },
+   {
+    "title": "|| auditi",
+    "text": "Loyihangizdagi standart qiymat uchun ishlatilgan || larni ko'rib, qaysilari ?? bo'lishi kerakligini toping."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "33 123",
+     "123 123",
+     "6 6",
+     "33 6"
+    ],
+    "answer": "33 123",
+    "explain": "Chapdan: 1 + 2 = 3, keyin 3 + \"3\" = \"33\". Ikkinchisida \"1\" + 2 = \"12\", + 3 = \"123\".",
+    "passage": "console.log(1 + 2 + \"3\", \"1\" + 2 + 3);"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "3 21",
+     "21 21",
+     "3 3",
+     "NaN 21"
+    ],
+    "answer": "3 21",
+    "explain": "- songa o'tkazadi: \"5\" - 2 = 3. + esa satr bilan ulaydi: \"21\".",
+    "passage": "console.log(\"5\" - 2, \"2\" + 1);"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "true false",
+     "true true",
+     "false false",
+     "false true"
+    ],
+    "answer": "true false",
+    "explain": "null == undefined maxsus qoida bilan true; null == 0 esa false, chunki null songa aylantirilmaydi.",
+    "passage": "console.log(null == undefined, null == 0);"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "true false",
+     "false false",
+     "true true",
+     "false true"
+    ],
+    "answer": "true false",
+    "explain": "[] == false: ikkalasi 0 ga keladi. Lekin if da [] obyekt bo'lgani uchun truthy, ![] = false.",
+    "passage": "console.log([] == false, ![]);"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "0 10",
+     "10 10",
+     "0 0",
+     "10 0"
+    ],
+    "answer": "0 10",
+    "explain": "?? 0 ni haqiqiy qiymat deb saqlaydi, || esa falsy deb almashtiradi.",
+    "passage": "const d = 0;\nconsole.log(d ?? 10, d || 10);"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "false true",
+     "true true",
+     "false false",
+     "true false"
+    ],
+    "answer": "false true",
+    "explain": "NaN === NaN false, Object.is(NaN, NaN) true.",
+    "passage": "console.log(NaN === NaN, Object.is(NaN, NaN));"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "12 NaN",
+     "12 12",
+     "NaN NaN",
+     "NaN 12"
+    ],
+    "answer": "12 NaN",
+    "explain": "parseInt boshidagi raqamlarni o'qiydi, Number butun satr son bo'lishini talab qiladi.",
+    "passage": "console.log(parseInt(\"12px\", 10), Number(\"12px\"));"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "11",
+     "2",
+     "[object Object]1",
+     "NaN"
+    ],
+    "answer": "11",
+    "explain": "+ obyektdan primitive so'raydi: avval valueOf chaqiriladi va 10 qaytaradi.",
+    "passage": "const price = { valueOf: () => 10, toString: () => \"narx\" };\nconsole.log(price + 1);"
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "`user.address?.street` da address null bo'lsa natija nima?",
+    "options": [
+     "undefined",
+     "null",
+     "TypeError",
+     "Bo'sh satr"
+    ],
+    "answer": "undefined",
+    "explain": "?. chap tomon nullish bo'lsa to'xtaydi va doim undefined qaytaradi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Konsolga nima chiqadi?",
+    "answer": "object",
+    "explain": "typeof null tarixiy xato sabab \"object\" qaytaradi.",
+    "passage": "console.log(typeof null);"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Konsolga nima chiqadi?",
+    "answer": "false",
+    "explain": "0.1 + 0.2 ikkilik kasrda 0.30000000000000004 chiqadi (IEEE 754).",
+    "passage": "console.log(0.1 + 0.2 === 0.3);"
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "`\"1\" == true` taqqoslash qadamlarini tartiblang.",
+    "words": [
+     "true songa aylanadi: 1",
+     "Satr bilan son qoldi",
+     "\"1\" songa aylanadi: 1",
+     "1 === 1 natijasi true"
+    ],
+    "answer": "true songa aylanadi: 1 Satr bilan son qoldi \"1\" songa aylanadi: 1 1 === 1 natijasi true",
+    "explain": "Boolean avval songa o'tadi, keyin satr ham songa."
+   }
+  ]
+ },
+ {
+  "code": "fe-js-md-03",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 3,
+  "title": "Scope, hoisting va closure amalda",
+  "intro": "Leksik scope, TDZ, closure bilan xususiy holat, sikl savoli va eskirgan closure.",
+  "theory": {
+   "analogy": {
+    "icon": "🎒",
+    "title": "Sayohat ryukzagi",
+    "text": "Funksiya uyidan chiqayotganda ryukzagiga o'zi ishlatadigan narsalarni oladi. Ryukzakda narsaning rasmi emas, o'zi turadi: keyin o'zgarsa, yangisini ko'radi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Closure (yopilma) — funksiya va u yaratilgan joydagi o'zgaruvchilarga havola. Funksiya qayerda chaqirilsa ham, o'z \"tug'ilgan joyi\"dagi o'zgaruvchilarni ko'radi. Hodisa ishlovchilari, taymerlar, modullar va React hook lari — hammasi shu mexanizm ustida."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Lexical scope (leksik ko'rinish)",
+       "text": "O'zgaruvchi ko'rinishi kod yozilgan joyga qarab aniqlanadi."
+      },
+      {
+       "term": "Closure (yopilma)",
+       "text": "Funksiyaning tashqi o'zgaruvchilarga saqlanib qolgan bog'lanishi."
+      },
+      {
+       "term": "Hoisting (ko'tarilish)",
+       "text": "E'lonlar bajarishdan oldin ro'yxatga olinishi."
+      },
+      {
+       "term": "TDZ (vaqtinchalik o'lik zona)",
+       "text": "let/const e'longacha o'qilsa ReferenceError."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Xususiy holat kerak bo'lganda",
+       "text": "Hisoblagich, once, kesh."
+      },
+      {
+       "term": "Hodisa va taymerlarda",
+       "text": "Ishlovchi qaysi qiymatni ko'rishini bilasiz."
+      },
+      {
+       "term": "Funksiya ishlab chiqarishda",
+       "text": "Sozlamani eslab qoladigan funksiya yasaysiz."
+      }
+     ]
+    },
+    {
+     "heading": "E'lon turlari",
+     "table": {
+      "head": [
+       "E'lon",
+       "Scope",
+       "Oldin o'qilsa"
+      ],
+      "rows": [
+       [
+        "var",
+        "funksiya",
+        "undefined"
+       ],
+       [
+        "let / const",
+        "blok",
+        "ReferenceError (TDZ)"
+       ],
+       [
+        "function nom() {}",
+        "blok yoki funksiya",
+        "ishlaydi"
+       ],
+       [
+        "const f = () => {}",
+        "blok",
+        "ReferenceError"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Sikl savoli",
+     "code": {
+      "lang": "js",
+      "text": "for (var i = 0; i < 3; i++) setTimeout(() => console.log(i)); // 3 3 3\nfor (let i = 0; i < 3; i++) setTimeout(() => console.log(i)); // 0 1 2"
+     },
+     "text": "var da bitta umumiy i bor, let esa har aylanishga yangi bog'lanish yaratadi."
+    },
+    {
+     "heading": "Xususiy holat",
+     "code": {
+      "lang": "js",
+      "text": "function once(fn) {\n  let done = false, result;\n  return (...args) => {\n    if (!done) { done = true; result = fn(...args); }\n    return result;\n  };\n}"
+     }
+    },
+    {
+     "heading": "Eskirgan closure",
+     "callout": {
+      "kind": "warn",
+      "text": "Funksiya eski renderda yaratilgan bo'lsa, o'sha renderdagi o'zgaruvchilarni ko'radi. React da bu stale closure deb ataladi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔘",
+       "title": "Ikki marta to'lov",
+       "text": "once bilan o'ralgan funksiya ikkinchi bosishda ishlamaydi."
+      },
+      {
+       "icon": "⏱️",
+       "title": "Taymer doim 0 ko'rsatadi",
+       "text": "setInterval ishlovchisi birinchi yaratilgandagi qiymatni ushlab qolgan."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Closure qiymatni emas, o'zgaruvchining o'zini eslaydi."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Closure qiymat nusxasini oladi deb o'ylash.",
+       "Bog'lanish saqlanadi.",
+       "Keyingi o'zgarish ko'rinadi."
+      ],
+      [
+       "let hoisting qilinmaydi deyish.",
+       "Qilinadi, lekin TDZ da turadi.",
+       "Shuning uchun tashqi nom ham ko'rinmaydi."
+      ],
+      [
+       "Katta ma'lumotni keraksiz ushlab turish.",
+       "Ishlovchini uzish yoki havolani bo'shatish.",
+       "GC uni yig'a olmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Scope yozilgan joyga qarab aniqlanadi.",
+    "let/const TDZ da, var undefined.",
+    "Closure o'zgaruvchining o'ziga bog'lanadi.",
+    "let sikl har aylanishda yangi bog'lanish beradi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "once va memoize",
+    "text": "once(fn) va bitta argumentli memoize(fn) ni closure bilan yozing."
+   },
+   {
+    "title": "Sikl savoli",
+    "text": "var li sikldagi muammoni uch xil usulda (let, IIFE, bind) tuzating."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "1 2 1",
+     "1 2 3",
+     "1 1 1",
+     "0 1 0"
+    ],
+    "answer": "1 2 1",
+    "explain": "Har bir counter() chaqiruvi alohida n yaratadi; a o'z holatini saqlaydi, b yangidan boshlaydi.",
+    "passage": "function counter() {\n  let n = 0;\n  return () => ++n;\n}\nconst a = counter();\nconst b = counter();\nconsole.log(a(), a(), b());"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "3 3 3",
+     "0 1 2",
+     "2 2 2",
+     "1 2 3"
+    ],
+    "answer": "3 3 3",
+    "explain": "var da bitta i bor; taymerlar ishlaganda sikl tugagan, i = 3.",
+    "passage": "for (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i));\n}"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "0 1 2",
+     "3 3 3",
+     "1 2 3",
+     "2 1 0"
+    ],
+    "answer": "0 1 2",
+    "explain": "let har aylanishda yangi i bog'lanishini yaratadi.",
+    "passage": "for (let i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i));\n}"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "B",
+     "A",
+     "undefined",
+     "ReferenceError"
+    ],
+    "answer": "B",
+    "explain": "Closure qiymat nusxasini emas, o'zgaruvchini ko'radi: chaqiruv paytida name = \"B\".",
+    "passage": "let name = \"A\";\nconst show = () => console.log(name);\nname = \"B\";\nshow();"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "global",
+     "local",
+     "undefined",
+     "ReferenceError"
+    ],
+    "answer": "global",
+    "explain": "Leksik scope: print global joyda yozilgan, chaqirilgan joy muhim emas.",
+    "passage": "const x = \"global\";\nfunction print() { console.log(x); }\nfunction run() {\n  const x = \"local\";\n  print();\n}\nrun();"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "undefined",
+     "5",
+     "null",
+     "ReferenceError"
+    ],
+    "answer": "undefined",
+    "explain": "Funksiya ichidagi var v ko'tariladi va tashqi v ni berkitadi; o'qish paytida u hali undefined.",
+    "passage": "var v = 5;\nfunction f() {\n  console.log(v);\n  var v = 10;\n}\nf();"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "ReferenceError",
+     "tashqi",
+     "undefined",
+     "SyntaxError"
+    ],
+    "answer": "ReferenceError",
+    "explain": "Blok ichidagi let mode ko'tariladi, lekin TDZ da turadi — tashqi nom ham ko'rinmaydi.",
+    "passage": "const mode = \"tashqi\";\ntry {\n  {\n    console.log(mode);\n    let mode = \"ichki\";\n  }\n} catch (e) {\n  console.log(e.name);\n}"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "6 6",
+     "6 7",
+     "3 3",
+     "6 undefined"
+    ],
+    "answer": "6 6",
+    "explain": "once birinchi natijani saqlab qoladi, keyingi chaqiruvda fn ishlamaydi.",
+    "passage": "function once(fn) {\n  let done = false, result;\n  return (x) => {\n    if (!done) { done = true; result = fn(x); }\n    return result;\n  };\n}\nconst twice = once((x) => x * 2);\nconsole.log(twice(3), twice(7));"
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "setInterval ichidagi funksiya doim boshlang'ich qiymatni ko'rsatyapti. Eng ehtimoliy sabab?",
+    "options": [
+     "Funksiya eski scope ga bog'lanib qolgan",
+     "Taymer o'zgaruvchini muzlatib qo'yadi",
+     "setInterval qiymatni keshlaydi",
+     "Garbage collector qiymatni qaytaradi"
+    ],
+    "answer": "Funksiya eski scope ga bog'lanib qolgan",
+    "explain": "Bu stale closure: ishlovchi bir marta yaratilgan va o'sha paytdagi bog'lanishni ko'radi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Konsolga nima chiqadi?",
+    "answer": "function",
+    "explain": "Function declaration to'liq ko'tariladi, shuning uchun e'londan oldin ham funksiya.",
+    "passage": "console.log(typeof hello);\nfunction hello() {}"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "let o'zgaruvchisi e'longacha turadigan zonaning qisqartma nomini yozing.",
+    "answer": "TDZ",
+    "explain": "Temporal Dead Zone — vaqtinchalik o'lik zona.",
+    "alsoAccept": [
+     "tdz",
+     "Temporal Dead Zone"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Closure paydo bo'lish jarayonini tartiblang.",
+    "words": [
+     "Tashqi funksiya chaqiriladi",
+     "Ichki funksiya yaratiladi",
+     "Tashqi funksiya qaytadi",
+     "Ichki funksiya eski o'zgaruvchini o'qiydi"
+    ],
+    "answer": "Tashqi funksiya chaqiriladi Ichki funksiya yaratiladi Tashqi funksiya qaytadi Ichki funksiya eski o'zgaruvchini o'qiydi",
+    "explain": "Tashqi funksiya tugasa ham, o'zgaruvchi ichki funksiya havolasi tufayli yashaydi."
+   }
+  ]
+ },
+ {
+  "code": "fe-js-md-04",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 4,
+  "title": "Higher-order funksiyalar va sof kod",
+  "intro": "map, filter, reduce, funksiya qaytaruvchi funksiya, currying, pipe va side effect lar.",
+  "theory": {
+   "analogy": {
+    "icon": "🏭",
+    "title": "Konveyer",
+    "text": "Har bir stanok bitta ish qiladi: elaydi, bo'yaydi, o'raydi. Stanoklarni almashtirish yoki qayta tartiblash mumkin, chunki ular bir-birining ichiga qo'l tiqmaydi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Higher-order function (yuqori tartibli funksiya) — funksiyani argument sifatida oladigan yoki funksiya qaytaradigan funksiya. Pure function (sof funksiya) esa bir xil kirishga bir xil natija beradi va tashqi dunyoni o'zgartirmaydi. Ikkalasi birga kodni kichik, sinaladigan bo'laklarga ajratadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Higher-order function (yuqori tartibli funksiya)",
+       "text": "Funksiya qabul qiluvchi yoki qaytaruvchi funksiya."
+      },
+      {
+       "term": "Pure function (sof funksiya)",
+       "text": "Natijasi faqat argumentlarga bog'liq, tashqi ta'siri yo'q."
+      },
+      {
+       "term": "Side effect (yon ta'sir)",
+       "text": "Tashqi holatni o'zgartirish, tarmoq, DOM, log."
+      },
+      {
+       "term": "Currying",
+       "text": "f(a, b) ni f(a)(b) ko'rinishiga o'tkazish."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Ro'yxatni qayta ishlashda",
+       "text": "filter, map, reduce zanjiri."
+      },
+      {
+       "term": "Takrorlangan mantiqda",
+       "text": "Sozlanadigan funksiya zavodi yozasiz."
+      },
+      {
+       "term": "Test yozishda",
+       "text": "Sof funksiya mock siz sinaladi."
+      }
+     ]
+    },
+    {
+     "heading": "Asosiy uchlik",
+     "table": {
+      "head": [
+       "Metod",
+       "Qaytaradi",
+       "Uzunlik"
+      ],
+      "rows": [
+       [
+        "map",
+        "yangi massiv",
+        "o'zgarmaydi"
+       ],
+       [
+        "filter",
+        "yangi massiv",
+        "teng yoki kichik"
+       ],
+       [
+        "reduce",
+        "istalgan bitta qiymat",
+        "-"
+       ],
+       [
+        "forEach",
+        "undefined",
+        "-"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "reduce bilan guruhlash",
+     "code": {
+      "lang": "js",
+      "text": "const byRole = users.reduce((acc, u) => {\n  (acc[u.role] ??= []).push(u.name);\n  return acc;\n}, {});"
+     }
+    },
+    {
+     "heading": "pipe",
+     "code": {
+      "lang": "js",
+      "text": "const pipe = (...fns) => (x) => fns.reduce((v, f) => f(v), x);\nconst slug = pipe((s) => s.trim(), (s) => s.toLowerCase());"
+     }
+    },
+    {
+     "heading": "Tuzoqlar",
+     "callout": {
+      "kind": "warn",
+      "text": "map uch argument uzatadi: (element, indeks, massiv). Shuning uchun [\"1\",\"2\",\"3\"].map(parseInt) kutilmagan natija beradi. Bo'sh massivda boshlang'ich qiymatsiz reduce TypeError tashlaydi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🧮",
+       "title": "Savatcha summasi",
+       "text": "reduce bilan, boshlang'ich qiymat 0 — bo'sh savatcha ham ishlaydi."
+      },
+      {
+       "icon": "🔎",
+       "title": "Qidiruv va saralash",
+       "text": "filter keyin toSorted: asl ro'yxat buzilmaydi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Hisoblashni sof funksiyaga, side effect ni chetga chiqaring."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "map ni faqat sikl sifatida ishlatish.",
+       "forEach yoki for...of.",
+       "Qaytgan massiv tashlab yuboriladi."
+      ],
+      [
+       "reduce da return ni unutish.",
+       "Har qadamda akkumulyator qaytarish.",
+       "Keyingi qadam undefined oladi."
+      ],
+      [
+       "Argumentni joyida o'zgartirish.",
+       "Nusxa qaytarish.",
+       "Funksiya sofligini yo'qotadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "map, filter yangi massiv qaytaradi.",
+    "reduce ga boshlang'ich qiymat bering.",
+    "Sof funksiya sinashga eng oson.",
+    "map callback uch argument oladi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "map ni qayta yozing",
+    "text": "reduce yordamida myMap va myFilter yozing."
+   },
+   {
+    "title": "Sofga aylantiring",
+    "text": "Global o'zgaruvchiga yozadigan funksiyani sof qilib qayta yozing va test qo'shing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "1,NaN,NaN",
+     "1,2,3",
+     "1,1,1",
+     "NaN,NaN,NaN"
+    ],
+    "answer": "1,NaN,NaN",
+    "explain": "parseInt ikkinchi argument sifatida indeksni oladi: parseInt(\"2\",1) va parseInt(\"3\",2) NaN.",
+    "passage": "console.log([\"1\", \"2\", \"3\"].map(parseInt).join(\",\"));"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "TypeError",
+     "0",
+     "undefined",
+     "NaN"
+    ],
+    "answer": "TypeError",
+    "explain": "Bo'sh massivda boshlang'ich qiymatsiz reduce xato tashlaydi.",
+    "passage": "try {\n  console.log([].reduce((a, b) => a + b));\n} catch (e) {\n  console.log(e.name);\n}"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "20,30",
+     "2,3",
+     "10,20,30",
+     "30,20"
+    ],
+    "answer": "20,30",
+    "explain": "filter 1 dan kattalarni qoldiradi, map ularni 10 ga ko'paytiradi.",
+    "passage": "const r = [1, 2, 3].filter((n) => n > 1).map((n) => n * 10);\nconsole.log(r.join(\",\"));"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "2,4 undefined",
+     "2,4 2,4",
+     "1,2 undefined",
+     "2,4 0"
+    ],
+    "answer": "2,4 undefined",
+    "explain": "forEach doim undefined qaytaradi, map esa yangi massiv.",
+    "passage": "const a = [1, 2].map((n) => n * 2);\nconst b = [1, 2].forEach((n) => n * 2);\nconsole.log(a.join(\",\"), b);"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "6",
+     "3",
+     "5",
+     "NaN"
+    ],
+    "answer": "6",
+    "explain": "add(1) funksiya qaytaradi, u yana funksiya: 1 + 2 + 3.",
+    "passage": "const add = (a) => (b) => (c) => a + b + c;\nconsole.log(add(1)(2)(3));"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "8",
+     "7",
+     "9",
+     "16"
+    ],
+    "answer": "8",
+    "explain": "pipe chapdan o'ngga: 3 + 1 = 4, keyin 4 * 2 = 8.",
+    "passage": "const pipe = (...f) => (x) => f.reduce((v, g) => g(v), x);\nconsole.log(pipe((n) => n + 1, (n) => n * 2)(3));"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Qaysi funksiya sof (pure)?",
+    "options": [
+     "(a, b) => ({ ...a, total: b })",
+     "(a) => a.push(1)",
+     "() => Date.now()",
+     "(x) => { count += x; return x; }"
+    ],
+    "answer": "(a, b) => ({ ...a, total: b })",
+    "explain": "U argumentlarni o'zgartirmaydi va natija faqat ulardan kelib chiqadi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "reduce ichida return unutilsa, keyingi qadamda akkumulyator nima bo'ladi?",
+    "options": [
+     "undefined",
+     "Oldingi qiymat",
+     "Joriy element",
+     "Boshlang'ich qiymat"
+    ],
+    "answer": "undefined",
+    "explain": "Akkumulyator har doim callback qaytargan qiymatdir."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Natijasi kerak bo'lmagan, faqat yon ta'sir uchun aylanishda qaysi biri mos?",
+    "options": [
+     "for...of yoki forEach",
+     "map yoki reduceRight",
+     "filter yoki find",
+     "reduce yoki sort"
+    ],
+    "answer": "for...of yoki forEach",
+    "explain": "map natija massivi uchun; keraksiz massiv yaratmang."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Konsolga nima chiqadi?",
+    "answer": "3",
+    "explain": "flatMap map qiladi va bir qavat tekislaydi: [\"a b\", \"c\"] dan 3 ta so'z.",
+    "passage": "console.log([\"a b\", \"c\"].flatMap((s) => s.split(\" \")).length);"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Funksiyani argument oladigan yoki funksiya qaytaradigan funksiya inglizcha qanday ataladi?",
+    "answer": "higher-order function",
+    "explain": "Yuqori tartibli funksiya.",
+    "alsoAccept": [
+     "higher order function",
+     "higher-order",
+     "HOF"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "pipe(trim, lower, split) ishlash tartibini tuzing.",
+    "words": [
+     "Kirish satri olinadi",
+     "trim bo'shliqlarni kesadi",
+     "lower kichik harfga o'tkazadi",
+     "split massivga bo'ladi"
+    ],
+    "answer": "Kirish satri olinadi trim bo'shliqlarni kesadi lower kichik harfga o'tkazadi split massivga bo'ladi",
+    "explain": "pipe chapdan o'ngga, compose esa o'ngdan chapga bajaradi."
+   }
+  ]
+ },
+ {
+  "code": "fe-js-md-05",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 5,
+  "title": "this, call, apply va bind",
+  "intro": "this chaqirish usuliga bog'liqligi, kontekst yo'qolishi, arrow funksiya va majburiy bog'lash.",
+  "theory": {
+   "analogy": {
+    "icon": "🎤",
+    "title": "Mikrofon",
+    "text": "\"Men\" so'zi kimni bildirishi mikrofon kimning qo'lida ekaniga bog'liq. Metodni obyektdan uzib olsangiz, mikrofon endi o'sha obyektda emas."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "this — funksiya qaysi obyekt nomidan ishlayotganini bildiruvchi kalit so'z. Oddiy funksiyada u yozilgan joyga emas, chaqirilish shakliga qarab aniqlanadi. Arrow funksiyada esa o'z this i yo'q: tashqi scope dagisini oladi. \"this is undefined\" xatosining deyarli hammasi shu qoidadan."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "this",
+       "text": "Chaqiruv konteksti: funksiya kim nomidan ishlayapti."
+      },
+      {
+       "term": "call / apply",
+       "text": "this ni berib darhol chaqiradi; apply argumentlarni massivda oladi."
+      },
+      {
+       "term": "bind",
+       "text": "this i qotirilgan yangi funksiya qaytaradi."
+      },
+      {
+       "term": "Context loss (kontekst yo'qolishi)",
+       "text": "Metod obyektsiz chaqirilib, this yo'qolishi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Metodni callback qilib berishda",
+       "text": "bind yoki arrow o'ram ishlatasiz."
+      },
+      {
+       "term": "Metodni qarzga olishda",
+       "text": "call bilan boshqa obyektda chaqirasiz."
+      },
+      {
+       "term": "Class ishlovchilarida",
+       "text": "Arrow maydon yoki constructor da bind."
+      }
+     ]
+    },
+    {
+     "heading": "Qoidalar tartibi",
+     "table": {
+      "head": [
+       "Chaqiruv",
+       "this"
+      ],
+      "rows": [
+       [
+        "new F()",
+        "yangi obyekt"
+       ],
+       [
+        "f.call(x), f.bind(x)()",
+        "x"
+       ],
+       [
+        "obj.f()",
+        "obj"
+       ],
+       [
+        "f()",
+        "undefined (strict) yoki global"
+       ],
+       [
+        "arrow",
+        "tashqi scope niki"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Yo'qolish holati",
+     "code": {
+      "lang": "js",
+      "text": "const save = user.save;\nsave();                       // this yo'q\nsetTimeout(user.save, 100);   // xuddi shu muammo\nsetTimeout(() => user.save(), 100); // to'g'ri"
+     }
+    },
+    {
+     "heading": "bind xususiyati",
+     "bullets": [
+      "bind bir marta bog'laydi: ikkinchi bind this ni o'zgartirmaydi.",
+      "bind argumentlarni ham oldindan berib qo'yadi (partial application).",
+      "Arrow funksiyada call/bind this ga ta'sir qilmaydi."
+     ]
+    },
+    {
+     "heading": "Qachon arrow yozmaslik kerak",
+     "callout": {
+      "kind": "warn",
+      "text": "Obyekt metodini arrow qilib yozsangiz, this obyektni emas, tashqi scope ni ko'rsatadi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🖱️",
+       "title": "Tugma bosilganda xato",
+       "text": "addEventListener ga this.handleClick berilgan — this endi tugma."
+      },
+      {
+       "icon": "📞",
+       "title": "Logger",
+       "text": "const log = console.log.bind(console, \"[app]\") — prefiks oldindan berilgan."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Nuqtadan oldin kim turganiga qarang: obj.f() da this = obj."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "this ni funksiya yozilgan obyekt deb bilish.",
+       "Chaqiruv shakliga qarash.",
+       "Arrow bundan mustasno."
+      ],
+      [
+       "Metodni arrow bilan yozish.",
+       "Qisqa metod sintaksisi.",
+       "Arrow o'z this iga ega emas."
+      ],
+      [
+       "removeEventListener ga yangi bind berish.",
+       "Bind natijasini saqlab qo'yish.",
+       "Har bind yangi funksiya, uzilmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "this chaqiruv shakliga bog'liq.",
+    "Arrow this ni tashqaridan oladi.",
+    "call va apply darhol, bind keyin chaqiriladi.",
+    "Uzib olingan metod this ni yo'qotadi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "myBind yozing",
+    "text": "apply va rest parametrlardan foydalanib o'z bind funksiyangizni yozing."
+   },
+   {
+    "title": "Uch yechim",
+    "text": "setTimeout da this yo'qolishini arrow, bind va class maydoni bilan tuzating."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "Ali undefined",
+     "Ali Ali",
+     "undefined undefined",
+     "TypeError"
+    ],
+    "answer": "Ali undefined",
+    "explain": "u.who() da this = u. f() da this global obyekt, unda userName yo'q.",
+    "passage": "const u = { userName: \"Ali\", who() { return this && this.userName; } };\nconst f = u.who;\nconsole.log(u.who(), f());"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "undefined",
+     "Ali",
+     "TypeError",
+     "null"
+    ],
+    "answer": "undefined",
+    "explain": "Arrow o'z this iga ega emas: obyekt literali yangi scope yaratmaydi.",
+    "passage": "const u = { userName: \"Ali\", who: () => this?.userName };\nconsole.log(u.who());"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "A A",
+     "A B",
+     "B B",
+     "B A"
+    ],
+    "answer": "A A",
+    "explain": "bind qilingan funksiyani qayta bind yoki call qilish this ni o'zgartirmaydi.",
+    "passage": "function id() { return this.id; }\nconst a = id.bind({ id: \"A\" });\nconst b = a.bind({ id: \"B\" });\nconsole.log(b(), a.call({ id: \"B\" }));"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "Salom, Vali!",
+     "Salom, undefined!",
+     "Vali, Salom!",
+     "TypeError"
+    ],
+    "answer": "Salom, Vali!",
+    "explain": "apply this ni va argumentlarni massivda beradi.",
+    "passage": "function hi(word, mark) { return word + \", \" + this.n + mark; }\nconsole.log(hi.apply({ n: \"Vali\" }, [\"Salom\", \"!\"]));"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "1 2",
+     "undefined 2",
+     "1 1",
+     "TypeError"
+    ],
+    "answer": "1 2",
+    "explain": "Metod ichidagi arrow tashqi metodning this ini oladi.",
+    "passage": "const box = {\n  items: [1, 2],\n  all() { return this.items.map((i) => this.items[i - 1]).join(\" \"); }\n};\nconsole.log(box.all());"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "TypeError",
+     "0",
+     "undefined",
+     "NaN"
+    ],
+    "answer": "TypeError",
+    "explain": "Class tanasi strict: uzib olingan metodda this undefined, this.n o'qish TypeError.",
+    "passage": "class C {\n  n = 0;\n  get() { return this.n; }\n}\nconst g = new C().get;\ntry { console.log(g()); } catch (e) { console.log(e.name); }"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "`const log = console.log.bind(console, '[app]')` nima qiladi?",
+    "options": [
+     "Prefiks oldindan berilgan funksiya yasaydi",
+     "Darhol [app] ni konsolga chiqarib qo'yadi",
+     "console.log ni global almashtiradi",
+     "Xabarlarni faqat saqlab boradi"
+    ],
+    "answer": "Prefiks oldindan berilgan funksiya yasaydi",
+    "explain": "bind chaqirmaydi; keyingi argumentlar [app] dan so'ng qo'shiladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "addEventListener ni keyin uzish uchun to'g'ri usul qaysi?",
+    "options": [
+     "bind natijasini o'zgaruvchida saqlash",
+     "Uzishda bind ni qaytadan yana chaqirish",
+     "Anonim arrow bilan uzish",
+     "Elementga this ni yozib qo'yish"
+    ],
+    "answer": "bind natijasini o'zgaruvchida saqlash",
+    "explain": "removeEventListener aynan o'sha funksiya havolasini talab qiladi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "`new` bilan chaqirilgan funksiyada this nima?",
+    "options": [
+     "Yangi yaratilgan obyekt",
+     "Funksiyaning o'zi",
+     "Global obyekt",
+     "Funksiya prototype i"
+    ],
+    "answer": "Yangi yaratilgan obyekt",
+    "explain": "new yangi obyekt yaratib, uni this qiladi va qaytaradi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "this ni qotirib, funksiyani chaqirmasdan yangisini qaytaradigan metod nomi?",
+    "answer": "bind",
+    "explain": "call va apply darhol chaqiradi, bind esa yo'q.",
+    "alsoAccept": [
+     ".bind",
+     "bind()"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Konsolga nima chiqadi?",
+    "answer": "5",
+    "explain": "call this = { x: 5 } qilib darhol chaqiradi.",
+    "passage": "function getX() { return this.x; }\nconsole.log(getX.call({ x: 5 }));"
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "this ni aniqlash ustuvorligini yuqoridan pastga tartiblang.",
+    "words": [
+     "new bilan chaqiruv",
+     "call, apply yoki bind",
+     "obyekt nuqtasi orqali chaqiruv",
+     "oddiy chaqiruv"
+    ],
+    "answer": "new bilan chaqiruv call, apply yoki bind obyekt nuqtasi orqali chaqiruv oddiy chaqiruv",
+    "explain": "Arrow funksiya bu ro'yxatdan tashqarida: u this ni tashqaridan oladi."
+   }
+  ]
+ },
+ {
+  "code": "fe-js-md-06",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 6,
+  "title": "Prototype zanjiri va new",
+  "intro": "[[Prototype]] bog'lanishi, xossa qidirish, prototype va __proto__ farqi, new ning to'rt qadami.",
+  "theory": {
+   "analogy": {
+    "icon": "📚",
+    "title": "Kutubxona zanjiri",
+    "text": "Kitob uy javonida bo'lmasa mahalla kutubxonasiga, u yerda ham bo'lmasa shahar kutubxonasiga borasiz. Kitob uyingizga ko'chirib qo'yilmaydi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Har bir obyektning yashirin [[Prototype]] bog'lanishi bor. Xossa obyektning o'zida topilmasa, qidiruv shu zanjir bo'ylab yuqoriga ko'tariladi. Class sintaksisi ham ostida aynan shu mexanizm bilan ishlaydi: metodlar nusxalanmaydi, ulashiladi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "[[Prototype]]",
+       "text": "Obyekt xossa topolmasa murojaat qiladigan boshqa obyekt."
+      },
+      {
+       "term": "Constructor.prototype",
+       "text": "new bilan yaratilganlarga prototip bo'ladigan obyekt."
+      },
+      {
+       "term": "Own property (o'z xossasi)",
+       "text": "Obyektning o'zida turgan xossa."
+      },
+      {
+       "term": "Shadowing (berkitish)",
+       "text": "O'z xossasi prototipdagi shu nomni to'sib qo'yishi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Metodlarni tejashda",
+       "text": "Ming nusxa bitta metodni ulashadi."
+      },
+      {
+       "term": "Debug da",
+       "text": "DevTools da [[Prototype]] ni ochib metod qayerdanligini ko'rasiz."
+      },
+      {
+       "term": "Xavfsizlikda",
+       "text": "Prototype pollution xavfini tushunasiz."
+      }
+     ]
+    },
+    {
+     "heading": "new ning qadamlari",
+     "flow": [
+      "Bo'sh obyekt yaratiladi",
+      "[[Prototype]] = F.prototype",
+      "F shu obyekt bilan bajariladi",
+      "Obyekt qaytariladi (F boshqa obyekt qaytarmasa)"
+     ]
+    },
+    {
+     "heading": "Zanjir",
+     "code": {
+      "lang": "js",
+      "text": "const arr = [];\n// arr -> Array.prototype -> Object.prototype -> null\nObject.getPrototypeOf(arr) === Array.prototype; // true"
+     }
+    },
+    {
+     "heading": "Tekshiruvlar",
+     "table": {
+      "head": [
+       "Ifoda",
+       "Zanjirni ko'radimi"
+      ],
+      "rows": [
+       [
+        "\"k\" in obj",
+        "ha"
+       ],
+       [
+        "Object.hasOwn(obj, \"k\")",
+        "yo'q"
+       ],
+       [
+        "Object.keys(obj)",
+        "yo'q"
+       ],
+       [
+        "for...in",
+        "ha (sanaladiganlarni)"
+       ],
+       [
+        "obj instanceof F",
+        "ha"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Ogohlantirish",
+     "callout": {
+      "kind": "warn",
+      "text": "Object.prototype ga xossa qo'shish barcha obyektlarga ta'sir qiladi. Tashqi JSON kalitlarini (\"__proto__\") tekshirmasdan birlashtirmang."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🐞",
+       "title": "Kutilmagan kalit",
+       "text": "for...in prototipdan kelgan xossani ham ro'yxatga qo'shib yubordi."
+      },
+      {
+       "icon": "🗺️",
+       "title": "Lug'at obyekti",
+       "text": "Object.create(null) da toString kabi meros kalitlar yo'q."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "O'qish zanjirdan yuqoriga chiqadi, yozish esa obyektning o'ziga tushadi."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "prototype va __proto__ ni aralashtirish.",
+       "prototype — funksiyada, [[Prototype]] — har obyektda.",
+       "Ular turli narsa."
+      ],
+      [
+       "Massivni prototipda saqlash.",
+       "constructor da yaratish.",
+       "Hamma nusxa bitta massivni ulashadi."
+      ],
+      [
+       "obj.hasOwnProperty ga ishonish.",
+       "Object.hasOwn.",
+       "null prototipli obyektda u yo'q."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Xossa zanjir bo'ylab qidiriladi.",
+    "new prototipni F.prototype ga bog'laydi.",
+    "Yozish o'z xossasini yaratadi.",
+    "Object.hasOwn faqat o'zinikini tekshiradi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "new ni qayta yozing",
+    "text": "Object.create va apply bilan myNew(F, ...args) yozing."
+   },
+   {
+    "title": "Zanjirni chizing",
+    "text": "class Dog extends Animal uchun instance dan null gacha zanjirni chizing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "true false",
+     "true true",
+     "false false",
+     "false true"
+    ],
+    "answer": "true false",
+    "explain": "in zanjirni ko'radi, Object.hasOwn faqat obyektning o'zini.",
+    "passage": "const base = { eats: true };\nconst rabbit = Object.create(base);\nconsole.log(\"eats\" in rabbit, Object.hasOwn(rabbit, \"eats\"));"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "2 1",
+     "2 2",
+     "1 1",
+     "1 2"
+    ],
+    "answer": "2 1",
+    "explain": "b.n = 2 o'z xossasini yaratadi, prototipdagi n o'zgarmaydi.",
+    "passage": "const a = { n: 1 };\nconst b = Object.create(a);\nb.n = 2;\nconsole.log(b.n, a.n);"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "2",
+     "1",
+     "0",
+     "undefined"
+    ],
+    "answer": "2",
+    "explain": "tags prototipda bitta: ikkala nusxa ham o'sha massivga push qiladi.",
+    "passage": "function P() {}\nP.prototype.tags = [];\nconst x = new P();\nconst y = new P();\nx.tags.push(\"a\");\ny.tags.push(\"b\");\nconsole.log(x.tags.length);"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "salom",
+     "TypeError",
+     "undefined",
+     "xayr"
+    ],
+    "answer": "salom",
+    "explain": "Metod nusxalanmagan: chaqiruv paytida prototipdan topiladi, keyin qo'shilgani ham ishlaydi.",
+    "passage": "function G() {}\nconst g = new G();\nG.prototype.say = () => \"salom\";\nconsole.log(g.say());"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "obj",
+     "F",
+     "undefined",
+     "TypeError"
+    ],
+    "answer": "obj",
+    "explain": "Konstruktor obyekt qaytarsa, new yangi this o'rniga shuni beradi.",
+    "passage": "function F() {\n  this.name = \"F\";\n  return { name: \"obj\" };\n}\nconsole.log(new F().name);"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "true true",
+     "true false",
+     "false true",
+     "false false"
+    ],
+    "answer": "true true",
+    "explain": "Massiv zanjirida Array.prototype ham, Object.prototype ham bor.",
+    "passage": "console.log([] instanceof Array, [] instanceof Object);"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "`const d = new Dog()` bo'lsa, qaysi tenglik to'g'ri?",
+    "options": [
+     "Object.getPrototypeOf(d) === Dog.prototype",
+     "d.prototype === Dog.prototype",
+     "Dog.__proto__ === d.__proto__",
+     "Object.getPrototypeOf(Dog) === d.prototype"
+    ],
+    "answer": "Object.getPrototypeOf(d) === Dog.prototype",
+    "explain": "new yangi obyekt [[Prototype]] ini Dog.prototype ga bog'laydi; instance da prototype xossasi yo'q."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Object.create(null) nima uchun ishlatiladi?",
+    "options": [
+     "Meros kalitlarsiz toza lug'at uchun",
+     "Muzlatilgan obyekt yaratish uchun",
+     "Obyektni xotiradan o'chirish uchun",
+     "Chuqur nusxa olish uchun"
+    ],
+    "answer": "Meros kalitlarsiz toza lug'at uchun",
+    "explain": "Prototipi yo'q obyektda toString, constructor kabi kalitlar chalkashtirmaydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Prototype pollution nima?",
+    "options": [
+     "Umumiy prototipga begona xossa yozilishi",
+     "Prototip zanjirining haddan tashqari uzayishi",
+     "Xotirada nusxalarning ko'payishi",
+     "Class metodlarining qayta yozilishi"
+    ],
+    "answer": "Umumiy prototipga begona xossa yozilishi",
+    "explain": "Tekshirilmagan __proto__ kalitli kirish barcha obyektlarga ta'sir qilishi mumkin."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Konsolga nima chiqadi?",
+    "answer": "null",
+    "explain": "Object.prototype zanjirning oxiri: uning prototipi null.",
+    "passage": "console.log(Object.getPrototypeOf(Object.prototype));"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Xossa aynan obyektning o'zida borligini tekshiruvchi statik metod: Object.___",
+    "answer": "hasOwn",
+    "explain": "Object.hasOwn(obj, key).",
+    "alsoAccept": [
+     "Object.hasOwn",
+     "hasOwn()"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "new User() qadamlarini tartiblang.",
+    "words": [
+     "Bo'sh obyekt yaratiladi",
+     "Prototip User.prototype ga ulanadi",
+     "User tanasi this bilan bajariladi",
+     "Obyekt qaytariladi"
+    ],
+    "answer": "Bo'sh obyekt yaratiladi Prototip User.prototype ga ulanadi User tanasi this bilan bajariladi Obyekt qaytariladi",
+    "explain": "Konstruktor boshqa obyekt qaytarmasa, aynan yaratilgan obyekt qaytadi."
+   }
+  ]
+ },
+ {
+  "code": "fe-js-md-07",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 7,
+  "title": "Class, meros va composition",
+  "intro": "constructor, super, static, private maydonlar, getter va meros o'rniga tarkib.",
+  "theory": {
+   "analogy": {
+    "icon": "🧩",
+    "title": "Shajara va asboblar kamari",
+    "text": "Meros — shajara: kim kimning avlodi, o'zgartirish qiyin. Composition (tarkib) — kamarga asbob osish: kerakligini qo'shasiz, keraksizini olasiz."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "class — prototip mexanizmi ustidagi qulay va qat'iyroq sintaksis. U strict rejimda ishlaydi, new siz chaqirilmaydi va # bilan haqiqiy xususiy maydon beradi. Middle dasturchi extends yozishdan oldin \"bu haqiqatan ham turi shumi, yoki shunchaki qobiliyati bormi\" deb so'raydi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "super",
+       "text": "Ota klass konstruktori yoki metodiga murojaat."
+      },
+      {
+       "term": "static",
+       "text": "Nusxaga emas, klassning o'ziga tegishli a'zo."
+      },
+      {
+       "term": "Private field (xususiy maydon)",
+       "text": "#nom: faqat klass ichidan ko'rinadi."
+      },
+      {
+       "term": "Composition (tarkib)",
+       "text": "Xatti-harakatni boshqa obyektlardan yig'ish."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Holat va xatti-harakat birga bo'lsa",
+       "text": "Masalan, EventEmitter yoki xato turlari."
+      },
+      {
+       "term": "Invariantni himoyalashda",
+       "text": "# maydon va metodlar orqali o'zgartirish."
+      },
+      {
+       "term": "Variantlar ko'payganda",
+       "text": "Meros daraxti o'rniga composition."
+      }
+     ]
+    },
+    {
+     "heading": "Anatomiya",
+     "code": {
+      "lang": "js",
+      "text": "class Account {\n  #balance = 0;\n  static from(x) { const a = new Account(); a.add(x); return a; }\n  get balance() { return this.#balance; }\n  add(x) { if (x > 0) this.#balance += x; }\n}"
+     }
+    },
+    {
+     "heading": "Meros qoidalari",
+     "bullets": [
+      "extends klassda constructor yozsangiz, this dan oldin super() shart.",
+      "super.metod() ota amalga oshirishni chaqiradi.",
+      "Ota konstruktorida chaqirilgan metod bola versiyasini ishlatadi, lekin bola maydonlari hali yo'q."
+     ]
+    },
+    {
+     "heading": "Maydon va metod",
+     "table": {
+      "head": [
+       "Yozuv",
+       "Qayerda turadi"
+      ],
+      "rows": [
+       [
+        "x = 1",
+        "har bir nusxada"
+       ],
+       [
+        "m() {}",
+        "prototipda, ulashilgan"
+       ],
+       [
+        "h = () => {}",
+        "har nusxada alohida funksiya"
+       ],
+       [
+        "static s() {}",
+        "klassning o'zida"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Composition",
+     "code": {
+      "lang": "js",
+      "text": "const canSwim = (s) => ({ swim: () => s.name + \" suzadi\" });\nconst duck = (name) => { const s = { name }; return { ...s, ...canSwim(s) }; };"
+     },
+     "callout": {
+      "kind": "tip",
+      "text": "\"X bu Y\" bo'lsa meros, \"X da Y qobiliyati bor\" bo'lsa composition."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🏦",
+       "title": "Balans himoyasi",
+       "text": "#balance ni tashqaridan manfiy qilib bo'lmaydi."
+      },
+      {
+       "icon": "🦆",
+       "title": "Uchadigan va suzadigan",
+       "text": "Meros daraxti tarmoqlanib ketadi, composition esa yig'iladi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Meros chuqurligini bir-ikki qavatdan oshirmang."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "super() dan oldin this ishlatish.",
+       "Avval super().",
+       "ReferenceError beradi."
+      ],
+      [
+       "_nom ni xususiy deb o'ylash.",
+       "# ishlatish.",
+       "Pastki chiziq faqat kelishuv."
+      ],
+      [
+       "Faqat kod ulashish uchun extends.",
+       "Funksiya yoki composition.",
+       "Keraksiz bog'liqlik paydo bo'ladi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "class ostida prototype turadi.",
+    "# maydon haqiqatan xususiy.",
+    "static klass orqali chaqiriladi.",
+    "Moslashuvchanlik uchun composition."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Account klassi",
+    "text": "#balance, add, withdraw va static from bilan klass yozing, noto'g'ri qiymatni rad eting."
+   },
+   {
+    "title": "Merosdan tarkibga",
+    "text": "FlyingSwimmingDuck daraxtini qobiliyat funksiyalariga o'tkazing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "function true",
+     "class true",
+     "object false",
+     "function false"
+    ],
+    "answer": "function true",
+    "explain": "class ham funksiya; metodlar prototype da turadi.",
+    "passage": "class A { hi() {} }\nconsole.log(typeof A, new A().hi === A.prototype.hi);"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "false true",
+     "true true",
+     "false false",
+     "true false"
+    ],
+    "answer": "false true",
+    "explain": "Metod ulashilgan, arrow maydon esa har nusxada yangi.",
+    "passage": "class A {\n  f = () => 1;\n  m() {}\n}\nconst x = new A();\nconst y = new A();\nconsole.log(x.f === y.f, x.m === y.m);"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "undefined function",
+     "function function",
+     "function undefined",
+     "undefined undefined"
+    ],
+    "answer": "undefined function",
+    "explain": "static metod nusxada emas, klassning o'zida.",
+    "passage": "class M { static make() {} }\nconsole.log(typeof new M().make, typeof M.make);"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "hayvon: vov",
+     "vov",
+     "hayvon",
+     "hayvon: undefined"
+    ],
+    "answer": "hayvon: vov",
+    "explain": "super.say() ota metodini chaqiradi, this.sound() esa bolaniki.",
+    "passage": "class Animal {\n  say() { return \"hayvon: \" + this.sound(); }\n  sound() { return \"...\"; }\n}\nclass Dog extends Animal {\n  say() { return super.say(); }\n  sound() { return \"vov\"; }\n}\nconsole.log(new Dog().say());"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "ReferenceError",
+     "SyntaxError",
+     "undefined",
+     "TypeError"
+    ],
+    "answer": "ReferenceError",
+    "explain": "Meros klassda super() dan oldin this ga tegib bo'lmaydi.",
+    "passage": "class A {}\nclass B extends A {\n  constructor() { this.x = 1; super(); }\n}\ntry { new B(); console.log(1); } catch (e) { console.log(e.name); }"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "TypeError",
+     "Account",
+     "undefined",
+     "ReferenceError"
+    ],
+    "answer": "TypeError",
+    "explain": "class ni new siz chaqirib bo'lmaydi.",
+    "passage": "class Account {}\ntry { Account(); } catch (e) { console.log(e.name); }"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "undefined 10",
+     "10 10",
+     "undefined undefined",
+     "0 10"
+    ],
+    "answer": "undefined 10",
+    "explain": "# maydon tashqaridan oddiy kalit sifatida ko'rinmaydi; getter orqali o'qiladi.",
+    "passage": "class W {\n  #sum = 10;\n  get sum() { return this.#sum; }\n}\nconst w = new W();\nconsole.log(w[\"#sum\"], w.sum);"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Qaysi holatda composition merosdan afzal?",
+    "options": [
+     "Qobiliyatlar turli kombinatsiyada kerak",
+     "Xato turi Error dan kelib chiqishi kerak",
+     "instanceof tekshiruvi talab qilinadi",
+     "Bola ota bilan to'liq bir turda"
+    ],
+    "answer": "Qobiliyatlar turli kombinatsiyada kerak",
+    "explain": "Kombinatsiyalar ko'paysa meros daraxti portlaydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "`_secret` bilan `#secret` farqi nima?",
+    "options": [
+     "# ni til tashqaridan yopadi",
+     "_ ni brauzer o'zi yashiradi",
+     "# faqat static a'zolarda ishlaydi",
+     "Ikkalasi faqat kelishuv xolos"
+    ],
+    "answer": "# ni til tashqaridan yopadi",
+    "explain": "_ shunchaki nomlash odati, # esa sintaktik cheklov."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Konsolga nima chiqadi?",
+    "answer": "true",
+    "explain": "Meros zanjiri tufayli Dog nusxasi Animal ga ham instanceof.",
+    "passage": "class Animal {}\nclass Dog extends Animal {}\nconsole.log(new Dog() instanceof Animal);"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Ota klass konstruktorini chaqirish uchun qaysi kalit so'z ishlatiladi?",
+    "answer": "super",
+    "explain": "super(...args).",
+    "alsoAccept": [
+     "super()"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Meros klass nusxasi yaratilish tartibini tuzing.",
+    "words": [
+     "new Bola chaqiriladi",
+     "super ota konstruktorini ishga tushiradi",
+     "Bola maydonlari o'rnatiladi",
+     "Bola konstruktorining qolgan qismi bajariladi"
+    ],
+    "answer": "new Bola chaqiriladi super ota konstruktorini ishga tushiradi Bola maydonlari o'rnatiladi Bola konstruktorining qolgan qismi bajariladi",
+    "explain": "Bola maydonlari super() qaytgandan keyin paydo bo'ladi."
+   }
+  ]
+ },
+ {
+  "code": "fe-js-md-08",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 8,
+  "title": "Massivlar, destructuring, Map va Set",
+  "intro": "O'zgartiruvchi va o'zgartirmaydigan metodlar, sort tuzog'i, rest/spread, Map va Set tanlovi.",
+  "theory": {
+   "analogy": {
+    "icon": "🗂️",
+    "title": "Asl hujjat va nusxa",
+    "text": "Ba'zi amallar asl hujjatning ustiga yozadi, ba'zilari nusxa chiqarib o'shanda ishlaydi. Qaysi biri qaysiligini bilmasangiz, arxiv buziladi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Massiv metodlarining bir qismi asl massivni o'zgartiradi (mutating), bir qismi yangisini qaytaradi. Destructuring (parchalash) qiymatlarni qulay ajratadi. Map va Set esa oddiy obyekt va massiv yomon bajaradigan vazifalar uchun: ixtiyoriy kalit va tez a'zolik tekshiruvi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Mutating method",
+       "text": "Asl massivni o'zgartiradi: push, splice, sort, reverse."
+      },
+      {
+       "term": "Destructuring (parchalash)",
+       "text": "Massiv yoki obyektdan qiymatlarni o'zgaruvchilarga ajratish."
+      },
+      {
+       "term": "Map",
+       "text": "Istalgan turdagi kalitli, tartibli lug'at."
+      },
+      {
+       "term": "Set",
+       "text": "Takrorsiz qiymatlar to'plami."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "React holatida",
+       "text": "toSorted, filter, map — asl massivga tegmaydi."
+      },
+      {
+       "term": "Takrorlarni olib tashlashda",
+       "text": "[...new Set(list)]."
+      },
+      {
+       "term": "Obyektni kalit qilishda",
+       "text": "Map yoki WeakMap."
+      }
+     ]
+    },
+    {
+     "heading": "Qaysi biri o'zgartiradi",
+     "table": {
+      "head": [
+       "O'zgartiradi",
+       "O'zgartirmaydi"
+      ],
+      "rows": [
+       [
+        "sort",
+        "toSorted"
+       ],
+       [
+        "reverse",
+        "toReversed"
+       ],
+       [
+        "splice",
+        "slice, toSpliced"
+       ],
+       [
+        "push, pop, shift",
+        "concat, [...a, x]"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Destructuring",
+     "code": {
+      "lang": "js",
+      "text": "const [first, , third = 0, ...rest] = list;\nconst { id, name: title = \"-\", ...other } = item;\n[a, b] = [b, a]; // almashtirish"
+     }
+    },
+    {
+     "heading": "Map va obyekt",
+     "bullets": [
+      "Map kaliti istalgan tur, obyekt kaliti satr yoki symbol.",
+      "Map.size tayyor, obyektda Object.keys(o).length.",
+      "Map JSON ga to'g'ridan-to'g'ri yozilmaydi.",
+      "WeakMap kaliti obyekt bo'lib, GC ga xalaqit bermaydi."
+     ]
+    },
+    {
+     "heading": "sort",
+     "callout": {
+      "kind": "warn",
+      "text": "Taqqoslash funksiyasisiz sort elementlarni satr sifatida tartiblaydi: [1, 10, 2]. Sonlar uchun (a, b) => a - b."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔀",
+       "title": "Asl tartib yo'qoldi",
+       "text": "list.sort() boshqa komponentdagi ro'yxatni ham o'zgartirdi."
+      },
+      {
+       "icon": "🏷️",
+       "title": "Tanlangan elementlar",
+       "text": "Set.has bilan tekshirish massiv includes dan tezroq o'sadi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Holat bilan ishlaganda to* metodlar va spread ni tanlang."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "sort() ni sonlarga komparatorsiz qo'llash.",
+       "(a, b) => a - b.",
+       "Aks holda satr tartibi."
+      ],
+      [
+       "default null uchun ishlaydi deb o'ylash.",
+       "Default faqat undefined da.",
+       "null o'tib ketadi."
+      ],
+      [
+       "Map ni obyekt kabi map[key] bilan yozish.",
+       "set va get.",
+       "Aks holda oddiy xossa yaratiladi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "sort, reverse, splice aslini o'zgartiradi.",
+    "Default faqat undefined da ishlaydi.",
+    "Set takrorsiz, Map ixtiyoriy kalitli.",
+    "find topmasa undefined, findIndex -1."
+   ]
+  },
+  "practice": [
+   {
+    "title": "groupBy",
+    "text": "Map qaytaradigan groupBy(list, keyFn) funksiyasini yozing."
+   },
+   {
+    "title": "Mutatsiyani yo'qoting",
+    "text": "sort va splice ishlatilgan joyni toSorted va toSpliced ga o'tkazing."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "1,10,2",
+     "1,2,10",
+     "10,2,1",
+     "2,10,1"
+    ],
+    "answer": "1,10,2",
+    "explain": "Komparatorsiz sort satr sifatida solishtiradi.",
+    "passage": "console.log([10, 1, 2].sort().join(\",\"));"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "3,1,2 1,2,3",
+     "1,2,3 1,2,3",
+     "3,1,2 3,1,2",
+     "1,2,3 3,1,2"
+    ],
+    "answer": "3,1,2 1,2,3",
+    "explain": "toSorted yangi massiv qaytaradi, asl o'zgarmaydi.",
+    "passage": "const a = [3, 1, 2];\nconst b = a.toSorted((x, y) => x - y);\nconsole.log(a.join(\",\"), b.join(\",\"));"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "2,3 1,4",
+     "2,3 1,2,3,4",
+     "1,2 3,4",
+     "2,3,4 1"
+    ],
+    "answer": "2,3 1,4",
+    "explain": "splice(1, 2) 1-indeksdan 2 ta elementni olib tashlab qaytaradi va asl massivni o'zgartiradi.",
+    "passage": "const a = [1, 2, 3, 4];\nconst cut = a.splice(1, 2);\nconsole.log(cut.join(\",\"), a.join(\",\"));"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "5 null",
+     "5 5",
+     "undefined null",
+     "null null"
+    ],
+    "answer": "5 null",
+    "explain": "Default qiymat faqat undefined bo'lganda ishlaydi; null saqlanadi.",
+    "passage": "const { a = 5, b = 5 } = { a: undefined, b: null };\nconsole.log(a, b);"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "1 3,4",
+     "1 2,3,4",
+     "2 3,4",
+     "1 4"
+    ],
+    "answer": "1 3,4",
+    "explain": "Bo'sh vergul ikkinchi elementni tashlab o'tadi, rest qolganini yig'adi.",
+    "passage": "const [x, , ...rest] = [1, 2, 3, 4];\nconsole.log(x, rest.join(\",\"));"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "3",
+     "4",
+     "2",
+     "5"
+    ],
+    "answer": "3",
+    "explain": "Set takrorlarni olib tashlaydi: 1, \"1\", 2. Son 1 va satr \"1\" har xil.",
+    "passage": "console.log(new Set([1, \"1\", 1, 2, 2]).size);"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "birinchi undefined",
+     "birinchi birinchi",
+     "undefined undefined",
+     "undefined birinchi"
+    ],
+    "answer": "birinchi undefined",
+    "explain": "Map obyekt kalitni havola bo'yicha solishtiradi: o'xshash literal boshqa kalit.",
+    "passage": "const key = { id: 1 };\nconst m = new Map([[key, \"birinchi\"]]);\nconsole.log(m.get(key), m.get({ id: 1 }));"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "true false",
+     "true true",
+     "false false",
+     "false true"
+    ],
+    "answer": "true false",
+    "explain": "includes NaN ni topadi (SameValueZero), indexOf esa === ishlatib topolmaydi.",
+    "passage": "const a = [NaN];\nconsole.log(a.includes(NaN), a.indexOf(NaN) !== -1);"
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "DOM elementiga bog'liq ma'lumotni xotira oqizmasdan saqlash uchun nima mos?",
+    "options": [
+     "WeakMap",
+     "Map",
+     "Set",
+     "Oddiy massiv"
+    ],
+    "answer": "WeakMap",
+    "explain": "WeakMap kalitga kuchsiz havola ushlaydi: element yo'qolsa yozuv ham yig'iladi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Konsolga nima chiqadi?",
+    "answer": "-1",
+    "explain": "findIndex topmasa -1 qaytaradi.",
+    "passage": "console.log([1, 2].findIndex((n) => n > 5));"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Konsolga nima chiqadi?",
+    "answer": "3",
+    "explain": "Array.from uzunlik va funksiya bilan [1, 2, 3] yasaydi; oxirgisi 3.",
+    "passage": "console.log(Array.from({ length: 3 }, (_, i) => i + 1).at(-1));"
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Takrorsiz va tartiblangan ro'yxat olish qadamlarini tuzing.",
+    "words": [
+     "Massivni Set ga bering",
+     "Set ni spread bilan massivga aylantiring",
+     "toSorted ni komparator bilan chaqiring",
+     "Yangi massivni qaytaring"
+    ],
+    "answer": "Massivni Set ga bering Set ni spread bilan massivga aylantiring toSorted ni komparator bilan chaqiring Yangi massivni qaytaring",
+    "explain": "[...new Set(a)].toSorted((x, y) => x - y)."
+   }
+  ]
+ },
+ {
+  "code": "fe-js-md-09",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 9,
+  "title": "Xatolarni boshqarish strategiyasi",
+  "intro": "try, catch, finally tartibi, o'z xato klasslari, cause va asinxron xatolar.",
+  "theory": {
+   "analogy": {
+    "icon": "🚑",
+    "title": "Tez yordam zanjiri",
+    "text": "Hamshira qo'lidan kelmaganini shifokorga uzatadi va nima bo'lganini yozib beradi. Muammoni jim berkitib qo'yish eng xavfli yo'l."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Xato — kutilmagan holat haqidagi signal. Middle dasturchi har joyga try qo'ymaydi: xatoni uni haqiqatan hal qila oladigan qatlamda ushlaydi, qolganida yuqoriga o'tkazadi va asl sababni yo'qotmaydi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "throw",
+       "text": "Bajarishni to'xtatib, xatoni yuqoriga uloqtirish."
+      },
+      {
+       "term": "finally",
+       "text": "Natija qanday bo'lishidan qat'i nazar bajariladigan blok."
+      },
+      {
+       "term": "Error cause",
+       "text": "Yangi xatoga asl xatoni biriktirish: { cause }."
+      },
+      {
+       "term": "Unhandled rejection",
+       "text": "Hech kim ushlamagan rad etilgan Promise."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Tashqi ma'lumot bilan",
+       "text": "JSON.parse, tarmoq, localStorage."
+      },
+      {
+       "term": "Qatlam chegarasida",
+       "text": "Past darajali xatoni tushunarli xatoga o'raysiz."
+      },
+      {
+       "term": "Resurs bo'shatishda",
+       "text": "finally da loading ni o'chirasiz."
+      }
+     ]
+    },
+    {
+     "heading": "O'z xato klassi",
+     "code": {
+      "lang": "js",
+      "text": "class HttpError extends Error {\n  constructor(status, options) {\n    super(\"HTTP \" + status, options);\n    this.name = \"HttpError\";\n    this.status = status;\n  }\n}"
+     }
+    },
+    {
+     "heading": "O'rab uzatish",
+     "code": {
+      "lang": "js",
+      "text": "try {\n  return JSON.parse(raw);\n} catch (e) {\n  throw new Error(\"Sozlama buzilgan\", { cause: e });\n}"
+     }
+    },
+    {
+     "heading": "try nimani ushlaydi",
+     "table": {
+      "head": [
+       "Holat",
+       "Ushlanadimi"
+      ],
+      "rows": [
+       [
+        "sinxron throw",
+        "ha"
+       ],
+       [
+        "await qilingan rad etish",
+        "ha"
+       ],
+       [
+        "await siz Promise",
+        "yo'q"
+       ],
+       [
+        "setTimeout callback ichidagi throw",
+        "yo'q"
+       ],
+       [
+        "sintaksis xatosi (parse)",
+        "yo'q"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "finally tuzog'i",
+     "callout": {
+      "kind": "warn",
+      "text": "finally ichidagi return try yoki catch dagi return va throw ni bekor qiladi. U yerda qiymat qaytarmang."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "⏳",
+       "title": "Spinner aylanib qoldi",
+       "text": "loading = false catch ga yozilmagan; finally da bo'lishi kerak edi."
+      },
+      {
+       "icon": "🕳️",
+       "title": "Bo'sh catch",
+       "text": "Xato yutildi va nega ishlamayotgani hech kimga ma'lum emas."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Hal qila olmasangiz, ushlab yutmang: qayta uloqtiring."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Bo'sh catch qoldirish.",
+       "Hech bo'lmasa log va qayta throw.",
+       "Xato izsiz yo'qoladi."
+      ],
+      [
+       "Satr uloqtirish.",
+       "Error nusxasi.",
+       "Stack va name yo'qoladi."
+      ],
+      [
+       "return promise ni try ichida yozish.",
+       "return await promise.",
+       "Aks holda catch ishlamaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "finally har doim bajariladi.",
+    "O'z xato klassi Error dan meros oladi.",
+    "cause asl sababni saqlaydi.",
+    "await siz xato try dan o'tib ketadi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "HttpError",
+    "text": "status li xato klassi yozib, 401 va 500 ni turlicha qayta ishlang."
+   },
+   {
+    "title": "Bo'sh catch ovi",
+    "text": "Loyihadagi catch larni ko'rib, yutilayotgan xatolarni tuzating."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "try finally 1",
+     "try 1 finally",
+     "finally try 1",
+     "try 1"
+    ],
+    "answer": "try finally 1",
+    "explain": "finally return dan oldin bajariladi, keyin qiymat tashqariga chiqadi.",
+    "passage": "function f() {\n  try { console.log(\"try\"); return 1; }\n  finally { console.log(\"finally\"); }\n}\nconsole.log(f());"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "2",
+     "1",
+     "undefined",
+     "3"
+    ],
+    "answer": "2",
+    "explain": "finally dagi return try dagi return ni bekor qiladi.",
+    "passage": "function f() {\n  try { return 1; }\n  finally { return 2; }\n}\nconsole.log(f());"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "RangeError katta",
+     "Error katta",
+     "RangeError undefined",
+     "katta RangeError"
+    ],
+    "answer": "RangeError katta",
+    "explain": "name klass nomini, message berilgan matnni saqlaydi.",
+    "passage": "try {\n  throw new RangeError(\"katta\");\n} catch (e) {\n  console.log(e.name, e.message);\n}"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "tashqi ichki",
+     "ichki tashqi",
+     "tashqi undefined",
+     "ichki ichki"
+    ],
+    "answer": "tashqi ichki",
+    "explain": "cause asl xatoni yangi xato ichida saqlaydi.",
+    "passage": "try {\n  try { throw new Error(\"ichki\"); }\n  catch (e) { throw new Error(\"tashqi\", { cause: e }); }\n} catch (e) {\n  console.log(e.message, e.cause.message);\n}"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "keyin ushlandi",
+     "ushlandi keyin",
+     "ushlandi",
+     "keyin"
+    ],
+    "answer": "keyin ushlandi",
+    "explain": "await siz try rad etishni ushlamaydi: \"keyin\" sinxron chiqadi, .catch esa keyinroq.",
+    "passage": "try {\n  Promise.reject(new Error(\"x\")).catch(() => console.log(\"ushlandi\"));\n  console.log(\"keyin\");\n} catch (e) {\n  console.log(\"try-catch\");\n}"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "true true",
+     "true false",
+     "false true",
+     "false false"
+    ],
+    "answer": "true true",
+    "explain": "Meros zanjiri tufayli HttpError nusxasi Error ga ham instanceof.",
+    "passage": "class HttpError extends Error {}\nconst e = new HttpError();\nconsole.log(e instanceof HttpError, e instanceof Error);"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "try { setTimeout(() => { throw new Error() }) } catch {} nima bo'ladi?",
+    "options": [
+     "catch ishlamaydi, xato ushlanmay qoladi",
+     "catch xatoni kechikib bo'lsa ham ushlaydi",
+     "Taymer umuman ishga tushmay qoladi",
+     "Xato jim holda e'tibordan chetda qoladi"
+    ],
+    "answer": "catch ishlamaydi, xato ushlanmay qoladi",
+    "explain": "Callback ishlaganda try bloki allaqachon tugagan."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Funksiya xatoni hal qila olmasa, to'g'ri yondashuv qaysi?",
+    "options": [
+     "Yuqori qatlamga uzatish",
+     "null qaytarib davom etish",
+     "catch ichida jim qolish",
+     "Sahifani qayta yuklash"
+    ],
+    "answer": "Yuqori qatlamga uzatish",
+    "explain": "Qaror qabul qila oladigan qatlam ushlashi kerak."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Nega `throw 'xato'` yomon amaliyot?",
+    "options": [
+     "Stack va name ma'lumoti bo'lmaydi",
+     "Satrni umuman uloqtirib bo'lmaydi",
+     "catch satrlarni ushlay olmaydi",
+     "finally bloki ishlamay qoladi"
+    ],
+    "answer": "Stack va name ma'lumoti bo'lmaydi",
+    "explain": "Error nusxasi diagnostika uchun kerakli ma'lumotlarni olib yuradi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Natijadan qat'i nazar bajariladigan blok kalit so'zi?",
+    "answer": "finally",
+    "explain": "Resurslarni bo'shatish joyi.",
+    "alsoAccept": [
+     "finally {}"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Ushlanmagan rad etilgan Promise uchun brauzer hodisasi nomi?",
+    "answer": "unhandledrejection",
+    "explain": "window.addEventListener(\"unhandledrejection\", ...).",
+    "alsoAccept": [
+     "onunhandledrejection"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Xatoni qatlamlar bo'ylab to'g'ri uzatishni tartiblang.",
+    "words": [
+     "Past qatlamda xato yuz beradi",
+     "O'rta qatlam cause bilan o'raydi",
+     "Yuqori qatlam ushlab log qiladi",
+     "Foydalanuvchiga tushunarli xabar chiqadi"
+    ],
+    "answer": "Past qatlamda xato yuz beradi O'rta qatlam cause bilan o'raydi Yuqori qatlam ushlab log qiladi Foydalanuvchiga tushunarli xabar chiqadi",
+    "explain": "Texnik tafsilot logga, sodda xabar ekranga."
+   }
+  ]
+ },
+ {
+  "code": "fe-js-md-10",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 10,
+  "title": "ES modullar va code splitting",
+  "intro": "named va default export, live binding, bir marta bajarilish, dynamic import, tree shaking.",
+  "theory": {
+   "analogy": {
+    "icon": "🧰",
+    "title": "Ustaxona javonlari",
+    "text": "Har javon o'z asboblarini saqlaydi va faqat yorliq yopishtirilganlarini beradi. Sizga berilgani nusxa emas: javondagi asbob almashsa, siz ham yangisini ko'rasiz."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "ES module — o'z scope iga ega fayl: nimani tashqariga berishini export, nimani olishini import bilan aytadi. Import statik bo'lgani uchun vositalar bog'liqliklarni kodni ishga tushirmasdan tahlil qila oladi — tree shaking va code splitting shunga tayanadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Named export",
+       "text": "Nomi bilan eksport; import da aynan shu nom yoki as."
+      },
+      {
+       "term": "Default export",
+       "text": "Moduldagi bitta asosiy eksport, nomi erkin."
+      },
+      {
+       "term": "Live binding (jonli bog'lanish)",
+       "text": "Import qiymat nusxasi emas, eksport o'zgaruvchisiga bog'lanish."
+      },
+      {
+       "term": "Tree shaking",
+       "text": "Ishlatilmagan eksportlarni bundle dan olib tashlash."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Kodni bo'lishda",
+       "text": "Har fayl bitta mas'uliyat."
+      },
+      {
+       "term": "Og'ir sahifalarda",
+       "text": "import() bilan kerak paytda yuklash."
+      },
+      {
+       "term": "Umumiy holatda",
+       "text": "Modul bir marta bajarilgani uchun tabiiy singleton."
+      }
+     ]
+    },
+    {
+     "heading": "Sintaksis",
+     "code": {
+      "lang": "js",
+      "text": "export const add = (a, b) => a + b;\nexport default function App() {}\nimport App, { add as sum } from \"./app.js\";\nimport * as math from \"./math.js\";"
+     }
+    },
+    {
+     "heading": "Modul xususiyatlari",
+     "bullets": [
+      "Doim strict rejim.",
+      "Top-level this undefined.",
+      "Necha joyda import qilinsa ham bir marta bajariladi.",
+      "import lar ko'tariladi (hoisting).",
+      "Import qilingan nomga qayta qiymat yozib bo'lmaydi."
+     ]
+    },
+    {
+     "heading": "Dynamic import",
+     "code": {
+      "lang": "js",
+      "text": "button.onclick = async () => {\n  const { openChart } = await import(\"./chart.js\");\n  openChart();\n};"
+     },
+     "text": "import() Promise qaytaradi; bundler bu joyda alohida chunk (bo'lak) yaratadi."
+    },
+    {
+     "heading": "Siklik bog'liqlik",
+     "callout": {
+      "kind": "warn",
+      "text": "a.js b.js ni, b.js esa a.js ni import qilsa, biri hali tayyor bo'lmagan qiymatni o'qib ReferenceError olishi mumkin. Umumiy qismni uchinchi modulga chiqaring."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📉",
+       "title": "Bundle kichraydi",
+       "text": "Butun kutubxona o'rniga kerakli funksiya import qilindi."
+      },
+      {
+       "icon": "📊",
+       "title": "Grafik sahifasi",
+       "text": "Chart kutubxonasi faqat tugma bosilganda yuklanadi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Named export ko'proq ishlating: nom izchil va tree shaking aniqroq."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "import qilingan nomni o'zgartirishga urinish.",
+       "Egasi bo'lgan modulda setter eksport qilish.",
+       "TypeError beradi."
+      ],
+      [
+       "Hamma narsani bitta barrel dan olish.",
+       "Kerakli fayldan import.",
+       "Ortiqcha kod tortilishi mumkin."
+      ],
+      [
+       "import() natijasini sinxron deb o'ylash.",
+       "await yoki then.",
+       "U Promise."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Modul bir marta bajariladi.",
+    "Import jonli bog'lanish.",
+    "import() Promise va alohida chunk.",
+    "Tree shaking statik import ga tayanadi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Lazy yuklash",
+    "text": "Bitta og'ir funksiyani import() ga o'tkazib, Network tabda alohida faylni ko'ring."
+   },
+   {
+    "title": "Jonli bog'lanish",
+    "text": "count va inc eksport qiluvchi modul yozib, importda qiymat o'zgarishini tekshiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "count eksport qilingan, inc() uni oshiradi. Importer inc() dan keyin count da nimani ko'radi?",
+    "options": [
+     "Yangi qiymatni",
+     "Eski qiymatni",
+     "undefined ni",
+     "Funksiyani"
+    ],
+    "answer": "Yangi qiymatni",
+    "explain": "Import jonli bog'lanish, nusxa emas.",
+    "passage": "// counter.js\nexport let count = 0;\nexport const inc = () => { count += 1; };\n// main.js\nimport { count, inc } from \"./counter.js\";\ninc();\nconsole.log(count);"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Importer `count = 5` deb yozsa nima bo'ladi?",
+    "options": [
+     "TypeError",
+     "Qiymat 5 bo'ladi",
+     "Lokal nusxa o'zgaradi",
+     "Jim e'tiborsiz qoladi"
+    ],
+    "answer": "TypeError",
+    "explain": "Import qilingan bog'lanish faqat o'qiladi.",
+    "passage": "import { count } from \"./counter.js\";\ncount = 5;"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Bitta modulni uchta fayl import qilsa, uning tanasi necha marta bajariladi?",
+    "options": [
+     "Bir marta",
+     "Uch marta",
+     "Har chaqiruvda",
+     "Ikki marta"
+    ],
+    "answer": "Bir marta",
+    "explain": "Modul keshlanadi — shu sabab u singleton bo'lib xizmat qiladi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "`import('./chart.js')` nima qaytaradi?",
+    "options": [
+     "Modul obyektli Promise",
+     "Default eksportning o'zi",
+     "Fayl matnini satr holida",
+     "undefined, keyin global"
+    ],
+    "answer": "Modul obyektli Promise",
+    "explain": "await qilib, nomlangan eksportlarni ajratib olasiz."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Tree shaking nega CommonJS require da qiyinroq?",
+    "options": [
+     "require ish vaqtida hisoblanadi",
+     "require faylni ikki marta o'qiydi",
+     "require brauzerda tezroq ishlaydi",
+     "require faqat default beradi"
+    ],
+    "answer": "require ish vaqtida hisoblanadi",
+    "explain": "Statik import ni vosita kodni bajarmay tahlil qiladi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Default eksportni boshqa nom bilan import qilsa bo'ladimi?",
+    "options": [
+     "Ha, istalgan nom bilan",
+     "Yo'q, nom bir xil bo'lsin",
+     "Faqat as bilan mumkin",
+     "Faqat * bilan mumkin"
+    ],
+    "answer": "Ha, istalgan nom bilan",
+    "explain": "Default ning nomi import qiluvchida tanlanadi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Modul faylida top-level this nimaga teng?",
+    "options": [
+     "undefined",
+     "window",
+     "module",
+     "globalThis"
+    ],
+    "answer": "undefined",
+    "explain": "Modul scope strict va this bog'lanmagan."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Siklik import muammosining eng to'g'ri yechimi?",
+    "options": [
+     "Umumiy qismni alohida modulga chiqarish",
+     "Ikkala faylga ham default export qo'shish",
+     "import larni fayl oxiriga ko'chirish",
+     "Har ikki modulni ikki marta import qilish"
+    ],
+    "answer": "Umumiy qismni alohida modulga chiqarish",
+    "explain": "Bog'liqlik bir tomonlama bo'lishi kerak."
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "Oddiy HTML da modul skriptini ulash uchun <script> ning type qiymati?",
+    "answer": "module",
+    "explain": "<script type=\"module\">; u defer kabi ishlaydi.",
+    "alsoAccept": [
+     "type=\"module\""
+    ]
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Ishlatilmagan eksportlarni bundle dan olib tashlash inglizcha nomi?",
+    "answer": "tree shaking",
+    "explain": "Daraxtni silkitib quruq barglarni tushirish.",
+    "alsoAccept": [
+     "tree-shaking",
+     "treeshaking"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "`import { add as sum }` dan keyin funksiya qaysi nom bilan chaqiriladi?",
+    "answer": "sum",
+    "explain": "as lokal nomni o'zgartiradi.",
+    "alsoAccept": [
+     "sum()"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Dynamic import bilan kerak paytda yuklashni tartiblang.",
+    "words": [
+     "Foydalanuvchi tugmani bosadi",
+     "import() so'rov yuboradi",
+     "Chunk yuklanib bajariladi",
+     "Eksport qilingan funksiya chaqiriladi"
+    ],
+    "answer": "Foydalanuvchi tugmani bosadi import() so'rov yuboradi Chunk yuklanib bajariladi Eksport qilingan funksiya chaqiriladi",
+    "explain": "Sahifa birinchi ochilishda bu kodni yuklamaydi."
+   }
+  ]
+ },
+ {
+  "code": "fe-js-md-11",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 11,
+  "title": "Event loop, Promise va async/await",
+  "intro": "Call stack, microtask va macrotask tartibi, zanjir, kombinatorlar va ketma-ket/parallel so'rovlar.",
+  "theory": {
+   "analogy": {
+    "icon": "🍽️",
+    "title": "Bitta ofitsiant",
+    "text": "Ofitsiant avval qo'lidagi ishni tugatadi, keyin shoshilinch yozuvlarning hammasini bajaradi va faqat shundan so'ng navbatdagi bitta mijozga o'tadi."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "JavaScript bitta oqimda ishlaydi. Event loop (hodisalar aylanasi) stek bo'shagach, avval barcha microtask larni, keyin bitta macrotask ni oladi. Promise va await — natija keyinroq keladigan ishlarni shu navbatlar orqali tartibga solish usuli."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Microtask",
+       "text": "then/catch/finally, await davomi, queueMicrotask."
+      },
+      {
+       "term": "Macrotask",
+       "text": "setTimeout, setInterval, foydalanuvchi hodisalari."
+      },
+      {
+       "term": "Promise holati",
+       "text": "pending, fulfilled yoki rejected; bir marta hal bo'ladi."
+      },
+      {
+       "term": "async funksiya",
+       "text": "Doim Promise qaytaradi."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Tartib xatolarini topishda",
+       "text": "Nima qachon bajarilishini oldindan aytasiz."
+      },
+      {
+       "term": "Mustaqil so'rovlarda",
+       "text": "Promise.all bilan parallel."
+      },
+      {
+       "term": "UI qotganda",
+       "text": "Uzun sinxron ishni bo'laklaysiz."
+      }
+     ]
+    },
+    {
+     "heading": "Tartib",
+     "flow": [
+      "Sinxron kod",
+      "Barcha microtask lar",
+      "Render imkoniyati",
+      "Bitta macrotask",
+      "Yana microtask lar"
+     ]
+    },
+    {
+     "heading": "Kombinatorlar",
+     "table": {
+      "head": [
+       "Metod",
+       "Qachon hal bo'ladi"
+      ],
+      "rows": [
+       [
+        "all",
+        "hammasi bajarilsa; bitta xato — rad"
+       ],
+       [
+        "allSettled",
+        "hammasi tugagach, holatlar ro'yxati"
+       ],
+       [
+        "race",
+        "birinchi tugagani (xato ham)"
+       ],
+       [
+        "any",
+        "birinchi muvaffaqiyatli"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Ketma-ket va parallel",
+     "code": {
+      "lang": "js",
+      "text": "// ketma-ket: 2 soniya\nconst a = await getA();\nconst b = await getB();\n// parallel: 1 soniya\nconst [x, y] = await Promise.all([getA(), getB()]);"
+     }
+    },
+    {
+     "heading": "forEach va await",
+     "callout": {
+      "kind": "warn",
+      "text": "forEach async callback ni kutmaydi. Ketma-ket kerak bo'lsa for...of, parallel kerak bo'lsa Promise.all + map."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🐢",
+       "title": "Sahifa 6 soniya",
+       "text": "Uchta mustaqil so'rov ketma-ket await qilingan."
+      },
+      {
+       "icon": "🧊",
+       "title": "UI qotdi",
+       "text": "Cheksiz microtask yoki og'ir sikl render ga imkon bermaydi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Natijalar bir-biriga bog'liq bo'lmasa, parallel boshlang."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "setTimeout 0 darhol ishlaydi deb o'ylash.",
+       "U navbatdagi macrotask.",
+       "Avval sinxron va microtask lar."
+      ],
+      [
+       "then ichida return ni unutish.",
+       "Promise yoki qiymat qaytarish.",
+       "Zanjir kutmaydi."
+      ],
+      [
+       "forEach ichida await.",
+       "for...of yoki Promise.all.",
+       "forEach Promise ni e'tiborsiz qoldiradi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Microtask macrotask dan oldin.",
+    "async doim Promise qaytaradi.",
+    "all tez yiqiladi, allSettled kutadi.",
+    "Mustaqil ishlar parallel."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Tartibni bashorat qiling",
+    "text": "setTimeout, then va await aralash kod yozib, natijani avval qog'ozda chiqaring."
+   },
+   {
+    "title": "Parallelga o'tkazing",
+    "text": "Ikki mustaqil await ni Promise.all ga o'tkazib, vaqtni performance.now bilan o'lchang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "1 4 3 2",
+     "1 2 3 4",
+     "1 4 2 3",
+     "1 3 4 2"
+    ],
+    "answer": "1 4 3 2",
+    "explain": "Avval sinxron 1 va 4, keyin microtask 3, oxirida macrotask 2.",
+    "passage": "console.log(1);\nsetTimeout(() => console.log(2));\nPromise.resolve().then(() => console.log(3));\nconsole.log(4);"
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "A C B",
+     "A B C",
+     "C A B",
+     "B A C"
+    ],
+    "answer": "A C B",
+    "explain": "await gacha sinxron: A. await davomi microtask, shu orada C chiqadi.",
+    "passage": "async function f() {\n  console.log(\"A\");\n  await null;\n  console.log(\"B\");\n}\nf();\nconsole.log(\"C\");"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "micro timer1 micro2 timer2",
+     "micro timer1 timer2 micro2",
+     "timer1 timer2 micro micro2",
+     "micro micro2 timer1 timer2"
+    ],
+    "answer": "micro timer1 micro2 timer2",
+    "explain": "Har macrotask dan keyin uning microtask lari to'liq bajariladi.",
+    "passage": "setTimeout(() => {\n  console.log(\"timer1\");\n  Promise.resolve().then(() => console.log(\"micro2\"));\n});\nsetTimeout(() => console.log(\"timer2\"));\nPromise.resolve().then(() => console.log(\"micro\"));"
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "2",
+     "1",
+     "undefined",
+     "NaN"
+    ],
+    "answer": "2",
+    "explain": "catch qiymat qaytargach zanjir tiklanadi: keyingi then 1 + 1 oladi.",
+    "passage": "Promise.reject(new Error(\"x\"))\n  .catch(() => 1)\n  .then((v) => console.log(v + 1));"
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "undefined",
+     "5",
+     "10",
+     "Promise"
+    ],
+    "answer": "undefined",
+    "explain": "Birinchi then qiymatni qaytarmadi, keyingisi undefined oladi.",
+    "passage": "Promise.resolve(5)\n  .then((v) => { v * 2; })\n  .then((v) => console.log(v));"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "fulfilled rejected",
+     "rejected rejected",
+     "fulfilled fulfilled",
+     "rejected fulfilled"
+    ],
+    "answer": "fulfilled rejected",
+    "explain": "allSettled hech qachon rad etmaydi, har biriga status beradi.",
+    "passage": "Promise.allSettled([Promise.resolve(1), Promise.reject(2)])\n  .then((r) => console.log(r[0].status, r[1].status));"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Konsolga nima chiqadi?",
+    "options": [
+     "ok",
+     "xato",
+     "undefined",
+     "AggregateError"
+    ],
+    "answer": "ok",
+    "explain": "any birinchi muvaffaqiyatlini kutadi, rad etilganlarni o'tkazib yuboradi.",
+    "passage": "Promise.any([Promise.reject(\"xato\"), Promise.resolve(\"ok\")])\n  .then((v) => console.log(v));"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Har biri 1 soniya bo'lgan uchta mustaqil so'rov Promise.all bilan taxminan qancha davom etadi?",
+    "options": [
+     "1 soniya",
+     "3 soniya",
+     "2 soniya",
+     "0 soniya"
+    ],
+    "answer": "1 soniya",
+    "explain": "Ular bir vaqtda kutiladi, umumiy vaqt eng sekinigacha."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "`list.forEach(async (x) => await save(x))` dan keyingi qator qachon bajariladi?",
+    "options": [
+     "Saqlashlar tugashini kutmay",
+     "Barcha saqlash tugagandan keyin",
+     "Birinchi saqlash tugagandan so'ng",
+     "Xato yuz bergan taqdirdagina"
+    ],
+    "answer": "Saqlashlar tugashini kutmay",
+    "explain": "forEach callback qaytargan Promise ni kutmaydi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Konsolga nima chiqadi?",
+    "answer": "true",
+    "explain": "async funksiya qiymatni Promise ga o'raydi.",
+    "passage": "async function f() { return 1; }\nconsole.log(f() instanceof Promise);"
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Birortasi rad etilsa darhol rad etiladigan kombinator: Promise.___",
+    "answer": "all",
+    "explain": "Promise.all fail-fast ishlaydi.",
+    "alsoAccept": [
+     "Promise.all",
+     "all()"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Bajarilish navbatini tartiblang.",
+    "words": [
+     "Sinxron kod",
+     "Promise then callback",
+     "setTimeout callback",
+     "setTimeout ichidagi then"
+    ],
+    "answer": "Sinxron kod Promise then callback setTimeout callback setTimeout ichidagi then",
+    "explain": "Ikkinchi then faqat o'z macrotask idan keyin microtask sifatida ishlaydi."
+   }
+  ]
+ },
+ {
+  "code": "fe-js-md-12",
+  "level": "MIDDLE",
+  "module": "javascript",
+  "order": 12,
+  "title": "Hodisa delegatsiyasi, debounce va fetch",
+  "intro": "Capture va bubble, target va currentTarget, delegatsiya, debounce/throttle, response.ok va AbortController.",
+  "theory": {
+   "analogy": {
+    "icon": "🫧",
+    "title": "Suvdagi pufakcha",
+    "text": "Tubda paydo bo'lgan pufakcha yuqoriga ko'tarilib, har qatlamdan o'tadi. Suv yuzida turib hammasini ko'rish mumkin."
+   },
+   "sections": [
+    {
+     "heading": "Bu nima?",
+     "text": "Hodisa DOM daraxti bo'ylab yuradi: avval pastga (capture), nishonda, keyin yuqoriga (bubble). Shu yo'l tufayli bitta ota ishlovchi minglab bolalarni boshqaradi. fetch esa server bilan gaplashadi va uning xatti-harakatida ikki muhim nozik joy bor: HTTP xato rad etish emas va so'rovni bekor qilish kerak bo'ladi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Event delegation (delegatsiya)",
+       "text": "Bolalar hodisasini bitta ota elementda tutish."
+      },
+      {
+       "term": "target / currentTarget",
+       "text": "Hodisa boshlangan element / ishlovchi turgan element."
+      },
+      {
+       "term": "Debounce / throttle",
+       "text": "Tinchlanishni kutish / belgilangan oraliqda bir marta."
+      },
+      {
+       "term": "AbortController",
+       "text": "Davom etayotgan so'rov yoki ishlovchini bekor qilish."
+      }
+     ]
+    },
+    {
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Dinamik ro'yxatlarda",
+       "text": "Yangi elementga ishlovchi ulash shart emas."
+      },
+      {
+       "term": "Qidiruv maydonida",
+       "text": "Debounce va eski so'rovni bekor qilish."
+      },
+      {
+       "term": "Scroll va resize da",
+       "text": "Throttle yoki observer."
+      }
+     ]
+    },
+    {
+     "heading": "Delegatsiya",
+     "code": {
+      "lang": "js",
+      "text": "list.addEventListener(\"click\", (e) => {\n  const btn = e.target.closest(\"[data-id]\");\n  if (!btn || !list.contains(btn)) return;\n  remove(btn.dataset.id);\n});"
+     }
+    },
+    {
+     "heading": "Boshqaruv metodlari",
+     "table": {
+      "head": [
+       "Chaqiruv",
+       "Nima qiladi"
+      ],
+      "rows": [
+       [
+        "preventDefault()",
+        "brauzer standart harakatini to'xtatadi"
+       ],
+       [
+        "stopPropagation()",
+        "keyingi elementlarga tarqalishni to'xtatadi"
+       ],
+       [
+        "{ once: true }",
+        "bir martadan keyin uziladi"
+       ],
+       [
+        "{ passive: true }",
+        "preventDefault qilmaslik va'dasi"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Xavfsiz fetch",
+     "code": {
+      "lang": "js",
+      "text": "const res = await fetch(url, { signal: controller.signal });\nif (!res.ok) throw new Error(\"HTTP \" + res.status);\nconst data = await res.json();"
+     }
+    },
+    {
+     "heading": "Race condition",
+     "callout": {
+      "kind": "warn",
+      "text": "Eski so'rov yangisidan keyin javob qaytarsa, ekranda eskirgan natija qoladi. Yangi so'rovdan oldin eskisini abort qiling; AbortError ni xato deb ko'rsatmang."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔍",
+       "title": "Qidiruv sakraydi",
+       "text": "\"ja\" javobi \"java\" javobidan keyin kelib, natijani almashtirdi."
+      },
+      {
+       "icon": "📋",
+       "title": "Ming qatorli jadval",
+       "text": "Mingta ishlovchi o'rniga tbody da bittasi."
+      }
+     ]
+    },
+    {
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "fetch 404 da ham muvaffaqiyatli hal bo'ladi: res.ok ni doim tekshiring."
+     }
+    },
+    {
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "e.target ni doim tugma deb o'ylash.",
+       "closest bilan topish.",
+       "Ichidagi ikonka bosilishi mumkin."
+      ],
+      [
+       "res.ok ni tekshirmaslik.",
+       "Statusni tekshirib throw qilish.",
+       "HTTP xato catch ga tushmaydi."
+      ],
+      [
+       "Har bosishda yangi debounce yaratish.",
+       "Bir marta yaratib qayta ishlatish.",
+       "Aks holda taymer bekor bo'lmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Hodisa capture, target, bubble bosqichlaridan o'tadi.",
+    "Delegatsiyada closest ishlating.",
+    "fetch faqat tarmoq xatosida rad etadi.",
+    "AbortController eski so'rovni bekor qiladi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Delegatsiyali ro'yxat",
+    "text": "Qo'shish va o'chirish bor ro'yxatni bitta ishlovchi bilan yozing."
+   },
+   {
+    "title": "Qidiruv",
+    "text": "300 ms debounce va AbortController li qidiruv yozib, Network tabda bekor qilinganlarni ko'ring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Tugma ichidagi ikonka bosildi, ishlovchi ul da. e.target va e.currentTarget nima?",
+    "options": [
+     "Ikonka va ul",
+     "Tugma va ul",
+     "ul va ikonka",
+     "Ikonka va tugma"
+    ],
+    "answer": "Ikonka va ul",
+    "explain": "target — eng ichki bosilgan element, currentTarget — ishlovchi turgan element."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Ota va bolada oddiy (bubble) click ishlovchilari bor. Bola bosilsa tartib qanday?",
+    "options": [
+     "Avval bola, keyin ota",
+     "Avval ota, keyin bola",
+     "Faqat bola ishlaydi",
+     "Faqat ota ishlaydi"
+    ],
+    "answer": "Avval bola, keyin ota",
+    "explain": "Standart bo'yicha hodisa pastdan yuqoriga ko'tariladi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`addEventListener('click', fn, true)` nimani bildiradi?",
+    "options": [
+     "Capture bosqichida ishlash",
+     "Bir marta ishlab uzilish",
+     "preventDefault chaqirilishi",
+     "Tarqalishni to'xtatish"
+    ],
+    "answer": "Capture bosqichida ishlash",
+    "explain": "Uchinchi argument true bo'lsa, ishlovchi yuqoridan pastga tushishda ishlaydi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Forma yuborilganda sahifa yangilanmasligi uchun nima chaqiriladi?",
+    "options": [
+     "e.preventDefault()",
+     "e.stopPropagation()",
+     "e.stopImmediatePropagation()",
+     "return e.target"
+    ],
+    "answer": "e.preventDefault()",
+    "explain": "Yangilanish brauzerning standart harakati."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "fetch 404 javob olganda Promise nima bo'ladi?",
+    "options": [
+     "Bajariladi, ok esa false",
+     "Rad etiladi va catch ishlaydi",
+     "pending holatida qolib ketadi",
+     "Avtomatik qayta so'rov ketadi"
+    ],
+    "answer": "Bajariladi, ok esa false",
+    "explain": "Rad etish faqat tarmoq, CORS yoki bekor qilishda."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Bekor qilingan fetch qanday xato bilan rad etiladi?",
+    "options": [
+     "AbortError",
+     "TypeError",
+     "NetworkError",
+     "TimeoutError"
+    ],
+    "answer": "AbortError",
+    "explain": "e.name === \"AbortError\" bo'lsa, foydalanuvchiga xato ko'rsatmang."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Foydalanuvchi yozishdan to'xtagach bitta so'rov yuborish uchun nima kerak?",
+    "options": [
+     "Debounce",
+     "Throttle",
+     "Polling",
+     "Delegatsiya"
+    ],
+    "answer": "Debounce",
+    "explain": "Debounce har yangi hodisada taymerni qayta boshlaydi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Debounce funksiyasida closure nima uchun kerak?",
+    "options": [
+     "Taymer identifikatorini saqlash uchun",
+     "Hodisani capture ga o'tkazish uchun",
+     "So'rovni parallel qilish uchun",
+     "DOM elementini klonlash uchun"
+    ],
+    "answer": "Taymer identifikatorini saqlash uchun",
+    "explain": "Keyingi chaqiruv oldingi taymerni clearTimeout qilishi kerak.",
+    "passage": "function debounce(fn, ms) {\n  let id;\n  return (...args) => {\n    clearTimeout(id);\n    id = setTimeout(() => fn(...args), ms);\n  };\n}"
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Foydalanuvchi matnini DOM ga xavfsiz yozish uchun qaysi xossa?",
+    "options": [
+     "textContent",
+     "innerHTML",
+     "outerHTML",
+     "insertAdjacentHTML"
+    ],
+    "answer": "textContent",
+    "explain": "textContent matnni HTML deb o'qimaydi — XSS dan himoya."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Delegatsiyada nishondan yuqoriga mos ajdodni topadigan metod?",
+    "answer": "closest",
+    "explain": "e.target.closest(\"[data-id]\").",
+    "alsoAccept": [
+     "closest()",
+     ".closest"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "HTTP status 200-299 ekanini bildiruvchi Response xossasi?",
+    "answer": "ok",
+    "explain": "if (!res.ok) throw ...",
+    "alsoAccept": [
+     "res.ok",
+     "response.ok"
+    ]
+   },
+   {
+    "id": "12",
+    "kind": "ORDER",
+    "prompt": "Qidiruv oqimini tartiblang.",
+    "words": [
+     "Foydalanuvchi yozadi",
+     "Debounce tinchlanishni kutadi",
+     "Eski so'rov abort qilinadi",
+     "Yangi natija ekranga chiqadi"
+    ],
+    "answer": "Foydalanuvchi yozadi Debounce tinchlanishni kutadi Eski so'rov abort qilinadi Yangi natija ekranga chiqadi",
+    "explain": "Shunday qilib faqat oxirgi so'rov natijasi ko'rinadi."
+   }
+  ]
+ }
+]
