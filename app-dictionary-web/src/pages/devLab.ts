@@ -27,6 +27,8 @@ export interface LabRun {
   tests: LabTestResult[];
   /** console.log lines written by the learner's code. */
   logs: string[];
+  /** React labs: the rendered component as HTML. */
+  preview?: string | null;
 }
 
 const WORKER_SOURCE = `

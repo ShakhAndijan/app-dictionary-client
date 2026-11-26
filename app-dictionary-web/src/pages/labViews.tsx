@@ -277,9 +277,11 @@ export function BrowserPreview({ doc, widths }: { doc: string; widths: number[] 
   );
 }
 
-/** Selectors, properties and lengths inside a task sentence are shown as code. */
+/** Code inside a task sentence is shown as code: `backticked` parts, or CSS selectors, properties and lengths. */
 export function TaskText({ text }: { text: string }) {
-  const code = /(@[a-z-]+|::?[a-z][a-z-]*(?:\([^()]*\))?|(?<![\w/])[.#][a-zA-Z][\w-]*|--[a-z][\w-]*|\b\d+(?:\.\d+)?(?:px|rem|em|ms|s|fr|vw|vh|deg|ch|cqw|%)(?![\w]))/;
+  const code = text.includes('`')
+    ? /`([^`]+)`/
+    : /(@[a-z-]+|::?[a-z][a-z-]*(?:\([^()]*\))?|(?<![\w/])[.#][a-zA-Z][\w-]*|--[a-z][\w-]*|\b\d+(?:\.\d+)?(?:px|rem|em|ms|s|fr|vw|vh|deg|ch|cqw|%)(?![\w]))/;
   return (
     <p>
       {text.split(code).map((part, i) => (i % 2 ? <code key={i}>{part}</code> : part))}

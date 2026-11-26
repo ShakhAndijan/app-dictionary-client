@@ -3,6 +3,7 @@ import { DevLab, devApi, errorMessage } from '../api';
 import { Button, Notice } from '../ui';
 import { LabRun, labProgram, runLab } from './devLab';
 import { cssDocument, runCssLab } from './cssLab';
+import { reactDocument, runReactLab } from './reactLab';
 import { completeCss, htmlSelectors } from './cssComplete';
 import { BrowserPreview, CodeEditor, TaskText, highlight } from './labViews';
 
@@ -34,9 +35,10 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   const isDone = done.has(lab.id);
   const isShell = lab.kind === 'git' || lab.kind === 'npm';
   const isCss = lab.kind === 'css';
+  const isReact = lab.kind === 'react';
   const doneCount = useMemo(() => labs.filter((l) => done.has(l.id)).length, [labs, done]);
   const lang = isCss ? 'css' : 'plain';
-  const fileName = isCss ? 'style.css' : isShell ? 'terminal' : 'script.js';
+  const fileName = isCss ? 'style.css' : isShell ? 'terminal' : isReact ? 'App.jsx' : 'script.js';
   /** the page without the lab's own scaffold styles, as the learner reads it */
   const html = isCss ? (lab.setup ?? '').replace(/<style>[\s\S]*?<\/style>\n?/g, '').trim() : '';
   const selectors = htmlSelectors(html);
@@ -52,7 +54,9 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
     if (running) return;
     setRunning(true);
     setError('');
-    const result = isCss ? await runCssLab(lab.setup ?? '', code, lab.tests) : await runLab(labProgram(lab, code), lab.tests);
+    const result = isCss ? await runCssLab(lab.setup ?? '', code, lab.tests)
+      : isReact ? await runReactLab(lab.setup ?? '', code, lab.tests)
+        : await runLab(labProgram(lab, code), lab.tests);
     setRuns((p) => ({ ...p, [lab.id]: result }));
     setRunning(false);
     const ok = !result.error && result.tests.length === lab.tests.length && result.tests.every((t) => t.ok);
@@ -126,7 +130,7 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
         <span className="dl-no" aria-hidden="true">{isDone ? '✓' : index + 1}</span>
         <div>
           <h3>{lab.title}</h3>
-          {isCss ? <TaskText text={lab.task} /> : <p>{lab.task}</p>}
+          {isCss || isReact ? <TaskText text={lab.task} /> : <p>{lab.task}</p>}
         </div>
       </section>
 
@@ -143,7 +147,7 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
               complete={isCss ? (text, caret, forced) => completeCss(text, caret, selectors, forced) : undefined}
               value={code}
               lang={lang}
-              label={isShell ? 'Terminal buyruqlari' : isCss ? 'CSS kodi' : 'JavaScript kodi'}
+              label={isShell ? 'Terminal buyruqlari' : isCss ? 'CSS kodi' : isReact ? 'React (JSX) kodi' : 'JavaScript kodi'}
               placeholder={isShell ? `Har qatorga bitta buyruq yozing, masalan: ${lab.kind === 'git' ? 'git add .' : 'npm install dayjs'}` : undefined}
               onChange={setCode}
               onKeyDown={onKey}
@@ -159,6 +163,14 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
           {hints.has(lab.id) && lab.hint && <div className="dl-hint">💡 {lab.hint}</div>}
 
           <div aria-live="polite">
+            {running && isReact && <p className="muted">React ishga tushyapti…</p>}
+            {run?.preview && (
+              <section className="dl-win dl-react">
+                <header className="dl-winbar"><span className="dl-dots" aria-hidden="true"><i /><i /><i /></span><b>Natija (boshlang'ich holat)</b></header>
+                <iframe title="Natija" sandbox="" srcDoc={reactDocument(run.preview)} />
+              </section>
+            )}
+
             {run?.error && <div className="dl-error">⚠ {run.error}</div>}
 
             {run && !run.error && (

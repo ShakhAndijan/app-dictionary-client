@@ -6,7 +6,7 @@ import { AREAS } from './Activity';
 const AREA_OF = { WORDS: AREAS[0], ENGLISH: AREAS[1], DEV: AREAS[2] };
 const PART_LABEL: Record<string, string> = {
   READING: "O'qish", LISTENING: 'Eshitish', WRITING: 'Yozish', GRAMMAR: 'Grammatika', SPEAKING: 'Gapirish',
-  internet: 'Internet', html: 'HTML', css: 'CSS', javascript: 'JavaScript', git: 'Git', npm: 'Paket menejerlar',
+  internet: 'Internet', html: 'HTML', css: 'CSS', javascript: 'JavaScript', git: 'Git', npm: 'Paket menejerlar', react: 'React',
   TYPED: 'Yozma', CHOICE: 'Tanlov', FLASHCARD: 'Flesh-karta', MATCHING: 'Juftlash', SPEED: 'Tez raund',
 };
 const KIND_LABEL: Record<AdminGrade['kind'], string> = { LESSON: 'Dars', EXAM: 'Imtihon', QUIZ: "So'z testi" };

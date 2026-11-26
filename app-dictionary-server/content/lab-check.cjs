@@ -35,6 +35,25 @@ function ctx() {
   return c;
 }
 
+// React labs run in the same bundle the browser uses (build it first: npm run build or node scripts/build-react-lab.mjs).
+let reactRun = null;
+function loadReact() {
+  if (reactRun) return reactRun;
+  const bundle = fs.readFileSync('E:/frontend/app-dictionary/app-dictionary-web/src/pages/reactLab.gen.js', 'utf8');
+  const c = vm.createContext({ setTimeout, clearTimeout, setInterval, clearInterval, queueMicrotask, MessageChannel, AbortController, URL, URLSearchParams, TextEncoder, TextDecoder, structuredClone, console: { log() {}, info() {}, warn() {}, error() {} } });
+  vm.runInContext(bundle, c);
+  reactRun = (job) => c.__runReactLab(job);
+  return reactRun;
+}
+async function runReact(lab, code) {
+  const run = await Promise.race([
+    loadReact()({ setup: lab.setup || '', code, tests: lab.tests }),
+    new Promise((res) => setTimeout(() => res({ error: 'timeout', tests: [] }), 4000)),
+  ]);
+  if (run.error) return lab.tests.map(() => ({ ok: false, msg: run.error }));
+  return run.tests.map((t) => ({ ok: t.ok, msg: t.error ? 'threw ' + t.error : 'got ' + t.got + ' expected ' + t.expected }));
+}
+
 async function runTests(code, tests) {
   const out = [];
   for (const [call, expect] of tests) {
@@ -65,13 +84,13 @@ module.exports = async function checkLabs(lessonLabs) {
     for (const lab of labs) {
       n += 1;
       const tag = `lesson ${lesson} lab ${lab.id} (${lab.title})`;
-      const sol = await runTests(prog(lab, lab.solution), lab.tests.map((t) => [t.call, t.expect]));
+      const sol = lab.kind === 'react' ? await runReact(lab, lab.solution) : await runTests(prog(lab, lab.solution), lab.tests.map((t) => [t.call, t.expect]));
       const fails = sol.map((r, i) => (r.ok ? null : `${lab.tests[i].call}: ${r.msg}`)).filter(Boolean);
       if (fails.length) {
         bad += 1;
         console.error(`SOLUTION FAILS ${tag}\n   ${fails.join('\n   ')}`);
       }
-      const st = await runTests(prog(lab, lab.starter || ''), lab.tests.map((t) => [t.call, t.expect]));
+      const st = lab.kind === 'react' ? await runReact(lab, lab.starter || '') : await runTests(prog(lab, lab.starter || ''), lab.tests.map((t) => [t.call, t.expect]));
       if (st.every((r) => r.ok)) {
         bad += 1;
         console.error(`STARTER ALREADY PASSES ${tag}`);

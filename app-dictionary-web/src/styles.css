@@ -5894,6 +5894,8 @@ i.bad,
 .dv-next-figure small { font-size: 12px; color: var(--muted); }
 .dv-next-card p { margin: 0; flex: 1; color: var(--muted); font-size: 14px; line-height: 1.6; }
 .dv-done-lab { margin-top: 18px; }
+.dl-react iframe { display: block; width: 100%; height: 190px; border: 0; background: #fff; }
+.dl-react { margin-bottom: 14px; }
 
 @media (max-width: 640px) {
   .dv-hero { padding: 20px 18px; flex-wrap: wrap; }

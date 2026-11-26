@@ -2,3 +2,5 @@ node_modules
 dist
 *.local
 *.tsbuildinfo
+
+src/pages/reactLab.gen.js
