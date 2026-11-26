@@ -786,7 +786,7 @@ export interface DevLab {
   starter: string | null;
   tests: { call: string; expect: string }[];
   hint: string | null;
-  /** "css": the learner writes CSS for the HTML in `setup` (pages/cssLab.ts). "git": the learner types git commands that run in a built-in simulator (see pages/gitSim.js). */
+  /** "css": the learner writes CSS for the HTML in `setup` (pages/cssLab.ts). "git": the learner types git commands that run in a built-in simulator (see pages/gitSim.js). "npm": package manager commands (pages/npmSim.js). */
   kind?: string | null;
   setup?: string | null;
 }

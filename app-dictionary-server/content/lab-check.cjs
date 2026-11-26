@@ -55,7 +55,9 @@ async function runTests(code, tests) {
 }
 
 const GIT_SIM = fs.readFileSync('E:/frontend/app-dictionary/app-dictionary-web/src/pages/gitSim.js', 'utf8');
-const prog = (lab, code) => (lab.kind === 'git' ? GIT_SIM + '\nconst repo = gitRun(' + JSON.stringify(lab.setup || '') + ', ' + JSON.stringify(code || '') + ');\n' : code);
+const NPM_SIM = fs.readFileSync('E:/frontend/app-dictionary/app-dictionary-web/src/pages/npmSim.js', 'utf8');
+const SIMS = { git: [GIT_SIM, 'const repo = gitRun'], npm: [NPM_SIM, 'const proj = npmRun'] };
+const prog = (lab, code) => (SIMS[lab.kind] ? SIMS[lab.kind][0] + '\n' + SIMS[lab.kind][1] + '(' + JSON.stringify(lab.setup || '') + ', ' + JSON.stringify(code || '') + ');\n' : code);
 module.exports = async function checkLabs(lessonLabs) {
   let n = 0;
   let bad = 0;

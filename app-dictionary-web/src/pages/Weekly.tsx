@@ -7,7 +7,7 @@ import { ActivityChart, AREAS } from './Activity';
 
 const WEEKDAYS = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
 const SKILLS: [string, string][] = [['READING', "O'qish"], ['LISTENING', 'Eshitish'], ['WRITING', 'Yozish'], ['GRAMMAR', 'Grammatika']];
-const MODULE_LABEL: Record<string, string> = { internet: 'Internet', html: 'HTML', css: 'CSS', javascript: 'JavaScript', git: 'Git', exam: 'Imtihon' };
+const MODULE_LABEL: Record<string, string> = { internet: 'Internet', html: 'HTML', css: 'CSS', javascript: 'JavaScript', git: 'Git', npm: 'Paket menejerlar', exam: 'Imtihon' };
 
 type AreaKey = (typeof AREAS)[number]['key'];
 

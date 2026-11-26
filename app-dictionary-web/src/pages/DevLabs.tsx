@@ -6,7 +6,7 @@ import { cssDocument, runCssLab } from './cssLab';
 import { completeCss, htmlSelectors } from './cssComplete';
 import { BrowserPreview, CodeEditor, TaskText, highlight } from './labViews';
 
-/** Coding labs of a lesson: write the code (JavaScript, CSS or git commands), run it against the tests. */
+/** Coding labs of a lesson: write the code (JavaScript, CSS or terminal commands), run it against the tests. */
 export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   lessonCode: string;
   title: string;
@@ -32,11 +32,11 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   const passedCount = run ? run.tests.filter((t) => t.ok).length : 0;
   const allPassed = !!run && !run.error && run.tests.length === lab.tests.length && passedCount === run.tests.length;
   const isDone = done.has(lab.id);
-  const isGit = lab.kind === 'git';
+  const isShell = lab.kind === 'git' || lab.kind === 'npm';
   const isCss = lab.kind === 'css';
   const doneCount = useMemo(() => labs.filter((l) => done.has(l.id)).length, [labs, done]);
   const lang = isCss ? 'css' : 'plain';
-  const fileName = isCss ? 'style.css' : isGit ? 'terminal' : 'script.js';
+  const fileName = isCss ? 'style.css' : isShell ? 'terminal' : 'script.js';
   /** the page without the lab's own scaffold styles, as the learner reads it */
   const html = isCss ? (lab.setup ?? '').replace(/<style>[\s\S]*?<\/style>\n?/g, '').trim() : '';
   const selectors = htmlSelectors(html);
@@ -143,8 +143,8 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
               complete={isCss ? (text, caret, forced) => completeCss(text, caret, selectors, forced) : undefined}
               value={code}
               lang={lang}
-              label={isGit ? 'Git buyruqlari' : isCss ? 'CSS kodi' : 'JavaScript kodi'}
-              placeholder={isGit ? 'Har qatorga bitta buyruq yozing, masalan: git add .' : undefined}
+              label={isShell ? 'Terminal buyruqlari' : isCss ? 'CSS kodi' : 'JavaScript kodi'}
+              placeholder={isShell ? `Har qatorga bitta buyruq yozing, masalan: ${lab.kind === 'git' ? 'git add .' : 'npm install dayjs'}` : undefined}
               onChange={setCode}
               onKeyDown={onKey}
             />

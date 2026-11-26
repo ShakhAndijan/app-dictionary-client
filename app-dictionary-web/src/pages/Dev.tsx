@@ -92,7 +92,7 @@ interface ModuleMeta {
 }
 
 // Modules with written lessons; every other plan module only shows its topic names for now.
-const READY = new Set(['internet', 'html', 'css', 'javascript', 'git']);
+const READY = new Set(['internet', 'html', 'css', 'javascript', 'git', 'npm']);
 const MODULES: ModuleMeta[] = PLAN.map((m) => ({
   key: m.key,
   icon: m.icon,
@@ -564,7 +564,7 @@ function LessonRow({ l, next, delay, tone, onOpen }: { l: DevLessonSummary; next
   return (
     <li className="rise" style={{ ['--d' as string]: `${Math.min(delay, 10) * 0.03}s` }}>
       <button className={`dv-lesson ${l.passed ? 'passed' : ''} ${next ? 'next' : ''}`} style={{ ['--tone' as string]: tone }} onClick={onOpen}>
-        <span className="dv-lesson-no">{l.passed ? '✓' : l.unit}</span>
+        <span className="dv-lesson-no">{l.passed ? '✓' : delay + 1}</span>
         <span className="dv-lesson-txt">
           <b>{l.title}</b>
           {l.intro && <small>{l.intro}</small>}
@@ -634,7 +634,7 @@ export function DevLessonPage() {
       tone="lab"
       icon="🧪"
       title="Laboratoriya"
-      text={`${lesson.labs[0].kind === 'css' ? 'CSS stillarini' : lesson.labs[0].kind === 'git' ? 'Git buyruqlarini' : 'JavaScript kodini'} o'zingiz yozasiz, tizim to'g'riligini tekshiradi.`}
+      text={`${lesson.labs[0].kind === 'css' ? 'CSS stillarini' : lesson.labs[0].kind === 'git' ? 'Git buyruqlarini' : lesson.labs[0].kind === 'npm' ? 'Terminal buyruqlarini' : 'JavaScript kodini'} o'zingiz yozasiz, tizim to'g'riligini tekshiradi.`}
       figure={`${labsDone}/${lesson.labs.length}`}
       figureLabel="bajarildi"
       progress={(labsDone / lesson.labs.length) * 100}

@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const GLOSSARY = require('./dev-extra/glossary.cjs');
 
-const MODULES = ['internet', 'html', 'css', 'javascript', 'git'];
+const MODULES = ['internet', 'html', 'css', 'javascript', 'git', 'npm'];
 const lower = new Map(Object.entries(GLOSSARY).map(([k, v]) => [k.toLowerCase(), v]));
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 // Longest first, so "event loop" wins over "event". A match must not be part of code: <tag>, .class, a-b, x=y, fn(...)
@@ -57,6 +57,7 @@ function blocks(extra) {
 // the correct one does not stand out as the longest.
 function balanceOptions(module, lessons) {
   const file = path.join(__dirname, 'dev-extra', `options-${module}.txt`);
+  if (!fs.existsSync(file)) return;
   const rows = fs.readFileSync(file, 'utf8').split(/\r?\n/).filter(Boolean);
   for (const row of rows) {
     const [key, ...wrong] = row.split(' ~ ');

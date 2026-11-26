@@ -6,6 +6,7 @@
  * `expect` is evaluated on its own and the two values are compared deeply.
  */
 import GIT_SIM from './gitSim.js?raw';
+import NPM_SIM from './npmSim.js?raw';
 
 export interface LabTest {
   call: string;
@@ -123,10 +124,12 @@ function url(): string {
   return workerUrl;
 }
 
-/** The code the worker really runs: a git lab's text is run by the built-in simulator, which exposes `repo` to the tests. */
+/** The code the worker really runs: a git or npm lab's text is run by a built-in simulator, which exposes `repo` or `proj` to the tests. */
 export function labProgram(lab: { kind?: string | null; setup?: string | null }, code: string): string {
-  if (lab.kind !== 'git') return code;
-  return GIT_SIM + '\nconst repo = gitRun(' + JSON.stringify(lab.setup ?? '') + ', ' + JSON.stringify(code) + ');\n';
+  const args = '(' + JSON.stringify(lab.setup ?? '') + ', ' + JSON.stringify(code) + ');\n';
+  if (lab.kind === 'git') return GIT_SIM + '\nconst repo = gitRun' + args;
+  if (lab.kind === 'npm') return NPM_SIM + '\nconst proj = npmRun' + args;
+  return code;
 }
 
 /** Runs the code against the tests; resolves with every test's outcome (never rejects). */

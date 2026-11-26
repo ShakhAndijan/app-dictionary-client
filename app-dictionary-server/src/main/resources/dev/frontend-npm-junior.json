@@ -1,0 +1,3638 @@
+[
+ {
+  "code": "fe-npm-jr-01",
+  "level": "JUNIOR",
+  "module": "npm",
+  "order": 1,
+  "title": "npm va package.json",
+  "intro": "Package manager (paket menejer) nima, registry, package.json maydonlari, dependencies va devDependencies, node_modules.",
+  "theory": {
+   "analogy": {
+    "icon": "🛒",
+    "title": "Xarid ro'yxati va omborxona",
+    "text": "package.json — oshxona uchun xarid ro'yxati: nima kerak va qaysi navdan. npm registry — ulgurji omborxona. node_modules — olib kelingan mahsulotlar turgan javon. Do'stingizga javonni ko'tarib yubormaysiz, ro'yxatni berasiz: u o'zi sotib oladi."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "npm — Node.js bilan keladigan paket menejeri. U tayyor kutubxonalarni registry dan yuklaydi va loyihaga nima kerakligini package.json faylida yozib boradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Package (paket)",
+       "text": "package.json ga ega kod papkasi: kutubxona, vosita yoki butun dastur."
+      },
+      {
+       "term": "Registry (paketlar ombori)",
+       "text": "paketlar nashr qilinadigan va yuklab olinadigan server (xizmat ko'rsatuvchi kompyuter). Standarti — npm registry."
+      },
+      {
+       "term": "dependencies",
+       "text": "ilova ishlayotganda `import` qilinadigan paketlar ro'yxati."
+      },
+      {
+       "term": "devDependencies",
+       "text": "faqat ishlab chiqish va yig'ish paytida kerak paketlar: vite, vitest, eslint, typescript."
+      },
+      {
+       "term": "Transitive dependency (o'tuvchi bog'liqlik)",
+       "text": "siz o'zingiz so'ramagan, lekin bog'liqligingiz talab qilgani uchun o'rnatilgan paket."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Yangi loyiha boshlashda",
+       "text": "npm init -y."
+      },
+      {
+       "term": "Tayyor kutubxona kerak bo'lganda",
+       "text": "npm install <paket>."
+      },
+      {
+       "term": "Birovning loyihasini ochganda",
+       "text": "npm install."
+      }
+     ]
+    },
+    {
+     "heading": "Package manager nima qiladi",
+     "text": "Package manager (paket menejer) — loyiha foydalanadigan tayyor kutubxonalarni yuklab o'rnatadigan, versiyasini kuzatadigan va olib tashlaydigan dastur. npm Node.js bilan birga keladi. Registry (paketlar ombori) — paketlar e'lon qilinadigan server, standart holatda registry.npmjs.org. Bitta paket o'zi ham boshqa paketlarga bog'liq bo'ladi: bunday bilvosita bog'liqlik transitive dependency (o'tuvchi bog'liqlik) deyiladi."
+    },
+    {
+     "heading": "package.json maydonlari",
+     "table": {
+      "head": [
+       "Maydon",
+       "Vazifasi"
+      ],
+      "rows": [
+       [
+        "name, version",
+        "Paket nomi va versiyasi; nashr qilishda majburiy"
+       ],
+       [
+        "dependencies",
+        "Dastur ishlayotganda kerak paketlar"
+       ],
+       [
+        "devDependencies",
+        "Faqat ishlab chiqishda kerak paketlar (build, test, lint)"
+       ],
+       [
+        "scripts",
+        "`npm run` bilan ishga tushadigan buyruqlar"
+       ],
+       [
+        "private",
+        "true bo'lsa paketni nashr qilib bo'lmaydi"
+       ],
+       [
+        "type",
+        "'module' bo'lsa .js fayllar ES module sifatida o'qiladi"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "O'rnatish va o'chirish",
+     "code": {
+      "lang": "bash",
+      "text": "npm init -y                  # package.json yaratish\nnpm install axios            # dependencies ga\nnpm install -D vite          # devDependencies ga\nnpm install                  # package.json dagi hammasini o'rnatish\nnpm uninstall axios          # o'chirish\nnpm install --omit=dev       # devDependencies siz o'rnatish"
+     }
+    },
+    {
+     "heading": "node_modules haqida",
+     "text": "node_modules — o'rnatilgan paketlar papkasi. U juda katta bo'ladi va package.json bilan lock fayldan har doim qayta yaratiladi, shuning uchun Git ga qo'shilmaydi (.gitignore ga yoziladi). Papkani o'chirib `npm install` qilish — xavfsiz amal."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "`npm install` qilganda paket o'z o'rnatish skriptlarini (postinstall) ishga tushirishi mumkin. Nomi mashhur paketga o'xshatib qo'yilgan soxta paketlar (typosquatting) bor: nomni o'rnatishdan oldin diqqat bilan tekshiring."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🍲",
+       "title": "Retsept",
+       "text": "package.json — retsept: masalliqlar ro'yxati. node_modules — tayyorlab qo'yilgan masalliqlar; retsept bor bo'lsa ularni qayta yig'ish mumkin."
+      },
+      {
+       "icon": "🧰",
+       "title": "Usta asboblari",
+       "text": "devDependencies — ustaning asboblari: uy qurishda kerak, lekin tayyor uyda qolib ketmaydi."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Retsept (package.json) Git da, masalliqlar (node_modules) yo'q."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "node_modules ni commit qilish.",
+       ".gitignore ga yozing.",
+       "Papka package.json dan qayta yaratiladi."
+      ],
+      [
+       "Hamma paketni dependencies ga yozish.",
+       "Vositalarni -D bilan o'rnating.",
+       "Production keraksiz yuk olmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "package.json — ro'yxat, node_modules — o'rnatilgan natija.",
+    "dependencies — ishlayotgan dasturga, devDependencies — ishlab chiqishga.",
+    "node_modules Git ga kirmaydi, undan qayta yaratish mumkin.",
+    "Paket nomini tekshirib o'rnating."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Yangi loyiha",
+    "text": "Bo'sh papkada `npm init -y` qiling, `npm install dayjs` va `npm install -D prettier` bajaring. package.json da ikkalasi qaysi bo'limga tushganini ko'ring."
+   },
+   {
+    "title": "node_modules ni qayta yaratish",
+    "text": "node_modules papkasini o'chiring va `npm install` qiling. Paketlar qaytganini hamda package.json o'zgarmaganini tekshiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "`npm install -D vitest` dan keyin vitest qayerga yoziladi?",
+    "options": [
+     "devDependencies bo'limiga",
+     "dependencies bo'limiga",
+     "scripts ichidagi test kalitiga",
+     "peerDependencies bo'limiga"
+    ],
+    "answer": "devDependencies bo'limiga",
+    "explain": "-D (--save-dev) paketni devDependencies ga yozadi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Production serverda `npm install --omit=dev` bajarildi. Kod `import express` va `import vite` qiladi. package.json quyidagicha. Nima bo'ladi?",
+    "options": [
+     "express topiladi, vite topilmaydi",
+     "Ikkalasi ham topiladi, farqi yo'q",
+     "Ikkalasi ham topilmaydi",
+     "O'rnatish xato bilan to'xtaydi"
+    ],
+    "answer": "express topiladi, vite topilmaydi",
+    "explain": "--omit=dev devDependencies ni o'rnatmaydi. Ishlayotgan kodga kerak paket dependencies da turishi shart.",
+    "passage": "\"dependencies\":    { \"express\": \"^5.0.1\" },\n\"devDependencies\": { \"vite\": \"^6.0.3\" }"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Nega node_modules Git ga qo'shilmaydi?",
+    "options": [
+     "U package.json va lock fayldan qayta yaratiladi",
+     "Git katta papkalarni umuman saqlay olmaydi",
+     "U har safar parol bilan shifrlanadi",
+     "npm uni commit qilishni texnik jihatdan bloklaydi"
+    ],
+    "answer": "U package.json va lock fayldan qayta yaratiladi",
+    "explain": "Natijani emas, uni yaratadigan retseptni saqlash yetarli."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Loyihada faqat `express` o'rnatilgan, lekin node_modules da `debug` va `ms` ham bor. Ular nima?",
+    "options": [
+     "express talab qilgan o'tuvchi bog'liqliklar",
+     "npm ning o'zi ishlashi uchun kerak fayllar",
+     "Xato o'rnatilgan, o'chirish kerak paketlar",
+     "package.json ga avtomatik yozilgan devDependencies"
+    ],
+    "answer": "express talab qilgan o'tuvchi bog'liqliklar",
+    "explain": "express debug (xatoni izlash) ga, debug esa ms ga bog'liq. Ular package.json ga yozilmaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "`\"private\": true` nima uchun yoziladi?",
+    "options": [
+     "Loyiha tasodifan registry ga nashr bo'lib ketmasligi uchun",
+     "Kodni boshqa dasturchilar o'qiy olmasligi va ko'chirmasligi uchun",
+     "node_modules ni shifrlab saqlash uchun",
+     "Paketlar faqat xususiy registry dan olinishi uchun"
+    ],
+    "answer": "Loyiha tasodifan registry ga nashr bo'lib ketmasligi uchun",
+    "explain": "private (ichki): true bo'lsa `npm publish` rad etadi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi buyruqlardan keyin package.json da lodash qayerda turadi?",
+    "options": [
+     "Faqat devDependencies da",
+     "Ikkala bo'limda ham bir vaqtda",
+     "Faqat dependencies da",
+     "Hech qaysi bo'limda qolmaydi"
+    ],
+    "answer": "Faqat devDependencies da",
+    "explain": "Paketni boshqa bo'limga qayta o'rnatsangiz, npm uni ko'chiradi.",
+    "passage": "npm install lodash\nnpm install -D lodash"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "React kutubxonasi bilan yozilgan saytda qaysi paket `devDependencies` ga to'g'ri keladi?",
+    "options": [
+     "eslint",
+     "react",
+     "react-dom",
+     "axios"
+    ],
+    "answer": "eslint",
+    "explain": "eslint faqat kodni tekshiradi, brauzerda ishlayotgan saytga kerak emas."
+   },
+   {
+    "id": "8",
+    "kind": "FILL",
+    "prompt": "Bo'sh papkada savollarsiz package.json yaratadigan buyruqni yozing.",
+    "answer": "npm init -y",
+    "explain": "-y barcha savollarga standart javob beradi.",
+    "alsoAccept": [
+     "npm init --yes"
+    ]
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "dependencies ro'yxatidagi `axios` ni o'chiradigan buyruqni yozing.",
+    "answer": "npm uninstall axios",
+    "explain": "uninstall paketni package.json dan ham olib tashlaydi.",
+    "alsoAccept": [
+     "npm un axios",
+     "npm remove axios",
+     "npm rm axios"
+    ]
+   },
+   {
+    "id": "10",
+    "kind": "CHOICE",
+    "prompt": "`npm install axois` (harflar almashgan) buyrug'i nega xavfli?",
+    "options": [
+     "Shu nomli soxta paket bo'lsa, uning skripti ishga tushadi",
+     "npm xato nomni o'zi tuzatib, paketning eski versiyasini o'rnatadi",
+     "package.json butunlay o'chib ketadi",
+     "node.js qayta o'rnatilishi kerak bo'lib qoladi"
+    ],
+    "answer": "Shu nomli soxta paket bo'lsa, uning skripti ishga tushadi",
+    "explain": "Typosquatting: mashhur nomga o'xshash zararli paketlar."
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "Yangi loyihani boshlash tartibini joylashtiring.",
+    "words": [
+     "npm init -y",
+     "npm install express",
+     "echo node_modules > .gitignore",
+     "git add ."
+    ],
+    "answer": "npm init -y npm install express echo node_modules > .gitignore git add .",
+    "explain": "Avval package.json, keyin paketlar, commitdan oldin esa .gitignore."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Birinchi package.json",
+    "task": "Bo'sh papkada savollarsiz package.json yarating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm init -y",
+    "tests": [
+     {
+      "call": "proj.exists(\"package.json\")",
+      "expect": "true"
+     },
+     {
+      "call": "proj.version()",
+      "expect": "\"1.0.0\""
+     }
+    ],
+    "hint": "npm init buyrug'ining -y bayrog'i bor.",
+    "kind": "npm",
+    "setup": "",
+    "id": "1"
+   },
+   {
+    "title": "Ishlayotgan dasturga paket",
+    "task": "Loyihaga dayjs kutubxonasini oddiy bog'liqlik (dependencies) sifatida o'rnating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install dayjs",
+    "tests": [
+     {
+      "call": "proj.deps()",
+      "expect": "({ dayjs: \"^1.11.13\" })"
+     },
+     {
+      "call": "proj.installed(\"dayjs\")",
+      "expect": "\"1.11.13\""
+     }
+    ],
+    "hint": "Bayroqsiz install dependencies ga yozadi.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "2"
+   },
+   {
+    "title": "Ishlab chiqish vositasi",
+    "task": "prettier ni faqat ishlab chiqish bog'liqligi sifatida o'rnating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install -D prettier",
+    "tests": [
+     {
+      "call": "proj.devDeps()",
+      "expect": "({ prettier: \"^3.4.2\" })"
+     },
+     {
+      "call": "proj.deps()",
+      "expect": "({})"
+     }
+    ],
+    "hint": "-D yoki --save-dev.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "3"
+   },
+   {
+    "title": "Ikkalasi birga",
+    "task": "Bo'sh papkada loyiha oching, express va axios ni dependencies ga, eslint ni devDependencies ga o'rnating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm init -y\nnpm install express axios\nnpm install -D eslint",
+    "tests": [
+     {
+      "call": "Object.keys(proj.deps())",
+      "expect": "[\"axios\", \"express\"]"
+     },
+     {
+      "call": "Object.keys(proj.devDeps())",
+      "expect": "[\"eslint\"]"
+     }
+    ],
+    "hint": "Bitta buyruqda bir nechta paket nomi yozish mumkin.",
+    "kind": "npm",
+    "setup": "",
+    "id": "4"
+   },
+   {
+    "title": "Keraksiz paketni o'chirish",
+    "task": "lodash endi kerak emas. Uni loyihadan butunlay olib tashlang, dayjs qolsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm uninstall lodash",
+    "tests": [
+     {
+      "call": "Object.keys(proj.deps())",
+      "expect": "[\"dayjs\"]"
+     },
+     {
+      "call": "proj.installed(\"lodash\")",
+      "expect": "null"
+     },
+     {
+      "call": "proj.installed(\"dayjs\") !== null",
+      "expect": "true"
+     }
+    ],
+    "hint": "uninstall package.json ni ham tozalaydi.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install lodash dayjs",
+    "id": "5"
+   },
+   {
+    "title": "Noto'g'ri bo'limda turibdi",
+    "task": "vitest xato bilan dependencies ga tushib qolgan. Uni devDependencies ga ko'chiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install -D vitest",
+    "tests": [
+     {
+      "call": "proj.deps()",
+      "expect": "({})"
+     },
+     {
+      "call": "Object.keys(proj.devDeps())",
+      "expect": "[\"vitest\"]"
+     }
+    ],
+    "hint": "Paketni boshqa bayroq bilan qayta o'rnating.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install vitest",
+    "id": "6"
+   },
+   {
+    "title": "node_modules yo'qolgan",
+    "task": "Loyihani GitHub dan yuklab oldingiz: package.json bor, node_modules yo'q. Hamma bog'liqliklarni o'rnating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install",
+    "tests": [
+     {
+      "call": "proj.installed(\"express\")",
+      "expect": "\"5.0.1\""
+     },
+     {
+      "call": "proj.installed(\"prettier\")",
+      "expect": "\"3.4.2\""
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "Paket nomisiz npm install.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-app\",\"version\":\"1.0.0\",\"dependencies\":{\"express\":\"^5.0.1\"},\"devDependencies\":{\"prettier\":\"^3.0.0\"}}' > package.json",
+    "id": "7"
+   },
+   {
+    "title": "Production o'rnatish",
+    "task": "Serverga faqat ishlash uchun kerak paketlarni o'rnating: devDependencies tushmasin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install --omit=dev",
+    "tests": [
+     {
+      "call": "proj.installed(\"express\")",
+      "expect": "\"5.0.1\""
+     },
+     {
+      "call": "proj.installed(\"vite\")",
+      "expect": "null"
+     }
+    ],
+    "hint": "--omit=dev bayrog'i.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-app\",\"version\":\"1.0.0\",\"dependencies\":{\"express\":\"^5.0.1\"},\"devDependencies\":{\"vite\":\"^6.0.0\"}}' > package.json",
+    "id": "8"
+   },
+   {
+    "title": "Tasodifiy nashrdan himoya",
+    "task": "Bu loyiha nashr qilinmasligi kerak. package.json ga private: true qo'shing (npm pkg set bilan).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm pkg set private=true",
+    "tests": [
+     {
+      "call": "proj.json().private",
+      "expect": "true"
+     }
+    ],
+    "hint": "npm pkg set kalit=qiymat.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "9"
+   },
+   {
+    "title": ".gitignore tayyorlash",
+    "task": "express o'rnating va node_modules Git ga tushmasligi uchun .gitignore faylini yarating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install express\necho node_modules > .gitignore",
+    "tests": [
+     {
+      "call": "proj.read(\".gitignore\")",
+      "expect": "\"node_modules\""
+     },
+     {
+      "call": "proj.installed(\"express\") !== null",
+      "expect": "true"
+     }
+    ],
+    "hint": "echo matn > fayl.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-npm-jr-02",
+  "level": "JUNIOR",
+  "module": "npm",
+  "order": 2,
+  "title": "Semver: versiyalar va oraliqlar",
+  "intro": "Semantic versioning (ma'noli versiyalash): MAJOR.MINOR.PATCH, ^ va ~ belgilari, npm update va npm outdated.",
+  "theory": {
+   "analogy": {
+    "icon": "📚",
+    "title": "Kitob nashrlari",
+    "text": "PATCH — xato harflari tuzatilgan qayta bosma. MINOR — yangi bob qo'shilgan nashr: eski boblar o'z o'rnida. MAJOR — butunlay qayta yozilgan kitob: eski sahifa raqamlariga ishonib bo'lmaydi."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Semver — versiya raqami o'zgarish turini aytadigan kelishuv. npm shu raqamlar va ^ ~ belgilari orqali qaysi yangilanishlar xavfsiz ekanini aniqlaydi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Semver (ma'noli versiyalash)",
+       "text": "versiya raqami o'zgarish turini bildiradigan kelishuv: MAJOR.MINOR.PATCH."
+      },
+      {
+       "term": "Caret (^)",
+       "text": "eng chapdagi nol bo'lmagan sonni o'zgartirmaydigan versiyalarga ruxsat beradi. npm standart holatda shuni yozadi."
+      },
+      {
+       "term": "Tilde (~)",
+       "text": "MINOR ko'rsatilgan bo'lsa faqat PATCH yangilanishiga ruxsat beradi."
+      },
+      {
+       "term": "Breaking change (buzuvchi o'zgarish)",
+       "text": "eski kodni o'zgartirmasdan ishlatib bo'lmaydigan o'zgarish; MAJOR ni oshiradi."
+      },
+      {
+       "term": "Prerelease (dastlabki nashr)",
+       "text": "1.0.0-beta.1 kabi sinov versiyasi; oddiy oraliqlar uni avtomatik tanlamaydi."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Paket yangilashda",
+       "text": "npm outdated, keyin npm update (yangilash)."
+      },
+      {
+       "term": "Katta o'tish oldidan",
+       "text": "MAJOR o'zgarish qo'llanmasini o'qish."
+      },
+      {
+       "term": "O'z paketingizni chiqarishda",
+       "text": "npm version."
+      }
+     ]
+    },
+    {
+     "heading": "MAJOR.MINOR.PATCH",
+     "text": "Versiya uch sondan iborat: MAJOR.MINOR.PATCH, masalan 4.17.21. PATCH — orqaga mos xato tuzatish. MINOR — orqaga mos yangi imkoniyat. MAJOR — breaking change (moslikni buzuvchi o'zgarish). Katta son oshganda undan o'ngdagilar nolga tushadi: 1.4.2 → 1.5.0 → 2.0.0."
+    },
+    {
+     "heading": "Oraliq belgilari",
+     "table": {
+      "head": [
+       "Yozuv",
+       "Ruxsat etilgan oraliq",
+       "Ma'nosi"
+      ],
+      "rows": [
+       [
+        "^4.17.1",
+        ">=4.17.1 <5.0.0",
+        "MINOR va PATCH yangilanadi"
+       ],
+       [
+        "~4.17.1",
+        ">=4.17.1 <4.18.0",
+        "faqat PATCH yangilanadi"
+       ],
+       [
+        "4.17.1",
+        "faqat 4.17.1",
+        "aniq versiya"
+       ],
+       [
+        "^0.21.3",
+        ">=0.21.3 <0.22.0",
+        "0.x da MINOR ham buzuvchi hisoblanadi"
+       ],
+       [
+        "^0.0.3",
+        "faqat 0.0.3",
+        "eng qattiq holat"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Tekshirish va yangilash",
+     "code": {
+      "lang": "bash",
+      "text": "npm install lodash@4.17.20   # aniq versiya so'rash\nnpm install -E zod           # ^ siz yozish (--save-exact)\nnpm outdated                 # current / wanted / latest\nnpm update                   # package.json oralig'i ichida yangilash\nnpm install zod@latest       # oraliqdan tashqari, yangi MAJOR\nnpm view react versions      # barcha versiyalar"
+     }
+    },
+    {
+     "callout": {
+      "kind": "info",
+      "text": "`npm outdated` dagi Wanted — package.json oralig'iga mos eng yuqori versiya, Latest — registry dagi eng yangisi. `npm update` faqat Wanted gacha ko'taradi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📱",
+       "title": "Telefon yangilanishi",
+       "text": "Kichik xavfsizlik yamog'i — PATCH, yangi funksiyalar — MINOR, butunlay yangi tizim — MAJOR."
+      },
+      {
+       "icon": "🔌",
+       "title": "Rozetka",
+       "text": "MAJOR o'zgarishi — rozetka shakli almashishi: eski vilka endi tushmaydi."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "^ — MAJOR qulfi, ~ — MINOR qulfi."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "1.10.0 ni 1.9.0 dan kichik deb o'ylash.",
+       "Har qismni alohida son deb solishtiring.",
+       "10 > 9."
+      ],
+      [
+       "MAJOR ni tekshirmay yangilash.",
+       "Avval changelog ni o'qing.",
+       "Buzuvchi o'zgarish kodni sindiradi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "PATCH — tuzatish, MINOR — yangi imkoniyat, MAJOR — buzuvchi o'zgarish.",
+    "^ MAJOR ni, ~ MINOR ni qulflaydi.",
+    "0.x versiyalarda ^ ancha qattiq ishlaydi.",
+    "npm update oraliqdan chiqmaydi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Oraliqni sinash",
+    "text": "`npm install lodash@4.17.20` qiling, package.json da `^4.17.20` yozilganini ko'ring. `npm outdated` va `npm update` natijasini solishtiring."
+   },
+   {
+    "title": "Versiyalar tarixi",
+    "text": "`npm view react versions` ni ishga tushiring va oxirgi MAJOR qachon almashganini toping."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "`^4.17.1` oralig'iga quyidagilardan qaysi versiya MOS EMAS?",
+    "options": [
+     "5.0.0",
+     "4.17.1",
+     "4.18.0",
+     "4.99.9"
+    ],
+    "answer": "5.0.0",
+    "explain": "^ MAJOR ni o'zgartirishga ruxsat bermaydi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`~2.3.4` oralig'idagi eng yuqori mos versiya qaysi? Mavjud: 2.3.4, 2.3.9, 2.4.0, 3.0.0.",
+    "options": [
+     "2.3.9",
+     "2.4.0",
+     "3.0.0",
+     "2.3.4"
+    ],
+    "answer": "2.3.9",
+    "explain": "~ faqat PATCH yangilanishiga ruxsat beradi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`^0.21.3` yozilgan. Registry da 0.21.5 va 0.24.0 bor. `npm install` qaysi birini oladi (lock fayl yo'q)?",
+    "options": [
+     "0.21.5",
+     "0.24.0",
+     "0.21.3",
+     "Xato beradi"
+    ],
+    "answer": "0.21.5",
+    "explain": "0.x da ^ MINOR ni qulflaydi: >=0.21.3 <0.22.0."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "1.9.9 versiyadagi paketga orqaga mos yangi funksiya qo'shildi. Keyingi versiya?",
+    "options": [
+     "1.10.0",
+     "2.0.0",
+     "1.9.10",
+     "1.9.9-new"
+    ],
+    "answer": "1.10.0",
+    "explain": "Yangi mos imkoniyat MINOR ni oshiradi; 9 dan keyin 10 keladi, bu o'nli kasr emas."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi natijada `npm update lodash` dan keyin qaysi versiya turadi?",
+    "options": [
+     "4.17.21",
+     "5.1.0",
+     "4.17.15",
+     "4.18.0"
+    ],
+    "answer": "4.17.21",
+    "explain": "update (yangilash) faqat Wanted gacha, ya'ni oraliq ichida ko'taradi.",
+    "passage": "Package  Current  Wanted   Latest\nlodash   4.17.15  4.17.21  5.1.0"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Qaysi yozuv `1.4.0` va `2.1.0` ni qabul qiladi, lekin `3.0.0` ni qabul qilmaydi?",
+    "options": [
+     "^1.0.0 || ^2.0.0",
+     ">=1.0.0 <=3.0.0",
+     "^1.0.0 && ^2.0.0",
+     "~1.4.0 || ~2.0.0"
+    ],
+    "answer": "^1.0.0 || ^2.0.0",
+    "explain": "|| — oraliqlardan istalgan biri."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "`npm install -E zod` natijasi package.json da qanday ko'rinadi (zod latest 3.24.1)?",
+    "options": [
+     "\"zod\": \"3.24.1\"",
+     "\"zod\": \"^3.24.1\"",
+     "\"zod\": \"~3.24.1\"",
+     "\"zod\": \"latest\""
+    ],
+    "answer": "\"zod\": \"3.24.1\"",
+    "explain": "-E (--save-exact) belgisiz aniq versiya yozadi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Paket muallifi funksiya nomini o'zgartirib, uni PATCH sifatida chiqardi. `^2.1.0` ishlatayotgan loyihaga nima bo'lishi mumkin?",
+    "options": [
+     "Yangilanishda kod sinadi, chunki semver — faqat kelishuv",
+     "npm buzuvchi o'zgarishni aniqlab, yangi paketni o'rnatmaydi",
+     "Eski funksiya nomi avtomatik saqlanib qoladi",
+     "Hech narsa: PATCH texnik jihatdan buza olmaydi"
+    ],
+    "answer": "Yangilanishda kod sinadi, chunki semver — faqat kelishuv",
+    "explain": "npm versiya raqamiga ishonadi; mualliflik xatosini tekshirmaydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Versiyalarni o'sish tartibida to'g'ri joylashtirgan qator qaysi?",
+    "options": [
+     "1.2.9, 1.2.10, 1.10.0",
+     "1.10.0, 1.2.9, 1.2.10",
+     "1.2.10, 1.2.9, 1.10.0",
+     "1.2.9, 1.10.0, 1.2.10"
+    ],
+    "answer": "1.2.9, 1.2.10, 1.10.0",
+    "explain": "Har bir qism alohida son sifatida solishtiriladi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Qaysi buyruq o'rnatilgan, kerakli (wanted) va eng yangi (latest) versiyalarni jadval qilib ko'rsatadi?",
+    "answer": "npm outdated",
+    "explain": "outdated faqat ko'rsatadi, hech narsani o'zgartirmaydi."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "`~1.4.2` oralig'iga 1.5.0 kiradimi? \"ha\" yoki \"yo'q\" deb yozing.",
+    "answer": "yo'q",
+    "explain": "~1.4.2 = >=1.4.2 <1.5.0.",
+    "alsoAccept": [
+     "yoq",
+     "yo‘q"
+    ]
+   }
+  ],
+  "labs": [
+   {
+    "title": "Aniq eski versiya",
+    "task": "lodash ning aynan 4.17.20 versiyasini so'rab o'rnating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install lodash@4.17.20",
+    "tests": [
+     {
+      "call": "proj.installed(\"lodash\")",
+      "expect": "\"4.17.20\""
+     }
+    ],
+    "hint": "paket@versiya.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "1"
+   },
+   {
+    "title": "Belgisiz versiya",
+    "task": "zod ni package.json da ^ belgisisiz, aniq versiya bilan yozdiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install -E zod",
+    "tests": [
+     {
+      "call": "proj.deps()",
+      "expect": "({ zod: \"3.24.1\" })"
+     }
+    ],
+    "hint": "-E yoki --save-exact.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "2"
+   },
+   {
+    "title": "Faqat PATCH yangilansin",
+    "task": "vite ni 5.4 liniyasida qoladigan tilde (~) oralig'i bilan o'rnating: ~5.4.0.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install vite@~5.4.0",
+    "tests": [
+     {
+      "call": "proj.deps().vite",
+      "expect": "\"~5.4.0\""
+     },
+     {
+      "call": "proj.installed(\"vite\")",
+      "expect": "\"5.4.11\""
+     }
+    ],
+    "hint": "Oraliqni ham @ dan keyin yozasiz.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "3"
+   },
+   {
+    "title": "Oraliq ichida yangilash",
+    "task": "package.json da lodash ^4.17.20, o'rnatilgani 4.17.20. Oraliq ichidagi eng yangisiga ko'taring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm update lodash",
+    "tests": [
+     {
+      "call": "proj.installed(\"lodash\")",
+      "expect": "\"4.17.21\""
+     },
+     {
+      "call": "proj.deps().lodash",
+      "expect": "\"^4.17.21\""
+     }
+    ],
+    "hint": "npm update <paket>.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install lodash@4.17.20\nnpm pkg set dependencies.lodash=^4.17.20",
+    "id": "4"
+   },
+   {
+    "title": "Yangi MAJOR ga o'tish",
+    "task": "Loyihada chalk ^4.1.2. update bu yerda yordam bermaydi: eng yangi MAJOR versiyaga o'ting.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install chalk@latest",
+    "tests": [
+     {
+      "call": "proj.installed(\"chalk\")",
+      "expect": "\"5.3.0\""
+     },
+     {
+      "call": "proj.deps().chalk",
+      "expect": "\"^5.3.0\""
+     }
+    ],
+    "hint": "@latest teglari.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install chalk@^4.1.2",
+    "id": "5"
+   },
+   {
+    "title": "Eskirganlarni tekshirish",
+    "task": "Hech narsani o'zgartirmasdan, qaysi paketlar eskirganini ko'ring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm outdated",
+    "tests": [
+     {
+      "call": "proj.printed(\"latest 4.17.21\")",
+      "expect": "true"
+     },
+     {
+      "call": "proj.installed(\"lodash\")",
+      "expect": "\"3.10.1\""
+     }
+    ],
+    "hint": "Faqat ko'rsatadigan buyruq.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install lodash@^3.10.1",
+    "id": "6"
+   },
+   {
+    "title": "React 18 liniyasi",
+    "task": "react ning 18-MAJOR liniyasidagi eng yangi versiyasini o'rnating (19 emas).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install react@^18.0.0",
+    "tests": [
+     {
+      "call": "proj.installed(\"react\")",
+      "expect": "\"18.3.1\""
+     },
+     {
+      "call": "proj.deps().react",
+      "expect": "\"^18.0.0\""
+     }
+    ],
+    "hint": "^18.0.0 oralig'i.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "7"
+   },
+   {
+    "title": "PATCH chiqarish",
+    "task": "Xato tuzatdingiz. Loyiha versiyasini PATCH bo'yicha oshiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm version patch",
+    "tests": [
+     {
+      "call": "proj.version()",
+      "expect": "\"2.4.8\""
+     }
+    ],
+    "hint": "npm version patch | minor | major.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-app\",\"version\":\"2.4.7\"}' > package.json",
+    "id": "8"
+   },
+   {
+    "title": "Buzuvchi o'zgarish",
+    "task": "API butunlay o'zgardi. Versiyani semver bo'yicha mos ravishda oshiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm version major",
+    "tests": [
+     {
+      "call": "proj.version()",
+      "expect": "\"3.0.0\""
+     }
+    ],
+    "hint": "Breaking change qaysi sonni oshiradi?",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-app\",\"version\":\"2.4.7\"}' > package.json",
+    "id": "9"
+   },
+   {
+    "title": "0.x tuzog'i",
+    "task": "esbuild ni ^0.21.0 oralig'i bilan o'rnating va 0.24 chiqqaniga qaramay qaysi versiya kelishini ko'ring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install esbuild@^0.21.0",
+    "tests": [
+     {
+      "call": "proj.installed(\"esbuild\")",
+      "expect": "\"0.21.5\""
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "0.x da ^ MINOR ni qulflaydi.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-npm-jr-03",
+  "level": "JUNIOR",
+  "module": "npm",
+  "order": 3,
+  "title": "Lock fayl va node_modules",
+  "intro": "package-lock.json nima uchun kerak, npm ci va npm install farqi, hoisting va ichma-ich node_modules.",
+  "theory": {
+   "analogy": {
+    "icon": "🧾",
+    "title": "Aniq chek",
+    "text": "package.json — «taxminan shunday un oling» degan ro'yxat. Lock fayl — chek: aynan qaysi firma, qaysi partiya olingani. Chek bo'yicha borsangiz, har kim bir xil non yopadi."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Lock fayl — o'rnatilgan har bir paketning aniq versiyasi yozilgan hisobot. U tufayli sizda, hamkasbingizda va serverda bir xil daraxt hosil bo'ladi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Lock file (qulf fayli)",
+       "text": "o'rnatilgan daraxtning aniq versiyalarini yozib boradigan fayl: package-lock.json, pnpm-lock.yaml, yarn.lock, bun.lock."
+      },
+      {
+       "term": "npm ci (clean install — toza o'rnatish)",
+       "text": "node_modules ni o'chirib, faqat lock fayl bo'yicha o'rnatadi."
+      },
+      {
+       "term": "Integrity (butunlik) xeshi",
+       "text": "yuklab olingan arxiv o'zgartirilmaganini tekshiradigan nazorat summasi."
+      },
+      {
+       "term": "Hoisting (yuqoriga ko'tarish)",
+       "text": "o'tuvchi bog'liqliklarni ildiz node_modules ga tekislab joylash."
+      },
+      {
+       "term": "Phantom dependency (arvoh bog'liqlik)",
+       "text": "package.json da yo'q, lekin hoisting tufayli import (olib kirish) qilinayotgan paket."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Jamoada ishlashda",
+       "text": "Lock faylni commit qilish."
+      },
+      {
+       "term": "CI va deploy da",
+       "text": "npm ci."
+      },
+      {
+       "term": "«Menda ishlayapti» muammosida",
+       "text": "Lock dagi versiyalarni solishtirish."
+      }
+     ]
+    },
+    {
+     "heading": "package-lock.json",
+     "text": "package.json oraliqlarni yozadi, shuning uchun turli kunlarda `^4.17.0` turli versiyani berishi mumkin. Lock fayl o'rnatilgan HAR BIR paketning (o'tuvchilarni ham) aniq versiyasi, manzili va integrity (butunlik) xeshini saqlaydi. U Git ga commit qilinadi: jamoa va CI bir xil daraxtni oladi."
+    },
+    {
+     "heading": "npm install va npm ci",
+     "table": {
+      "head": [
+       "",
+       "npm install",
+       "npm ci"
+      ],
+      "rows": [
+       [
+        "Lock fayl",
+        "kerak bo'lsa o'zgartiradi",
+        "hech qachon o'zgartirmaydi"
+       ],
+       [
+        "Lock yo'q bo'lsa",
+        "yaratadi",
+        "xato beradi"
+       ],
+       [
+        "package.json bilan mos emas",
+        "lockni yangilaydi",
+        "xato beradi"
+       ],
+       [
+        "node_modules",
+        "mavjudini moslaydi",
+        "avval o'chiradi"
+       ],
+       [
+        "Qayerda",
+        "kompyuteringizda",
+        "CI va deploy da"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Lock bilan o'rnatish qoidasi",
+     "text": "Lock dagi versiya package.json oralig'iga mos bo'lsa, `npm install` aynan o'sha versiyani oladi — registry da yangisi chiqqan bo'lsa ham. Versiyani ko'tarish uchun `npm update (yangilash)` yoki `npm install paket@versiya` kerak."
+    },
+    {
+     "heading": "Hoisting (yuqoriga ko'tarish)",
+     "code": {
+      "lang": "text",
+      "text": "node_modules/\n  express/            # express@4 debug@2.6.9 ni so'raydi\n  debug/              # 2.6.9  — ildizga ko'tarilgan\n  ms/                 # 2.1.3  — siz o'rnatgan\n  debug/node_modules/\n    ms/               # 2.0.0  — to'qnashuv, ichkarida"
+     }
+    },
+    {
+     "text": "npm paketlarni iloji boricha ildiz node_modules ga chiqaradi (hoisting). Bir nomning ikki xil versiyasi kerak bo'lsa, bittasi so'ragan paket ichiga joylanadi. Hoisting tufayli kod o'zi so'ramagan paketni ham `import` qila oladi — bu phantom dependency (arvoh bog'liqlik) va u keyinchalik kutilmaganda sinadi."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "package-lock.json dagi merge konfliktini qo'lda tahrir qilmang: package.json ni hal qiling va `npm install` ga lockni qayta yaratdiring."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📸",
+       "title": "Surat",
+       "text": "Lock fayl — javonning surati: ro'yxat bir xil bo'lsa ham, surat aniq qaysi mahsulot turganini ko'rsatadi."
+      },
+      {
+       "icon": "🏢",
+       "title": "Umumiy oshxona",
+       "text": "Hoisting — hamma foydalanadigan idish umumiy oshxonaga chiqariladi; boshqacha turi kerak bo'lsa, u xonaning o'zida saqlanadi."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Kompyuterda install, serverda ci."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "package-lock.json ni .gitignore ga yozish.",
+       "Uni commit qiling.",
+       "Aks holda har kim boshqa versiya oladi."
+      ],
+      [
+       "package.json da yo'q paketni import qilish.",
+       "Paketni aniq o'rnating.",
+       "Hoisting o'zgarsa, import sinadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Lock fayl aniq daraxtni saqlaydi va commit qilinadi.",
+    "CI da npm ci: tez, takrorlanadigan, lockni o'zgartirmaydi.",
+    "Hoisting paketlarni ildizga chiqaradi, to'qnashuvda ichkariga qo'yadi.",
+    "package.json da yo'q paketni import qilmang."
+   ]
+  },
+  "practice": [
+   {
+    "title": "npm ci ni sinash",
+    "text": "Loyihada `npm install` qiling, so'ng package.json ga qo'lda yangi bog'liqlik yozing va `npm ci` ni ishga tushiring. Xato matnini o'qing."
+   },
+   {
+    "title": "Daraxtni ko'rish",
+    "text": "`npm install express` dan keyin `npm ls --all` va `npm explain ms` buyruqlari bilan ms nega o'rnatilganini toping."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Lock faylda `lodash 4.17.20`, package.json da `^4.17.20`. Registry da 4.17.21 chiqdi. Hamkasbingiz `npm install` qildi. Qaysi versiya o'rnatiladi?",
+    "options": [
+     "4.17.20",
+     "4.17.21",
+     "Ikkalasi birga",
+     "Xato chiqadi"
+    ],
+    "answer": "4.17.20",
+    "explain": "Lock dagi versiya oraliqqa mos — o'sha olinadi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "CI da qaysi buyruq to'g'ri tanlov?",
+    "options": [
+     "npm ci",
+     "npm update",
+     "npm install --force",
+     "npm init -y"
+    ],
+    "answer": "npm ci",
+    "explain": "npm ci takrorlanadigan toza o'rnatish beradi va lockni o'zgartirmaydi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "package.json ga qo'lda yangi paket yozildi, lock yangilanmadi. `npm ci` natijasi?",
+    "options": [
+     "Mos emaslik haqida xato bilan to'xtaydi",
+     "Yangi paketni o'rnatib, lockni yangilaydi",
+     "Yangi paketni jimgina o'tkazib yuboradi",
+     "package.json dan o'sha qatorni o'chiradi"
+    ],
+    "answer": "Mos emaslik haqida xato bilan to'xtaydi",
+    "explain": "npm ci package.json va lock mos bo'lishini talab qiladi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "package-lock.json bilan nima qilish kerak?",
+    "options": [
+     "Git ga commit qilish",
+     ".gitignore ga yozish",
+     "Har deploy dan oldin o'chirish",
+     "Faqat o'z kompyuteringizda saqlash"
+    ],
+    "answer": "Git ga commit qilish",
+    "explain": "Aks holda har kim boshqacha daraxt oladi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Quyidagi daraxtda ildizdagi koddan `require(\"ms\")` qaysi versiyani oladi?",
+    "options": [
+     "2.1.3",
+     "2.0.0",
+     "Ikkalasini ham",
+     "Topilmaydi"
+    ],
+    "answer": "2.1.3",
+    "explain": "Node eng yaqin node_modules dan yuqoriga qarab qidiradi; ildiz kodi ildizdagisini topadi.",
+    "passage": "node_modules/ms                      2.1.3\nnode_modules/debug                   2.6.9\nnode_modules/debug/node_modules/ms   2.0.0"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "O'sha daraxtda `debug` ichidagi `require(\"ms\")` qaysi versiyani oladi?",
+    "options": [
+     "2.0.0",
+     "2.1.3",
+     "Eng yangisini",
+     "Tasodifiy birini"
+    ],
+    "answer": "2.0.0",
+    "explain": "Avval o'zining node_modules papkasi tekshiriladi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Kod `import ms from \"ms\"` qiladi, lekin ms package.json da yo'q va express orqali kelgan. Xavf nimada?",
+    "options": [
+     "express yangilanib ms ni tashlasa, import sinadi",
+     "Brauzer bunday importni hech qachon bajarmaydi",
+     "npm ms ni har safar o'chirib tashlaydi",
+     "express ishlashdan butunlay to'xtaydi"
+    ],
+    "answer": "express yangilanib ms ni tashlasa, import sinadi",
+    "explain": "Bu phantom dependency: o'zingiz ishlatadigan paketni o'zingiz yozing."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Lock fayldagi `integrity` nima uchun?",
+    "options": [
+     "Yuklab olingan arxiv o'zgartirilmaganini tekshirish uchun",
+     "Paket litsenziyasi va muallifi haqidagi ma'lumotni saqlash uchun",
+     "Paket tezligini o'lchash uchun",
+     "Foydalanuvchi parolini shifrlash uchun"
+    ],
+    "answer": "Yuklab olingan arxiv o'zgartirilmaganini tekshirish uchun",
+    "explain": "Xesh mos kelmasa o'rnatish to'xtaydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Merge paytida package-lock.json da konflikt chiqdi. Eng to'g'ri yo'l?",
+    "options": [
+     "package.json ni hal qilib, npm install bilan lockni qayta yaratish",
+     "Lock fayldagi konflikt belgilarini qo'lda birma-bir tahrirlab chiqish",
+     "Lock faylni butunlay repodan chiqarib tashlash",
+     "node_modules ni commit qilib qo'yish"
+    ],
+    "answer": "package.json ni hal qilib, npm install bilan lockni qayta yaratish",
+    "explain": "Lock — avtomatik yaratiladigan fayl."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Lock faylni o'zgartirmaydigan \"toza o'rnatish\" buyrug'ini yozing.",
+    "answer": "npm ci",
+    "explain": "ci = clean install.",
+    "alsoAccept": [
+     "npm clean-install"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "`^` oraliqdagi paketni xavfsiz yangilab jamoaga yetkazish tartibini tuzing.",
+    "words": [
+     "npm outdated",
+     "npm update",
+     "npm test",
+     "git commit -am \"Update deps\""
+    ],
+    "answer": "npm outdated npm update npm test git commit -am \"Update deps\"",
+    "explain": "Avval ko'rish, keyin yangilash, test, so'ng package.json va lockni commit qilish."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Lock fayl yaratish",
+    "task": "package.json bor, lock fayl yo'q. Lock faylni yarating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install",
+    "tests": [
+     {
+      "call": "proj.lockfiles()",
+      "expect": "[\"package-lock.json\"]"
+     },
+     {
+      "call": "proj.locked(\"dayjs\")",
+      "expect": "\"1.11.13\""
+     }
+    ],
+    "hint": "Oddiy npm install.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-app\",\"version\":\"1.0.0\",\"dependencies\":{\"dayjs\":\"^1.11.0\"}}' > package.json",
+    "id": "1"
+   },
+   {
+    "title": "Toza o'rnatish",
+    "task": "CI muhitini taqlid qiling: lock faylni o'zgartirmaydigan toza o'rnatishni bajaring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm ci",
+    "tests": [
+     {
+      "call": "proj.installed(\"lodash\")",
+      "expect": "\"4.17.20\""
+     },
+     {
+      "call": "proj.locked(\"lodash\")",
+      "expect": "\"4.17.20\""
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "npm install emas.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install lodash@4.17.20\nnpm pkg set dependencies.lodash=^4.17.0\nnpm install\nrm -rf node_modules",
+    "id": "2"
+   },
+   {
+    "title": "Lock ni hurmat qilish",
+    "task": "Lock da lodash 4.17.20 turibdi. node_modules ni o'chirib, qayta o'rnating: versiya o'zgarmasin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "rm -rf node_modules\nnpm install",
+    "tests": [
+     {
+      "call": "proj.installed(\"lodash\")",
+      "expect": "\"4.17.20\""
+     },
+     {
+      "call": "proj.cmds >= 2",
+      "expect": "true"
+     }
+    ],
+    "hint": "rm -rf, keyin install.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install lodash@4.17.20\nnpm pkg set dependencies.lodash=^4.17.0\nnpm install",
+    "id": "3"
+   },
+   {
+    "title": "Mos kelmagan lock",
+    "task": "package.json ga dayjs qo'lda yozilgan, lock eski. Avval lockni yangilang, so'ng toza o'rnatishni muvaffaqiyatli bajaring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install\nnpm ci",
+    "tests": [
+     {
+      "call": "proj.locked(\"dayjs\")",
+      "expect": "\"1.11.13\""
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "npm ci mos kelmasa rad etadi.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install zod\nnpm pkg set dependencies.dayjs=^1.11.0",
+    "id": "4"
+   },
+   {
+    "title": "Lock ni qayta yaratish",
+    "task": "Lock faylni o'chirib, qaytadan yarating: shunda oraliqdagi eng yangi lodash keladi.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "rm package-lock.json\nrm -rf node_modules\nnpm install",
+    "tests": [
+     {
+      "call": "proj.locked(\"lodash\")",
+      "expect": "\"4.17.21\""
+     }
+    ],
+    "hint": "Lock yo'q bo'lsa npm oraliqning eng yuqorisini oladi.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install lodash@4.17.20\nnpm pkg set dependencies.lodash=^4.17.0\nnpm install",
+    "id": "5"
+   },
+   {
+    "title": "Arvoh bog'liqlikni yopish",
+    "task": "Kod debug ni import qiladi, lekin u faqat express orqali kelgan. express@4 qolgan holda debug ni ham aniq e'lon qiling (2.6.9).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install debug@2.6.9",
+    "tests": [
+     {
+      "call": "proj.deps().debug !== undefined",
+      "expect": "true"
+     },
+     {
+      "call": "proj.installed(\"debug\")",
+      "expect": "\"2.6.9\""
+     }
+    ],
+    "hint": "Ishlatadigan paketingizni o'zingiz yozing.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install express@^4.21.2",
+    "id": "6"
+   },
+   {
+    "title": "Versiya to'qnashuvi",
+    "task": "ms@2.1.3 ni, so'ng express@4 ni o'rnating va ikki xil ms qanday joylashganini hosil qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install ms@2.1.3\nnpm install express@^4.21.2",
+    "tests": [
+     {
+      "call": "proj.at(\"node_modules/ms\")",
+      "expect": "\"2.1.3\""
+     },
+     {
+      "call": "proj.at(\"node_modules/debug/node_modules/ms\")",
+      "expect": "\"2.0.0\""
+     }
+    ],
+    "hint": "Avval o'rnatilgani ildizni egallaydi.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "7"
+   },
+   {
+    "title": "Hoisting ni ko'rish",
+    "task": "express@5 ni o'rnating va uning o'tuvchi bog'liqliklari ildizga ko'tarilganini ro'yxatda ko'ring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install express\nls node_modules",
+    "tests": [
+     {
+      "call": "proj.topLevel()",
+      "expect": "[\"debug\", \"express\", \"ms\"]"
+     },
+     {
+      "call": "proj.printed(\"ms\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "ls papka.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "8"
+   },
+   {
+    "title": "Bitta paketni yangilash",
+    "task": "Faqat lodash ni yangilang; dayjs eski versiyada qolsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm update lodash",
+    "tests": [
+     {
+      "call": "proj.locked(\"lodash\")",
+      "expect": "\"4.17.21\""
+     },
+     {
+      "call": "proj.locked(\"dayjs\")",
+      "expect": "\"1.10.8\""
+     }
+    ],
+    "hint": "update dan keyin paket nomini yozing.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install lodash@4.17.20 dayjs@1.10.8\nnpm pkg set dependencies.lodash=^4.17.0 dependencies.dayjs=^1.10.0\nnpm install",
+    "id": "9"
+   },
+   {
+    "title": "node_modules siz repo",
+    "task": "Loyihada hammasi o'rnatilgan. node_modules ni o'chiring, package.json va lock joyida qolsin.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "rm -rf node_modules",
+    "tests": [
+     {
+      "call": "proj.exists(\"node_modules\")",
+      "expect": "false"
+     },
+     {
+      "call": "proj.installed(\"express\")",
+      "expect": "null"
+     },
+     {
+      "call": "proj.lockfiles()",
+      "expect": "[\"package-lock.json\"]"
+     },
+     {
+      "call": "Object.keys(proj.deps())",
+      "expect": "[\"express\"]"
+     }
+    ],
+    "hint": "rm -rf node_modules.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install express",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-npm-jr-04",
+  "level": "JUNIOR",
+  "module": "npm",
+  "order": 4,
+  "title": "npm scripts va npx",
+  "intro": "scripts bo'limi, pre va post hooklari, argument uzatish, node_modules/.bin va npx.",
+  "theory": {
+   "analogy": {
+    "icon": "🎛️",
+    "title": "Pultdagi tugmalar",
+    "text": "scripts — pultdagi nomlangan tugmalar: «build» bosilsa, orqasida uzun buyruq ishlaydi. Jamoadagi hech kim uzun buyruqni yodlab yurmaydi."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "npm scripts — loyiha buyruqlariga nom beradigan bo'lim. npx esa paket ichidagi vositani global o'rnatmasdan ishga tushiradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Script (skript)",
+       "text": "package.json da nomlangan terminal buyrug'i."
+      },
+      {
+       "term": "Lifecycle hook (hayot davri ilmog'i)",
+       "text": "pre va post qo'shimchali yoki install paytida avtomatik ishlaydigan skriptlar."
+      },
+      {
+       "term": "node_modules/.bin",
+       "text": "o'rnatilgan paketlarning bajariladigan fayllari havolalari turadigan papka."
+      },
+      {
+       "term": "npx",
+       "text": "paket buyrug'ini global o'rnatmasdan ishga tushirish vositasi."
+      },
+      {
+       "term": "Exit code (chiqish kodi)",
+       "text": "buyruq natijasi raqami: 0 — muvaffaqiyat, boshqasi — xato."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Kundalik buyruqlarda",
+       "text": "npm run dev, npm test."
+      },
+      {
+       "term": "Build zanjirida",
+       "text": "pre va post skriptlar."
+      },
+      {
+       "term": "Bir martalik vositada",
+       "text": "npx create-vite."
+      }
+     ]
+    },
+    {
+     "heading": "scripts qanday ishlaydi",
+     "code": {
+      "lang": "json",
+      "text": "{\n  \"scripts\": {\n    \"dev\": \"vite\",\n    \"prebuild\": \"rimraf dist\",\n    \"build\": \"tsc && vite build\",\n    \"test\": \"vitest run\",\n    \"start\": \"node server.js\"\n  }\n}"
+     }
+    },
+    {
+     "text": "`npm run build (yig'ish)` skriptni ishga tushiradi. `test` va `start` uchun `run` shart emas: `npm test`, `npm start`. Skript ichida node_modules/.bin PATH ga qo'shiladi, shuning uchun lokal o'rnatilgan `vite` ni to'liq yo'lsiz yozish mumkin."
+    },
+    {
+     "heading": "pre, post va argumentlar",
+     "bullets": [
+      "`prebuild` build dan oldin, `postbuild` keyin avtomatik ishlaydi.",
+      "`a && b` — a muvaffaqiyatli tugasagina b ishlaydi.",
+      "`npm run test -- --watch` — `--` dan keyingilar skriptdagi buyruqqa uzatiladi.",
+      "`npm run` (nomsiz) — mavjud skriptlar ro'yxati."
+     ]
+    },
+    {
+     "heading": "npx",
+     "text": "npx paket ichidagi bajariladigan faylni ishga tushiradi. Avval loyihadagi node_modules/.bin dan qidiradi; topilmasa paketni vaqtincha yuklab olib ishlatadi. Shuning uchun bir martalik vositalar (`npx create-vite`) global o'rnatilmaydi."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "Global o'rnatilgan vosita (npm install -g) har kompyuterda boshqa versiyada bo'ladi. Loyiha vositasini devDependencies ga qo'ying va skript orqali chaqiring."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "☕",
+       "title": "Qahva apparati",
+       "text": "«Kapuchino» tugmasi (script) ortida bir necha qadam bor: oldin suv qizdiriladi (pre), keyin tozalanadi (post)."
+      },
+      {
+       "icon": "🚕",
+       "title": "Taksi",
+       "text": "npx — mashina sotib olmasdan bir marta foydalanish; devDependencies — o'z mashinangiz."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Jamoa uchun buyruqni yodlamang — skriptga yozing."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "npm run test --watch deb yozish.",
+       "npm run test -- --watch.",
+       "-- siz bayroq npm da qolib ketadi."
+      ],
+      [
+       "Vositani global o'rnatish.",
+       "devDependencies va skript.",
+       "Hamma bir xil versiyani ishlatadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "npm run <nom> skriptni ishga tushiradi; test va start da run shart emas.",
+    "pre/post nomli skriptlar avtomatik ishlaydi.",
+    "-- dan keyingi argumentlar skript buyrug'iga o'tadi.",
+    "npx lokal binary ni, bo'lmasa vaqtincha yuklanganini ishlatadi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "pre va post",
+    "text": "prebuild, build, postbuild skriptlarini `echo` bilan yozing va `npm run build` da ishlash tartibini kuzating."
+   },
+   {
+    "title": "npx bilan sinov",
+    "text": "`npx cowsay salom` ni ishga tushiring, keyin package.json o'zgarmaganini tekshiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "`npm run build` da nima ketma-ketlikda chiqadi?",
+    "options": [
+     "A, B, C",
+     "B, A, C",
+     "Faqat B",
+     "B, C, A"
+    ],
+    "answer": "A, B, C",
+    "explain": "pre skript oldin, post skript keyin ishlaydi.",
+    "passage": "\"prebuild\": \"echo A\",\n\"build\": \"echo B\",\n\"postbuild\": \"echo C\""
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`tsc` xato bilan tugasa, `\"build\": \"tsc && vite build\"` da nima bo'ladi?",
+    "options": [
+     "vite build ishga tushmaydi",
+     "vite build baribir ishlaydi",
+     "tsc qayta-qayta takrorlanadi",
+     "Skript muvaffaqiyatli deb hisoblanadi"
+    ],
+    "answer": "vite build ishga tushmaydi",
+    "explain": "&& faqat oldingi buyruq 0 kodi bilan tugasa davom etadi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Qaysi buyruq `run` so'zisiz ishlaydi?",
+    "options": [
+     "npm test",
+     "npm build",
+     "npm dev",
+     "npm lint"
+    ],
+    "answer": "npm test",
+    "explain": "test va start — maxsus nomlar."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "`vitest` ga `--coverage` bayrog'ini skript orqali uzatishning to'g'ri yo'li?",
+    "options": [
+     "npm run test -- --coverage",
+     "npm run test --coverage",
+     "npm run --coverage test",
+     "npm run test && --coverage"
+    ],
+    "answer": "npm run test -- --coverage",
+    "explain": "-- siz bayroqni npm o'ziniki deb o'qiydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "vite faqat loyihaga o'rnatilgan. Terminalda `vite` — \"command not found\", lekin `npm run dev` ishlaydi. Nega?",
+    "options": [
+     "Skript ichida node_modules/.bin PATH ga qo'shiladi",
+     "npm run vite ni har safar global o'rnatadi",
+     "Terminal xavfsizlik uchun vite nomli buyruqni bloklaydi",
+     "Skript brauzer ichida bajariladi"
+    ],
+    "answer": "Skript ichida node_modules/.bin PATH ga qo'shiladi",
+    "explain": "Terminalda esa `npx vite` yozish kerak."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Loyihada cowsay o'rnatilmagan. `npx cowsay hi` nima qiladi?",
+    "options": [
+     "Vaqtincha yuklab olib ishga tushiradi",
+     "Kompyuterga doimiy global o'rnatib qo'yadi",
+     "package.json ga dependency yozadi",
+     "Darhol xato berib to'xtaydi"
+    ],
+    "answer": "Vaqtincha yuklab olib ishga tushiradi",
+    "explain": "npx paketni keshga oladi, package.json o'zgarmaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Nega loyiha vositasini `-g` bilan emas, devDependencies ga qo'yish afzal?",
+    "options": [
+     "Hamma bir xil versiyani ishlatadi",
+     "Global paketlar pullik bo'ladi",
+     "Global paketlar faqat Linux da ishlaydi",
+     "devDependencies saytga tezlik beradi"
+    ],
+    "answer": "Hamma bir xil versiyani ishlatadi",
+    "explain": "Versiya loyiha bilan birga qayd etiladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "`postinstall` skripti qachon ishlaydi?",
+    "options": [
+     "O'rnatish tugagandan keyin avtomatik",
+     "Faqat `npm run build` muvaffaqiyatli bo'lsa",
+     "Faqat paketni nashr qilishda",
+     "Hech qachon, qo'lda chaqirilmasa"
+    ],
+    "answer": "O'rnatish tugagandan keyin avtomatik",
+    "explain": "Shu sabab notanish paketlar xavfli bo'lishi mumkin."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Mavjud bo'lmagan skript chaqirilsa (`npm run depoy`) nima bo'ladi?",
+    "options": [
+     "\"Missing script\" xatosi chiqadi",
+     "npm o'xshash nomni o'zi ishga tushiradi",
+     "Bo'sh skript yaratib qo'yadi",
+     "Jimgina muvaffaqiyatli tugaydi"
+    ],
+    "answer": "\"Missing script\" xatosi chiqadi",
+    "explain": "npm nomni aniq talab qiladi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "`lint` nomli skriptni ishga tushiradigan buyruqni yozing.",
+    "answer": "npm run lint",
+    "explain": "Maxsus bo'lmagan nomlarda run shart.",
+    "alsoAccept": [
+     "npm run-script lint"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Paketni o'rnatmasdan uning buyrug'ini ishga tushiradigan vosita nomi (3 harf)?",
+    "answer": "npx",
+    "explain": "npx npm bilan birga keladi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Skript qo'shish va ishga tushirish",
+    "task": "hello nomli skript qo'shing (echo Salom) va uni ishga tushiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm pkg set scripts.hello=\"echo Salom\"\nnpm run hello",
+    "tests": [
+     {
+      "call": "proj.ran()",
+      "expect": "[\"hello\"]"
+     },
+     {
+      "call": "proj.printed(\"Salom\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "npm pkg set scripts.nom=\"...\".",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "1"
+   },
+   {
+    "title": "pre va post",
+    "task": "prebuild (echo A), build (echo B), postbuild (echo C) skriptlarini yozing va faqat build ni chaqiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm pkg set scripts.prebuild=\"echo A\" scripts.build=\"echo B\" scripts.postbuild=\"echo C\"\nnpm run build",
+    "tests": [
+     {
+      "call": "proj.ran()",
+      "expect": "[\"prebuild\", \"build\", \"postbuild\"]"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "Hooklarni alohida chaqirish shart emas.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "2"
+   },
+   {
+    "title": "run siz ishga tushirish",
+    "task": "test skriptini eng qisqa buyruq bilan ishga tushiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm test",
+    "tests": [
+     {
+      "call": "proj.ran()",
+      "expect": "[\"test\"]"
+     }
+    ],
+    "hint": "test maxsus nom.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-app\",\"version\":\"1.0.0\",\"scripts\":{\"test\":\"echo testlar\"}}' > package.json",
+    "id": "3"
+   },
+   {
+    "title": "Yetishmayotgan vosita",
+    "task": "`npm run dev` \"command not found\" bermoqda. Sababini tuzating va dev ni ishga tushiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install -D vite\nnpm run dev",
+    "tests": [
+     {
+      "call": "proj.ran()",
+      "expect": "[\"dev\"]"
+     },
+     {
+      "call": "proj.devDeps().vite !== undefined",
+      "expect": "true"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "Skript ishlatayotgan paket o'rnatilmagan.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-app\",\"version\":\"1.0.0\",\"scripts\":{\"dev\":\"vite\"}}' > package.json",
+    "id": "4"
+   },
+   {
+    "title": "Ketma-ket buyruqlar",
+    "task": "build skripti avval tsc, muvaffaqiyatli bo'lsa vite build qilsin. Kerakli paketlarni o'rnatib, skriptni yozing va ishga tushiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install -D typescript vite\nnpm pkg set scripts.build=\"tsc && vite build\"\nnpm run build",
+    "tests": [
+     {
+      "call": "proj.script(\"build\")",
+      "expect": "\"tsc && vite build\""
+     },
+     {
+      "call": "proj.printed(\"vite build\")",
+      "expect": "true"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "Ikki buyruq && bilan bog'lanadi.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "5"
+   },
+   {
+    "title": "Argument uzatish",
+    "task": "test skripti vitest. Unga --coverage bayrog'ini npm orqali uzating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm test -- --coverage",
+    "tests": [
+     {
+      "call": "proj.printed(\"vitest --coverage\")",
+      "expect": "true"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "-- dan keyin yozilgani skriptga ketadi.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-app\",\"version\":\"1.0.0\",\"scripts\":{\"test\":\"vitest\"}}' > package.json\nnpm install -D vitest",
+    "id": "6"
+   },
+   {
+    "title": "Bir martalik vosita",
+    "task": "cowsay ni loyihaga o'rnatmasdan ishga tushiring (matn: salom).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npx cowsay salom",
+    "tests": [
+     {
+      "call": "proj.ran()",
+      "expect": "[\"npx cowsay salom\"]"
+     },
+     {
+      "call": "proj.deps()",
+      "expect": "({})"
+     },
+     {
+      "call": "proj.devDeps()",
+      "expect": "({})"
+     }
+    ],
+    "hint": "npx.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "7"
+   },
+   {
+    "title": "Yangi loyiha shabloni",
+    "task": "npx bilan create-vite ni my-site nomi bilan ishga tushiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npx create-vite my-site",
+    "tests": [
+     {
+      "call": "proj.ran()",
+      "expect": "[\"npx create-vite my-site\"]"
+     }
+    ],
+    "hint": "npx <vosita> <argument>.",
+    "kind": "npm",
+    "setup": "",
+    "id": "8"
+   },
+   {
+    "title": "Lokal binary",
+    "task": "prettier ni dev bog'liqlik sifatida o'rnating va npx bilan `prettier .` ni ishga tushiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install -D prettier\nnpx prettier .",
+    "tests": [
+     {
+      "call": "proj.ran()",
+      "expect": "[\"npx prettier .\"]"
+     },
+     {
+      "call": "proj.installed(\"prettier\") !== null",
+      "expect": "true"
+     }
+    ],
+    "hint": "Avval o'rnatish, keyin npx.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "9"
+   },
+   {
+    "title": "Build oldidan tozalash",
+    "task": "build skripti `echo build`. Har build oldidan avtomatik `rimraf dist` ishlasin (rimraf ni o'rnating), so'ng build qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install -D rimraf\nnpm pkg set scripts.prebuild=\"rimraf dist\"\nnpm run build",
+    "tests": [
+     {
+      "call": "proj.ran()",
+      "expect": "[\"prebuild\", \"build\"]"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "pre + skript nomi.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-app\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo build\"}}' > package.json",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-npm-jr-05",
+  "level": "JUNIOR",
+  "module": "npm",
+  "order": 5,
+  "title": "Peer dependencies va lokal paket",
+  "intro": "peerDependencies nima uchun kerak, ERESOLVE xatosi, lokal paket yaratish: file:, npm link va npm publish.",
+  "theory": {
+   "analogy": {
+    "icon": "🔌",
+    "title": "Qurilma va rozetka",
+    "text": "Plagin — changyutgich nasadkasi. U o'zi bilan changyutgich olib kelmaydi, «menga shu modeldagi changyutgich kerak» deydi. Bu — peer dependency."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Peer dependency — paket o'zi o'rnatmaydigan, balki loyihada bo'lishini talab qiladigan bog'liqlik. Lokal paketni esa file (fayl): yoki npm link bilan nashr qilmasdan sinash mumkin."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "peerDependencies",
+       "text": "paket birga ishlaydigan, lekin ishlatuvchi loyiha o'rnatishi kerak bo'lgan paketlar."
+      },
+      {
+       "term": "ERESOLVE",
+       "text": "npm bog'liqliklar daraxtini ziddiyatsiz tuza olmaganini bildiruvchi xato."
+      },
+      {
+       "term": "npm link",
+       "text": "lokal paketga vaqtinchalik symlink (ramziy havola) orqali ulanish."
+      },
+      {
+       "term": "Scope (nom maydoni)",
+       "text": "@jamoa/paket ko'rinishidagi nomning @jamoa qismi."
+      },
+      {
+       "term": "Publish (nashr qilish)",
+       "text": "paketni registry ga yuklash; versiya takrorlanmasligi shart."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Plagin yoki UI kutubxona yozishda",
+       "text": "Framework (tayyor karkas) ni peer qiling."
+      },
+      {
+       "term": "ERESOLVE chiqqanda",
+       "text": "Versiyalarni moslang."
+      },
+      {
+       "term": "Nashrdan oldin sinashda",
+       "text": "npm link yoki file:."
+      }
+     ]
+    },
+    {
+     "heading": "peerDependencies",
+     "text": "Peer dependency (sherik bog'liqlik) — paket o'zi o'rnatmaydigan, balki uni ishlatadigan loyihada bo'lishini talab qiladigan paket. React komponent kutubxonasi react ni peerDependencies ga yozadi: aks holda ilovada ikki nusxa React paydo bo'lib, hooklar sinadi."
+    },
+    {
+     "code": {
+      "lang": "json",
+      "text": "{\n  \"name\": \"my-ui-kit\",\n  \"version\": \"1.0.0\",\n  \"peerDependencies\": { \"react\": \"^18.0.0 || ^19.0.0\" },\n  \"devDependencies\": { \"react\": \"^19.0.0\" }\n}"
+     }
+    },
+    {
+     "heading": "ERESOLVE",
+     "text": "npm 7 dan boshlab yetishmayotgan peer avtomatik o'rnatiladi. Loyihadagi versiya talabga mos kelmasa, npm `ERESOLVE` xatosi bilan to'xtaydi. To'g'ri yechim — mos versiyani tanlash. `--legacy-peer-deps` tekshiruvni o'tkazib yuboradi: xato yo'qoladi, lekin nomuvofiqlik qoladi."
+    },
+    {
+     "heading": "Lokal paketni ulash",
+     "table": {
+      "head": [
+       "Usul",
+       "Qanday",
+       "Xususiyati"
+      ],
+      "rows": [
+       [
+        "file:",
+        "npm install ../my-utils",
+        "package.json ga file:../my-utils yoziladi"
+       ],
+       [
+        "npm link",
+        "paketda: npm link; loyihada: npm link my-utils",
+        "package.json o'zgarmaydi, vaqtinchalik"
+       ],
+       [
+        "workspaces",
+        "monorepo ichida",
+        "doimiy va jamoaviy yechim"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Nashr qilish",
+     "code": {
+      "lang": "bash",
+      "text": "npm login\nnpm version patch          # 1.0.0 -> 1.0.1\nnpm publish --dry-run      # nima ketishini ko'rish\nnpm publish                # nashr\nnpm publish --access=public  # @scope/nom uchun"
+     }
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "Nashr qilingan versiyani qayta yozib bo'lmaydi: har nashr yangi versiya talab qiladi. Tarball ichiga .env tushmasligini `files` maydoni va dry-run bilan tekshiring."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🎮",
+       "title": "O'yin va konsol",
+       "text": "O'yin diski konsolni o'zi bilan olib kelmaydi, «shu avlod konsoli kerak» deydi — peer."
+      },
+      {
+       "icon": "🧪",
+       "title": "Namuna",
+       "text": "npm link — yangi detalni zavodga yubormasdan o'z mashinangizda sinab ko'rish."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Ziddiyatni bayroq bilan yashirmang, sababini hal qiling."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Har doim --force yozish.",
+       "Mos versiyani tanlang.",
+       "Nomuvofiqlik ish paytida chiqadi."
+      ],
+      [
+       "Versiyani oshirmay qayta nashr qilish.",
+       "Avval npm version.",
+       "Nashr qilingan versiya o'zgarmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Peer — loyihaning o'zi ta'minlaydigan bog'liqlik.",
+    "ERESOLVE ni versiya bilan hal qiling, bayroq bilan yashirmang.",
+    "Lokal paket: file: yoki npm link.",
+    "Har nashrga yangi versiya."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Lokal paket yaratib ulash",
+    "text": "`my-utils` papkasida paket yarating (name, version, index.js), asosiy loyihada `npm install ./my-utils` qiling va funksiyani import (olib kirish) qiling."
+   },
+   {
+    "title": "Tarballni tekshirish",
+    "text": "Paket papkasida `npm publish --dry-run` yoki `npm pack` qiling va qaysi fayllar kirayotganini ko'ring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Nega React plagini `react` ni dependencies emas, peerDependencies ga yozadi?",
+    "options": [
+     "Ilovada React ning ikkinchi nusxasi paydo bo'lmasin",
+     "react bepul tarqatilmaydigan paket bo'lgani uchun",
+     "Plagin React siz ham to'liq ishlay olishi uchun",
+     "dependencies ga react yozish taqiqlangani uchun"
+    ],
+    "answer": "Ilovada React ning ikkinchi nusxasi paydo bo'lmasin",
+    "explain": "Ikki nusxa React hooklar va context ni sindiradi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Loyihada react 19.0.0. `npm install react-datepicker-lite` (peer: react ^18.0.0). npm 7+ da natija?",
+    "options": [
+     "ERESOLVE xatosi",
+     "react 18 ga o'zi tushiriladi",
+     "Ikkita react o'rnatiladi",
+     "Paket jimgina o'rnatiladi"
+    ],
+    "answer": "ERESOLVE xatosi",
+    "explain": "Peer talabi loyihadagi versiyaga zid."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`--legacy-peer-deps` aslida nima qiladi?",
+    "options": [
+     "Peer ziddiyatini tekshirmay o'rnatadi",
+     "Ziddiyatli paketni kodini tuzatadi",
+     "Eski npm versiyasini qayta o'rnatadi",
+     "react ni mos versiyaga almashtiradi"
+    ],
+    "answer": "Peer ziddiyatini tekshirmay o'rnatadi",
+    "explain": "Muammo yo'qolmaydi, faqat xabar o'chadi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "`npm install ../my-utils` dan keyin package.json da nima paydo bo'ladi?",
+    "options": [
+     "\"my-utils\": \"file:../my-utils\"",
+     "\"my-utils\": \"link:^1.0.0 ../utils\"",
+     "\"../my-utils\": \"latest\"",
+     "Hech narsa yozilmaydi"
+    ],
+    "answer": "\"my-utils\": \"file:../my-utils\"",
+    "explain": "Lokal papka file (fayl): protokoli bilan yoziladi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "`file:` bilan o'rnatishdan `npm link` ning asosiy farqi?",
+    "options": [
+     "link package.json ni o'zgartirmaydi",
+     "link paketni registry ga nashr qiladi",
+     "link kodni nusxalab, aloqani uzadi",
+     "link faqat devDependencies bilan ishlaydi"
+    ],
+    "answer": "link package.json ni o'zgartirmaydi",
+    "explain": "Shuning uchun u vaqtinchalik sinov uchun qulay, lekin jamoaga ko'rinmaydi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "npm link ning to'g'ri tartibi qaysi?",
+    "options": [
+     "Avval paketda npm link, keyin loyihada npm link my-utils",
+     "Avval loyihada npm link my-utils, keyin paketda npm link",
+     "Faqat loyihada npm install -g my-utils",
+     "Ikkala papkada ham npm publish"
+    ],
+    "answer": "Avval paketda npm link, keyin loyihada npm link my-utils",
+    "explain": "Birinchi buyruq global havola yaratadi, ikkinchisi uni ulaydi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "`1.0.0` nashr qilingan. Kodda xato tuzatib yana `npm publish` qildingiz. Natija?",
+    "options": [
+     "403 xatosi: bu versiya allaqachon bor",
+     "Eski 1.0.0 ustidan jimgina yozib ketiladi",
+     "npm versiyani o'zi 1.0.1 qiladi",
+     "Ikkita 1.0.0 yonma-yon turadi"
+    ],
+    "answer": "403 xatosi: bu versiya allaqachon bor",
+    "explain": "Avval `npm version patch`."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "`2.4.7` da `npm version minor` bajarildi. Yangi versiya?",
+    "options": [
+     "2.5.0",
+     "2.5.7",
+     "2.4.8",
+     "3.0.0"
+    ],
+    "answer": "2.5.0",
+    "explain": "MINOR oshsa, PATCH nolga tushadi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "`@ali/utils` nomli paketni hamma uchun ochiq nashr qilish buyrug'i?",
+    "options": [
+     "npm publish --access=public",
+     "npm publish --private=false",
+     "npm publish -g",
+     "npm publish --scope=all"
+    ],
+    "answer": "npm publish --access=public",
+    "explain": "Scope (ko'rinish sohasi) li paketlar standart holatda xususiy hisoblanadi."
+   },
+   {
+    "id": "10",
+    "kind": "CHOICE",
+    "prompt": "Kutubxona yozayotganda react ham peer, ham devDependencies da turibdi. Nega?",
+    "options": [
+     "devDependencies — kutubxonaning o'zini test qilish uchun",
+     "Ikki nusxa React o'rnatilsa, kutubxona tezroq ishlagani uchun",
+     "npm bir bo'limni e'tiborsiz qoldirgani uchun",
+     "Bu xato: birini albatta o'chirish kerak"
+    ],
+    "answer": "devDependencies — kutubxonaning o'zini test qilish uchun",
+    "explain": "Peer ishlatuvchiga talab, dev esa ishlab chiqish uchun o'rnatish."
+   },
+   {
+    "id": "11",
+    "kind": "FILL",
+    "prompt": "Nashrdan oldin, hech narsa yuklamasdan natijani ko'rish bayrog'ini yozing (-- bilan).",
+    "answer": "--dry-run",
+    "explain": "Dry run — quruq mashq."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Peer e'lon qilish",
+    "task": "UI kutubxonasi yozyapsiz. react ^19.0.0 ni peerDependencies ga qo'shing.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install --save-peer react@^19.0.0",
+    "tests": [
+     {
+      "call": "proj.peerDeps()",
+      "expect": "({ react: \"^19.0.0\" })"
+     },
+     {
+      "call": "proj.deps()",
+      "expect": "({})"
+     }
+    ],
+    "hint": "--save-peer.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-ui\",\"version\":\"1.0.0\"}' > package.json",
+    "id": "1"
+   },
+   {
+    "title": "Mos versiyani tanlash",
+    "task": "Loyihada react 18. react-dom ning react 18 ga mos versiyasini o'rnating (xatosiz).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install react-dom@^18.3.1",
+    "tests": [
+     {
+      "call": "proj.installed(\"react-dom\")",
+      "expect": "\"18.3.1\""
+     },
+     {
+      "call": "proj.installed(\"react\")",
+      "expect": "\"18.3.1\""
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "react-dom@latest react 19 so'raydi.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install react@^18.3.1",
+    "id": "2"
+   },
+   {
+    "title": "ERESOLVE ni ko'rish",
+    "task": "Loyihada react 19. react-datepicker-lite@2 ni o'rnatib, ziddiyat xatosini oling (bayroqsiz).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install react-datepicker-lite@2.0.0",
+    "tests": [
+     {
+      "call": "proj.errors.some((e) => e.startsWith(\"ERESOLVE\"))",
+      "expect": "true"
+     },
+     {
+      "call": "proj.installed(\"react-datepicker-lite\")",
+      "expect": "null"
+     }
+    ],
+    "hint": "Oddiy install yetarli.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install react@^19.0.0",
+    "id": "3"
+   },
+   {
+    "title": "Ziddiyatni to'g'ri hal qilish",
+    "task": "Loyihada react 19, kerakli react-datepicker-lite@2 esa react 18 so'raydi. react ni 18 ga tushirib, ikkalasini xatosiz o'rnating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install react@^18.3.1\nnpm install react-datepicker-lite@2.0.0",
+    "tests": [
+     {
+      "call": "proj.installed(\"react\")",
+      "expect": "\"18.3.1\""
+     },
+     {
+      "call": "proj.installed(\"react-datepicker-lite\")",
+      "expect": "\"2.0.0\""
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "Avval react, keyin plagin.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install react@^19.0.0",
+    "id": "4"
+   },
+   {
+    "title": "file: bilan lokal paket",
+    "task": "my-utils papkasida tayyor paket bor. Uni asosiy loyihaga ulang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install ./my-utils",
+    "tests": [
+     {
+      "call": "proj.deps()",
+      "expect": "({ \"my-utils\": \"file:./my-utils\" })"
+     },
+     {
+      "call": "proj.linked(\"my-utils\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "npm install papka yo'li.",
+    "kind": "npm",
+    "setup": "npm init -y\nmkdir my-utils\necho '{\"name\":\"my-utils\",\"version\":\"1.0.0\"}' > my-utils/package.json\necho \"export const sum = 1\" > my-utils/index.js",
+    "id": "5"
+   },
+   {
+    "title": "Lokal paket yaratish",
+    "task": "string-tools nomli papka yarating, ichida package.json oching va uni asosiy loyihaga ulang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "mkdir string-tools\ncd string-tools\nnpm init -y\ncd ..\nnpm install ./string-tools",
+    "tests": [
+     {
+      "call": "proj.json(\"string-tools\").name",
+      "expect": "\"string-tools\""
+     },
+     {
+      "call": "proj.linked(\"string-tools\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "mkdir, cd, npm init -y, cd .., install.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "6"
+   },
+   {
+    "title": "npm link",
+    "task": "my-utils ni package.json ni o'zgartirmasdan vaqtincha ulang (npm link).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "cd my-utils\nnpm link\ncd ..\nnpm link my-utils",
+    "tests": [
+     {
+      "call": "proj.linked(\"my-utils\")",
+      "expect": "true"
+     },
+     {
+      "call": "proj.deps()",
+      "expect": "({})"
+     }
+    ],
+    "hint": "Ikki qadam: paket ichida va loyiha ichida.",
+    "kind": "npm",
+    "setup": "npm init -y\nmkdir my-utils\necho '{\"name\":\"my-utils\",\"version\":\"1.0.0\"}' > my-utils/package.json\necho \"export const sum = 1\" > my-utils/index.js",
+    "id": "7"
+   },
+   {
+    "title": "Nashrni mashq qilish",
+    "task": "Hech narsa yuklamasdan, nashr nima qilishini tekshiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm publish --dry-run",
+    "tests": [
+     {
+      "call": "proj.printed(\"my-ui-kit-demo@1.0.0\")",
+      "expect": "true"
+     },
+     {
+      "call": "proj.published()",
+      "expect": "[]"
+     }
+    ],
+    "hint": "--dry-run.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-ui-kit-demo\",\"version\":\"1.0.0\"}' > package.json",
+    "id": "8"
+   },
+   {
+    "title": "Versiya oshirib nashr",
+    "task": "Funksiya qo'shdingiz: MINOR versiyani oshirib, paketni nashr qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm version minor\nnpm publish",
+    "tests": [
+     {
+      "call": "proj.published()",
+      "expect": "[\"my-ui-kit-demo@1.1.0\"]"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "version, keyin publish.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"my-ui-kit-demo\",\"version\":\"1.0.0\"}' > package.json",
+    "id": "9"
+   },
+   {
+    "title": "Scope li ochiq paket",
+    "task": "@ali/utils paketini hamma uchun ochiq qilib nashr qiling.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm publish --access=public",
+    "tests": [
+     {
+      "call": "proj.published()",
+      "expect": "[\"@ali/utils@1.0.0\"]"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "--access=public.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"@ali/utils\",\"version\":\"1.0.0\"}' > package.json",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-npm-jr-06",
+  "level": "JUNIOR",
+  "module": "npm",
+  "order": 6,
+  "title": "pnpm, Yarn va Bun",
+  "intro": "Uch muqobil menejer: buyruqlari, lock fayllari, pnpm ning store va symlink tuzilishi, Yarn PnP, Bun tezligi.",
+  "theory": {
+   "analogy": {
+    "icon": "📚",
+    "title": "Shahar kutubxonasi",
+    "text": "npm — har oilaga o'z kitoblarini sotib olib uyga qo'yish. pnpm — bitta shahar kutubxonasi va har uyda «kitob falon javonda» degan yo'llanma: kitob bir marta saqlanadi, hamma foydalanadi."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "pnpm, Yarn va Bun — npm ning muqobillari. Hammasi package.json bilan ishlaydi, farqi o'rnatish tuzilishi, tezlik va lock faylda."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Content-addressable store (mazmun bo'yicha ombor)",
+       "text": "fayllar mazmuni xeshi bo'yicha bir marta saqlanadigan umumiy joy."
+      },
+      {
+       "term": "Symlink (ramziy havola)",
+       "text": "boshqa papka yoki faylga ko'rsatuvchi yorliq."
+      },
+      {
+       "term": "Plug'n'Play (PnP)",
+       "text": "Yarn ning node_modules yaratmasdan modullarni xarita orqali topish usuli."
+      },
+      {
+       "term": "Corepack",
+       "text": "Node bilan keladigan, loyihadagi packageManager maydoniga mos menejerni ishga tushiruvchi vosita."
+      },
+      {
+       "term": "dlx",
+       "text": "paketni vaqtincha yuklab, buyrug'ini ishga tushirish (npx o'xshashi)."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Disk va tezlik muhim bo'lsa",
+       "text": "pnpm."
+      },
+      {
+       "term": "Mavjud yarn.lock li loyihada",
+       "text": "yarn."
+      },
+      {
+       "term": "Tez tajribada",
+       "text": "bun."
+      }
+     ]
+    },
+    {
+     "heading": "Buyruqlar solishtirmasi",
+     "table": {
+      "head": [
+       "Amal",
+       "npm",
+       "pnpm",
+       "Yarn",
+       "Bun"
+      ],
+      "rows": [
+       [
+        "Hammasini o'rnatish",
+        "npm install",
+        "pnpm install",
+        "yarn",
+        "bun install"
+       ],
+       [
+        "Paket qo'shish",
+        "npm install x",
+        "pnpm add x",
+        "yarn add x",
+        "bun add x"
+       ],
+       [
+        "Dev qo'shish",
+        "npm i -D x",
+        "pnpm add -D x",
+        "yarn add -D x",
+        "bun add -d x"
+       ],
+       [
+        "O'chirish",
+        "npm uninstall x",
+        "pnpm remove x",
+        "yarn remove x",
+        "bun remove x"
+       ],
+       [
+        "Bir martalik",
+        "npx x",
+        "pnpm dlx x",
+        "yarn dlx x",
+        "bunx x"
+       ],
+       [
+        "Lock fayl",
+        "package-lock.json",
+        "pnpm-lock.yaml",
+        "yarn.lock",
+        "bun.lock"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "pnpm tuzilishi",
+     "text": "pnpm har paket versiyasini kompyuterdagi bitta content-addressable store (mazmun bo'yicha manzillanadigan ombor) da saqlaydi va loyihalarga hard link qiladi. node_modules ildizida faqat package.json da yozilgan paketlar (symlink sifatida) ko'rinadi, o'tuvchilari `.pnpm` ichida. Natija: disk tejaladi va phantom dependency ishlamaydi."
+    },
+    {
+     "heading": "Yarn va Bun",
+     "bullets": [
+      "Yarn Classic (1.x) — npm ga o'xshash tekis node_modules.",
+      "Yarn Berry (2+) — Plug'n'Play (PnP): node_modules o'rniga modullar xaritasi (.pnp.cjs).",
+      "Bun — o'zi JavaScript runtime (bajarilish muhiti) ham; o'rnatishi juda tez, npm registry bilan ishlaydi.",
+      "Corepack va `packageManager` maydoni jamoada menejer versiyasini qayd etadi."
+     ]
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "Bitta loyihada bitta menejer: package-lock.json bilan pnpm-lock.yaml birga tursa, ikki xil daraxt paydo bo'ladi. Eski lock faylni o'chiring."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🎬",
+       "title": "Striming",
+       "text": "Film bir serverda turadi, hammaga havola beriladi — pnpm store."
+      },
+      {
+       "icon": "🗺️",
+       "title": "Xarita",
+       "text": "PnP — hamma narsani uyga tashimasdan, qayerda turishini xaritadan topish."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Qaysi lock fayl bo'lsa, o'sha menejer."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Bir loyihada ikki menejer ishlatish.",
+       "Bittasini tanlab, ortiqcha lockni o'chiring.",
+       "Ikki daraxt ajralib ketadi."
+      ],
+      [
+       "pnpm da o'tuvchi paketni import qilish.",
+       "Uni pnpm add bilan e'lon qiling.",
+       "U ildizda ko'rinmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "pnpm — umumiy store + symlink: tez va tejamkor.",
+    "pnpm da faqat e'lon qilingan paketlar ko'rinadi.",
+    "Yarn Berry PnP node_modules siz ishlaydi.",
+    "Har menejerning o'z lock fayli; aralashtirmang."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Tuzilmani solishtirish",
+    "text": "Bir xil `express` ni npm va pnpm bilan ikki papkaga o'rnating va node_modules ildizidagi papkalar sonini solishtiring."
+   },
+   {
+    "title": "Menejerni almashtirish",
+    "text": "npm loyihasidan package-lock.json va node_modules ni o'chirib `pnpm install` qiling; paydo bo'lgan lock faylni ko'ring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "express o'rnatilgan (u debug ga bog'liq). Kod `require(\"debug\")` qiladi, package.json da debug yo'q. npm va pnpm da natija?",
+    "options": [
+     "npm da ishlaydi, pnpm da topilmaydi",
+     "Ikkalasida ham bemalol ishlaydi",
+     "npm da topilmaydi, pnpm da ishlaydi",
+     "Ikkalasida ham topilmaydi"
+    ],
+    "answer": "npm da ishlaydi, pnpm da topilmaydi",
+    "explain": "pnpm ildizda faqat e'lon qilingan paketlarni ko'rsatadi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "10 ta loyiha bir xil lodash versiyasini ishlatadi. pnpm diskda nima qiladi?",
+    "options": [
+     "Bir nusxa saqlab, loyihalarga havola beradi",
+     "Har loyihaga to'liq nusxa ko'chiradi",
+     "lodash ni faqat bitta loyihaga ruxsat beradi",
+     "Har ishga tushirishda qayta yuklab oladi"
+    ],
+    "answer": "Bir nusxa saqlab, loyihalarga havola beradi",
+    "explain": "Shu sabab disk va vaqt tejaladi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Repoda `yarn.lock` bor. Qaysi buyruq bilan o'rnatish to'g'ri?",
+    "options": [
+     "yarn install",
+     "npm install",
+     "pnpm install",
+     "npx install"
+    ],
+    "answer": "yarn install",
+    "explain": "Lock fayl qaysi menejer ishlatilishini ko'rsatadi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "pnpm loyihasida kimdir `npm install` ishlatdi. Eng asosiy muammo?",
+    "options": [
+     "Ikkinchi lock fayl paydo bo'lib, daraxtlar ajraladi",
+     "npm package.json ni pnpm formatidan butunlay o'chirib yuboradi",
+     "pnpm kompyuterdan o'chiriladi",
+     "Hech qanday farq va muammo bo'lmaydi"
+    ],
+    "answer": "Ikkinchi lock fayl paydo bo'lib, daraxtlar ajraladi",
+    "explain": "Jamoa turli versiyalarni ola boshlaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Yarn Berry PnP rejimining belgisi qaysi?",
+    "options": [
+     "node_modules yo'q, .pnp.cjs fayli bor",
+     "node_modules ikki baravar katta bo'ladi",
+     "package.json o'rniga yarn.json ishlatiladi",
+     "Lock fayl umuman yaratilmaydi"
+    ],
+    "answer": "node_modules yo'q, .pnp.cjs fayli bor",
+    "explain": "Modul joylashuvi xaritada yoziladi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "`pnpm dlx create-vite` npm dagi qaysi amalga o'xshaydi?",
+    "options": [
+     "npx create-vite",
+     "npm install -D create-vite",
+     "npm run create-vite",
+     "npm ci create-vite"
+    ],
+    "answer": "npx create-vite",
+    "explain": "dlx vaqtincha yuklab ishga tushiradi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "CI da pnpm lock faylini o'zgartirmay o'rnatish buyrug'i?",
+    "options": [
+     "pnpm install --frozen-lockfile",
+     "pnpm update --no-save --recursive",
+     "pnpm install --force",
+     "pnpm add --lock"
+    ],
+    "answer": "pnpm install --frozen-lockfile",
+    "explain": "Bu npm ci ning muqobili."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Bun haqida qaysi gap to'g'ri?",
+    "options": [
+     "Menejer bo'lishi bilan birga JavaScript runtime hamdir",
+     "Faqat React va Next.js asosidagi frontend loyihalari bilan ishlaydi",
+     "npm registry dagi paketlarni o'rnata olmaydi",
+     "package.json faylini ishlatmaydi"
+    ],
+    "answer": "Menejer bo'lishi bilan birga JavaScript runtime hamdir",
+    "explain": "Bun paketlarni npm registry dan oladi."
+   },
+   {
+    "id": "9",
+    "kind": "FILL",
+    "prompt": "pnpm da `vite` ni devDependencies ga qo'shadigan buyruqni yozing.",
+    "answer": "pnpm add -D vite",
+    "explain": "add + -D.",
+    "alsoAccept": [
+     "pnpm add vite -D",
+     "pnpm add --save-dev vite"
+    ]
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "pnpm lock faylining to'liq nomini yozing.",
+    "answer": "pnpm-lock.yaml",
+    "explain": "YAML formatida."
+   },
+   {
+    "id": "11",
+    "kind": "CHOICE",
+    "prompt": "Jamoada hamma bir xil menejer versiyasini ishlatishi uchun package.json ga nima yoziladi?",
+    "options": [
+     "\"packageManager\": \"pnpm@9.15.0\"",
+     "\"manager\": \"pnpm\"",
+     "\"engines\": \"pnpm only\"",
+     "\"scripts\": { \"preinstall\": \"pnpm@9\" }"
+    ],
+    "answer": "\"packageManager\": \"pnpm@9.15.0\"",
+    "explain": "Corepack shu maydonni o'qiydi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "pnpm bilan o'rnatish",
+    "task": "Loyihaga dayjs ni pnpm bilan qo'shing.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "pnpm add dayjs",
+    "tests": [
+     {
+      "call": "proj.deps().dayjs",
+      "expect": "\"^1.11.13\""
+     },
+     {
+      "call": "proj.lockfiles()",
+      "expect": "[\"pnpm-lock.yaml\"]"
+     }
+    ],
+    "hint": "pnpm da add.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "1"
+   },
+   {
+    "title": "pnpm dev bog'liqlik",
+    "task": "vite ni pnpm bilan devDependencies ga qo'shing.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "pnpm add -D vite",
+    "tests": [
+     {
+      "call": "proj.devDeps().vite",
+      "expect": "\"^6.0.3\""
+     },
+     {
+      "call": "proj.deps()",
+      "expect": "({})"
+     }
+    ],
+    "hint": "-D.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "2"
+   },
+   {
+    "title": "Arvoh bog'liqlik yo'q",
+    "task": "express ni pnpm bilan o'rnating: debug ildizda ko'rinmasligini tekshiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "pnpm add express\nls node_modules",
+    "tests": [
+     {
+      "call": "proj.installed(\"express\")",
+      "expect": "\"5.0.1\""
+     },
+     {
+      "call": "proj.installed(\"debug\")",
+      "expect": "null"
+     }
+    ],
+    "hint": "pnpm faqat e'lon qilinganni ko'rsatadi.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "3"
+   },
+   {
+    "title": "Yetishmayotganini qo'shish",
+    "task": "pnpm loyihasida kod debug ni import qiladi, lekin topilmayapti. Tuzating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "pnpm add debug",
+    "tests": [
+     {
+      "call": "proj.installed(\"debug\")",
+      "expect": "\"4.4.0\""
+     },
+     {
+      "call": "proj.deps().debug !== undefined",
+      "expect": "true"
+     }
+    ],
+    "hint": "O'zingiz ishlatadigan paketni e'lon qiling.",
+    "kind": "npm",
+    "setup": "npm init -y\npnpm add express",
+    "id": "4"
+   },
+   {
+    "title": "npm dan pnpm ga o'tish",
+    "task": "npm loyihasini pnpm ga o'tkazing: eski lock va node_modules ni o'chirib, pnpm bilan o'rnating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "rm package-lock.json\nrm -rf node_modules\npnpm install",
+    "tests": [
+     {
+      "call": "proj.lockfiles()",
+      "expect": "[\"pnpm-lock.yaml\"]"
+     },
+     {
+      "call": "proj.installed(\"express\") !== null",
+      "expect": "true"
+     },
+     {
+      "call": "proj.topLevel()",
+      "expect": "[\"express\"]"
+     }
+    ],
+    "hint": "Ikki lock fayl qolmasin.",
+    "kind": "npm",
+    "setup": "npm init -y\nnpm install express",
+    "id": "5"
+   },
+   {
+    "title": "Yarn bilan qo'shish",
+    "task": "axios ni Yarn bilan qo'shing.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "yarn add axios",
+    "tests": [
+     {
+      "call": "proj.lockfiles()",
+      "expect": "[\"yarn.lock\"]"
+     },
+     {
+      "call": "proj.deps().axios",
+      "expect": "\"^1.7.9\""
+     }
+    ],
+    "hint": "yarn add.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "6"
+   },
+   {
+    "title": "Bun bilan o'rnatish",
+    "task": "zod ni Bun bilan qo'shing.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "bun add zod",
+    "tests": [
+     {
+      "call": "proj.lockfiles()",
+      "expect": "[\"bun.lock\"]"
+     },
+     {
+      "call": "proj.installed(\"zod\")",
+      "expect": "\"3.24.1\""
+     }
+    ],
+    "hint": "bun add.",
+    "kind": "npm",
+    "setup": "npm init -y",
+    "id": "7"
+   },
+   {
+    "title": "pnpm da o'chirish",
+    "task": "lodash ni pnpm bilan o'chiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "pnpm remove lodash",
+    "tests": [
+     {
+      "call": "Object.keys(proj.deps())",
+      "expect": "[\"dayjs\"]"
+     },
+     {
+      "call": "proj.installed(\"lodash\")",
+      "expect": "null"
+     }
+    ],
+    "hint": "pnpm remove.",
+    "kind": "npm",
+    "setup": "npm init -y\npnpm add lodash dayjs",
+    "id": "8"
+   },
+   {
+    "title": "dlx",
+    "task": "create-vite ni pnpm orqali, o'rnatmasdan ishga tushiring (nom: demo).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "pnpm dlx create-vite demo",
+    "tests": [
+     {
+      "call": "proj.ran()",
+      "expect": "[\"npx create-vite demo\"]"
+     }
+    ],
+    "hint": "npx ning pnpm dagi muqobili.",
+    "kind": "npm",
+    "setup": "",
+    "id": "9"
+   },
+   {
+    "title": "CI uchun muzlatilgan o'rnatish",
+    "task": "pnpm lock faylini o'zgartirmaydigan o'rnatishni bajaring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "pnpm install --frozen-lockfile",
+    "tests": [
+     {
+      "call": "proj.installed(\"dayjs\")",
+      "expect": "\"1.11.13\""
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "--frozen-lockfile.",
+    "kind": "npm",
+    "setup": "npm init -y\npnpm add dayjs\nrm -rf node_modules",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-npm-jr-07",
+  "level": "JUNIOR",
+  "module": "npm",
+  "order": 7,
+  "title": "Workspaces va monorepo",
+  "intro": "Bitta repoda bir nechta paket: npm/yarn workspaces, pnpm-workspace.yaml, --filter va umumiy paketni ulash.",
+  "theory": {
+   "analogy": {
+    "icon": "🏘️",
+    "title": "Bitta hovlidagi uylar",
+    "text": "Monorepo — bitta hovli, bir nechta uy: web, admin, umumiy ui. Har uyning o'z eshigi (package.json) bor, lekin suv va gaz (node_modules, lock fayl) hovli bo'yicha umumiy."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Workspaces — bitta repodagi bir nechta paketni birga o'rnatib, bir-biriga havola bilan ulash imkoniyati. Shunday repo monorepo deyiladi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Monorepo (yagona ombor)",
+       "text": "bir nechta paket yoki ilova saqlanadigan bitta Git ombori."
+      },
+      {
+       "term": "Workspace (ish maydoni)",
+       "text": "monorepo ichidagi, o'z package.json iga ega paket."
+      },
+      {
+       "term": "workspace: protokoli",
+       "text": "bog'liqlik registry dan emas, faqat shu monorepodan olinishini bildiradi."
+      },
+      {
+       "term": "--filter",
+       "text": "pnpm buyrug'ini tanlangan paketlarga cheklaydi."
+      },
+      {
+       "term": "Polyrepo (ko'p ombor)",
+       "text": "har loyiha alohida Git omborida turadigan yondashuv."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Sayt va admin panel umumiy kod ishlatsa",
+       "text": "Umumiy ui paketi."
+      },
+      {
+       "term": "Bir o'zgarish bir nechta ilovaga tegsa",
+       "text": "Bitta PR."
+      },
+      {
+       "term": "Katta jamoada",
+       "text": "Bitta lock va bitta qoidalar."
+      }
+     ]
+    },
+    {
+     "heading": "Monorepo nima",
+     "text": "Monorepo (yagona ombor) — bir nechta loyiha yoki paket bitta Git omborida saqlanadi. Workspaces (ish maydonlari) — paket menejerining shu paketlarni birga o'rnatish va bir-biriga havola bilan ulash imkoniyati: umumiy paket o'zgarishi nashrsiz darhol ko'rinadi."
+    },
+    {
+     "code": {
+      "lang": "text",
+      "text": "repo/\n  package.json           # private: true, workspaces\n  pnpm-workspace.yaml    # faqat pnpm uchun\n  apps/web/package.json\n  apps/admin/package.json\n  packages/ui/package.json"
+     }
+    },
+    {
+     "heading": "Sozlash",
+     "table": {
+      "head": [
+       "Menejer",
+       "Qayerda e'lon qilinadi",
+       "Bitta paketda buyruq"
+      ],
+      "rows": [
+       [
+        "npm",
+        "package.json: \"workspaces\": [\"apps/*\"]",
+        "npm run build -w web"
+       ],
+       [
+        "Yarn",
+        "package.json: \"workspaces\"",
+        "yarn workspace web build"
+       ],
+       [
+        "pnpm",
+        "pnpm-workspace.yaml",
+        "pnpm --filter web build"
+       ]
+      ]
+     }
+    },
+    {
+     "heading": "Ichki paketni ulash",
+     "code": {
+      "lang": "bash",
+      "text": "# pnpm\npnpm --filter web add ui          # \"ui\": \"workspace:^\"\npnpm -r run build                 # barcha paketlarda\npnpm add -w -D typescript         # ildizga\n\n# npm\nnpm install ui -w web\nnpm run build --workspaces --if-present"
+     }
+    },
+    {
+     "callout": {
+      "kind": "info",
+      "text": "Ildiz package.json da `\"private\": true` yoziladi: ildiz — nashr qilinadigan paket emas, boshqaruv markazi. Lock fayl butun monorepo uchun bitta va ildizda turadi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🏭",
+       "title": "Zavod sexlari",
+       "text": "Sexlar alohida, lekin ombor va tartib umumiy: bir detal o'zgarsa, qo'shni sex darhol oladi."
+      },
+      {
+       "icon": "📒",
+       "title": "Umumiy daftar",
+       "text": "Bitta lock fayl — butun hovli uchun bitta hisob daftari."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Ildiz private (ichki), lock bitta, buyruqni -w yoki --filter bilan yo'naltiring."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Har paket ichida alohida o'rnatib yurish.",
+       "Ildizdan o'rnating.",
+       "Lock va havolalar buziladi."
+      ],
+      [
+       "Ichki paketni registry versiyasi deb yozish.",
+       "workspace: protokolidan foydalaning.",
+       "Begona shu nomli paket tushib qolmaydi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Monorepo — bitta repo, ko'p paket; workspaces ularni ulaydi.",
+    "pnpm: pnpm-workspace.yaml va workspace: protokoli.",
+    "-w / --filter bitta paketni, --workspaces / -r hammasini tanlaydi.",
+    "Lock fayl bitta, ildizda."
+   ]
+  },
+  "practice": [
+   {
+    "title": "pnpm workspace yaratish",
+    "text": "pnpm-workspace.yaml da `apps/*` va `packages/*` ni yozing, `packages/ui` va `apps/web` yarating, so'ng `pnpm --filter web add ui --workspace` qiling."
+   },
+   {
+    "title": "Barcha paketlarda skript",
+    "text": "Har paketga `build` skripti yozib, ildizdan `pnpm -r run build (yig'ish)` ni ishga tushiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "npm da workspaces qayerda e'lon qilinadi?",
+    "options": [
+     "Ildiz package.json ning workspaces maydonida",
+     "Har bir paket papkasidagi alohida .npmrc faylida",
+     "package-lock.json ichida qo'lda",
+     "node_modules/.workspaces papkasida"
+    ],
+    "answer": "Ildiz package.json ning workspaces maydonida",
+    "explain": "npm va Yarn shu maydonni o'qiydi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "pnpm monorepo da paketlar ro'yxati qaysi faylda?",
+    "options": [
+     "pnpm-workspace.yaml",
+     "pnpm-lock.yaml",
+     "pnpm.workspaces.json",
+     ".pnpmrc"
+    ],
+    "answer": "pnpm-workspace.yaml",
+    "explain": "Lock fayl esa avtomatik yaratiladi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`\"ui\": \"workspace:^\"` nimani bildiradi?",
+    "options": [
+     "ui faqat shu monorepodan olinadi",
+     "ui registry dan eng yangi versiyada olinadi",
+     "ui faqat ishlab chiqishda kerak bo'ladi",
+     "ui paketi o'chirilishi rejalashtirilgan"
+    ],
+    "answer": "ui faqat shu monorepodan olinadi",
+    "explain": "Nashr paytida bu yozuv oddiy versiyaga almashtiriladi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Faqat `web` paketining build skriptini ishga tushirish (pnpm)?",
+    "options": [
+     "pnpm --filter web build",
+     "pnpm -r build web",
+     "pnpm build --only=web-app",
+     "pnpm web build"
+    ],
+    "answer": "pnpm --filter web build",
+    "explain": "--filter paketni tanlaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "`npm run test --workspaces --if-present` da `--if-present` nima uchun?",
+    "options": [
+     "test skripti yo'q paketda xato bermaslik uchun",
+     "Faqat o'zgargan paketlarni test qilish uchun",
+     "Testlarni parallel ishga tushirish uchun",
+     "Test topilsa, uni o'tkazib yuborish uchun"
+    ],
+    "answer": "test skripti yo'q paketda xato bermaslik uchun",
+    "explain": "Skripti yo'q workspace shunchaki o'tib ketiladi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Monorepo da nechta lock fayl bo'ladi?",
+    "options": [
+     "Bitta, ildizda",
+     "Har paketda bittadan",
+     "Faqat apps papkasida bittadan",
+     "Umuman bo'lmaydi"
+    ],
+    "answer": "Bitta, ildizda",
+    "explain": "Butun daraxt birga hal qilinadi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Nega ildiz package.json da `\"private\": true` turadi?",
+    "options": [
+     "Ildiz nashr qilinadigan paket emas",
+     "Ichki paketlar ko'rinmasligi uchun",
+     "Git omborni yopiq qilish uchun",
+     "node_modules ni shifrlash uchun"
+    ],
+    "answer": "Ildiz nashr qilinadigan paket emas",
+    "explain": "Tasodifiy nashrning oldini oladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "pnpm workspace ildizida `pnpm add -D typescript` rad etildi. Nima yetishmayapti?",
+    "options": [
+     "-w bayrog'i",
+     "-g bayrog'i",
+     "--force bayrog'i",
+     "--legacy bayrog'i"
+    ],
+    "answer": "-w bayrog'i",
+    "explain": "pnpm ildizga qo'shishni aniq tasdiqlashni so'raydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "`packages/ui` dagi komponent o'zgartirildi. `web` uni qachon ko'radi?",
+    "options": [
+     "Darhol: ui havola orqali ulangan",
+     "ui registry ga nashr qilingandan keyin",
+     "node_modules qo'lda o'chirilgandan keyin",
+     "Faqat versiya MAJOR oshirilganda"
+    ],
+    "answer": "Darhol: ui havola orqali ulangan",
+    "explain": "Workspace — symlink, nusxa emas."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "npm da `web` workspace ga `zod` o'rnatadigan buyruqni yozing (-w bilan, paket nomi oldin).",
+    "answer": "npm install zod -w web",
+    "explain": "-w qaysi workspace ekanini bildiradi.",
+    "alsoAccept": [
+     "npm i zod -w web",
+     "npm install -w web zod",
+     "npm i -w web zod",
+     "npm install zod --workspace web",
+     "npm install zod --workspace=web"
+    ]
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "pnpm monorepo qurish tartibini tuzing.",
+    "words": [
+     "pnpm-workspace.yaml da paketlar yo'lini yozish",
+     "packages/ui papkasini yaratish",
+     "Papka ichida package.json ochish (pnpm init)",
+     "Ildizda pnpm install"
+    ],
+    "answer": "pnpm-workspace.yaml da paketlar yo'lini yozish packages/ui papkasini yaratish Papka ichida package.json ochish (pnpm init) Ildizda pnpm install",
+    "explain": "Avval e'lon, keyin papka va paket, so'ng o'rnatish."
+   }
+  ],
+  "labs": [
+   {
+    "title": "npm workspaces e'lon qilish",
+    "task": "Tayyor monorepo da paketlar bor, lekin ildizda workspaces yozilmagan. apps/web va packages/ui ni workspace qilib o'rnating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo '{\"name\":\"repo\",\"version\":\"1.0.0\",\"private\":true,\"workspaces\":[\"apps/*\",\"packages/*\"]}' > package.json\nnpm install",
+    "tests": [
+     {
+      "call": "proj.workspaces()",
+      "expect": "[\"ui\", \"web\"]"
+     },
+     {
+      "call": "proj.linked(\"ui\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "package.json ga workspaces massivini yozing.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"repo\",\"version\":\"1.0.0\",\"private\":true}' > package.json\nmkdir -p packages/ui apps/web\necho '{\"name\":\"ui\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo ui-build\"}}' > packages/ui/package.json\necho '{\"name\":\"web\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo web-build\",\"test\":\"echo web-test\"}}' > apps/web/package.json",
+    "id": "1"
+   },
+   {
+    "title": "Bitta workspace ga paket",
+    "task": "zod ni faqat web paketiga o'rnating (npm).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install zod -w web",
+    "tests": [
+     {
+      "call": "proj.deps(\"apps/web\").zod",
+      "expect": "\"^3.24.1\""
+     },
+     {
+      "call": "proj.deps()",
+      "expect": "({})"
+     },
+     {
+      "call": "proj.deps(\"packages/ui\")",
+      "expect": "({})"
+     }
+    ],
+    "hint": "-w web.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"repo\",\"version\":\"1.0.0\",\"private\":true,\"workspaces\":[\"apps/*\",\"packages/*\"]}' > package.json\nmkdir -p packages/ui apps/web\necho '{\"name\":\"ui\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo ui-build\"}}' > packages/ui/package.json\necho '{\"name\":\"web\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo web-build\",\"test\":\"echo web-test\"}}' > apps/web/package.json",
+    "id": "2"
+   },
+   {
+    "title": "Ichki paketni ulash",
+    "task": "web paketiga ui paketini bog'liqlik qilib qo'shing (npm).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm install ui -w web",
+    "tests": [
+     {
+      "call": "proj.deps(\"apps/web\").ui",
+      "expect": "\"^1.0.0\""
+     },
+     {
+      "call": "proj.linked(\"ui\")",
+      "expect": "true"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "ui registry dan emas, monorepodan olinadi.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"repo\",\"version\":\"1.0.0\",\"private\":true,\"workspaces\":[\"apps/*\",\"packages/*\"]}' > package.json\nmkdir -p packages/ui apps/web\necho '{\"name\":\"ui\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo ui-build\"}}' > packages/ui/package.json\necho '{\"name\":\"web\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo web-build\",\"test\":\"echo web-test\"}}' > apps/web/package.json",
+    "id": "3"
+   },
+   {
+    "title": "Bitta paketda skript",
+    "task": "Faqat web paketining build skriptini ishga tushiring (npm).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm run build -w web",
+    "tests": [
+     {
+      "call": "proj.ran()",
+      "expect": "[\"web:build\"]"
+     }
+    ],
+    "hint": "-w bilan.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"repo\",\"version\":\"1.0.0\",\"private\":true,\"workspaces\":[\"apps/*\",\"packages/*\"]}' > package.json\nmkdir -p packages/ui apps/web\necho '{\"name\":\"ui\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo ui-build\"}}' > packages/ui/package.json\necho '{\"name\":\"web\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo web-build\",\"test\":\"echo web-test\"}}' > apps/web/package.json",
+    "id": "4"
+   },
+   {
+    "title": "Barcha paketlarda skript",
+    "task": "Hamma workspace dagi build skriptini bitta buyruq bilan ishga tushiring (npm).",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm run build --workspaces",
+    "tests": [
+     {
+      "call": "proj.ran().slice().sort()",
+      "expect": "[\"ui:build\", \"web:build\"]"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "--workspaces.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"repo\",\"version\":\"1.0.0\",\"private\":true,\"workspaces\":[\"apps/*\",\"packages/*\"]}' > package.json\nmkdir -p packages/ui apps/web\necho '{\"name\":\"ui\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo ui-build\"}}' > packages/ui/package.json\necho '{\"name\":\"web\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo web-build\",\"test\":\"echo web-test\"}}' > apps/web/package.json",
+    "id": "5"
+   },
+   {
+    "title": "Skripti yo'q paket",
+    "task": "test skripti faqat web da bor. Barcha paketlarda test ni xatosiz ishga tushiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "npm test --workspaces --if-present",
+    "tests": [
+     {
+      "call": "proj.ran()",
+      "expect": "[\"web:test\"]"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "--if-present.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"repo\",\"version\":\"1.0.0\",\"private\":true,\"workspaces\":[\"apps/*\",\"packages/*\"]}' > package.json\nmkdir -p packages/ui apps/web\necho '{\"name\":\"ui\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo ui-build\"}}' > packages/ui/package.json\necho '{\"name\":\"web\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo web-build\",\"test\":\"echo web-test\"}}' > apps/web/package.json",
+    "id": "6"
+   },
+   {
+    "title": "pnpm workspace yaratish",
+    "task": "pnpm-workspace.yaml faylini yozib, apps/* va packages/* ni e'lon qiling, so'ng o'rnating.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "echo \"packages:\" > pnpm-workspace.yaml\necho \"  - 'apps/*'\" >> pnpm-workspace.yaml\necho \"  - 'packages/*'\" >> pnpm-workspace.yaml\npnpm install",
+    "tests": [
+     {
+      "call": "proj.workspaces(\"pnpm\")",
+      "expect": "[\"ui\", \"web\"]"
+     },
+     {
+      "call": "proj.lockfiles()",
+      "expect": "[\"pnpm-lock.yaml\"]"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "Avval packages: qatori, keyin - 'yo'l/*' qatorlari.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"repo\",\"version\":\"1.0.0\",\"private\":true}' > package.json\nmkdir -p packages/ui apps/web\necho '{\"name\":\"ui\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo ui-build\"}}' > packages/ui/package.json\necho '{\"name\":\"web\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo web-build\",\"test\":\"echo web-test\"}}' > apps/web/package.json",
+    "id": "7"
+   },
+   {
+    "title": "pnpm da ichki paket",
+    "task": "pnpm monorepo da web ga ui ni ulang.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "pnpm --filter web add ui",
+    "tests": [
+     {
+      "call": "proj.deps(\"apps/web\").ui",
+      "expect": "\"workspace:^\""
+     },
+     {
+      "call": "proj.linked(\"ui\", \"apps/web\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "pnpm --filter <paket> add <nom>.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"repo\",\"version\":\"1.0.0\",\"private\":true}' > package.json\nmkdir -p packages/ui apps/web\necho '{\"name\":\"ui\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo ui-build\"}}' > packages/ui/package.json\necho '{\"name\":\"web\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo web-build\",\"test\":\"echo web-test\"}}' > apps/web/package.json\necho \"packages:\" > pnpm-workspace.yaml\necho \"  - 'apps/*'\" >> pnpm-workspace.yaml\necho \"  - 'packages/*'\" >> pnpm-workspace.yaml",
+    "id": "8"
+   },
+   {
+    "title": "Ildizga umumiy vosita",
+    "task": "typescript ni pnpm monorepo ildizining devDependencies iga qo'shing.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "pnpm add -w -D typescript",
+    "tests": [
+     {
+      "call": "proj.devDeps().typescript",
+      "expect": "\"^5.7.2\""
+     },
+     {
+      "call": "proj.devDeps(\"apps/web\")",
+      "expect": "({})"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "Ildiz uchun -w.",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"repo\",\"version\":\"1.0.0\",\"private\":true}' > package.json\nmkdir -p packages/ui apps/web\necho '{\"name\":\"ui\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo ui-build\"}}' > packages/ui/package.json\necho '{\"name\":\"web\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo web-build\",\"test\":\"echo web-test\"}}' > apps/web/package.json\necho \"packages:\" > pnpm-workspace.yaml\necho \"  - 'apps/*'\" >> pnpm-workspace.yaml\necho \"  - 'packages/*'\" >> pnpm-workspace.yaml",
+    "id": "9"
+   },
+   {
+    "title": "pnpm da hammasini build",
+    "task": "pnpm monorepo da barcha paketlarning build skriptini ishga tushiring.",
+    "starter": "# Buyruqlarni shu yerga yozing (har qatorga bitta)\n",
+    "solution": "pnpm -r run build",
+    "tests": [
+     {
+      "call": "proj.ran().slice().sort()",
+      "expect": "[\"ui:build\", \"web:build\"]"
+     },
+     {
+      "call": "proj.errors.length",
+      "expect": "0"
+     }
+    ],
+    "hint": "-r (recursive).",
+    "kind": "npm",
+    "setup": "echo '{\"name\":\"repo\",\"version\":\"1.0.0\",\"private\":true}' > package.json\nmkdir -p packages/ui apps/web\necho '{\"name\":\"ui\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo ui-build\"}}' > packages/ui/package.json\necho '{\"name\":\"web\",\"version\":\"1.0.0\",\"scripts\":{\"build\":\"echo web-build\",\"test\":\"echo web-test\"}}' > apps/web/package.json\necho \"packages:\" > pnpm-workspace.yaml\necho \"  - 'apps/*'\" >> pnpm-workspace.yaml\necho \"  - 'packages/*'\" >> pnpm-workspace.yaml",
+    "id": "10"
+   }
+  ]
+ }
+]
