@@ -8,6 +8,31 @@ import { reactDocument, runReactLab } from './reactLab';
 import { completeCss, htmlSelectors } from './cssComplete';
 import { BrowserPreview, CodeEditor, TaskText, highlight } from './labViews';
 
+/** A test written as `(() => { a; b; return c; })()` is shown one statement per line; any other call stays as it is. */
+function readableCall(call: string): string {
+  const body = /^\((?:async )?\(\) => \{ (.*) \}\)\(\)$/.exec(call)?.[1];
+  if (!body) return call;
+  const lines: string[] = [];
+  let depth = 0;
+  let quote = '';
+  let start = 0;
+  for (let i = 0; i < body.length; i++) {
+    const c = body[i];
+    if (quote) {
+      if (c === '\\') i++;
+      else if (c === quote) quote = '';
+    } else if (c === '"' || c === "'" || c === '`') quote = c;
+    else if ('([{'.includes(c)) depth++;
+    else if (')]}'.includes(c)) depth--;
+    else if (c === ';' && depth === 0) {
+      lines.push(body.slice(start, i + 1).trim());
+      start = i + 1;
+    }
+  }
+  lines.push(body.slice(start).trim());
+  return lines.filter(Boolean).join('\n');
+}
+
 /** Coding labs of a lesson: write the code (JavaScript, HTML, CSS or terminal commands), run it against the tests. */
 export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   lessonCode: string;
@@ -192,12 +217,18 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
                     <li key={i} className={t.ok ? 'ok' : 'bad'}>
                       <span className="dl-mark">{t.ok ? '✓' : '✗'}</span>
                       <div>
-                        <code>{lab.tests[i].call}</code>
-                        {!t.ok && (
-                          <dl>
-                            <dt>kutilgan</dt><dd>{t.expected}</dd>
-                            <dt>{t.error ? 'xato' : 'sizniki'}</dt><dd className="got">{t.error || t.got}</dd>
-                          </dl>
+                        {lab.tests[i].label ? (
+                          <span>{lab.tests[i].label}</span>
+                        ) : (
+                          <>
+                            <code style={{ whiteSpace: 'pre-wrap' }}>{readableCall(lab.tests[i].call)}</code>
+                            {!t.ok && (
+                              <dl>
+                                <dt>kutilgan</dt><dd>{t.expected}</dd>
+                                <dt>{t.error ? 'xato' : 'sizniki'}</dt><dd className="got">{t.error || t.got}</dd>
+                              </dl>
+                            )}
+                          </>
                         )}
                       </div>
                     </li>

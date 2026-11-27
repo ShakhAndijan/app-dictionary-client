@@ -7,8 +7,11 @@
  *   attr(sel, name)   attribute value or null      attrs(sel, name)  of every match
  *   has(sel, name)    is the attribute present     text(sel) / texts(sel)  text with spaces collapsed
  *   tags(sel)         tag names of every match     name(sel)     accessible name (simplified)
+ *   names(sel)        accessible name of every match
+ *   dups()            id values used more than once
  *   fd(sel)           what the form would send     valid(sel, value?)  constraint validation of a field
  *   src()             the learner's code without comments
+ *   raw()             the learner's code as written
  */
 import type { LabRun, LabTest, LabTestResult } from './devLab';
 
@@ -72,6 +75,8 @@ function helpers(code: string) {
   const text = (sel: string) => squash(find(sel).textContent);
   const texts = (sel: string) => every(sel).map((el) => squash(el.textContent));
   const name = (sel: string) => accessibleName(doc, find(sel));
+  const names = (sel: string) => every(sel).map((el) => accessibleName(doc, el));
+  const dups = () => every('[id]').map((el) => el.id).filter((id, i, all) => all.indexOf(id) !== i);
   const fd = (sel: string) => Array.from(new FormData(find(sel) as HTMLFormElement), ([k, v]) => [k, typeof v === 'string' ? v : 'File']);
   const valid = (sel: string, value?: string) => {
     const el = find(sel) as HTMLInputElement;
@@ -79,7 +84,8 @@ function helpers(code: string) {
     return el.validity.valid;
   };
   const src = () => code.replace(/<!--[\s\S]*?-->/g, '');
-  return { n, tag, tags, attr, attrs, has, text, texts, name, fd, valid, src };
+  const raw = () => code;
+  return { n, tag, tags, attr, attrs, has, text, texts, name, names, dups, fd, valid, src, raw };
 }
 
 export function runHtmlLab(code: string, tests: LabTest[]): Promise<LabRun> {

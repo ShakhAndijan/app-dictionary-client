@@ -45,7 +45,7 @@ public final class DevDtos {
                                List<LabView> labs, List<String> labsDone) {
     }
 
-    public record LabTestView(String call, String expect) {
+    public record LabTestView(String call, String expect, String label) {
     }
 
     /** A coding lab without its solution. */

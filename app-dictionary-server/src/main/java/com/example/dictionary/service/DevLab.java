@@ -6,14 +6,15 @@ import java.util.List;
 
 /**
  * A coding lab: the learner writes JavaScript in the browser, each test evaluates {@code call} after the learner's code
- * and compares it with the {@code expect} expression. {@code solution} is only served on request.
+ * and compares it with the {@code expect} expression. A test with a {@code label} is shown to the learner by that
+ * requirement instead of its code. {@code solution} is only served on request.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record DevLab(String id, String title, String task, String starter, List<Test> tests, String hint,
                      String solution, String kind, String setup) {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public record Test(String call, String expect) {
+    public record Test(String call, String expect, String label) {
     }
 
     String problem() {

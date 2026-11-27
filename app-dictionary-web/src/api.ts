@@ -784,7 +784,8 @@ export interface DevLab {
   title: string;
   task: string;
   starter: string | null;
-  tests: { call: string; expect: string }[];
+  /** `label`: the requirement in words; shown instead of the test code */
+  tests: { call: string; expect: string; label?: string | null }[];
   hint: string | null;
   /** "css": the learner writes CSS for the HTML in `setup` (pages/cssLab.ts). "html": the learner writes HTML that is parsed and inspected (pages/htmlLab.ts). "git": the learner types git commands that run in a built-in simulator (see pages/gitSim.js). "npm": package manager commands (pages/npmSim.js). "react": JSX run with real React (pages/reactLab.ts). */
   kind?: string | null;
