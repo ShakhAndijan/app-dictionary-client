@@ -175,7 +175,11 @@
     "alsoAccept": [
      "They got married in 2020 and now have three kids",
      "They got married in 2020 and now have 3 children",
-     "They got married in 2020 and now have 3 kids"
+     "They got married in 2020 and now have 3 kids",
+     "They got married in 2020 and now have got three children",
+     "They got married in 2020 and now have got three kids",
+     "They got married in 2020 and now have got 3 children",
+     "They got married in 2020 and now have got 3 kids"
     ]
    },
    {
@@ -1665,7 +1669,11 @@
     "alsoAccept": [
      "If I've time tomorrow, I will help you",
      "If I have time tomorrow, I'll help you",
-     "If I've time tomorrow, I'll help you"
+     "If I've time tomorrow, I'll help you",
+     "If I have got time tomorrow, I will help you",
+     "If I've got time tomorrow, I will help you",
+     "If I have got time tomorrow, I'll help you",
+     "If I've got time tomorrow, I'll help you"
     ]
    },
    {
@@ -5326,7 +5334,9 @@
     "prompt": "Inglizchaga tarjima qiling: Bizda kofe ichishga vaqtimiz ko'p emas.",
     "answer": "We do not have much time to drink coffee",
     "alsoAccept": [
-     "We don't have much time to drink coffee"
+     "We don't have much time to drink coffee",
+     "We haven't got much time to drink coffee",
+     "We have not got much time to drink coffee"
     ]
    },
    {
@@ -5355,7 +5365,8 @@
     "prompt": "Inglizchaga tarjima qiling: Nechta do'stingiz bor?",
     "answer": "How many friends do you have",
     "alsoAccept": [
-     "How many friends do you've"
+     "How many friends do you've",
+     "How many friends have you got"
     ]
    },
    {
@@ -5412,7 +5423,15 @@
      "This job needs experience, but I have really little experience",
      "This job needs experience, but I've very small experience",
      "This job needs experience, but I've really little experience",
-     "This job needs experience, but I have really small experience"
+     "This job needs experience, but I have really small experience",
+     "This job needs experience, but I have got very little experience",
+     "This job needs experience, but I've got very little experience",
+     "This job needs experience, but I have got very small experience",
+     "This job needs experience, but I've got very small experience",
+     "This job needs experience, but I have got really little experience",
+     "This job needs experience, but I've got really little experience",
+     "This job needs experience, but I have got really small experience",
+     "This job needs experience, but I've got really small experience"
     ]
    },
    {
@@ -5427,7 +5446,9 @@
     "prompt": "Inglizchaga tarjima qiling: Mening bir nechta yaxshi do'stim bor.",
     "answer": "I have a few good friends",
     "alsoAccept": [
-     "I've a few good friends"
+     "I've a few good friends",
+     "I have got a few good friends",
+     "I've got a few good friends"
     ]
    },
    {
@@ -5462,7 +5483,9 @@
     "prompt": "Inglizchaga tarjima qiling: Bu muammo haqida menda hech qanday ma'lumot yo'q.",
     "answer": "I do not have any information about this problem",
     "alsoAccept": [
-     "I don't have any information about this problem"
+     "I don't have any information about this problem",
+     "I haven't got any information about this problem",
+     "I have not got any information about this problem"
     ]
    },
    {
@@ -5547,7 +5570,11 @@
     "alsoAccept": [
      "He does not have many friends, so he's lonely",
      "He doesn't have many friends, so he is lonely",
-     "He doesn't have many friends, so he's lonely"
+     "He doesn't have many friends, so he's lonely",
+     "He hasn't got many friends, so he is lonely",
+     "He has not got many friends, so he is lonely",
+     "He hasn't got many friends, so he's lonely",
+     "He has not got many friends, so he's lonely"
     ]
    }
   ]
@@ -7200,7 +7227,9 @@
     "prompt": "Inglizchaga tarjima qiling: Men Toshkentda yashaydigan bir do'stim bor.",
     "answer": "I have a friend who lives in Tashkent",
     "alsoAccept": [
-     "I've a friend who lives in Tashkent"
+     "I've a friend who lives in Tashkent",
+     "I have got a friend who lives in Tashkent",
+     "I've got a friend who lives in Tashkent"
     ]
    },
    {
@@ -7364,7 +7393,9 @@
     "prompt": "Inglizchaga tarjima qiling: Mening pulim ko'p emas.",
     "answer": "I do not have much money",
     "alsoAccept": [
-     "I don't have much money"
+     "I don't have much money",
+     "I haven't got much money",
+     "I have not got much money"
     ]
    },
    {
@@ -7381,7 +7412,11 @@
     "alsoAccept": [
      "I've a little time",
      "I have a small time",
-     "I've a small time"
+     "I've a small time",
+     "I have got a little time",
+     "I've got a little time",
+     "I have got a small time",
+     "I've got a small time"
     ]
    },
    {

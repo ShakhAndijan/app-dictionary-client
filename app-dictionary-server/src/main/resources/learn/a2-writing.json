@@ -2772,7 +2772,11 @@
     "alsoAccept": [
      "I've a stomachache and I feel sick",
      "I have a stomachache and I feel ill",
-     "I've a stomachache and I feel ill"
+     "I've a stomachache and I feel ill",
+     "I have got a stomachache and I feel sick",
+     "I've got a stomachache and I feel sick",
+     "I have got a stomachache and I feel ill",
+     "I've got a stomachache and I feel ill"
     ]
    },
    {
@@ -2801,7 +2805,8 @@
     "prompt": "Inglizchaga tarjima qiling: Sizda allergiya bormi?",
     "answer": "Do you have any allergies",
     "alsoAccept": [
-     "Do you've any allergies"
+     "Do you've any allergies",
+     "Have you got any allergies"
     ]
    },
    {
@@ -2868,7 +2873,10 @@
     "id": "20",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bolamning isitmasi bor.",
-    "answer": "My child has a fever"
+    "answer": "My child has a fever",
+    "alsoAccept": [
+     "My child has got a fever"
+    ]
    },
    {
     "id": "21",
@@ -5796,7 +5804,8 @@
     "prompt": "Inglizchaga tarjima qiling: Sizda yetarlicha pul bormi?",
     "answer": "Do you have enough money",
     "alsoAccept": [
-     "Do you've enough money"
+     "Do you've enough money",
+     "Have you got enough money"
     ]
    },
    {
@@ -5805,7 +5814,9 @@
     "prompt": "Inglizchaga tarjima qiling: Bizda yetarlicha vaqt yo'q.",
     "answer": "We don't have enough time",
     "alsoAccept": [
-     "We do not have enough time"
+     "We do not have enough time",
+     "We haven't got enough time",
+     "We have not got enough time"
     ]
    },
    {
@@ -5855,7 +5866,9 @@
     "prompt": "Inglizchaga tarjima qiling: Bizda yetarlicha stul yo'q.",
     "answer": "We don't have enough chairs",
     "alsoAccept": [
-     "We do not have enough chairs"
+     "We do not have enough chairs",
+     "We haven't got enough chairs",
+     "We have not got enough chairs"
     ]
    },
    {
@@ -5982,7 +5995,9 @@
     "prompt": "Inglizchaga tarjima qiling: Uyga yetib borish uchun vaqtimiz yetarli.",
     "answer": "We have enough time to get home",
     "alsoAccept": [
-     "we've enough time to get home"
+     "we've enough time to get home",
+     "We have got enough time to get home",
+     "We've got enough time to get home"
     ]
    }
   ]
@@ -7193,7 +7208,8 @@
     "prompt": "Inglizchaga tarjima qiling: Sizda kichikroq o'lchami bormi?",
     "answer": "Do you have a smaller size",
     "alsoAccept": [
-     "Do you've a smaller size"
+     "Do you've a smaller size",
+     "Have you got a smaller size"
     ]
    },
    {
@@ -7335,7 +7351,10 @@
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bu mahsulotning kafolati bormi?",
-    "answer": "Does this product have a warranty"
+    "answer": "Does this product have a warranty",
+    "alsoAccept": [
+     "Has this product got a warranty"
+    ]
    },
    {
     "id": "30",

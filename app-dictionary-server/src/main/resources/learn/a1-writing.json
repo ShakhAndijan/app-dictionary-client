@@ -249,7 +249,11 @@
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening ikkita akam bor.",
-    "answer": "I have two brothers"
+    "answer": "I have two brothers",
+    "alsoAccept": [
+     "I have got two brothers",
+     "I've got two brothers"
+    ]
    },
    {
     "id": "2",
@@ -288,7 +292,8 @@
     "answer": "I don't have a sister",
     "alsoAccept": [
      "I do not have a sister",
-     "I haven't got a sister"
+     "I haven't got a sister",
+     "I have not got a sister"
     ]
    },
    {
@@ -322,7 +327,11 @@
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening ikkita singlim bor.",
-    "answer": "I have two sisters"
+    "answer": "I have two sisters",
+    "alsoAccept": [
+     "I have got two sisters",
+     "I've got two sisters"
+    ]
    },
    {
     "id": "13",
@@ -394,7 +403,11 @@
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bizning itimiz bor.",
-    "answer": "We have a dog"
+    "answer": "We have a dog",
+    "alsoAccept": [
+     "We have got a dog",
+     "We've got a dog"
+    ]
    },
    {
     "id": "25",
@@ -803,7 +816,9 @@
     "prompt": "Inglizchaga tarjima qiling: Bizda guruch yo'q.",
     "answer": "We don't have any rice",
     "alsoAccept": [
-     "We do not have any rice"
+     "We do not have any rice",
+     "We haven't got any rice",
+     "We have not got any rice"
     ]
    },
    {
@@ -1859,7 +1874,10 @@
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sizda nechta aka-uka bor?",
-    "answer": "How many brothers have you got"
+    "answer": "How many brothers have you got",
+    "alsoAccept": [
+     "How many brothers do you have"
+    ]
    },
    {
     "id": "18",
@@ -1925,7 +1943,10 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sizda mashina bormi?",
-    "answer": "Have you got a car"
+    "answer": "Have you got a car",
+    "alsoAccept": [
+     "Do you have a car"
+    ]
    },
    {
     "id": "29",
@@ -1972,7 +1993,11 @@
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening bankda hisob raqamim bor.",
-    "answer": "I have an account at the bank"
+    "answer": "I have an account at the bank",
+    "alsoAccept": [
+     "I have got an account at the bank",
+     "I've got an account at the bank"
+    ]
    },
    {
     "id": "5",
@@ -2041,7 +2066,10 @@
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening opamning bank kartasi bor.",
-    "answer": "My sister has got a bank card"
+    "answer": "My sister has got a bank card",
+    "alsoAccept": [
+     "My sister has a bank card"
+    ]
    },
    {
     "id": "16",
@@ -2363,13 +2391,20 @@
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Menda qizil kurtka bor.",
-    "answer": "I have got a red jacket"
+    "answer": "I have got a red jacket",
+    "alsoAccept": [
+     "I have a red jacket",
+     "I've got a red jacket"
+    ]
    },
    {
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Opamda ko'k yubka bor.",
-    "answer": "My sister has got a blue skirt"
+    "answer": "My sister has got a blue skirt",
+    "alsoAccept": [
+     "My sister has a blue skirt"
+    ]
    },
    {
     "id": "5",
@@ -2411,7 +2446,10 @@
     "id": "11",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Akamda yangi tufli bor.",
-    "answer": "My brother has got new shoes"
+    "answer": "My brother has got new shoes",
+    "alsoAccept": [
+     "My brother has new shoes"
+    ]
    },
    {
     "id": "12",
@@ -2453,7 +2491,10 @@
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bolalarda yangi shapkalar bor.",
-    "answer": "The children have got new hats"
+    "answer": "The children have got new hats",
+    "alsoAccept": [
+     "The children have new hats"
+    ]
    },
    {
     "id": "19",
@@ -2510,7 +2551,10 @@
     "id": "27",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Otamda qora kostyum bor.",
-    "answer": "My father has got a black suit"
+    "answer": "My father has got a black suit",
+    "alsoAccept": [
+     "My father has a black suit"
+    ]
    },
    {
     "id": "28",
@@ -2557,7 +2601,11 @@
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Menda ikkita ko'z va bitta burun bor.",
-    "answer": "I have two eyes and one nose"
+    "answer": "I have two eyes and one nose",
+    "alsoAccept": [
+     "I have got two eyes and one nose",
+     "I've got two eyes and one nose"
+    ]
    },
    {
     "id": "4",
@@ -2647,13 +2695,20 @@
     "id": "18",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bolaning isitmasi bor.",
-    "answer": "The child has a fever"
+    "answer": "The child has a fever",
+    "alsoAccept": [
+     "The child has got a fever"
+    ]
    },
    {
     "id": "19",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Menda yo'tal bor.",
-    "answer": "I have a cough"
+    "answer": "I have a cough",
+    "alsoAccept": [
+     "I have got a cough",
+     "I've got a cough"
+    ]
    },
    {
     "id": "20",
@@ -2969,13 +3024,20 @@
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Menda besh dollar bor.",
-    "answer": "I have five dollars"
+    "answer": "I have five dollars",
+    "alsoAccept": [
+     "I have got five dollars",
+     "I've got five dollars"
+    ]
    },
    {
     "id": "8",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sizda pul bormi?",
-    "answer": "Do you have any money"
+    "answer": "Do you have any money",
+    "alsoAccept": [
+     "Have you got any money"
+    ]
    },
    {
     "id": "9",
@@ -3029,7 +3091,10 @@
     "id": "17",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Qizimda o'n beshta qo'g'irchoq bor.",
-    "answer": "My daughter has got fifteen dolls"
+    "answer": "My daughter has got fifteen dolls",
+    "alsoAccept": [
+     "My daughter has fifteen dolls"
+    ]
    },
    {
     "id": "18",
@@ -3148,7 +3213,11 @@
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening yangi daftarim bor.",
-    "answer": "I have got a new notebook"
+    "answer": "I have got a new notebook",
+    "alsoAccept": [
+     "I have a new notebook",
+     "I've got a new notebook"
+    ]
    },
    {
     "id": "5",
@@ -3277,7 +3346,12 @@
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening o'chirg'ichim yo'q.",
-    "answer": "I haven't got an eraser"
+    "answer": "I haven't got an eraser",
+    "alsoAccept": [
+     "I have not got an eraser",
+     "I don't have an eraser",
+     "I do not have an eraser"
+    ]
    },
    {
     "id": "25",
@@ -3292,7 +3366,11 @@
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bugun biz uchta dars o'qiymiz.",
-    "answer": "Today we have three lessons"
+    "answer": "Today we have three lessons",
+    "alsoAccept": [
+     "Today we have got three lessons",
+     "Today we've got three lessons"
+    ]
    },
    {
     "id": "27",
@@ -3336,7 +3414,11 @@
     "id": "1",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening kichkina mushugim bor.",
-    "answer": "I have got a small cat"
+    "answer": "I have got a small cat",
+    "alsoAccept": [
+     "I have a small cat",
+     "I've got a small cat"
+    ]
    },
    {
     "id": "2",
@@ -3390,7 +3472,12 @@
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Ota-onamda it yo'q.",
-    "answer": "My parents haven't got a dog"
+    "answer": "My parents haven't got a dog",
+    "alsoAccept": [
+     "My parents have not got a dog",
+     "My parents don't have a dog",
+     "My parents do not have a dog"
+    ]
    },
    {
     "id": "11",
@@ -3420,7 +3507,10 @@
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening akamda ikkita baliq bor.",
-    "answer": "My brother has got two fish"
+    "answer": "My brother has got two fish",
+    "alsoAccept": [
+     "My brother has two fish"
+    ]
    },
    {
     "id": "16",
@@ -3504,7 +3594,10 @@
     "id": "28",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sizning uy hayvoningiz bormi?",
-    "answer": "Have you got a pet"
+    "answer": "Have you got a pet",
+    "alsoAccept": [
+     "Do you have a pet"
+    ]
    },
    {
     "id": "29",
@@ -3539,7 +3632,11 @@
     "id": "2",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening chiptam bor.",
-    "answer": "I have got a ticket"
+    "answer": "I have got a ticket",
+    "alsoAccept": [
+     "I have a ticket",
+     "I've got a ticket"
+    ]
    },
    {
     "id": "3",
@@ -3620,7 +3717,12 @@
     "id": "15",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening pasportim yo'q.",
-    "answer": "I haven't got a passport"
+    "answer": "I haven't got a passport",
+    "alsoAccept": [
+     "I have not got a passport",
+     "I don't have a passport",
+     "I do not have a passport"
+    ]
    },
    {
     "id": "16",
@@ -3748,7 +3850,11 @@
     "id": "3",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Bizda yangi to'p bor.",
-    "answer": "We have got a new ball"
+    "answer": "We have got a new ball",
+    "alsoAccept": [
+     "We have a new ball",
+     "We've got a new ball"
+    ]
    },
    {
     "id": "4",
@@ -3820,7 +3926,10 @@
     "id": "14",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sizning raketkangiz bormi?",
-    "answer": "Have you got a racket"
+    "answer": "Have you got a racket",
+    "alsoAccept": [
+     "Do you have a racket"
+    ]
    },
    {
     "id": "15",
@@ -4041,7 +4150,11 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening yangi o'yinchog'im bor.",
-    "answer": "I have got a new toy"
+    "answer": "I have got a new toy",
+    "alsoAccept": [
+     "I have a new toy",
+     "I've got a new toy"
+    ]
    },
    {
     "id": "17",
@@ -4244,7 +4357,10 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening xolamning katta bog'i bor.",
-    "answer": "My aunt has got a big garden"
+    "answer": "My aunt has got a big garden",
+    "alsoAccept": [
+     "My aunt has a big garden"
+    ]
    },
    {
     "id": "17",
@@ -4417,7 +4533,10 @@
     "id": "10",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sizda qoshiq bormi?",
-    "answer": "Do you have a spoon"
+    "answer": "Do you have a spoon",
+    "alsoAccept": [
+     "Have you got a spoon"
+    ]
    },
    {
     "id": "11",
@@ -4971,7 +5090,15 @@
     "id": "29",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Chorshanba kuni darslarimiz yo'q.",
-    "answer": "We have no lessons on Wednesday"
+    "answer": "We have no lessons on Wednesday",
+    "alsoAccept": [
+     "We have got no lessons on Wednesday",
+     "We don't have any lessons on Wednesday",
+     "We haven't got any lessons on Wednesday",
+     "We've got no lessons on Wednesday",
+     "We have not got any lessons on Wednesday",
+     "We do not have any lessons on Wednesday"
+    ]
    },
    {
     "id": "30",
@@ -5012,7 +5139,11 @@
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening bitta akam va bitta singlim bor.",
-    "answer": "I have one brother and one sister"
+    "answer": "I have one brother and one sister",
+    "alsoAccept": [
+     "I have got one brother and one sister",
+     "I've got one brother and one sister"
+    ]
    },
    {
     "id": "5",
@@ -5030,7 +5161,10 @@
     "id": "7",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Xolamning ikkita farzandi bor.",
-    "answer": "My aunt has two children"
+    "answer": "My aunt has two children",
+    "alsoAccept": [
+     "My aunt has got two children"
+    ]
    },
    {
     "id": "8",
@@ -5150,7 +5284,10 @@
     "id": "26",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sizning nechta qarindoshingiz bor?",
-    "answer": "How many relatives do you have"
+    "answer": "How many relatives do you have",
+    "alsoAccept": [
+     "How many relatives have you got"
+    ]
    },
    {
     "id": "27",
@@ -5266,7 +5403,10 @@
     "id": "12",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sizda tuxum bormi?",
-    "answer": "Do you have eggs"
+    "answer": "Do you have eggs",
+    "alsoAccept": [
+     "Have you got eggs"
+    ]
    },
    {
     "id": "13",
@@ -5502,7 +5642,11 @@
     "id": "16",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Menga yangi xabar keldi.",
-    "answer": "I have a new message"
+    "answer": "I have a new message",
+    "alsoAccept": [
+     "I have got a new message",
+     "I've got a new message"
+    ]
    },
    {
     "id": "17",
@@ -5550,13 +5694,20 @@
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sizda telefon bormi?",
-    "answer": "Do you have a phone"
+    "answer": "Do you have a phone",
+    "alsoAccept": [
+     "Have you got a phone"
+    ]
    },
    {
     "id": "24",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Mening ikkita telefonim bor.",
-    "answer": "I have two phones"
+    "answer": "I have two phones",
+    "alsoAccept": [
+     "I have got two phones",
+     "I've got two phones"
+    ]
    },
    {
     "id": "25",
@@ -5633,7 +5784,10 @@
     "id": "4",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sizda sho'rva bormi?",
-    "answer": "Do you have soup"
+    "answer": "Do you have soup",
+    "alsoAccept": [
+     "Have you got soup"
+    ]
    },
    {
     "id": "5",

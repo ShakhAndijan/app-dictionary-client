@@ -1078,7 +1078,11 @@
     "alsoAccept": [
      "I will get up early tomorrow because I've an important meeting",
      "I'll get up early tomorrow because I have an important meeting",
-     "I'll get up early tomorrow because I've an important meeting"
+     "I'll get up early tomorrow because I've an important meeting",
+     "I will get up early tomorrow because I have got an important meeting",
+     "I will get up early tomorrow because I've got an important meeting",
+     "I'll get up early tomorrow because I have got an important meeting",
+     "I'll get up early tomorrow because I've got an important meeting"
     ]
    },
    {
@@ -1173,7 +1177,15 @@
      "If I have time today, I will go to the store",
      "If I've time today, I'll go to the shop",
      "If I've time today, I will go to the store",
-     "If I have time today, I'll go to the store"
+     "If I have time today, I'll go to the store",
+     "If I have got time today, I will go to the shop",
+     "If I've got time today, I will go to the shop",
+     "If I have got time today, I'll go to the shop",
+     "If I've got time today, I'll go to the shop",
+     "If I have got time today, I will go to the store",
+     "If I've got time today, I will go to the store",
+     "If I have got time today, I'll go to the store",
+     "If I've got time today, I'll go to the store"
     ]
    },
    {
@@ -4564,7 +4576,10 @@
     "prompt": "Inglizchaga tarjima qiling: Sizda vaqt bor, shunday emasmi?",
     "answer": "You have time, don't you",
     "alsoAccept": [
-     "you've time, don't you"
+     "you've time, don't you",
+     "You have got time, haven't you",
+     "You've got time, haven't you",
+     "You have time, haven't you"
     ]
    },
    {
@@ -4689,7 +4704,9 @@
     "prompt": "Inglizchaga tarjima qiling: Bizda piknik uchun yetarli ovqat bor.",
     "answer": "We have enough food for the picnic",
     "alsoAccept": [
-     "we've enough food for the picnic"
+     "we've enough food for the picnic",
+     "We have got enough food for the picnic",
+     "We've got enough food for the picnic"
     ]
    },
    {
@@ -4698,7 +4715,9 @@
     "prompt": "Inglizchaga tarjima qiling: Uning mashina sotib olish uchun yetarli puli yo'q.",
     "answer": "He doesn't have enough money to buy a car",
     "alsoAccept": [
-     "He does not have enough money to buy a car"
+     "He does not have enough money to buy a car",
+     "He hasn't got enough money to buy a car",
+     "He has not got enough money to buy a car"
     ]
    },
    {
@@ -4728,7 +4747,9 @@
     "prompt": "Inglizchaga tarjima qiling: Menda hamma narsani o'qishga yetarli vaqt yo'q.",
     "answer": "I don't have enough time to read everything",
     "alsoAccept": [
-     "I do not have enough time to read everything"
+     "I do not have enough time to read everything",
+     "I haven't got enough time to read everything",
+     "I have not got enough time to read everything"
     ]
    },
    {
@@ -4747,7 +4768,9 @@
     "prompt": "Inglizchaga tarjima qiling: Mening bir nechta yaxshi do'stlarim bor.",
     "answer": "I have a few good friends",
     "alsoAccept": [
-     "I've a few good friends"
+     "I've a few good friends",
+     "I have got a few good friends",
+     "I've got a few good friends"
     ]
    },
    {
@@ -4788,7 +4811,11 @@
     "alsoAccept": [
      "We do not have any homework today",
      "today We don't have any homework",
-     "today We do not have any homework"
+     "today We do not have any homework",
+     "We haven't got any homework today",
+     "We have not got any homework today",
+     "today We haven't got any homework",
+     "today We have not got any homework"
     ]
    },
    {
@@ -4862,7 +4889,10 @@
     "id": "23",
     "kind": "FILL",
     "prompt": "Inglizchaga tarjima qiling: Sinfda har bir o'quvchida lug'at bor.",
-    "answer": "Every student in the class has a dictionary"
+    "answer": "Every student in the class has a dictionary",
+    "alsoAccept": [
+     "Every student in the class has got a dictionary"
+    ]
    },
    {
     "id": "24",
@@ -4923,7 +4953,11 @@
     "alsoAccept": [
      "we've enough petrol to start the journey",
      "We have enough petrol to begin the journey",
-     "we've enough petrol to begin the journey"
+     "we've enough petrol to begin the journey",
+     "We have got enough petrol to start the journey",
+     "We've got enough petrol to start the journey",
+     "We have got enough petrol to begin the journey",
+     "We've got enough petrol to begin the journey"
     ]
    }
   ]
@@ -5340,7 +5374,9 @@
     "prompt": "Inglizchaga tarjima qiling: Men qaytib kelmoqchiman. Biroq, hozir vaqtim yo'q.",
     "answer": "I want to come back. However, I don't have time now",
     "alsoAccept": [
-     "I want to come back. However, I do not have time now"
+     "I want to come back. However, I do not have time now",
+     "I want to come back. However, I haven't got time now",
+     "I want to come back. However, I have not got time now"
     ]
    },
    {
@@ -5478,7 +5514,11 @@
     "alsoAccept": [
      "we've an important meeting today",
      "today We have an important meeting",
-     "today we've an important meeting"
+     "today we've an important meeting",
+     "We have got an important meeting today",
+     "We've got an important meeting today",
+     "today We have got an important meeting",
+     "today We've got an important meeting"
     ]
    },
    {
@@ -6951,7 +6991,21 @@
      "If I've a lot of money, I will buy a large house",
      "If I have lots of money, I'll buy a big house",
      "If I have a lot of money, I'll buy a large house",
-     "If I have lots of money, I will buy a large house"
+     "If I have lots of money, I will buy a large house",
+     "If I have got a lot of money, I will buy a big house",
+     "If I've got a lot of money, I will buy a big house",
+     "If I have got a lot of money, I'll buy a big house",
+     "If I've got a lot of money, I'll buy a big house",
+     "If I have got lots of money, I will buy a big house",
+     "If I've got lots of money, I will buy a big house",
+     "If I have got a lot of money, I will buy a large house",
+     "If I've got a lot of money, I will buy a large house",
+     "If I have got lots of money, I'll buy a big house",
+     "If I've got lots of money, I'll buy a big house",
+     "If I have got a lot of money, I'll buy a large house",
+     "If I've got a lot of money, I'll buy a large house",
+     "If I have got lots of money, I will buy a large house",
+     "If I've got lots of money, I will buy a large house"
     ]
    },
    {
@@ -7100,7 +7154,9 @@
     "prompt": "Inglizchaga tarjima qiling: Agar sizda naqd pul bo'lmasa, kartadan foydalaning.",
     "answer": "If you do not have cash, use a card",
     "alsoAccept": [
-     "If you don't have cash, use a card"
+     "If you don't have cash, use a card",
+     "If you haven't got cash, use a card",
+     "If you have not got cash, use a card"
     ]
    },
    {

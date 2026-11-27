@@ -1850,7 +1850,10 @@
     "kind": "FILL",
     "prompt": "She ___ a dog. (have)",
     "answer": "has",
-    "explain": "Faqat he / she / it bilan fe'lga -s qo'shiladi."
+    "explain": "Faqat he / she / it bilan fe'lga -s qo'shiladi.",
+    "alsoAccept": [
+     "has got"
+    ]
    },
    {
     "id": "16",
@@ -6978,35 +6981,54 @@
     "kind": "FILL",
     "prompt": "I ___ a new phone.",
     "answer": "have got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "have"
+    ]
    },
    {
     "id": "2",
     "kind": "FILL",
     "prompt": "She ___ two brothers.",
     "answer": "has got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "has"
+    ]
    },
    {
     "id": "3",
     "kind": "FILL",
     "prompt": "They ___ a big house.",
     "answer": "have got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "have"
+    ]
    },
    {
     "id": "4",
     "kind": "FILL",
     "prompt": "He ___ a car.",
     "answer": "hasn't got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "doesn't have",
+     "does not have",
+     "has not got"
+    ]
    },
    {
     "id": "5",
     "kind": "FILL",
     "prompt": "We ___ any money.",
     "answer": "haven't got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "don't have",
+     "do not have",
+     "have not got"
+    ]
    },
    {
     "id": "6",
@@ -7034,7 +7056,10 @@
     "kind": "FILL",
     "prompt": "My dog ___ big ears.",
     "answer": "has",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "has got"
+    ]
    },
    {
     "id": "10",
@@ -7048,21 +7073,32 @@
     "kind": "FILL",
     "prompt": "The room ___ two windows.",
     "answer": "has got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "has"
+    ]
    },
    {
     "id": "12",
     "kind": "FILL",
     "prompt": "I ___ a pen.",
     "answer": "haven't got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "don't have",
+     "do not have",
+     "have not got"
+    ]
    },
    {
     "id": "13",
     "kind": "FILL",
     "prompt": "Tom ___ a new bike.",
     "answer": "has got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "has"
+    ]
    },
    {
     "id": "14",
@@ -7076,35 +7112,56 @@
     "kind": "FILL",
     "prompt": "She ___ any brothers.",
     "answer": "doesn't have",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "hasn't got",
+     "has not got",
+     "does not have"
+    ]
    },
    {
     "id": "16",
     "kind": "FILL",
     "prompt": "My sister ___ long hair.",
     "answer": "has got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "has"
+    ]
    },
    {
     "id": "17",
     "kind": "FILL",
     "prompt": "We ___ two cars.",
     "answer": "have got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "have"
+    ]
    },
    {
     "id": "18",
     "kind": "FILL",
     "prompt": "He ___ a brother.",
     "answer": "hasn't got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "doesn't have",
+     "does not have",
+     "has not got"
+    ]
    },
    {
     "id": "19",
     "kind": "FILL",
     "prompt": "They ___ any children.",
     "answer": "haven't got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "don't have",
+     "do not have",
+     "have not got"
+    ]
    },
    {
     "id": "20",
@@ -7132,21 +7189,32 @@
     "kind": "FILL",
     "prompt": "She ___ blue eyes.",
     "answer": "has got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "has"
+    ]
    },
    {
     "id": "24",
     "kind": "FILL",
     "prompt": "The hotel ___ a swimming pool.",
     "answer": "has got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "has"
+    ]
    },
    {
     "id": "25",
     "kind": "FILL",
     "prompt": "I ___ a car.",
     "answer": "haven't got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "don't have",
+     "do not have",
+     "have not got"
+    ]
    },
    {
     "id": "26",
@@ -7160,14 +7228,22 @@
     "kind": "FILL",
     "prompt": "My parents ___ a small flat.",
     "answer": "have got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "have"
+    ]
    },
    {
     "id": "28",
     "kind": "FILL",
     "prompt": "It ___ a door.",
     "answer": "hasn't got",
-    "explain": "I/you/we/they: have got; he/she/it: has got."
+    "explain": "I/you/we/they: have got; he/she/it: has got.",
+    "alsoAccept": [
+     "doesn't have",
+     "does not have",
+     "has not got"
+    ]
    },
    {
     "id": "29",

@@ -16849,7 +16849,9 @@
     "answer": "We don't have enough money to buy it",
     "explain": "Enough + ot.",
     "alsoAccept": [
-     "We do not have enough money to buy it"
+     "We do not have enough money to buy it",
+     "We haven't got enough money to buy it",
+     "We have not got enough money to buy it"
     ]
    },
    {
