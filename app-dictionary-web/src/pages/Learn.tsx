@@ -16,7 +16,7 @@ import {
   Skill,
 } from '../api';
 import { Button, Card, Notice, PageHeader, ProgressBar, Spinner } from '../ui';
-import { requestProgressCheck, speakEnglish } from '../util';
+import { requestProgressCheck, shuffleLesson, speakEnglish } from '../util';
 import { GameResult } from './StudyGames';
 import { useAuth } from '../auth';
 import Theory, { parseTheory } from './Theory';
@@ -1022,7 +1022,10 @@ export function LessonPage() {
 function LessonBody() {
   const { code = '' } = useParams();
   const navigate = useNavigate();
-  const [lesson, setLesson] = useState<LearnLessonDetail | null>(null);
+  const [loaded, setLesson] = useState<LearnLessonDetail | null>(null);
+  // Bumped on every retry so the questions come back in a new order.
+  const [round, setRound] = useState(0);
+  const lesson = useMemo(() => loaded && { ...loaded, items: shuffleLesson(loaded.items) }, [loaded, round]);
   const [error, setError] = useState('');
   const [stage, setStage] = useState<'intro' | 'play' | 'done'>('intro');
   const [index, setIndex] = useState(0);
@@ -1039,6 +1042,7 @@ function LessonBody() {
   const exit = () => navigate('/learn');
 
   const restart = () => {
+    setRound((r) => r + 1);
     setIndex(0);
     setAnswers([]);
     setMarks([]);

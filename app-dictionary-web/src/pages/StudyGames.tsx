@@ -40,6 +40,12 @@ export function GameResult({ icon, title, value, unit, valueSuffix, againLabel, 
     return () => cancelAnimationFrame(raf);
   }, [value]);
 
+  // Percent results fill the ring up to the score; counts simply show a full ring.
+  const fill = valueSuffix === '%' ? Math.min(100, Math.max(0, shown)) : 100;
+  const R = 86;
+  const C = 2 * Math.PI * R;
+  const kind = (label: string) => (label === "To'g'ri" ? 'good' : label === 'Xato' ? 'bad' : label === 'XP' ? 'xp' : '');
+
   return (
     <section className="gr rise" style={{ ['--tone' as string]: tone }}>
       {celebrate && (
@@ -49,13 +55,22 @@ export function GameResult({ icon, title, value, unit, valueSuffix, againLabel, 
           ))}
         </div>
       )}
-      <div className="gr-ico">{icon}</div>
+      <div className="gr-dial">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <circle className="gr-track" cx="100" cy="100" r={R} />
+          <circle className="gr-arc" cx="100" cy="100" r={R} strokeDasharray={C} strokeDashoffset={C * (1 - fill / 100)} />
+        </svg>
+        <div className="gr-score">
+          {shown}
+          {valueSuffix && <small>{valueSuffix}</small>}
+        </div>
+        <div className="gr-ico" aria-hidden="true">{icon}</div>
+      </div>
       <h2>{title}</h2>
-      <div className="gr-score">{shown}{valueSuffix ?? ''}</div>
       <p className="gr-unit">{unit}</p>
       <div className="gr-stats">
         {stats.map((st) => (
-          <div key={st.label}>
+          <div key={st.label} className={`gr-stat ${kind(st.label)}`}>
             <b>{st.value}</b>
             <small>{st.label}</small>
           </div>

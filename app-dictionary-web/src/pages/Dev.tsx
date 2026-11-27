@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   DevExamQuestion,
@@ -13,7 +13,7 @@ import {
   errorStatus,
 } from '../api';
 import { Button, Card, Notice, PageHeader, ProgressBar, Spinner } from '../ui';
-import { requestProgressCheck } from '../util';
+import { requestProgressCheck, shuffleLesson } from '../util';
 import { GameResult } from './StudyGames';
 import { ExerciseCard, Gauge, Steps } from './Learn';
 import { PLAN, PLAN_GROUPS } from './devPlan';
@@ -584,7 +584,10 @@ function LessonRow({ l, next, delay, tone, onOpen }: { l: DevLessonSummary; next
 export function DevLessonPage() {
   const { code = '' } = useParams();
   const navigate = useNavigate();
-  const [lesson, setLesson] = useState<DevLessonDetail | null>(null);
+  const [loaded, setLesson] = useState<DevLessonDetail | null>(null);
+  // Bumped on every retry so the questions come back in a new order.
+  const [round, setRound] = useState(0);
+  const lesson = useMemo(() => loaded && { ...loaded, items: shuffleLesson(loaded.items) }, [loaded, round]);
   const [error, setError] = useState('');
   const [stage, setStage] = useState<'theory' | 'play' | 'done' | 'lab'>('theory');
   const [index, setIndex] = useState(0);
@@ -601,6 +604,7 @@ export function DevLessonPage() {
   const labsDone = lesson.labsDone.length;
 
   const restart = () => {
+    setRound((r) => r + 1);
     setIndex(0);
     setAnswers([]);
     setMarks([]);
