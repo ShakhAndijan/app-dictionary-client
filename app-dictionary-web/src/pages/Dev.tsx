@@ -92,7 +92,7 @@ interface ModuleMeta {
 }
 
 // Modules with written lessons; every other plan module only shows its topic names for now.
-const READY = new Set(['internet', 'html', 'css', 'javascript', 'git', 'npm', 'react']);
+const READY = new Set(['internet', 'html', 'css', 'javascript', 'git', 'npm', 'react', 'tailwind']);
 const MODULES: ModuleMeta[] = PLAN.map((m) => ({
   key: m.key,
   icon: m.icon,
@@ -638,7 +638,7 @@ export function DevLessonPage() {
       tone="lab"
       icon="🧪"
       title="Laboratoriya"
-      text={`${lesson.labs[0].kind === 'css' ? 'CSS stillarini' : lesson.labs[0].kind === 'html' ? 'HTML belgilashni' : lesson.labs[0].kind === 'git' ? 'Git buyruqlarini' : lesson.labs[0].kind === 'npm' ? 'Terminal buyruqlarini' : lesson.labs[0].kind === 'react' ? 'React komponentlarini' : 'JavaScript kodini'} o'zingiz yozasiz, tizim to'g'riligini tekshiradi.`}
+      text={`${lesson.labs[0].kind === 'css' ? 'CSS stillarini' : lesson.labs[0].kind === 'html' ? 'HTML belgilashni' : lesson.labs[0].kind === 'git' ? 'Git buyruqlarini' : lesson.labs[0].kind === 'npm' ? 'Terminal buyruqlarini' : lesson.labs[0].kind === 'react' ? 'React komponentlarini' : lesson.labs[0].kind === 'tw' || lesson.labs[0].kind === 'twcss' ? 'Tailwind klasslari va stillarini' : 'JavaScript kodini'} o'zingiz yozasiz, tizim to'g'riligini tekshiradi.`}
       figure={`${labsDone}/${lesson.labs.length}`}
       figureLabel="bajarildi"
       progress={(labsDone / lesson.labs.length) * 100}

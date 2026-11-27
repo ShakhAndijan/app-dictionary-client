@@ -1,0 +1,4381 @@
+[
+ {
+  "code": "fe-tw-jr-01",
+  "level": "JUNIOR",
+  "module": "tailwind",
+  "order": 1,
+  "title": "Utility-first asoslari",
+  "intro": "Tayyor kichik klasslar bilan stil berish, spacing (masofa) shkalasi, ranglar va ixtiyoriy qiymatlar.",
+  "theory": {
+   "analogy": {
+    "icon": "🧱",
+    "title": "G'isht va tayyor devor",
+    "text": "Bootstrap tayyor devor beradi: tez, lekin boshqacha ko'rinish qiyin. Tailwind esa bir xil o'lchamli g'ishtlar beradi: har bir klass bitta ishni qiladi va siz ulardan istalgan shaklni yig'asiz."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Tailwind CSS — tayyor kichik klasslardan dizayn yig'ish vositasi. U kodingizni o'qib, faqat ishlatilgan klasslar uchun CSS yaratadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Utility class (yordamchi klass)",
+       "text": "bitta aniq stil beradigan kichik CSS klass."
+      },
+      {
+       "term": "Design token (dizayn tokeni)",
+       "text": "dizayndagi nomlangan qiymat: rang, masofa, radius."
+      },
+      {
+       "term": "Arbitrary value (ixtiyoriy qiymat)",
+       "text": "kvadrat qavs ichida berilgan, shkalada yo'q qiymat."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Tez prototipda",
+       "text": "CSS faylsiz."
+      },
+      {
+       "term": "Yagona dizaynda",
+       "text": "bir xil shkala va ranglar."
+      },
+      {
+       "term": "Komponentli loyihada",
+       "text": "stil komponent bilan birga."
+      }
+     ]
+    },
+    {
+     "heading": "Bitta klass — bitta vazifa",
+     "text": "Utility class (yordamchi klass) odatda bitta CSS e'lonini beradi: `p-4` — padding (ichki bo'shliq), `text-center` — text-align, `font-bold` — font-weight. CSS faylga o'tmasdan, nom o'ylamasdan HTML ning o'zida stil berasiz."
+    },
+    {
+     "code": {
+      "lang": "html",
+      "text": "<button class=\"rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white\">\n  Saqlash\n</button>"
+     }
+    },
+    {
+     "heading": "Spacing shkalasi",
+     "text": "Tailwind v4 da bitta qadam 0.25rem, ya'ni odatiy sozlamada 4px. `p-1` = 4px, `p-4` = 16px, `m-6` = 24px, `w-64` = 256px, `size-10` = 40×40px. `px-` chap-o'ng, `py-` tepa-past, `mt-`/`pb-` bitta tomon."
+    },
+    {
+     "heading": "Ranglar va shaffoflik",
+     "text": "Rang nomi va 50–950 daraja: `bg-red-500`, `text-slate-900`, `border-sky-200`. Shaffoflik slash bilan yoziladi: `bg-black/50`."
+    },
+    {
+     "heading": "Ixtiyoriy qiymat",
+     "text": "Shkalada yo'q qiymat kerak bo'lsa kvadrat qavs: `w-[137px]`, `top-[3.2rem]`, `grid-cols-[200px_1fr]` (pastki chiziq probel o'rnida). CSS o'zgaruvchisi uchun v4 qisqa shakli: `bg-(--brand)`."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "Tailwind manba fayllarni oddiy matn sifatida o'qiydi. `'bg-' + rang + '-500'` kabi yig'ilgan klass CSS ga tushmaydi — to'liq klass nomlarini yozing."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🎨",
+       "title": "Rang kartasi",
+       "text": "Do'konda bo'yoq kodlari bor: har kim o'zicha rang aralashtirmaydi, tayyor shkaladan tanlaydi."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Klass nomi kodda to'liq yozilsin."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Klass nomini bo'laklardan yig'ish.",
+       "To'liq nomlar jadvalini yozing.",
+       "Skaner uni topa olmaydi."
+      ],
+      [
+       "Har yerda ixtiyoriy qiymat.",
+       "Shkaladan foydalaning.",
+       "Dizayn tartibsiz bo'lib qoladi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Har utility bitta ishni qiladi.",
+    "1 qadam = 4px (0.25rem).",
+    "Shaffoflik: rang/foiz.",
+    "Klass nomi kodda to'liq ko'rinishi shart."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Loyiha",
+    "text": "Vite loyihasiga `tailwindcss` va `@tailwindcss/vite` ni o'rnating, CSS faylga `@import \"tailwindcss\";` yozing."
+   },
+   {
+    "title": "Karta",
+    "text": "Rasm, sarlavha, matn va tugmadan iborat kartani faqat utility klasslar bilan yasang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "`p-6` necha piksel padding beradi (odatiy sozlamada)?",
+    "options": [
+     "24px",
+     "6px",
+     "12px",
+     "48px"
+    ],
+    "answer": "24px",
+    "explain": "6 × 4px = 24px."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`class=\"px-4 py-2\"` bo'lgan elementning chap padding i necha?",
+    "options": [
+     "16px",
+     "4px",
+     "8px",
+     "32px"
+    ],
+    "answer": "16px",
+    "explain": "px — chap va o'ng: 4 × 4px."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`size-12` qanday natija beradi?",
+    "options": [
+     "Eni ham, balandligi ham 48px",
+     "Shrift o'lchami 48px bo'ladi",
+     "Faqat element eni 48px bo'ladi",
+     "Hamma tomonda 48px padding"
+    ],
+    "answer": "Eni ham, balandligi ham 48px",
+    "explain": "size-* width va height ni birga beradi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Fon qora, 50% shaffof bo'lsin. Tailwind v4 da qaysi yozuv?",
+    "options": [
+     "bg-black/50",
+     "bg-black-50",
+     "bg-opacity-50",
+     "bg-black opacity"
+    ],
+    "answer": "bg-black/50",
+    "explain": "bg-opacity-* v4 da yo'q; opacity-50 esa matnni ham xiralashtiradi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Nega bu kodda rang chiqmasligi mumkin?",
+    "options": [
+     "To'liq klass nomi manbada yo'q",
+     "React shablon satrni qabul qilmaydi",
+     "Tailwind faqat HTML faylni o'qiydi",
+     "bg- klassi tugmada ishlamaydi"
+    ],
+    "answer": "To'liq klass nomi manbada yo'q",
+    "explain": "Skaner `bg-${color}-500` ni klass deb tanimaydi.",
+    "passage": "<button className={`bg-${color}-500`}>OK</button>"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Shkalada yo'q 137px kenglik kerak. Qaysi biri to'g'ri?",
+    "options": [
+     "w-[137px]",
+     "w-137px",
+     "w(137px)",
+     "w-{137px}"
+    ],
+    "answer": "w-[137px]",
+    "explain": "Ixtiyoriy qiymat kvadrat qavsda."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "`grid-cols-[200px_1fr]` dagi pastki chiziq nima vazifada?",
+    "options": [
+     "Probel o'rnini bosadi",
+     "Ustunlarni guruhlaydi",
+     "Minus belgisini beradi",
+     "Qiymatni o'chiradi"
+    ],
+    "answer": "Probel o'rnini bosadi",
+    "explain": "Klass nomida probel bo'lmaydi, shuning uchun _ yoziladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "`class=\"p-2 px-6\"` natijasi?",
+    "options": [
+     "Tepa-past 8px, chap-o'ng 24px",
+     "Hamma tomonda 8px padding",
+     "Hamma tomonda 24px padding bo'ladi",
+     "Tepa-past 24px, yonlar 8px"
+    ],
+    "answer": "Tepa-past 8px, chap-o'ng 24px",
+    "explain": "px yon tomonlarni qayta yozadi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "`class=\"text-red-500 ...\"` ni CSS ga qaysi mexanizm aylantiradi?",
+    "options": [
+     "Skaner topgan klasslar uchun generatsiya",
+     "Brauzer klass nomini o'zi tushunadi",
+     "Butun kutubxona har safar to'liq yuklanadi",
+     "JavaScript har render da style yozadi"
+    ],
+    "answer": "Skaner topgan klasslar uchun generatsiya",
+    "explain": "Faqat ishlatilgan utility lar CSS ga tushadi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Tailwind da `mt-8` yuqoridan necha piksel margin beradi? Faqat son yozing.",
+    "answer": "32",
+    "explain": "8 × 4 = 32."
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "Tailwind v4 ni Vite loyihasiga ulash tartibi",
+    "words": [
+     "Paketlarni o'rnatish",
+     "Vite plaginini qo'shish",
+     "CSS ga @import yozish",
+     "Klasslarni ishlatish"
+    ],
+    "answer": "Paketlarni o'rnatish Vite plaginini qo'shish CSS ga @import yozish Klasslarni ishlatish",
+    "explain": "Avval o'rnatish, keyin ulash, keyin ishlatish."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Birinchi tugma",
+    "task": "Tugmaga 16px yon va 8px tepa-past padding, `sky-600` fon va oq matn bering.",
+    "starter": "<button>Saqlash</button>",
+    "solution": "<button class=\"px-4 py-2 bg-sky-600 text-white\">Saqlash</button>",
+    "tests": [
+     {
+      "label": "Padding: tepa-past 8px, yonlar 16px",
+      "call": "[css(\"button\",\"padding-top\"), css(\"button\",\"padding-left\"), css(\"button\",\"padding-right\")]",
+      "expect": "[\"8px\",\"16px\",\"16px\"]"
+     },
+     {
+      "label": "Fon sky-600, matn oq",
+      "call": "[css(\"button\",\"background-color\") === tok(\"sky-600\"), css(\"button\",\"color\") === tok(\"white\")]",
+      "expect": "[true,true]"
+     }
+    ],
+    "hint": "px/py va rang utility lari.",
+    "kind": "tw",
+    "setup": "",
+    "id": "1"
+   },
+   {
+    "title": "Sarlavha",
+    "task": "Sarlavha 24px, qalin (700) va markazda bo'lsin; rangi `slate-900`.",
+    "starter": "<h1>Narxlar</h1>",
+    "solution": "<h1 class=\"text-2xl font-bold text-center text-slate-900\">Narxlar</h1>",
+    "tests": [
+     {
+      "label": "24px, 700, markazda",
+      "call": "[css(\"h1\",\"font-size\"), css(\"h1\",\"font-weight\"), css(\"h1\",\"text-align\")]",
+      "expect": "[\"24px\",\"700\",\"center\"]"
+     },
+     {
+      "label": "Rang slate-900",
+      "call": "css(\"h1\",\"color\") === tok(\"slate-900\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "text-* ham o'lcham, ham tekislash, ham rang beradi.",
+    "kind": "tw",
+    "setup": "",
+    "id": "2"
+   },
+   {
+    "title": "Nishon (badge)",
+    "task": "\"Yangi\" nishoni: to'liq yumaloq, 12px shrift, yonlarda 12px padding, `emerald-100` fon.",
+    "starter": "<span>Yangi</span>",
+    "solution": "<span class=\"rounded-full text-xs px-3 bg-emerald-100\">Yangi</span>",
+    "tests": [
+     {
+      "label": "Yumaloq va 12px",
+      "call": "[parseFloat(css(\"span\",\"border-top-left-radius\")) > 100, css(\"span\",\"font-size\")]",
+      "expect": "[true,\"12px\"]"
+     },
+     {
+      "label": "Yon padding 12px, fon emerald-100",
+      "call": "[css(\"span\",\"padding-left\"), css(\"span\",\"background-color\") === tok(\"emerald-100\")]",
+      "expect": "[\"12px\",true]"
+     }
+    ],
+    "hint": "1 qadam 4px.",
+    "kind": "tw",
+    "setup": "",
+    "id": "3"
+   },
+   {
+    "title": "Shaffof qatlam",
+    "task": "`#veil` foni qora 40% shaffof bo'lsin, ichidagi matn esa xiralashmasin.",
+    "starter": "<div id=\"veil\" class=\"p-6\"><p class=\"text-white\">Yuklanmoqda</p></div>",
+    "solution": "<div id=\"veil\" class=\"p-6 bg-black/40\"><p class=\"text-white\">Yuklanmoqda</p></div>",
+    "tests": [
+     {
+      "label": "Fon 40% shaffof",
+      "call": "css(\"#veil\",\"background-color\").includes(\"0.4\")",
+      "expect": "true"
+     },
+     {
+      "label": "Element opacity si 1",
+      "call": "css(\"#veil\",\"opacity\")",
+      "expect": "\"1\""
+     }
+    ],
+    "hint": "opacity emas, rangning o'z shaffofligi.",
+    "kind": "tw",
+    "setup": "",
+    "id": "4"
+   },
+   {
+    "title": "Avatar",
+    "task": "Rasm o'rnidagi blok 48×48px, to'liq yumaloq, `slate-300` fonda.",
+    "starter": "<div id=\"a\"></div>",
+    "solution": "<div id=\"a\" class=\"size-12 rounded-full bg-slate-300\"></div>",
+    "tests": [
+     {
+      "label": "48×48px",
+      "call": "[w(\"#a\"), h(\"#a\")]",
+      "expect": "[48,48]"
+     },
+     {
+      "label": "Yumaloq va slate-300",
+      "call": "[parseFloat(css(\"#a\",\"border-top-left-radius\")) > 20, css(\"#a\",\"background-color\") === tok(\"slate-300\")]",
+      "expect": "[true,true]"
+     }
+    ],
+    "hint": "Ikkala o'lchamni bitta klass beradi.",
+    "kind": "tw",
+    "setup": "",
+    "id": "5"
+   },
+   {
+    "title": "Aniq o'lcham",
+    "task": "`#logo` eni roppa-rosa 137px, balandligi 40px bo'lsin.",
+    "starter": "<div id=\"logo\">Logo</div>",
+    "solution": "<div id=\"logo\" class=\"w-[137px] h-10\">Logo</div>",
+    "tests": [
+     {
+      "label": "137×40px",
+      "call": "[w(\"#logo\"), h(\"#logo\")]",
+      "expect": "[137,40]"
+     }
+    ],
+    "hint": "Shkalada yo'q qiymat uchun alohida yozuv bor.",
+    "kind": "tw",
+    "setup": "",
+    "id": "6"
+   },
+   {
+    "title": "Chegarali karta",
+    "task": "Kartaga 1px `slate-200` chegara, 12px radius, 24px padding va soya bering.",
+    "starter": "<div id=\"c\">Karta</div>",
+    "solution": "<div id=\"c\" class=\"border border-slate-200 rounded-xl p-6 shadow-md\">Karta</div>",
+    "tests": [
+     {
+      "label": "Chegara 1px slate-200",
+      "call": "[css(\"#c\",\"border-top-width\"), css(\"#c\",\"border-top-color\") === tok(\"slate-200\")]",
+      "expect": "[\"1px\",true]"
+     },
+     {
+      "label": "Radius 12px, padding 24px",
+      "call": "[css(\"#c\",\"border-top-left-radius\"), css(\"#c\",\"padding-top\")]",
+      "expect": "[\"12px\",\"24px\"]"
+     },
+     {
+      "label": "Soya bor",
+      "call": "css(\"#c\",\"box-shadow\") !== \"none\"",
+      "expect": "true"
+     }
+    ],
+    "hint": "To'rtta alohida vazifa — to'rt guruh klass.",
+    "kind": "tw",
+    "setup": "",
+    "id": "7"
+   },
+   {
+    "title": "Bir tomonli masofa",
+    "task": "Paragraflar orasida: sarlavhadan keyin 8px, matndan keyin tugmagacha 24px.",
+    "starter": "<h2>Tarif</h2>\n<p>Oyiga 50 000</p>\n<button>Tanlash</button>",
+    "solution": "<h2>Tarif</h2>\n<p class=\"mt-2\">Oyiga 50 000</p>\n<button class=\"mt-6\">Tanlash</button>",
+    "tests": [
+     {
+      "label": "Sarlavha va matn orasi 8px",
+      "call": "y(\"p\") - (y(\"h2\") + h(\"h2\"))",
+      "expect": "8"
+     },
+     {
+      "label": "Matn va tugma orasi 24px",
+      "call": "y(\"button\") - (y(\"p\") + h(\"p\"))",
+      "expect": "24"
+     }
+    ],
+    "hint": "Preflight standart marginlarni o'chirgan — o'zingiz berasiz.",
+    "kind": "tw",
+    "setup": "",
+    "id": "8"
+   },
+   {
+    "title": "Katta-kichik matn",
+    "task": "Narx 36px va 800 qalinlikda, yonidagi \"so'm\" 14px `slate-500`.",
+    "starter": "<p><span id=\"n\">99</span> <span id=\"s\">so'm</span></p>",
+    "solution": "<p><span id=\"n\" class=\"text-4xl font-extrabold\">99</span> <span id=\"s\" class=\"text-sm text-slate-500\">so'm</span></p>",
+    "tests": [
+     {
+      "label": "Narx 36px, 800",
+      "call": "[css(\"#n\",\"font-size\"), css(\"#n\",\"font-weight\")]",
+      "expect": "[\"36px\",\"800\"]"
+     },
+     {
+      "label": "Birlik 14px slate-500",
+      "call": "[css(\"#s\",\"font-size\"), css(\"#s\",\"color\") === tok(\"slate-500\")]",
+      "expect": "[\"14px\",true]"
+     }
+    ],
+    "hint": "text-4xl va font-extrabold.",
+    "kind": "tw",
+    "setup": "",
+    "id": "9"
+   },
+   {
+    "title": "Havola ko'rinishi",
+    "task": "Havola `blue-600` rangda, tagi chizilgan, chiziq matndan 4px pastda.",
+    "starter": "<a href=\"#\">Batafsil</a>",
+    "solution": "<a href=\"#\" class=\"text-blue-600 underline underline-offset-4\">Batafsil</a>",
+    "tests": [
+     {
+      "label": "Rang blue-600",
+      "call": "css(\"a\",\"color\") === tok(\"blue-600\")",
+      "expect": "true"
+     },
+     {
+      "label": "Tagi chizilgan, 4px pastda",
+      "call": "[css(\"a\",\"text-decoration-line\"), css(\"a\",\"text-underline-offset\")]",
+      "expect": "[\"underline\",\"4px\"]"
+     }
+    ],
+    "hint": "underline va uning offset i.",
+    "kind": "tw",
+    "setup": "",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-tw-jr-02",
+  "level": "JUNIOR",
+  "module": "tailwind",
+  "order": 2,
+  "title": "Flex, grid va o'lchamlar",
+  "intro": "Joylashtirish utility lari, gap, kenglik cheklovlari, matnni kesish va ustma-ust qo'yish.",
+  "theory": {
+   "analogy": {
+    "icon": "📦",
+    "title": "Javonga terish",
+    "text": "Flex — bitta qatorga yoki ustunga terish, grid — katakli javon. Tailwind da ularning har bir sozlamasi alohida klass."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Joylashtirish utility lari — flex, grid (to'r (ikki o'lchovli joylash)) va o'lcham xususiyatlarining qisqa klass shakllari."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Main axis (asosiy o'q)",
+       "text": "flex elementlari teriladigan yo'nalish."
+      },
+      {
+       "term": "Gap (oraliq)",
+       "text": "flex yoki grid elementlari orasidagi masofa."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Navbar va tugmalar qatorida",
+       "text": "flex."
+      },
+      {
+       "term": "Kartalar katagida",
+       "text": "grid."
+      },
+      {
+       "term": "Belgi va modalda",
+       "text": "absolute va fixed."
+      }
+     ]
+    },
+    {
+     "heading": "Flex",
+     "text": "`flex`, `flex-col`, `items-center` (ko'ndalang o'q), `justify-between` (asosiy o'q), `gap-4`, `flex-1` (bo'sh joyni egallash), `shrink-0` (siqilmaslik), `flex-wrap`."
+    },
+    {
+     "code": {
+      "lang": "html",
+      "text": "<header class=\"flex items-center justify-between gap-4 p-4\">\n  <a class=\"shrink-0 font-bold\">Logo</a>\n  <input class=\"min-w-0 flex-1 rounded border px-3\" />\n  <button class=\"shrink-0\">Kirish</button>\n</header>"
+     }
+    },
+    {
+     "heading": "Grid",
+     "text": "`grid grid-cols-3 gap-4`, element (sahifa unsuri) uchun `col-span-2`, `row-span-2`. Murakkab ustunlar: `grid-cols-[240px_1fr]`."
+    },
+    {
+     "heading": "O'lcham va joylashuv",
+     "text": "`w-full`, `w-1/2`, `max-w-md` (448px), `mx-auto` (markazga), `min-h-screen`, `aspect-video`. Ustma-ust: ota `relative`, bola `absolute inset-0` yoki `top-2 right-2`."
+    },
+    {
+     "heading": "Matnni kesish",
+     "text": "`truncate` — bir qatorda `…`, `line-clamp-3` — uch qator. Flex ichida `truncate` ishlashi uchun elementga `min-w-0` kerak, chunki flex bola odatda mazmunidan kichik bo'lmaydi."
+    },
+    {
+     "callout": {
+      "kind": "tip",
+      "text": "Elementlar orasidagi masofa uchun margin (tashqi bo'shliq) emas, ota ustidagi `gap-*` qulayroq: oxirgi elementda ortiqcha bo'shliq qolmaydi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🪟",
+       "title": "Vitrina",
+       "text": "Grid — vitrinadagi kataklar: mahsulot qo'shilsa yangi qator ochiladi."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Oraliq uchun gap."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "truncate ni min-w-0 siz kutish.",
+       "Flex bolaga min-w-0 qo'shing.",
+       "Matn konteynerdan chiqadi."
+      ],
+      [
+       "absolute ga relative otani unutish.",
+       "Otaga relative bering.",
+       "Element sahifaga nisbatan joylashadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "justify — asosiy o'q, items — ko'ndalang o'q.",
+    "gap otaga yoziladi.",
+    "truncate + flex = min-w-0.",
+    "absolute bola uchun otada relative."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Navbar",
+    "text": "Logo chapda, menyu o'rtada, tugma o'ngda turadigan navbar yasang."
+   },
+   {
+    "title": "Galereya",
+    "text": "6 ta rasmni 3 ustunli gridda, birinchisini 2 ustunga yoyib joylang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "`flex items-center justify-between` da `justify-between` nima qiladi?",
+    "options": [
+     "Asosiy o'q bo'yicha bo'sh joyni taqsimlaydi",
+     "Ko'ndalang o'q bo'yicha markazga joylashtiradi",
+     "Elementlar orasiga qat'iy 16px qo'yadi",
+     "Matnni ikki chetga tekislab chiqadi"
+    ],
+    "answer": "Asosiy o'q bo'yicha bo'sh joyni taqsimlaydi",
+    "explain": "justify — asosiy o'q."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`flex flex-col items-center` da `items-center` qaysi yo'nalishda ta'sir qiladi?",
+    "options": [
+     "Gorizontal",
+     "Vertikal",
+     "Ikkalasida",
+     "Hech qaysida"
+    ],
+    "answer": "Gorizontal",
+    "explain": "Ustunda ko'ndalang o'q gorizontal."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Flex ichidagi uzun matn `truncate` bo'lsa ham sig'may chiqib ketyapti. Nima qo'shiladi?",
+    "options": [
+     "min-w-0",
+     "w-auto",
+     "shrink-0",
+     "overflow-visible"
+    ],
+    "answer": "min-w-0",
+    "explain": "Flex bolaning min-width i odatda auto."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Sahifada blokni markazga qo'yib, kengligini cheklash uchun?",
+    "options": [
+     "mx-auto max-w-md",
+     "text-center w-full",
+     "items-center flex-1",
+     "my-auto min-w-md"
+    ],
+    "answer": "mx-auto max-w-md",
+    "explain": "mx-auto yon margin (tashqi bo'shliq) larni teng bo'ladi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "600px li `grid grid-cols-3` (gap yo'q) da `col-span-2` element eni?",
+    "options": [
+     "400px",
+     "200px",
+     "300px",
+     "600px"
+    ],
+    "answer": "400px",
+    "explain": "Har ustun 200px, ikkitasi 400px."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Rasm burchagiga belgi qo'yish uchun to'g'ri juftlik?",
+    "options": [
+     "Ota relative, belgi absolute",
+     "Ota absolute, belgi relative",
+     "Ota static, belgi sticky",
+     "Ota fixed, belgi static"
+    ],
+    "answer": "Ota relative, belgi absolute",
+    "explain": "absolute eng yaqin joylashgan ajdodga bog'lanadi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "`flex-1` va `shrink-0` farqi?",
+    "options": [
+     "Biri bo'sh joyni oladi, biri siqilmaydi",
+     "Ikkalasi ham kenglikni 100% ga tenglaydi",
+     "Biri o'sishni, biri joyni almashtiradi",
+     "Ikkalasi faqat grid ichida ishlaydi"
+    ],
+    "answer": "Biri bo'sh joyni oladi, biri siqilmaydi",
+    "explain": "flex-1 o'sadi/siqiladi, shrink-0 o'lchamini saqlaydi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Quyidagida tugma qayerda turadi?",
+    "options": [
+     "Qatorning o'ng chetida",
+     "Qatorning chap chetida",
+     "Qatorning aniq o'rtasida",
+     "Matnning pastki qatorida"
+    ],
+    "answer": "Qatorning o'ng chetida",
+    "explain": "justify-between ikki bolani chetlarga suradi.",
+    "passage": "<div class=\"flex justify-between\">\n  <h2>Savat</h2>\n  <button>Tozalash</button>\n</div>"
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Kartalar orasidagi masofa uchun nega `gap-4` `mr-4` dan qulay?",
+    "options": [
+     "Oxirgi elementda ortiqcha joy qolmaydi",
+     "gap brauzerda margindan tezroq chiziladi",
+     "margin flex ichida umuman ishlamaydi",
+     "gap element ichki masofasini oshiradi"
+    ],
+    "answer": "Oxirgi elementda ortiqcha joy qolmaydi",
+    "explain": "gap (oraliq masofa) faqat elementlar orasiga tushadi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Uch qatordan keyin matnni \"…\" bilan kesadigan klass: `line-____-3`",
+    "answer": "clamp",
+    "explain": "line-clamp-3."
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "Modal fonini va oynasini qurish tartibi",
+    "words": [
+     "fixed inset-0 qatlam",
+     "flex bilan markazlash",
+     "Oynaga max-w-md",
+     "Oyna ichiga mazmun"
+    ],
+    "answer": "fixed inset-0 qatlam flex bilan markazlash Oynaga max-w-md Oyna ichiga mazmun",
+    "explain": "Tashqaridan ichkariga."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Navbar",
+    "task": "Logo chapda, tugma o'ngda, ikkalasi vertikal markazda; atrofida 16px padding.",
+    "starter": "<header>\n  <b>Logo</b>\n  <button class=\"py-3\">Kirish</button>\n</header>",
+    "solution": "<header class=\"flex items-center justify-between p-4\">\n  <b>Logo</b>\n  <button class=\"py-3\">Kirish</button>\n</header>",
+    "tests": [
+     {
+      "label": "Logo chapda, tugma o'ng chetda",
+      "call": "[x(\"b\"), x(\"button\") + w(\"button\")]",
+      "expect": "[16,584]"
+     },
+     {
+      "label": "Vertikal markazda",
+      "call": "css(\"header\",\"align-items\")",
+      "expect": "\"center\""
+     }
+    ],
+    "hint": "Asosiy va ko'ndalang o'q.",
+    "kind": "tw",
+    "setup": "",
+    "id": "1"
+   },
+   {
+    "title": "Markazdagi blok",
+    "task": "`#box` kengligi ko'pi bilan 384px bo'lib, sahifa o'rtasida tursin.",
+    "starter": "<div id=\"box\">Matn</div>",
+    "solution": "<div id=\"box\" class=\"max-w-sm mx-auto\">Matn</div>",
+    "tests": [
+     {
+      "label": "Eni 384px",
+      "call": "w(\"#box\")",
+      "expect": "384"
+     },
+     {
+      "label": "Markazda",
+      "call": "x(\"#box\")",
+      "expect": "108"
+     }
+    ],
+    "hint": "Kenglik cheklovi va yon marginlar.",
+    "kind": "tw",
+    "setup": "",
+    "id": "2"
+   },
+   {
+    "title": "Uch ustun",
+    "task": "Kartalar 3 teng ustunda, oraliq 12px.",
+    "starter": "<ul>\n  <li id=\"a\">1</li><li id=\"b\">2</li><li id=\"c\">3</li><li id=\"d\">4</li>\n</ul>",
+    "solution": "<ul class=\"grid grid-cols-3 gap-3\">\n  <li id=\"a\">1</li><li id=\"b\">2</li><li id=\"c\">3</li><li id=\"d\">4</li>\n</ul>",
+    "tests": [
+     {
+      "label": "Uchta teng ustun",
+      "call": "[w(\"#a\"), x(\"#b\"), x(\"#c\")]",
+      "expect": "[192,204,408]"
+     },
+     {
+      "label": "To'rtinchisi yangi qatorda",
+      "call": "x(\"#d\") === 0 && y(\"#d\") > y(\"#a\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "grid, ustunlar soni va gap.",
+    "kind": "tw",
+    "setup": "",
+    "id": "3"
+   },
+   {
+    "title": "Yoyilgan element",
+    "task": "3 ustunli gridda `#wide` ikki ustunni egallasin (oraliqsiz).",
+    "starter": "<div class=\"grid\">\n  <div id=\"wide\">Asosiy</div>\n  <div id=\"side\">Yon</div>\n</div>",
+    "solution": "<div class=\"grid grid-cols-3\">\n  <div id=\"wide\" class=\"col-span-2\">Asosiy</div>\n  <div id=\"side\">Yon</div>\n</div>",
+    "tests": [
+     {
+      "label": "Asosiy 400px, yon 200px",
+      "call": "[w(\"#wide\"), w(\"#side\")]",
+      "expect": "[400,200]"
+     },
+     {
+      "label": "Bir qatorda",
+      "call": "y(\"#wide\") === y(\"#side\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "col-span.",
+    "kind": "tw",
+    "setup": "",
+    "id": "4"
+   },
+   {
+    "title": "Sidebar",
+    "task": "Chapda aniq 160px panel, qolgan joyni asosiy qism egallasin.",
+    "starter": "<div>\n  <aside id=\"s\">Menyu</aside>\n  <main id=\"m\">Mazmun</main>\n</div>",
+    "solution": "<div class=\"flex\">\n  <aside id=\"s\" class=\"w-40 shrink-0\">Menyu</aside>\n  <main id=\"m\" class=\"flex-1\">Mazmun</main>\n</div>",
+    "tests": [
+     {
+      "label": "Panel 160px",
+      "call": "w(\"#s\")",
+      "expect": "160"
+     },
+     {
+      "label": "Asosiy qism qolgan 440px",
+      "call": "[x(\"#m\"), w(\"#m\")]",
+      "expect": "[160,440]"
+     }
+    ],
+    "hint": "Biri siqilmaydi, biri o'sadi.",
+    "kind": "tw",
+    "setup": "",
+    "id": "5"
+   },
+   {
+    "title": "Kesilmayotgan matn",
+    "task": "Uzun fayl nomi bir qatorda `…` bilan kesilsin, tugma esa o'z joyida to'liq tursin. Konteyner 300px.",
+    "starter": "<div class=\"flex w-[300px]\">\n  <span id=\"t\">juda-uzun-hisobot-fayli-nomi-2026-yil-yakuniy-variant.pdf</span>\n  <button class=\"w-20\">Ochish</button>\n</div>",
+    "solution": "<div class=\"flex w-[300px]\">\n  <span id=\"t\" class=\"min-w-0 truncate\">juda-uzun-hisobot-fayli-nomi-2026-yil-yakuniy-variant.pdf</span>\n  <button class=\"w-20 shrink-0\">Ochish</button>\n</div>",
+    "tests": [
+     {
+      "label": "Matn bir qatorda … bilan",
+      "call": "[css(\"#t\",\"text-overflow\"), css(\"#t\",\"white-space\")]",
+      "expect": "[\"ellipsis\",\"nowrap\"]"
+     },
+     {
+      "label": "Matn 220px ga sig'di",
+      "call": "w(\"#t\")",
+      "expect": "220"
+     },
+     {
+      "label": "Tugma 80px va ichkarida",
+      "call": "[w(\"button\"), x(\"button\")]",
+      "expect": "[80,220]"
+     }
+    ],
+    "hint": "Flex bolaning minimal kengligi nima uchun muammo?",
+    "kind": "tw",
+    "setup": "",
+    "id": "6"
+   },
+   {
+    "title": "Burchakdagi belgi",
+    "task": "`#badge` kartaning o'ng yuqori burchagida, chetlardan 8px ichkarida tursin.",
+    "starter": "<div id=\"card\" class=\"w-60 h-40 bg-slate-100\">\n  <span id=\"badge\" class=\"w-10\">-20%</span>\n</div>",
+    "solution": "<div id=\"card\" class=\"relative w-60 h-40 bg-slate-100\">\n  <span id=\"badge\" class=\"absolute top-2 right-2 w-10\">-20%</span>\n</div>",
+    "tests": [
+     {
+      "label": "Tepadan 8px",
+      "call": "y(\"#badge\") - y(\"#card\")",
+      "expect": "8"
+     },
+     {
+      "label": "O'ngdan 8px",
+      "call": "(x(\"#card\") + w(\"#card\")) - (x(\"#badge\") + w(\"#badge\"))",
+      "expect": "8"
+     }
+    ],
+    "hint": "Ota va bola uchun position.",
+    "kind": "tw",
+    "setup": "",
+    "id": "7"
+   },
+   {
+    "title": "To'liq markaz",
+    "task": "`#msg` 600×300px blokning aniq o'rtasida tursin.",
+    "starter": "<div id=\"box\" class=\"h-[300px]\">\n  <p id=\"msg\" class=\"w-20 h-10\">Salom</p>\n</div>",
+    "solution": "<div id=\"box\" class=\"flex h-[300px] items-center justify-center\">\n  <p id=\"msg\" class=\"w-20 h-10\">Salom</p>\n</div>",
+    "tests": [
+     {
+      "label": "O'rtada",
+      "call": "[x(\"#msg\"), y(\"#msg\")]",
+      "expect": "[260,130]"
+     }
+    ],
+    "hint": "Ikki o'q bo'yicha markazlash.",
+    "kind": "tw",
+    "setup": "",
+    "id": "8"
+   },
+   {
+    "title": "Video nisbati",
+    "task": "`#v` butun kenglikda va 16:9 nisbatda bo'lsin.",
+    "starter": "<div id=\"v\" class=\"bg-black\"></div>",
+    "solution": "<div id=\"v\" class=\"w-full aspect-video bg-black\"></div>",
+    "tests": [
+     {
+      "label": "600×338px",
+      "call": "[w(\"#v\"), Math.abs(h(\"#v\") - 338) <= 1]",
+      "expect": "[600,true]"
+     }
+    ],
+    "hint": "Balandlikni qo'lda bermang.",
+    "kind": "tw",
+    "setup": "",
+    "id": "9"
+   },
+   {
+    "title": "Pastdagi footer",
+    "task": "Mazmun kam bo'lsa ham footer oyna (400px) tubida tursin.",
+    "starter": "<div id=\"page\">\n  <main>Qisqa matn</main>\n  <footer class=\"h-10\">© 2026</footer>\n</div>",
+    "solution": "<div id=\"page\" class=\"flex min-h-screen flex-col\">\n  <main class=\"flex-1\">Qisqa matn</main>\n  <footer class=\"h-10\">© 2026</footer>\n</div>",
+    "tests": [
+     {
+      "label": "Footer pastda",
+      "call": "y(\"footer\") + h(\"footer\")",
+      "expect": "400"
+     }
+    ],
+    "hint": "Ustun flex va qolgan joyni egallovchi qism.",
+    "kind": "tw",
+    "setup": "",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-tw-jr-03",
+  "level": "JUNIOR",
+  "module": "tailwind",
+  "order": 3,
+  "title": "Responsive dizayn",
+  "intro": "Mobile-first (avval mobil) tamoyili, breakpoint (burilish nuqtasi) prefikslari va container query.",
+  "theory": {
+   "analogy": {
+    "icon": "👕",
+    "title": "Kiyim qatlamlari",
+    "text": "Avval asosiy kiyim — u hamma havoda bor. Sovuqlashsa ustiga qatlam qo'shiladi. Tailwind da prefikssiz klass hamma ekranda, `md:` esa kattalashganda ustiga qo'shiladi."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Responsive (ekranga moslashuvchan) utility lar — prefiks orqali ma'lum kenglikdan boshlab ishlaydigan klasslar."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Breakpoint (burilish nuqtasi)",
+       "text": "stil o'zgaradigan ekran kengligi."
+      },
+      {
+       "term": "Mobile-first (avval mobil)",
+       "text": "asosiy stil kichik ekran uchun, kattasi ustiga qo'shiladi."
+      },
+      {
+       "term": "Container query (konteyner so'rovi)",
+       "text": "ota element (sahifa unsuri) kengligiga qarab stil berish."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Telefon va kompyuterga moslashda",
+       "text": "md:, lg:."
+      },
+      {
+       "term": "Menyuni almashtirishda",
+       "text": "hidden md:flex."
+      },
+      {
+       "term": "Qayta ishlatiladigan kartada",
+       "text": "@container."
+      }
+     ]
+    },
+    {
+     "heading": "Breakpoint lar",
+     "text": "`sm` 640px, `md` 768px, `lg` 1024px, `xl` 1280px, `2xl` 1536px. `md:flex` — 768px va undan KATTA ekranda. Prefikssiz klass eng kichik ekrandan boshlab ishlaydi."
+    },
+    {
+     "code": {
+      "lang": "html",
+      "text": "<div class=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4\">…</div>\n<nav class=\"hidden md:flex\">menyu</nav>\n<button class=\"md:hidden\">☰</button>"
+     }
+    },
+    {
+     "heading": "Oraliq va teskari variantlar",
+     "text": "`max-md:` — 768px dan kichik ekranda. `md:max-lg:` — faqat 768–1023px oralig'ida."
+    },
+    {
+     "heading": "Container query",
+     "text": "Ekran emas, ota blok kengligiga qarab: otaga `@container`, bolaga `@md:flex-row`. Bir xil karta tor yon panelda ustun, keng joyda qator bo'ladi."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "`sm:` — «kichik ekran» degani emas! U 640px dan boshlab ishlaydi. Mobil stil prefikssiz yoziladi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📰",
+       "title": "Gazeta",
+       "text": "Katta varaqda 4 ustun, telefonda bitta ustun — mazmun o'sha."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Avval mobil, keyin kattasi."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "sm: ni telefon deb tushunish.",
+       "Mobilni prefikssiz yozing.",
+       "sm: 640px dan boshlanadi."
+      ],
+      [
+       "Har ekranga hamma klassni takrorlash.",
+       "Faqat o'zgarganini yozing.",
+       "Kichik qiymat kattasiga ham o'tadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Prefikssiz = mobil va hamma.",
+    "md: = 768px va katta.",
+    "max-md: = 768px dan kichik.",
+    "@container + @md: = ota kengligi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Responsive grid",
+    "text": "Mahsulotlar: telefonda 1, planshetda 2, kompyuterda 4 ustun."
+   },
+   {
+    "title": "Menyu",
+    "text": "Katta ekranda menyu, kichikda ☰ tugmasi ko'rinsin."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "`class=\"text-sm md:text-lg\"` 500px ekranda qaysi o'lcham?",
+    "options": [
+     "text-sm",
+     "text-lg",
+     "text-base",
+     "ikkalasi birga"
+    ],
+    "answer": "text-sm",
+    "explain": "500 < 768, shuning uchun md: ishlamaydi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`md:flex` qaysi kengliklarda ishlaydi?",
+    "options": [
+     "768px va undan katta",
+     "768px va undan kichik",
+     "faqat roppa-rosa 768px",
+     "640px dan 768px gacha"
+    ],
+    "answer": "768px va undan katta",
+    "explain": "min-width so'rovi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`hidden md:block` nimani anglatadi?",
+    "options": [
+     "Kichikda yashirin, 768px dan ko'rinadi",
+     "Kichikda ko'rinadi, 768px dan yashirin",
+     "Hamma ekranda yashirin bo'lib qoladi",
+     "Faqat 768px lik ekranda yashirinadi"
+    ],
+    "answer": "Kichikda yashirin, 768px dan ko'rinadi",
+    "explain": "Avval hidden, keyin md:block ustiga."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Faqat telefonda (640px dan kichik) qizil fon berishning to'g'ri yozuvi?",
+    "options": [
+     "max-sm:bg-red-500",
+     "sm:bg-red-500",
+     "xs:bg-red-500",
+     "min-sm:bg-red-500"
+    ],
+    "answer": "max-sm:bg-red-500",
+    "explain": "sm: 640 dan KATTA uchun; max-sm: kichik uchun."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "900px ekranda ustunlar soni?",
+    "options": [
+     "2",
+     "1",
+     "3",
+     "4"
+    ],
+    "answer": "2",
+    "explain": "900 ≥ 768, lekin < 1024.",
+    "passage": "<div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4\">"
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "`md:max-lg:hidden` qachon yashiradi?",
+    "options": [
+     "768px dan 1023px gacha",
+     "768px dan boshlab doim",
+     "1024px dan katta ekranda",
+     "768px dan kichik ekranda"
+    ],
+    "answer": "768px dan 1023px gacha",
+    "explain": "Ikki shart birga."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Karta yon panelda ham, keng sahifada ham o'ziga mos tursin. Nima ishlatiladi?",
+    "options": [
+     "@container va @md: variantlari",
+     "md: va lg: ekran breakpoint lari",
+     "max-md: bilan hidden klassi",
+     "w-screen va overflow-hidden"
+    ],
+    "answer": "@container va @md: variantlari",
+    "explain": "Ekran emas, ota kengligi muhim."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Nega `sm:text-center` telefonda matnni markazlamaydi?",
+    "options": [
+     "sm: 640px dan boshlab ishlaydi",
+     "sm: faqat flex ichida ishlaydi",
+     "text-center uchun md: majburiy",
+     "Telefonda prefikslar o'chiriladi"
+    ],
+    "answer": "sm: 640px dan boshlab ishlaydi",
+    "explain": "Mobil uchun prefikssiz yozing."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Qaysi tartib mobile-first ga mos?",
+    "options": [
+     "w-full lg:w-1/3",
+     "w-1/3 max-lg:w-full",
+     "lg:w-full w-1/3",
+     "sm:w-full lg:w-1/3"
+    ],
+    "answer": "w-full lg:w-1/3",
+    "explain": "Avval mobil qiymat, keyin kattasi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "`lg:` breakpoint i necha pikseldan boshlanadi? Faqat son.",
+    "answer": "1024",
+    "explain": "lg = 64rem = 1024px."
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "Breakpoint larni kichigidan kattasiga tartiblang",
+    "words": [
+     "sm",
+     "md",
+     "lg",
+     "xl",
+     "2xl"
+    ],
+    "answer": "sm md lg xl 2xl",
+    "explain": "640, 768, 1024, 1280, 1536."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Ustundan qatorga",
+    "task": "Telefonda bloklar ustma-ust, 768px dan yonma-yon bo'lsin.",
+    "starter": "<div>\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n</div>",
+    "solution": "<div class=\"flex flex-col md:flex-row\">\n  <div id=\"a\">A</div>\n  <div id=\"b\">B</div>\n</div>",
+    "tests": [
+     {
+      "label": "600px da ustma-ust",
+      "call": "(at(600), y(\"#b\") > y(\"#a\"))",
+      "expect": "true"
+     },
+     {
+      "label": "800px da yonma-yon",
+      "call": "(at(800), y(\"#b\") === y(\"#a\"))",
+      "expect": "true"
+     }
+    ],
+    "hint": "Prefikssiz — mobil.",
+    "kind": "tw",
+    "setup": "",
+    "id": "1"
+   },
+   {
+    "title": "1, 2, 4 ustun",
+    "task": "Mahsulotlar: 640px dan kichikda 1, 640px dan 2, 1024px dan 4 ustun.",
+    "starter": "<div id=\"g\">\n  <i>1</i><i>2</i><i>3</i><i>4</i>\n</div>",
+    "solution": "<div id=\"g\" class=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4\">\n  <i>1</i><i>2</i><i>3</i><i>4</i>\n</div>",
+    "tests": [
+     {
+      "label": "600px: 1 ustun",
+      "call": "(at(600), css(\"#g\",\"grid-template-columns\").split(\" \").length)",
+      "expect": "1"
+     },
+     {
+      "label": "700px: 2 ustun",
+      "call": "(at(700), css(\"#g\",\"grid-template-columns\").split(\" \").length)",
+      "expect": "2"
+     },
+     {
+      "label": "1100px: 4 ustun",
+      "call": "(at(1100), css(\"#g\",\"grid-template-columns\").split(\" \").length)",
+      "expect": "4"
+     }
+    ],
+    "hint": "Har bosqich uchun bitta prefiks.",
+    "kind": "tw",
+    "setup": "",
+    "id": "2"
+   },
+   {
+    "title": "Menyu va gamburger",
+    "task": "768px dan kichikda faqat ☰ tugmasi, kattada faqat menyu ko'rinsin.",
+    "starter": "<nav id=\"menu\">Bosh sahifa</nav>\n<button id=\"burger\">☰</button>",
+    "solution": "<nav id=\"menu\" class=\"hidden md:block\">Bosh sahifa</nav>\n<button id=\"burger\" class=\"md:hidden\">☰</button>",
+    "tests": [
+     {
+      "label": "600px: menyu yashirin, tugma bor",
+      "call": "(at(600), [css(\"#menu\",\"display\"), css(\"#burger\",\"display\") !== \"none\"])",
+      "expect": "[\"none\",true]"
+     },
+     {
+      "label": "800px: aksincha",
+      "call": "(at(800), [css(\"#menu\",\"display\") !== \"none\", css(\"#burger\",\"display\")])",
+      "expect": "[true,\"none\"]"
+     }
+    ],
+    "hint": "Biri kichikda yashirin, biri kattada.",
+    "kind": "tw",
+    "setup": "",
+    "id": "3"
+   },
+   {
+    "title": "O'sayotgan sarlavha",
+    "task": "Sarlavha: telefonda 24px, 768px dan 36px, 1024px dan 48px.",
+    "starter": "<h1>Tailwind</h1>",
+    "solution": "<h1 class=\"text-2xl md:text-4xl lg:text-5xl\">Tailwind</h1>",
+    "tests": [
+     {
+      "label": "600px: 24px",
+      "call": "(at(600), css(\"h1\",\"font-size\"))",
+      "expect": "\"24px\""
+     },
+     {
+      "label": "800px: 36px",
+      "call": "(at(800), css(\"h1\",\"font-size\"))",
+      "expect": "\"36px\""
+     },
+     {
+      "label": "1100px: 48px",
+      "call": "(at(1100), css(\"h1\",\"font-size\"))",
+      "expect": "\"48px\""
+     }
+    ],
+    "hint": "Faqat o'zgaradigan qismini prefiks bilan yozing.",
+    "kind": "tw",
+    "setup": "",
+    "id": "4"
+   },
+   {
+    "title": "Faqat telefonda",
+    "task": "Ogohlantirish faqat 640px dan kichik ekranda sariq (`amber-200`) fonda bo'lsin.",
+    "starter": "<p id=\"w\">Ilovani yuklab oling</p>",
+    "solution": "<p id=\"w\" class=\"max-sm:bg-amber-200\">Ilovani yuklab oling</p>",
+    "tests": [
+     {
+      "label": "600px: sariq",
+      "call": "(at(600), css(\"#w\",\"background-color\") === tok(\"amber-200\"))",
+      "expect": "true"
+     },
+     {
+      "label": "700px: fonsiz",
+      "call": "(at(700), css(\"#w\",\"background-color\") === tok(\"amber-200\"))",
+      "expect": "false"
+     }
+    ],
+    "hint": "Teskari (max-) variant.",
+    "kind": "tw",
+    "setup": "",
+    "id": "5"
+   },
+   {
+    "title": "Faqat planshetda",
+    "task": "`#ad` faqat 768px – 1023px oralig'ida ko'rinmasin.",
+    "starter": "<div id=\"ad\">Reklama</div>",
+    "solution": "<div id=\"ad\" class=\"md:max-lg:hidden\">Reklama</div>",
+    "tests": [
+     {
+      "label": "600px: ko'rinadi",
+      "call": "(at(600), css(\"#ad\",\"display\"))",
+      "expect": "\"block\""
+     },
+     {
+      "label": "900px: yashirin",
+      "call": "(at(900), css(\"#ad\",\"display\"))",
+      "expect": "\"none\""
+     },
+     {
+      "label": "1100px: yana ko'rinadi",
+      "call": "(at(1100), css(\"#ad\",\"display\"))",
+      "expect": "\"block\""
+     }
+    ],
+    "hint": "Ikki variantni birga yozish mumkin.",
+    "kind": "tw",
+    "setup": "",
+    "id": "6"
+   },
+   {
+    "title": "Buzilgan mobil stil",
+    "task": "Matn telefonda markazda, 768px dan chapda bo'lishi kerak. Hozir telefonda markazlanmayapti.",
+    "starter": "<p class=\"sm:text-center md:text-left\">Xush kelibsiz</p>",
+    "solution": "<p class=\"text-center md:text-left\">Xush kelibsiz</p>",
+    "tests": [
+     {
+      "label": "400px: markazda",
+      "call": "(at(400), css(\"p\",\"text-align\"))",
+      "expect": "\"center\""
+     },
+     {
+      "label": "800px: chapda",
+      "call": "(at(800), css(\"p\",\"text-align\"))",
+      "expect": "\"left\""
+     }
+    ],
+    "hint": "sm: qaysi kenglikdan boshlanadi?",
+    "kind": "tw",
+    "setup": "",
+    "id": "7"
+   },
+   {
+    "title": "Tartibni almashtirish",
+    "task": "Telefonda rasm tepada, 768px dan esa matn chapda, rasm o'ngda tursin. HTML tartibini o'zgartirmang.",
+    "starter": "<div>\n  <div id=\"img\">Rasm</div>\n  <div id=\"txt\">Matn</div>\n</div>",
+    "solution": "<div class=\"flex flex-col md:flex-row\">\n  <div id=\"img\" class=\"md:order-2\">Rasm</div>\n  <div id=\"txt\">Matn</div>\n</div>",
+    "tests": [
+     {
+      "label": "600px: rasm tepada",
+      "call": "(at(600), y(\"#img\") < y(\"#txt\"))",
+      "expect": "true"
+     },
+     {
+      "label": "800px: matn chapda, rasm o'ngda",
+      "call": "(at(800), y(\"#img\") === y(\"#txt\") && x(\"#txt\") < x(\"#img\"))",
+      "expect": "true"
+     },
+     {
+      "label": "HTML tartibi saqlangan",
+      "call": "src().indexOf(\"img\") < src().indexOf(\"txt\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "Flex elementning ko'rinish tartibi.",
+    "kind": "tw",
+    "setup": "",
+    "id": "8"
+   },
+   {
+    "title": "Moslashuvchan padding",
+    "task": "Bo'lim paddingi: telefonda 16px, 768px dan 48px.",
+    "starter": "<section class=\"p-12\">Mazmun</section>",
+    "solution": "<section class=\"p-4 md:p-12\">Mazmun</section>",
+    "tests": [
+     {
+      "label": "400px: 16px",
+      "call": "(at(400), css(\"section\",\"padding-top\"))",
+      "expect": "\"16px\""
+     },
+     {
+      "label": "900px: 48px",
+      "call": "(at(900), css(\"section\",\"padding-top\"))",
+      "expect": "\"48px\""
+     }
+    ],
+    "hint": "Mobile-first: avval kichik qiymat.",
+    "kind": "tw",
+    "setup": "",
+    "id": "9"
+   },
+   {
+    "title": "Container query",
+    "task": "Karta ekranga emas, ota kengligiga qarasin: ota tor bo'lsa ustun, 28rem (448px) dan keng bo'lsa qator.",
+    "starter": "<div id=\"narrow\" class=\"w-[300px]\">\n  <div>\n    <i id=\"a\">rasm</i><i id=\"b\">matn</i>\n  </div>\n</div>\n<div id=\"wide\" class=\"w-[500px]\">\n  <div>\n    <i id=\"c\">rasm</i><i id=\"d\">matn</i>\n  </div>\n</div>",
+    "solution": "<div id=\"narrow\" class=\"@container w-[300px]\">\n  <div class=\"flex flex-col @md:flex-row\">\n    <i id=\"a\">rasm</i><i id=\"b\">matn</i>\n  </div>\n</div>\n<div id=\"wide\" class=\"@container w-[500px]\">\n  <div class=\"flex flex-col @md:flex-row\">\n    <i id=\"c\">rasm</i><i id=\"d\">matn</i>\n  </div>\n</div>",
+    "tests": [
+     {
+      "label": "Tor otada ustma-ust",
+      "call": "y(\"#b\") > y(\"#a\")",
+      "expect": "true"
+     },
+     {
+      "label": "Keng otada yonma-yon",
+      "call": "y(\"#d\") === y(\"#c\") && x(\"#d\") > x(\"#c\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "Ota konteyner deb e'lon qilinadi.",
+    "kind": "tw",
+    "setup": "",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-tw-jr-04",
+  "level": "JUNIOR",
+  "module": "tailwind",
+  "order": 4,
+  "title": "Holat variantlari",
+  "intro": "hover, focus-visible, disabled, group, peer, aria va data atributlari bo'yicha stil berish.",
+  "theory": {
+   "analogy": {
+    "icon": "🚦",
+    "title": "Svetofor",
+    "text": "Chorraha o'sha, lekin holatga qarab ko'rinish o'zgaradi. Variant — «shu holatda bo'lsa, mana bu stil» degan shart."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Variant — utility qaysi holatda qo'llanishini belgilaydigan old qo'shimcha."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Variant (shartli prefiks)",
+       "text": "utility qachon qo'llanishini belgilaydigan old qo'shimcha."
+      },
+      {
+       "term": "focus-visible",
+       "text": "brauzer fokus ko'rsatilishi kerak deb hisoblagan holat (odatda klaviatura)."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Tugma va havolalarda",
+       "text": "hover, focus-visible."
+      },
+      {
+       "term": "Formalarda",
+       "text": "invalid, disabled (o'chirilgan), peer."
+      },
+      {
+       "term": "Ochiladigan bloklarda",
+       "text": "aria va data."
+      }
+     ]
+    },
+    {
+     "heading": "Asosiy variantlar",
+     "text": "`hover:`, `focus:`, `focus-visible:`, `active:`, `disabled:`, `first:`, `last:`, `odd:`, `even:`, `checked:`, `invalid:`. Prefiks klass oldiga yoziladi: `hover:bg-sky-700`."
+    },
+    {
+     "heading": "group — ota holati",
+     "text": "Otaga `group`, bolaga `group-hover:`. Bir nechta bo'lsa nomlanadi: `group/item` va `group-hover/item:underline`."
+    },
+    {
+     "code": {
+      "lang": "html",
+      "text": "<a class=\"group block rounded-lg p-4 hover:bg-sky-500\">\n  <h3 class=\"group-hover:text-white\">Loyiha</h3>\n  <span class=\"opacity-0 group-hover:opacity-100\">→</span>\n</a>"
+     }
+    },
+    {
+     "heading": "peer — qo'shni holati",
+     "text": "Oldingi qo'shniga `peer`, keyingisiga `peer-invalid:` yoki `peer-checked:`. Muhim: `peer` element (sahifa unsuri) DOM da OLDIN turishi kerak, chunki CSS faqat keyingi qo'shnini tanlay oladi."
+    },
+    {
+     "heading": "aria va data",
+     "text": "`aria-expanded:rotate-180`, `data-[state=open]:block`, `has-checked:ring-2` (ichida belgilangan input bo'lsa)."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "`outline-none` qo'yib, o'rniga hech narsa bermasangiz klaviatura foydalanuvchisi fokusni ko'rmaydi. `focus-visible:ring-2` kabi ko'rinadigan belgi qoldiring."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🔘",
+       "title": "Tugma",
+       "text": "Bosilganda botadi, o'chirilgan bo'lsa xira — har holatning o'z ko'rinishi bor."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Fokus belgisini hech qachon yo'qotmang."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "peer ni inputdan oldin kutish.",
+       "Input ni oldinga qo'ying.",
+       "CSS faqat keyingi qo'shnini tanlaydi."
+      ],
+      [
+       "outline-none qo'yib ketish.",
+       "focus-visible:ring bering.",
+       "Klaviatura foydalanuvchisi adashadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "variant:utility.",
+    "group — ota, peer — oldingi qo'shni.",
+    "focus-visible — klaviatura fokusi.",
+    "v4 da hover faqat hover qila oladigan qurilmada."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Tugma holatlari",
+    "text": "hover, active, focus-visible va disabled holatlari bor tugma yasang."
+   },
+   {
+    "title": "Forma",
+    "text": "peer bilan noto'g'ri email ostida xato matnini ko'rsating."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Ota ustiga kursor kelganda bola rangi o'zgarishi uchun?",
+    "options": [
+     "Otaga group, bolaga group-hover:",
+     "Otaga peer, bolaga peer-hover:",
+     "Otaga hover, bolaga child-hover:",
+     "Bolaga hover:, otaga group-active:"
+    ],
+    "answer": "Otaga group, bolaga group-hover:",
+    "explain": "group ota holatini kuzatadi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`peer-invalid:block` nega ishlamayapti?",
+    "options": [
+     "peer input matndan keyin turibdi",
+     "peer faqat tugmalarda ishlaydi",
+     "invalid holati CSS da mavjud emas",
+     "block o'rniga flex kerak edi"
+    ],
+    "answer": "peer input matndan keyin turibdi",
+    "explain": "Faqat KEYINGI qo'shnini tanlash mumkin.",
+    "passage": "<p class=\"hidden peer-invalid:block\">Xato email</p>\n<input type=\"email\" class=\"peer\" />"
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`focus:` va `focus-visible:` farqi?",
+    "options": [
+     "visible odatda klaviatura fokusida ishlaydi",
+     "visible faqat sichqoncha bosilganda ishlaydi",
+     "focus faqat inputlarda, visible tugmalarda",
+     "Ikkalasi bir xil, faqat nomi boshqacha"
+    ],
+    "answer": "visible odatda klaviatura fokusida ishlaydi",
+    "explain": "Sichqoncha bosishda tugmada halqa chiqmaydi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "O'chirilgan tugmani xira va bosib bo'lmaydigan ko'rsatish?",
+    "options": [
+     "disabled:opacity-50 disabled:cursor-not-allowed",
+     "hover:opacity-50 hover:cursor-not-allowed",
+     "opacity-50:disabled cursor-not-allowed:disabled",
+     "inactive:opacity-50 inactive:cursor-not-allowed"
+    ],
+    "answer": "disabled:opacity-50 disabled:cursor-not-allowed",
+    "explain": "Variant utility oldidan yoziladi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Jadvalda har ikkinchi qatorni bo'yash uchun?",
+    "options": [
+     "even:bg-slate-100",
+     "second:bg-slate-100",
+     "nth-2:bg-slate-100 only",
+     "peer-2:bg-slate-100"
+    ],
+    "answer": "even:bg-slate-100",
+    "explain": "even: / odd: variantlari."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Tailwind v4 da `hover:` sensorli telefonda qanday tutadi?",
+    "options": [
+     "Hover qila olmaydigan qurilmada qo'llanmaydi",
+     "Har bosilganda doimiy yoqilgan holda qolaveradi",
+     "Avtomatik ravishda active ga aylanadi",
+     "Sahifa yuklanganda yoqilib turadi"
+    ],
+    "answer": "Hover qila olmaydigan qurilmada qo'llanmaydi",
+    "explain": "v4 hover ni @media (hover: hover) ichiga oladi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Ikki ichma-ich group bor. Aynan tashqisiga bog'lanish uchun?",
+    "options": [
+     "group/card va group-hover/card:",
+     "group-card va group-hover-card:",
+     "group:card va card:hover:",
+     "peer/card va peer-hover/card:"
+    ],
+    "answer": "group/card va group-hover/card:",
+    "explain": "Nomlangan group."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Akkordeon tugmasi ochilganda strelka burilsin. `aria-expanded=\"true\"` bor. Qaysi klass tugmada?",
+    "options": [
+     "aria-expanded:rotate-180",
+     "expanded:rotate-180",
+     "aria-open:expanded:rotate-180",
+     "hover:aria-expanded"
+    ],
+    "answer": "aria-expanded:rotate-180",
+    "explain": "aria-* variantlari tayyor."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "Radix komponenti `data-state=\"open\"` qo'yadi. Shunga stil berish?",
+    "options": [
+     "data-[state=open]:bg-slate-100",
+     "state-open:bg-slate-100",
+     "data-[open=state]:bg-slate-100",
+     "data(state):open:bg-slate-100"
+    ],
+    "answer": "data-[state=open]:bg-slate-100",
+    "explain": "data-[...] ixtiyoriy variant."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Ichida belgilangan checkbox bo'lgan label ga stil beruvchi variant: `____-checked:ring-2`",
+    "answer": "has",
+    "explain": "has-checked: CSS :has() asosida."
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "group-hover ni qurish tartibi",
+    "words": [
+     "Otaga group klassi",
+     "Bolani tanlash",
+     "group-hover: prefiksi",
+     "Kerakli utility"
+    ],
+    "answer": "Otaga group klassi Bolani tanlash group-hover: prefiksi Kerakli utility",
+    "explain": "Avval kuzatiladigan ota, keyin bola stili."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Hover rangi",
+    "task": "Tugma `sky-600` fonda, ustiga kelganda `sky-700` bo'lsin.",
+    "starter": "<button class=\"text-white px-4 py-2\">Yuborish</button>",
+    "solution": "<button class=\"text-white px-4 py-2 bg-sky-600 hover:bg-sky-700\">Yuborish</button>",
+    "tests": [
+     {
+      "label": "Oddiy holatda sky-600",
+      "call": "css(\"button\",\"background-color\") === tok(\"sky-600\")",
+      "expect": "true"
+     },
+     {
+      "label": "Hover da sky-700",
+      "call": "(state(\"button\",\"hover\"), css(\"button\",\"background-color\") === tok(\"sky-700\"))",
+      "expect": "true"
+     }
+    ],
+    "hint": "Holat prefiksi.",
+    "kind": "tw",
+    "setup": "",
+    "id": "1"
+   },
+   {
+    "title": "Karta group",
+    "task": "Kartaning istalgan joyiga kursor kelganda sarlavha `blue-600` bo'lsin.",
+    "starter": "<a class=\"block p-4\">\n  <h3>Loyiha</h3>\n  <p>Tavsif</p>\n</a>",
+    "solution": "<a class=\"group block p-4\">\n  <h3 class=\"group-hover:text-blue-600\">Loyiha</h3>\n  <p>Tavsif</p>\n</a>",
+    "tests": [
+     {
+      "label": "Oddiy holatda ko'k emas",
+      "call": "css(\"h3\",\"color\") === tok(\"blue-600\")",
+      "expect": "false"
+     },
+     {
+      "label": "Karta hover da sarlavha ko'k",
+      "call": "(state(\"a\",\"hover\"), css(\"h3\",\"color\") === tok(\"blue-600\"))",
+      "expect": "true"
+     }
+    ],
+    "hint": "Ota holatini bola kuzatadi.",
+    "kind": "tw",
+    "setup": "",
+    "id": "2"
+   },
+   {
+    "title": "Klaviatura fokusi",
+    "task": "Fokus halqasi faqat `focus-visible` da chiqsin: 2px ring, standart outline yashirin.",
+    "starter": "<button class=\"px-4 py-2 outline-none\">OK</button>",
+    "solution": "<button class=\"px-4 py-2 focus-visible:outline-hidden focus-visible:ring-2\">OK</button>",
+    "tests": [
+     {
+      "label": "Oddiy holatda halqa yo'q",
+      "call": "css(\"button\",\"box-shadow\").includes(\"0px 0px 0px 2px\")",
+      "expect": "false"
+     },
+     {
+      "label": "focus-visible da 2px halqa",
+      "call": "(state(\"button\",\"focus-visible\"), css(\"button\",\"box-shadow\").includes(\"0px 0px 0px 2px\"))",
+      "expect": "true"
+     },
+     {
+      "label": "outline-none qolmagan",
+      "call": "cls(\"button\").includes(\"outline-none\")",
+      "expect": "false"
+     }
+    ],
+    "hint": "Fokus belgisini yo'qotmang, almashtiring.",
+    "kind": "tw",
+    "setup": "",
+    "id": "3"
+   },
+   {
+    "title": "O'chirilgan tugma",
+    "task": "`disabled` tugma 50% xira va `not-allowed` kursorli; oddiy tugma esa o'zgarmasin.",
+    "starter": "<button id=\"a\">Faol</button>\n<button id=\"b\" disabled>O'chiq</button>",
+    "solution": "<button id=\"a\" class=\"disabled:opacity-50 disabled:cursor-not-allowed\">Faol</button>\n<button id=\"b\" disabled class=\"disabled:opacity-50 disabled:cursor-not-allowed\">O'chiq</button>",
+    "tests": [
+     {
+      "label": "O'chiq tugma xira",
+      "call": "[css(\"#b\",\"opacity\"), css(\"#b\",\"cursor\")]",
+      "expect": "[\"0.5\",\"not-allowed\"]"
+     },
+     {
+      "label": "Faol tugma o'zgarmagan",
+      "call": "css(\"#a\",\"opacity\")",
+      "expect": "\"1\""
+     },
+     {
+      "label": "Ikkalasida ham bir xil klasslar",
+      "call": "cls(\"#a\").join() === cls(\"#b\").join()",
+      "expect": "true"
+     }
+    ],
+    "hint": "Variant holatni o'zi tekshiradi.",
+    "kind": "tw",
+    "setup": "",
+    "id": "4"
+   },
+   {
+    "title": "Zebra jadval",
+    "task": "Juft qatorlar `slate-100` fonda. Har `li` ga bir xil klass yozing.",
+    "starter": "<ul>\n  <li>1</li>\n  <li>2</li>\n  <li>3</li>\n  <li>4</li>\n</ul>",
+    "solution": "<ul>\n  <li class=\"even:bg-slate-100\">1</li>\n  <li class=\"even:bg-slate-100\">2</li>\n  <li class=\"even:bg-slate-100\">3</li>\n  <li class=\"even:bg-slate-100\">4</li>\n</ul>",
+    "tests": [
+     {
+      "label": "2- va 4-qator bo'yalgan",
+      "call": "[2,4].every((i) => css(`li:nth-child(${i})`,\"background-color\") === tok(\"slate-100\"))",
+      "expect": "true"
+     },
+     {
+      "label": "1- va 3-qator bo'sh",
+      "call": "[1,3].some((i) => css(`li:nth-child(${i})`,\"background-color\") === tok(\"slate-100\"))",
+      "expect": "false"
+     },
+     {
+      "label": "Klasslar bir xil",
+      "call": "new Set([1,2,3,4].map((i) => cls(`li:nth-child(${i})`).join())).size",
+      "expect": "1"
+     }
+    ],
+    "hint": "Juft/toq variantlari.",
+    "kind": "tw",
+    "setup": "",
+    "id": "5"
+   },
+   {
+    "title": "Xato matni",
+    "task": "Email noto'g'ri bo'lsa ostidagi xato ko'rinsin. Hozir ko'rinmayapti.",
+    "starter": "<p id=\"err\" class=\"hidden peer-invalid:block\">Email noto'g'ri</p>\n<input type=\"email\" value=\"abc\" class=\"border\" />",
+    "solution": "<input type=\"email\" value=\"abc\" class=\"peer border\" />\n<p id=\"err\" class=\"hidden peer-invalid:block\">Email noto'g'ri</p>",
+    "tests": [
+     {
+      "label": "Noto'g'ri email da xato ko'rinadi",
+      "call": "css(\"#err\",\"display\")",
+      "expect": "\"block\""
+     },
+     {
+      "label": "Xato inputdan keyin turadi",
+      "call": "y(\"#err\") > y(\"input\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "CSS qaysi qo'shnini tanlay oladi?",
+    "kind": "tw",
+    "setup": "",
+    "id": "6"
+   },
+   {
+    "title": "Belgilangan tanlov",
+    "task": "Radio belgilangan label ning chegarasi `indigo-600` bo'lsin (label ning o'ziga yozing).",
+    "starter": "<label id=\"a\" class=\"block border p-3\"><input type=\"radio\" name=\"t\" checked /> Oylik</label>\n<label id=\"b\" class=\"block border p-3\"><input type=\"radio\" name=\"t\" /> Yillik</label>",
+    "solution": "<label id=\"a\" class=\"block border p-3 has-checked:border-indigo-600\"><input type=\"radio\" name=\"t\" checked /> Oylik</label>\n<label id=\"b\" class=\"block border p-3 has-checked:border-indigo-600\"><input type=\"radio\" name=\"t\" /> Yillik</label>",
+    "tests": [
+     {
+      "label": "Belgilangani indigo",
+      "call": "css(\"#a\",\"border-top-color\") === tok(\"indigo-600\")",
+      "expect": "true"
+     },
+     {
+      "label": "Boshqasi emas",
+      "call": "css(\"#b\",\"border-top-color\") === tok(\"indigo-600\")",
+      "expect": "false"
+     }
+    ],
+    "hint": "Ichidagi input holatiga qarab.",
+    "kind": "tw",
+    "setup": "",
+    "id": "7"
+   },
+   {
+    "title": "Akkordeon strelkasi",
+    "task": "`aria-expanded=\"true\"` tugmadagi strelka 180° burilsin (klassni tugmaga yozing, strelkaga emas).",
+    "starter": "<button id=\"a\" aria-expanded=\"true\">▾</button>\n<button id=\"b\" aria-expanded=\"false\">▾</button>",
+    "solution": "<button id=\"a\" aria-expanded=\"true\" class=\"aria-expanded:rotate-180\">▾</button>\n<button id=\"b\" aria-expanded=\"false\" class=\"aria-expanded:rotate-180\">▾</button>",
+    "tests": [
+     {
+      "label": "Ochiq tugma burilgan",
+      "call": "css(\"#a\",\"rotate\")",
+      "expect": "\"180deg\""
+     },
+     {
+      "label": "Yopiq tugma burilmagan",
+      "call": "css(\"#b\",\"rotate\")",
+      "expect": "\"none\""
+     }
+    ],
+    "hint": "ARIA atributiga mos variant.",
+    "kind": "tw",
+    "setup": "",
+    "id": "8"
+   },
+   {
+    "title": "data-state",
+    "task": "`data-state=\"open\"` panel ko'rinsin, `closed` yashirin bo'lsin (ikkalasiga bir xil klass).",
+    "starter": "<div id=\"a\" data-state=\"open\">Ochiq panel</div>\n<div id=\"b\" data-state=\"closed\">Yopiq panel</div>",
+    "solution": "<div id=\"a\" data-state=\"open\" class=\"hidden data-[state=open]:block\">Ochiq panel</div>\n<div id=\"b\" data-state=\"closed\" class=\"hidden data-[state=open]:block\">Yopiq panel</div>",
+    "tests": [
+     {
+      "label": "Ochiq ko'rinadi, yopiq yo'q",
+      "call": "[css(\"#a\",\"display\"), css(\"#b\",\"display\")]",
+      "expect": "[\"block\",\"none\"]"
+     },
+     {
+      "label": "Klasslar bir xil",
+      "call": "cls(\"#a\").join() === cls(\"#b\").join()",
+      "expect": "true"
+     }
+    ],
+    "hint": "Atribut qiymatiga qarab variant.",
+    "kind": "tw",
+    "setup": "",
+    "id": "9"
+   },
+   {
+    "title": "Nomlangan group",
+    "task": "Tashqi kartaga kursor kelganda faqat `#out`, ichki qatorga kelganda `#in` tagi chizilsin.",
+    "starter": "<div id=\"card\" class=\"p-4\">\n  <b id=\"out\">Karta</b>\n  <div id=\"row\">\n    <span id=\"in\">Qator</span>\n  </div>\n</div>",
+    "solution": "<div id=\"card\" class=\"group/card p-4\">\n  <b id=\"out\" class=\"group-hover/card:underline\">Karta</b>\n  <div id=\"row\" class=\"group/row\">\n    <span id=\"in\" class=\"group-hover/row:underline\">Qator</span>\n  </div>\n</div>",
+    "tests": [
+     {
+      "label": "Karta hover: faqat #out",
+      "call": "(state(\"#card\",\"hover\"), [css(\"#out\",\"text-decoration-line\"), css(\"#in\",\"text-decoration-line\")])",
+      "expect": "[\"underline\",\"none\"]"
+     },
+     {
+      "label": "Qator hover: #in",
+      "call": "(state(\"#row\",\"hover\"), css(\"#in\",\"text-decoration-line\"))",
+      "expect": "\"underline\""
+     }
+    ],
+    "hint": "Ikki group ni nomlab ajrating.",
+    "kind": "tw",
+    "setup": "",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-tw-jr-05",
+  "level": "JUNIOR",
+  "module": "tailwind",
+  "order": 5,
+  "title": "Dark mode va kaskad qatlamlari",
+  "intro": "dark: variant, klass orqali almashtirish, @layer qatlamlari va klasslar to'qnashganda kim yutishi.",
+  "theory": {
+   "analogy": {
+    "icon": "🌗",
+    "title": "Kunduz va tun",
+    "text": "Xona o'sha, faqat yoritish almashadi. Har elementga tungi qiymatini oldindan yozib qo'yasiz."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Dark mode — qorong'i muhit uchun ikkinchi ranglar to'plami; kaskad qatlamlari esa qaysi qoida yutishini boshqaradi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Cascade layer (kaskad qatlami)",
+       "text": "CSS qoidalarini ustuvorlik guruhlariga ajratish (@layer)."
+      },
+      {
+       "term": "prefers-color-scheme",
+       "text": "foydalanuvchi tizimida yorug' yoki qorong'i rejim tanlanganini bildiruvchi media so'rov."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Tema tugmasida",
+       "text": "@custom-variant dark."
+      },
+      {
+       "term": "Umumiy teg stillarida",
+       "text": "@layer base."
+      },
+      {
+       "term": "To'qnashuvni hal qilishda",
+       "text": "qatlam tartibi."
+      }
+     ]
+    },
+    {
+     "heading": "dark: varianti",
+     "text": "`bg-white dark:bg-slate-900`. Odatiy holatda `dark:` operatsion tizim sozlamasiga (`prefers-color-scheme`) bog'lanadi."
+    },
+    {
+     "heading": "Klass bilan boshqarish",
+     "text": "Saytda tugma bilan almashtirish kerak bo'lsa variant qayta e'lon qilinadi, keyin `<html class=\"dark\">` qo'shib-olib turiladi."
+    },
+    {
+     "code": {
+      "lang": "css",
+      "text": "@import \"tailwindcss\";\n@custom-variant dark (&:where(.dark, .dark *));"
+     }
+    },
+    {
+     "heading": "Qatlamlar",
+     "text": "Tailwind CSS ni `theme`, `base`, `components`, `utilities` qatlamlariga joylaydi. Keyingi qatlam specificity (ustunlik) dan qat'i nazar yutadi: shuning uchun utility `.card` kabi komponent klassini bosib o'tadi."
+    },
+    {
+     "heading": "To'qnashuv",
+     "text": "`class=\"p-4 p-8\"` da HTML dagi tartib ahamiyatsiz — natijani CSS fayldagi tartib hal qiladi. Bir xususiyatga ikki klass yozmang."
+    },
+    {
+     "callout": {
+      "kind": "tip",
+      "text": "Muhimlik kerak bo'lib qolsa v4 da undov oxirida: `bg-red-500!`. Lekin avval qatlam va tartibni tekshiring."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📱",
+       "title": "Telefon rejimi",
+       "text": "Tizimda tungi rejim yoqilsa ilovalar o'zi qorayadi."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Har rangga juftini bering."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Faqat fonni almashtirish.",
+       "Matn va chegarani ham bering.",
+       "Matn o'qilmay qoladi."
+      ],
+      [
+       "Qatlamsiz CSS bilan utility ni bosish.",
+       "@layer ichida yozing.",
+       "Qatlamsiz stil doim ustun."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "dark: odatda tizim sozlamasi.",
+    "Tugma bilan: @custom-variant dark.",
+    "utilities qatlami components (qayta ishlatiladigan bo'lak) dan ustun.",
+    "class satridagi tartib hech narsani hal qilmaydi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Tema tugmasi",
+    "text": "Tugma bosilganda `dark` klassini almashtirib, tanlovni localStorage da saqlang."
+   },
+   {
+    "title": "Kontrast",
+    "text": "Dark rejimda matn va fon kontrastini DevTools da tekshiring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Sozlama qilinmagan v4 loyihada `dark:` qachon ishlaydi?",
+    "options": [
+     "Tizimda qorong'i rejim tanlanganda",
+     "html tegiga dark klassi qo'shilganda",
+     "Kechki soat oltidan keyin",
+     "body fon rangi qora bo'lganda"
+    ],
+    "answer": "Tizimda qorong'i rejim tanlanganda",
+    "explain": "Odatiy variant prefers-color-scheme."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Klass bilan boshqarish uchun CSS ga nima yoziladi?",
+    "options": [
+     "@custom-variant dark (...)",
+     "@theme { --dark: true }",
+     "@utility dark { ... }",
+     "@layer dark { :root.dark {} }"
+    ],
+    "answer": "@custom-variant dark (...)",
+    "explain": "dark variantini qayta e'lon qilasiz."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`.btn` `@layer components` da `padding: 20px`, elementda `class=\"btn p-2\"`. Padding?",
+    "options": [
+     "8px",
+     "20px",
+     "28px",
+     "0px"
+    ],
+    "answer": "8px",
+    "explain": "utilities qatlami components (qayta ishlatiladigan bo'lak) dan keyin."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "`class=\"text-red-500 text-blue-500\"` da qaysi rang chiqishini nima hal qiladi?",
+    "options": [
+     "Yaratilgan CSS dagi qoidalar tartibi",
+     "class atributidagi yozilish tartibi",
+     "Rang nomining uzunligi va soni",
+     "Brauzer tasodifiy bittasini tanlaydi"
+    ],
+    "answer": "Yaratilgan CSS dagi qoidalar tartibi",
+    "explain": "HTML dagi klass tartibi kaskadga ta'sir qilmaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "v4 da \"important\" qanday yoziladi?",
+    "options": [
+     "bg-red-500!",
+     "bg-red-500:important",
+     "important-bg-red-500",
+     "bg-red-500 !!"
+    ],
+    "answer": "bg-red-500!",
+    "explain": "Undov klass oxirida."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Nega unlayered (qatlamsiz) oddiy CSS qoida utility ni bosib ketishi mumkin?",
+    "options": [
+     "Qatlamsiz stil qatlamlardan ustun turadi",
+     "Qatlamsiz stil har doim birinchi yuklanadi",
+     "Utility larning specificity si nolga teng",
+     "Tailwind qatlamsiz stilni o'chirib tashlaydi"
+    ],
+    "answer": "Qatlamsiz stil qatlamlardan ustun turadi",
+    "explain": "Kaskad qatlami qoidasi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "`bg-white dark:bg-slate-900` qorong'i rejimda nimani beradi?",
+    "options": [
+     "slate-900 fon",
+     "oq fon",
+     "ikkalasi aralash",
+     "shaffof fon"
+    ],
+    "answer": "slate-900 fon",
+    "explain": "Shart bajarilsa dark: ustidan yozadi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Dark rejimda faqat fonni almashtirib, matnni unutsangiz nima bo'ladi?",
+    "options": [
+     "Qora fonda qora matn o'qilmay qoladi",
+     "Matn rangi o'zi avtomatik teskarilanadi",
+     "Brauzer sahifani umuman chizmay qo'yadi",
+     "Tailwind build paytida xato beradi"
+    ],
+    "answer": "Qora fonda qora matn o'qilmay qoladi",
+    "explain": "Har rangning juftini bering."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "`@layer base` ga odatda nima yoziladi?",
+    "options": [
+     "Teglarga umumiy boshlang'ich stillar",
+     "Tugma va karta kabi tayyor komponentlar",
+     "Eng ustun yordamchi klasslar",
+     "Faqat animatsiya kadrlari"
+    ],
+    "answer": "Teglarga umumiy boshlang'ich stillar",
+    "explain": "h1, a, body (asosiy tana) kabi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Tailwind ning ustuvorligi eng yuqori qatlami nomi?",
+    "answer": "utilities",
+    "explain": "theme < base < components (qayta ishlatiladigan bo'lak) < utilities."
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "Qatlamlarni ustuvorligi pastdan yuqoriga tartiblang",
+    "words": [
+     "theme",
+     "base",
+     "components",
+     "utilities"
+    ],
+    "answer": "theme base components utilities",
+    "explain": "Oxirgisi yutadi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Qorong'i karta",
+    "task": "Karta: yorug'da oq fon va `slate-900` matn, qorong'ida `slate-900` fon va oq matn.",
+    "starter": "<div id=\"c\" class=\"p-4\">Karta</div>",
+    "solution": "<div id=\"c\" class=\"p-4 bg-white text-slate-900 dark:bg-slate-900 dark:text-white\">Karta</div>",
+    "tests": [
+     {
+      "label": "Yorug' rejim",
+      "call": "[css(\"#c\",\"background-color\") === tok(\"white\"), css(\"#c\",\"color\") === tok(\"slate-900\")]",
+      "expect": "[true,true]"
+     },
+     {
+      "label": "Qorong'i rejim",
+      "call": "(dark(), [css(\"#c\",\"background-color\") === tok(\"slate-900\"), css(\"#c\",\"color\") === tok(\"white\")])",
+      "expect": "[true,true]"
+     }
+    ],
+    "hint": "Har rangning juftini bering.",
+    "kind": "tw",
+    "setup": "",
+    "id": "1"
+   },
+   {
+    "title": "O'qilmayotgan matn",
+    "task": "Qorong'i rejimda sarlavha va izoh ko'rinmay qolyapti: sarlavha oq, izoh `slate-300` bo'lsin.",
+    "starter": "<div class=\"bg-white dark:bg-slate-900 p-4\">\n  <h2 class=\"text-slate-900\">Sozlamalar</h2>\n  <p class=\"text-slate-600\">Profilni boshqarish</p>\n</div>",
+    "solution": "<div class=\"bg-white dark:bg-slate-900 p-4\">\n  <h2 class=\"text-slate-900 dark:text-white\">Sozlamalar</h2>\n  <p class=\"text-slate-600 dark:text-slate-300\">Profilni boshqarish</p>\n</div>",
+    "tests": [
+     {
+      "label": "Qorong'ida ranglar to'g'ri",
+      "call": "(dark(), [css(\"h2\",\"color\") === tok(\"white\"), css(\"p\",\"color\") === tok(\"slate-300\")])",
+      "expect": "[true,true]"
+     },
+     {
+      "label": "Yorug'da o'zgarmagan",
+      "call": "[css(\"h2\",\"color\") === tok(\"slate-900\"), css(\"p\",\"color\") === tok(\"slate-600\")]",
+      "expect": "[true,true]"
+     }
+    ],
+    "hint": "dark: har matn uchun alohida.",
+    "kind": "tw",
+    "setup": "",
+    "id": "2"
+   },
+   {
+    "title": "Zid klasslar",
+    "task": "Karta paddingi 32px bo'lishi kerak, lekin satrda bir xususiyatga ikki klass bor. Ortiqchasini olib tashlang.",
+    "starter": "<div id=\"c\" class=\"p-8 p-10\">Karta</div>",
+    "solution": "<div id=\"c\" class=\"p-8\">Karta</div>",
+    "tests": [
+     {
+      "label": "Padding 32px",
+      "call": "css(\"#c\",\"padding-top\")",
+      "expect": "\"32px\""
+     }
+    ],
+    "hint": "Atributdagi tartib yutuvchini belgilamaydi.",
+    "kind": "tw",
+    "setup": "",
+    "id": "3"
+   },
+   {
+    "title": "Utility komponentni yengadi",
+    "task": "`.btn` komponenti 20px padding beradi. Shu tugmada 8px bo'lsin, CSS ga tegmang.",
+    "starter": "<button class=\"btn\">Kichik</button>",
+    "solution": "<button class=\"btn p-2\">Kichik</button>",
+    "tests": [
+     {
+      "label": "Padding 8px",
+      "call": "css(\"button\",\"padding-top\")",
+      "expect": "\"8px\""
+     },
+     {
+      "label": "btn klassi qolgan",
+      "call": "cls(\"button\").includes(\"btn\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "Qaysi qatlam ustun?",
+    "kind": "tw",
+    "setup": "@layer components { .btn { padding: 20px; background: gray; } }",
+    "id": "4"
+   },
+   {
+    "title": "Klass bilan dark",
+    "task": "Qorong'i rejim tizim sozlamasiga emas, `<html class=\"dark\">` ga bog'lansin.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": "@custom-variant dark (&:where(.dark, .dark *));",
+    "tests": [
+     {
+      "label": "Klassiz oq",
+      "call": "css(\"div\",\"background-color\") === tok(\"white\")",
+      "expect": "true"
+     },
+     {
+      "label": "dark klassi bilan qora",
+      "call": "(dark(), css(\"div\",\"background-color\") === tok(\"black\"))",
+      "expect": "true"
+     }
+    ],
+    "hint": "Mavjud variantni qayta e'lon qiling.",
+    "kind": "twcss",
+    "setup": "<div class=\"bg-white dark:bg-black p-4\">Matn</div>",
+    "id": "5"
+   },
+   {
+    "title": "Teglarga boshlang'ich stil",
+    "task": "`base` qatlamida: barcha `h2` 24px va 700; ammo HTML dagi utility lar baribir ustun tursin.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": "@layer base {\n  h2 { font-size: 1.5rem; font-weight: 700; }\n}",
+    "tests": [
+     {
+      "label": "Oddiy h2 24px, 700",
+      "call": "[css(\"#a\",\"font-size\"), css(\"#a\",\"font-weight\")]",
+      "expect": "[\"24px\",\"700\"]"
+     },
+     {
+      "label": "text-sm ustun",
+      "call": "css(\"#b\",\"font-size\")",
+      "expect": "\"14px\""
+     }
+    ],
+    "hint": "Qatlamsiz yozsangiz utility yutqazadi.",
+    "kind": "twcss",
+    "setup": "<h2 id=\"a\">Oddiy</h2>\n<h2 id=\"b\" class=\"text-sm\">Kichik</h2>",
+    "id": "6"
+   },
+   {
+    "title": "Komponent klassi",
+    "task": "`components` qatlamida `.card`: 16px padding va 12px radius. `p-2` yozilgan kartada padding 8px qolsin.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": "@layer components {\n  .card { padding: 1rem; border-radius: 0.75rem; }\n}",
+    "tests": [
+     {
+      "label": "Oddiy karta",
+      "call": "[css(\"#a\",\"padding-top\"), css(\"#a\",\"border-top-left-radius\")]",
+      "expect": "[\"16px\",\"12px\"]"
+     },
+     {
+      "label": "p-2 ustun",
+      "call": "css(\"#b\",\"padding-top\")",
+      "expect": "\"8px\""
+     }
+    ],
+    "hint": "Qaysi qatlamga yozish kerak?",
+    "kind": "twcss",
+    "setup": "<div id=\"a\" class=\"card\">A</div>\n<div id=\"b\" class=\"card p-2\">B</div>",
+    "id": "7"
+   },
+   {
+    "title": "Utility yutqazyapti",
+    "task": "`.title` qoidasi `text-red-500` ni bosib ketyapti. CSS ni shunday qiling: sarlavha qalin qolsin, rangni utility bersin.",
+    "starter": ".title { color: black; font-weight: 800; }\n",
+    "solution": "@layer components {\n  .title { color: black; font-weight: 800; }\n}",
+    "tests": [
+     {
+      "label": "Rang utility dan",
+      "call": "css(\"h1\",\"color\") === tok(\"red-500\")",
+      "expect": "true"
+     },
+     {
+      "label": "Qalinlik saqlangan",
+      "call": "css(\"h1\",\"font-weight\")",
+      "expect": "\"800\""
+     },
+     {
+      "label": "!important ishlatilmagan",
+      "call": "src().includes(\"!important\")",
+      "expect": "false"
+     }
+    ],
+    "hint": "Qatlamsiz stil hamma qatlamdan ustun.",
+    "kind": "twcss",
+    "setup": "<h1 class=\"title text-red-500\">Diqqat</h1>",
+    "id": "8"
+   },
+   {
+    "title": "Muhimlik",
+    "task": "Uchinchi tomon `.legacy` stili qatlamsiz va uni o'zgartirib bo'lmaydi. Shu elementda fon `green-500` bo'lsin.",
+    "starter": "<div class=\"legacy bg-green-500 p-4\">Eski blok</div>",
+    "solution": "<div class=\"legacy bg-green-500! p-4\">Eski blok</div>",
+    "tests": [
+     {
+      "label": "Fon green-500",
+      "call": "css(\"div\",\"background-color\") === tok(\"green-500\")",
+      "expect": "true"
+     },
+     {
+      "label": "legacy klassi qolgan",
+      "call": "cls(\"div\").includes(\"legacy\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "v4 da muhimlik belgisi klass oxirida.",
+    "kind": "tw",
+    "setup": ".legacy { background-color: gray; }",
+    "id": "9"
+   },
+   {
+    "title": "Dark + hover",
+    "task": "Qorong'i rejimda tugma `slate-700`, hover da `slate-600`; yorug'da `slate-200`, hover da `slate-300`.",
+    "starter": "<button class=\"px-4 py-2\">Tema</button>",
+    "solution": "<button class=\"px-4 py-2 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600\">Tema</button>",
+    "tests": [
+     {
+      "label": "Yorug': oddiy va hover",
+      "call": "[css(\"button\",\"background-color\") === tok(\"slate-200\"), (state(\"button\",\"hover\"), css(\"button\",\"background-color\") === tok(\"slate-300\"))]",
+      "expect": "[true,true]"
+     },
+     {
+      "label": "Qorong'i: oddiy",
+      "call": "(dark(), css(\"button\",\"background-color\") === tok(\"slate-700\"))",
+      "expect": "true"
+     },
+     {
+      "label": "Qorong'i hover",
+      "call": "(dark(), state(\"button\",\"hover\"), css(\"button\",\"background-color\") === tok(\"slate-600\"))",
+      "expect": "true"
+     }
+    ],
+    "hint": "Variantlarni zanjir qiling.",
+    "kind": "tw",
+    "setup": "",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-tw-jr-06",
+  "level": "JUNIOR",
+  "module": "tailwind",
+  "order": 6,
+  "title": "v4: @theme va o'z utility laringiz",
+  "intro": "CSS-first sozlash: dizayn tokenlari, @utility, @custom-variant va @apply.",
+  "theory": {
+   "analogy": {
+    "icon": "🗂️",
+    "title": "Brend kitobi",
+    "text": "Kompaniya ranglari bitta hujjatda. O'zgartirsangiz — hamma bosma mahsulot yangilanadi. `@theme` — saytning brend kitobi."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "v4 sozlamasi CSS ning o'zida: @theme tokenlari utility yaratadi, @utility esa yangisini qo'shadi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "@theme",
+       "text": "dizayn tokenlari e'lon qilinadigan v4 direktivasi."
+      },
+      {
+       "term": "@utility",
+       "text": "variantlar bilan ishlaydigan yangi utility e'lon qilish."
+      },
+      {
+       "term": "@apply",
+       "text": "mavjud utility larni CSS qoidasiga qo'shish."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Brend ranglari va shriftlarida",
+       "text": "@theme."
+      },
+      {
+       "term": "O'z klassingizda",
+       "text": "@utility."
+      },
+      {
+       "term": "Tashqi HTML ni stillashda",
+       "text": "@apply."
+      }
+     ]
+    },
+    {
+     "heading": "@theme",
+     "text": "v4 da sozlama CSS ning o'zida. `--color-brand: #0ea5e9;` yozsangiz `bg-brand`, `text-brand`, `border-brand` utility lari paydo bo'ladi va `var(--color-brand)` ham ishlaydi."
+    },
+    {
+     "code": {
+      "lang": "css",
+      "text": "@import \"tailwindcss\";\n\n@theme {\n  --color-brand: #0ea5e9;\n  --radius-card: 1.25rem;\n  --breakpoint-3xl: 120rem;\n}"
+     }
+    },
+    {
+     "heading": "Nom maydonlari",
+     "text": "`--color-*` ranglar, `--font-*` shriftlar, `--text-*` shrift o'lchami, `--radius-*`, `--shadow-*`, `--breakpoint-*`, `--spacing`. `--color-*: initial;` standart ranglarni olib tashlaydi."
+    },
+    {
+     "heading": "@utility va @custom-variant",
+     "text": "`@utility content-auto { content-visibility: auto; }` — o'z utility ngiz, u `md:content-auto`, `hover:content-auto` bilan ham ishlaydi. `@custom-variant theme-neon (&:where(.neon *));` — o'z variantingiz."
+    },
+    {
+     "heading": "@apply",
+     "text": "Utility larni CSS qoidasi ichida ishlatish: `.btn { @apply rounded-lg px-4 py-2; }`. Uchinchi tomon HTML i yoki juda takrorlanadigan holat uchun; hamma joyda ishlatsangiz utility-first (mayda yordamchi classlar usuli) ma'nosi yo'qoladi."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "`@layer components (qayta ishlatiladigan bo'lak)` dagi oddiy klass bilan `hover:btn` ishlamaydi. Variantlar kerak bo'lsa `@utility` bilan e'lon qiling."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🏷️",
+       "title": "Narx yorlig'i",
+       "text": "Narx bitta bazada: o'zgarsa hamma yorliq yangilanadi."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Variant kerak bo'lsa @utility."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Rangni --brand deb nomlash.",
+       "--color-brand yozing.",
+       "Nom maydonisiz utility yaratilmaydi."
+      ],
+      [
+       "Hammasini @apply bilan klassga o'rash.",
+       "Komponent yarating.",
+       "Utility-first afzalligi yo'qoladi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "@theme tokeni = utility + CSS o'zgaruvchi.",
+    "Nom maydoni utility turini belgilaydi.",
+    "@utility variantlar bilan ishlaydi.",
+    "@apply ni tejab ishlating."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Tema",
+    "text": "Brend rangi, shrift va radius tokenlarini e'lon qilib, kartada ishlating."
+   },
+   {
+    "title": "Utility",
+    "text": "`text-balance-title` nomli o'z utility ngizni yarating."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "`@theme { --color-brand: #f00; }` dan keyin nima paydo bo'ladi?",
+    "options": [
+     "bg-brand, text-brand kabi utility lar",
+     "Faqat .color-brand nomli bitta klass",
+     "Hech narsa: JS config fayli ham shart bo'ladi",
+     "Faqat brand() degan CSS funksiya"
+    ],
+    "answer": "bg-brand, text-brand kabi utility lar",
+    "explain": "color nom maydoni rang utility larini yaratadi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`--radius-card: 20px` qaysi utility ni beradi?",
+    "options": [
+     "rounded-card",
+     "radius-card",
+     "border-card",
+     "card-rounded"
+    ],
+    "answer": "rounded-card",
+    "explain": "--radius-* → rounded-*."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`--color-*: initial;` nima qiladi?",
+    "options": [
+     "Standart ranglarni olib tashlaydi",
+     "Hamma rangni qora rangga almashtiradi",
+     "Ranglarni qayta tiklab beradi",
+     "Rang utility larini ikkilaydi"
+    ],
+    "answer": "Standart ranglarni olib tashlaydi",
+    "explain": "Nom maydonini tozalaydi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "`hover:btn` ishlashi uchun `btn` qanday e'lon qilinadi?",
+    "options": [
+     "@utility btn { ... }",
+     "@layer components { .btn {} }",
+     ".btn { ... }",
+     "@theme { --btn: 1 }"
+    ],
+    "answer": "@utility btn { ... }",
+    "explain": "Variantlar faqat utility lar bilan ishlaydi."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "v4 da `tailwind.config.js` haqida qaysi gap to'g'ri?",
+    "options": [
+     "Majburiy emas, sozlash CSS da",
+     "Har bir loyihada majburiy fayl",
+     "Faqat ranglar uchun kerak",
+     "O'rniga HTML ichida yoziladi"
+    ],
+    "answer": "Majburiy emas, sozlash CSS da",
+    "explain": "CSS-first konfiguratsiya."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "`@apply` ni haddan tashqari ishlatishning zarari?",
+    "options": [
+     "Yana nom o'ylash va CSS o'sishi qaytadi",
+     "Brauzer bunday CSS ni tushunmay qoladi",
+     "Variantlar butun loyihada o'chib qoladi",
+     "Build natijasi umuman hosil bo'lmaydi"
+    ],
+    "answer": "Yana nom o'ylash va CSS o'sishi qaytadi",
+    "explain": "Takrorni komponent bilan hal qilgan yaxshi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Bu koddan keyin `p-2` necha piksel (root 16px)?",
+    "options": [
+     "16px",
+     "8px",
+     "2px",
+     "32px"
+    ],
+    "answer": "16px",
+    "explain": "--spacing 0.5rem = 8px, p-2 = 2 qadam.",
+    "passage": "@theme {\n  --spacing: 0.5rem;\n}"
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Yangi 1920px breakpoint qanday qo'shiladi?",
+    "options": [
+     "--breakpoint-3xl: 120rem",
+     "--screen-3xl: 1920",
+     "@media 3xl { }",
+     "--container-3xl: 1920px;"
+    ],
+    "answer": "--breakpoint-3xl: 120rem",
+    "explain": "So'ng 3xl: prefiksi ishlaydi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "`@theme` va oddiy `:root` o'zgaruvchisining farqi?",
+    "options": [
+     "@theme tokeni utility ham yaratadi",
+     ":root o'zgaruvchisi tezroq ishlaydi",
+     "@theme faqat dark rejimda ishlaydi",
+     ":root v4 da taqiqlangan hisoblanadi"
+    ],
+    "answer": "@theme tokeni utility ham yaratadi",
+    "explain": ":root qiymati utility yaratmaydi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Mavjud utility larni CSS qoidasi ichida qo'llaydigan direktiva: `@____`",
+    "answer": "apply",
+    "explain": "@apply."
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "Brend rangini joriy qilish tartibi",
+    "words": [
+     "@import tailwindcss",
+     "@theme da token",
+     "HTML da bg-brand",
+     "Natijani tekshirish"
+    ],
+    "answer": "@import tailwindcss @theme da token HTML da bg-brand Natijani tekshirish",
+    "explain": "Import (olib kirish), token (ruxsat kaliti), ishlatish."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Brend rangi",
+    "task": "`#0ea5e9` rangli `brand` tokenini e'lon qiling: HTML dagi `bg-brand` va `text-brand` ishlasin.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": "@theme {\n  --color-brand: #0ea5e9;\n}",
+    "tests": [
+     {
+      "label": "Tugma foni brand",
+      "call": "css(\"button\",\"background-color\")",
+      "expect": "\"rgb(14, 165, 233)\""
+     },
+     {
+      "label": "Havola rangi brand",
+      "call": "css(\"a\",\"color\")",
+      "expect": "\"rgb(14, 165, 233)\""
+     }
+    ],
+    "hint": "Nom maydoni rang utility larini yaratadi.",
+    "kind": "twcss",
+    "setup": "<button class=\"bg-brand text-white\">OK</button>\n<a class=\"text-brand\">Havola</a>",
+    "id": "1"
+   },
+   {
+    "title": "Karta radiusi",
+    "task": "`rounded-card` 20px, `shadow-card` esa soya bersin.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": "@theme {\n  --radius-card: 20px;\n  --shadow-card: 0 4px 12px rgb(0 0 0 / 0.2);\n}",
+    "tests": [
+     {
+      "label": "Radius 20px",
+      "call": "css(\"div\",\"border-top-left-radius\")",
+      "expect": "\"20px\""
+     },
+     {
+      "label": "Soya bor",
+      "call": "css(\"div\",\"box-shadow\").includes(\"12px\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "radius va shadow nom maydonlari.",
+    "kind": "twcss",
+    "setup": "<div class=\"rounded-card shadow-card p-4\">Karta</div>",
+    "id": "2"
+   },
+   {
+    "title": "Spacing shkalasi",
+    "task": "Butun loyiha 8px qadamli bo'lsin: `p-2` → 16px, `w-10` → 80px.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": "@theme {\n  --spacing: 8px;\n}",
+    "tests": [
+     {
+      "label": "p-2 = 16px",
+      "call": "css(\"div\",\"padding-top\")",
+      "expect": "\"16px\""
+     },
+     {
+      "label": "w-10 = 80px",
+      "call": "w(\"div\")",
+      "expect": "80"
+     }
+    ],
+    "hint": "Bitta token hamma o'lchamni boshqaradi.",
+    "kind": "twcss",
+    "setup": "<div class=\"p-2 w-10\">A</div>",
+    "id": "3"
+   },
+   {
+    "title": "Katta ekran",
+    "task": "120rem (1920px) li `3xl` breakpoint qo'shing.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": "@theme {\n  --breakpoint-3xl: 120rem;\n}",
+    "tests": [
+     {
+      "label": "1100px: oddiy",
+      "call": "(at(1100), css(\"div\",\"font-size\"))",
+      "expect": "\"16px\""
+     },
+     {
+      "label": "1950px: katta",
+      "call": "(at(1950), css(\"div\",\"font-size\"))",
+      "expect": "\"24px\""
+     }
+    ],
+    "hint": "breakpoint nom maydoni.",
+    "kind": "twcss",
+    "setup": "<div class=\"text-base 3xl:text-2xl\">Keng</div>",
+    "id": "4"
+   },
+   {
+    "title": "O'z utility",
+    "task": "`content-auto` utility sini yarating (`content-visibility: auto`); u `md:` bilan ham ishlasin.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": "@utility content-auto {\n  content-visibility: auto;\n}",
+    "tests": [
+     {
+      "label": "Oddiy holatda",
+      "call": "css(\"#a\",\"content-visibility\")",
+      "expect": "\"auto\""
+     },
+     {
+      "label": "md: bilan",
+      "call": "[(at(600), css(\"#b\",\"content-visibility\")), (at(800), css(\"#b\",\"content-visibility\"))]",
+      "expect": "[\"visible\",\"auto\"]"
+     }
+    ],
+    "hint": "Oddiy klass variant bilan ishlamaydi.",
+    "kind": "twcss",
+    "setup": "<div id=\"a\" class=\"content-auto\">A</div>\n<div id=\"b\" class=\"md:content-auto\">B</div>",
+    "id": "5"
+   },
+   {
+    "title": "@apply",
+    "task": "`.btn` klassini utility lardan yig'ing: yonlarda 16px, tepa-past 8px padding, 8px radius, qalinlik 600.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": ".btn {\n  @apply rounded-lg px-4 py-2 font-semibold;\n}",
+    "tests": [
+     {
+      "label": "Padding",
+      "call": "[css(\".btn\",\"padding-top\"), css(\".btn\",\"padding-left\")]",
+      "expect": "[\"8px\",\"16px\"]"
+     },
+     {
+      "label": "Radius va qalinlik",
+      "call": "[css(\".btn\",\"border-top-left-radius\"), css(\".btn\",\"font-weight\")]",
+      "expect": "[\"8px\",\"600\"]"
+     },
+     {
+      "label": "@apply ishlatilgan",
+      "call": "src().includes(\"@apply\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "Utility larni qoida ichida qo'llash.",
+    "kind": "twcss",
+    "setup": "<button class=\"btn\">Saqlash</button>",
+    "id": "6"
+   },
+   {
+    "title": "Hover li komponent",
+    "task": "`pill` ni shunday e'lon qilingki, `pill` ham, `hover:pill` ham ishlasin: radius 999px.",
+    "starter": "@layer components {\n  .pill { border-radius: 999px; }\n}\n",
+    "solution": "@utility pill {\n  border-radius: 999px;\n}",
+    "tests": [
+     {
+      "label": "pill ishlaydi",
+      "call": "css(\"#a\",\"border-top-left-radius\")",
+      "expect": "\"999px\""
+     },
+     {
+      "label": "hover:pill ishlaydi",
+      "call": "[css(\"#b\",\"border-top-left-radius\"), (state(\"#b\",\"hover\"), css(\"#b\",\"border-top-left-radius\"))]",
+      "expect": "[\"0px\",\"999px\"]"
+     }
+    ],
+    "hint": "@layer components bunga yetmaydi.",
+    "kind": "twcss",
+    "setup": "<span id=\"a\" class=\"pill\">A</span>\n<span id=\"b\" class=\"hover:pill\">B</span>",
+    "id": "7"
+   },
+   {
+    "title": "Faqat brend ranglari",
+    "task": "Standart ranglar olib tashlansin va faqat `ink` (`#111111`) qolsin: `bg-red-500` hech narsa bermasin.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": "@theme {\n  --color-*: initial;\n  --color-ink: #111111;\n}",
+    "tests": [
+     {
+      "label": "bg-red-500 ishlamaydi",
+      "call": "css(\"#a\",\"background-color\")",
+      "expect": "\"rgba(0, 0, 0, 0)\""
+     },
+     {
+      "label": "ink ishlaydi",
+      "call": "css(\"#b\",\"background-color\")",
+      "expect": "\"rgb(17, 17, 17)\""
+     }
+    ],
+    "hint": "Nom maydonini tozalash usuli bor.",
+    "kind": "twcss",
+    "setup": "<div id=\"a\" class=\"bg-red-500\">A</div>\n<div id=\"b\" class=\"bg-ink text-white\">B</div>",
+    "id": "8"
+   },
+   {
+    "title": "O'z varianti",
+    "task": "`neon:` variantini yarating: `.neon` klassli ota ichida ishlasin.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": "@custom-variant neon (&:where(.neon *));",
+    "tests": [
+     {
+      "label": "Ichida ishlaydi",
+      "call": "css(\"#a\",\"text-decoration-line\")",
+      "expect": "\"underline\""
+     },
+     {
+      "label": "Tashqarida ishlamaydi",
+      "call": "css(\"#b\",\"text-decoration-line\")",
+      "expect": "\"none\""
+     }
+    ],
+    "hint": "Variant — bu selektor sharti.",
+    "kind": "twcss",
+    "setup": "<div class=\"neon\"><p id=\"a\" class=\"neon:underline\">Ichida</p></div>\n<p id=\"b\" class=\"neon:underline\">Tashqarida</p>",
+    "id": "9"
+   },
+   {
+    "title": "@variant ichida",
+    "task": "`.link` rangi `#111111`, hover da `#ff0000`; hover ni Tailwind ning `@variant` direktivasi bilan yozing.",
+    "starter": "/* Tailwind CSS ni shu yerga yozing */\n",
+    "solution": ".link {\n  color: #111111;\n  @variant hover {\n    color: #ff0000;\n  }\n}",
+    "tests": [
+     {
+      "label": "Oddiy rang",
+      "call": "css(\".link\",\"color\")",
+      "expect": "\"rgb(17, 17, 17)\""
+     },
+     {
+      "label": "Hover rangi",
+      "call": "(state(\".link\",\"hover\"), css(\".link\",\"color\"))",
+      "expect": "\"rgb(255, 0, 0)\""
+     },
+     {
+      "label": "@variant ishlatilgan",
+      "call": "src().includes(\"@variant\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "CSS ichida variantni ochish.",
+    "kind": "twcss",
+    "setup": "<a class=\"link\">Havola</a>",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-tw-jr-07",
+  "level": "JUNIOR",
+  "module": "tailwind",
+  "order": 7,
+  "title": "clsx, tailwind-merge va variantlar",
+  "intro": "Shartli klasslar, to'qnashuvni hal qilish, cn yordamchisi va komponent variantlari.",
+  "theory": {
+   "analogy": {
+    "icon": "🧾",
+    "title": "Buyurtma varag'i",
+    "text": "Ofitsiant avval hamma istakni yozadi, keyin bir-biriga zid bo'lsa oxirgisini oladi. clsx yozadi, tailwind-merge ziddiyatni hal qiladi."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "clsx shartli klasslarni yig'adi, tailwind-merge ziddiyatlarni yechadi, cva esa komponent variantlarini tartibga soladi."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Falsy (yolg'on qiymat)",
+       "text": "false, 0, '', null, undefined, NaN."
+      },
+      {
+       "term": "Variant (komponent turi)",
+       "text": "komponentning oldindan belgilangan ko'rinishi: primary, danger."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Holatga bog'liq klasslarda",
+       "text": "clsx."
+      },
+      {
+       "term": "className qabul qiluvchi komponentda",
+       "text": "cn."
+      },
+      {
+       "term": "Tugma turlarida",
+       "text": "cva."
+      }
+     ]
+    },
+    {
+     "heading": "clsx",
+     "text": "Shartli klasslarni birlashtiradi: matn, massiv va obyekt qabul qiladi, yolg'on (falsy) qiymatlarni tashlaydi."
+    },
+    {
+     "code": {
+      "lang": "js",
+      "text": "clsx('btn', active && 'btn-on', { 'opacity-50': disabled });\n// active=false, disabled=true  →  'btn opacity-50'"
+     }
+    },
+    {
+     "heading": "tailwind-merge",
+     "text": "`twMerge('px-4 py-2 bg-blue-500', 'bg-red-500 p-6')` → `'bg-red-500 p-6'`: bir xususiyatga tegishli eski klasslarni olib tashlab, keyingisini qoldiradi. clsx bunday qilmaydi."
+    },
+    {
+     "heading": "cn",
+     "text": "Ko'p loyihada ikkisi birlashtiriladi: `const cn = (...x) => twMerge(clsx(x));`. Komponent o'z klasslarini yozadi, tashqaridan kelgan `className` ularni bosib o'ta oladi."
+    },
+    {
+     "heading": "Variantlar (cva)",
+     "text": "class-variance-authority tugmaning `variant` va `size` kombinatsiyalarini bitta joyda tasvirlaydi: asosiy klasslar, variantlar jadvali va standart qiymatlar."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "`className` ni birlashtirishda tartib muhim: tashqi klass OXIRIDA bo'lsin, aks holda u komponent klasslarini yenga olmaydi."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "☕",
+       "title": "Kofe buyurtmasi",
+       "text": "«Shakarli… yo'q, shakarsiz» — oxirgi gap (oraliq masofa) hisobga olinadi."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Tashqi className oxirgi argument (uzatilgan qiymat)."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Shablon satr bilan hamma narsani ulash.",
+       "cn ishlating.",
+       "false yoki zid klasslar qolib ketadi."
+      ],
+      [
+       "className ni birinchi berish.",
+       "Oxiriga qo'ying.",
+       "Aks holda u yengiladi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "clsx — shartli birlashtirish.",
+    "tailwind-merge — to'qnashuvni hal qilish.",
+    "cn = twMerge(clsx()).",
+    "Tashqi className oxirida."
+   ]
+  },
+  "practice": [
+   {
+    "title": "cn",
+    "text": "Loyihaga `clsx` va `tailwind-merge` o'rnatib, `cn` yordamchisini yozing."
+   },
+   {
+    "title": "Button",
+    "text": "variant (primary/outline) va size (sm/lg) li tugma komponenti yasang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "`clsx('a', false && 'b', { c: true, d: 0 })` natijasi?",
+    "options": [
+     "'a c'",
+     "'a b c'",
+     "'a c d'",
+     "'a false c'"
+    ],
+    "answer": "'a c'",
+    "explain": "false va 0 tashlanadi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`twMerge('p-4', 'p-2')` natijasi?",
+    "options": [
+     "'p-2'",
+     "'p-4'",
+     "'p-4 p-2'",
+     "'p-6'"
+    ],
+    "answer": "'p-2'",
+    "explain": "Keyingi klass yutadi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`twMerge('px-2 py-1', 'p-3')` natijasi?",
+    "options": [
+     "'p-3'",
+     "'px-2 py-1 p-3'",
+     "'px-2 p-3'",
+     "'px-2 py-1'"
+    ],
+    "answer": "'p-3'",
+    "explain": "p- ikkala o'qni ham qamraydi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "`twMerge('p-3', 'px-5')` natijasi?",
+    "options": [
+     "'p-3 px-5'",
+     "'px-5'",
+     "'p-3'",
+     "'px-5 p-3'"
+    ],
+    "answer": "'p-3 px-5'",
+    "explain": "px faqat yonlarni yozadi, p-3 tepa-past uchun kerak."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Nega faqat `clsx` yetarli emas?",
+    "options": [
+     "Zid klasslarning ikkalasini qoldiradi",
+     "Shartli klasslarni qo'sha olmaydi",
+     "Faqat bitta argument qabul qiladi",
+     "Tailwind klasslarini o'chirib yuboradi"
+    ],
+    "answer": "Zid klasslarning ikkalasini qoldiradi",
+    "explain": "Natijani CSS tartibi hal qilib qo'yadi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Tashqi `className` komponent stilini yenga olmayapti. Sababi?",
+    "options": [
+     "cn ga className birinchi berilgan",
+     "className prop nomi band qilingan",
+     "twMerge faqat ranglarni birlashtiradi",
+     "React className ni e'tiborsiz qoldiradi"
+    ],
+    "answer": "cn ga className birinchi berilgan",
+    "explain": "Oxirgi argument (uzatilgan qiymat) yutadi.",
+    "passage": "<button className={cn(className, 'bg-blue-500')} />"
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "`twMerge('text-sm text-red-500')` natijasi?",
+    "options": [
+     "'text-sm text-red-500'",
+     "'text-red-500'",
+     "'text-sm text-red-500 p-0'",
+     "''"
+    ],
+    "answer": "'text-sm text-red-500'",
+    "explain": "Biri o'lcham, biri rang — ziddiyat yo'q."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "`twMerge('bg-red-500 hover:bg-red-600', 'bg-blue-500')` natijasi?",
+    "options": [
+     "'hover:bg-red-600 bg-blue-500'",
+     "'bg-blue-500'",
+     "'bg-red-500 hover:bg-blue-500'",
+     "'hover:bg-blue-500'"
+    ],
+    "answer": "'hover:bg-red-600 bg-blue-500'",
+    "explain": "hover varianti alohida holat."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "cva nimani hal qiladi?",
+    "options": [
+     "Variant va o'lcham klasslarini bir joyda",
+     "CSS faylni siqib, hajmini kichraytirib beradi",
+     "Klass nomlarini xeshlab yashiradi",
+     "Komponentni serverda chizib beradi"
+    ],
+    "answer": "Variant va o'lcham klasslarini bir joyda",
+    "explain": "Variantlar jadvali."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "`clsx` va `twMerge` ni birlashtiruvchi yordamchining odatiy nomi?",
+    "answer": "cn",
+    "explain": "cn()."
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "cn ishlash tartibi",
+    "words": [
+     "Argumentlar keladi",
+     "clsx birlashtiradi",
+     "twMerge ziddiyatni yechadi",
+     "Satr qaytadi"
+    ],
+    "answer": "Argumentlar keladi clsx birlashtiradi twMerge ziddiyatni yechadi Satr qaytadi",
+    "explain": "Avval yig'ish, keyin tozalash."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Mini clsx: matnlar",
+    "task": "`cx(...args)` yolg'on qiymatlarni tashlab, qolgan matnlarni probel bilan birlashtirsin.",
+    "starter": "function cx(...args) {\n  \n}",
+    "solution": "function cx(...args) {\n  return args.filter(Boolean).join(' ');\n}",
+    "tests": [
+     {
+      "call": "cx(\"a\", false, \"b\", undefined, \"\", \"c\")",
+      "expect": "\"a b c\""
+     },
+     {
+      "call": "cx()",
+      "expect": "\"\""
+     }
+    ],
+    "hint": "filter va join.",
+    "id": "1"
+   },
+   {
+    "title": "Mini clsx: obyekt",
+    "task": "`cx` endi `{ klass: shart }` obyektini ham qabul qilsin: qiymati rost kalitlar qo'shiladi.",
+    "starter": "function cx(...args) {\n  return args.filter(Boolean).join(' ');\n}",
+    "solution": "function cx(...args) {\n  return args\n    .filter(Boolean)\n    .map((a) => (typeof a === 'object' ? Object.keys(a).filter((k) => a[k]).join(' ') : a))\n    .filter(Boolean)\n    .join(' ');\n}",
+    "tests": [
+     {
+      "call": "cx(\"btn\", { on: true, off: false })",
+      "expect": "\"btn on\""
+     },
+     {
+      "call": "cx({ a: 0 }, \"b\")",
+      "expect": "\"b\""
+     }
+    ],
+    "hint": "Object.keys va qiymatni tekshirish.",
+    "id": "2"
+   },
+   {
+    "title": "Mini clsx: massiv",
+    "task": "`cx` ichma-ich massivlarni ham yoyib ishlasin (obyekt va matn bilan birga).",
+    "starter": "function cx(...args) {\n  \n}",
+    "solution": "function cx(...args) {\n  const out = [];\n  const walk = (a) => {\n    if (!a) return;\n    if (Array.isArray(a)) a.forEach(walk);\n    else if (typeof a === 'object') Object.keys(a).forEach((k) => a[k] && out.push(k));\n    else out.push(a);\n  };\n  args.forEach(walk);\n  return out.join(' ');\n}",
+    "tests": [
+     {
+      "call": "cx([\"a\", [\"b\", { c: true, d: false }]], null, \"e\")",
+      "expect": "\"a b c e\""
+     },
+     {
+      "call": "cx([[]], false)",
+      "expect": "\"\""
+     }
+    ],
+    "hint": "O'zini chaqiruvchi funksiya.",
+    "id": "3"
+   },
+   {
+    "title": "Bir guruh — oxirgisi",
+    "task": "`merge(classes)` satrdagi bir xil prefiksli klasslardan (`p-`, `m-`, `w-`) faqat oxirgisini qoldirsin; qolganlari tegilmasin. Tartib saqlansin.",
+    "starter": "function merge(classes) {\n  \n}",
+    "solution": "function merge(classes) {\n  const list = classes.split(/\\s+/).filter(Boolean);\n  const key = (c) => /^(p|m|w)-/.exec(c)?.[1] ?? c;\n  return list.filter((c, i) => !list.slice(i + 1).some((n) => key(n) === key(c))).join(' ');\n}",
+    "tests": [
+     {
+      "call": "merge(\"p-4 text-sm p-2\")",
+      "expect": "\"text-sm p-2\""
+     },
+     {
+      "call": "merge(\"w-1 m-2 w-3 flex\")",
+      "expect": "\"m-2 w-3 flex\""
+     },
+     {
+      "call": "merge(\"pt-2 p-4\")",
+      "expect": "\"pt-2 p-4\""
+     }
+    ],
+    "hint": "Har klass uchun guruh kalitini aniqlang.",
+    "id": "4"
+   },
+   {
+    "title": "Variantlar alohida",
+    "task": "`merge` variantni hisobga olsin: `hover:p-2` va `p-4` to'qnashmaydi.",
+    "starter": "function merge(classes) {\n  const list = classes.split(' ');\n  const key = (c) => /p-/.test(c) ? 'p' : c;\n  return list.filter((c, i) => !list.slice(i + 1).some((n) => key(n) === key(c))).join(' ');\n}",
+    "solution": "function merge(classes) {\n  const list = classes.split(' ');\n  const key = (c) => {\n    const parts = c.split(':');\n    const base = parts.pop();\n    return parts.join(':') + '|' + (/^p-/.test(base) ? 'p' : base);\n  };\n  return list.filter((c, i) => !list.slice(i + 1).some((n) => key(n) === key(c))).join(' ');\n}",
+    "tests": [
+     {
+      "call": "merge(\"p-4 hover:p-2\")",
+      "expect": "\"p-4 hover:p-2\""
+     },
+     {
+      "call": "merge(\"hover:p-4 p-1 hover:p-2\")",
+      "expect": "\"p-1 hover:p-2\""
+     },
+     {
+      "call": "merge(\"md:p-2 md:p-6\")",
+      "expect": "\"md:p-6\""
+     }
+    ],
+    "hint": "Kalitga variant ham kirsin.",
+    "id": "5"
+   },
+   {
+    "title": "Qisqa va uzun",
+    "task": "`merge`: keyingi `p-*` oldingi `px-*`/`py-*` ni ham o'chiradi, lekin keyingi `px-*` oldingi `p-*` ni o'chirmaydi.",
+    "starter": "function merge(classes) {\n  \n}",
+    "solution": "function merge(classes) {\n  const list = classes.split(' ');\n  const group = (c) => c.slice(0, c.indexOf('-'));\n  const beats = (later, earlier) =>\n    group(later) === group(earlier) || (group(later) === 'p' && ['px', 'py'].includes(group(earlier)));\n  return list.filter((c, i) => !list.slice(i + 1).some((n) => beats(n, c))).join(' ');\n}",
+    "tests": [
+     {
+      "call": "merge(\"px-2 py-1 p-3\")",
+      "expect": "\"p-3\""
+     },
+     {
+      "call": "merge(\"p-3 px-5\")",
+      "expect": "\"p-3 px-5\""
+     },
+     {
+      "call": "merge(\"px-1 px-2\")",
+      "expect": "\"px-2\""
+     }
+    ],
+    "hint": "Ustunlik bir tomonlama.",
+    "id": "6"
+   },
+   {
+    "title": "cn",
+    "task": "`cx` va `merge` tayyor. `cn(...args)` ikkalasini to'g'ri tartibda ishlatsin.",
+    "starter": "const cx = (...a) => a.filter(Boolean).join(' ');\nconst merge = (s) => { const m = new Map(); s.split(' ').filter(Boolean).forEach((c) => m.set(c.split('-')[0], c)); return [...m.values()].join(' '); };\nfunction cn(...args) {\n  return cx(...args);\n}",
+    "solution": "const cx = (...a) => a.filter(Boolean).join(' ');\nconst merge = (s) => { const m = new Map(); s.split(' ').filter(Boolean).forEach((c) => m.set(c.split('-')[0], c)); return [...m.values()].join(' '); };\nfunction cn(...args) {\n  return merge(cx(...args));\n}",
+    "tests": [
+     {
+      "call": "cn(\"bg-blue\", false, \"bg-red\")",
+      "expect": "\"bg-red\""
+     },
+     {
+      "call": "cn(\"p-1\", undefined)",
+      "expect": "\"p-1\""
+     }
+    ],
+    "hint": "Avval birlashtirish, keyin tozalash.",
+    "id": "7"
+   },
+   {
+    "title": "Tashqi className",
+    "task": "`buttonClass(className)` asosiy `\"bg-blue p-2\"` ga tashqi klassni shunday qo'shsinki, tashqisi yutsin (`join` oddiy birlashtirish, oxirgi guruh yutadi).",
+    "starter": "const pick = (s) => { const m = new Map(); s.split(' ').filter(Boolean).forEach((c) => m.set(c.split('-')[0], c)); return [...m.values()].join(' '); };\nfunction buttonClass(className) {\n  return pick(`${className} bg-blue p-2`);\n}",
+    "solution": "const pick = (s) => { const m = new Map(); s.split(' ').filter(Boolean).forEach((c) => m.set(c.split('-')[0], c)); return [...m.values()].join(' '); };\nfunction buttonClass(className = '') {\n  return pick(`bg-blue p-2 ${className}`);\n}",
+    "tests": [
+     {
+      "call": "buttonClass(\"bg-red\")",
+      "expect": "\"bg-red p-2\""
+     },
+     {
+      "call": "buttonClass()",
+      "expect": "\"bg-blue p-2\""
+     }
+    ],
+    "hint": "Argumentlar tartibi.",
+    "id": "8"
+   },
+   {
+    "title": "Mini cva",
+    "task": "`cva(base, config)` funksiya qaytarsin: `config.variants` dan tanlangan klasslar qo'shiladi, berilmaganida `config.defaults`.",
+    "starter": "function cva(base, config) {\n  \n}",
+    "solution": "function cva(base, { variants, defaults = {} }) {\n  return (props = {}) => {\n    const classes = Object.keys(variants).map((name) => variants[name][props[name] ?? defaults[name]]);\n    return [base, ...classes].filter(Boolean).join(' ');\n  };\n}",
+    "tests": [
+     {
+      "call": "cva(\"btn\", { variants: { v: { a: \"blue\", b: \"red\" } }, defaults: { v: \"a\" } })()",
+      "expect": "\"btn blue\""
+     },
+     {
+      "call": "cva(\"btn\", { variants: { v: { a: \"blue\", b: \"red\" }, s: { sm: \"p-1\" } }, defaults: { v: \"a\" } })({ v: \"b\", s: \"sm\" })",
+      "expect": "\"btn red p-1\""
+     },
+     {
+      "call": "cva(\"btn\", { variants: { v: { a: \"x\" } } })()",
+      "expect": "\"btn\""
+     }
+    ],
+    "hint": "Har variant nomi bo'yicha tanlang.",
+    "id": "9"
+   },
+   {
+    "title": "Dinamik klass xatosi",
+    "task": "`colorClass(status)` to'liq klass nomlarini qaytarsin (skaner ko'ra oladigan): `ok` → `bg-green-500`, `error` → `bg-red-500`, boshqasi → `bg-slate-500`.",
+    "starter": "function colorClass(status) {\n  const color = status === 'ok' ? 'green' : 'red';\n  return 'bg-' + color + '-500';\n}",
+    "solution": "function colorClass(status) {\n  const map = { ok: 'bg-green-500', error: 'bg-red-500' };\n  return Object.hasOwn(map, status) ? map[status] : 'bg-slate-500';\n}",
+    "tests": [
+     {
+      "call": "[colorClass(\"ok\"), colorClass(\"error\"), colorClass(\"x\"), colorClass(\"toString\")]",
+      "expect": "[\"bg-green-500\", \"bg-red-500\", \"bg-slate-500\", \"bg-slate-500\"]"
+     },
+     {
+      "call": "colorClass.toString().includes(\"bg-green-500\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "Klasslar jadvali.",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-tw-jr-08",
+  "level": "JUNIOR",
+  "module": "tailwind",
+  "order": 8,
+  "title": "shadcn/ui va Radix",
+  "intro": "Headless (stilsiz) komponentlar, accessibility (qulaylik), shadcn tuzilishi va moslashtirish.",
+  "theory": {
+   "analogy": {
+    "icon": "🚗",
+    "title": "Dvigatel va kuzov",
+    "text": "Radix — tayyor dvigatel va tormoz: klaviatura, fokus, ARIA. Ko'rinishi — kuzov — o'zingizniki."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "Radix — stilsiz, qulaylikka tayyor komponentlar; shadcn/ui — ular ustiga yozilgan va loyihangizga ko'chiriladigan kod."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Headless (stilsiz)",
+       "text": "xulq va qulaylikni berib, ko'rinishni foydalanuvchiga qoldiradigan komponent."
+      },
+      {
+       "term": "Focus trap (fokus tutqichi)",
+       "text": "oyna ochiq paytida Tab fokusni oynadan chiqarmasligi."
+      },
+      {
+       "term": "Portal",
+       "text": "elementni DOM daraxtining boshqa joyiga (odatda body) chizish."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Dialog va dropdown da",
+       "text": "Radix."
+      },
+      {
+       "term": "Tayyor dizaynli boshlanishda",
+       "text": "shadcn."
+      },
+      {
+       "term": "Dizayn tizimida",
+       "text": "kodni moslashtirish."
+      }
+     ]
+    },
+    {
+     "heading": "Headless komponent",
+     "text": "Radix Primitives (oddiy (primitiv) qiymat) xatti-harakat va accessibility (hamma foydalana olishi) ni beradi, deyarli stil bermaydi: Dialog fokusni ichida ushlaydi, Esc bilan yopiladi, yopilganda fokusni qaytaradi."
+    },
+    {
+     "heading": "shadcn/ui nima",
+     "text": "Bu npm dan o'rnatiladigan komponent kutubxonasi emas. CLI komponent KODINI loyihangizga ko'chiradi (`npx shadcn@latest add button`), keyin u sizning faylingiz — xohlagancha o'zgartirasiz. Ichida Radix, Tailwind, cva va cn."
+    },
+    {
+     "code": {
+      "lang": "jsx",
+      "text": "<Dialog.Root open={open} onOpenChange={setOpen}>\n  <Dialog.Trigger asChild><Button>O'chirish</Button></Dialog.Trigger>\n  <Dialog.Portal>\n    <Dialog.Overlay />\n    <Dialog.Content>\n      <Dialog.Title>Tasdiqlang</Dialog.Title>\n    </Dialog.Content>\n  </Dialog.Portal>\n</Dialog.Root>"
+     }
+    },
+    {
+     "heading": "asChild",
+     "text": "`asChild` komponent o'z elementini chizmay, xulqini bolaga beradi. Aks holda tugma ichida tugma kabi noto'g'ri HTML chiqadi."
+    },
+    {
+     "heading": "Moslashtirish",
+     "text": "Ranglar CSS o'zgaruvchilarida: `--background`, `--foreground`, `--primary`. Holatlar `data-state` atributi orqali stillanadi."
+    },
+    {
+     "callout": {
+      "kind": "warn",
+      "text": "Dialog.Title ni olib tashlamang: ekran o'quvchi oyna nima haqidaligini shundan biladi. Ko'rinmasin desangiz `sr-only` bering."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "🏠",
+       "title": "Tayyor karkas",
+       "text": "Uy karkasi va simlari tayyor, devor rangini o'zingiz tanlaysiz."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Accessibility ni olib tashlamang."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Dialog.Title ni o'chirish.",
+       "sr-only bilan qoldiring.",
+       "Ekran o'quvchi oynani nomlay olmaydi."
+      ],
+      [
+       "asChild ni unutish.",
+       "O'z tugmangizni asChild bilan bering.",
+       "button ichida button chiqadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Radix — xulq, siz — ko'rinish.",
+    "shadcn kodi loyihangizda yashaydi.",
+    "asChild — o'ramsiz.",
+    "data-state orqali stil."
+   ]
+  },
+  "practice": [
+   {
+    "title": "shadcn",
+    "text": "`npx shadcn@latest init`, so'ng `add button dialog` va tugma rangini o'zgartiring."
+   },
+   {
+    "title": "Klaviatura",
+    "text": "Dialogni faqat klaviatura bilan ochib-yopib ko'ring."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "shadcn/ui ni boshqa UI kutubxonalardan ajratadigan jihat?",
+    "options": [
+     "Komponent kodi loyihangizga ko'chiriladi",
+     "Faqat CDN orqali sahifaga ulanadi",
+     "Komponent stillarini o'zgartirib bo'lmaydi",
+     "React siz toza HTML da ishlaydi"
+    ],
+    "answer": "Komponent kodi loyihangizga ko'chiriladi",
+    "explain": "Kod sizniki bo'lib qoladi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "Radix Primitives asosan nimani beradi?",
+    "options": [
+     "Xulq, klaviatura va ARIA qo'llovi",
+     "Tayyor rang va tipografiya to'plami",
+     "Server bilan ma'lumot almashinuvi",
+     "Rasm va ikonka kutubxonasi"
+    ],
+    "answer": "Xulq, klaviatura va ARIA qo'llovi",
+    "explain": "Headless."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "`asChild` siz `Dialog.Trigger` ichiga `<Button>` qo'yilsa nima bo'ladi?",
+    "options": [
+     "button ichida button: noto'g'ri HTML",
+     "Tugma umuman ekranda ko'rinmaydi",
+     "Dialog sahifa ochilishi bilan chiqadi",
+     "Button props lari hammasi yo'qoladi"
+    ],
+    "answer": "button ichida button: noto'g'ri HTML",
+    "explain": "Trigger o'zi ham button chizadi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "Modal Dialog ochiq. Oxirgi elementda Tab bosilsa fokus?",
+    "options": [
+     "Oynaning birinchi elementiga qaytadi",
+     "Sahifadagi keyingi havolaga o'tadi",
+     "Brauzer manzil qatoriga o'tib ketadi",
+     "Dialog yopilib, fokus yo'qoladi"
+    ],
+    "answer": "Oynaning birinchi elementiga qaytadi",
+    "explain": "Focus trap."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Dialog yopilgach fokus qayerga borishi kerak?",
+    "options": [
+     "Uni ochgan tugmaga",
+     "Sahifaning boshiga",
+     "body elementiga",
+     "Birinchi inputga"
+    ],
+    "answer": "Uni ochgan tugmaga",
+    "explain": "Klaviatura foydalanuvchisi joyini yo'qotmaydi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Dialog tashqaridan boshqarilishi uchun qaysi juftlik?",
+    "options": [
+     "open va onOpenChange",
+     "value va onChange",
+     "visible va onDismiss",
+     "state va setState"
+    ],
+    "answer": "open va onOpenChange",
+    "explain": "Controlled rejim."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "Nega Dialog mazmuni Portal orqali chiziladi?",
+    "options": [
+     "Ota overflow va z-index ta'sirisiz chiqishi",
+     "Mazmun serverda tezroq tayyor bo'lishi",
+     "React qayta chizishni butunlay to'xtatib qo'yishi",
+     "CSS fayl hajmini sezilarli kamaytirish"
+    ],
+    "answer": "Ota overflow va z-index ta'sirisiz chiqishi",
+    "explain": "body (asosiy tana) ga chiqariladi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Sarlavha ko'rinmasin, lekin ekran o'quvchi o'qisin. To'g'risi?",
+    "options": [
+     "Title ni qoldirib, sr-only berish",
+     "Title ni butunlay o'chirib tashlash",
+     "Title ga display none stilini berish",
+     "Title ga aria-hidden qo'shib qo'yish"
+    ],
+    "answer": "Title ni qoldirib, sr-only berish",
+    "explain": "display:none ekran o'quvchidan ham yashiradi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "shadcn tugmasiga yangi `variant=\"success\"` qanday qo'shiladi?",
+    "options": [
+     "button faylidagi cva variantlariga yozib",
+     "node_modules ichidagi paket kodini tahrirlab",
+     "Kutubxona muallifidan so'rov yuborib",
+     "HTML ga yangi atribut qo'shib qo'yib"
+    ],
+    "answer": "button faylidagi cva variantlariga yozib",
+    "explain": "Kod loyihada."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "Ochiq/yopiq holatni bildiruvchi Radix atributi: `data-____`",
+    "answer": "state",
+    "explain": "data-state=\"open\"."
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "Dialog qismlarini tashqaridan ichkariga tartiblang",
+    "words": [
+     "Root",
+     "Portal",
+     "Content",
+     "Title"
+    ],
+    "answer": "Root Portal Content Title",
+    "explain": "Root hammasini o'raydi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Dialog holati",
+    "task": "`createDialog()` — `open()`, `close()`, `isOpen()`.",
+    "starter": "function createDialog() {\n  \n}",
+    "solution": "function createDialog() {\n  let open = false;\n  return { open: () => { open = true; }, close: () => { open = false; }, isOpen: () => open };\n}",
+    "tests": [
+     {
+      "call": "(() => { const d = createDialog(); const a = d.isOpen(); d.open(); const b = d.isOpen(); d.close(); return [a, b, d.isOpen()]; })()",
+      "expect": "[false, true, false]"
+     }
+    ],
+    "hint": "Closure ichida boolean.",
+    "id": "1"
+   },
+   {
+    "title": "Controlled rejim",
+    "task": "`createDialog({ onOpenChange })` — holat o'zgargandagina `onOpenChange(yangi)` chaqirilsin.",
+    "starter": "function createDialog({ onOpenChange }) {\n  let open = false;\n  return {\n    set(next) { open = next; onOpenChange(next); },\n  };\n}",
+    "solution": "function createDialog({ onOpenChange }) {\n  let open = false;\n  return {\n    set(next) {\n      if (next === open) return;\n      open = next;\n      onOpenChange(next);\n    },\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const log = []; const d = createDialog({ onOpenChange: (v) => log.push(v) }); d.set(false); d.set(true); d.set(true); d.set(false); return log; })()",
+      "expect": "[true, false]"
+     }
+    ],
+    "hint": "O'zgarmasa xabar bermang.",
+    "id": "2"
+   },
+   {
+    "title": "Escape bilan yopish",
+    "task": "`onKey(state, key)` — ochiq dialogda `Escape` bosilsa `{ open: false }` yangi obyekt, aks holda o'sha `state`.",
+    "starter": "function onKey(state, key) {\n  \n}",
+    "solution": "function onKey(state, key) {\n  return state.open && key === 'Escape' ? { ...state, open: false } : state;\n}",
+    "tests": [
+     {
+      "call": "onKey({ open: true }, \"Escape\")",
+      "expect": "{ open: false }"
+     },
+     {
+      "call": "(() => { const s = { open: true }; return onKey(s, \"a\") === s; })()",
+      "expect": "true"
+     },
+     {
+      "call": "(() => { const s = { open: false }; return onKey(s, \"Escape\") === s; })()",
+      "expect": "true"
+     }
+    ],
+    "hint": "Ikki shart birga.",
+    "id": "3"
+   },
+   {
+    "title": "Fokus tutqichi",
+    "task": "`nextFocus(index, count, shift)` — Tab keyingi, Shift+Tab oldingi element indeksi; chetlarda aylanadi.",
+    "starter": "function nextFocus(index, count, shift) {\n  \n}",
+    "solution": "function nextFocus(index, count, shift) {\n  return (index + (shift ? -1 : 1) + count) % count;\n}",
+    "tests": [
+     {
+      "call": "[nextFocus(0, 3, false), nextFocus(2, 3, false), nextFocus(0, 3, true), nextFocus(1, 3, true)]",
+      "expect": "[1, 0, 2, 0]"
+     },
+     {
+      "call": "nextFocus(0, 1, false)",
+      "expect": "0"
+     }
+    ],
+    "hint": "Qoldiqli bo'lish.",
+    "id": "4"
+   },
+   {
+    "title": "data-state",
+    "task": "`stateAttr(open)` — `{ 'data-state': 'open' | 'closed', 'aria-expanded': open }`.",
+    "starter": "function stateAttr(open) {\n  \n}",
+    "solution": "function stateAttr(open) {\n  return { 'data-state': open ? 'open' : 'closed', 'aria-expanded': open };\n}",
+    "tests": [
+     {
+      "call": "stateAttr(true)",
+      "expect": "{ \"data-state\": \"open\", \"aria-expanded\": true }"
+     },
+     {
+      "call": "stateAttr(false)",
+      "expect": "{ \"data-state\": \"closed\", \"aria-expanded\": false }"
+     }
+    ],
+    "hint": "Ternary.",
+    "id": "5"
+   },
+   {
+    "title": "asChild (Slot)",
+    "task": "`render(type, props, asChild)` — `asChild` yolg'on bo'lsa `{type, props}`; rost bo'lsa `props.children` (element `{type, props}`) olinib, qolgan props unga qo'shilsin (bolaning o'z props lari ustun).",
+    "starter": "function render(type, props, asChild) {\n  \n}",
+    "solution": "function render(type, props, asChild) {\n  if (!asChild) return { type, props };\n  const { children, ...rest } = props;\n  return { type: children.type, props: { ...rest, ...children.props } };\n}",
+    "tests": [
+     {
+      "call": "render(\"button\", { id: \"a\" }, false)",
+      "expect": "{ type: \"button\", props: { id: \"a\" } }"
+     },
+     {
+      "call": "render(\"button\", { id: \"a\", role: \"x\", children: { type: \"a\", props: { id: \"b\" } } }, true)",
+      "expect": "{ type: \"a\", props: { id: \"b\", role: \"x\" } }"
+     }
+    ],
+    "hint": "O'ram element yo'qoladi.",
+    "id": "6"
+   },
+   {
+    "title": "Hodisalarni birlashtirish",
+    "task": "`compose(own, outer)` — avval tashqi `outer(event)`, u `event.preventDefault()` qilmagan bo'lsa `own(event)`. `outer` berilmasligi mumkin.",
+    "starter": "function compose(own, outer) {\n  return (event) => own(event);\n}",
+    "solution": "function compose(own, outer) {\n  return (event) => {\n    outer?.(event);\n    if (!event.defaultPrevented) own(event);\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const log = []; compose(() => log.push(\"own\"), () => log.push(\"outer\"))({ defaultPrevented: false }); return log; })()",
+      "expect": "[\"outer\", \"own\"]"
+     },
+     {
+      "call": "(() => { const log = []; const e = { defaultPrevented: false, preventDefault() { this.defaultPrevented = true; } }; compose(() => log.push(\"own\"), (ev) => ev.preventDefault())(e); return log; })()",
+      "expect": "[]"
+     },
+     {
+      "call": "(() => { const log = []; compose(() => log.push(\"own\"))({}); return log; })()",
+      "expect": "[\"own\"]"
+     }
+    ],
+    "hint": "Radix aynan shunday qiladi.",
+    "id": "7"
+   },
+   {
+    "title": "Noyob id",
+    "task": "`createIds(prefix)` — har chaqiruvda `{ titleId, descId }`: `prefix-1-title`, `prefix-1-desc`, keyingisida 2.",
+    "starter": "function createIds(prefix) {\n  \n}",
+    "solution": "function createIds(prefix) {\n  let n = 0;\n  return () => {\n    n += 1;\n    return { titleId: `${prefix}-${n}-title`, descId: `${prefix}-${n}-desc` };\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const next = createIds(\"dlg\"); next(); return next(); })()",
+      "expect": "{ titleId: \"dlg-2-title\", descId: \"dlg-2-desc\" }"
+     },
+     {
+      "call": "createIds(\"x\")().titleId",
+      "expect": "\"x-1-title\""
+     }
+    ],
+    "hint": "Sanagich closure da.",
+    "id": "8"
+   },
+   {
+    "title": "Faqat bittasi ochiq",
+    "task": "Akkordeon: `toggle(openId, id)` — bosilgani ochiq bo'lsa `null`, aks holda `id`. `isOpen(openId, id)`.",
+    "starter": "function toggle(openId, id) {\n  \n}\nfunction isOpen(openId, id) {\n  \n}",
+    "solution": "function toggle(openId, id) {\n  return openId === id ? null : id;\n}\nfunction isOpen(openId, id) {\n  return openId === id;\n}",
+    "tests": [
+     {
+      "call": "[toggle(null, \"a\"), toggle(\"a\", \"a\"), toggle(\"a\", \"b\")]",
+      "expect": "[\"a\", null, \"b\"]"
+     },
+     {
+      "call": "[isOpen(\"a\", \"a\"), isOpen(null, \"a\")]",
+      "expect": "[true, false]"
+     }
+    ],
+    "hint": "Bitta qiymat yetarli.",
+    "id": "9"
+   },
+   {
+    "title": "Tema o'zgaruvchilari",
+    "task": "`themeCss(name, vars)` — `.name{--k:v;...}` satrini qaytarsin (shadcn temasi kabi).",
+    "starter": "function themeCss(name, vars) {\n  \n}",
+    "solution": "function themeCss(name, vars) {\n  const body = Object.entries(vars).map(([k, v]) => `--${k}:${v};`).join('');\n  return `.${name}{${body}}`;\n}",
+    "tests": [
+     {
+      "call": "themeCss(\"dark\", { background: \"#000\", primary: \"#fff\" })",
+      "expect": "\".dark{--background:#000;--primary:#fff;}\""
+     },
+     {
+      "call": "themeCss(\"x\", {})",
+      "expect": "\".x{}\""
+     }
+    ],
+    "hint": "Object.entries.",
+    "id": "10"
+   }
+  ]
+ },
+ {
+  "code": "fe-tw-jr-09",
+  "level": "JUNIOR",
+  "module": "tailwind",
+  "order": 9,
+  "title": "CSS Modules va CSS-in-JS",
+  "intro": "Uch yondashuv farqi: lokal klasslar, ish vaqtidagi (runtime) narx va qachon qaysi biri.",
+  "theory": {
+   "analogy": {
+    "icon": "🏷️",
+    "title": "Familiya",
+    "text": "Sinfda ikki Ali bo'lsa familiya ajratadi. CSS Modules klass nomiga «familiya» qo'shib, to'qnashuvni yo'q qiladi."
+   },
+   "sections": [
+    {
+     "x": "what",
+     "heading": "Bu nima?",
+     "text": "CSS Modules (modul) klass nomlarini lokal qiladi, CSS-in-JS stilni JavaScript da yozdiradi; farqi — brauzerdagi ish vaqti narxida."
+    },
+    {
+     "heading": "Asosiy ta'riflar",
+     "defs": [
+      {
+       "term": "Scoped styles (cheklangan stillar)",
+       "text": "faqat o'z komponentiga ta'sir qiladigan stillar."
+      },
+      {
+       "term": "Runtime cost (ish vaqti narxi)",
+       "text": "brauzerda ishlash paytida sarflanadigan JS va hisoblash."
+      }
+     ]
+    },
+    {
+     "x": "uses",
+     "heading": "Qachon kerak bo'ladi",
+     "defs": [
+      {
+       "term": "Oddiy CSS ni saqlab qolishda",
+       "text": "CSS Modules."
+      },
+      {
+       "term": "Props ga bog'liq stilda",
+       "text": "CSS-in-JS."
+      },
+      {
+       "term": "Tezlik muhim bo'lsa",
+       "text": "zero-runtime."
+      }
+     ]
+    },
+    {
+     "heading": "CSS Modules",
+     "text": "`Button.module.css` dagi klass nomlari build (yig'ish) paytida noyob qilinadi. JS da obyekt sifatida olinadi: `styles.primary`, `styles['btn-big']`. Ish vaqtida qo'shimcha JavaScript yo'q."
+    },
+    {
+     "code": {
+      "lang": "jsx",
+      "text": "import styles from './Button.module.css';\n\nexport const Button = ({ big }) => (\n  <button className={clsx(styles.button, big && styles.big)}>OK</button>\n);"
+     }
+    },
+    {
+     "heading": ":global va composes",
+     "text": "`:global(.modal-open)` nomni o'zgartirmaydi. `composes: base;` bir klass boshqasining stillarini qo'shib oladi."
+    },
+    {
+     "heading": "CSS-in-JS",
+     "text": "styled-components va Emotion stilni JavaScript ichida yozdiradi, props ga qarab dinamik. Klassik variantida CSS brauzerda ish vaqtida yaratiladi: qo'shimcha JS yuki va React Server (xizmat ko'rsatuvchi kompyuter) Components (qayta ishlatiladigan bo'lak) bilan cheklov."
+    },
+    {
+     "heading": "Zero-runtime",
+     "text": "vanilla-extract, Linaria, Panda kabi vositalar CSS ni build paytida chiqaradi: yozish JS da, brauzerda oddiy CSS."
+    },
+    {
+     "callout": {
+      "kind": "tip",
+      "text": "Tez-tez o'zgaradigan qiymat (masalan, progress eni) uchun CSS o'zgaruvchisi yoki style atributi yetarli — har qiymatga yangi klass yaratmang."
+     }
+    },
+    {
+     "heading": "Hayotdan misollar",
+     "life": [
+      {
+       "icon": "📮",
+       "title": "Pochta indeksi",
+       "text": "Bir xil ko'cha nomi ikki shaharda bo'lsa ham indeks ularni adashtirmaydi."
+      }
+     ]
+    },
+    {
+     "x": "tip",
+     "heading": "Eslab qoling",
+     "callout": {
+      "kind": "tip",
+      "text": "Dinamik son uchun CSS o'zgaruvchi."
+     }
+    },
+    {
+     "x": "mistakes",
+     "heading": "Ko'p uchraydigan xatolar",
+     "mistakes": [
+      [
+       "Har qiymatga yangi klass yaratish.",
+       "O'zgaruvchi bering.",
+       "Uslublar jadvali shishib ketadi."
+      ],
+      [
+       "styles.xato ni sezmaslik.",
+       "Nomlarni tekshiring.",
+       "undefined jim o'tadi."
+      ]
+     ]
+    }
+   ],
+   "recap": [
+    "Modules — lokal nom, runtime (bajarilish muhiti) yo'q.",
+    "Runtime CSS-in-JS — dinamik, lekin narxi bor.",
+    "Zero-runtime — build paytida CSS.",
+    "Dinamik son uchun CSS o'zgaruvchi."
+   ]
+  },
+  "practice": [
+   {
+    "title": "Uch usul",
+    "text": "Bitta tugmani CSS Modules, Tailwind va styled-components bilan yozib solishtiring."
+   },
+   {
+    "title": "Bundle",
+    "text": "Har variantda build hajmini taqqoslang."
+   }
+  ],
+  "items": [
+   {
+    "id": "1",
+    "kind": "CHOICE",
+    "prompt": "Ikki `.module.css` faylda `.title` bor. Nima bo'ladi?",
+    "options": [
+     "Nomlar har xil bo'ladi, to'qnashmaydi",
+     "Keyin yuklangani birinchisini bosadi",
+     "Build paytida xatolik chiqib to'xtaydi",
+     "Ikkala stil bitta klassga qo'shiladi"
+    ],
+    "answer": "Nomlar har xil bo'ladi, to'qnashmaydi",
+    "explain": "Nomlar noyob qilinadi."
+   },
+   {
+    "id": "2",
+    "kind": "CHOICE",
+    "prompt": "`.btn-big` klassini JS da qanday olasiz?",
+    "options": [
+     "styles['btn-big']",
+     "styles.btn-big",
+     "styles.btn_big",
+     "styles('btn-big')"
+    ],
+    "answer": "styles['btn-big']",
+    "explain": "Defis bilan nuqta yozuvi ayirish bo'lib qoladi."
+   },
+   {
+    "id": "3",
+    "kind": "CHOICE",
+    "prompt": "Mavjud bo'lmagan `styles.primry` (imlo xatosi) natijasi?",
+    "options": [
+     "undefined: xato chiqmaydi, stil yo'q",
+     "Build darhol to'xtab xato ko'rsatadi",
+     "Klass nomi o'zi to'g'rilanib ketadi",
+     "Brauzer konsoliga TypeError otiladi"
+    ],
+    "answer": "undefined: xato chiqmaydi, stil yo'q",
+    "explain": "Oddiy obyekt xossasi."
+   },
+   {
+    "id": "4",
+    "kind": "CHOICE",
+    "prompt": "`:global(.open)` nima uchun kerak?",
+    "options": [
+     "Nomni o'zgartirmasdan qoldirish uchun",
+     "Stilni boshqa fayllardan yashirish",
+     "Klassni build natijasidan chiqarib tashlash",
+     "Stilni faqat serverda qo'llash uchun"
+    ],
+    "answer": "Nomni o'zgartirmasdan qoldirish uchun",
+    "explain": "Tashqi kutubxona klassi uchun."
+   },
+   {
+    "id": "5",
+    "kind": "CHOICE",
+    "prompt": "Klassik runtime CSS-in-JS ning asosiy narxi?",
+    "options": [
+     "Brauzerda CSS yaratish va qo'shimcha JS",
+     "CSS xususiyatlarining yarmi ishlamasligi",
+     "Har sahifa uchun alohida server kerakligi",
+     "Media so'rovlarni yozib bo'lmasligi"
+    ],
+    "answer": "Brauzerda CSS yaratish va qo'shimcha JS",
+    "explain": "Ish vaqtida hisoblanadi."
+   },
+   {
+    "id": "6",
+    "kind": "CHOICE",
+    "prompt": "Progress chizig'i eni sekundiga 60 marta o'zgaradi. Eng ma'qul usul?",
+    "options": [
+     "style orqali CSS o'zgaruvchi berish",
+     "Har qiymat uchun yangi styled klass",
+     "100 ta tayyor CSS klass yozib chiqish",
+     "Har safar yangi style tegi qo'shish"
+    ],
+    "answer": "style orqali CSS o'zgaruvchi berish",
+    "explain": "Bitta qoida, o'zgaruvchi almashadi."
+   },
+   {
+    "id": "7",
+    "kind": "CHOICE",
+    "prompt": "React Server Component da qaysi usul muammosiz ishlaydi?",
+    "options": [
+     "CSS Modules",
+     "useState li styled-components",
+     "ThemeProvider li Emotion",
+     "ish vaqtida inject qiladigan kutubxona"
+    ],
+    "answer": "CSS Modules",
+    "explain": "Runtime (bajarilish muhiti) va context talab qilmaydi."
+   },
+   {
+    "id": "8",
+    "kind": "CHOICE",
+    "prompt": "Zero-runtime kutubxonaning ma'nosi?",
+    "options": [
+     "CSS build paytida tayyor bo'ladi",
+     "Kutubxona hech qanday CSS bermaydi",
+     "Stillar faqat brauzerda yaratiladi",
+     "Loyihada JavaScript ishlatilmaydi"
+    ],
+    "answer": "CSS build paytida tayyor bo'ladi",
+    "explain": "vanilla-extract kabi."
+   },
+   {
+    "id": "9",
+    "kind": "CHOICE",
+    "prompt": "`composes: base;` nima qiladi?",
+    "options": [
+     "base klassini ham elementga qo'shadi",
+     "base qoidalarini o'chirib tashlaydi",
+     "base faylini global qilib qo'yadi",
+     "base nomini boshqa nomga almashtirib qo'yadi"
+    ],
+    "answer": "base klassini ham elementga qo'shadi",
+    "explain": "styles.x ikkita nomni qaytaradi."
+   },
+   {
+    "id": "10",
+    "kind": "FILL",
+    "prompt": "CSS Modules fayli nomi: `Card.____.css`",
+    "answer": "module",
+    "explain": "Card.module.css."
+   },
+   {
+    "id": "11",
+    "kind": "ORDER",
+    "prompt": "CSS Modules bilan ishlash tartibi",
+    "words": [
+     ".module.css yozish",
+     "JS ga import qilish",
+     "styles.nom berish",
+     "Build noyob nom qiladi"
+    ],
+    "answer": ".module.css yozish JS ga import qilish styles.nom berish Build noyob nom qiladi",
+    "explain": "Yozish, import (olib kirish), ishlatish, build (yig'ish)."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Noyob klass nomi",
+    "task": "`scope(file, name)` — `file_name` ko'rinishida (fayl nomidan `.module.css` olib tashlangan).",
+    "starter": "function scope(file, name) {\n  \n}",
+    "solution": "function scope(file, name) {\n  return `${file.replace('.module.css', '')}_${name}`;\n}",
+    "tests": [
+     {
+      "call": "scope(\"Button.module.css\", \"primary\")",
+      "expect": "\"Button_primary\""
+     }
+    ],
+    "hint": "replace va shablon satr.",
+    "id": "1"
+   },
+   {
+    "title": "styles obyekti",
+    "task": "`modules(file, names)` — `{ name: \"File_name\" }` obyektini qaytarsin.",
+    "starter": "function modules(file, names) {\n  \n}",
+    "solution": "function modules(file, names) {\n  const base = file.replace('.module.css', '');\n  return Object.fromEntries(names.map((n) => [n, `${base}_${n}`]));\n}",
+    "tests": [
+     {
+      "call": "modules(\"Card.module.css\", [\"root\", \"btn-big\"])",
+      "expect": "{ root: \"Card_root\", \"btn-big\": \"Card_btn-big\" }"
+     },
+     {
+      "call": "modules(\"A.module.css\", [])",
+      "expect": "{}"
+     }
+    ],
+    "hint": "fromEntries.",
+    "id": "2"
+   },
+   {
+    "title": "composes",
+    "task": "`compose(styles, rules)` — `rules` = `{ primary: \"base\" }` bo'lsa `styles.primary` ikkala nomni (avval base) bersin.",
+    "starter": "function compose(styles, rules) {\n  \n}",
+    "solution": "function compose(styles, rules) {\n  const out = { ...styles };\n  for (const [name, from] of Object.entries(rules)) out[name] = `${styles[from]} ${styles[name]}`;\n  return out;\n}",
+    "tests": [
+     {
+      "call": "compose({ base: \"A_base\", primary: \"A_primary\" }, { primary: \"base\" })",
+      "expect": "{ base: \"A_base\", primary: \"A_base A_primary\" }"
+     },
+     {
+      "call": "(() => { const s = { base: \"b\", p: \"p\" }; compose(s, { p: \"base\" }); return s.p; })()",
+      "expect": "\"p\""
+     }
+    ],
+    "hint": "Asl obyektni o'zgartirmang.",
+    "id": "3"
+   },
+   {
+    "title": "Imlo xatosini ushlash",
+    "task": "`strict(styles)` — mavjud bo'lmagan klass o'qilsa xato tashlaydigan o'ram qaytarsin.",
+    "starter": "function strict(styles) {\n  return styles;\n}",
+    "solution": "function strict(styles) {\n  return new Proxy(styles, {\n    get(target, key) {\n      if (!Object.hasOwn(target, key)) throw new Error('Klass yo\\'q: ' + String(key));\n      return target[key];\n    },\n  });\n}",
+    "tests": [
+     {
+      "call": "strict({ a: \"x\" }).a",
+      "expect": "\"x\""
+     },
+     {
+      "call": "(() => { try { return strict({ a: \"x\" }).b; } catch { return \"xato\"; } })()",
+      "expect": "\"xato\""
+     }
+    ],
+    "hint": "Obyekt o'qilishini ushlab qoluvchi vosita.",
+    "id": "4"
+   },
+   {
+    "title": ":global",
+    "task": "`scopeCss(css, prefix)` — `.nom` larni `.prefix_nom` qilsin, `:global(.x)` esa `.x` bo'lib o'zgarmasin.",
+    "starter": "function scopeCss(css, prefix) {\n  return css.replace(/\\./g, '.' + prefix + '_');\n}",
+    "solution": "function scopeCss(css, prefix) {\n  return css.replace(/:global\\(\\.([\\w-]+)\\)|\\.([a-zA-Z][\\w-]*)/g, (m, global, local) =>\n    global ? '.' + global : `.${prefix}_${local}`);\n}",
+    "tests": [
+     {
+      "call": "scopeCss(\".a .b{}\", \"M\")",
+      "expect": "\".M_a .M_b{}\""
+     },
+     {
+      "call": "scopeCss(\":global(.open) .title{}\", \"M\")",
+      "expect": "\".open .M_title{}\""
+     },
+     {
+      "call": "scopeCss(\".x{margin:.5em}\", \"M\")",
+      "expect": "\".M_x{margin:.5em}\""
+     }
+    ],
+    "hint": "Nom harf bilan boshlanadi; global ni alohida moslang.",
+    "id": "5"
+   },
+   {
+    "title": "Mini styled",
+    "task": "`styled(strings, ...fns)` shablon teg bo'lsin: funksiya qaytaradi, u `props` bilan CSS matnini yig'adi.",
+    "starter": "function styled(strings, ...fns) {\n  \n}",
+    "solution": "function styled(strings, ...fns) {\n  return (props = {}) =>\n    strings.reduce((out, s, i) => {\n      const v = fns[i - 1];\n      return out + (typeof v === 'function' ? v(props) : v ?? '') + s;\n    });\n}",
+    "tests": [
+     {
+      "call": "styled`color:${(p) => p.c};`({ c: \"red\" })",
+      "expect": "\"color:red;\""
+     },
+     {
+      "call": "styled`margin:${0};`()",
+      "expect": "\"margin:0;\""
+     },
+     {
+      "call": "styled`a:b;`()",
+      "expect": "\"a:b;\""
+     }
+    ],
+    "hint": "Shablon teg qismlarni va qiymatlarni alohida oladi.",
+    "id": "6"
+   },
+   {
+    "title": "Uslub keshi",
+    "task": "`createSheet()` — `add(css)` bir xil CSS uchun bir xil klass (`css-1`, `css-2`...) qaytarsin; `size()` yaratilgan qoidalar soni.",
+    "starter": "function createSheet() {\n  let n = 0;\n  return {\n    add(css) { return 'css-' + ++n; },\n    size() { return n; },\n  };\n}",
+    "solution": "function createSheet() {\n  const rules = new Map();\n  return {\n    add(css) {\n      if (!rules.has(css)) rules.set(css, `css-${rules.size + 1}`);\n      return rules.get(css);\n    },\n    size: () => rules.size,\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const s = createSheet(); return [s.add(\"a\"), s.add(\"b\"), s.add(\"a\"), s.size()]; })()",
+      "expect": "[\"css-1\", \"css-2\", \"css-1\", 2]"
+     }
+    ],
+    "hint": "Matn → klass jadvali.",
+    "id": "7"
+   },
+   {
+    "title": "Dinamik qiymat",
+    "task": "`progress(percent)` — yangi klass yaratmasdan style obyekti qaytarsin: `{ '--progress': 'NN%' }`; 0–100 oralig'iga qisilsin.",
+    "starter": "function progress(percent) {\n  \n}",
+    "solution": "function progress(percent) {\n  return { '--progress': `${Math.min(100, Math.max(0, percent))}%` };\n}",
+    "tests": [
+     {
+      "call": "progress(42)",
+      "expect": "{ \"--progress\": \"42%\" }"
+     },
+     {
+      "call": "[progress(-5), progress(180)]",
+      "expect": "[{ \"--progress\": \"0%\" }, { \"--progress\": \"100%\" }]"
+     }
+    ],
+    "hint": "CSS o'zgaruvchisi.",
+    "id": "8"
+   },
+   {
+    "title": "Obyektdan CSS",
+    "task": "`toCss(obj)` — `{ fontSize: 14, color: 'red', opacity: 0.5 }` ni `font-size:14px;color:red;opacity:0.5;` qilsin (`opacity` va `zIndex` ga px qo'shilmaydi).",
+    "starter": "function toCss(obj) {\n  \n}",
+    "solution": "function toCss(obj) {\n  const unitless = ['opacity', 'zIndex'];\n  return Object.entries(obj)\n    .map(([k, v]) => {\n      const name = k.replace(/[A-Z]/g, (c) => '-' + c.toLowerCase());\n      const value = typeof v === 'number' && !unitless.includes(k) ? v + 'px' : v;\n      return `${name}:${value};`;\n    })\n    .join('');\n}",
+    "tests": [
+     {
+      "call": "toCss({ fontSize: 14, color: \"red\", opacity: 0.5 })",
+      "expect": "\"font-size:14px;color:red;opacity:0.5;\""
+     },
+     {
+      "call": "toCss({ zIndex: 3 })",
+      "expect": "\"z-index:3;\""
+     }
+    ],
+    "hint": "camelCase → kebab-case.",
+    "id": "9"
+   },
+   {
+    "title": "Qaysi yondashuv",
+    "task": "`pick(needs)` — `{ rsc, dynamic }` bo'yicha: server komponent kerak bo'lsa `\"modules\"`; aks holda tez-tez o'zgaradigan qiymat bo'lsa `\"variables\"`; qolganida `\"utility\"`.",
+    "starter": "function pick(needs) {\n  \n}",
+    "solution": "function pick({ rsc, dynamic }) {\n  if (rsc) return 'modules';\n  return dynamic ? 'variables' : 'utility';\n}",
+    "tests": [
+     {
+      "call": "[pick({ rsc: true, dynamic: true }), pick({ dynamic: true }), pick({})]",
+      "expect": "[\"modules\", \"variables\", \"utility\"]"
+     }
+    ],
+    "hint": "Tartib muhim.",
+    "id": "10"
+   }
+  ]
+ }
+]

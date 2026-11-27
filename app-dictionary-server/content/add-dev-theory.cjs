@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const GLOSSARY = require('./dev-extra/glossary.cjs');
 
-const MODULES = ['internet', 'html', 'css', 'javascript', 'git', 'npm', 'react'];
+const MODULES = ['internet', 'html', 'css', 'javascript', 'git', 'npm', 'react', 'tailwind'];
 const lower = new Map(Object.entries(GLOSSARY).map(([k, v]) => [k.toLowerCase(), v]));
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 // Longest first, so "event loop" wins over "event". A match must not be part of code: <tag>, .class, a-b, x=y, fn(...)

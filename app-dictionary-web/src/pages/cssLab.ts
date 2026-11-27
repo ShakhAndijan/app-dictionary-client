@@ -94,6 +94,21 @@ const equal = (a: unknown, b: unknown): boolean => {
 };
 
 export function runCssLab(setup: string, code: string, tests: LabTest[]): Promise<LabRun> {
+  return runInFrame(cssDocument(setup, code), tests);
+}
+
+/** Extra helpers of a runner built on this one; `reset` runs before every test. */
+export interface FrameExtension {
+  helpers: Record<string, unknown>;
+  reset: () => void;
+}
+
+/** Loads the page in a hidden sandboxed iframe and evaluates every test against it. */
+export function runInFrame(
+  page: string,
+  tests: LabTest[],
+  extend?: (frame: HTMLIFrameElement, base: ReturnType<typeof helpers>) => FrameExtension,
+): Promise<LabRun> {
   return new Promise((resolve) => {
     const frame = document.createElement('iframe');
     frame.setAttribute('sandbox', 'allow-same-origin');
@@ -108,12 +123,15 @@ export function runCssLab(setup: string, code: string, tests: LabTest[]): Promis
     const timer = window.setTimeout(() => finish({ error: "Brauzer sahifani ochib bera olmadi, qayta urinib ko'ring", tests: [], logs: [] }), 4000);
     frame.onload = () => {
       const api = helpers(frame);
-      const names = Object.keys(api);
-      const values = Object.values(api);
+      const extension = extend?.(frame, api);
+      const all = { ...api, ...extension?.helpers };
+      const names = Object.keys(all);
+      const values = Object.values(all);
       const results: LabTestResult[] = tests.map((t) => {
         const r: LabTestResult = { ok: false, got: '', expected: t.expect };
         try {
           api.at(WIDTH);
+          extension?.reset();
           const want: unknown = new Function(`return (${t.expect});`)();
           const got: unknown = new Function(...names, `return (${t.call});`)(...values);
           r.got = JSON.stringify(got);
@@ -125,7 +143,7 @@ export function runCssLab(setup: string, code: string, tests: LabTest[]): Promis
       });
       finish({ tests: results, logs: [] });
     };
-    frame.srcdoc = cssDocument(setup, code);
+    frame.srcdoc = page;
     document.body.appendChild(frame);
   });
 }

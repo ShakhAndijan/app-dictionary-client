@@ -5,6 +5,7 @@ import { LabRun, labProgram, runLab } from './devLab';
 import { cssDocument, runCssLab } from './cssLab';
 import { htmlDocument, runHtmlLab } from './htmlLab';
 import { reactDocument, runReactLab } from './reactLab';
+import { runTwLab, useTwDocument } from './twLab';
 import { completeCss, htmlSelectors } from './cssComplete';
 import { BrowserPreview, CodeEditor, TaskText, highlight } from './labViews';
 
@@ -62,12 +63,15 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   const isShell = lab.kind === 'git' || lab.kind === 'npm';
   const isCss = lab.kind === 'css';
   const isHtml = lab.kind === 'html';
-  /** CSS and HTML labs show the page next to the editor */
-  const isPage = isCss || isHtml;
+  /** Tailwind labs: "tw" writes HTML with utility classes, "twcss" writes the Tailwind CSS for a given page */
+  const isTw = lab.kind === 'tw';
+  const isTwCss = lab.kind === 'twcss';
+  /** CSS, HTML and Tailwind labs show the page next to the editor */
+  const isPage = isCss || isHtml || isTw || isTwCss;
   const isReact = lab.kind === 'react';
   const doneCount = useMemo(() => labs.filter((l) => done.has(l.id)).length, [labs, done]);
-  const lang = isCss ? 'css' : isHtml ? 'html' : 'plain';
-  const fileName = isCss ? 'style.css' : isHtml ? 'index.html' : isShell ? 'terminal' : isReact ? 'App.jsx' : 'script.js';
+  const lang = isCss || isTwCss ? 'css' : isHtml || isTw ? 'html' : 'plain';
+  const fileName = isCss || isTwCss ? 'style.css' : isHtml || isTw ? 'index.html' : isShell ? 'terminal' : isReact ? 'App.jsx' : 'script.js';
   /** the page without the lab's own scaffold styles, as the learner reads it */
   const html = isCss ? (lab.setup ?? '').replace(/<style>[\s\S]*?<\/style>\n?/g, '').trim() : '';
   const selectors = htmlSelectors(html);
@@ -77,6 +81,8 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
     return [...new Set([600, ...asked])].sort((a, b) => a - b);
   }, [lab]);
 
+  const twDoc = useTwDocument(isTw || isTwCss ? lab.kind! : null, lab.setup ?? '', code);
+
   const setCode = (value: string) => setCodes((p) => ({ ...p, [lab.id]: value }));
 
   const execute = async () => {
@@ -85,6 +91,7 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
     setError('');
     const result = isCss ? await runCssLab(lab.setup ?? '', code, lab.tests)
       : isHtml ? await runHtmlLab(code, lab.tests)
+      : isTw || isTwCss ? await runTwLab(lab.kind!, lab.setup ?? '', code, lab.tests)
       : isReact ? await runReactLab(lab.setup ?? '', code, lab.tests)
         : await runLab(labProgram(lab, code), lab.tests);
     setRuns((p) => ({ ...p, [lab.id]: result }));
@@ -177,7 +184,7 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
               complete={isCss ? (text, caret, forced) => completeCss(text, caret, selectors, forced) : undefined}
               value={code}
               lang={lang}
-              label={isShell ? 'Terminal buyruqlari' : isCss ? 'CSS kodi' : isHtml ? 'HTML kodi' : isReact ? 'React (JSX) kodi' : 'JavaScript kodi'}
+              label={isShell ? 'Terminal buyruqlari' : isCss || isTwCss ? 'CSS kodi' : isHtml || isTw ? 'HTML kodi' : isReact ? 'React (JSX) kodi' : 'JavaScript kodi'}
               placeholder={isShell ? `Har qatorga bitta buyruq yozing, masalan: ${lab.kind === 'git' ? 'git add .' : 'npm install dayjs'}` : undefined}
               onChange={setCode}
               onKeyDown={onKey}
@@ -250,6 +257,18 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
         {isHtml && (
           <div className="dl-col dl-side">
             <BrowserPreview key={lab.id} doc={htmlDocument(code)} widths={[360, 600]} />
+          </div>
+        )}
+
+        {(isTw || isTwCss) && (
+          <div className="dl-col dl-side">
+            <BrowserPreview key={lab.id} doc={twDoc} widths={widths} />
+            {isTwCss && (
+              <section className="dl-win dl-html">
+                <header className="dl-winbar"><b>index.html</b><span className="dl-size">o'zgarmaydi</span></header>
+                <pre>{highlight(lab.setup ?? '', 'html')}</pre>
+              </section>
+            )}
           </div>
         )}
 
