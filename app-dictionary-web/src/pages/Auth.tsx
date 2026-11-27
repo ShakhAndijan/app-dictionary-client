@@ -2,20 +2,12 @@ import { FormEvent, InputHTMLAttributes, ReactNode, useEffect, useRef, useState 
 import { Link } from 'react-router-dom';
 import { errorMessage, errorStatus } from '../api';
 import { useAuth } from '../auth';
+import '../auth.css';
 
 /* ------------------------------------------------------------- icons */
 
 const ico = { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
 
-const IconUser = () => (
-  <svg {...ico}><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" /></svg>
-);
-const IconLock = () => (
-  <svg {...ico}><rect x="4" y="10.5" width="16" height="10.5" rx="3" /><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" /></svg>
-);
-const IconMail = () => (
-  <svg {...ico}><rect x="3" y="5" width="18" height="14" rx="3" /><path d="m4 7.5 8 6 8-6" /></svg>
-);
 const IconEye = ({ off }: { off: boolean }) => (
   <svg {...ico}>
     <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" />
@@ -27,136 +19,69 @@ const IconArrow = () => (
   <svg {...ico} strokeWidth={2.2}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
 );
 
-/* -------------------------------------------------- constellation canvas */
+/* ------------------------------------------------------------- lens */
 
-interface Dot {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  r: number;
-}
+// word, meaning, left %, top %, size
+const LENS: [string, string, number, number, number][] = [
+  ['hello', 'salom', 78, 11, 1],
+  ['learn', "o'rganmoq", 86, 39, 0.8],
+  ['<div>', 'quti', 22, 13, 0.62],
+  ['book', 'kitob', 83, 25, 0.55],
+  ['return', 'qaytarmoq', 83, 59, 0.7],
+  ['future', 'kelajak', 77, 79, 0.9],
+  ['const', "o'zgarmas", 46, 8, 0.6],
+];
 
-/** Slowly drifting points joined by faint lines; the cursor pulls nearby points in and lights its own links. */
-function Constellation() {
-  const ref = useRef<HTMLCanvasElement>(null);
+/** The spotlight follows the cursor; without a mouse it wanders on its own. */
+function Lens() {
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const canvas = ref.current!;
-    const ctx = canvas.getContext('2d')!;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let w = 0;
-    let h = 0;
-    let dots: Dot[] = [];
+    const el = ref.current!;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const target = { x: 0, y: 0, mouse: false };
+    const cur = { x: -300, y: -300 };
     let raf = 0;
-    const mouse = { x: -9999, y: -9999, on: false };
-
-    const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = canvas.clientWidth;
-      h = canvas.clientHeight;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.max(28, Math.min(110, Math.round((w * h) / 15000)));
-      dots = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.28,
-        vy: (Math.random() - 0.5) * 0.28,
-        r: 0.7 + Math.random() * 1.5,
-      }));
+    const move = (e: PointerEvent) => {
+      if (e.pointerType !== 'mouse') return;
+      const r = el.getBoundingClientRect();
+      target.x = e.clientX - r.left;
+      target.y = e.clientY - r.top;
+      target.mouse = true;
     };
-
-    const LINK = 150;
-    const PULL = 190;
-
-    const frame = () => {
-      ctx.clearRect(0, 0, w, h);
-      for (const d of dots) {
-        if (!reduced) {
-          d.x += d.vx;
-          d.y += d.vy;
-          if (d.x < -10) d.x = w + 10;
-          else if (d.x > w + 10) d.x = -10;
-          if (d.y < -10) d.y = h + 10;
-          else if (d.y > h + 10) d.y = -10;
-          if (mouse.on) {
-            const dx = mouse.x - d.x;
-            const dy = mouse.y - d.y;
-            const dist = Math.hypot(dx, dy);
-            if (dist < PULL && dist > 1) {
-              const f = (1 - dist / PULL) * 0.035;
-              d.x += dx * f;
-              d.y += dy * f;
-            }
-          }
-        }
+    const frame = (now: number) => {
+      if (!target.mouse) {
+        target.x = el.clientWidth * (0.5 + 0.36 * Math.sin(now / 2300));
+        target.y = el.clientHeight * (0.45 + 0.34 * Math.sin(now / 1700));
       }
-
-      ctx.lineWidth = 1;
-      for (let i = 0; i < dots.length; i++) {
-        const a = dots[i];
-        for (let j = i + 1; j < dots.length; j++) {
-          const b = dots[j];
-          const dist = Math.hypot(a.x - b.x, a.y - b.y);
-          if (dist < LINK) {
-            ctx.strokeStyle = `rgba(148,163,255,${(1 - dist / LINK) * 0.28})`;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-        if (mouse.on) {
-          const dist = Math.hypot(a.x - mouse.x, a.y - mouse.y);
-          if (dist < PULL) {
-            ctx.strokeStyle = `rgba(103,232,249,${(1 - dist / PULL) * 0.7})`;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.stroke();
-          }
-        }
-      }
-      for (const d of dots) {
-        ctx.fillStyle = 'rgba(199,210,254,0.9)';
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-        ctx.fill();
-      }
+      cur.x += (target.x - cur.x) * 0.09;
+      cur.y += (target.y - cur.y) * 0.09;
+      el.style.setProperty('--mx', `${cur.x.toFixed(1)}px`);
+      el.style.setProperty('--my', `${cur.y.toFixed(1)}px`);
       raf = requestAnimationFrame(frame);
     };
-
-    const move = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-      mouse.on = true;
-    };
-    const leave = () => {
-      mouse.on = false;
-    };
-    const visibility = () => {
-      cancelAnimationFrame(raf);
-      if (!document.hidden) raf = requestAnimationFrame(frame);
-    };
-
-    resize();
     raf = requestAnimationFrame(frame);
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', move);
-    document.addEventListener('mouseleave', leave);
-    document.addEventListener('visibilitychange', visibility);
+    window.addEventListener('pointermove', move);
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', move);
-      document.removeEventListener('mouseleave', leave);
-      document.removeEventListener('visibilitychange', visibility);
+      window.removeEventListener('pointermove', move);
     };
   }, []);
 
-  return <canvas ref={ref} className="au-canvas" aria-hidden="true" />;
+  return (
+    <div className="au-lens" ref={ref} aria-hidden="true">
+      <div className="au-lens-base">
+        {LENS.map(([w, , x, y, s]) => (
+          <span key={w} style={{ left: `${x}%`, top: `${y}%`, fontSize: `calc(${s} * clamp(44px, 7vw, 118px))` }}>{w}</span>
+        ))}
+      </div>
+      <div className="au-lens-rev">
+        {LENS.map(([w, m, x, y, s]) => (
+          <span key={w} style={{ left: `${x}%`, top: `${y}%`, fontSize: `calc(${s} * clamp(44px, 7vw, 118px))` }}>{m}</span>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 /* ----------------------------------------------------- scrambling text */
@@ -224,15 +149,11 @@ function WordStage() {
   const [en, uz] = PAIRS[i];
   return (
     <div className="au-stage" aria-hidden="true">
-      <div className="au-stage-row">
-        <span className="au-stage-tag">EN</span>
-        <Scramble text={en} className="au-stage-en" />
-      </div>
       <div className="au-stage-line">
         <span key={i} className="au-stage-fill" style={{ animationDuration: `${PAIR_MS}ms` }} />
       </div>
       <div className="au-stage-row">
-        <span className="au-stage-tag">UZ</span>
+        <Scramble text={en} className="au-stage-en" />
         <Scramble text={uz} className="au-stage-uz" />
       </div>
     </div>
@@ -242,60 +163,42 @@ function WordStage() {
 /* ----------------------------------------------------------- shell */
 
 function AuthShell({ eyebrow, title, subtitle, children, footer }: { eyebrow: string; title: string; subtitle: string; children: ReactNode; footer: ReactNode }) {
-  const card = useRef<HTMLDivElement>(null);
-
-  // The glow inside the card follows the cursor.
-  const spot = (e: React.MouseEvent) => {
-    const el = card.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-    el.style.setProperty('--my', `${e.clientY - r.top}px`);
-  };
-
   return (
     <div className="au-root">
-      <div className="au-aurora" aria-hidden="true" />
-      <Constellation />
-      <div className="au-grain" aria-hidden="true" />
-
-      <div className="au-layout">
-        <section className="au-story">
-          <div className="au-mark">
-            <span className="au-mark-dot" />
-            Qadam
-          </div>
+      <section className="au-story">
+        <Lens />
+        <Link to="/" className="au-mark">
+          Qadam<sup>®</sup>
+        </Link>
+        <div className="au-copy">
           <h2 className="au-headline">
             <span className="au-line"><span>Har kuni</span></span>
-            <span className="au-line"><span className="au-grad">bir qadam</span></span>
+            <span className="au-line"><span><em>bir qadam</em></span></span>
             <span className="au-line"><span>oldinga.</span></span>
           </h2>
           <p className="au-lede">So'z yodlang, ingliz tilini o'rganing, kod yozing. Hammasi bitta hisobda.</p>
-          <WordStage />
-        </section>
+        </div>
+        <WordStage />
+      </section>
 
-        <section className="au-formside">
-          <div className="au-card" ref={card} onMouseMove={spot}>
-            <div className="au-card-inner">
-              <div className="au-eyebrow">{eyebrow}</div>
-              <h1 className="au-title">{title}</h1>
-              <p className="au-sub">{subtitle}</p>
-              {children}
-              <p className="au-foot">{footer}</p>
-            </div>
-          </div>
-        </section>
-      </div>
+      <section className="au-sheet">
+        <div className="au-form">
+          <div className="au-eyebrow">{eyebrow}</div>
+          <h1 className="au-title">{title}</h1>
+          <p className="au-sub">{subtitle}</p>
+          {children}
+          <p className="au-foot">{footer}</p>
+        </div>
+      </section>
     </div>
   );
 }
 
-function AuField({ label, icon, type = 'text', ...rest }: InputHTMLAttributes<HTMLInputElement> & { label: string; icon: ReactNode }) {
+function AuField({ label, type = 'text', ...rest }: InputHTMLAttributes<HTMLInputElement> & { label: string }) {
   const [show, setShow] = useState(false);
   const isPassword = type === 'password';
   return (
     <label className="au-field">
-      <span className="au-field-icon">{icon}</span>
       <input {...rest} type={isPassword && show ? 'text' : type} placeholder=" " className="au-input" />
       <span className="au-field-label">{label}</span>
       <span className="au-field-line" />
@@ -310,9 +213,9 @@ function AuField({ label, icon, type = 'text', ...rest }: InputHTMLAttributes<HT
 
 function AuError({ message }: { message: string }) {
   if (!message) return null;
-  // A fresh key on every message replays the shake.
+  // Keyed by message so a new error replays the shake.
   return (
-    <div className="au-error" key={`${message}-${Date.now()}`} role="alert">
+    <div className="au-error" key={message} role="alert">
       {message}
     </div>
   );
@@ -321,7 +224,6 @@ function AuError({ message }: { message: string }) {
 function AuButton({ busy, children }: { busy: boolean; children: ReactNode }) {
   return (
     <button type="submit" className="au-btn" disabled={busy}>
-      <span className="au-btn-bg" />
       <span className="au-btn-label">
         {busy ? <span className="au-spin" /> : (<>{children}<IconArrow /></>)}
       </span>
@@ -368,8 +270,8 @@ export function LoginPage() {
     >
       <form onSubmit={submit} className="au-stagger">
         <AuError message={error} />
-        <AuField label="Foydalanuvchi nomi" icon={<IconUser />} value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" autoCapitalize="none" autoFocus />
-        <AuField label="Parol" icon={<IconLock />} type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
+        <AuField label="Foydalanuvchi nomi" value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" autoCapitalize="none" autoFocus />
+        <AuField label="Parol" type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
         <AuButton busy={busy}>Kirish</AuButton>
       </form>
     </AuthShell>
@@ -423,12 +325,12 @@ export function RegisterPage() {
       <form onSubmit={submit} className="au-stagger">
         <AuError message={error} />
         <div className="au-two">
-          <AuField label="Ism" icon={<IconUser />} value={form.firstName} onChange={set('firstName')} autoComplete="given-name" />
-          <AuField label="Familiya" icon={<IconUser />} value={form.lastName} onChange={set('lastName')} autoComplete="family-name" />
+          <AuField label="Ism" value={form.firstName} onChange={set('firstName')} autoComplete="given-name" />
+          <AuField label="Familiya" value={form.lastName} onChange={set('lastName')} autoComplete="family-name" />
         </div>
-        <AuField label="Email" icon={<IconMail />} type="email" value={form.email} onChange={set('email')} autoComplete="email" />
-        <AuField label="Foydalanuvchi nomi" icon={<IconUser />} value={form.username} onChange={set('username')} autoComplete="username" autoCapitalize="none" />
-        <AuField label="Parol" icon={<IconLock />} type="password" value={form.password} onChange={set('password')} autoComplete="new-password" />
+        <AuField label="Email" type="email" value={form.email} onChange={set('email')} autoComplete="email" />
+        <AuField label="Foydalanuvchi nomi" value={form.username} onChange={set('username')} autoComplete="username" autoCapitalize="none" />
+        <AuField label="Parol" type="password" value={form.password} onChange={set('password')} autoComplete="new-password" />
         <AuButton busy={busy}>Ro'yxatdan o'tish</AuButton>
       </form>
     </AuthShell>
