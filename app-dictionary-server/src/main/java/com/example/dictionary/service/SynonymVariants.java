@@ -300,12 +300,98 @@ final class SynonymVariants {
             {"film", "movie"}, {"films", "movies"}, {"kid", "child"}, {"kids", "children"}, {"tv", "television"},
             {"bike", "bicycle"}, {"bikes", "bicycles"}, {"sofa", "couch"}, {"sofas", "couches"}, {"taxi", "cab"}, {"taxis", "cabs"},
             {"mum", "mom"}, {"maybe", "perhaps"}, {"nearly", "almost"}, {"till", "until"}, {"towards", "toward"},
-            {"everybody", "everyone"}, {"somebody", "someone"}, {"anybody", "anyone"}, {"often", "frequently"}};
+            {"everybody", "everyone"}, {"somebody", "someone"}, {"anybody", "anyone"}, {"often", "frequently"},
+            // British and American spelling.
+            {"favourite", "favorite"}, {"favourites", "favorites"}, {"colour", "color"}, {"colours", "colors"},
+            {"centre", "center"}, {"centres", "centers"}, {"neighbour", "neighbor"}, {"neighbours", "neighbors"},
+            {"neighbour's", "neighbor's"}, {"theatre", "theater"}, {"theatres", "theaters"}, {"programme", "program"},
+            {"programmes", "programs"}, {"metre", "meter"}, {"metres", "meters"}, {"kilometre", "kilometer"},
+            {"kilometres", "kilometers"}, {"travelling", "traveling"}, {"travelled", "traveled"}, {"learnt", "learned"},
+            {"practise", "practice"}, {"practises", "practices"}, {"practising", "practicing"}, {"practised", "practiced"},
+            {"maths", "math"}, {"grey", "gray"},
+            // British and American words.
+            {"trousers", "pants"}, {"parcel", "package"}, {"parcels", "packages"},
+            {"grandmother", "grandma"}, {"grandfather", "grandpa"}};
+
+    /** The American (or everyday) word is accepted for the model's word, not the other way round. */
+    private static void oneWay(Words s, int i, List<Swap> out) {
+        String w = s.word[i];
+        String before = s.prev(i);
+        String after = s.next(i);
+        boolean noun = in(before, DETERMINERS + " big small new old long");
+        switch (w) {
+            case "metro" -> add(out, i, "subway", "underground");
+            case "underground" -> {
+                if (before.equals("the")) add(out, i, "subway", "metro");
+            }
+            case "rubbish" -> add(out, i, "garbage", "trash");
+            case "petrol" -> add(out, i, "gas");
+            case "headmaster" -> add(out, i, "principal");
+            case "policeman" -> add(out, i, "police officer");
+            case "cinema" -> add(out, i, "movie theater", "movie theatre");
+            case "queue" -> {
+                if (noun) add(out, i, "line"); // "to queue" is "to stand in line"
+            }
+            case "lift" -> {
+                if (noun) add(out, i, "elevator");
+            }
+            case "sweets" -> {
+                if (!in(after, "are were aren't weren't")) add(out, i, "candy"); // "candy is"
+            }
+            case "beautiful" -> {
+                if (!in(before, "more most less")) add(out, i, "pretty");
+            }
+            case "job" -> {
+                if (in(before, POSSESSIVES)) add(out, i, "work"); // never "a work"
+            }
+            case "lesson", "lessons" -> add(out, i, w.equals("lesson") ? "class" : "classes");
+            // "class" is also a group of pupils: a "lesson" only when it starts or ends.
+            case "class", "classes" -> {
+                if (in(after, "start starts started begin begins began finish finishes finished end ends ended")) {
+                    add(out, i, w.equals("class") ? "lesson" : "lessons");
+                }
+            }
+            // "at the weekend" / "on the weekend"
+            case "at" -> {
+                if (after.equals("weekends") || (after.equals("the") && s.next(i, 2).equals("weekend"))) add(out, i, "on");
+            }
+            default -> { }
+        }
+        // "my house" / "my home"; "my home town" stays.
+        if (in(before, POSSESSIVES) && !in(after, "town city country village page work")) {
+            if (w.equals("house")) add(out, i, "home");
+            if (w.equals("home")) add(out, i, "house");
+        }
+    }
+
+    private static final String UNITS = "zero one two three four five six seven eight nine ten eleven twelve thirteen "
+            + "fourteen fifteen sixteen seventeen eighteen nineteen";
+    private static final String TENS = "twenty thirty forty fifty sixty seventy eighty ninety";
+    private static final java.util.regex.Pattern NUMBER = java.util.regex.Pattern.compile(
+            "\\b(?:(?:a|one) hundred\\b|(" + TENS.replace(' ', '|') + ")(?:[- ](" + "one|two|three|four|five|six|seven|eight|nine"
+                    + "))?\\b|(" + UNITS.replace(' ', '|') + ")\\b)");
+
+    static boolean hasNumberWord(String sentence) {
+        return NUMBER.matcher(sentence).find();
+    }
+
+    /** "twenty five" and "twenty-five" written as "25", so words and digits compare equal. */
+    static String digits(String sentence) {
+        return NUMBER.matcher(sentence).replaceAll(m -> {
+            if (m.group(1) != null) {
+                int n = (List.of(TENS.split(" ")).indexOf(m.group(1)) + 2) * 10;
+                if (m.group(2) != null) n += List.of(UNITS.split(" ")).indexOf(m.group(2));
+                return String.valueOf(n);
+            }
+            return m.group(3) != null ? String.valueOf(List.of(UNITS.split(" ")).indexOf(m.group(3))) : "100";
+        });
+    }
 
     private static void nouns(Words s, int i, List<Swap> out) {
         String w = s.word[i];
         String before = s.prev(i);
         String after = s.next(i);
+        oneWay(s, i, out);
         for (String[] pair : SAME) {
             if (w.equals(pair[0])) out.add(new Swap(i, 1, pair[1]));
             if (w.equals(pair[1])) out.add(new Swap(i, 1, pair[0]));

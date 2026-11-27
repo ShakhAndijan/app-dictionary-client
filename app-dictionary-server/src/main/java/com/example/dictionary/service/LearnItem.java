@@ -71,11 +71,38 @@ public record LearnItem(String id, String kind, String prompt, List<String> opti
                     forms.addAll(PolarityVariants.of(f, hint));
                 }
             }
+            // "twenty five students in our class" / "twenty five pupils in our class"
+            if (synonyms) {
+                for (String f : java.util.List.copyOf(forms)) forms.addAll(schoolVariants(f));
+            }
             if (forms.contains(g)) return true;
             // "I like reading books" / "I love reading books", only where the sentence stays grammatical.
-            if (synonyms && forms.stream().anyMatch(f -> SynonymVariants.of(f).contains(g))) return true;
+            if (synonyms && forms.stream().anyMatch(f -> sameWithSynonyms(f, g))) return true;
         }
         return false;
+    }
+
+    /** {@code given} is one of the synonym spellings of {@code known}, numbers written as words or digits. */
+    private static boolean sameWithSynonyms(String known, String given) {
+        Set<String> variants = SynonymVariants.of(known);
+        if (variants.contains(given)) return true;
+        if (!SynonymVariants.hasNumberWord(known) && !SynonymVariants.hasNumberWord(given)) return false;
+        String digits = SynonymVariants.digits(given);
+        return variants.stream().anyMatch(v -> SynonymVariants.digits(v).equals(digits));
+    }
+
+    private static final java.util.regex.Pattern SCHOOL_CHILD = java.util.regex.Pattern.compile(
+            "o['‘’ʻ`]quvchi", java.util.regex.Pattern.CASE_INSENSITIVE);
+
+    /**
+     * A pupil can always be called a student. The other way round only when the task says "o'quvchi":
+     * a "talaba" is at university, so he or she is not a pupil.
+     */
+    private java.util.List<String> schoolVariants(String sentence) {
+        java.util.List<String> out = new java.util.ArrayList<>();
+        out.add(sentence.replaceAll("\\bpupil(s?)\\b", "student$1"));
+        if (SCHOOL_CHILD.matcher(prompt).find()) out.add(sentence.replaceAll("\\bstudent(s?)\\b", "pupil$1"));
+        return out;
     }
 
     private static final java.util.regex.Pattern GENDER_CUE = java.util.regex.Pattern.compile(
