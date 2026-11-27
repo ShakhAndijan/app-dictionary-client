@@ -82,13 +82,23 @@ public record LearnItem(String id, String kind, String prompt, List<String> opti
         return false;
     }
 
-    /** {@code given} is one of the synonym spellings of {@code known}, numbers written as words or digits. */
+    /**
+     * {@code given} is one of the synonym spellings of {@code known}, with numbers written as words or digits and
+     * a time phrase at either end.
+     */
     private static boolean sameWithSynonyms(String known, String given) {
         Set<String> variants = SynonymVariants.of(known);
         if (variants.contains(given)) return true;
-        if (!SynonymVariants.hasNumberWord(known) && !SynonymVariants.hasNumberWord(given)) return false;
-        String digits = SynonymVariants.digits(given);
-        return variants.stream().anyMatch(v -> SynonymVariants.digits(v).equals(digits));
+        if (!SynonymVariants.hasNumberWord(known) && !SynonymVariants.hasNumberWord(given)
+                && !TimePlacement.startsWithTime(known) && !TimePlacement.startsWithTime(given)) {
+            return false;
+        }
+        String wanted = canonical(given);
+        return variants.stream().anyMatch(v -> canonical(v).equals(wanted));
+    }
+
+    private static String canonical(String sentence) {
+        return TimePlacement.timeLast(SynonymVariants.digits(sentence));
     }
 
     private static final java.util.regex.Pattern SCHOOL_CHILD = java.util.regex.Pattern.compile(
