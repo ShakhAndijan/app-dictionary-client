@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const makeHelpers = require('./dev-helpers.cjs');
 
-module.exports = function buildMiddle(moduleKey, codePrefix, parts) {
+module.exports = function buildMiddle(moduleKey, codePrefix, parts, labs) {
   const { ch, fill, order } = makeHelpers(moduleKey, codePrefix);
   const L = [];
   function lesson(o) {
@@ -40,6 +40,17 @@ module.exports = function buildMiddle(moduleKey, codePrefix, parts) {
     if (l.items.length < 10) throw new Error(`${l.code}: only ${l.items.length} items`);
   });
   if (long.length) console.warn(`correct answer is the longest in ${long.length}:\n${long.join('\n')}`);
+
+  // optional coding labs, by lesson number: 10 for every lesson
+  if (labs) {
+    L.forEach((l) => {
+      const list = labs[l.order];
+      if (!list || list.length !== 10) throw new Error(`${l.code}: needs 10 labs, has ${list ? list.length : 0}`);
+      list.forEach((b, i) => { b.id = String(i + 1); });
+      l.labs = list;
+    });
+    console.log('labs', L.length * 10);
+  }
 
   const out = path.join(__dirname, '..', 'src', 'main', 'resources', 'dev', `frontend-${moduleKey}-middle.json`);
   fs.writeFileSync(out, JSON.stringify(L, null, 1));

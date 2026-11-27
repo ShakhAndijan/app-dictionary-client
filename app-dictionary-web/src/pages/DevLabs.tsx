@@ -3,11 +3,12 @@ import { DevLab, devApi, errorMessage } from '../api';
 import { Button, Notice } from '../ui';
 import { LabRun, labProgram, runLab } from './devLab';
 import { cssDocument, runCssLab } from './cssLab';
+import { htmlDocument, runHtmlLab } from './htmlLab';
 import { reactDocument, runReactLab } from './reactLab';
 import { completeCss, htmlSelectors } from './cssComplete';
 import { BrowserPreview, CodeEditor, TaskText, highlight } from './labViews';
 
-/** Coding labs of a lesson: write the code (JavaScript, CSS or terminal commands), run it against the tests. */
+/** Coding labs of a lesson: write the code (JavaScript, HTML, CSS or terminal commands), run it against the tests. */
 export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   lessonCode: string;
   title: string;
@@ -35,10 +36,13 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   const isDone = done.has(lab.id);
   const isShell = lab.kind === 'git' || lab.kind === 'npm';
   const isCss = lab.kind === 'css';
+  const isHtml = lab.kind === 'html';
+  /** CSS and HTML labs show the page next to the editor */
+  const isPage = isCss || isHtml;
   const isReact = lab.kind === 'react';
   const doneCount = useMemo(() => labs.filter((l) => done.has(l.id)).length, [labs, done]);
-  const lang = isCss ? 'css' : 'plain';
-  const fileName = isCss ? 'style.css' : isShell ? 'terminal' : isReact ? 'App.jsx' : 'script.js';
+  const lang = isCss ? 'css' : isHtml ? 'html' : 'plain';
+  const fileName = isCss ? 'style.css' : isHtml ? 'index.html' : isShell ? 'terminal' : isReact ? 'App.jsx' : 'script.js';
   /** the page without the lab's own scaffold styles, as the learner reads it */
   const html = isCss ? (lab.setup ?? '').replace(/<style>[\s\S]*?<\/style>\n?/g, '').trim() : '';
   const selectors = htmlSelectors(html);
@@ -55,6 +59,7 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
     setRunning(true);
     setError('');
     const result = isCss ? await runCssLab(lab.setup ?? '', code, lab.tests)
+      : isHtml ? await runHtmlLab(code, lab.tests)
       : isReact ? await runReactLab(lab.setup ?? '', code, lab.tests)
         : await runLab(labProgram(lab, code), lab.tests);
     setRuns((p) => ({ ...p, [lab.id]: result }));
@@ -100,7 +105,7 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
   };
 
   return (
-    <div className={`dv dv-lab ${isCss ? 'dv-lab-wide' : ''}`}>
+    <div className={`dv dv-lab ${isPage ? 'dv-lab-wide' : ''}`}>
       <header className="qx-top">
         <button className="gp-back" onClick={onBack} aria-label="Orqaga">←</button>
         <div className="qx-title">
@@ -130,11 +135,11 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
         <span className="dl-no" aria-hidden="true">{isDone ? '✓' : index + 1}</span>
         <div>
           <h3>{lab.title}</h3>
-          {isCss || isReact ? <TaskText text={lab.task} /> : <p>{lab.task}</p>}
+          {isPage || isReact ? <TaskText text={lab.task} /> : <p>{lab.task}</p>}
         </div>
       </section>
 
-      <div className={`dl-bench ${isCss ? 'split' : ''}`}>
+      <div className={`dl-bench ${isPage ? 'split' : ''}`}>
         <div className="dl-col">
           <section className="dl-win dl-editor">
             <header className="dl-winbar">
@@ -147,7 +152,7 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
               complete={isCss ? (text, caret, forced) => completeCss(text, caret, selectors, forced) : undefined}
               value={code}
               lang={lang}
-              label={isShell ? 'Terminal buyruqlari' : isCss ? 'CSS kodi' : isReact ? 'React (JSX) kodi' : 'JavaScript kodi'}
+              label={isShell ? 'Terminal buyruqlari' : isCss ? 'CSS kodi' : isHtml ? 'HTML kodi' : isReact ? 'React (JSX) kodi' : 'JavaScript kodi'}
               placeholder={isShell ? `Har qatorga bitta buyruq yozing, masalan: ${lab.kind === 'git' ? 'git add .' : 'npm install dayjs'}` : undefined}
               onChange={setCode}
               onKeyDown={onKey}
@@ -210,6 +215,12 @@ export function DevLabs({ lessonCode, title, labs, doneIds, onBack }: {
             </section>
           )}
         </div>
+
+        {isHtml && (
+          <div className="dl-col dl-side">
+            <BrowserPreview key={lab.id} doc={htmlDocument(code)} widths={[360, 600]} />
+          </div>
+        )}
 
         {isCss && (
           <div className="dl-col dl-side">

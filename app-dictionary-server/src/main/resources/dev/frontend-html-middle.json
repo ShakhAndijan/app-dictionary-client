@@ -342,6 +342,222 @@
     "answer": "<header> <nav> </header> <main> </main> <footer>",
     "explain": "Odatda nav header ichida turadi, keyin main, oxirida footer."
    }
+  ],
+  "labs": [
+   {
+    "title": "Sahifa landmarklari",
+    "task": "`div` larni ma'noli teglarga almashtiring: `header`, `nav`, `main`, `footer`.",
+    "starter": "<div class=\"top\">Logo</div>\n<div class=\"menu\"><a href=\"/\">Bosh sahifa</a></div>\n<div class=\"content\"><h1>Maqola</h1></div>\n<div class=\"bottom\">2026</div>\n",
+    "solution": "<header>Logo</header>\n<nav><a href=\"/\">Bosh sahifa</a></nav>\n<main><h1>Maqola</h1></main>\n<footer>2026</footer>\n",
+    "tests": [
+     {
+      "call": "n('header')",
+      "expect": "1"
+     },
+     {
+      "call": "n('nav a')",
+      "expect": "1"
+     },
+     {
+      "call": "n('main h1')",
+      "expect": "1"
+     },
+     {
+      "call": "n('footer')",
+      "expect": "1"
+     },
+     {
+      "call": "n('div')",
+      "expect": "0"
+     }
+    ],
+    "hint": "Har bir div ning vazifasiga mos teg bor.",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "Ikki navigatsiyani nomlash",
+    "task": "Ikkala `nav` ga alohida nom bering: `aria-label` \"Asosiy\" va \"Footer\".",
+    "starter": "<nav><a href=\"/\">Bosh</a></nav>\n<footer>\n  <nav><a href=\"/help\">Yordam</a></nav>\n</footer>\n",
+    "solution": "<nav aria-label=\"Asosiy\"><a href=\"/\">Bosh</a></nav>\n<footer>\n  <nav aria-label=\"Footer\"><a href=\"/help\">Yordam</a></nav>\n</footer>\n",
+    "tests": [
+     {
+      "call": "n('nav')",
+      "expect": "2"
+     },
+     {
+      "call": "attrs('nav', 'aria-label')",
+      "expect": "[\"Asosiy\",\"Footer\"]"
+     }
+    ],
+    "hint": "aria-label atributi.",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "Sarlavhalar daraxti",
+    "task": "Darajalar sakramasin: bitta `h1`, uning ostida `h2`, keyin `h3`.",
+    "starter": "<h1>Kurs</h1>\n<h4>Modul</h4>\n<h1>Dars</h1>\n",
+    "solution": "<h1>Kurs</h1>\n<h2>Modul</h2>\n<h3>Dars</h3>\n",
+    "tests": [
+     {
+      "call": "tags('h1, h2, h3, h4, h5, h6')",
+      "expect": "[\"h1\",\"h2\",\"h3\"]"
+     },
+     {
+      "call": "texts('h1, h2, h3')",
+      "expect": "[\"Kurs\",\"Modul\",\"Dars\"]"
+     }
+    ],
+    "hint": "Daraja ko'rinish uchun emas, tuzilma uchun.",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "article",
+    "task": "Har bir yangilik mustaqil: ikkalasini `article` qiling, har birida `h2` bo'lsin.",
+    "starter": "<main>\n  <h1>Yangiliklar</h1>\n  <div><b>Birinchi</b><p>Matn</p></div>\n  <div><b>Ikkinchi</b><p>Matn</p></div>\n</main>\n",
+    "solution": "<main>\n  <h1>Yangiliklar</h1>\n  <article><h2>Birinchi</h2><p>Matn</p></article>\n  <article><h2>Ikkinchi</h2><p>Matn</p></article>\n</main>\n",
+    "tests": [
+     {
+      "call": "n('main > article')",
+      "expect": "2"
+     },
+     {
+      "call": "texts('article > h2')",
+      "expect": "[\"Birinchi\",\"Ikkinchi\"]"
+     },
+     {
+      "call": "n('div, b')",
+      "expect": "0"
+     }
+    ],
+    "hint": "article — alohida tarqatsa ham tushunarli bo'lak.",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "section va uning nomi",
+    "task": "`section` ni sarlavhasi bilan bog'lang: `aria-labelledby` va `id`, shunda u region landmarkiga aylanadi.",
+    "starter": "<section>\n  <h2>Narxlar</h2>\n  <p>Oyiga 10$</p>\n</section>\n",
+    "solution": "<section aria-labelledby=\"narxlar\">\n  <h2 id=\"narxlar\">Narxlar</h2>\n  <p>Oyiga 10$</p>\n</section>\n",
+    "tests": [
+     {
+      "call": "name('section')",
+      "expect": "\"Narxlar\""
+     },
+     {
+      "call": "attr('section', 'aria-labelledby') === attr('h2', 'id')",
+      "expect": "true"
+     }
+    ],
+    "hint": "section aria-labelledby=\"...\" va h2 id=\"...\".",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "aside",
+    "task": "Asosiy matnga aloqador qo'shimcha blokni `aside` qiling (u `main` ichida qolsin).",
+    "starter": "<main>\n  <h1>Maqola</h1>\n  <p>Asosiy matn</p>\n  <div>O'xshash maqolalar</div>\n</main>\n",
+    "solution": "<main>\n  <h1>Maqola</h1>\n  <p>Asosiy matn</p>\n  <aside>O'xshash maqolalar</aside>\n</main>\n",
+    "tests": [
+     {
+      "call": "n('main > aside')",
+      "expect": "1"
+     },
+     {
+      "call": "n('div')",
+      "expect": "0"
+     }
+    ],
+    "hint": "aside — yon ma'lumot.",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "Jadval sarlavhasi",
+    "task": "Jadvalga `caption` \"Narxlar\" qo'shing va birinchi qatordagi kataklarni `th` qiling.",
+    "starter": "<table>\n  <tr><td>Mahsulot</td><td>Narx</td></tr>\n  <tr><td>Non</td><td>5000</td></tr>\n</table>\n",
+    "solution": "<table>\n  <caption>Narxlar</caption>\n  <tr><th>Mahsulot</th><th>Narx</th></tr>\n  <tr><td>Non</td><td>5000</td></tr>\n</table>\n",
+    "tests": [
+     {
+      "call": "name('table')",
+      "expect": "\"Narxlar\""
+     },
+     {
+      "call": "texts('th')",
+      "expect": "[\"Mahsulot\",\"Narx\"]"
+     },
+     {
+      "call": "n('td')",
+      "expect": "2"
+     }
+    ],
+    "hint": "caption table ning birinchi bolasi.",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "scope",
+    "task": "Ustun sarlavhalariga `scope=\"col\"`, qator sarlavhasiga `scope=\"row\"` bering.",
+    "starter": "<table>\n  <caption>Baholar</caption>\n  <tr><th>Ism</th><th>Ball</th></tr>\n  <tr><td>Ali</td><td>90</td></tr>\n</table>\n",
+    "solution": "<table>\n  <caption>Baholar</caption>\n  <tr><th scope=\"col\">Ism</th><th scope=\"col\">Ball</th></tr>\n  <tr><th scope=\"row\">Ali</th><td>90</td></tr>\n</table>\n",
+    "tests": [
+     {
+      "call": "attrs('th', 'scope')",
+      "expect": "[\"col\",\"col\",\"row\"]"
+     },
+     {
+      "call": "n('td')",
+      "expect": "1"
+     }
+    ],
+    "hint": "Ali katagi ham sarlavha — th.",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "thead va tbody",
+    "task": "Jadvalni `thead` va `tbody` ga ajrating.",
+    "starter": "<table>\n  <tr><th>Kun</th></tr>\n  <tr><td>Dushanba</td></tr>\n  <tr><td>Seshanba</td></tr>\n</table>\n",
+    "solution": "<table>\n  <thead>\n    <tr><th>Kun</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>Dushanba</td></tr>\n    <tr><td>Seshanba</td></tr>\n  </tbody>\n</table>\n",
+    "tests": [
+     {
+      "call": "n('thead th')",
+      "expect": "1"
+     },
+     {
+      "call": "n('tbody tr')",
+      "expect": "2"
+     },
+     {
+      "call": "n('thead td')",
+      "expect": "0"
+     }
+    ],
+    "hint": "Sarlavha qatori thead ichida.",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "Menyu — ro'yxat",
+    "task": "Havolalarni `nav` ichida `ul`/`li` ro'yxatiga joylang.",
+    "starter": "<div>\n  <a href=\"/a\">A</a>\n  <a href=\"/b\">B</a>\n  <a href=\"/c\">C</a>\n</div>\n",
+    "solution": "<nav>\n  <ul>\n    <li><a href=\"/a\">A</a></li>\n    <li><a href=\"/b\">B</a></li>\n    <li><a href=\"/c\">C</a></li>\n  </ul>\n</nav>\n",
+    "tests": [
+     {
+      "call": "n('nav > ul > li > a')",
+      "expect": "3"
+     },
+     {
+      "call": "n('div')",
+      "expect": "0"
+     }
+    ],
+    "hint": "nav > ul > li > a",
+    "kind": "html",
+    "id": "10"
+   }
   ]
  },
  {
@@ -632,6 +848,214 @@
     "alsoAccept": [
      "&#60;"
     ]
+   }
+  ],
+  "labs": [
+   {
+    "title": "p ichida blok",
+    "task": "`p` ichiga `div` qo'yib bo'lmaydi — parser paragrafni yopib yuboradi. Tashqi tegni `div` qiling.",
+    "starter": "<p class=\"card\">\n  Salom\n  <div class=\"inner\">Tafsilot</div>\n</p>\n",
+    "solution": "<div class=\"card\">\n  Salom\n  <div class=\"inner\">Tafsilot</div>\n</div>\n",
+    "tests": [
+     {
+      "call": "n('.card > .inner')",
+      "expect": "1"
+     },
+     {
+      "call": "n('p')",
+      "expect": "0"
+     }
+    ],
+    "hint": "Starter da .inner aslida .card ichida emas.",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "Interaktiv ichida interaktiv",
+    "task": "Havola ichida tugma bo'lmaydi. Ularni yonma-yon qo'ying.",
+    "starter": "<a href=\"/product\">\n  Telefon\n  <button>Savatga</button>\n</a>\n",
+    "solution": "<a href=\"/product\">Telefon</a>\n<button>Savatga</button>\n",
+    "tests": [
+     {
+      "call": "n('a button')",
+      "expect": "0"
+     },
+     {
+      "call": "n('a')",
+      "expect": "1"
+     },
+     {
+      "call": "n('button')",
+      "expect": "1"
+     },
+     {
+      "call": "text('a')",
+      "expect": "\"Telefon\""
+     }
+    ],
+    "hint": "a va button — alohida elementlar.",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "Ro'yxat ichida faqat li",
+    "task": "`ul` ning bevosita bolalari faqat `li` bo'lsin; sarlavhani tashqariga chiqaring.",
+    "starter": "<ul>\n  <h2>Mevalar</h2>\n  <li>Olma</li>\n  <div><li>Nok</li></div>\n</ul>\n",
+    "solution": "<h2>Mevalar</h2>\n<ul>\n  <li>Olma</li>\n  <li>Nok</li>\n</ul>\n",
+    "tests": [
+     {
+      "call": "n('ul > :not(li)')",
+      "expect": "0"
+     },
+     {
+      "call": "texts('ul > li')",
+      "expect": "[\"Olma\",\"Nok\"]"
+     },
+     {
+      "call": "n('ul h2')",
+      "expect": "0"
+     }
+    ],
+    "hint": "h2 va div ni olib tashlang.",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "Boolean atribut",
+    "task": "`disabled=\"false\"` ham o'chiradi! Birinchi tugma ishlasin, ikkinchisi o'chirilgan qolsin.",
+    "starter": "<button disabled=\"false\">Yuborish</button>\n<button disabled>Bekor</button>\n",
+    "solution": "<button>Yuborish</button>\n<button disabled>Bekor</button>\n",
+    "tests": [
+     {
+      "call": "has('button:nth-of-type(1)', 'disabled')",
+      "expect": "false"
+     },
+     {
+      "call": "has('button:nth-of-type(2)', 'disabled')",
+      "expect": "true"
+     }
+    ],
+    "hint": "Atributning o'zi bo'lmasligi kerak.",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "data-* atributlari",
+    "task": "Tugmaga mahsulot ma'lumotini qo'shing: `data-id=\"42\"` va `data-product-name=\"Non\"`.",
+    "starter": "<button>Savatga</button>\n",
+    "solution": "<button data-id=\"42\" data-product-name=\"Non\">Savatga</button>\n",
+    "tests": [
+     {
+      "call": "attr('button', 'data-id')",
+      "expect": "\"42\""
+     },
+     {
+      "call": "attr('button', 'data-product-name')",
+      "expect": "\"Non\""
+     }
+    ],
+    "hint": "JavaScript da dataset.productName bo'ladi.",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "id takrorlanmasin",
+    "task": "Ikki element bir xil `id` ga ega. Ikkinchisini `email-2` qiling va `label` ni mos bog'lang.",
+    "starter": "<label for=\"email\">Asosiy</label> <input id=\"email\">\n<label for=\"email\">Zaxira</label> <input id=\"email\">\n",
+    "solution": "<label for=\"email\">Asosiy</label> <input id=\"email\">\n<label for=\"email-2\">Zaxira</label> <input id=\"email-2\">\n",
+    "tests": [
+     {
+      "call": "attrs('input', 'id')",
+      "expect": "[\"email\",\"email-2\"]"
+     },
+     {
+      "call": "name('input:nth-of-type(2)')",
+      "expect": "\"Zaxira\""
+     }
+    ],
+    "hint": "id sahifada yagona bo'ladi.",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "Jadval parseri",
+    "task": "`table` ichidagi begona matn parser tomonidan tashqariga chiqariladi. Izohni `caption` ichiga oling.",
+    "starter": "<table>\n  Yillik hisobot\n  <tr><td>2026</td></tr>\n</table>\n",
+    "solution": "<table>\n  <caption>Yillik hisobot</caption>\n  <tr><td>2026</td></tr>\n</table>\n",
+    "tests": [
+     {
+      "call": "text('caption')",
+      "expect": "\"Yillik hisobot\""
+     },
+     {
+      "call": "n('table td')",
+      "expect": "1"
+     }
+    ],
+    "hint": "caption.",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "Yopilmagan teg",
+    "task": "Birinchi `a` yopilmagani uchun havolalar aralashib ketgan. Ikkalasini to'g'ri yoping.",
+    "starter": "<p><a href=\"/a\">Birinchi <a href=\"/b\">Ikkinchi</a> oddiy matn</p>\n",
+    "solution": "<p><a href=\"/a\">Birinchi</a> <a href=\"/b\">Ikkinchi</a> oddiy matn</p>\n",
+    "tests": [
+     {
+      "call": "texts('a')",
+      "expect": "[\"Birinchi\",\"Ikkinchi\"]"
+     },
+     {
+      "call": "n('a a')",
+      "expect": "0"
+     },
+     {
+      "call": "src().split('</a>').length - 1",
+      "expect": "2"
+     }
+    ],
+    "hint": "Har bir <a> ga o'z </a> si.",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "Maxsus belgilar",
+    "task": "Paragrafda `<br> tegi` degan MATN ko'rinsin: belgilarni `&lt;` va `&gt;` bilan yozing.",
+    "starter": "<p><br> tegi</p>\n",
+    "solution": "<p>&lt;br&gt; tegi</p>\n",
+    "tests": [
+     {
+      "call": "text('p')",
+      "expect": "\"<br> tegi\""
+     },
+     {
+      "call": "n('br')",
+      "expect": "0"
+     }
+    ],
+    "hint": "&lt; = <, &gt; = >",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "Void elementlar",
+    "task": "`img` va `input` yopilmaydi va ichiga matn olmaydi. Matnni `label` ga chiqaring.",
+    "starter": "<input id=\"q\">Qidiruv</input>\n",
+    "solution": "<label for=\"q\">Qidiruv</label>\n<input id=\"q\">\n",
+    "tests": [
+     {
+      "call": "name('input')",
+      "expect": "\"Qidiruv\""
+     },
+     {
+      "call": "src().includes('</input>')",
+      "expect": "false"
+     }
+    ],
+    "hint": "input — void element.",
+    "kind": "html",
+    "id": "10"
    }
   ]
  },
@@ -958,6 +1382,210 @@
     "answer": "HTML o'qiladi defer skript bajariladi DOMContentLoaded load",
     "explain": "defer skriptlar DOMContentLoaded dan oldin, load esa barcha resurslardan keyin."
    }
+  ],
+  "labs": [
+   {
+    "title": "defer",
+    "task": "Skript parserni to'xtatmasin va DOM tayyor bo'lgach bajarilsin: `defer` qo'shing.",
+    "starter": "<script src=\"app.js\"></script>\n",
+    "solution": "<script src=\"app.js\" defer></script>\n",
+    "tests": [
+     {
+      "call": "has('script[src=\"app.js\"]', 'defer')",
+      "expect": "true"
+     },
+     {
+      "call": "has('script', 'async')",
+      "expect": "false"
+     }
+    ],
+    "hint": "defer atributi.",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "async",
+    "task": "Mustaqil analitika skripti tartibga bog'liq emas — uni `async` qiling.",
+    "starter": "<script src=\"analytics.js\"></script>\n",
+    "solution": "<script src=\"analytics.js\" async></script>\n",
+    "tests": [
+     {
+      "call": "has('script', 'async')",
+      "expect": "true"
+     },
+     {
+      "call": "has('script', 'defer')",
+      "expect": "false"
+     }
+    ],
+    "hint": "async atributi.",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "Tartib saqlansin",
+    "task": "`lib.js` va undan foydalanadigan `app.js` tartib bilan bajarilishi shart. `async` ni almashtiring.",
+    "starter": "<script src=\"lib.js\" async></script>\n<script src=\"app.js\" async></script>\n",
+    "solution": "<script src=\"lib.js\" defer></script>\n<script src=\"app.js\" defer></script>\n",
+    "tests": [
+     {
+      "call": "attrs('script', 'src')",
+      "expect": "[\"lib.js\",\"app.js\"]"
+     },
+     {
+      "call": "n('script[async]')",
+      "expect": "0"
+     },
+     {
+      "call": "n('script[defer]')",
+      "expect": "2"
+     }
+    ],
+    "hint": "async tartibni kafolatlamaydi.",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "ES modul",
+    "task": "`main.js` ES modul sifatida ulansin.",
+    "starter": "<script src=\"main.js\"></script>\n",
+    "solution": "<script type=\"module\" src=\"main.js\"></script>\n",
+    "tests": [
+     {
+      "call": "attr('script', 'type')",
+      "expect": "\"module\""
+     },
+     {
+      "call": "attr('script', 'src')",
+      "expect": "\"main.js\""
+     }
+    ],
+    "hint": "type=\"module\" — o'zi kechiktirilgan.",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "preload shrift",
+    "task": "`inter.woff2` shriftini oldindan yuklang: `rel=\"preload\"`, `as=\"font\"`, `type`, `crossorigin`.",
+    "starter": "<link href=\"inter.woff2\">\n",
+    "solution": "<link rel=\"preload\" href=\"inter.woff2\" as=\"font\" type=\"font/woff2\" crossorigin>\n",
+    "tests": [
+     {
+      "call": "attr('link', 'rel')",
+      "expect": "\"preload\""
+     },
+     {
+      "call": "attr('link', 'as')",
+      "expect": "\"font\""
+     },
+     {
+      "call": "attr('link', 'type')",
+      "expect": "\"font/woff2\""
+     },
+     {
+      "call": "has('link', 'crossorigin')",
+      "expect": "true"
+     }
+    ],
+    "hint": "Shrift preload da crossorigin shart.",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "preconnect",
+    "task": "API serveri `https://api.example.com` bilan ulanishni oldindan oching.",
+    "starter": "<link href=\"https://api.example.com\">\n",
+    "solution": "<link rel=\"preconnect\" href=\"https://api.example.com\">\n",
+    "tests": [
+     {
+      "call": "attr('link', 'rel')",
+      "expect": "\"preconnect\""
+     },
+     {
+      "call": "attr('link', 'href')",
+      "expect": "\"https://api.example.com\""
+     }
+    ],
+    "hint": "rel=\"preconnect\"",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "prefetch",
+    "task": "Keyingi sahifa uchun `next.js` ni bo'sh vaqtda yuklab qo'ying.",
+    "starter": "<link href=\"next.js\">\n",
+    "solution": "<link rel=\"prefetch\" href=\"next.js\">\n",
+    "tests": [
+     {
+      "call": "attr('link', 'rel')",
+      "expect": "\"prefetch\""
+     }
+    ],
+    "hint": "preload emas — bu keyingi sahifa uchun.",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "fetchpriority",
+    "task": "Birinchi ekrandagi `hero.jpg` yuqori ustuvorlik bilan yuklansin, `lazy` bo'lmasin.",
+    "starter": "<img src=\"hero.jpg\" alt=\"Tog'lar\" loading=\"lazy\">\n",
+    "solution": "<img src=\"hero.jpg\" alt=\"Tog'lar\" fetchpriority=\"high\">\n",
+    "tests": [
+     {
+      "call": "attr('img', 'fetchpriority')",
+      "expect": "\"high\""
+     },
+     {
+      "call": "has('img', 'loading')",
+      "expect": "false"
+     }
+    ],
+    "hint": "LCP rasmiga lazy qo'ymang.",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "Stylesheet va skript o'rni",
+    "task": "`head` ichida: avval `style.css`, keyin `app.js` (`defer`).",
+    "starter": "<head>\n  <script src=\"app.js\"></script>\n</head>\n<body>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</body>\n",
+    "solution": "<head>\n  <link rel=\"stylesheet\" href=\"style.css\">\n  <script src=\"app.js\" defer></script>\n</head>\n<body></body>\n",
+    "tests": [
+     {
+      "call": "tags('head > *')",
+      "expect": "[\"link\",\"script\"]"
+     },
+     {
+      "call": "has('head > script', 'defer')",
+      "expect": "true"
+     },
+     {
+      "call": "n('body link')",
+      "expect": "0"
+     }
+    ],
+    "hint": "CSS head da bo'lishi kerak.",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "media bilan CSS",
+    "task": "`print.css` faqat chop etishda kerak — renderni to'smasin.",
+    "starter": "<link rel=\"stylesheet\" href=\"print.css\">\n",
+    "solution": "<link rel=\"stylesheet\" href=\"print.css\" media=\"print\">\n",
+    "tests": [
+     {
+      "call": "attr('link', 'media')",
+      "expect": "\"print\""
+     },
+     {
+      "call": "attr('link', 'rel')",
+      "expect": "\"stylesheet\""
+     }
+    ],
+    "hint": "media=\"print\"",
+    "kind": "html",
+    "id": "10"
+   }
   ]
  },
  {
@@ -1283,6 +1911,214 @@
     "alsoAccept": [
      "currentsrc"
     ]
+   }
+  ],
+  "labs": [
+   {
+    "title": "alt matni",
+    "task": "Rasmga mazmunli `alt` bering: `Samarqand Registon maydoni`.",
+    "starter": "<img src=\"reg.jpg\">\n",
+    "solution": "<img src=\"reg.jpg\" alt=\"Samarqand Registon maydoni\">\n",
+    "tests": [
+     {
+      "call": "name('img')",
+      "expect": "\"Samarqand Registon maydoni\""
+     }
+    ],
+    "hint": "alt atributi.",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "Bezak rasmi",
+    "task": "`line.png` faqat bezak — ekran o'qigich uni o'tkazib yuborsin.",
+    "starter": "<img src=\"line.png\" alt=\"chiziq rasmi\">\n",
+    "solution": "<img src=\"line.png\" alt=\"\">\n",
+    "tests": [
+     {
+      "call": "has('img', 'alt')",
+      "expect": "true"
+     },
+     {
+      "call": "attr('img', 'alt')",
+      "expect": "\"\""
+     }
+    ],
+    "hint": "Bo'sh alt=\"\".",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "width va height",
+    "task": "Rasm yuklanguncha joy ajratilsin: `800` x `450`.",
+    "starter": "<img src=\"a.jpg\" alt=\"Manzara\">\n",
+    "solution": "<img src=\"a.jpg\" alt=\"Manzara\" width=\"800\" height=\"450\">\n",
+    "tests": [
+     {
+      "call": "attr('img', 'width')",
+      "expect": "\"800\""
+     },
+     {
+      "call": "attr('img', 'height')",
+      "expect": "\"450\""
+     }
+    ],
+    "hint": "CLS kamayadi.",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "lazy",
+    "task": "Sahifa pastidagi rasm kerak bo'lganda yuklansin.",
+    "starter": "<img src=\"footer.jpg\" alt=\"Jamoa\" width=\"400\" height=\"300\">\n",
+    "solution": "<img src=\"footer.jpg\" alt=\"Jamoa\" width=\"400\" height=\"300\" loading=\"lazy\">\n",
+    "tests": [
+     {
+      "call": "attr('img', 'loading')",
+      "expect": "\"lazy\""
+     }
+    ],
+    "hint": "loading=\"lazy\"",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "srcset va sizes",
+    "task": "`small.jpg` (400w) va `large.jpg` (800w) variantlarini bering; rasm ekran kengligida: `sizes=\"100vw\"`.",
+    "starter": "<img src=\"small.jpg\" alt=\"Shahar\">\n",
+    "solution": "<img src=\"small.jpg\" srcset=\"small.jpg 400w, large.jpg 800w\" sizes=\"100vw\" alt=\"Shahar\">\n",
+    "tests": [
+     {
+      "call": "attr('img', 'srcset').split(',').map((s) => s.trim())",
+      "expect": "[\"small.jpg 400w\",\"large.jpg 800w\"]"
+     },
+     {
+      "call": "attr('img', 'sizes')",
+      "expect": "\"100vw\""
+     }
+    ],
+    "hint": "srcset=\"fayl 400w, ...\"",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "picture: format",
+    "task": "`picture` yordamida avval `photo.avif` ni taklif qiling, zaxira `photo.jpg` qolsin.",
+    "starter": "<img src=\"photo.jpg\" alt=\"Gul\">\n",
+    "solution": "<picture>\n  <source srcset=\"photo.avif\" type=\"image/avif\">\n  <img src=\"photo.jpg\" alt=\"Gul\">\n</picture>\n",
+    "tests": [
+     {
+      "call": "tags('picture > *')",
+      "expect": "[\"source\",\"img\"]"
+     },
+     {
+      "call": "attr('source', 'type')",
+      "expect": "\"image/avif\""
+     },
+     {
+      "call": "attr('source', 'srcset')",
+      "expect": "\"photo.avif\""
+     }
+    ],
+    "hint": "source img dan oldin.",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "picture: boshqa kadr",
+    "task": "600px gacha ekranda `portrait.jpg`, kattaroqda `wide.jpg` ko'rsatilsin.",
+    "starter": "<img src=\"wide.jpg\" alt=\"Jamoa\">\n",
+    "solution": "<picture>\n  <source media=\"(max-width: 600px)\" srcset=\"portrait.jpg\">\n  <img src=\"wide.jpg\" alt=\"Jamoa\">\n</picture>\n",
+    "tests": [
+     {
+      "call": "attr('picture > source', 'media')",
+      "expect": "\"(max-width: 600px)\""
+     },
+     {
+      "call": "attr('source', 'srcset')",
+      "expect": "\"portrait.jpg\""
+     },
+     {
+      "call": "attr('picture > img', 'src')",
+      "expect": "\"wide.jpg\""
+     }
+    ],
+    "hint": "source media=\"...\"",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "Video subtitrlari",
+    "task": "Videoga `controls` va o'zbekcha subtitr qo'shing: `uz.vtt`, `kind=\"captions\"`, `srclang=\"uz\"`.",
+    "starter": "<video src=\"dars.mp4\"></video>\n",
+    "solution": "<video src=\"dars.mp4\" controls>\n  <track kind=\"captions\" src=\"uz.vtt\" srclang=\"uz\" label=\"O'zbekcha\" default>\n</video>\n",
+    "tests": [
+     {
+      "call": "has('video', 'controls')",
+      "expect": "true"
+     },
+     {
+      "call": "attr('video track', 'kind')",
+      "expect": "\"captions\""
+     },
+     {
+      "call": "attr('track', 'srclang')",
+      "expect": "\"uz\""
+     },
+     {
+      "call": "attr('track', 'src')",
+      "expect": "\"uz.vtt\""
+     }
+    ],
+    "hint": "track elementi video ichida.",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "iframe nomi va xavfsizligi",
+    "task": "`iframe` ga `title=\"Xarita\"`, bo'sh `sandbox` va `loading=\"lazy\"` bering.",
+    "starter": "<iframe src=\"https://example.com/map\"></iframe>\n",
+    "solution": "<iframe src=\"https://example.com/map\" title=\"Xarita\" sandbox loading=\"lazy\"></iframe>\n",
+    "tests": [
+     {
+      "call": "name('iframe')",
+      "expect": "\"Xarita\""
+     },
+     {
+      "call": "has('iframe', 'sandbox')",
+      "expect": "true"
+     },
+     {
+      "call": "attr('iframe', 'loading')",
+      "expect": "\"lazy\""
+     }
+    ],
+    "hint": "title, sandbox, loading.",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "figure va figcaption",
+    "task": "Rasm va uning izohini `figure` / `figcaption` bilan bog'lang.",
+    "starter": "<img src=\"d.png\" alt=\"2026 yil savdo grafigi\">\n<p>1-rasm. Savdo</p>\n",
+    "solution": "<figure>\n  <img src=\"d.png\" alt=\"2026 yil savdo grafigi\">\n  <figcaption>1-rasm. Savdo</figcaption>\n</figure>\n",
+    "tests": [
+     {
+      "call": "n('figure > img')",
+      "expect": "1"
+     },
+     {
+      "call": "text('figure > figcaption')",
+      "expect": "\"1-rasm. Savdo\""
+     },
+     {
+      "call": "n('p')",
+      "expect": "0"
+     }
+    ],
+    "hint": "figure ichida figcaption.",
+    "kind": "html",
+    "id": "10"
    }
   ]
  },
@@ -1613,6 +2449,190 @@
     ],
     "answer": "validatsiya submit hodisasi juftliklar yig'iladi so'rov yuboriladi",
     "explain": "Validatsiyadan o'tmasa submit hodisasi umuman chiqmaydi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "name atributi",
+    "task": "Serverga `email` kaliti bilan yuborilishi uchun maydonga `name` bering.",
+    "starter": "<form>\n  <input type=\"email\" value=\"a@b.uz\">\n</form>\n",
+    "solution": "<form>\n  <input type=\"email\" name=\"email\" value=\"a@b.uz\">\n</form>\n",
+    "tests": [
+     {
+      "call": "fd('form')",
+      "expect": "[[\"email\",\"a@b.uz\"]]"
+     }
+    ],
+    "hint": "name siz maydon yuborilmaydi.",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "GET qidiruv",
+    "task": "Qidiruv natijasi URL da ko'rinsin: `method=\"get\"`, `action=\"/search\"`, maydon nomi `q`.",
+    "starter": "<form method=\"post\">\n  <input type=\"search\">\n</form>\n",
+    "solution": "<form method=\"get\" action=\"/search\">\n  <input type=\"search\" name=\"q\">\n</form>\n",
+    "tests": [
+     {
+      "call": "attr('form', 'method')",
+      "expect": "\"get\""
+     },
+     {
+      "call": "attr('form', 'action')",
+      "expect": "\"/search\""
+     },
+     {
+      "call": "attr('input', 'name')",
+      "expect": "\"q\""
+     }
+    ],
+    "hint": "Qidiruv — GET.",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "POST",
+    "task": "Parol URL ga tushmasin: formani `post` bilan `/login` ga yuboring.",
+    "starter": "<form action=\"/login\">\n  <input name=\"user\">\n  <input type=\"password\" name=\"pass\">\n</form>\n",
+    "solution": "<form action=\"/login\" method=\"post\">\n  <input name=\"user\">\n  <input type=\"password\" name=\"pass\">\n</form>\n",
+    "tests": [
+     {
+      "call": "attr('form', 'method')",
+      "expect": "\"post\""
+     },
+     {
+      "call": "attr('form', 'action')",
+      "expect": "\"/login\""
+     }
+    ],
+    "hint": "method=\"post\"",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "Tugma turlari",
+    "task": "`Parolni ko'rsatish` tugmasi formani yubormasin, `Kirish` esa yuborsin.",
+    "starter": "<form>\n  <button>Parolni ko'rsatish</button>\n  <button>Kirish</button>\n</form>\n",
+    "solution": "<form>\n  <button type=\"button\">Parolni ko'rsatish</button>\n  <button type=\"submit\">Kirish</button>\n</form>\n",
+    "tests": [
+     {
+      "call": "attrs('button', 'type')",
+      "expect": "[\"button\",\"submit\"]"
+     }
+    ],
+    "hint": "type yozilmasa — submit.",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "disabled va readonly",
+    "task": "`id` maydoni o'zgartirilmasin, LEKIN yuborilsin.",
+    "starter": "<form>\n  <input name=\"id\" value=\"7\" disabled>\n  <input name=\"note\" value=\"ok\">\n</form>\n",
+    "solution": "<form>\n  <input name=\"id\" value=\"7\" readonly>\n  <input name=\"note\" value=\"ok\">\n</form>\n",
+    "tests": [
+     {
+      "call": "fd('form')",
+      "expect": "[[\"id\",\"7\"],[\"note\",\"ok\"]]"
+     },
+     {
+      "call": "has('[name=id]', 'readonly')",
+      "expect": "true"
+     }
+    ],
+    "hint": "disabled maydon FormData ga tushmaydi.",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "Checkbox qiymati",
+    "task": "Belgilangan `news` checkbox `yes` qiymatini yuborsin.",
+    "starter": "<form>\n  <label><input type=\"checkbox\" name=\"news\"> Yangiliklar</label>\n</form>\n",
+    "solution": "<form>\n  <label><input type=\"checkbox\" name=\"news\" value=\"yes\" checked> Yangiliklar</label>\n</form>\n",
+    "tests": [
+     {
+      "call": "fd('form')",
+      "expect": "[[\"news\",\"yes\"]]"
+     }
+    ],
+    "hint": "checked va value=\"yes\".",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "Yashirin maydon",
+    "task": "Forma bilan `source=landing` ham ketsin.",
+    "starter": "<form>\n  <input name=\"email\" value=\"a@b.uz\">\n</form>\n",
+    "solution": "<form>\n  <input type=\"hidden\" name=\"source\" value=\"landing\">\n  <input name=\"email\" value=\"a@b.uz\">\n</form>\n",
+    "tests": [
+     {
+      "call": "fd('form').sort()",
+      "expect": "[[\"email\",\"a@b.uz\"],[\"source\",\"landing\"]]"
+     },
+     {
+      "call": "attr('[name=source]', 'type')",
+      "expect": "\"hidden\""
+     }
+    ],
+    "hint": "type=\"hidden\"",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "Fayl yuklash",
+    "task": "Fayl serverga yetib borishi uchun `method` va `enctype` ni to'g'rilang.",
+    "starter": "<form action=\"/upload\">\n  <input type=\"file\" name=\"avatar\">\n  <button>Yuklash</button>\n</form>\n",
+    "solution": "<form action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n  <input type=\"file\" name=\"avatar\">\n  <button>Yuklash</button>\n</form>\n",
+    "tests": [
+     {
+      "call": "attr('form', 'enctype')",
+      "expect": "\"multipart/form-data\""
+     },
+     {
+      "call": "attr('form', 'method')",
+      "expect": "\"post\""
+     }
+    ],
+    "hint": "multipart/form-data",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "select qiymati",
+    "task": "Tanlangan `Toshkent` varianti `tas` qiymatini yuborsin.",
+    "starter": "<form>\n  <select name=\"city\">\n    <option>Samarqand</option>\n    <option>Toshkent</option>\n  </select>\n</form>\n",
+    "solution": "<form>\n  <select name=\"city\">\n    <option value=\"skd\">Samarqand</option>\n    <option value=\"tas\" selected>Toshkent</option>\n  </select>\n</form>\n",
+    "tests": [
+     {
+      "call": "fd('form')",
+      "expect": "[[\"city\",\"tas\"]]"
+     },
+     {
+      "call": "attrs('option', 'value')",
+      "expect": "[\"skd\",\"tas\"]"
+     }
+    ],
+    "hint": "value va selected.",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "Formadan tashqaridagi tugma",
+    "task": "Tugma `form` dan tashqarida qolsin, lekin uni yuborsin: `form` atributini ishlating.",
+    "starter": "<form>\n  <input name=\"q\">\n</form>\n<button>Yuborish</button>\n",
+    "solution": "<form id=\"f\">\n  <input name=\"q\">\n</form>\n<button form=\"f\">Yuborish</button>\n",
+    "tests": [
+     {
+      "call": "n('form button')",
+      "expect": "0"
+     },
+     {
+      "call": "has('button', 'form') && attr('button', 'form') === attr('form', 'id')",
+      "expect": "true"
+     }
+    ],
+    "hint": "button form=\"formaning id si\".",
+    "kind": "html",
+    "id": "10"
    }
   ]
  },
@@ -1945,6 +2965,210 @@
      "reportValidity()"
     ]
    }
+  ],
+  "labs": [
+   {
+    "title": "required",
+    "task": "`email` maydoni bo'sh yuborilmasin.",
+    "starter": "<input name=\"email\" type=\"email\">\n",
+    "solution": "<input name=\"email\" type=\"email\" required>\n",
+    "tests": [
+     {
+      "call": "valid('input')",
+      "expect": "false"
+     },
+     {
+      "call": "valid('input', 'a@b.uz')",
+      "expect": "true"
+     }
+    ],
+    "hint": "required",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "type=email tekshiruvi",
+    "task": "Maydon noto'g'ri emailni rad etsin.",
+    "starter": "<input name=\"email\">\n",
+    "solution": "<input name=\"email\" type=\"email\">\n",
+    "tests": [
+     {
+      "call": "valid('input', 'abc')",
+      "expect": "false"
+     },
+     {
+      "call": "valid('input', 'abc@mail.uz')",
+      "expect": "true"
+     }
+    ],
+    "hint": "type=\"email\"",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "pattern",
+    "task": "Maydon aynan 5 ta raqamni qabul qilsin (pochta indeksi).",
+    "starter": "<input name=\"zip\">\n",
+    "solution": "<input name=\"zip\" pattern=\"[0-9]{5}\">\n",
+    "tests": [
+     {
+      "call": "valid('input', '12345')",
+      "expect": "true"
+     },
+     {
+      "call": "valid('input', '1234')",
+      "expect": "false"
+     },
+     {
+      "call": "valid('input', '123456')",
+      "expect": "false"
+     },
+     {
+      "call": "valid('input', 'abcde')",
+      "expect": "false"
+     }
+    ],
+    "hint": "pattern=\"[0-9]{5}\"",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "min va max",
+    "task": "Yosh 18 dan 99 gacha bo'lsin.",
+    "starter": "<input type=\"number\" name=\"age\">\n",
+    "solution": "<input type=\"number\" name=\"age\" min=\"18\" max=\"99\">\n",
+    "tests": [
+     {
+      "call": "valid('input', '17')",
+      "expect": "false"
+     },
+     {
+      "call": "valid('input', '18')",
+      "expect": "true"
+     },
+     {
+      "call": "valid('input', '100')",
+      "expect": "false"
+     }
+    ],
+    "hint": "min va max",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "step",
+    "task": "Miqdor 5 ga karrali bo'lsin (0, 5, 10 ...).",
+    "starter": "<input type=\"number\" name=\"qty\" min=\"0\">\n",
+    "solution": "<input type=\"number\" name=\"qty\" min=\"0\" step=\"5\">\n",
+    "tests": [
+     {
+      "call": "valid('input', '10')",
+      "expect": "true"
+     },
+     {
+      "call": "valid('input', '7')",
+      "expect": "false"
+     }
+    ],
+    "hint": "step=\"5\"",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "minlength",
+    "task": "Parol maydoni: majburiy va kamida 8 belgi.",
+    "starter": "<input type=\"password\" name=\"pass\">\n",
+    "solution": "<input type=\"password\" name=\"pass\" required minlength=\"8\">\n",
+    "tests": [
+     {
+      "call": "attr('input', 'minlength')",
+      "expect": "\"8\""
+     },
+     {
+      "call": "valid('input')",
+      "expect": "false"
+     }
+    ],
+    "hint": "required va minlength=\"8\".",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "Xatoni maydonga bog'lash",
+    "task": "Xato matnini maydonga `aria-describedby` bilan bog'lang va maydonni `aria-invalid=\"true\"` qiling.",
+    "starter": "<label for=\"u\">Login</label>\n<input id=\"u\">\n<p>Login band</p>\n",
+    "solution": "<label for=\"u\">Login</label>\n<input id=\"u\" aria-describedby=\"u-err\" aria-invalid=\"true\">\n<p id=\"u-err\">Login band</p>\n",
+    "tests": [
+     {
+      "call": "attr('input', 'aria-describedby') === attr('p', 'id')",
+      "expect": "true"
+     },
+     {
+      "call": "attr('input', 'aria-invalid')",
+      "expect": "\"true\""
+     }
+    ],
+    "hint": "p ga id, input ga aria-describedby.",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "Talabni oldindan aytish",
+    "task": "pattern talabini `title` yoki maslahat matni bilan tushuntiring: maydonga `aria-describedby` orqali \"3 ta katta harf\" matnini bog'lang.",
+    "starter": "<label for=\"c\">Kod</label>\n<input id=\"c\" pattern=\"[A-Z]{3}\">\n",
+    "solution": "<label for=\"c\">Kod</label>\n<input id=\"c\" pattern=\"[A-Z]{3}\" aria-describedby=\"c-help\">\n<small id=\"c-help\">3 ta katta harf</small>\n",
+    "tests": [
+     {
+      "call": "text('#' + attr('input', 'aria-describedby'))",
+      "expect": "\"3 ta katta harf\""
+     },
+     {
+      "call": "valid('input', 'ABC')",
+      "expect": "true"
+     },
+     {
+      "call": "valid('input', 'ab1')",
+      "expect": "false"
+     }
+    ],
+    "hint": "small id=\"c-help\".",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "novalidate",
+    "task": "Tekshiruvni o'z JavaScript ingiz qiladi: brauzer pufakchasini forma darajasida o'chiring, `required` qolsin.",
+    "starter": "<form>\n  <input name=\"a\" required>\n</form>\n",
+    "solution": "<form novalidate>\n  <input name=\"a\" required>\n</form>\n",
+    "tests": [
+     {
+      "call": "has('form', 'novalidate')",
+      "expect": "true"
+     },
+     {
+      "call": "has('input', 'required')",
+      "expect": "true"
+     }
+    ],
+    "hint": "form novalidate",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "Guruhda majburiy tanlov",
+    "task": "`plan` radio tugmalaridan biri tanlanishi shart bo'lsin.",
+    "starter": "<form>\n  <label><input type=\"radio\" name=\"plan\" value=\"free\"> Bepul</label>\n  <label><input type=\"radio\" name=\"plan\" value=\"pro\"> Pro</label>\n</form>\n",
+    "solution": "<form>\n  <label><input type=\"radio\" name=\"plan\" value=\"free\" required> Bepul</label>\n  <label><input type=\"radio\" name=\"plan\" value=\"pro\"> Pro</label>\n</form>\n",
+    "tests": [
+     {
+      "call": "valid('input')",
+      "expect": "false"
+     }
+    ],
+    "hint": "Bittasiga required yetadi.",
+    "kind": "html",
+    "id": "10"
+   }
   ]
  },
  {
@@ -2268,6 +3492,202 @@
     "alsoAccept": [
      "valueasnumber"
     ]
+   }
+  ],
+  "labs": [
+   {
+    "title": "Telefon maydoni",
+    "task": "Telefon uchun to'g'ri `type` va `autocomplete` bering.",
+    "starter": "<input name=\"phone\">\n",
+    "solution": "<input name=\"phone\" type=\"tel\" autocomplete=\"tel\">\n",
+    "tests": [
+     {
+      "call": "attr('input', 'type')",
+      "expect": "\"tel\""
+     },
+     {
+      "call": "attr('input', 'autocomplete')",
+      "expect": "\"tel\""
+     }
+    ],
+    "hint": "type=\"tel\"",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "SMS kod",
+    "task": "Tasdiqlash kodi: matn turi, raqamli klaviatura, `autocomplete=\"one-time-code\"`.",
+    "starter": "<input type=\"number\" name=\"code\">\n",
+    "solution": "<input type=\"text\" name=\"code\" inputmode=\"numeric\" autocomplete=\"one-time-code\">\n",
+    "tests": [
+     {
+      "call": "attr('input', 'type')",
+      "expect": "\"text\""
+     },
+     {
+      "call": "attr('input', 'inputmode')",
+      "expect": "\"numeric\""
+     },
+     {
+      "call": "attr('input', 'autocomplete')",
+      "expect": "\"one-time-code\""
+     }
+    ],
+    "hint": "number boshidagi 0 ni yo'qotadi.",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "Yangi parol",
+    "task": "Ro'yxatdan o'tishda parol menejeri yangi parol taklif qilsin.",
+    "starter": "<input name=\"pass\">\n",
+    "solution": "<input name=\"pass\" type=\"password\" autocomplete=\"new-password\">\n",
+    "tests": [
+     {
+      "call": "attr('input', 'type')",
+      "expect": "\"password\""
+     },
+     {
+      "call": "attr('input', 'autocomplete')",
+      "expect": "\"new-password\""
+     }
+    ],
+    "hint": "new-password",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "Kirish formasi",
+    "task": "Login formasida: email `autocomplete=\"username\"`, parol `current-password`.",
+    "starter": "<input type=\"email\" name=\"email\">\n<input type=\"password\" name=\"pass\">\n",
+    "solution": "<input type=\"email\" name=\"email\" autocomplete=\"username\">\n<input type=\"password\" name=\"pass\" autocomplete=\"current-password\">\n",
+    "tests": [
+     {
+      "call": "attrs('input', 'autocomplete')",
+      "expect": "[\"username\",\"current-password\"]"
+     }
+    ],
+    "hint": "Parol menejeri shu tokenlarga qaraydi.",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "Pul miqdori",
+    "task": "Kasr sonli narx uchun raqamli klaviatura: `type=\"text\"` va `inputmode=\"decimal\"`.",
+    "starter": "<input type=\"number\" name=\"price\">\n",
+    "solution": "<input type=\"text\" name=\"price\" inputmode=\"decimal\">\n",
+    "tests": [
+     {
+      "call": "attr('input', 'inputmode')",
+      "expect": "\"decimal\""
+     },
+     {
+      "call": "attr('input', 'type')",
+      "expect": "\"text\""
+     }
+    ],
+    "hint": "inputmode=\"decimal\"",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "Sana",
+    "task": "Tug'ilgan sana uchun tug'ma sana tanlagich va 2020 yildan keyingi sanani rad etish.",
+    "starter": "<input name=\"born\">\n",
+    "solution": "<input type=\"date\" name=\"born\" max=\"2020-12-31\">\n",
+    "tests": [
+     {
+      "call": "attr('input', 'type')",
+      "expect": "\"date\""
+     },
+     {
+      "call": "valid('input', '2021-01-01')",
+      "expect": "false"
+     },
+     {
+      "call": "valid('input', '2000-05-05')",
+      "expect": "true"
+     }
+    ],
+    "hint": "type=\"date\" va max.",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "fieldset va legend",
+    "task": "Radio guruhiga `fieldset` va `legend` \"To'lov turi\" qo'shing.",
+    "starter": "<label><input type=\"radio\" name=\"pay\" value=\"cash\"> Naqd</label>\n<label><input type=\"radio\" name=\"pay\" value=\"card\"> Karta</label>\n",
+    "solution": "<fieldset>\n  <legend>To'lov turi</legend>\n  <label><input type=\"radio\" name=\"pay\" value=\"cash\"> Naqd</label>\n  <label><input type=\"radio\" name=\"pay\" value=\"card\"> Karta</label>\n</fieldset>\n",
+    "tests": [
+     {
+      "call": "name('fieldset')",
+      "expect": "\"To'lov turi\""
+     },
+     {
+      "call": "n('fieldset input[name=pay]')",
+      "expect": "2"
+     }
+    ],
+    "hint": "legend — fieldset ning birinchi bolasi.",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "datalist",
+    "task": "Shahar maydoniga takliflar ro'yxati qo'shing: `Toshkent`, `Buxoro`.",
+    "starter": "<input name=\"city\">\n",
+    "solution": "<input name=\"city\" list=\"cities\">\n<datalist id=\"cities\">\n  <option value=\"Toshkent\">\n  <option value=\"Buxoro\">\n</datalist>\n",
+    "tests": [
+     {
+      "call": "attr('input', 'list') === attr('datalist', 'id')",
+      "expect": "true"
+     },
+     {
+      "call": "attrs('datalist option', 'value')",
+      "expect": "[\"Toshkent\",\"Buxoro\"]"
+     }
+    ],
+    "hint": "input list va datalist id.",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "Qidiruv klaviaturasi",
+    "task": "Qidiruv maydoni: `type=\"search\"` va klaviatura tugmasi \"search\" bo'lsin.",
+    "starter": "<input name=\"q\">\n",
+    "solution": "<input type=\"search\" name=\"q\" enterkeyhint=\"search\">\n",
+    "tests": [
+     {
+      "call": "attr('input', 'type')",
+      "expect": "\"search\""
+     },
+     {
+      "call": "attr('input', 'enterkeyhint')",
+      "expect": "\"search\""
+     }
+    ],
+    "hint": "enterkeyhint",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "Manzil tokenlari",
+    "task": "Yetkazib berish manzili: `autocomplete` `street-address` va `postal-code`.",
+    "starter": "<textarea name=\"addr\"></textarea>\n<input name=\"zip\">\n",
+    "solution": "<textarea name=\"addr\" autocomplete=\"street-address\"></textarea>\n<input name=\"zip\" autocomplete=\"postal-code\" inputmode=\"numeric\">\n",
+    "tests": [
+     {
+      "call": "attr('textarea', 'autocomplete')",
+      "expect": "\"street-address\""
+     },
+     {
+      "call": "attr('input', 'autocomplete')",
+      "expect": "\"postal-code\""
+     }
+    ],
+    "hint": "Standart tokenlar.",
+    "kind": "html",
+    "id": "10"
    }
   ]
  },
@@ -2613,6 +4033,206 @@
      "document.activeElement"
     ]
    }
+  ],
+  "labs": [
+   {
+    "title": "div tugma emas",
+    "task": "`div` o'rniga haqiqiy tugma ishlating — klaviatura bilan ham ishlasin.",
+    "starter": "<div class=\"btn\" onclick=\"save()\">Saqlash</div>\n",
+    "solution": "<button type=\"button\" class=\"btn\" onclick=\"save()\">Saqlash</button>\n",
+    "tests": [
+     {
+      "call": "tag('.btn')",
+      "expect": "\"button\""
+     },
+     {
+      "call": "n('div')",
+      "expect": "0"
+     },
+     {
+      "call": "name('.btn')",
+      "expect": "\"Saqlash\""
+     }
+    ],
+    "hint": "button fokus oladi va Enter bilan ishlaydi.",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "Musbat tabindex",
+    "task": "Musbat `tabindex` tartibni buzadi. Ularni olib tashlang.",
+    "starter": "<input tabindex=\"3\">\n<input tabindex=\"1\">\n<button tabindex=\"2\">OK</button>\n",
+    "solution": "<input>\n<input>\n<button>OK</button>\n",
+    "tests": [
+     {
+      "call": "n('[tabindex]')",
+      "expect": "0"
+     },
+     {
+      "call": "n('input')",
+      "expect": "2"
+     },
+     {
+      "call": "n('button')",
+      "expect": "1"
+     }
+    ],
+    "hint": "DOM tartibi yetarli.",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "Fokus olmaydigan blok",
+    "task": "Aylantiriladigan blok klaviaturada fokus olsin va nomga ega bo'lsin: \"Shartlar\".",
+    "starter": "<div class=\"terms\">Juda uzun matn...</div>\n",
+    "solution": "<div class=\"terms\" tabindex=\"0\" role=\"region\" aria-label=\"Shartlar\">Juda uzun matn...</div>\n",
+    "tests": [
+     {
+      "call": "attr('.terms', 'tabindex')",
+      "expect": "\"0\""
+     },
+     {
+      "call": "attr('.terms', 'role')",
+      "expect": "\"region\""
+     },
+     {
+      "call": "name('.terms')",
+      "expect": "\"Shartlar\""
+     }
+    ],
+    "hint": "tabindex=\"0\"",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "Skip link",
+    "task": "Birinchi element sifatida `#main` ga olib boradigan \"Asosiy qismga o'tish\" havolasini qo'shing.",
+    "starter": "<nav><a href=\"/a\">A</a></nav>\n<main>Matn</main>\n",
+    "solution": "<a href=\"#main\">Asosiy qismga o'tish</a>\n<nav><a href=\"/a\">A</a></nav>\n<main id=\"main\" tabindex=\"-1\">Matn</main>\n",
+    "tests": [
+     {
+      "call": "tag('body > :first-child')",
+      "expect": "\"a\""
+     },
+     {
+      "call": "attr('body > a', 'href')",
+      "expect": "\"#main\""
+     },
+     {
+      "call": "attr('main', 'id')",
+      "expect": "\"main\""
+     }
+    ],
+    "hint": "a href=\"#main\" va main id=\"main\".",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "Fokus ko'rinsin",
+    "task": "`outline: none` qoidasini `:focus-visible` uchun ko'rinadigan chiziqqa almashtiring.",
+    "starter": "<style>\n  button { outline: none; }\n</style>\n<button>OK</button>\n",
+    "solution": "<style>\n  button:focus-visible { outline: 3px solid blue; }\n</style>\n<button>OK</button>\n",
+    "tests": [
+     {
+      "call": "/outline\\s*:\\s*(none|0)/.test(src())",
+      "expect": "false"
+     },
+     {
+      "call": "src().includes(':focus-visible')",
+      "expect": "true"
+     }
+    ],
+    "hint": "outline: none ni yozmang.",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "Havola matni",
+    "task": "\"bu yerda\" o'rniga havola o'zi tushunarli bo'lsin: \"Narxlar ro'yxati\".",
+    "starter": "<p>Narxlarni <a href=\"/price\">bu yerda</a> ko'ring.</p>\n",
+    "solution": "<p><a href=\"/price\">Narxlar ro'yxati</a>ni ko'ring.</p>\n",
+    "tests": [
+     {
+      "call": "name('a')",
+      "expect": "\"Narxlar ro'yxati\""
+     }
+    ],
+    "hint": "Havola matni kontekstsiz ham tushunarli bo'lsin.",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "Sahifa tili",
+    "task": "Hujjat tilini o'zbekcha deb belgilang.",
+    "starter": "<html>\n<body>\n  <h1>Salom</h1>\n</body>\n</html>\n",
+    "solution": "<html lang=\"uz\">\n<body>\n  <h1>Salom</h1>\n</body>\n</html>\n",
+    "tests": [
+     {
+      "call": "attr('html', 'lang')",
+      "expect": "\"uz\""
+     }
+    ],
+    "hint": "html lang=\"uz\"",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "Masshtabni taqiqlamang",
+    "task": "Foydalanuvchi sahifani kattalashtira olsin: `viewport` dagi taqiqni olib tashlang.",
+    "starter": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\">\n",
+    "solution": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n",
+    "tests": [
+     {
+      "call": "attr('meta[name=viewport]', 'content').includes('user-scalable')",
+      "expect": "false"
+     },
+     {
+      "call": "attr('meta', 'content').includes('width=device-width')",
+      "expect": "true"
+     }
+    ],
+    "hint": "user-scalable=no — to'siq.",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "Modal ortidagi fokus",
+    "task": "Ochiq paytda asosiy kontent fokus olmasin: `main` ga `inert` bering.",
+    "starter": "<main><a href=\"/\">Havola</a></main>\n<div role=\"dialog\" aria-label=\"Savol\"><button>Ha</button></div>\n",
+    "solution": "<main inert><a href=\"/\">Havola</a></main>\n<div role=\"dialog\" aria-label=\"Savol\"><button>Ha</button></div>\n",
+    "tests": [
+     {
+      "call": "has('main', 'inert')",
+      "expect": "true"
+     },
+     {
+      "call": "has('[role=dialog]', 'inert')",
+      "expect": "false"
+     }
+    ],
+    "hint": "inert atributi.",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "Belgili tugma",
+    "task": "Faqat ✕ belgisi bor tugmaga \"Yopish\" nomini bering, belgini yashiring.",
+    "starter": "<button>✕</button>\n",
+    "solution": "<button aria-label=\"Yopish\"><span aria-hidden=\"true\">✕</span></button>\n",
+    "tests": [
+     {
+      "call": "name('button')",
+      "expect": "\"Yopish\""
+     },
+     {
+      "call": "attr('button span', 'aria-hidden')",
+      "expect": "\"true\""
+     }
+    ],
+    "hint": "aria-label va aria-hidden.",
+    "kind": "html",
+    "id": "10"
+   }
   ]
  },
  {
@@ -2953,6 +4573,202 @@
     "answer": "polite",
     "explain": "status — polite, alert — assertive."
    }
+  ],
+  "labs": [
+   {
+    "title": "Ikonka tugmaning nomi",
+    "task": "Qidiruv tugmasiga \"Qidirish\" nomini bering.",
+    "starter": "<button><svg aria-hidden=\"true\" width=\"16\" height=\"16\"></svg></button>\n",
+    "solution": "<button aria-label=\"Qidirish\"><svg aria-hidden=\"true\" width=\"16\" height=\"16\"></svg></button>\n",
+    "tests": [
+     {
+      "call": "name('button')",
+      "expect": "\"Qidirish\""
+     }
+    ],
+    "hint": "aria-label",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "aria-labelledby",
+    "task": "Maydon nomini ko'rinib turgan \"Elektron pochta\" matnidan olsin: `aria-labelledby`.",
+    "starter": "<span>Elektron pochta</span>\n<input type=\"email\">\n",
+    "solution": "<span id=\"l\">Elektron pochta</span>\n<input type=\"email\" aria-labelledby=\"l\">\n",
+    "tests": [
+     {
+      "call": "name('input')",
+      "expect": "\"Elektron pochta\""
+     },
+     {
+      "call": "has('input', 'aria-labelledby')",
+      "expect": "true"
+     }
+    ],
+    "hint": "span ga id.",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "label bilan",
+    "task": "Eng yaxshi yo'l — tabiiy manba: `label` va `for`.",
+    "starter": "<span>Parol</span>\n<input type=\"password\">\n",
+    "solution": "<label for=\"p\">Parol</label>\n<input type=\"password\" id=\"p\">\n",
+    "tests": [
+     {
+      "call": "name('input')",
+      "expect": "\"Parol\""
+     },
+     {
+      "call": "n('label[for]')",
+      "expect": "1"
+     },
+     {
+      "call": "has('input', 'aria-label')",
+      "expect": "false"
+     }
+    ],
+    "hint": "label for = input id.",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "Ortiqcha role",
+    "task": "Native teglarda takroriy `role` kerak emas — olib tashlang.",
+    "starter": "<nav role=\"navigation\"><a href=\"/\" role=\"link\">Bosh</a></nav>\n<button role=\"button\">OK</button>\n",
+    "solution": "<nav><a href=\"/\">Bosh</a></nav>\n<button>OK</button>\n",
+    "tests": [
+     {
+      "call": "n('[role]')",
+      "expect": "0"
+     },
+     {
+      "call": "n('nav a')",
+      "expect": "1"
+     },
+     {
+      "call": "n('button')",
+      "expect": "1"
+     }
+    ],
+    "hint": "ARIA ning birinchi qoidasi.",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "aria-expanded",
+    "task": "Yopiq menyu tugmasi holatini va boshqaradigan blokini bildirsin: `aria-expanded=\"false\"`, `aria-controls`.",
+    "starter": "<button type=\"button\">Menyu</button>\n<ul id=\"menu\" hidden><li>Profil</li></ul>\n",
+    "solution": "<button type=\"button\" aria-expanded=\"false\" aria-controls=\"menu\">Menyu</button>\n<ul id=\"menu\" hidden><li>Profil</li></ul>\n",
+    "tests": [
+     {
+      "call": "attr('button', 'aria-expanded')",
+      "expect": "\"false\""
+     },
+     {
+      "call": "attr('button', 'aria-controls')",
+      "expect": "\"menu\""
+     },
+     {
+      "call": "has('#menu', 'hidden')",
+      "expect": "true"
+     }
+    ],
+    "hint": "Holat o'zgarsa JS atributni yangilaydi.",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "status",
+    "task": "\"Saqlandi\" xabari yoziladigan bo'sh joy oldindan tursin va muloyim e'lon qilinsin.",
+    "starter": "<div class=\"msg\"></div>\n",
+    "solution": "<div class=\"msg\" role=\"status\"></div>\n",
+    "tests": [
+     {
+      "call": "attr('.msg', 'role')",
+      "expect": "\"status\""
+     }
+    ],
+    "hint": "role=\"status\"",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "alert",
+    "task": "Shoshilinch xato darhol e'lon qilinsin.",
+    "starter": "<p class=\"error\">To'lov o'tmadi</p>\n",
+    "solution": "<p class=\"error\" role=\"alert\">To'lov o'tmadi</p>\n",
+    "tests": [
+     {
+      "call": "attr('.error', 'role')",
+      "expect": "\"alert\""
+     }
+    ],
+    "hint": "role=\"alert\"",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "aria-hidden xatosi",
+    "task": "`aria-hidden` havolani ekran o'qigichdan yashirib qo'ygan. Faqat bezak belgisini yashiring.",
+    "starter": "<a href=\"/cart\" aria-hidden=\"true\"><span>🛒</span> Savat</a>\n",
+    "solution": "<a href=\"/cart\"><span aria-hidden=\"true\">🛒</span> Savat</a>\n",
+    "tests": [
+     {
+      "call": "has('a', 'aria-hidden')",
+      "expect": "false"
+     },
+     {
+      "call": "name('a')",
+      "expect": "\"Savat\""
+     },
+     {
+      "call": "attr('a span', 'aria-hidden')",
+      "expect": "\"true\""
+     }
+    ],
+    "hint": "Fokus oladigan elementga aria-hidden qo'ymang.",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "Joriy sahifa",
+    "task": "Menyuda hozirgi sahifa havolasini belgilang (\"Darslar\").",
+    "starter": "<nav>\n  <a href=\"/\">Bosh</a>\n  <a href=\"/lessons\">Darslar</a>\n</nav>\n",
+    "solution": "<nav>\n  <a href=\"/\">Bosh</a>\n  <a href=\"/lessons\" aria-current=\"page\">Darslar</a>\n</nav>\n",
+    "tests": [
+     {
+      "call": "n('[aria-current]')",
+      "expect": "1"
+     },
+     {
+      "call": "text('[aria-current=page]')",
+      "expect": "\"Darslar\""
+     }
+    ],
+    "hint": "aria-current=\"page\"",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "Bosilgan holat",
+    "task": "Yoqiladigan tugma holatini bildirsin: hozir yoqilmagan.",
+    "starter": "<button type=\"button\">Qorong'i mavzu</button>\n",
+    "solution": "<button type=\"button\" aria-pressed=\"false\">Qorong'i mavzu</button>\n",
+    "tests": [
+     {
+      "call": "attr('button', 'aria-pressed')",
+      "expect": "\"false\""
+     },
+     {
+      "call": "name('button')",
+      "expect": "\"Qorong'i mavzu\""
+     }
+    ],
+    "hint": "aria-pressed",
+    "kind": "html",
+    "id": "10"
+   }
   ]
  },
  {
@@ -3281,6 +5097,194 @@
      "<summary>"
     ]
    }
+  ],
+  "labs": [
+   {
+    "title": "dialog",
+    "task": "Modal oynani `div` o'rniga `dialog` qiling va sarlavhasi bilan nomlang.",
+    "starter": "<div class=\"modal\">\n  <h2>O'chirilsinmi?</h2>\n  <button>Ha</button>\n</div>\n",
+    "solution": "<dialog class=\"modal\" aria-labelledby=\"t\">\n  <h2 id=\"t\">O'chirilsinmi?</h2>\n  <button>Ha</button>\n</dialog>\n",
+    "tests": [
+     {
+      "call": "tag('.modal')",
+      "expect": "\"dialog\""
+     },
+     {
+      "call": "name('.modal')",
+      "expect": "\"O'chirilsinmi?\""
+     }
+    ],
+    "hint": "dialog aria-labelledby.",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "method=dialog",
+    "task": "Skriptsiz yopiladigan dialog: ichiga `method=\"dialog\"` li forma qo'shing.",
+    "starter": "<dialog open>\n  <p>Tayyor</p>\n  <button>Yopish</button>\n</dialog>\n",
+    "solution": "<dialog open>\n  <p>Tayyor</p>\n  <form method=\"dialog\">\n    <button>Yopish</button>\n  </form>\n</dialog>\n",
+    "tests": [
+     {
+      "call": "n('dialog form[method=dialog] button')",
+      "expect": "1"
+     }
+    ],
+    "hint": "form method=\"dialog\"",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "popover",
+    "task": "Menyuni skriptsiz ochiladigan qiling: `popover` va `popovertarget`.",
+    "starter": "<button>Menyu</button>\n<div id=\"menu\">Profil</div>\n",
+    "solution": "<button popovertarget=\"menu\">Menyu</button>\n<div id=\"menu\" popover>Profil</div>\n",
+    "tests": [
+     {
+      "call": "has('#menu', 'popover')",
+      "expect": "true"
+     },
+     {
+      "call": "attr('button', 'popovertarget')",
+      "expect": "\"menu\""
+     }
+    ],
+    "hint": "popovertarget = popover id si.",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "popover yopish tugmasi",
+    "task": "Popover ichiga uni yopadigan tugma qo'shing.",
+    "starter": "<button popovertarget=\"tip\">Yordam</button>\n<div id=\"tip\" popover>\n  Maslahat\n</div>\n",
+    "solution": "<button popovertarget=\"tip\">Yordam</button>\n<div id=\"tip\" popover>\n  Maslahat\n  <button popovertarget=\"tip\" popovertargetaction=\"hide\">Yopish</button>\n</div>\n",
+    "tests": [
+     {
+      "call": "n('#tip button')",
+      "expect": "1"
+     },
+     {
+      "call": "attr('#tip button', 'popovertargetaction')",
+      "expect": "\"hide\""
+     },
+     {
+      "call": "attr('#tip button', 'popovertarget')",
+      "expect": "\"tip\""
+     }
+    ],
+    "hint": "popovertargetaction=\"hide\"",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "details",
+    "task": "Savol-javobni skriptsiz ochiladigan qiling.",
+    "starter": "<div class=\"faq\">\n  <h3>Narxi qancha?</h3>\n  <p>Bepul.</p>\n</div>\n",
+    "solution": "<details class=\"faq\">\n  <summary>Narxi qancha?</summary>\n  <p>Bepul.</p>\n</details>\n",
+    "tests": [
+     {
+      "call": "tag('.faq')",
+      "expect": "\"details\""
+     },
+     {
+      "call": "text('.faq > summary')",
+      "expect": "\"Narxi qancha?\""
+     },
+     {
+      "call": "n('.faq > p')",
+      "expect": "1"
+     }
+    ],
+    "hint": "details va summary.",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "Akkordeon",
+    "task": "Bittasi ochilganda boshqasi yopilsin: ikkala `details` ga bir xil `name` bering.",
+    "starter": "<details><summary>1</summary>A</details>\n<details><summary>2</summary>B</details>\n",
+    "solution": "<details name=\"faq\"><summary>1</summary>A</details>\n<details name=\"faq\"><summary>2</summary>B</details>\n",
+    "tests": [
+     {
+      "call": "attrs('details', 'name')",
+      "expect": "[\"faq\",\"faq\"]"
+     }
+    ],
+    "hint": "name=\"faq\"",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "Boshidan ochiq",
+    "task": "Birinchi bo'lim ochiq holda ko'rsatilsin.",
+    "starter": "<details><summary>Kirish</summary>Matn</details>\n<details><summary>Davomi</summary>Matn</details>\n",
+    "solution": "<details open><summary>Kirish</summary>Matn</details>\n<details><summary>Davomi</summary>Matn</details>\n",
+    "tests": [
+     {
+      "call": "has('details:nth-of-type(1)', 'open')",
+      "expect": "true"
+     },
+     {
+      "call": "has('details:nth-of-type(2)', 'open')",
+      "expect": "false"
+     }
+    ],
+    "hint": "open atributi.",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "hidden",
+    "task": "Ikkinchi tab paneli hamma uchun yashirin bo'lsin (CSS siz).",
+    "starter": "<section id=\"a\">A paneli</section>\n<section id=\"b\">B paneli</section>\n",
+    "solution": "<section id=\"a\">A paneli</section>\n<section id=\"b\" hidden>B paneli</section>\n",
+    "tests": [
+     {
+      "call": "has('#b', 'hidden')",
+      "expect": "true"
+     },
+     {
+      "call": "has('#a', 'hidden')",
+      "expect": "false"
+     }
+    ],
+    "hint": "hidden atributi.",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "inert bo'lak",
+    "task": "Yuklanayotgan forma butunlay muzlasin: `form` ga `inert`.",
+    "starter": "<form aria-busy=\"true\">\n  <input name=\"a\">\n  <button>Yuborish</button>\n</form>\n",
+    "solution": "<form aria-busy=\"true\" inert>\n  <input name=\"a\">\n  <button>Yuborish</button>\n</form>\n",
+    "tests": [
+     {
+      "call": "has('form', 'inert')",
+      "expect": "true"
+     }
+    ],
+    "hint": "inert ichidagi hamma narsaga ta'sir qiladi.",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "Dialog fokusi",
+    "task": "Dialog ochilganda fokus xavfsiz \"Bekor\" tugmasida bo'lsin.",
+    "starter": "<dialog>\n  <button>O'chirish</button>\n  <button>Bekor</button>\n</dialog>\n",
+    "solution": "<dialog>\n  <button>O'chirish</button>\n  <button autofocus>Bekor</button>\n</dialog>\n",
+    "tests": [
+     {
+      "call": "n('[autofocus]')",
+      "expect": "1"
+     },
+     {
+      "call": "text('[autofocus]')",
+      "expect": "\"Bekor\""
+     }
+    ],
+    "hint": "autofocus",
+    "kind": "html",
+    "id": "10"
+   }
   ]
  },
  {
@@ -3589,6 +5593,182 @@
     ],
     "answer": "crawl index rank",
     "explain": "Avval topib o'qiydi, keyin bazaga yozadi, so'rovda tartiblaydi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "title va description",
+    "task": "Sahifaga `title` \"HTML kursi\" va `description` meta tegini qo'shing.",
+    "starter": "<head>\n</head>\n",
+    "solution": "<head>\n  <title>HTML kursi</title>\n  <meta name=\"description\" content=\"Noldan HTML o'rganish darslari\">\n</head>\n",
+    "tests": [
+     {
+      "call": "text('title')",
+      "expect": "\"HTML kursi\""
+     },
+     {
+      "call": "attr('meta[name=description]', 'content').length > 10",
+      "expect": "true"
+     }
+    ],
+    "hint": "title va meta name=\"description\".",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "canonical",
+    "task": "Asosiy manzilni ko'rsating: `https://example.uz/kurs`.",
+    "starter": "<head>\n  <title>Kurs</title>\n</head>\n",
+    "solution": "<head>\n  <title>Kurs</title>\n  <link rel=\"canonical\" href=\"https://example.uz/kurs\">\n</head>\n",
+    "tests": [
+     {
+      "call": "attr('link[rel=canonical]', 'href')",
+      "expect": "\"https://example.uz/kurs\""
+     }
+    ],
+    "hint": "link rel=\"canonical\"",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "noindex",
+    "task": "Shaxsiy kabinet sahifasi qidiruvda chiqmasin.",
+    "starter": "<head>\n  <title>Kabinet</title>\n</head>\n",
+    "solution": "<head>\n  <title>Kabinet</title>\n  <meta name=\"robots\" content=\"noindex\">\n</head>\n",
+    "tests": [
+     {
+      "call": "attr('meta[name=robots]', 'content').includes('noindex')",
+      "expect": "true"
+     }
+    ],
+    "hint": "meta name=\"robots\".",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "Open Graph",
+    "task": "Havola ulashilganda chiqadigan `og:title` va `og:description` ni qo'shing.",
+    "starter": "<head>\n  <title>Kurs</title>\n</head>\n",
+    "solution": "<head>\n  <title>Kurs</title>\n  <meta property=\"og:title\" content=\"Frontend kursi\">\n  <meta property=\"og:description\" content=\"Bepul darslar\">\n</head>\n",
+    "tests": [
+     {
+      "call": "attr('meta[property=\"og:title\"]', 'content')",
+      "expect": "\"Frontend kursi\""
+     },
+     {
+      "call": "attr('meta[property=\"og:description\"]', 'content')",
+      "expect": "\"Bepul darslar\""
+     }
+    ],
+    "hint": "property atributi (name emas).",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "og:image absolute",
+    "task": "Rasm manzili nisbiy bo'lgani uchun ko'rinmayapti. Uni `https://example.uz/cover.jpg` qiling.",
+    "starter": "<meta property=\"og:image\" content=\"/cover.jpg\">\n",
+    "solution": "<meta property=\"og:image\" content=\"https://example.uz/cover.jpg\">\n",
+    "tests": [
+     {
+      "call": "attr('meta[property=\"og:image\"]', 'content')",
+      "expect": "\"https://example.uz/cover.jpg\""
+     }
+    ],
+    "hint": "Absolute URL kerak.",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "Twitter kartochkasi",
+    "task": "Katta rasmli kartochka turini belgilang.",
+    "starter": "<meta property=\"og:title\" content=\"Kurs\">\n",
+    "solution": "<meta property=\"og:title\" content=\"Kurs\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n",
+    "tests": [
+     {
+      "call": "attr('meta[name=\"twitter:card\"]', 'content')",
+      "expect": "\"summary_large_image\""
+     }
+    ],
+    "hint": "meta name=\"twitter:card\".",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "hreflang",
+    "task": "O'zbekcha va ruscha variantlarni bog'lang: `/uz` va `/ru` (to'liq manzil `https://example.uz/...`).",
+    "starter": "<head>\n  <title>Kurs</title>\n</head>\n",
+    "solution": "<head>\n  <title>Kurs</title>\n  <link rel=\"alternate\" hreflang=\"uz\" href=\"https://example.uz/uz\">\n  <link rel=\"alternate\" hreflang=\"ru\" href=\"https://example.uz/ru\">\n</head>\n",
+    "tests": [
+     {
+      "call": "attrs('link[rel=alternate]', 'hreflang')",
+      "expect": "[\"uz\",\"ru\"]"
+     },
+     {
+      "call": "attrs('link[rel=alternate]', 'href')",
+      "expect": "[\"https://example.uz/uz\",\"https://example.uz/ru\"]"
+     }
+    ],
+    "hint": "link rel=\"alternate\" hreflang.",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "Zid signallar",
+    "task": "Sahifa indekslanishi kerak, lekin `noindex` qolib ketgan. Uni olib tashlang, canonical qolsin.",
+    "starter": "<head>\n  <meta name=\"robots\" content=\"noindex\">\n  <link rel=\"canonical\" href=\"https://example.uz/a\">\n</head>\n",
+    "solution": "<head>\n  <link rel=\"canonical\" href=\"https://example.uz/a\">\n</head>\n",
+    "tests": [
+     {
+      "call": "n('meta[content*=noindex]')",
+      "expect": "0"
+     },
+     {
+      "call": "n('link[rel=canonical]')",
+      "expect": "1"
+     }
+    ],
+    "hint": "noindex va canonical zid signal beradi.",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "Havolalar kraulerga ko'rinsin",
+    "task": "`button` + JavaScript o'rniga haqiqiy havola ishlating: `/darslar`.",
+    "starter": "<button onclick=\"location.href='/darslar'\">Darslar</button>\n",
+    "solution": "<a href=\"/darslar\">Darslar</a>\n",
+    "tests": [
+     {
+      "call": "attr('a', 'href')",
+      "expect": "\"/darslar\""
+     },
+     {
+      "call": "text('a')",
+      "expect": "\"Darslar\""
+     },
+     {
+      "call": "n('button')",
+      "expect": "0"
+     }
+    ],
+    "hint": "Krauler a href bo'yicha yuradi.",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "Ishonchsiz havola",
+    "task": "Foydalanuvchi izohidagi havolaga `rel=\"ugc nofollow\"` bering.",
+    "starter": "<a href=\"https://spam.example\">sayt</a>\n",
+    "solution": "<a href=\"https://spam.example\" rel=\"ugc nofollow\">sayt</a>\n",
+    "tests": [
+     {
+      "call": "attr('a', 'rel').split(' ').sort()",
+      "expect": "[\"nofollow\",\"ugc\"]"
+     }
+    ],
+    "hint": "rel bir nechta qiymat oladi.",
+    "kind": "html",
+    "id": "10"
    }
   ]
  },
@@ -3905,6 +6085,190 @@
     "prompt": "iframe ruxsatlarini cheklaydigan atribut:",
     "answer": "sandbox",
     "explain": "sandbox bo'sh bo'lsa hamma cheklov yoqiladi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "rel=noopener",
+    "task": "Yangi oynada ochiladigan havola ochuvchi sahifaga kira olmasin.",
+    "starter": "<a href=\"https://other.example\" target=\"_blank\">Tashqi sayt</a>\n",
+    "solution": "<a href=\"https://other.example\" target=\"_blank\" rel=\"noopener noreferrer\">Tashqi sayt</a>\n",
+    "tests": [
+     {
+      "call": "attr('a', 'rel').includes('noopener')",
+      "expect": "true"
+     },
+     {
+      "call": "attr('a', 'target')",
+      "expect": "\"_blank\""
+     }
+    ],
+    "hint": "rel=\"noopener\"",
+    "kind": "html",
+    "id": "1"
+   },
+   {
+    "title": "javascript: havola",
+    "task": "`javascript:` manzili xavfli. Havola o'rniga tugma ishlating.",
+    "starter": "<a href=\"javascript:remove()\">O'chirish</a>\n",
+    "solution": "<button type=\"button\">O'chirish</button>\n",
+    "tests": [
+     {
+      "call": "/javascript:/i.test(src())",
+      "expect": "false"
+     },
+     {
+      "call": "text('button')",
+      "expect": "\"O'chirish\""
+     },
+     {
+      "call": "n('a')",
+      "expect": "0"
+     }
+    ],
+    "hint": "Amal — button.",
+    "kind": "html",
+    "id": "2"
+   },
+   {
+    "title": "Inline hodisalar",
+    "task": "`onclick` va `onerror` atributlarini olib tashlang (CSP ularni bloklaydi).",
+    "starter": "<button onclick=\"buy()\">Sotib olish</button>\n<img src=\"x.png\" alt=\"\" onerror=\"report()\">\n",
+    "solution": "<button type=\"button\">Sotib olish</button>\n<img src=\"x.png\" alt=\"\">\n",
+    "tests": [
+     {
+      "call": "/\\son\\w+\\s*=/i.test(src())",
+      "expect": "false"
+     },
+     {
+      "call": "n('button')",
+      "expect": "1"
+     },
+     {
+      "call": "n('img')",
+      "expect": "1"
+     }
+    ],
+    "hint": "Hodisalarni addEventListener bilan ulang.",
+    "kind": "html",
+    "id": "3"
+   },
+   {
+    "title": "Foydalanuvchi matni",
+    "task": "Izoh matnidagi teg bajarilmasdan, MATN bo'lib ko'rinsin.",
+    "starter": "<p><img src=x onerror=alert(1)></p>\n",
+    "solution": "<p>&lt;img src=x onerror=alert(1)&gt;</p>\n",
+    "tests": [
+     {
+      "call": "n('img')",
+      "expect": "0"
+     },
+     {
+      "call": "text('p')",
+      "expect": "\"<img src=x onerror=alert(1)>\""
+     }
+    ],
+    "hint": "Belgilarni escape qiling: &lt; &gt;",
+    "kind": "html",
+    "id": "4"
+   },
+   {
+    "title": "iframe sandbox",
+    "task": "Begona vidjetda faqat skript ishlasin: `sandbox=\"allow-scripts\"` (`allow-same-origin` siz).",
+    "starter": "<iframe src=\"https://widget.example\" title=\"Vidjet\" sandbox=\"allow-scripts allow-same-origin allow-top-navigation\"></iframe>\n",
+    "solution": "<iframe src=\"https://widget.example\" title=\"Vidjet\" sandbox=\"allow-scripts\"></iframe>\n",
+    "tests": [
+     {
+      "call": "attr('iframe', 'sandbox')",
+      "expect": "\"allow-scripts\""
+     }
+    ],
+    "hint": "Kerakli minimal ruxsat.",
+    "kind": "html",
+    "id": "5"
+   },
+   {
+    "title": "CSP meta",
+    "task": "Faqat o'z domeningizdan resurs yuklanadigan siyosat qo'shing: `default-src 'self'`.",
+    "starter": "<head>\n  <title>App</title>\n</head>\n",
+    "solution": "<head>\n  <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'\">\n  <title>App</title>\n</head>\n",
+    "tests": [
+     {
+      "call": "attr('meta[http-equiv=\"Content-Security-Policy\"]', 'content')",
+      "expect": "\"default-src 'self'\""
+     }
+    ],
+    "hint": "meta http-equiv.",
+    "kind": "html",
+    "id": "6"
+   },
+   {
+    "title": "unsafe-inline dan voz keching",
+    "task": "CSP dan `'unsafe-inline'` va `*` ni olib tashlab, `script-src 'self'` qoldiring.",
+    "starter": "<meta http-equiv=\"Content-Security-Policy\" content=\"script-src * 'unsafe-inline'\">\n",
+    "solution": "<meta http-equiv=\"Content-Security-Policy\" content=\"script-src 'self'\">\n",
+    "tests": [
+     {
+      "call": "attr('meta', 'content')",
+      "expect": "\"script-src 'self'\""
+     }
+    ],
+    "hint": "unsafe-inline CSP ni deyarli befoyda qiladi.",
+    "kind": "html",
+    "id": "7"
+   },
+   {
+    "title": "SRI",
+    "task": "CDN skriptiga `integrity` (`sha384-abc123`) va `crossorigin=\"anonymous\"` qo'shing.",
+    "starter": "<script src=\"https://cdn.example/lib.js\"></script>\n",
+    "solution": "<script src=\"https://cdn.example/lib.js\" integrity=\"sha384-abc123\" crossorigin=\"anonymous\"></script>\n",
+    "tests": [
+     {
+      "call": "attr('script', 'integrity')",
+      "expect": "\"sha384-abc123\""
+     },
+     {
+      "call": "attr('script', 'crossorigin')",
+      "expect": "\"anonymous\""
+     }
+    ],
+    "hint": "integrity va crossorigin.",
+    "kind": "html",
+    "id": "8"
+   },
+   {
+    "title": "Hidden maydon — himoya emas",
+    "task": "Narxni klient yubormasin: faqat `productId` qolsin.",
+    "starter": "<form method=\"post\">\n  <input type=\"hidden\" name=\"productId\" value=\"5\">\n  <input type=\"hidden\" name=\"price\" value=\"100000\">\n</form>\n",
+    "solution": "<form method=\"post\">\n  <input type=\"hidden\" name=\"productId\" value=\"5\">\n</form>\n",
+    "tests": [
+     {
+      "call": "fd('form')",
+      "expect": "[[\"productId\",\"5\"]]"
+     }
+    ],
+    "hint": "Narxni server bazadan olishi kerak.",
+    "kind": "html",
+    "id": "9"
+   },
+   {
+    "title": "Maxfiy ma'lumot GET da",
+    "task": "Parol o'zgartirish formasi URL ga tushmasin va HTTPS manzilga yuborilsin.",
+    "starter": "<form action=\"http://example.uz/password\" method=\"get\">\n  <input type=\"password\" name=\"new\">\n</form>\n",
+    "solution": "<form action=\"https://example.uz/password\" method=\"post\">\n  <input type=\"password\" name=\"new\" autocomplete=\"new-password\">\n</form>\n",
+    "tests": [
+     {
+      "call": "attr('form', 'method')",
+      "expect": "\"post\""
+     },
+     {
+      "call": "attr('form', 'action').startsWith('https://')",
+      "expect": "true"
+     }
+    ],
+    "hint": "post va https.",
+    "kind": "html",
+    "id": "10"
    }
   ]
  }

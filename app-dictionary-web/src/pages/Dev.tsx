@@ -638,7 +638,7 @@ export function DevLessonPage() {
       tone="lab"
       icon="🧪"
       title="Laboratoriya"
-      text={`${lesson.labs[0].kind === 'css' ? 'CSS stillarini' : lesson.labs[0].kind === 'git' ? 'Git buyruqlarini' : lesson.labs[0].kind === 'npm' ? 'Terminal buyruqlarini' : lesson.labs[0].kind === 'react' ? 'React komponentlarini' : 'JavaScript kodini'} o'zingiz yozasiz, tizim to'g'riligini tekshiradi.`}
+      text={`${lesson.labs[0].kind === 'css' ? 'CSS stillarini' : lesson.labs[0].kind === 'html' ? 'HTML belgilashni' : lesson.labs[0].kind === 'git' ? 'Git buyruqlarini' : lesson.labs[0].kind === 'npm' ? 'Terminal buyruqlarini' : lesson.labs[0].kind === 'react' ? 'React komponentlarini' : 'JavaScript kodini'} o'zingiz yozasiz, tizim to'g'riligini tekshiradi.`}
       figure={`${labsDone}/${lesson.labs.length}`}
       figureLabel="bajarildi"
       progress={(labsDone / lesson.labs.length) * 100}

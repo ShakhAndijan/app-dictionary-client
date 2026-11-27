@@ -325,6 +325,204 @@
     "answer": "Ildiz obyektdan nusxa ol O'zgaradigan ichki qavatni nusxala Yangi qiymatni yoz Yangi ildizni qaytar",
     "explain": "Tashqaridan ichkariga nusxalanadi, asl obyektga tegilmaydi."
    }
+  ],
+  "labs": [
+   {
+    "title": "Yuza nusxa",
+    "task": "copyUser(user) obyektning yuza (shallow) nusxasini qaytarsin: nusxa asl obyektning o'zi bo'lmasin.",
+    "starter": "function copyUser(user) {\n  \n}",
+    "solution": "function copyUser(user) {\n  return { ...user };\n}",
+    "tests": [
+     {
+      "call": "copyUser({ name: \"Ali\" })",
+      "expect": "{ name: \"Ali\" }"
+     },
+     {
+      "call": "(() => { const u = { a: 1 }; return copyUser(u) !== u; })()",
+      "expect": "true"
+     },
+     {
+      "call": "(() => { const u = { a: 1 }; copyUser(u).a = 2; return u.a; })()",
+      "expect": "1"
+     }
+    ],
+    "hint": "Spread: { ...user }",
+    "id": "1"
+   },
+   {
+    "title": "Xossani immutable yangilash",
+    "task": "setName(user, name) yangi obyekt qaytarsin; asl obyekt o'zgarmasin.",
+    "starter": "function setName(user, name) {\n  \n}",
+    "solution": "function setName(user, name) {\n  return { ...user, name };\n}",
+    "tests": [
+     {
+      "call": "setName({ id: 1, name: \"A\" }, \"B\")",
+      "expect": "{ id: 1, name: \"B\" }"
+     },
+     {
+      "call": "(() => { const u = { name: \"A\" }; setName(u, \"B\"); return u.name; })()",
+      "expect": "\"A\""
+     }
+    ],
+    "hint": "{ ...user, name }",
+    "id": "2"
+   },
+   {
+    "title": "Ichki obyektni yangilash",
+    "task": "setCity(user, city) user.address.city ni yangilagan yangi obyekt qaytarsin. address ham yangi obyekt bo'lsin.",
+    "starter": "function setCity(user, city) {\n  \n}",
+    "solution": "function setCity(user, city) {\n  return { ...user, address: { ...user.address, city } };\n}",
+    "tests": [
+     {
+      "call": "setCity({ address: { city: \"A\", zip: 1 } }, \"B\")",
+      "expect": "{ address: { city: \"B\", zip: 1 } }"
+     },
+     {
+      "call": "(() => { const u = { address: { city: \"A\" } }; const n = setCity(u, \"B\"); return [u.address.city, n.address !== u.address]; })()",
+      "expect": "[\"A\", true]"
+     }
+    ],
+    "hint": "Har bir o'zgargan bosqichni nusxalang.",
+    "id": "3"
+   },
+   {
+    "title": "Massivga qo'shish",
+    "task": "addItem(list, item) item oxiriga qo'shilgan YANGI massiv qaytarsin.",
+    "starter": "function addItem(list, item) {\n  \n}",
+    "solution": "function addItem(list, item) {\n  return [...list, item];\n}",
+    "tests": [
+     {
+      "call": "addItem([1, 2], 3)",
+      "expect": "[1, 2, 3]"
+     },
+     {
+      "call": "(() => { const a = [1]; addItem(a, 2); return a; })()",
+      "expect": "[1]"
+     }
+    ],
+    "hint": "push o'rniga spread.",
+    "id": "4"
+   },
+   {
+    "title": "O'chirish",
+    "task": "removeById(list, id) berilgan id li elementsiz yangi massiv qaytarsin.",
+    "starter": "function removeById(list, id) {\n  \n}",
+    "solution": "function removeById(list, id) {\n  return list.filter((x) => x.id !== id);\n}",
+    "tests": [
+     {
+      "call": "removeById([{ id: 1 }, { id: 2 }], 1)",
+      "expect": "[{ id: 2 }]"
+     },
+     {
+      "call": "(() => { const a = [{ id: 1 }]; removeById(a, 1); return a.length; })()",
+      "expect": "1"
+     }
+    ],
+    "hint": "filter yangi massiv qaytaradi.",
+    "id": "5"
+   },
+   {
+    "title": "Bitta elementni yangilash",
+    "task": "toggle(list, id) o'sha id li elementning done qiymatini teskarisiga almashtirsin. Boshqa elementlar AYNAN o'sha obyekt bo'lib qolsin.",
+    "starter": "function toggle(list, id) {\n  \n}",
+    "solution": "function toggle(list, id) {\n  return list.map((x) => (x.id === id ? { ...x, done: !x.done } : x));\n}",
+    "tests": [
+     {
+      "call": "toggle([{ id: 1, done: false }], 1)",
+      "expect": "[{ id: 1, done: true }]"
+     },
+     {
+      "call": "(() => { const a = [{ id: 1, done: false }, { id: 2, done: false }]; const b = toggle(a, 1); return [a[0].done, b[1] === a[1], b[0] !== a[0]]; })()",
+      "expect": "[false, true, true]"
+     }
+    ],
+    "hint": "map ichida shartli spread.",
+    "id": "6"
+   },
+   {
+    "title": "Chuqur nusxa",
+    "task": "deepCopy(value) chuqur nusxa qaytarsin (Date va Map ham saqlansin).",
+    "starter": "function deepCopy(value) {\n  \n}",
+    "solution": "function deepCopy(value) {\n  return structuredClone(value);\n}",
+    "tests": [
+     {
+      "call": "(() => { const a = { x: { y: [1] } }; const b = deepCopy(a); b.x.y.push(2); return a.x.y; })()",
+      "expect": "[1]"
+     },
+     {
+      "call": "deepCopy({ d: new Date(0) }).d.getTime()",
+      "expect": "0"
+     },
+     {
+      "call": "deepCopy(new Map([[\"a\", 1]])).get(\"a\")",
+      "expect": "1"
+     }
+    ],
+    "hint": "structuredClone",
+    "id": "7"
+   },
+   {
+    "title": "Reference tengligi",
+    "task": "sameContent(a, b) ikki primitivlar massivining mazmuni bir xil bo'lsa true qaytarsin.",
+    "starter": "function sameContent(a, b) {\n  \n}",
+    "solution": "function sameContent(a, b) {\n  return a.length === b.length && a.every((v, i) => v === b[i]);\n}",
+    "tests": [
+     {
+      "call": "sameContent([1, 2], [1, 2])",
+      "expect": "true"
+     },
+     {
+      "call": "sameContent([1, 2], [2, 1])",
+      "expect": "false"
+     },
+     {
+      "call": "sameContent([1], [1, 2])",
+      "expect": "false"
+     },
+     {
+      "call": "sameContent([], [])",
+      "expect": "true"
+     }
+    ],
+    "hint": "=== havolani solishtiradi, mazmunni emas.",
+    "id": "8"
+   },
+   {
+    "title": "Asl massivni buzmasdan saralash",
+    "task": "sortedCopy(nums) sonlarni o'sish tartibida saralangan nusxada qaytarsin.",
+    "starter": "function sortedCopy(nums) {\n  \n}",
+    "solution": "function sortedCopy(nums) {\n  return [...nums].sort((a, b) => a - b);\n}",
+    "tests": [
+     {
+      "call": "sortedCopy([10, 9, 1])",
+      "expect": "[1, 9, 10]"
+     },
+     {
+      "call": "(() => { const a = [3, 1]; sortedCopy(a); return a; })()",
+      "expect": "[3, 1]"
+     }
+    ],
+    "hint": "Avval nusxa, keyin sort.",
+    "id": "9"
+   },
+   {
+    "title": "Muzlatish",
+    "task": "frozenConfig() {mode: \"dark\"} obyektini muzlatilgan holda qaytarsin.",
+    "starter": "function frozenConfig() {\n  \n}",
+    "solution": "function frozenConfig() {\n  return Object.freeze({ mode: \"dark\" });\n}",
+    "tests": [
+     {
+      "call": "frozenConfig()",
+      "expect": "{ mode: \"dark\" }"
+     },
+     {
+      "call": "Object.isFrozen(frozenConfig())",
+      "expect": "true"
+     }
+    ],
+    "hint": "Object.freeze",
+    "id": "10"
+   }
   ]
  },
  {
@@ -651,6 +849,236 @@
     ],
     "answer": "true songa aylanadi: 1 Satr bilan son qoldi \"1\" songa aylanadi: 1 1 === 1 natijasi true",
     "explain": "Boolean avval songa o'tadi, keyin satr ham songa."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Songa aylantirish",
+    "task": "toNumber(text) matnni songa aylantirsin; bo'sh yoki son bo'lmagan matn uchun null qaytarsin.",
+    "starter": "function toNumber(text) {\n  \n}",
+    "solution": "function toNumber(text) {\n  if (text.trim() === \"\") return null;\n  const n = Number(text);\n  return Number.isNaN(n) ? null : n;\n}",
+    "tests": [
+     {
+      "call": "toNumber(\"42\")",
+      "expect": "42"
+     },
+     {
+      "call": "toNumber(\"0\")",
+      "expect": "0"
+     },
+     {
+      "call": "toNumber(\"\")",
+      "expect": "null"
+     },
+     {
+      "call": "toNumber(\"   \")",
+      "expect": "null"
+     },
+     {
+      "call": "toNumber(\"12a\")",
+      "expect": "null"
+     }
+    ],
+    "hint": "Number(\"\") 0 beradi — alohida tekshiring.",
+    "id": "1"
+   },
+   {
+    "title": "Qo'shish, ulash emas",
+    "task": "sum(a, b) satr ko'rinishidagi sonlarni SON sifatida qo'shsin.",
+    "starter": "function sum(a, b) {\n  \n}",
+    "solution": "function sum(a, b) {\n  return Number(a) + Number(b);\n}",
+    "tests": [
+     {
+      "call": "sum(\"1\", \"2\")",
+      "expect": "3"
+     },
+     {
+      "call": "sum(5, \"5\")",
+      "expect": "10"
+     }
+    ],
+    "hint": "+ satr ko'rsa ulaydi.",
+    "id": "2"
+   },
+   {
+    "title": "null yoki undefined",
+    "task": "isNil(v) faqat null va undefined uchun true qaytarsin.",
+    "starter": "function isNil(v) {\n  \n}",
+    "solution": "function isNil(v) {\n  return v == null;\n}",
+    "tests": [
+     {
+      "call": "isNil(null)",
+      "expect": "true"
+     },
+     {
+      "call": "isNil(undefined)",
+      "expect": "true"
+     },
+     {
+      "call": "isNil(0)",
+      "expect": "false"
+     },
+     {
+      "call": "isNil(\"\")",
+      "expect": "false"
+     },
+     {
+      "call": "isNil(false)",
+      "expect": "false"
+     }
+    ],
+    "hint": "v == null",
+    "id": "3"
+   },
+   {
+    "title": "Standart qiymat",
+    "task": "limit(options) options.limit ni qaytarsin; u berilmagan (null/undefined) yoki options yo'q bo'lsa 10. 0 qiymati saqlansin.",
+    "starter": "function limit(options) {\n  \n}",
+    "solution": "function limit(options) {\n  return options?.limit ?? 10;\n}",
+    "tests": [
+     {
+      "call": "limit({ limit: 0 })",
+      "expect": "0"
+     },
+     {
+      "call": "limit({})",
+      "expect": "10"
+     },
+     {
+      "call": "limit()",
+      "expect": "10"
+     },
+     {
+      "call": "limit(null)",
+      "expect": "10"
+     },
+     {
+      "call": "limit({ limit: 5 })",
+      "expect": "5"
+     }
+    ],
+    "hint": "?. va ??",
+    "id": "4"
+   },
+   {
+    "title": "Chuqur xossani xavfsiz o'qish",
+    "task": "city(user) user.address.city ni qaytarsin; yo'l uzilsa \"Noma'lum\".",
+    "starter": "function city(user) {\n  \n}",
+    "solution": "function city(user) {\n  return user?.address?.city ?? \"Noma'lum\";\n}",
+    "tests": [
+     {
+      "call": "city({ address: { city: \"Toshkent\" } })",
+      "expect": "\"Toshkent\""
+     },
+     {
+      "call": "city({})",
+      "expect": "\"Noma'lum\""
+     },
+     {
+      "call": "city(null)",
+      "expect": "\"Noma'lum\""
+     }
+    ],
+    "hint": "Ikki marta ?.",
+    "id": "5"
+   },
+   {
+    "title": "Falsy larni tozalash",
+    "task": "compact(list) barcha falsy qiymatlarni olib tashlasin.",
+    "starter": "function compact(list) {\n  \n}",
+    "solution": "function compact(list) {\n  return list.filter(Boolean);\n}",
+    "tests": [
+     {
+      "call": "compact([0, 1, \"\", \"a\", null, undefined, NaN, false, []])",
+      "expect": "[1, \"a\", []]"
+     }
+    ],
+    "hint": "filter(Boolean)",
+    "id": "6"
+   },
+   {
+    "title": "Object.is farqi",
+    "task": "sameValue(a, b): NaN o'ziga teng, 0 va -0 esa teng EMAS bo'lsin.",
+    "starter": "function sameValue(a, b) {\n  \n}",
+    "solution": "function sameValue(a, b) {\n  return Object.is(a, b);\n}",
+    "tests": [
+     {
+      "call": "sameValue(NaN, NaN)",
+      "expect": "true"
+     },
+     {
+      "call": "sameValue(0, -0)",
+      "expect": "false"
+     },
+     {
+      "call": "sameValue(1, 1)",
+      "expect": "true"
+     },
+     {
+      "call": "sameValue(1, \"1\")",
+      "expect": "false"
+     }
+    ],
+    "hint": "Object.is",
+    "id": "7"
+   },
+   {
+    "title": "valueOf",
+    "task": "money(sum) shunday obyekt qaytarsinki, uni son bilan qo'shib bo'lsin: money(5) + 1 === 6.",
+    "starter": "function money(sum) {\n  \n}",
+    "solution": "function money(sum) {\n  return { valueOf: () => sum };\n}",
+    "tests": [
+     {
+      "call": "money(5) + 1",
+      "expect": "6"
+     },
+     {
+      "call": "money(10) * 2",
+      "expect": "20"
+     },
+     {
+      "call": "typeof money(1)",
+      "expect": "\"object\""
+     }
+    ],
+    "hint": "ToPrimitive valueOf ni chaqiradi.",
+    "id": "8"
+   },
+   {
+    "title": "toString",
+    "task": "tag(name) obyekt qaytarsin; shablon satrda u \"#name\" ko'rinishida chiqsin.",
+    "starter": "function tag(name) {\n  \n}",
+    "solution": "function tag(name) {\n  return { toString: () => \"#\" + name };\n}",
+    "tests": [
+     {
+      "call": "`${tag(\"js\")}`",
+      "expect": "\"#js\""
+     },
+     {
+      "call": "typeof tag(\"a\")",
+      "expect": "\"object\""
+     }
+    ],
+    "hint": "Shablon satr toString ni chaqiradi.",
+    "id": "9"
+   },
+   {
+    "title": "Qat'iy taqqoslash",
+    "task": "countExact(list, value) massivda value ga turi ham mos (===) elementlar sonini qaytarsin.",
+    "starter": "function countExact(list, value) {\n  \n}",
+    "solution": "function countExact(list, value) {\n  return list.filter((x) => x === value).length;\n}",
+    "tests": [
+     {
+      "call": "countExact([1, \"1\", 1, true], 1)",
+      "expect": "2"
+     },
+     {
+      "call": "countExact([null, undefined], null)",
+      "expect": "1"
+     }
+    ],
+    "hint": "== emas, ===.",
+    "id": "10"
    }
   ]
  },
@@ -982,6 +1410,172 @@
     "answer": "Tashqi funksiya chaqiriladi Ichki funksiya yaratiladi Tashqi funksiya qaytadi Ichki funksiya eski o'zgaruvchini o'qiydi",
     "explain": "Tashqi funksiya tugasa ham, o'zgaruvchi ichki funksiya havolasi tufayli yashaydi."
    }
+  ],
+  "labs": [
+   {
+    "title": "Hisoblagich",
+    "task": "createCounter() har chaqirilganda 1 dan boshlab o'sib boradigan funksiya qaytarsin.",
+    "starter": "function createCounter() {\n  \n}",
+    "solution": "function createCounter() {\n  let n = 0;\n  return () => ++n;\n}",
+    "tests": [
+     {
+      "call": "(() => { const c = createCounter(); return [c(), c(), c()]; })()",
+      "expect": "[1, 2, 3]"
+     },
+     {
+      "call": "(() => { const a = createCounter(), b = createCounter(); a(); return b(); })()",
+      "expect": "1"
+     }
+    ],
+    "hint": "Closure ichidagi o'zgaruvchi.",
+    "id": "1"
+   },
+   {
+    "title": "Xususiy holat",
+    "task": "createAccount() {deposit(n), balance()} qaytarsin. Balansni tashqaridan o'zgartirib bo'lmasin.",
+    "starter": "function createAccount() {\n  \n}",
+    "solution": "function createAccount() {\n  let total = 0;\n  return {\n    deposit(n) { total += n; },\n    balance() { return total; },\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const a = createAccount(); a.deposit(50); a.deposit(20); return a.balance(); })()",
+      "expect": "70"
+     },
+     {
+      "call": "Object.keys(createAccount()).sort()",
+      "expect": "[\"balance\", \"deposit\"]"
+     }
+    ],
+    "hint": "Holat obyekt xossasi emas, o'zgaruvchi bo'lsin.",
+    "id": "2"
+   },
+   {
+    "title": "Bir marta",
+    "task": "once(f) shunday funksiya qaytarsinki, f faqat birinchi chaqiruvda ishlasin va natija eslab qolinsin.",
+    "starter": "function once(f) {\n  \n}",
+    "solution": "function once(f) {\n  let called = false;\n  let result;\n  return (...args) => {\n    if (!called) { called = true; result = f(...args); }\n    return result;\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { let n = 0; const g = once(() => ++n); g(); g(); return [g(), n]; })()",
+      "expect": "[1, 1]"
+     },
+     {
+      "call": "once((a, b) => a + b)(2, 3)",
+      "expect": "5"
+     }
+    ],
+    "hint": "Bayroq va natija closure da.",
+    "id": "3"
+   },
+   {
+    "title": "Sikl va closure",
+    "task": "makeFns(n) n ta funksiya massivini qaytarsin; i-funksiya i ni qaytarsin. Hozir hammasi bir xil son beryapti — tuzating.",
+    "starter": "function makeFns(n) {\n  const out = [];\n  for (var i = 0; i < n; i++) out.push(() => i);\n  return out;\n}",
+    "solution": "function makeFns(n) {\n  const out = [];\n  for (let i = 0; i < n; i++) out.push(() => i);\n  return out;\n}",
+    "tests": [
+     {
+      "call": "makeFns(3).map((f) => f())",
+      "expect": "[0, 1, 2]"
+     }
+    ],
+    "hint": "var o'rniga let.",
+    "id": "4"
+   },
+   {
+    "title": "Memoizatsiya",
+    "task": "memo(f) bir argumentli funksiyaning natijasini keshlasin.",
+    "starter": "function memo(f) {\n  \n}",
+    "solution": "function memo(f) {\n  const cache = new Map();\n  return (x) => {\n    if (!cache.has(x)) cache.set(x, f(x));\n    return cache.get(x);\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { let calls = 0; const g = memo((x) => { calls++; return x * 2; }); return [g(2), g(2), g(3), calls]; })()",
+      "expect": "[4, 4, 6, 2]"
+     },
+     {
+      "call": "(() => { let c = 0; const g = memo(() => { c++; return 0; }); g(1); g(1); return c; })()",
+      "expect": "1"
+     }
+    ],
+    "hint": "Map kesh; cache.has bilan tekshiring.",
+    "id": "5"
+   },
+   {
+    "title": "ID generatori",
+    "task": "idMaker(prefix) har chaqiruvda \"prefix-1\", \"prefix-2\" ... qaytaradigan funksiya bersin.",
+    "starter": "function idMaker(prefix) {\n  \n}",
+    "solution": "function idMaker(prefix) {\n  let n = 0;\n  return () => `${prefix}-${++n}`;\n}",
+    "tests": [
+     {
+      "call": "(() => { const f = idMaker(\"u\"); return [f(), f()]; })()",
+      "expect": "[\"u-1\", \"u-2\"]"
+     }
+    ],
+    "hint": "Shablon satr va closure.",
+    "id": "6"
+   },
+   {
+    "title": "Chegaralangan chaqiruv",
+    "task": "limitCalls(f, max) f ni ko'pi bilan max marta chaqirsin; keyingi chaqiruvlar undefined qaytarsin.",
+    "starter": "function limitCalls(f, max) {\n  \n}",
+    "solution": "function limitCalls(f, max) {\n  let used = 0;\n  return (...args) => (used++ < max ? f(...args) : undefined);\n}",
+    "tests": [
+     {
+      "call": "(() => { const g = limitCalls((x) => x, 2); return [g(1), g(2), g(3)]; })()",
+      "expect": "[1, 2, undefined]"
+     },
+     {
+      "call": "limitCalls(() => 1, 0)()",
+      "expect": "undefined"
+     }
+    ],
+    "hint": "Chaqiruvlar sonini sanang.",
+    "id": "7"
+   },
+   {
+    "title": "TDZ ni tuzating",
+    "task": "total(price) soliq bilan narxni qaytarsin. Kodda o'zgaruvchi e'lonidan oldin ishlatilgan — tuzating.",
+    "starter": "function total(price) {\n  const result = price + price * rate;\n  const rate = 0.5;\n  return result;\n}",
+    "solution": "function total(price) {\n  const rate = 0.5;\n  return price + price * rate;\n}",
+    "tests": [
+     {
+      "call": "total(100)",
+      "expect": "150"
+     }
+    ],
+    "hint": "const e'lon qatoridan oldin TDZ da turadi.",
+    "id": "8"
+   },
+   {
+    "title": "Soyalash (shadowing)",
+    "task": "label(x) x manfiy bo'lsa \"manfiy\", aks holda \"musbat\" qaytarsin. Ichki blokdagi qayta e'lon xatosini tuzating.",
+    "starter": "function label(x) {\n  let result = \"musbat\";\n  if (x < 0) {\n    let result = \"manfiy\";\n  }\n  return result;\n}",
+    "solution": "function label(x) {\n  let result = \"musbat\";\n  if (x < 0) {\n    result = \"manfiy\";\n  }\n  return result;\n}",
+    "tests": [
+     {
+      "call": "label(-1)",
+      "expect": "\"manfiy\""
+     },
+     {
+      "call": "label(2)",
+      "expect": "\"musbat\""
+     }
+    ],
+    "hint": "Ichki let yangi o'zgaruvchi yaratadi.",
+    "id": "9"
+   },
+   {
+    "title": "Eskirgan closure",
+    "task": "createStore() {inc(), message()} qaytarsin; message() har doim JORIY qiymat bilan \"Soni: n\" bersin.",
+    "starter": "function createStore() {\n  let count = 0;\n  const text = `Soni: ${count}`;\n  return {\n    inc() { count++; },\n    message() { return text; },\n  };\n}",
+    "solution": "function createStore() {\n  let count = 0;\n  return {\n    inc() { count++; },\n    message() { return `Soni: ${count}`; },\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const s = createStore(); s.inc(); s.inc(); return s.message(); })()",
+      "expect": "\"Soni: 2\""
+     }
+    ],
+    "hint": "Satrni chaqiruv paytida yasang.",
+    "id": "10"
+   }
   ]
  },
  {
@@ -1310,6 +1904,192 @@
     "answer": "Kirish satri olinadi trim bo'shliqlarni kesadi lower kichik harfga o'tkazadi split massivga bo'ladi",
     "explain": "pipe chapdan o'ngga, compose esa o'ngdan chapga bajaradi."
    }
+  ],
+  "labs": [
+   {
+    "title": "map",
+    "task": "names(users) faqat ismlar massivini qaytarsin.",
+    "starter": "function names(users) {\n  \n}",
+    "solution": "function names(users) {\n  return users.map((u) => u.name);\n}",
+    "tests": [
+     {
+      "call": "names([{ name: \"A\" }, { name: \"B\" }])",
+      "expect": "[\"A\", \"B\"]"
+     },
+     {
+      "call": "names([])",
+      "expect": "[]"
+     }
+    ],
+    "hint": "map",
+    "id": "1"
+   },
+   {
+    "title": "filter va map",
+    "task": "activeEmails(users) faol (active) foydalanuvchilarning email larini qaytarsin.",
+    "starter": "function activeEmails(users) {\n  \n}",
+    "solution": "function activeEmails(users) {\n  return users.filter((u) => u.active).map((u) => u.email);\n}",
+    "tests": [
+     {
+      "call": "activeEmails([{ active: true, email: \"a\" }, { active: false, email: \"b\" }])",
+      "expect": "[\"a\"]"
+     }
+    ],
+    "hint": "Avval filter, keyin map.",
+    "id": "2"
+   },
+   {
+    "title": "reduce bilan yig'indi",
+    "task": "cartTotal(items) price * qty larning yig'indisini qaytarsin; bo'sh savat 0.",
+    "starter": "function cartTotal(items) {\n  \n}",
+    "solution": "function cartTotal(items) {\n  return items.reduce((s, i) => s + i.price * i.qty, 0);\n}",
+    "tests": [
+     {
+      "call": "cartTotal([{ price: 10, qty: 2 }, { price: 5, qty: 1 }])",
+      "expect": "25"
+     },
+     {
+      "call": "cartTotal([])",
+      "expect": "0"
+     }
+    ],
+    "hint": "Boshlang'ich qiymat 0.",
+    "id": "3"
+   },
+   {
+    "title": "Guruhlash",
+    "task": "groupBy(list, key) elementlarni key qiymati bo'yicha obyektga guruhlasin.",
+    "starter": "function groupBy(list, key) {\n  \n}",
+    "solution": "function groupBy(list, key) {\n  return list.reduce((acc, x) => {\n    (acc[x[key]] ??= []).push(x);\n    return acc;\n  }, {});\n}",
+    "tests": [
+     {
+      "call": "groupBy([{ t: \"a\", n: 1 }, { t: \"b\", n: 2 }, { t: \"a\", n: 3 }], \"t\")",
+      "expect": "{ a: [{ t: \"a\", n: 1 }, { t: \"a\", n: 3 }], b: [{ t: \"b\", n: 2 }] }"
+     },
+     {
+      "call": "groupBy([], \"t\")",
+      "expect": "{}"
+     }
+    ],
+    "hint": "reduce, boshlang'ich qiymat {}.",
+    "id": "4"
+   },
+   {
+    "title": "Funksiya qaytaruvchi funksiya",
+    "task": "multiplier(k) argumentni k ga ko'paytiradigan funksiya qaytarsin.",
+    "starter": "function multiplier(k) {\n  \n}",
+    "solution": "function multiplier(k) {\n  return (x) => x * k;\n}",
+    "tests": [
+     {
+      "call": "[1, 2, 3].map(multiplier(3))",
+      "expect": "[3, 6, 9]"
+     },
+     {
+      "call": "multiplier(0)(5)",
+      "expect": "0"
+     }
+    ],
+    "hint": "(x) => x * k",
+    "id": "5"
+   },
+   {
+    "title": "Currying",
+    "task": "add(a)(b)(c) uchala sonning yig'indisini qaytarsin.",
+    "starter": "function add(a) {\n  \n}",
+    "solution": "function add(a) {\n  return (b) => (c) => a + b + c;\n}",
+    "tests": [
+     {
+      "call": "add(1)(2)(3)",
+      "expect": "6"
+     },
+     {
+      "call": "typeof add(1)(2)",
+      "expect": "\"function\""
+     }
+    ],
+    "hint": "Har bosqich funksiya qaytaradi.",
+    "id": "6"
+   },
+   {
+    "title": "pipe",
+    "task": "pipe(...fns) funksiyalarni chapdan o'ngga qo'llaydigan funksiya qaytarsin.",
+    "starter": "function pipe(...fns) {\n  \n}",
+    "solution": "function pipe(...fns) {\n  return (x) => fns.reduce((v, f) => f(v), x);\n}",
+    "tests": [
+     {
+      "call": "pipe((x) => x + 1, (x) => x * 2)(3)",
+      "expect": "8"
+     },
+     {
+      "call": "pipe()(5)",
+      "expect": "5"
+     },
+     {
+      "call": "pipe((s) => s.trim(), (s) => s.toUpperCase())(\" ok \")",
+      "expect": "\"OK\""
+     }
+    ],
+    "hint": "reduce, boshlang'ich qiymat x.",
+    "id": "7"
+   },
+   {
+    "title": "map va parseInt tuzog'i",
+    "task": "toInts(list) satrlar massivini butun sonlarga aylantirsin. Hozirgi kod noto'g'ri natija beryapti.",
+    "starter": "function toInts(list) {\n  return list.map(parseInt);\n}",
+    "solution": "function toInts(list) {\n  return list.map((s) => parseInt(s, 10));\n}",
+    "tests": [
+     {
+      "call": "toInts([\"1\", \"2\", \"3\"])",
+      "expect": "[1, 2, 3]"
+     },
+     {
+      "call": "toInts([\"10\", \"10\"])",
+      "expect": "[10, 10]"
+     }
+    ],
+    "hint": "map callback ga indeks ham beradi.",
+    "id": "8"
+   },
+   {
+    "title": "Sof funksiya",
+    "task": "addTag(post, tag) sof bo'lsin: post ni o'zgartirmasdan yangi obyekt qaytarsin.",
+    "starter": "function addTag(post, tag) {\n  post.tags.push(tag);\n  return post;\n}",
+    "solution": "function addTag(post, tag) {\n  return { ...post, tags: [...post.tags, tag] };\n}",
+    "tests": [
+     {
+      "call": "addTag({ tags: [\"a\"] }, \"b\")",
+      "expect": "{ tags: [\"a\", \"b\"] }"
+     },
+     {
+      "call": "(() => { const p = { tags: [\"a\"] }; addTag(p, \"b\"); return p.tags; })()",
+      "expect": "[\"a\"]"
+     }
+    ],
+    "hint": "Argumentni mutatsiya qilmang.",
+    "id": "9"
+   },
+   {
+    "title": "O'z map ingiz",
+    "task": "myMap(list, f) tayyor map siz ishlasin: f(element, indeks) natijalaridan yangi massiv.",
+    "starter": "function myMap(list, f) {\n  \n}",
+    "solution": "function myMap(list, f) {\n  const out = [];\n  for (let i = 0; i < list.length; i++) out.push(f(list[i], i));\n  return out;\n}",
+    "tests": [
+     {
+      "call": "myMap([1, 2], (x) => x * 10)",
+      "expect": "[10, 20]"
+     },
+     {
+      "call": "myMap([\"a\", \"b\"], (x, i) => i + x)",
+      "expect": "[\"0a\", \"1b\"]"
+     },
+     {
+      "call": "myMap([], (x) => x)",
+      "expect": "[]"
+     }
+    ],
+    "hint": "for sikli va push.",
+    "id": "10"
+   }
   ]
  },
  {
@@ -1636,6 +2416,168 @@
     ],
     "answer": "new bilan chaqiruv call, apply yoki bind obyekt nuqtasi orqali chaqiruv oddiy chaqiruv",
     "explain": "Arrow funksiya bu ro'yxatdan tashqarida: u this ni tashqaridan oladi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Metoddagi this",
+    "task": "user(name) {name, hello()} qaytarsin; hello() \"Salom, <name>\" bersin va this.name dan foydalansin.",
+    "starter": "function user(name) {\n  \n}",
+    "solution": "function user(name) {\n  return {\n    name,\n    hello() { return `Salom, ${this.name}`; },\n  };\n}",
+    "tests": [
+     {
+      "call": "user(\"Ali\").hello()",
+      "expect": "\"Salom, Ali\""
+     },
+     {
+      "call": "(() => { const u = user(\"A\"); u.name = \"B\"; return u.hello(); })()",
+      "expect": "\"Salom, B\""
+     }
+    ],
+    "hint": "Oddiy metod yozing va this.name.",
+    "id": "1"
+   },
+   {
+    "title": "Yo'qolgan kontekst",
+    "task": "getter(obj) obj.getName ni alohida chaqirsa ham ishlaydigan funksiya qaytarsin.",
+    "starter": "function getter(obj) {\n  return obj.getName;\n}",
+    "solution": "function getter(obj) {\n  return obj.getName.bind(obj);\n}",
+    "tests": [
+     {
+      "call": "(() => { const o = { n: \"x\", getName() { return this.n; } }; const g = getter(o); return g(); })()",
+      "expect": "\"x\""
+     }
+    ],
+    "hint": "bind",
+    "id": "2"
+   },
+   {
+    "title": "call",
+    "task": "borrow(obj) greet funksiyasini obj kontekstida \"!\" argumenti bilan darhol chaqirsin.",
+    "starter": "function greet(mark) {\n  return this.name + mark;\n}\n\nfunction borrow(obj) {\n  \n}",
+    "solution": "function greet(mark) {\n  return this.name + mark;\n}\n\nfunction borrow(obj) {\n  return greet.call(obj, \"!\");\n}",
+    "tests": [
+     {
+      "call": "borrow({ name: \"Vali\" })",
+      "expect": "\"Vali!\""
+     }
+    ],
+    "hint": "greet.call(obj, ...)",
+    "id": "3"
+   },
+   {
+    "title": "apply",
+    "task": "maxOf(nums) Math.max ni apply yordamida chaqirsin.",
+    "starter": "function maxOf(nums) {\n  \n}",
+    "solution": "function maxOf(nums) {\n  return Math.max.apply(null, nums);\n}",
+    "tests": [
+     {
+      "call": "maxOf([3, 9, 1])",
+      "expect": "9"
+     },
+     {
+      "call": "maxOf([])",
+      "expect": "-Infinity"
+     }
+    ],
+    "hint": "Math.max.apply(null, nums)",
+    "id": "4"
+   },
+   {
+    "title": "Qisman qo'llash",
+    "task": "greeter(greeting) bind yordamida say funksiyasining birinchi argumentini oldindan to'ldirsin.",
+    "starter": "function say(greeting, name) {\n  return `${greeting}, ${name}`;\n}\n\nfunction greeter(greeting) {\n  \n}",
+    "solution": "function say(greeting, name) {\n  return `${greeting}, ${name}`;\n}\n\nfunction greeter(greeting) {\n  return say.bind(null, greeting);\n}",
+    "tests": [
+     {
+      "call": "greeter(\"Salom\")(\"Ali\")",
+      "expect": "\"Salom, Ali\""
+     }
+    ],
+    "hint": "say.bind(null, greeting)",
+    "id": "5"
+   },
+   {
+    "title": "Ichki callback",
+    "task": "team.list() har bir a'zoni \"nom: a'zo\" ko'rinishida qaytarsin. Hozir this yo'qolyapti.",
+    "starter": "const team = {\n  name: \"JS\",\n  members: [\"A\", \"B\"],\n  list() {\n    return this.members.map(function (m) { return `${this.name}: ${m}`; });\n  },\n};",
+    "solution": "const team = {\n  name: \"JS\",\n  members: [\"A\", \"B\"],\n  list() {\n    return this.members.map((m) => `${this.name}: ${m}`);\n  },\n};",
+    "tests": [
+     {
+      "call": "team.list()",
+      "expect": "[\"JS: A\", \"JS: B\"]"
+     }
+    ],
+    "hint": "Arrow this ni tashqaridan oladi.",
+    "id": "6"
+   },
+   {
+    "title": "Arrow metod xatosi",
+    "task": "counter.next() qiymatni oshirib qaytarsin. Arrow funksiya sabab ishlamayapti.",
+    "starter": "const counter = {\n  value: 0,\n  next: () => ++this.value,\n};",
+    "solution": "const counter = {\n  value: 0,\n  next() { return ++this.value; },\n};",
+    "tests": [
+     {
+      "call": "[counter.next(), counter.next()]",
+      "expect": "[1, 2]"
+     },
+     {
+      "call": "(() => { counter.next(); return counter.value; })()",
+      "expect": "1"
+     }
+    ],
+    "hint": "Metod uchun oddiy funksiya.",
+    "id": "7"
+   },
+   {
+    "title": "O'z bind ingiz",
+    "task": "myBind(f, ctx) tayyor bind siz f ni ctx bilan chaqiradigan funksiya qaytarsin.",
+    "starter": "function myBind(f, ctx) {\n  \n}",
+    "solution": "function myBind(f, ctx) {\n  return (...args) => f.apply(ctx, args);\n}",
+    "tests": [
+     {
+      "call": "myBind(function (x) { return this.a + x; }, { a: 1 })(2)",
+      "expect": "3"
+     },
+     {
+      "call": "myBind(function () { return this.a; }, { a: 7 }).call({ a: 0 })",
+      "expect": "7"
+     }
+    ],
+    "hint": "apply bilan chaqiring.",
+    "id": "8"
+   },
+   {
+    "title": "Zanjirli metodlar",
+    "task": "calc() {value, add(n), double()} qaytarsin; metodlar zanjir uchun this qaytarsin.",
+    "starter": "function calc() {\n  \n}",
+    "solution": "function calc() {\n  return {\n    value: 0,\n    add(n) { this.value += n; return this; },\n    double() { this.value *= 2; return this; },\n  };\n}",
+    "tests": [
+     {
+      "call": "calc().add(3).double().value",
+      "expect": "6"
+     },
+     {
+      "call": "calc().add(1).add(2).value",
+      "expect": "3"
+     }
+    ],
+    "hint": "return this",
+    "id": "9"
+   },
+   {
+    "title": "Kechiktirilgan chaqiruv",
+    "task": "later(obj) Promise qaytarsin: 10 ms dan keyin obj.name bilan bajarilsin (setTimeout ichida this to'g'ri bo'lsin).",
+    "starter": "function later(obj) {\n  \n}",
+    "solution": "function later(obj) {\n  return new Promise((resolve) => setTimeout(() => resolve(obj.name), 10));\n}",
+    "tests": [
+     {
+      "call": "later({ name: \"ok\" })",
+      "expect": "\"ok\""
+     }
+    ],
+    "hint": "Arrow callback ishlating.",
+    "id": "10"
    }
   ]
  },
@@ -1965,6 +2907,208 @@
     "answer": "Bo'sh obyekt yaratiladi Prototip User.prototype ga ulanadi User tanasi this bilan bajariladi Obyekt qaytariladi",
     "explain": "Konstruktor boshqa obyekt qaytarmasa, aynan yaratilgan obyekt qaytadi."
    }
+  ],
+  "labs": [
+   {
+    "title": "Prototip orqali yaratish",
+    "task": "make(proto) prototipi proto bo'lgan bo'sh obyekt qaytarsin.",
+    "starter": "function make(proto) {\n  \n}",
+    "solution": "function make(proto) {\n  return Object.create(proto);\n}",
+    "tests": [
+     {
+      "call": "make({ a: 1 }).a",
+      "expect": "1"
+     },
+     {
+      "call": "Object.keys(make({ a: 1 }))",
+      "expect": "[]"
+     },
+     {
+      "call": "(() => { const p = {}; return Object.getPrototypeOf(make(p)) === p; })()",
+      "expect": "true"
+     }
+    ],
+    "hint": "Object.create",
+    "id": "1"
+   },
+   {
+    "title": "Konstruktor funksiya",
+    "task": "Dog(name) konstruktorini yozing: new Dog(\"Rex\").name === \"Rex\".",
+    "starter": "function Dog(name) {\n  \n}",
+    "solution": "function Dog(name) {\n  this.name = name;\n}",
+    "tests": [
+     {
+      "call": "new Dog(\"Rex\").name",
+      "expect": "\"Rex\""
+     },
+     {
+      "call": "new Dog(\"A\") instanceof Dog",
+      "expect": "true"
+     }
+    ],
+    "hint": "this.name = name",
+    "id": "2"
+   },
+   {
+    "title": "Prototype metodi",
+    "task": "Cat(name) yozing va bark o'rniga speak() ni Cat.prototype ga qo'shing: \"<name>: miyov\".",
+    "starter": "function Cat(name) {\n  this.name = name;\n}",
+    "solution": "function Cat(name) {\n  this.name = name;\n}\nCat.prototype.speak = function () {\n  return `${this.name}: miyov`;\n};",
+    "tests": [
+     {
+      "call": "new Cat(\"Tom\").speak()",
+      "expect": "\"Tom: miyov\""
+     },
+     {
+      "call": "Object.hasOwn(new Cat(\"a\"), \"speak\")",
+      "expect": "false"
+     },
+     {
+      "call": "new Cat(\"a\").speak === new Cat(\"b\").speak",
+      "expect": "true"
+     }
+    ],
+    "hint": "Metod barcha nusxalarga umumiy.",
+    "id": "3"
+   },
+   {
+    "title": "O'z xossami",
+    "task": "ownKeys(obj) faqat obyektning o'z xossalari nomini qaytarsin (merosnikisiz).",
+    "starter": "function ownKeys(obj) {\n  const out = [];\n  for (const key in obj) out.push(key);\n  return out;\n}",
+    "solution": "function ownKeys(obj) {\n  return Object.keys(obj);\n}",
+    "tests": [
+     {
+      "call": "ownKeys(Object.assign(Object.create({ a: 1 }), { b: 2 }))",
+      "expect": "[\"b\"]"
+     },
+     {
+      "call": "ownKeys({ x: 1, y: 2 })",
+      "expect": "[\"x\", \"y\"]"
+     }
+    ],
+    "hint": "for...in merosni ham aylanadi.",
+    "id": "4"
+   },
+   {
+    "title": "Zanjirni sanash",
+    "task": "depth(obj) prototip zanjiridagi bo'g'inlar sonini (null gacha) qaytarsin.",
+    "starter": "function depth(obj) {\n  \n}",
+    "solution": "function depth(obj) {\n  let n = 0;\n  let p = Object.getPrototypeOf(obj);\n  while (p !== null) {\n    n++;\n    p = Object.getPrototypeOf(p);\n  }\n  return n;\n}",
+    "tests": [
+     {
+      "call": "depth(Object.create(null))",
+      "expect": "0"
+     },
+     {
+      "call": "depth({})",
+      "expect": "1"
+     },
+     {
+      "call": "depth([])",
+      "expect": "2"
+     },
+     {
+      "call": "depth(Object.create({}))",
+      "expect": "2"
+     }
+    ],
+    "hint": "Object.getPrototypeOf ni takrorlang.",
+    "id": "5"
+   },
+   {
+    "title": "Xossa qayerda",
+    "task": "findOwner(obj, key) zanjirda key o'ziniki bo'lgan obyektni qaytarsin, topilmasa null.",
+    "starter": "function findOwner(obj, key) {\n  \n}",
+    "solution": "function findOwner(obj, key) {\n  let current = obj;\n  while (current !== null) {\n    if (Object.hasOwn(current, key)) return current;\n    current = Object.getPrototypeOf(current);\n  }\n  return null;\n}",
+    "tests": [
+     {
+      "call": "(() => { const a = { x: 1 }; const b = Object.create(a); return findOwner(b, \"x\") === a; })()",
+      "expect": "true"
+     },
+     {
+      "call": "findOwner({}, \"nope\")",
+      "expect": "null"
+     },
+     {
+      "call": "(() => { const o = { y: 2 }; return findOwner(o, \"y\") === o; })()",
+      "expect": "true"
+     }
+    ],
+    "hint": "while va Object.hasOwn.",
+    "id": "6"
+   },
+   {
+    "title": "Soyalovchi yozish",
+    "task": "override(proto, value) proto dan meros olgan obyekt yaratib, unga level = value yozsin va shu obyektni qaytarsin.",
+    "starter": "function override(proto, value) {\n  \n}",
+    "solution": "function override(proto, value) {\n  const obj = Object.create(proto);\n  obj.level = value;\n  return obj;\n}",
+    "tests": [
+     {
+      "call": "(() => { const p = { level: 1 }; const o = override(p, 5); return [o.level, p.level, Object.hasOwn(o, \"level\")]; })()",
+      "expect": "[5, 1, true]"
+     }
+    ],
+    "hint": "Yozish o'z xossasini yaratadi.",
+    "id": "7"
+   },
+   {
+    "title": "new ni taqlid qiling",
+    "task": "myNew(F, ...args) new F(...args) kabi ishlasin (new operatorisiz).",
+    "starter": "function myNew(F, ...args) {\n  \n}",
+    "solution": "function myNew(F, ...args) {\n  const obj = Object.create(F.prototype);\n  const result = F.apply(obj, args);\n  return result !== null && typeof result === \"object\" ? result : obj;\n}",
+    "tests": [
+     {
+      "call": "(() => { function P(n) { this.n = n; } const p = myNew(P, 4); return [p.n, p instanceof P]; })()",
+      "expect": "[4, true]"
+     },
+     {
+      "call": "(() => { function R() { return { a: 1 }; } return myNew(R); })()",
+      "expect": "{ a: 1 }"
+     }
+    ],
+    "hint": "create, apply, natijani tekshirish.",
+    "id": "8"
+   },
+   {
+    "title": "instanceof ni yozing",
+    "task": "isInstance(obj, F) F.prototype obj zanjirida bo'lsa true qaytarsin (instanceof siz).",
+    "starter": "function isInstance(obj, F) {\n  \n}",
+    "solution": "function isInstance(obj, F) {\n  return Object.prototype.isPrototypeOf.call(F.prototype, obj);\n}",
+    "tests": [
+     {
+      "call": "isInstance([], Array)",
+      "expect": "true"
+     },
+     {
+      "call": "isInstance([], Object)",
+      "expect": "true"
+     },
+     {
+      "call": "isInstance({}, Array)",
+      "expect": "false"
+     }
+    ],
+    "hint": "isPrototypeOf",
+    "id": "9"
+   },
+   {
+    "title": "Meros zanjiri",
+    "task": "animal obyektidan meros olgan dog yarating: dog.eat() \"yeydi\", dog.bark() \"vov\".",
+    "starter": "const animal = {\n  eat() { return \"yeydi\"; },\n};\n\nconst dog = {};",
+    "solution": "const animal = {\n  eat() { return \"yeydi\"; },\n};\n\nconst dog = Object.create(animal);\ndog.bark = () => \"vov\";",
+    "tests": [
+     {
+      "call": "[dog.eat(), dog.bark()]",
+      "expect": "[\"yeydi\", \"vov\"]"
+     },
+     {
+      "call": "Object.getPrototypeOf(dog) === animal",
+      "expect": "true"
+     }
+    ],
+    "hint": "Object.create(animal)",
+    "id": "10"
+   }
   ]
  },
  {
@@ -2292,6 +3436,192 @@
     "answer": "new Bola chaqiriladi super ota konstruktorini ishga tushiradi Bola maydonlari o'rnatiladi Bola konstruktorining qolgan qismi bajariladi",
     "explain": "Bola maydonlari super() qaytgandan keyin paydo bo'ladi."
    }
+  ],
+  "labs": [
+   {
+    "title": "Oddiy class",
+    "task": "Rect class ini yozing: constructor(w, h) va area().",
+    "starter": "class Rect {\n  \n}",
+    "solution": "class Rect {\n  constructor(w, h) {\n    this.w = w;\n    this.h = h;\n  }\n  area() {\n    return this.w * this.h;\n  }\n}",
+    "tests": [
+     {
+      "call": "new Rect(2, 3).area()",
+      "expect": "6"
+     },
+     {
+      "call": "Object.hasOwn(Rect.prototype, \"area\")",
+      "expect": "true"
+     }
+    ],
+    "hint": "constructor va metod.",
+    "id": "1"
+   },
+   {
+    "title": "Getter",
+    "task": "Person class ida first, last va fullName getter i bo'lsin.",
+    "starter": "class Person {\n  constructor(first, last) {\n    this.first = first;\n    this.last = last;\n  }\n}",
+    "solution": "class Person {\n  constructor(first, last) {\n    this.first = first;\n    this.last = last;\n  }\n  get fullName() {\n    return `${this.first} ${this.last}`;\n  }\n}",
+    "tests": [
+     {
+      "call": "new Person(\"Ali\", \"Valiyev\").fullName",
+      "expect": "\"Ali Valiyev\""
+     },
+     {
+      "call": "(() => { const p = new Person(\"A\", \"B\"); p.first = \"C\"; return p.fullName; })()",
+      "expect": "\"C B\""
+     }
+    ],
+    "hint": "get fullName() { ... }",
+    "id": "2"
+   },
+   {
+    "title": "Xususiy maydon",
+    "task": "Safe class ida #code xususiy maydon bo'lsin; check(x) to'g'riligini aytsin.",
+    "starter": "class Safe {\n  constructor(code) {\n    this.code = code;\n  }\n  check(x) {\n    return x === this.code;\n  }\n}",
+    "solution": "class Safe {\n  #code;\n  constructor(code) {\n    this.#code = code;\n  }\n  check(x) {\n    return x === this.#code;\n  }\n}",
+    "tests": [
+     {
+      "call": "new Safe(1).check(1)",
+      "expect": "true"
+     },
+     {
+      "call": "new Safe(1).check(2)",
+      "expect": "false"
+     },
+     {
+      "call": "Object.keys(new Safe(1))",
+      "expect": "[]"
+     }
+    ],
+    "hint": "#code ni class tanasida e'lon qiling.",
+    "id": "3"
+   },
+   {
+    "title": "static",
+    "task": "User class iga static create(name) qo'shing — yangi User qaytarsin.",
+    "starter": "class User {\n  constructor(name) {\n    this.name = name;\n  }\n}",
+    "solution": "class User {\n  constructor(name) {\n    this.name = name;\n  }\n  static create(name) {\n    return new User(name);\n  }\n}",
+    "tests": [
+     {
+      "call": "User.create(\"A\").name",
+      "expect": "\"A\""
+     },
+     {
+      "call": "User.create(\"A\") instanceof User",
+      "expect": "true"
+     },
+     {
+      "call": "typeof new User(\"a\").create",
+      "expect": "\"undefined\""
+     }
+    ],
+    "hint": "static metod klass orqali chaqiriladi.",
+    "id": "4"
+   },
+   {
+    "title": "extends va super",
+    "task": "Square class i Shape dan meros olsin; name \"kvadrat\", area() tomonning kvadrati.",
+    "starter": "class Shape {\n  constructor(name) { this.name = name; }\n  describe() { return `${this.name}: ${this.area()}`; }\n}\n\nclass Square {\n  \n}",
+    "solution": "class Shape {\n  constructor(name) { this.name = name; }\n  describe() { return `${this.name}: ${this.area()}`; }\n}\n\nclass Square extends Shape {\n  constructor(side) {\n    super(\"kvadrat\");\n    this.side = side;\n  }\n  area() { return this.side ** 2; }\n}",
+    "tests": [
+     {
+      "call": "new Square(3).describe()",
+      "expect": "\"kvadrat: 9\""
+     },
+     {
+      "call": "new Square(1) instanceof Shape",
+      "expect": "true"
+     }
+    ],
+    "hint": "super ni this dan oldin chaqiring.",
+    "id": "5"
+   },
+   {
+    "title": "super metodini chaqirish",
+    "task": "Admin.info() ota natijasiga \" (admin)\" qo'shsin.",
+    "starter": "class Member {\n  constructor(name) { this.name = name; }\n  info() { return this.name; }\n}\n\nclass Admin extends Member {}",
+    "solution": "class Member {\n  constructor(name) { this.name = name; }\n  info() { return this.name; }\n}\n\nclass Admin extends Member {\n  info() { return `${super.info()} (admin)`; }\n}",
+    "tests": [
+     {
+      "call": "new Admin(\"Ali\").info()",
+      "expect": "\"Ali (admin)\""
+     },
+     {
+      "call": "new Member(\"Ali\").info()",
+      "expect": "\"Ali\""
+     }
+    ],
+    "hint": "super.info()",
+    "id": "6"
+   },
+   {
+    "title": "Setter bilan tekshiruv",
+    "task": "Temp class ida celsius setter i -273 dan kichik qiymatda xato tashlasin.",
+    "starter": "class Temp {\n  #c = 0;\n  \n}",
+    "solution": "class Temp {\n  #c = 0;\n  get celsius() { return this.#c; }\n  set celsius(v) {\n    if (v < -273) throw new RangeError(\"juda past\");\n    this.#c = v;\n  }\n}",
+    "tests": [
+     {
+      "call": "(() => { const t = new Temp(); t.celsius = 20; return t.celsius; })()",
+      "expect": "20"
+     },
+     {
+      "call": "(() => { try { new Temp().celsius = -300; return \"yo'q\"; } catch (e) { return e.name; } })()",
+      "expect": "\"RangeError\""
+     }
+    ],
+    "hint": "get va set juftligi.",
+    "id": "7"
+   },
+   {
+    "title": "Composition",
+    "task": "canFly(state) va canSwim(state) yordamida duck(name) obyektida fly() va swim() bo'lsin.",
+    "starter": "const canFly = (s) => ({ fly: () => `${s.name} uchadi` });\nconst canSwim = (s) => ({ swim: () => `${s.name} suzadi` });\n\nfunction duck(name) {\n  \n}",
+    "solution": "const canFly = (s) => ({ fly: () => `${s.name} uchadi` });\nconst canSwim = (s) => ({ swim: () => `${s.name} suzadi` });\n\nfunction duck(name) {\n  const state = { name };\n  return { ...canFly(state), ...canSwim(state) };\n}",
+    "tests": [
+     {
+      "call": "duck(\"D\").fly()",
+      "expect": "\"D uchadi\""
+     },
+     {
+      "call": "duck(\"D\").swim()",
+      "expect": "\"D suzadi\""
+     }
+    ],
+    "hint": "Xususiyatlarni spread bilan yig'ing.",
+    "id": "8"
+   },
+   {
+    "title": "toString",
+    "task": "Money class i shablon satrda \"100 UZS\" ko'rinishida chiqsin.",
+    "starter": "class Money {\n  constructor(sum) { this.sum = sum; }\n}",
+    "solution": "class Money {\n  constructor(sum) { this.sum = sum; }\n  toString() { return `${this.sum} UZS`; }\n}",
+    "tests": [
+     {
+      "call": "`${new Money(100)}`",
+      "expect": "\"100 UZS\""
+     }
+    ],
+    "hint": "toString() metodi.",
+    "id": "9"
+   },
+   {
+    "title": "Nusxalar sanog'i",
+    "task": "Session class i yaratilgan nusxalar sonini static count da saqlasin.",
+    "starter": "class Session {\n  \n}",
+    "solution": "class Session {\n  static count = 0;\n  constructor() {\n    Session.count++;\n  }\n}",
+    "tests": [
+     {
+      "call": "(() => { new Session(); new Session(); return Session.count; })()",
+      "expect": "2"
+     },
+     {
+      "call": "Session.count",
+      "expect": "0"
+     }
+    ],
+    "hint": "static count = 0",
+    "id": "10"
+   }
   ]
  },
  {
@@ -2614,6 +3944,192 @@
     ],
     "answer": "Massivni Set ga bering Set ni spread bilan massivga aylantiring toSorted ni komparator bilan chaqiring Yangi massivni qaytaring",
     "explain": "[...new Set(a)].toSorted((x, y) => x - y)."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Massivni ajratish",
+    "task": "firstAndRest(list) {first, rest} qaytarsin.",
+    "starter": "function firstAndRest(list) {\n  \n}",
+    "solution": "function firstAndRest(list) {\n  const [first, ...rest] = list;\n  return { first, rest };\n}",
+    "tests": [
+     {
+      "call": "firstAndRest([1, 2, 3])",
+      "expect": "{ first: 1, rest: [2, 3] }"
+     },
+     {
+      "call": "firstAndRest([5])",
+      "expect": "{ first: 5, rest: [] }"
+     }
+    ],
+    "hint": "[first, ...rest]",
+    "id": "1"
+   },
+   {
+    "title": "Default qiymatli destructuring",
+    "task": "settings(o) o dan theme (standart \"light\") va size (standart 14) ni olib obyekt qaytarsin.",
+    "starter": "function settings(o) {\n  \n}",
+    "solution": "function settings(o = {}) {\n  const { theme = \"light\", size = 14 } = o;\n  return { theme, size };\n}",
+    "tests": [
+     {
+      "call": "settings({})",
+      "expect": "{ theme: \"light\", size: 14 }"
+     },
+     {
+      "call": "settings()",
+      "expect": "{ theme: \"light\", size: 14 }"
+     },
+     {
+      "call": "settings({ theme: \"dark\", size: 0 })",
+      "expect": "{ theme: \"dark\", size: 0 }"
+     }
+    ],
+    "hint": "Default faqat undefined da ishlaydi.",
+    "id": "2"
+   },
+   {
+    "title": "Xossani olib tashlash",
+    "task": "withoutPassword(user) password siz nusxa qaytarsin (delete ishlatmasdan).",
+    "starter": "function withoutPassword(user) {\n  \n}",
+    "solution": "function withoutPassword(user) {\n  const { password, ...rest } = user;\n  return rest;\n}",
+    "tests": [
+     {
+      "call": "withoutPassword({ id: 1, password: \"x\" })",
+      "expect": "{ id: 1 }"
+     },
+     {
+      "call": "(() => { const u = { password: \"x\" }; withoutPassword(u); return u.password; })()",
+      "expect": "\"x\""
+     }
+    ],
+    "hint": "{ password, ...rest }",
+    "id": "3"
+   },
+   {
+    "title": "Takrorsiz",
+    "task": "unique(list) takrorlarni olib tashlasin (tartib saqlansin).",
+    "starter": "function unique(list) {\n  \n}",
+    "solution": "function unique(list) {\n  return [...new Set(list)];\n}",
+    "tests": [
+     {
+      "call": "unique([1, 2, 1, 3, 2])",
+      "expect": "[1, 2, 3]"
+     },
+     {
+      "call": "unique([])",
+      "expect": "[]"
+     }
+    ],
+    "hint": "new Set",
+    "id": "4"
+   },
+   {
+    "title": "Chastota",
+    "task": "frequency(words) har so'z necha marta uchraganini Map da qaytarsin.",
+    "starter": "function frequency(words) {\n  \n}",
+    "solution": "function frequency(words) {\n  const map = new Map();\n  for (const w of words) map.set(w, (map.get(w) ?? 0) + 1);\n  return map;\n}",
+    "tests": [
+     {
+      "call": "frequency([\"a\", \"b\", \"a\"])",
+      "expect": "new Map([[\"a\", 2], [\"b\", 1]])"
+     },
+     {
+      "call": "frequency([]).size",
+      "expect": "0"
+     }
+    ],
+    "hint": "map.get(w) ?? 0",
+    "id": "5"
+   },
+   {
+    "title": "Kesishma",
+    "task": "common(a, b) ikkalasida ham bor qiymatlarni takrorsiz qaytarsin (a tartibida).",
+    "starter": "function common(a, b) {\n  \n}",
+    "solution": "function common(a, b) {\n  const set = new Set(b);\n  return [...new Set(a)].filter((x) => set.has(x));\n}",
+    "tests": [
+     {
+      "call": "common([1, 2, 2, 3], [2, 3, 4])",
+      "expect": "[2, 3]"
+     },
+     {
+      "call": "common([1], [2])",
+      "expect": "[]"
+     }
+    ],
+    "hint": "Set.has tez ishlaydi.",
+    "id": "6"
+   },
+   {
+    "title": "sort tuzog'i",
+    "task": "byAge(users) yosh bo'yicha o'sish tartibida YANGI massiv qaytarsin.",
+    "starter": "function byAge(users) {\n  \n}",
+    "solution": "function byAge(users) {\n  return [...users].sort((a, b) => a.age - b.age);\n}",
+    "tests": [
+     {
+      "call": "byAge([{ age: 30 }, { age: 9 }])",
+      "expect": "[{ age: 9 }, { age: 30 }]"
+     },
+     {
+      "call": "(() => { const u = [{ age: 2 }, { age: 1 }]; byAge(u); return u[0].age; })()",
+      "expect": "2"
+     }
+    ],
+    "hint": "Taqqoslash funksiyasi bering.",
+    "id": "7"
+   },
+   {
+    "title": "find va findIndex",
+    "task": "lookup(list, id) {item, index} qaytarsin; topilmasa item undefined, index -1.",
+    "starter": "function lookup(list, id) {\n  \n}",
+    "solution": "function lookup(list, id) {\n  const index = list.findIndex((x) => x.id === id);\n  return { item: list[index], index };\n}",
+    "tests": [
+     {
+      "call": "lookup([{ id: 1 }, { id: 2 }], 2)",
+      "expect": "{ item: { id: 2 }, index: 1 }"
+     },
+     {
+      "call": "lookup([], 1)",
+      "expect": "{ item: undefined, index: -1 }"
+     }
+    ],
+    "hint": "findIndex -1 qaytaradi.",
+    "id": "8"
+   },
+   {
+    "title": "O'rin almashtirish",
+    "task": "swap(pair) [a, b] ni destructuring bilan [b, a] qilib qaytarsin.",
+    "starter": "function swap(pair) {\n  \n}",
+    "solution": "function swap([a, b]) {\n  return [b, a];\n}",
+    "tests": [
+     {
+      "call": "swap([1, 2])",
+      "expect": "[2, 1]"
+     },
+     {
+      "call": "swap([\"x\", \"y\"])",
+      "expect": "[\"y\", \"x\"]"
+     }
+    ],
+    "hint": "Parametrda ham destructuring mumkin.",
+    "id": "9"
+   },
+   {
+    "title": "Obyektdan Map ga",
+    "task": "toMap(obj) obyektni Map ga, fromMap(map) esa Map ni obyektga aylantirsin.",
+    "starter": "function toMap(obj) {\n  \n}\n\nfunction fromMap(map) {\n  \n}",
+    "solution": "function toMap(obj) {\n  return new Map(Object.entries(obj));\n}\n\nfunction fromMap(map) {\n  return Object.fromEntries(map);\n}",
+    "tests": [
+     {
+      "call": "toMap({ a: 1 }).get(\"a\")",
+      "expect": "1"
+     },
+     {
+      "call": "fromMap(new Map([[\"b\", 2]]))",
+      "expect": "{ b: 2 }"
+     }
+    ],
+    "hint": "Object.entries va Object.fromEntries.",
+    "id": "10"
    }
   ]
  },
@@ -2942,6 +4458,200 @@
     "answer": "Past qatlamda xato yuz beradi O'rta qatlam cause bilan o'raydi Yuqori qatlam ushlab log qiladi Foydalanuvchiga tushunarli xabar chiqadi",
     "explain": "Texnik tafsilot logga, sodda xabar ekranga."
    }
+  ],
+  "labs": [
+   {
+    "title": "JSON ni xavfsiz o'qish",
+    "task": "parseJson(text) obyekt qaytarsin; noto'g'ri JSON bo'lsa null.",
+    "starter": "function parseJson(text) {\n  \n}",
+    "solution": "function parseJson(text) {\n  try {\n    return JSON.parse(text);\n  } catch {\n    return null;\n  }\n}",
+    "tests": [
+     {
+      "call": "parseJson('{\"a\":1}')",
+      "expect": "{ a: 1 }"
+     },
+     {
+      "call": "parseJson(\"{oops\")",
+      "expect": "null"
+     }
+    ],
+    "hint": "try / catch",
+    "id": "1"
+   },
+   {
+    "title": "finally",
+    "task": "run(task, log) task() natijasini qaytarsin; xato bo'lsa ham log ga \"done\" yozilsin (xato tashqariga o'tsin).",
+    "starter": "function run(task, log) {\n  \n}",
+    "solution": "function run(task, log) {\n  try {\n    return task();\n  } finally {\n    log.push(\"done\");\n  }\n}",
+    "tests": [
+     {
+      "call": "(() => { const log = []; return [run(() => 1, log), log]; })()",
+      "expect": "[1, [\"done\"]]"
+     },
+     {
+      "call": "(() => { const log = []; try { run(() => { throw new Error(\"x\"); }, log); } catch (e) { log.push(e.message); } return log; })()",
+      "expect": "[\"done\", \"x\"]"
+     }
+    ],
+    "hint": "catch shart emas.",
+    "id": "2"
+   },
+   {
+    "title": "O'z xato klassi",
+    "task": "ValidationError class ini yozing: Error dan meros, name \"ValidationError\", field maydoni bor.",
+    "starter": "class ValidationError {\n  \n}",
+    "solution": "class ValidationError extends Error {\n  constructor(message, field) {\n    super(message);\n    this.name = \"ValidationError\";\n    this.field = field;\n  }\n}",
+    "tests": [
+     {
+      "call": "new ValidationError(\"m\", \"age\") instanceof Error",
+      "expect": "true"
+     },
+     {
+      "call": "new ValidationError(\"m\", \"age\").field",
+      "expect": "\"age\""
+     },
+     {
+      "call": "[new ValidationError(\"m\", \"f\").name, new ValidationError(\"m\", \"f\").message]",
+      "expect": "[\"ValidationError\", \"m\"]"
+     }
+    ],
+    "hint": "extends Error va super(message).",
+    "id": "3"
+   },
+   {
+    "title": "instanceof bilan ajratish",
+    "task": "handle(task) TypeError bo'lsa \"tur\" qaytarsin, boshqa xatolarni qayta tashlasin.",
+    "starter": "function handle(task) {\n  \n}",
+    "solution": "function handle(task) {\n  try {\n    return task();\n  } catch (e) {\n    if (e instanceof TypeError) return \"tur\";\n    throw e;\n  }\n}",
+    "tests": [
+     {
+      "call": "handle(() => null.x)",
+      "expect": "\"tur\""
+     },
+     {
+      "call": "handle(() => 5)",
+      "expect": "5"
+     },
+     {
+      "call": "(() => { try { handle(() => { throw new RangeError(\"r\"); }); return \"yutildi\"; } catch (e) { return e.name; } })()",
+      "expect": "\"RangeError\""
+     }
+    ],
+    "hint": "Tanimagan xatoni throw qiling.",
+    "id": "4"
+   },
+   {
+    "title": "cause",
+    "task": "load(read) read() xato tashlasa, \"Yuklab bo'lmadi\" xabarli yangi Error tashlang, asl xato cause da qolsin.",
+    "starter": "function load(read) {\n  \n}",
+    "solution": "function load(read) {\n  try {\n    return read();\n  } catch (e) {\n    throw new Error(\"Yuklab bo'lmadi\", { cause: e });\n  }\n}",
+    "tests": [
+     {
+      "call": "(() => { try { load(() => { throw new Error(\"disk\"); }); } catch (e) { return [e.message, e.cause.message]; } })()",
+      "expect": "[\"Yuklab bo'lmadi\", \"disk\"]"
+     },
+     {
+      "call": "load(() => 2)",
+      "expect": "2"
+     }
+    ],
+    "hint": "new Error(msg, { cause })",
+    "id": "5"
+   },
+   {
+    "title": "Majburiy maydon",
+    "task": "requireName(user) name bo'lmasa \"name kerak\" xabarli xato tashlasin, bo'lsa name qaytarsin.",
+    "starter": "function requireName(user) {\n  \n}",
+    "solution": "function requireName(user) {\n  if (!user?.name) throw new Error(\"name kerak\");\n  return user.name;\n}",
+    "tests": [
+     {
+      "call": "requireName({ name: \"A\" })",
+      "expect": "\"A\""
+     },
+     {
+      "call": "(() => { try { requireName({}); } catch (e) { return e.message; } })()",
+      "expect": "\"name kerak\""
+     },
+     {
+      "call": "(() => { try { requireName(null); } catch (e) { return e.message; } })()",
+      "expect": "\"name kerak\""
+     }
+    ],
+    "hint": "throw new Error(...)",
+    "id": "6"
+   },
+   {
+    "title": "Asinxron xatoni ushlash",
+    "task": "safe(task) asinxron task() ni kutsin; xato bo'lsa \"xato\" qaytarsin.",
+    "starter": "async function safe(task) {\n  try {\n    return task();\n  } catch (e) {\n    return \"xato\";\n  }\n}",
+    "solution": "async function safe(task) {\n  try {\n    return await task();\n  } catch (e) {\n    return \"xato\";\n  }\n}",
+    "tests": [
+     {
+      "call": "safe(async () => { throw new Error(\"x\"); })",
+      "expect": "\"xato\""
+     },
+     {
+      "call": "safe(async () => 1)",
+      "expect": "1"
+     }
+    ],
+    "hint": "return await kerak.",
+    "id": "7"
+   },
+   {
+    "title": "Natija obyekti",
+    "task": "toResult(promise) {ok: true, value} yoki {ok: false, error: message} bilan bajarilsin.",
+    "starter": "async function toResult(promise) {\n  \n}",
+    "solution": "async function toResult(promise) {\n  try {\n    return { ok: true, value: await promise };\n  } catch (e) {\n    return { ok: false, error: e.message };\n  }\n}",
+    "tests": [
+     {
+      "call": "toResult(Promise.resolve(3))",
+      "expect": "{ ok: true, value: 3 }"
+     },
+     {
+      "call": "toResult(Promise.reject(new Error(\"no\")))",
+      "expect": "{ ok: false, error: \"no\" }"
+     }
+    ],
+    "hint": "await ni try ichiga oling.",
+    "id": "8"
+   },
+   {
+    "title": "Qayta urinish",
+    "task": "retry(task, times) task muvaffaqiyatli bo'lguncha ko'pi bilan times marta chaqirsin; hammasi yiqilsa oxirgi xatoni tashlasin.",
+    "starter": "async function retry(task, times) {\n  \n}",
+    "solution": "async function retry(task, times) {\n  let last;\n  for (let i = 0; i < times; i++) {\n    try {\n      return await task();\n    } catch (e) {\n      last = e;\n    }\n  }\n  throw last;\n}",
+    "tests": [
+     {
+      "call": "(() => { let n = 0; return retry(async () => { if (++n < 3) throw new Error(\"e\" + n); return n; }, 5); })()",
+      "expect": "3"
+     },
+     {
+      "call": "(() => { let n = 0; return retry(async () => { throw new Error(\"e\" + ++n); }, 2).catch((e) => e.message); })()",
+      "expect": "\"e2\""
+     }
+    ],
+    "hint": "for sikli ichida try / await.",
+    "id": "9"
+   },
+   {
+    "title": "Barcha xatolarni yig'ish",
+    "task": "validate({name, age}) xatolar massivini qaytarsin: name bo'sh bo'lsa \"name\", age 0 dan kichik bo'lsa \"age\".",
+    "starter": "function validate(data) {\n  \n}",
+    "solution": "function validate({ name, age }) {\n  const errors = [];\n  if (!name) errors.push(\"name\");\n  if (age < 0) errors.push(\"age\");\n  return errors;\n}",
+    "tests": [
+     {
+      "call": "validate({ name: \"\", age: -1 })",
+      "expect": "[\"name\", \"age\"]"
+     },
+     {
+      "call": "validate({ name: \"A\", age: 0 })",
+      "expect": "[]"
+     }
+    ],
+    "hint": "Birinchi xatoda to'xtamang.",
+    "id": "10"
+   }
   ]
  },
  {
@@ -3242,6 +4952,172 @@
     ],
     "answer": "Foydalanuvchi tugmani bosadi import() so'rov yuboradi Chunk yuklanib bajariladi Eksport qilingan funksiya chaqiriladi",
     "explain": "Sahifa birinchi ochilishda bu kodni yuklamaydi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Modul kapsulasi",
+    "task": "counterModule() {increment, value} qaytarsin; ichki o'zgaruvchi eksport qilinmasin.",
+    "starter": "function counterModule() {\n  \n}",
+    "solution": "function counterModule() {\n  let count = 0;\n  return {\n    increment() { count++; },\n    value: () => count,\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const m = counterModule(); m.increment(); return m.value(); })()",
+      "expect": "1"
+     },
+     {
+      "call": "Object.keys(counterModule()).sort()",
+      "expect": "[\"increment\", \"value\"]"
+     }
+    ],
+    "hint": "Faqat kerakli funksiyalarni qaytaring.",
+    "id": "1"
+   },
+   {
+    "title": "Bir marta bajarilish",
+    "task": "singleton(factory) factory ni faqat bir marta bajarib, doim o'sha natijani qaytaradigan funksiya bersin (modul kabi).",
+    "starter": "function singleton(factory) {\n  \n}",
+    "solution": "function singleton(factory) {\n  let instance;\n  let ready = false;\n  return () => {\n    if (!ready) {\n      instance = factory();\n      ready = true;\n    }\n    return instance;\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { let n = 0; const get = singleton(() => ({ id: ++n })); return [get() === get(), n]; })()",
+      "expect": "[true, 1]"
+     },
+     {
+      "call": "(() => { let n = 0; singleton(() => ++n); return n; })()",
+      "expect": "0"
+     }
+    ],
+    "hint": "Birinchi chaqiruvda yarating.",
+    "id": "2"
+   },
+   {
+    "title": "Jonli bog'lanish",
+    "task": "liveModule() {get count(), add()} qaytarsin: count har doim joriy qiymatni ko'rsatsin.",
+    "starter": "function liveModule() {\n  let count = 0;\n  return {\n    count: count,\n    add() { count++; },\n  };\n}",
+    "solution": "function liveModule() {\n  let count = 0;\n  return {\n    get count() { return count; },\n    add() { count++; },\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const m = liveModule(); m.add(); m.add(); return m.count; })()",
+      "expect": "2"
+     }
+    ],
+    "hint": "getter ishlating.",
+    "id": "3"
+   },
+   {
+    "title": "Dynamic import ni keshlash",
+    "task": "lazy(loader) birinchi chaqiruvda loader() ni chaqirsin, keyin o'sha Promise ni qaytarsin.",
+    "starter": "function lazy(loader) {\n  \n}",
+    "solution": "function lazy(loader) {\n  let promise;\n  return () => (promise ??= loader());\n}",
+    "tests": [
+     {
+      "call": "(() => { let n = 0; const l = lazy(() => Promise.resolve(++n)); return Promise.all([l(), l()]).then((r) => [r, n]); })()",
+      "expect": "[[1, 1], 1]"
+     },
+     {
+      "call": "(() => { let n = 0; lazy(() => ++n); return n; })()",
+      "expect": "0"
+     }
+    ],
+    "hint": "??= bilan bir marta.",
+    "id": "4"
+   },
+   {
+    "title": "default va named",
+    "task": "pick(mod) modul obyektidan {main: default eksport, helpers: qolgan eksportlar nomlari} qaytarsin.",
+    "starter": "function pick(mod) {\n  \n}",
+    "solution": "function pick(mod) {\n  const { default: main, ...rest } = mod;\n  return { main, helpers: Object.keys(rest) };\n}",
+    "tests": [
+     {
+      "call": "pick({ default: 1, format: 2, parse: 3 })",
+      "expect": "{ main: 1, helpers: [\"format\", \"parse\"] }"
+     }
+    ],
+    "hint": "{ default: main, ...rest }",
+    "id": "5"
+   },
+   {
+    "title": "Dynamic import natijasi",
+    "task": "openChart(load) load() qaytargan modulning default funksiyasini \"data\" bilan chaqirsin.",
+    "starter": "async function openChart(load) {\n  \n}",
+    "solution": "async function openChart(load) {\n  const { default: draw } = await load();\n  return draw(\"data\");\n}",
+    "tests": [
+     {
+      "call": "openChart(() => Promise.resolve({ default: (x) => \"chart:\" + x }))",
+      "expect": "\"chart:data\""
+     }
+    ],
+    "hint": "default nomli xossada keladi.",
+    "id": "6"
+   },
+   {
+    "title": "Yuklash xatosi",
+    "task": "loadOr(load, fallback) modul yuklanmasa fallback ni qaytarsin.",
+    "starter": "async function loadOr(load, fallback) {\n  return load();\n}",
+    "solution": "async function loadOr(load, fallback) {\n  try {\n    return await load();\n  } catch {\n    return fallback;\n  }\n}",
+    "tests": [
+     {
+      "call": "loadOr(() => Promise.reject(new Error(\"net\")), \"zaxira\")",
+      "expect": "\"zaxira\""
+     },
+     {
+      "call": "loadOr(() => Promise.resolve(\"ok\"), \"zaxira\")",
+      "expect": "\"ok\""
+     }
+    ],
+    "hint": "try ichida await.",
+    "id": "7"
+   },
+   {
+    "title": "Parallel yuklash",
+    "task": "loadAll(loaders) hamma modulni PARALLEL yuklab, natijalar massivini bersin.",
+    "starter": "async function loadAll(loaders) {\n  \n}",
+    "solution": "async function loadAll(loaders) {\n  return Promise.all(loaders.map((load) => load()));\n}",
+    "tests": [
+     {
+      "call": "(() => { let active = 0, peak = 0; const mk = (v) => () => { peak = Math.max(peak, ++active); return new Promise((r) => setTimeout(() => { active--; r(v); }, 5)); }; return loadAll([mk(1), mk(2), mk(3)]).then((r) => [r, peak]); })()",
+      "expect": "[[1, 2, 3], 3]"
+     }
+    ],
+    "hint": "Promise.all va map.",
+    "id": "8"
+   },
+   {
+    "title": "Reestr",
+    "task": "createRegistry() {register(name, value), get(name)} bersin; bir nomni ikki marta ro'yxatga olish xato tashlasin.",
+    "starter": "function createRegistry() {\n  \n}",
+    "solution": "function createRegistry() {\n  const map = new Map();\n  return {\n    register(name, value) {\n      if (map.has(name)) throw new Error(\"band\");\n      map.set(name, value);\n    },\n    get: (name) => map.get(name),\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const r = createRegistry(); r.register(\"a\", 1); return r.get(\"a\"); })()",
+      "expect": "1"
+     },
+     {
+      "call": "(() => { const r = createRegistry(); r.register(\"a\", 1); try { r.register(\"a\", 2); return \"yozildi\"; } catch (e) { return e.message; } })()",
+      "expect": "\"band\""
+     }
+    ],
+    "hint": "Map ichida saqlang.",
+    "id": "9"
+   },
+   {
+    "title": "Toza eksport",
+    "task": "api obyektida faqat format funksiyasi bo'lsin; yordamchi pad tashqariga chiqmasin. format(5) \"05\".",
+    "starter": "const pad = (n) => String(n).padStart(2, \"0\");\n\nconst api = {};",
+    "solution": "const pad = (n) => String(n).padStart(2, \"0\");\n\nconst api = { format: (n) => pad(n) };",
+    "tests": [
+     {
+      "call": "api.format(5)",
+      "expect": "\"05\""
+     },
+     {
+      "call": "Object.keys(api)",
+      "expect": "[\"format\"]"
+     }
+    ],
+    "hint": "Faqat ommaviy qismini bering.",
+    "id": "10"
    }
   ]
  },
@@ -3569,6 +5445,160 @@
     "answer": "Sinxron kod Promise then callback setTimeout callback setTimeout ichidagi then",
     "explain": "Ikkinchi then faqat o'z macrotask idan keyin microtask sifatida ishlaydi."
    }
+  ],
+  "labs": [
+   {
+    "title": "Tartibni bashorat qiling",
+    "task": "order() funksiyasi \"A\", \"B\", \"C\", \"D\" ni haqiqiy bajarilish tartibida qaytarsin: sinxron A, setTimeout B, Promise.then C, sinxron D.",
+    "starter": "function order() {\n  \n}",
+    "solution": "function order() {\n  return [\"A\", \"D\", \"C\", \"B\"];\n}",
+    "tests": [
+     {
+      "call": "order()",
+      "expect": "[\"A\", \"D\", \"C\", \"B\"]"
+     }
+    ],
+    "hint": "Sinxron, keyin microtask, keyin macrotask.",
+    "id": "1"
+   },
+   {
+    "title": "delay",
+    "task": "delay(ms, value) ms dan keyin value bilan bajariladigan Promise qaytarsin.",
+    "starter": "function delay(ms, value) {\n  \n}",
+    "solution": "function delay(ms, value) {\n  return new Promise((resolve) => setTimeout(() => resolve(value), ms));\n}",
+    "tests": [
+     {
+      "call": "delay(5, \"ok\")",
+      "expect": "\"ok\""
+     },
+     {
+      "call": "delay(1, 1) instanceof Promise",
+      "expect": "true"
+     }
+    ],
+    "hint": "new Promise va setTimeout.",
+    "id": "2"
+   },
+   {
+    "title": "Zanjirda return",
+    "task": "doubleLater(p) p natijasini ikki barobar qilgan Promise qaytarsin.",
+    "starter": "function doubleLater(p) {\n  return p.then((x) => { x * 2; });\n}",
+    "solution": "function doubleLater(p) {\n  return p.then((x) => x * 2);\n}",
+    "tests": [
+     {
+      "call": "doubleLater(Promise.resolve(21))",
+      "expect": "42"
+     }
+    ],
+    "hint": "Figurali qavsda return kerak.",
+    "id": "3"
+   },
+   {
+    "title": "Parallel kutish",
+    "task": "both(a, b) ikki asinxron funksiyani PARALLEL bajarib, [natijaA, natijaB] bersin.",
+    "starter": "async function both(a, b) {\n  const x = await a();\n  const y = await b();\n  return [x, y];\n}",
+    "solution": "async function both(a, b) {\n  return Promise.all([a(), b()]);\n}",
+    "tests": [
+     {
+      "call": "(() => { const later = (v, ms = 5) => new Promise((r) => setTimeout(() => r(v), ms)); let log = []; return both(() => { log.push(\"a\"); return later(1).then((v) => { log.push(\"a-end\"); return v; }); }, () => { log.push(\"b\"); return later(2); }).then((r) => [r, log[1]]); })()",
+      "expect": "[[1, 2], \"b\"]"
+     }
+    ],
+    "hint": "Promise.all",
+    "id": "4"
+   },
+   {
+    "title": "allSettled",
+    "task": "summary(promises) {ok: son, fail: son} qaytarsin.",
+    "starter": "async function summary(promises) {\n  \n}",
+    "solution": "async function summary(promises) {\n  const results = await Promise.allSettled(promises);\n  const ok = results.filter((r) => r.status === \"fulfilled\").length;\n  return { ok, fail: results.length - ok };\n}",
+    "tests": [
+     {
+      "call": "summary([Promise.resolve(1), Promise.reject(new Error(\"x\")), Promise.resolve(2)])",
+      "expect": "{ ok: 2, fail: 1 }"
+     },
+     {
+      "call": "summary([])",
+      "expect": "{ ok: 0, fail: 0 }"
+     }
+    ],
+    "hint": "status \"fulfilled\" yoki \"rejected\".",
+    "id": "5"
+   },
+   {
+    "title": "Timeout",
+    "task": "withTimeout(promise, ms) ms ichida tugamasa \"timeout\" xabarli xato bilan rad etilsin.",
+    "starter": "function withTimeout(promise, ms) {\n  \n}",
+    "solution": "function withTimeout(promise, ms) {\n  const timer = new Promise((_, reject) => setTimeout(() => reject(new Error(\"timeout\")), ms));\n  return Promise.race([promise, timer]);\n}",
+    "tests": [
+     {
+      "call": "withTimeout(new Promise((r) => setTimeout(() => r(\"tez\"), 1)), 50)",
+      "expect": "\"tez\""
+     },
+     {
+      "call": "withTimeout(new Promise(() => {}), 10).catch((e) => e.message)",
+      "expect": "\"timeout\""
+     }
+    ],
+    "hint": "Promise.race",
+    "id": "6"
+   },
+   {
+    "title": "any",
+    "task": "firstOk(promises) birinchi MUVAFFAQIYATLI natijani qaytarsin.",
+    "starter": "function firstOk(promises) {\n  \n}",
+    "solution": "function firstOk(promises) {\n  return Promise.any(promises);\n}",
+    "tests": [
+     {
+      "call": "firstOk([Promise.reject(new Error(\"a\")), new Promise((r) => setTimeout(() => r(2), 5))])",
+      "expect": "2"
+     }
+    ],
+    "hint": "Promise.any rad etilganlarni o'tkazib yuboradi.",
+    "id": "7"
+   },
+   {
+    "title": "Ketma-ket bajarish",
+    "task": "series(tasks) asinxron vazifalarni BIRMA-BIR bajarib, natijalarni massivda bersin.",
+    "starter": "async function series(tasks) {\n  \n}",
+    "solution": "async function series(tasks) {\n  const out = [];\n  for (const task of tasks) out.push(await task());\n  return out;\n}",
+    "tests": [
+     {
+      "call": "(() => { let active = 0, peak = 0; const mk = (v) => () => { peak = Math.max(peak, ++active); return new Promise((r) => setTimeout(() => { active--; r(v); }, 3)); }; return series([mk(1), mk(2)]).then((r) => [r, peak]); })()",
+      "expect": "[[1, 2], 1]"
+     }
+    ],
+    "hint": "for...of ichida await.",
+    "id": "8"
+   },
+   {
+    "title": "async filter",
+    "task": "filterAsync(list, check) check Promise<boolean> qaytaradi; mos elementlarni bering.",
+    "starter": "async function filterAsync(list, check) {\n  return list.filter(check);\n}",
+    "solution": "async function filterAsync(list, check) {\n  const flags = await Promise.all(list.map(check));\n  return list.filter((_, i) => flags[i]);\n}",
+    "tests": [
+     {
+      "call": "filterAsync([1, 2, 3, 4], async (x) => x % 2 === 0)",
+      "expect": "[2, 4]"
+     }
+    ],
+    "hint": "Promise obyekti doim truthy.",
+    "id": "9"
+   },
+   {
+    "title": "Parallellik chegarasi",
+    "task": "inBatches(tasks, size) vazifalarni size talik to'plamlarda parallel bajarsin.",
+    "starter": "async function inBatches(tasks, size) {\n  \n}",
+    "solution": "async function inBatches(tasks, size) {\n  const out = [];\n  for (let i = 0; i < tasks.length; i += size) {\n    const batch = tasks.slice(i, i + size).map((t) => t());\n    out.push(...(await Promise.all(batch)));\n  }\n  return out;\n}",
+    "tests": [
+     {
+      "call": "(() => { let active = 0, peak = 0; const mk = (v) => () => { peak = Math.max(peak, ++active); return new Promise((r) => setTimeout(() => { active--; r(v); }, 3)); }; return inBatches([mk(1), mk(2), mk(3), mk(4), mk(5)], 2).then((r) => [r, peak]); })()",
+      "expect": "[[1, 2, 3, 4, 5], 2]"
+     }
+    ],
+    "hint": "slice va Promise.all.",
+    "id": "10"
+   }
   ]
  },
  {
@@ -3888,6 +5918,172 @@
     ],
     "answer": "Foydalanuvchi yozadi Debounce tinchlanishni kutadi Eski so'rov abort qilinadi Yangi natija ekranga chiqadi",
     "explain": "Shunday qilib faqat oxirgi so'rov natijasi ko'rinadi."
+   }
+  ],
+  "labs": [
+   {
+    "title": "Delegatsiya",
+    "task": "onClick(event) bosilgan joyga eng yaqin \"[data-id]\" elementni closest bilan topib, dataset.id ni qaytarsin; topilmasa null.",
+    "starter": "function onClick(event) {\n  \n}",
+    "solution": "function onClick(event) {\n  const item = event.target.closest(\"[data-id]\");\n  return item ? item.dataset.id : null;\n}",
+    "tests": [
+     {
+      "call": "onClick({ target: { closest: (s) => (s === \"[data-id]\" ? { dataset: { id: \"7\" } } : null) } })",
+      "expect": "\"7\""
+     },
+     {
+      "call": "onClick({ target: { closest: () => null } })",
+      "expect": "null"
+     }
+    ],
+    "hint": "event.target.closest(...)",
+    "id": "1"
+   },
+   {
+    "title": "Amalni ajratish",
+    "task": "route(event, handlers) tugmaning dataset.action nomiga mos handler ni chaqirsin; tugma bo'lmasa undefined.",
+    "starter": "function route(event, handlers) {\n  \n}",
+    "solution": "function route(event, handlers) {\n  const button = event.target.closest(\"[data-action]\");\n  if (!button) return undefined;\n  return handlers[button.dataset.action]?.();\n}",
+    "tests": [
+     {
+      "call": "route({ target: { closest: () => ({ dataset: { action: \"save\" } }) } }, { save: () => \"saqlandi\" })",
+      "expect": "\"saqlandi\""
+     },
+     {
+      "call": "route({ target: { closest: () => null } }, {})",
+      "expect": "undefined"
+     },
+     {
+      "call": "route({ target: { closest: () => ({ dataset: { action: \"x\" } }) } }, {})",
+      "expect": "undefined"
+     }
+    ],
+    "hint": "handlers[action]?.()",
+    "id": "2"
+   },
+   {
+    "title": "Hodisa tinglovchi",
+    "task": "listenOnce(target, type, handler) handler faqat bir marta ishlaydigan qilib ulasin.",
+    "starter": "function listenOnce(target, type, handler) {\n  \n}",
+    "solution": "function listenOnce(target, type, handler) {\n  target.addEventListener(type, handler, { once: true });\n}",
+    "tests": [
+     {
+      "call": "(() => { const t = new EventTarget(); let n = 0; listenOnce(t, \"x\", () => n++); t.dispatchEvent(new Event(\"x\")); t.dispatchEvent(new Event(\"x\")); return n; })()",
+      "expect": "1"
+     }
+    ],
+    "hint": "{ once: true }",
+    "id": "3"
+   },
+   {
+    "title": "Tozalash",
+    "task": "subscribe(target, handler) \"ping\" ni tinglasin va tinglashni bekor qiladigan funksiya qaytarsin.",
+    "starter": "function subscribe(target, handler) {\n  \n}",
+    "solution": "function subscribe(target, handler) {\n  target.addEventListener(\"ping\", handler);\n  return () => target.removeEventListener(\"ping\", handler);\n}",
+    "tests": [
+     {
+      "call": "(() => { const t = new EventTarget(); let n = 0; const off = subscribe(t, () => n++); t.dispatchEvent(new Event(\"ping\")); off(); t.dispatchEvent(new Event(\"ping\")); return n; })()",
+      "expect": "1"
+     }
+    ],
+    "hint": "removeEventListener ga o'sha funksiyani bering.",
+    "id": "4"
+   },
+   {
+    "title": "debounce",
+    "task": "debounce(f, ms) chaqiruvlar to'xtaganidan ms o'tgach f ni oxirgi argument bilan bir marta chaqirsin.",
+    "starter": "function debounce(f, ms) {\n  \n}",
+    "solution": "function debounce(f, ms) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(() => f(...args), ms);\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const got = []; const d = debounce((x) => got.push(x), 10); d(1); d(2); d(3); return new Promise((r) => setTimeout(() => r(got), 40)); })()",
+      "expect": "[3]"
+     },
+     {
+      "call": "(() => { const got = []; debounce((x) => got.push(x), 30)(1); return got.length; })()",
+      "expect": "0"
+     }
+    ],
+    "hint": "Har chaqiruvda eski taymerni bekor qiling.",
+    "id": "5"
+   },
+   {
+    "title": "throttle",
+    "task": "throttle(f, ms) darhol chaqirsin, keyingi ms davomidagi chaqiruvlarni e'tiborsiz qoldirsin.",
+    "starter": "function throttle(f, ms) {\n  \n}",
+    "solution": "function throttle(f, ms) {\n  let blocked = false;\n  return (...args) => {\n    if (blocked) return;\n    blocked = true;\n    f(...args);\n    setTimeout(() => { blocked = false; }, ms);\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const got = []; const t = throttle((x) => got.push(x), 20); t(1); t(2); return new Promise((r) => setTimeout(() => { t(3); r(got); }, 50)); })()",
+      "expect": "[1, 3]"
+     }
+    ],
+    "hint": "Bayroq va setTimeout.",
+    "id": "6"
+   },
+   {
+    "title": "response.ok",
+    "task": "getJson(fetchFn, url) javobni o'qisin; ok bo'lmasa \"HTTP <status>\" xatosini tashlasin.",
+    "starter": "async function getJson(fetchFn, url) {\n  const res = await fetchFn(url);\n  return res.json();\n}",
+    "solution": "async function getJson(fetchFn, url) {\n  const res = await fetchFn(url);\n  if (!res.ok) throw new Error(`HTTP ${res.status}`);\n  return res.json();\n}",
+    "tests": [
+     {
+      "call": "getJson(async () => ({ ok: true, json: async () => ({ a: 1 }) }), \"/x\")",
+      "expect": "{ a: 1 }"
+     },
+     {
+      "call": "getJson(async () => ({ ok: false, status: 404, json: async () => ({}) }), \"/x\").catch((e) => e.message)",
+      "expect": "\"HTTP 404\""
+     }
+    ],
+    "hint": "fetch 404 da rad etilmaydi.",
+    "id": "7"
+   },
+   {
+    "title": "POST so'rovi",
+    "task": "postOptions(data) fetch uchun {method, headers, body} qaytarsin (JSON).",
+    "starter": "function postOptions(data) {\n  \n}",
+    "solution": "function postOptions(data) {\n  return {\n    method: \"POST\",\n    headers: { \"Content-Type\": \"application/json\" },\n    body: JSON.stringify(data),\n  };\n}",
+    "tests": [
+     {
+      "call": "postOptions({ a: 1 })",
+      "expect": "{ method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: '{\"a\":1}' }"
+     }
+    ],
+    "hint": "body — JSON.stringify.",
+    "id": "8"
+   },
+   {
+    "title": "So'rov parametrlari",
+    "task": "buildUrl(base, params) URLSearchParams yordamida \"base?...\" satrini qaytarsin.",
+    "starter": "function buildUrl(base, params) {\n  \n}",
+    "solution": "function buildUrl(base, params) {\n  return `${base}?${new URLSearchParams(params)}`;\n}",
+    "tests": [
+     {
+      "call": "buildUrl(\"/s\", { q: \"a b\", page: 2 })",
+      "expect": "\"/s?q=a+b&page=2\""
+     },
+     {
+      "call": "buildUrl(\"/s\", { q: \"a&b\" })",
+      "expect": "\"/s?q=a%26b\""
+     }
+    ],
+    "hint": "new URLSearchParams(params)",
+    "id": "9"
+   },
+   {
+    "title": "Eski so'rovni bekor qilish",
+    "task": "latest(request) har chaqiruvda oldingi AbortController ni abort() qilib, request(query, signal) ni yangi signal bilan chaqirsin.",
+    "starter": "function latest(request) {\n  \n}",
+    "solution": "function latest(request) {\n  let controller;\n  return (query) => {\n    controller?.abort();\n    controller = new AbortController();\n    return request(query, controller.signal);\n  };\n}",
+    "tests": [
+     {
+      "call": "(() => { const signals = []; const s = latest((q, signal) => signals.push(signal)); s(\"a\"); s(\"b\"); return signals.map((x) => x.aborted); })()",
+      "expect": "[true, false]"
+     }
+    ],
+    "hint": "controller?.abort(), keyin yangisi.",
+    "id": "10"
    }
   ]
  }
