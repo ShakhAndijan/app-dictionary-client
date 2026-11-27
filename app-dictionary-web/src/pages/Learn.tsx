@@ -1025,7 +1025,11 @@ function LessonBody() {
   const [loaded, setLesson] = useState<LearnLessonDetail | null>(null);
   // Bumped on every retry so the questions come back in a new order.
   const [round, setRound] = useState(0);
-  const lesson = useMemo(() => loaded && { ...loaded, items: shuffleLesson(loaded.items) }, [loaded, round]);
+  // Only grammar and writing are mixed: reading and listening questions follow the text.
+  const lesson = useMemo(
+    () => loaded && (loaded.skill === 'GRAMMAR' || loaded.skill === 'WRITING' ? { ...loaded, items: shuffleLesson(loaded.items) } : loaded),
+    [loaded, round],
+  );
   const [error, setError] = useState('');
   const [stage, setStage] = useState<'intro' | 'play' | 'done'>('intro');
   const [index, setIndex] = useState(0);

@@ -33,7 +33,11 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
   const [examResult, setExamResult] = useState<ExamResult | null>(null);
   // Bumped on every retry so the questions come back in a new order.
   const [round, setRound] = useState(0);
-  const shuffled = useMemo(() => (lesson ? shuffleLesson(lesson.items) : null), [lesson, round]);
+  // Only grammar and writing are mixed: reading and listening questions follow the text.
+  const shuffled = useMemo(
+    () => (lesson ? (lesson.skill === 'GRAMMAR' || lesson.skill === 'WRITING' ? shuffleLesson(lesson.items) : lesson.items) : null),
+    [lesson, round],
+  );
 
   useEffect(() => {
     if (exam) {
