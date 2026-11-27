@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
@@ -8,6 +8,7 @@ import * as learnApi from '../../api/learnApi';
 import { ExamResult, ExamQuestion, FinishResult, LessonDetail, SKILL_META } from '../../api/learnApi';
 import { extractErrorMessage } from '../../utils/errors';
 import { requestProgressCheck } from '../../services/progressEvents';
+import { shuffleLesson } from '../../utils/shuffleLesson';
 import { LearnStackParamList } from '../../navigation/types';
 import ExerciseView, { Context, ExerciseData } from './ExerciseView';
 import ListeningView, { listeningGroups } from './ListeningView';
@@ -30,6 +31,9 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
   const [marks, setMarks] = useState<(boolean | undefined)[]>([]);
   const [lessonResult, setLessonResult] = useState<FinishResult | null>(null);
   const [examResult, setExamResult] = useState<ExamResult | null>(null);
+  // Bumped on every retry so the questions come back in a new order.
+  const [round, setRound] = useState(0);
+  const shuffled = useMemo(() => (lesson ? shuffleLesson(lesson.items) : null), [lesson, round]);
 
   useEffect(() => {
     if (exam) {
@@ -54,7 +58,7 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
 
   const items: ExerciseData[] | null = exam
     ? questions?.map((q) => ({ ...q, id: q.ref })) ?? null
-    : lesson?.items ?? null;
+    : shuffled;
 
   if (!items) {
     return (
@@ -72,6 +76,7 @@ export default function LearnPlayScreen({ route, navigation }: Props) {
   }
 
   const restart = () => {
+    setRound((r) => r + 1);
     setIndex(0);
     setAnswers([]);
     setMarks([]);
