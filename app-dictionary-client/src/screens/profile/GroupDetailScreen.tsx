@@ -45,7 +45,7 @@ export default function GroupDetailScreen({ route, navigation }: Props) {
   const share = () => {
     if (!group) return;
     Share.share({
-      message: `"${group.name}" guruhimizga qo'shiling! Lug'at ilovasida Profil → Guruhlar → Kod bilan qo'shilish, kod: ${group.inviteCode}`,
+      message: `"${group.name}" guruhimizga qo'shiling! Qadam ilovasida Profil → Guruhlar → Kod bilan qo'shilish, kod: ${group.inviteCode}`,
     }).catch(() => undefined);
   };
 

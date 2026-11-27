@@ -193,7 +193,7 @@ export function BrandPill() {
         />
         <View style={s.dot} />
       </View>
-      <Text style={s.pillText}>Lug'at</Text>
+      <Text style={s.pillText}>Qadam</Text>
     </View>
   );
 }

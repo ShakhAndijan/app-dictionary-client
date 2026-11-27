@@ -145,7 +145,7 @@ export function GroupDetailPage() {
 
   const copyInvite = async () => {
     if (!group) return;
-    const text = `"${group.name}" guruhimizga qo'shiling! Lug'at ilovasida Profil → Do'stlar bilan reyting → Kod bilan qo'shilish, kod: ${group.inviteCode}`;
+    const text = `"${group.name}" guruhimizga qo'shiling! Qadam ilovasida Profil → Do'stlar bilan reyting → Kod bilan qo'shilish, kod: ${group.inviteCode}`;
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);

@@ -134,7 +134,7 @@ function Layout() {
         <div className="dock">
           <NavLink to="/" className="dock-brand" aria-label="Bosh sahifa">
             <span className="dock-mark" />
-            <span className="dock-name">Lug'at</span>
+            <span className="dock-name">Qadam</span>
           </NavLink>
           <nav className="dock-nav">
             {NAV.filter((n) => !n.needs || n.needs.some((k) => modules.includes(k))).map((n) => (

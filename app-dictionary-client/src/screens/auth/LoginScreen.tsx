@@ -98,9 +98,9 @@ export default function LoginScreen({ navigation }: Props) {
         </Reveal>
         <Reveal index={1} style={styles.headWrap}>
           <Text style={styles.headline}>
-            So'zlarni{'\n'}
-            <Text style={styles.headlineAccent}>eslab qoling,</Text>
-            {'\n'}unutmang.
+            Har kuni{'\n'}
+            <Text style={styles.headlineAccent}>bir qadam</Text>
+            {'\n'}oldinga.
           </Text>
         </Reveal>
         <Reveal index={2} style={styles.stageWrap}>

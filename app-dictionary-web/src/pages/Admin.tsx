@@ -46,7 +46,7 @@ export function AdminLayout() {
         <div className="adm-brand">
           <span className="dock-mark" />
           <div>
-            <div className="adm-brand-name">Lug'at</div>
+            <div className="adm-brand-name">Qadam</div>
             <div className="adm-brand-tag">Admin</div>
           </div>
         </div>

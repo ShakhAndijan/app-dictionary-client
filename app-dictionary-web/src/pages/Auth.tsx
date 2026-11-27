@@ -263,14 +263,14 @@ function AuthShell({ eyebrow, title, subtitle, children, footer }: { eyebrow: st
         <section className="au-story">
           <div className="au-mark">
             <span className="au-mark-dot" />
-            Lug'at
+            Qadam
           </div>
           <h2 className="au-headline">
-            <span className="au-line"><span>So'zlarni</span></span>
-            <span className="au-line"><span className="au-grad">eslab qoling,</span></span>
-            <span className="au-line"><span>unutmang.</span></span>
+            <span className="au-line"><span>Har kuni</span></span>
+            <span className="au-line"><span className="au-grad">bir qadam</span></span>
+            <span className="au-line"><span>oldinga.</span></span>
           </h2>
-          <p className="au-lede">Aqlli takrorlash, fleshkartlar va o'yinlar. Har kuni bir oz, lekin abadiy.</p>
+          <p className="au-lede">So'z yodlang, ingliz tilini o'rganing, kod yozing. Hammasi bitta hisobda.</p>
           <WordStage />
         </section>
 

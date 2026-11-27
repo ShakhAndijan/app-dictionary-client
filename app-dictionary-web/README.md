@@ -1,4 +1,4 @@
-# Lug'at — web
+# Qadam — web
 
 React + TypeScript + Vite web client for the same backend as the mobile app.
 
